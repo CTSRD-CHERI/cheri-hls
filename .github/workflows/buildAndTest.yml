@@ -16,6 +16,40 @@ jobs:
           submodules: "true"
 
     # -----------
+    # Fetch Cheri submodules   
+    # -----------
+
+    - uses: actions/checkout@v3
+      with:
+        repository: CTSRD-CHERI/cheribuild 
+        path: ./cheri-tools/cheribuild
+        submodules: "false" 
+
+    - uses: actions/checkout@v3
+      with:
+        repository: CTSRD-CHERI/llvm-project 
+        path: ./cheri-tools/llvm-project
+        submodules: "false" 
+
+    - uses: actions/checkout@v3
+      with:
+        repository: CTSRD-CHERI/gdb 
+        path: ./cheri-tools/gdb
+        submodules: "false" 
+
+    - uses: actions/checkout@v3
+      with:
+        repository: CTSRD-CHERI/qemu 
+        path: ./cheri-tools/qemu
+        submodules: "false" 
+
+    - uses: actions/checkout@v3
+      with:
+        repository: CTSRD-CHERI/cheribsd 
+        path: ./cheri-tools/cheribsd
+        submodules: "false" 
+
+    # -----------
     # Build Cheri-HLS   
     # -----------
     
