@@ -20,7 +20,6 @@ mkdir -p $CHERI_TOOLS
 # --------------------------------------------------------------------
 # Commit info 
 # --------------------------------------------------------------------
-branch="simtight"
 cheribuild_commithash="8269a4e28db50868cc6ee6f1a376317248fa0af8"
 llvm_commithash="ed9d9964fb200af225739a89bfb988cbe8d8f69e"
 gdb_commithash="dfce87821d784de68b8f0a90b8dbf6724d82132c"
@@ -33,38 +32,53 @@ cheribsd_commithash="565ae56372dec95ac74e3cc3f5130ada41a80b05"
 cd $CHERI_TOOLS
 
 # Cheribuild
-git clone --recursive git@github.com:CTSRD-CHERI/cheribuild.git
+if [ ! -d $CHERI_TOOLS/cheribuild ] 
+then
+    git clone --recursive git@github.com:CTSRD-CHERI/cheribuild.git
+fi
 cd cheribuild
 git fetch --depth=1 origin $cheribuild_commithash
-git checkout $cheribuild_commithash -b $branch
+git checkout $cheribuild_commithash 
 cd ..
 
 # LLVM
-git clone --recursive git@github.com:CTSRD-CHERI/llvm-project.git
+if [ ! -d $CHERI_TOOLS/llvm-project ] 
+then
+    git clone --recursive git@github.com:CTSRD-CHERI/llvm-project.git
+fi
 cd llvm-project
 git fetch --depth=1 origin $llvm_commithash
-git checkout $llvm_commithash -b $branch
+git checkout $llvm_commithash 
 cd ..
 
 # gdb 
-git clone --recursive git@github.com:CTSRD-CHERI/gdb.git
+if [ ! -d $CHERI_TOOLS/gdb ] 
+then
+    git clone --recursive git@github.com:CTSRD-CHERI/gdb.git
+fi
 cd gdb
 git fetch --depth=1 origin $gdb_commithash
-git checkout $gdb_commithash -b $branch
+git checkout $gdb_commithash 
 cd ..
 
 # qemu 
-git clone --recursive git@github.com:CTSRD-CHERI/qemu.git
+if [ ! -d $CHERI_TOOLS/qemu ] 
+then
+   git clone --recursive git@github.com:CTSRD-CHERI/qemu.git
+fi
 cd qemu
 git fetch --depth=1 origin $qemu_commithash
-git checkout $qemu_commithash -b $branch
+git checkout $qemu_commithash 
 cd ..
 
 # cheribsd 
-git clone --recursive git@github.com:CTSRD-CHERI/cheribsd.git
+if [ ! -d $CHERI_TOOLS/cheribsd ] 
+then
+    git clone --recursive git@github.com:CTSRD-CHERI/cheribsd.git
+fi
 cd cheribsd
 git fetch --depth=1 origin $cheribsd_commithash
-git checkout $cheribsd_commithash -b $branch
+git checkout $cheribsd_commithash 
 cd ..
 
 # --------------------------------------------------------------------
