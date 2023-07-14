@@ -17,4 +17,4 @@ cd $CHERI_HLS/tools/cheribuild && \
 --cheribsd/source-directory ../cheribsd \
 --gdb/source-directory ../gdb \
 --run/custom-qemu-path ../qemu \
---source-root ../cheri
+--source-root ../../cheri
