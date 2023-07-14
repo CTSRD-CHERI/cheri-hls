@@ -13,6 +13,7 @@ set -o nounset
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 CHERI_HLS=${SCRIPT_DIR}/..
 CHERI_TOOLS=${CHERI_HLS}/cheri-tools
+CHERI_OUTPUT=${CHERI_HLS}/cheri
 
 mkdir -p $CHERI_TOOLS
 
@@ -75,4 +76,4 @@ cd $CHERI_HLS/cheri-tools/cheribuild && \
 --cheribsd/source-directory ../cheribsd \
 --gdb/source-directory ../gdb \
 --run/custom-qemu-path ../qemu \
---source-root $CHERI_HLS/cheri
+--source-root $CHERI_OUTPUT
