@@ -1,0 +1,15 @@
+[submodule "tools/cheribuild"]
+	path = tools/cheribuild
+	url = git@github.com:CTSRD-CHERI/cheribuild.git
+[submodule "tools/qemu"]
+	path = tools/qemu
+	url = git@github.com:CTSRD-CHERI/qemu.git
+[submodule "tools/gdb"]
+	path = tools/gdb
+	url = git@github.com:CTSRD-CHERI/gdb.git
+[submodule "tools/llvm-project"]
+	path = tools/llvm-project
+	url = git@github.com:CTSRD-CHERI/llvm-project.git
+[submodule "tools/cheribsd"]
+	path = tools/cheribsd
+	url = git@github.com:CTSRD-CHERI/cheribsd.git
