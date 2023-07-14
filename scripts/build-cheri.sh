@@ -7,7 +7,9 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
+# --------------------------------------------------------------------
 # The absolute path to the directory of this script.
+# --------------------------------------------------------------------
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 CHERI_HLS=${SCRIPT_DIR}/..
 CHERI_TOOLS=${CHERI_HLS}/cheri-tools
