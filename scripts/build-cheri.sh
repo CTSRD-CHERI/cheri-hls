@@ -20,11 +20,11 @@ mkdir -p $CHERI_TOOLS
 # Commit info 
 # --------------------------------------------------------------------
 branch="simtight"
-cheribuild_commithash="a1bdfa225b575606f7303435c4c75ea9942d697f"
-llvm_commithash="19d402e23fcaa197e1d40547da403dc17e13c7ae"
-gdb_commithash="f7eb074720f52900ef0718e2f3ca3b6ecdcfea52"
-qemu_commithash="01a05aaf95bcbc9eba282839de18b2f6713429eb"
-cheribsd_commithash="52b88aac0808acf4989ddd4f27aedfc0ad47d538"
+cheribuild_commithash="8269a4e28db50868cc6ee6f1a376317248fa0af8"
+llvm_commithash="ed9d9964fb200af225739a89bfb988cbe8d8f69e"
+gdb_commithash="dfce87821d784de68b8f0a90b8dbf6724d82132c"
+qemu_commithash="7d0b88cfb982267676573a4dce6565c7518964ca"
+cheribsd_commithash="565ae56372dec95ac74e3cc3f5130ada41a80b05"
 
 # --------------------------------------------------------------------
 # Clone the submodules with certain commit number
