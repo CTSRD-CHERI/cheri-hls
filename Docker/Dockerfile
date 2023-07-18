@@ -46,7 +46,7 @@ RUN mkdir -p /srcPkgs \
     && git checkout v4.200 \
     && autoconf \
     && ./configure \
-    && make -j \
+    && make -j 4 \
     && make install
 
 # Install Bluespec
@@ -133,3 +133,5 @@ RUN printf "\
 
 # Update vimrc
 RUN vim +PlugInstall +qall 
+# Entrypoint set up
+WORKDIR workspace
