@@ -13,11 +13,11 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 # Install basic packages 
 RUN apt-get upgrade -y 
 RUN apt-get update -y \
-    && apt-get install -y verilator gcc-riscv64-unknown-elf \
+    && apt-get install -y gcc-riscv64-unknown-elf \
                           libgmp-dev python3 python3-pip g++\
                           clang llvm lld clang-tidy clang-format \
                           gcc-multilib gcc cmake sudo wget vim \
-                          curl tmux git bc
+                          curl tmux git bc help2man
 
 # Install CHERI dependencies
 RUN apt-get update -y \
@@ -34,6 +34,25 @@ RUN mkdir -p /srcPkgs \
     && wget https://github.com/chipsalliance/verible/releases/download/v0.0-2776-gbaf0efe9/verible-v0.0-2776-gbaf0efe9-Ubuntu-22.04-jammy-x86_64.tar.gz \
     && mkdir -p verible \
     && tar xzvf verible-*-x86_64.tar.gz -C verible --strip-components 1
+
+# Install Verilator
+RUN mkdir -p /srcPkgs \
+    && cd /srcPkgs \
+    && git clone https://github.com/verilator/verilator \ 
+    && unset VERILATOR_ROOT \
+    && cd verilator \
+    && git checkout v5.006 \
+    && autoconf \
+    && ./configure \
+    && make -j \
+    && make install
+
+# Install Bluespec
+RUN mkdir -p /srcPkgs \
+    && cd /srcPkgs \
+    && wget https://github.com/B-Lang-org/bsc/releases/download/2023.01/bsc-2023.01-ubuntu-22.04.tar.gz \
+    && mkdir -p bsc \
+    && tar xzvf bsc-*.tar.gz -C bsc --strip-components 1
 
 # Append any packages you need here
 # RUN apt-get update -y \
@@ -52,11 +71,15 @@ ENV PATH="${PATH}:/home/dev-user/.local/bin"
 RUN pip3 install --user --upgrade pip \
     && pip3 install black colorlog toml tabulate
 
+# Install vim package manager
+RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 # Add environment variables
 RUN printf "\
 \nexport LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:\$LIBRARY_PATH \
 \n# Basic PATH setup \
-\nexport PATH=/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
+\nexport PATH=/srcPkgs/bsc/bin:/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
 \n# Thread setup \
 \nexport nproc=\$(grep -c ^processor /proc/cpuinfo) \
 \n# Terminal color... \
@@ -77,7 +100,13 @@ RUN printf "\
 \nautocmd BufWritePost *.sv  silent! !verible-verilog-format --inplace <afile> \
 \nautocmd BufWritePost *.v  silent! !verible-verilog-format --inplace <afile> \
 \nautocmd BufWritePost * redraw! \
+\ncall plug#begin() \
+\nPlug 'mtikekar/vim-bsv' \
+\ncall plug#end() \
 \n" >> /home/dev-user/.vimrc
+
+# Update vimrc
+RUN vim +PlugInstall +qall 
 
 # Entrypoint set up
 WORKDIR workspace
