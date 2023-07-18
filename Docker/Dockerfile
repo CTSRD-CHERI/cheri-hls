@@ -77,6 +77,7 @@ RUN printf "\
 \nautocmd BufWritePost *.sv  silent! !verible-verilog-format --inplace <afile> \
 \nautocmd BufWritePost *.v  silent! !verible-verilog-format --inplace <afile> \
 \nautocmd BufWritePost * redraw! \
+\nau BufNewFile,BufRead Jenkinsfile setf groovy \
 \n" >> /home/dev-user/.vimrc
 
 # Entrypoint set up
