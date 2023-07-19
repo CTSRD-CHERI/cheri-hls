@@ -3,15 +3,15 @@ group=$(if $(shell id -g),$(shell id -g),1000)
 
 # Make sure the repo is up to date
 sync:
-	git submodule sync
-	git submodule update --init --recursive
+	@git submodule sync
+	@git submodule update --init --recursive
 
 # Build Docker container
 build-docker: 
-	(cd Docker; docker build --build-arg UID=$(user) --build-arg GID=$(group) . --tag chls-ubuntu2204)
+	@docker build --build-arg UID=$(user) --build-arg GID=$(group) -f Docker/Dockerfile --tag chls-ubuntu2204 Docker
 
 shell: build-docker
-	docker run -it --shm-size 256m --hostname chls-ubuntu2204 -u $(user) -v /home/$(shell whoami)/.ssh:/home/dev-user/.ssh  -v $(shell pwd):/workspace chls-ubuntu2204:latest /bin/bash
+	@docker run -it --shm-size 256m --hostname chls-ubuntu2204 -u $(user) -w /workspace -v $(shell pwd):/workspace chls-ubuntu2204:latest /bin/bash
 
 build:
 	@bash scripts/build-cheri.sh
@@ -20,4 +20,5 @@ test:
 	@echo "Test passed"	
 
 clean:
-	rm -rf cheri
+	@rm -rf cheri-tools
+	@rm -rf cheri
