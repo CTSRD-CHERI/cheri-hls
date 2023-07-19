@@ -6,6 +6,7 @@
 set -o errexit
 set -o pipefail
 set -o nounset
+set -x
 
 # --------------------------------------------------------------------
 # The absolute path to the directory of this script.
@@ -34,7 +35,7 @@ cd $CHERI_TOOLS
 # Cheribuild
 if [ ! -d $CHERI_TOOLS/cheribuild ] 
 then
-    git clone --recursive git@github.com:CTSRD-CHERI/cheribuild.git
+    git clone --recursive https://github.com/CTSRD-CHERI/cheribuild.git
 fi
 cd cheribuild
 git fetch --depth=1 origin $cheribuild_commithash
@@ -44,7 +45,7 @@ cd ..
 # LLVM
 if [ ! -d $CHERI_TOOLS/llvm-project ] 
 then
-    git clone --recursive git@github.com:CTSRD-CHERI/llvm-project.git
+    git clone --recursive https://github.com/CTSRD-CHERI/llvm-project.git
 fi
 cd llvm-project
 git fetch --depth=1 origin $llvm_commithash
@@ -54,7 +55,7 @@ cd ..
 # gdb 
 if [ ! -d $CHERI_TOOLS/gdb ] 
 then
-    git clone --recursive git@github.com:CTSRD-CHERI/gdb.git
+    git clone --recursive https://github.com/CTSRD-CHERI/gdb.git
 fi
 cd gdb
 git fetch --depth=1 origin $gdb_commithash
@@ -64,7 +65,7 @@ cd ..
 # qemu 
 if [ ! -d $CHERI_TOOLS/qemu ] 
 then
-   git clone --recursive git@github.com:CTSRD-CHERI/qemu.git
+   git clone --recursive https://github.com/CTSRD-CHERI/qemu.git
 fi
 cd qemu
 git fetch --depth=1 origin $qemu_commithash
@@ -74,7 +75,7 @@ cd ..
 # cheribsd 
 if [ ! -d $CHERI_TOOLS/cheribsd ] 
 then
-    git clone --recursive git@github.com:CTSRD-CHERI/cheribsd.git
+    git clone --recursive https://github.com/CTSRD-CHERI/cheribsd.git
 fi
 cd cheribsd
 git fetch --depth=1 origin $cheribsd_commithash

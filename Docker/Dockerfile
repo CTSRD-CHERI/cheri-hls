@@ -80,5 +80,3 @@ RUN printf "\
 \nau BufNewFile,BufRead Jenkinsfile setf groovy \
 \n" >> /home/dev-user/.vimrc
 
-# Entrypoint set up
-WORKDIR workspace
