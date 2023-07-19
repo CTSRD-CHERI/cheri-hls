@@ -6,7 +6,6 @@
 set -o errexit
 set -o pipefail
 set -o nounset
-set -x
 
 # --------------------------------------------------------------------
 # The absolute path to the directory of this script.
