@@ -29,6 +29,9 @@ RUN apt-get update -y \
                           libbz2-dev libattr1-dev libcap-ng-dev \
                           libexpat1-dev libgmp-dev
 
+# Install Vitis dependencies
+RUN bash $VHLS_PATH/Vitis/2023.1/scripts/installLibs.sh
+
 # Install SystemVerilog formatter
 RUN mkdir -p /srcPkgs \
     && cd /srcPkgs \
@@ -53,15 +56,14 @@ ENV PATH="${PATH}:/home/dev-user/.local/bin"
 RUN pip3 install --user --upgrade pip \
     && pip3 install black colorlog toml tabulate
 
-# Add environment variables
 ENV vhls $VHLS_PATH
 RUN printf "\
 \nexport LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:\$LIBRARY_PATH \
 \n# Basic PATH setup \
 \nexport PATH=/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
 \n# Vitis HLS setup \
-\nexport VHLS=${vhls} \
-\nsource ${vhls}/Vitis_HLS/2020.2/settings64.sh \
+\nexport VHLS=${VHLS_PATH} \
+\nsource ${VHLS_PATH}/Vitis_HLS/2020.2/settings64.sh \
 \n# Thread setup \
 \nexport nproc=\$(grep -c ^processor /proc/cpuinfo) \
 \n# Terminal color... \
