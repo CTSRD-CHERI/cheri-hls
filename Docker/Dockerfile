@@ -18,7 +18,7 @@ RUN apt-get update -y \
                           libgmp-dev python3 python3-pip g++\
                           clang llvm lld clang-tidy clang-format \
                           gcc-multilib gcc cmake sudo wget vim \
-                          curl tmux git bc
+                          curl tmux git bc locales libncurses5
 
 # Install CHERI dependencies
 RUN apt-get update -y \
@@ -35,6 +35,8 @@ RUN mkdir -p /srcPkgs \
     && wget https://github.com/chipsalliance/verible/releases/download/v0.0-2776-gbaf0efe9/verible-v0.0-2776-gbaf0efe9-Ubuntu-22.04-jammy-x86_64.tar.gz \
     && mkdir -p verible \
     && tar xzvf verible-*-x86_64.tar.gz -C verible --strip-components 1
+
+RUN locale-gen en_US.UTF-8
 
 # Append any packages you need here
 # RUN apt-get update -y \
