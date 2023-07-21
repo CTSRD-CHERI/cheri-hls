@@ -29,9 +29,6 @@ RUN apt-get update -y \
                           libbz2-dev libattr1-dev libcap-ng-dev \
                           libexpat1-dev libgmp-dev
 
-# Install Vitis dependencies
-RUN bash $VHLS_PATH/Vitis/2023.1/scripts/installLibs.sh
-
 # Install SystemVerilog formatter
 RUN mkdir -p /srcPkgs \
     && cd /srcPkgs \
@@ -63,7 +60,7 @@ RUN printf "\
 \nexport PATH=/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
 \n# Vitis HLS setup \
 \nexport VHLS=${VHLS_PATH} \
-\nsource ${VHLS_PATH}/Vitis_HLS/2020.2/settings64.sh \
+\nsource ${VHLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
 \n# Thread setup \
 \nexport nproc=\$(grep -c ^processor /proc/cpuinfo) \
 \n# Terminal color... \

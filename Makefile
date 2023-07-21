@@ -9,10 +9,10 @@ sync:
 
 # Build Docker container
 build-docker: 
-	@docker build --build-arg UID=$(user) --build-arg GID=$(group) --build-arg VHLS_PATH=$(vhls)  -f Docker/Dockerfile --tag chls-ubuntu2204 Docker
+	@docker build --build-arg UID=$(user) --build-arg GID=$(group) --build-arg VHLS_PATH=$(vhls) -f Docker/Dockerfile --tag chls-ubuntu2204 Docker
 
 shell: build-docker
-	@docker run -it --shm-size 256m --hostname chls-ubuntu2204 -u $(user) -w /workspace -v $(vhls):$(vhls)-v $(shell pwd):/workspace chls-ubuntu2204:latest /bin/bash
+	@docker run -it --shm-size 256m --hostname chls-ubuntu2204 -u $(user) -w /workspace -v $(vhls):$(vhls) -v $(shell pwd):/workspace chls-ubuntu2204:latest /bin/bash
 
 build:
 	@bash scripts/build-cheri.sh
