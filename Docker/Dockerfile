@@ -84,7 +84,7 @@ ENV vhls $VHLS_PATH
 RUN printf "\
 \nexport LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:\$LIBRARY_PATH \
 \n# Basic PATH setup \
-\nexport PATH=/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
+\nexport PATH=/srcPkgs/bsc/bin:/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
 \n# Vitis HLS setup \
 \nexport VHLS=${VHLS_PATH} \
 \nsource ${VHLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
