@@ -18,7 +18,7 @@ build:
 	@bash scripts/build-cheri.sh
 
 test:
-	@echo "Test passed"	
+	@bash scripts/test-cheri-hls.sh
 
 clean:
 	@rm -rf cheri-tools
