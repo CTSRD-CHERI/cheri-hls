@@ -24,7 +24,7 @@ pipeline {
           dir 'Docker' 
           // additionalBuildArgs '--no-cache --build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg VHLS_PATH=/local/ecad/xilinx --tag chls-u22'
           additionalBuildArgs '--build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg VHLS_PATH=/local/ecad/xilinx --tag chls-u22'
-          args '--restart=always --shm-size 256m -v /local/ecad/xilinx:/local/ecad/xilinx:ro'
+          args '--restart=always --shm-size 256m -v /local/ecad/xilinx:/local/ecad/xilinx:ro,z'
         }
       }
       steps {
