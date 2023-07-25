@@ -31,6 +31,7 @@ pipeline {
 
           // Check Vitis HLS path
           sh 'ls /local/ecad/xilinx'
+          sh 'ls /local/ecad/xilinx/Vitis_HLS/2023.1/settings64.sh'
 
           // Create a symlink to the working directory so all the scripts can be reused
           sh 'sudo ln -s $PWD /workspace'
