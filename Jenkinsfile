@@ -6,7 +6,7 @@ pipeline {
   } 
   // Build software flow 
   stages {
-    stage('Build and Test') {
+    stage('Env Test') {
       steps {
           // Check Vitis HLS path
           echo 'Environment check'
