@@ -39,7 +39,7 @@ pipeline {
           export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LIBRARY_PATH
           export PATH=/workspace/scripts:/home/dev-user/.local/bin:$PATH
           export export nproc=$(grep -c ^processor /proc/cpuinfo)
-          source /local/ecad/xilinx/Vitis_HLS/2023.1/settings64.sh
+          . /local/ecad/xilinx/Vitis_HLS/2023.1/settings64.sh
 
           which vitis_hls
           make build
@@ -51,7 +51,7 @@ pipeline {
   // Check logs and report 
   post {
       failure {
-        mail(to: 'jianyi.cheng@cl.cam.ac.uk', subject: "Failed Pipeline: cheri-hls", body: "Failed Pipeline: cheri-hls") 
+        mail(to: 'jianyi.cheng@cl.cam.ac.uk', attachLog: true, subject: "Failed Pipeline: cheri-hls", body: "Failed Pipeline: cheri-hls") 
       }
   }
 }
