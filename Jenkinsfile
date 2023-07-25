@@ -15,6 +15,8 @@ pipeline {
           echo 'Environment check'
           sh 'ls /local/scratch/jenkins/xilinx'
           sh 'ls /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh'
+          sh 'echo $(readlink -f /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh)'
+
       }
     }
     stage('Build and Test') {
