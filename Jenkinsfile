@@ -1,8 +1,6 @@
 pipeline {
   agent {
-    node {
-      label 'ctsrd-build-linux-l1'
-    }
+    label 'vitis2023.1'
   } 
   triggers {
     githubPush()
@@ -15,15 +13,12 @@ pipeline {
           echo 'Environment check'
           sh 'ls /local/scratch/jenkins/xilinx'
           sh 'ls /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh'
-          sh 'cat /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh'
-          sh 'readlink -f /local/scratch/jenkins/xilinx/Vitis_HLS || exit 1'
-          sh 'readlink -f /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1 || exit 1'
-          sh 'readlink -f /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh || exit 1'
 
       }
     }
     stage('Build and Test') {
       agent {
+        label 'vitis2023.1'
         dockerfile {
           filename 'Dockerfile' 
           dir 'Docker' 
@@ -37,8 +32,6 @@ pipeline {
 
           // Check Vitis HLS path
           sh 'ls /local/scratch/jenkins/xilinx'
-          sh 'ls /local/scratch/jenkins/xilinx/Vitis_HLS'
-          sh 'ls /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1'
           sh 'ls /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh'
 
           // Create a symlink to the working directory so all the scripts can be reused
