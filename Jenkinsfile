@@ -18,7 +18,6 @@ pipeline {
     }
     stage('Build and Test') {
       agent {
-        label 'vitis2023.1'
         dockerfile {
           filename 'Dockerfile' 
           dir 'Docker' 
