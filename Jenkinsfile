@@ -22,8 +22,9 @@ pipeline {
         dockerfile {
           filename 'Dockerfile' 
           dir 'Docker' 
-          additionalBuildArgs '--no-cache --build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg VHLS_PATH=/local/ecad/xilinx --tag chls-u22'
-          args '--restart=always --shm-size 256m -v /local/ecad/xilinx/Vivado:/local/ecad/xilinx/Vivado -v /local/ecad/xilinx/Vitis_HLS:/local/ecad/xilinx/Vitis_HLS'
+          // additionalBuildArgs '--no-cache --build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg VHLS_PATH=/local/ecad/xilinx --tag chls-u22'
+          additionalBuildArgs '--build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg VHLS_PATH=/local/ecad/xilinx --tag chls-u22'
+          args '--restart=always --shm-size 256m -v /local/ecad/xilinx/Vivado/:/local/ecad/xilinx/Vivado/ -v /local/ecad/xilinx/Vitis_HLS/:/local/ecad/xilinx/Vitis_HLS/'
         }
       }
       steps {
@@ -31,6 +32,8 @@ pipeline {
 
           // Check Vitis HLS path
           sh 'ls /local/ecad/xilinx'
+          sh 'ls /local/ecad/xilinx/Vitis_HLS'
+          sh 'ls /local/ecad/xilinx/Vitis_HLS/2023.1'
           sh 'ls /local/ecad/xilinx/Vitis_HLS/2023.1/settings64.sh'
 
           // Create a symlink to the working directory so all the scripts can be reused
