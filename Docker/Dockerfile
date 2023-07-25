@@ -64,7 +64,7 @@ RUN printf "\
 \nexport PATH=/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
 \n# Vitis HLS setup \
 \nexport VHLS=${VHLS_PATH} \
-\nsource ${VHLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
+\n# source ${VHLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
 \n# Thread setup \
 \nexport nproc=\$(grep -c ^processor /proc/cpuinfo) \
 \n# Terminal color... \
