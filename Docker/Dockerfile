@@ -3,6 +3,7 @@
 FROM ubuntu:22.04
 ARG UID
 ARG GID
+ARG VHLS_PATH
 RUN echo "Group ID: $GID"
 RUN echo "User ID: $UID"
 
@@ -17,7 +18,7 @@ RUN apt-get update -y \
                           libgmp-dev python3 python3-pip g++\
                           clang llvm lld clang-tidy clang-format \
                           gcc-multilib gcc cmake sudo wget vim \
-                          curl tmux git bc
+                          curl tmux git bc locales libncurses5
 
 # Install CHERI dependencies
 RUN apt-get update -y \
@@ -34,6 +35,8 @@ RUN mkdir -p /srcPkgs \
     && wget https://github.com/chipsalliance/verible/releases/download/v0.0-2776-gbaf0efe9/verible-v0.0-2776-gbaf0efe9-Ubuntu-22.04-jammy-x86_64.tar.gz \
     && mkdir -p verible \
     && tar xzvf verible-*-x86_64.tar.gz -C verible --strip-components 1
+
+RUN locale-gen en_US.UTF-8
 
 # Append any packages you need here
 # RUN apt-get update -y \
@@ -52,11 +55,14 @@ ENV PATH="${PATH}:/home/dev-user/.local/bin"
 RUN pip3 install --user --upgrade pip \
     && pip3 install black colorlog toml tabulate
 
-# Add environment variables
+ENV vhls $VHLS_PATH
 RUN printf "\
 \nexport LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:\$LIBRARY_PATH \
 \n# Basic PATH setup \
 \nexport PATH=/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
+\n# Vitis HLS setup \
+\nexport VHLS=${VHLS_PATH} \
+\nsource ${VHLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
 \n# Thread setup \
 \nexport nproc=\$(grep -c ^processor /proc/cpuinfo) \
 \n# Terminal color... \
