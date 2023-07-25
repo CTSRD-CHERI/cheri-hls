@@ -21,6 +21,7 @@ pipeline {
     stage('Build and Test') {
       agent {
         dockerfile {
+          label 'vitis2023.1'
           filename 'Dockerfile' 
           dir 'Docker' 
           // additionalBuildArgs '--no-cache --build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg VHLS_PATH=/local/ecad/xilinx --tag chls-u22'
