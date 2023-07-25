@@ -39,7 +39,7 @@ pipeline {
           // Create a symlink to the working directory so all the scripts can be reused
           sh 'sudo ln -s $PWD /workspace'
           // Regression test
-          sh '''
+          sh '''#!/bin/bash
           export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LIBRARY_PATH
           export PATH=/workspace/scripts:/home/dev-user/.local/bin:$PATH
           export export nproc=$(grep -c ^processor /proc/cpuinfo)
