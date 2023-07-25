@@ -51,7 +51,10 @@ pipeline {
   // Check logs and report 
   post {
       failure {
-        mail(to: 'jianyi.cheng@cl.cam.ac.uk', subject: "Failed Pipeline: cheri-hls", body: "Failed Pipeline: cheri-hls", attachLog: true) 
+        emailext to: "jianyi.cheng@cl.cam.ac.uk",
+            subject: "Failed Pipeline: cheri-hls",
+            body: "Failed Pipeline: cheri-hls",
+            attachLog: true
       }
   }
 }
