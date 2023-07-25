@@ -14,7 +14,14 @@ pipeline {
           // Check Vitis HLS path
           echo 'Environment check'
           sh 'ls /local/ecad/xilinx'
+          sh 'ls /local/ecad/xilinx/Vitis_HLS'
+          sh 'ls /local/ecad/xilinx/Vitis_HLS/2023.1'
           sh 'ls /local/ecad/xilinx/Vitis_HLS/2023.1/settings64.sh'
+          sh '''
+          . /local/ecad/xilinx/Vitis_HLS/2023.1/settings64.sh
+          which vitis_hls
+          '''
+
       }
     }
     stage('Build and Test') {
