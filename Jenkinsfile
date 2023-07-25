@@ -15,6 +15,11 @@ pipeline {
           echo 'Environment check'
           sh 'ls /local/ecad/xilinx'
           sh 'ls /local/ecad/xilinx/Vitis_HLS/2023.1/settings64.sh'
+
+          sh 'echo $(readlink -f /local/ecad/xilinx) '
+          sh 'echo $(readlink -f /local/ecad/xilinx/Vitis_HLS) '
+          sh 'echo $(readlink -f /local/ecad/xilinx/Vitis_HLS/2023.1) '
+
       }
     }
     stage('Build and Test') {
