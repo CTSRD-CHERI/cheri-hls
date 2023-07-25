@@ -4,6 +4,9 @@ pipeline {
       label 'ctsrd-build-linux-l1'
     }
   } 
+  triggers {
+    githubPush()
+  }
   // Build software flow 
   stages {
     stage('Env Test') {
@@ -19,7 +22,7 @@ pipeline {
           filename 'Dockerfile' 
           dir 'Docker' 
           additionalBuildArgs '--build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg VHLS_PATH=/local/ecad/xilinx --tag chls-u22'
-          args '--restart=always --shm-size 256m -v /local/ecad/xilinx:/local/ecad/xilinx'
+          args '--no-cache --restart=always --shm-size 256m -v /local/ecad/xilinx:/local/ecad/xilinx'
         }
       }
       steps {
@@ -27,7 +30,6 @@ pipeline {
 
           // Check Vitis HLS path
           sh 'ls /local/ecad/xilinx'
-          sh 'which vitis_hls'
 
           // Create a symlink to the working directory so all the scripts can be reused
           sh 'sudo ln -s $PWD /workspace'
