@@ -24,9 +24,8 @@ pipeline {
           label 'vitis2023.1'
           filename 'Dockerfile' 
           dir 'Docker' 
-          // additionalBuildArgs '--no-cache --build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg VHLS_PATH=/local/ecad/xilinx --tag chls-u22'
           additionalBuildArgs '--build-arg UID=$(id -u) --build-arg GID=$(id -g) --tag chls-u22'
-          args '--restart=always --shm-size 256m -v /local/scratch/jenkins/xilinx:/local/scratch/jenkins/xilinx:ro,z'
+          args '--no-cache --restart=always --shm-size 256m -v /local/scratch/jenkins/xilinx:/local/scratch/jenkins/xilinx:ro,z'
         }
       }
       steps {
@@ -38,6 +37,7 @@ pipeline {
 
           // Create a symlink to the working directory so all the scripts can be reused
           sh 'sudo ln -s $PWD /workspace'
+
           // Regression test
           sh '''#!/bin/bash
           export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LIBRARY_PATH
@@ -46,7 +46,7 @@ pipeline {
           source /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh
 
           which vitis_hls
-          # make build
+          make build
           make test
           '''
       }
