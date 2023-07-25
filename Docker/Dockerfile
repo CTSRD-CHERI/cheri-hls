@@ -3,6 +3,7 @@
 FROM ubuntu:22.04
 ARG UID
 ARG GID
+ARG VHLS_PATH
 RUN echo "Group ID: $GID"
 RUN echo "User ID: $UID"
 
@@ -17,7 +18,8 @@ RUN apt-get update -y \
                           libgmp-dev python3 python3-pip g++\
                           clang llvm lld clang-tidy clang-format \
                           gcc-multilib gcc cmake sudo wget vim \
-                          curl tmux git bc help2man
+                          curl tmux git bc locales libncurses5 \
+                          help2man
 
 # Install CHERI dependencies
 RUN apt-get update -y \
@@ -54,6 +56,8 @@ RUN mkdir -p /srcPkgs \
     && mkdir -p bsc \
     && tar xzvf bsc-*.tar.gz -C bsc --strip-components 1
 
+RUN locale-gen en_US.UTF-8
+
 # Append any packages you need here
 # RUN apt-get update -y \
 #     && apt-get install -y ...
@@ -76,10 +80,14 @@ RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Add environment variables
+ENV vhls $VHLS_PATH
 RUN printf "\
 \nexport LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:\$LIBRARY_PATH \
 \n# Basic PATH setup \
-\nexport PATH=/srcPkgs/bsc/bin:/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
+\nexport PATH=/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
+\n# Vitis HLS setup \
+\nexport VHLS=${VHLS_PATH} \
+\nsource ${VHLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
 \n# Thread setup \
 \nexport nproc=\$(grep -c ^processor /proc/cpuinfo) \
 \n# Terminal color... \
@@ -99,6 +107,7 @@ RUN printf "\
 \nautocmd BufWritePost *.py  silent! !python3 -m black <afile> \
 \nautocmd BufWritePost *.sv  silent! !verible-verilog-format --inplace <afile> \
 \nautocmd BufWritePost *.v  silent! !verible-verilog-format --inplace <afile> \
+\nau BufNewFile,BufRead Jenkinsfile setf groovy \
 \nautocmd BufWritePost * redraw! \
 \ncall plug#begin() \
 \nPlug 'mtikekar/vim-bsv' \
@@ -107,6 +116,3 @@ RUN printf "\
 
 # Update vimrc
 RUN vim +PlugInstall +qall 
-
-# Entrypoint set up
-WORKDIR workspace
