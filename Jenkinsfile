@@ -24,8 +24,8 @@ pipeline {
           label 'vitis2023.1'
           filename 'Dockerfile' 
           dir 'Docker' 
-          additionalBuildArgs '--build-arg UID=$(id -u) --build-arg GID=$(id -g) --tag chls-u22'
-          args '--no-cache --restart=always --shm-size 256m -v /local/scratch/jenkins/xilinx:/local/scratch/jenkins/xilinx:ro,z'
+          additionalBuildArgs '--no-cache --build-arg UID=$(id -u) --build-arg GID=$(id -g) --tag chls-u22'
+          args '--restart=always --shm-size 256m -v /local/scratch/jenkins/xilinx:/local/scratch/jenkins/xilinx:ro,z'
         }
       }
       steps {
