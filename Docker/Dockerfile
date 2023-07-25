@@ -8,6 +8,8 @@ RUN echo "Group ID: $GID"
 RUN echo "User ID: $UID"
 
 USER root
+SHELL ["/bin/bash", "-c"]
+
 RUN apt-get update -y && apt-get install apt-utils -y
 RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 
