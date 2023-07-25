@@ -13,13 +13,8 @@ pipeline {
       steps {
           // Check Vitis HLS path
           echo 'Environment check'
-          sh 'ls /local/ecad/xilinx'
-          sh 'ls /local/ecad/xilinx/Vitis_HLS/2023.1/settings64.sh'
-
-          sh 'echo $(readlink -f /local/ecad/xilinx) '
-          sh 'echo $(readlink -f /local/ecad/xilinx/Vitis_HLS) '
-          sh 'echo $(readlink -f /local/ecad/xilinx/Vitis_HLS/2023.1) '
-
+          sh 'ls /local/scratch/jenkins/xilinx'
+          sh 'ls /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh'
       }
     }
     stage('Build and Test') {
@@ -28,18 +23,18 @@ pipeline {
           filename 'Dockerfile' 
           dir 'Docker' 
           // additionalBuildArgs '--no-cache --build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg VHLS_PATH=/local/ecad/xilinx --tag chls-u22'
-          additionalBuildArgs '--build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg VHLS_PATH=/local/ecad/xilinx --tag chls-u22'
-          args '--restart=always --shm-size 256m -v /local/ecad/xilinx:/local/ecad/xilinx:ro,z'
+          additionalBuildArgs '--build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg VHLS_PATH=/local/scratch/jenkins/xilinx --tag chls-u22'
+          args '--restart=always --shm-size 256m -v /local/scratch/jenkins/xilinx:/local/scratch/jenkins/xilinx:ro,z'
         }
       }
       steps {
           echo 'Start regression test'
 
           // Check Vitis HLS path
-          sh 'ls /local/ecad/xilinx'
-          sh 'ls /local/ecad/xilinx/Vitis_HLS'
-          sh 'ls /local/ecad/xilinx/Vitis_HLS/2023.1'
-          sh 'ls /local/ecad/xilinx/Vitis_HLS/2023.1/settings64.sh'
+          sh 'ls /local/scratch/jenkins/xilinx'
+          sh 'ls /local/scratch/jenkins/xilinx/Vitis_HLS'
+          sh 'ls /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1'
+          sh 'ls /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh'
 
           // Create a symlink to the working directory so all the scripts can be reused
           sh 'sudo ln -s $PWD /workspace'
@@ -48,7 +43,7 @@ pipeline {
           export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LIBRARY_PATH
           export PATH=/workspace/scripts:/home/dev-user/.local/bin:$PATH
           export export nproc=$(grep -c ^processor /proc/cpuinfo)
-          source /local/ecad/xilinx/Vitis_HLS/2023.1/settings64.sh
+          source /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh
 
           which vitis_hls
           make build
