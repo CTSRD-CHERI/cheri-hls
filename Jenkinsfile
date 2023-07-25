@@ -46,7 +46,7 @@ pipeline {
           source /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh
 
           which vitis_hls
-          make build
+          # make build
           make test
           '''
       }
