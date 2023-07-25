@@ -4,12 +4,16 @@ pipeline {
       label 'ctsrd-build-linux-l1'
     }
   } 
-  // Run regression test hourly
-  triggers {
-    cron('H * * * *') 
-  }
   // Build software flow 
   stages {
+    stage('Build and Test') {
+      steps {
+          // Check Vitis HLS path
+          echo 'Environment check'
+          sh 'ls /local/ecad/xilinx/Vitis/2023.1'
+          sh 'which vitis_hls'
+      }
+    }
     stage('Build and Test') {
       agent {
         dockerfile {
@@ -20,8 +24,10 @@ pipeline {
         }
       }
       steps {
+          echo 'Start regression test'
+
           // Check Vitis HLS path
-          which vitis_hls
+          sh 'which vitis_hls'
 
           // Create a symlink to the working directory so all the scripts can be reused
           sh 'sudo ln -s $PWD /workspace'
