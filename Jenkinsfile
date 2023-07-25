@@ -30,7 +30,6 @@ pipeline {
 
           // Check Vitis HLS path
           sh 'ls /local/ecad/xilinx'
-          sh 'which vitis_hls'
 
           // Create a symlink to the working directory so all the scripts can be reused
           sh 'sudo ln -s $PWD /workspace'
@@ -39,7 +38,9 @@ pipeline {
           export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LIBRARY_PATH
           export PATH=/workspace/scripts:/home/dev-user/.local/bin:$PATH
           export export nproc=$(grep -c ^processor /proc/cpuinfo)
+          source /local/ecad/xilinx/2023.1/Vitis_HLS/2023.1/settings64.sh
 
+          which vitis_hls
           make build
           make test
           '''
