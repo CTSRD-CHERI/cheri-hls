@@ -10,8 +10,7 @@ pipeline {
       steps {
           // Check Vitis HLS path
           echo 'Environment check'
-          sh 'ls /local/ecad/xilinx/Vitis/2023.1'
-          sh 'which vitis_hls'
+          sh 'ls /local/ecad/xilinx'
       }
     }
     stage('Build and Test') {
@@ -19,8 +18,8 @@ pipeline {
         dockerfile {
           filename 'Dockerfile' 
           dir 'Docker' 
-          additionalBuildArgs '--build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg VHLS_PATH=/local/ecad/xilinx/Vitis/2023.1 --tag chls-u22'
-          args '--restart=always --shm-size 256m -v /local/ecad/xilinx/Vitis/2023.1:/local/ecad/xilinx/Vitis/2023.1'
+          additionalBuildArgs '--build-arg UID=$(id -u) --build-arg GID=$(id -g) --build-arg VHLS_PATH=/local/ecad/xilinx --tag chls-u22'
+          args '--restart=always --shm-size 256m -v /local/ecad/xilinx:/local/ecad/xilinx'
         }
       }
       steps {
