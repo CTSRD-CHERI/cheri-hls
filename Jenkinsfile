@@ -16,9 +16,9 @@ pipeline {
           sh 'ls /local/scratch/jenkins/xilinx'
           sh 'ls /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh'
           sh 'cat /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh'
-          sh 'echo $(readlink -f /local/scratch/jenkins/xilinx/Vitis_HLS || exit 1)'
-          sh 'echo $(readlink -f /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1 || exit 1)'
-          sh 'echo $(readlink -f /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh || exit 1)'
+          sh 'readlink -f /local/scratch/jenkins/xilinx/Vitis_HLS || exit 1'
+          sh 'readlink -f /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1 || exit 1'
+          sh 'readlink -f /local/scratch/jenkins/xilinx/Vitis_HLS/2023.1/settings64.sh || exit 1'
 
       }
     }
