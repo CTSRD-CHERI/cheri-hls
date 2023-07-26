@@ -1,4 +1,4 @@
-open_project -reset vect_mult 
+open_project -reset vect_mult_prj
 set_top vect_mult 
 add_files { vect_mult.cpp }
 add_files -tb { vect_mult.cpp }

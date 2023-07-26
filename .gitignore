@@ -1,2 +1,4 @@
 cheri/
 cheri-tools/
+*.log
+*_prj/
