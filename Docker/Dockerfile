@@ -50,11 +50,28 @@ RUN mkdir -p /srcPkgs \
     && make install
 
 # Install Bluespec
+RUN apt-get update -y \
+    && apt-get install -y ghc \
+    && apt-get install -y libghc-regex-compat-dev libghc-syb-dev \
+                          libghc-old-time-dev libghc-split-dev \
+                          ghc-prof libghc-regex-compat-prof libghc-split-prof \
+                          libghc-syb-prof libghc-old-time-prof \
+                          tcl-dev build-essential pkg-config autoconf \
+                          gperf flex bison iverilog
 RUN mkdir -p /srcPkgs \
     && cd /srcPkgs \
-    && wget https://github.com/B-Lang-org/bsc/releases/download/2023.01/bsc-2023.01-ubuntu-22.04.tar.gz \
-    && mkdir -p bsc \
-    && tar xzvf bsc-*.tar.gz -C bsc --strip-components 1
+    && git clone https://github.com/B-Lang-org/bsc.git \
+    && cd bsc \
+    && git submodule update --init --recursive \
+    && make install-src
+# Install Bluespec Contributed libraries and utilities
+ENV PATH="/srcPkgs/bsc/inst/bin:${PATH}"
+RUN mkdir -p /srcPkgs \
+    && cd /srcPkgs \
+    && git clone https://github.com/B-Lang-org/bsc-contrib.git \
+    && cd bsc-contrib \
+    && git submodule update --init --recursive \
+    && make PREFIX=/srcPkgs/bsc
 
 RUN locale-gen en_US.UTF-8
 
@@ -84,7 +101,7 @@ ENV vhls $VHLS_PATH
 RUN printf "\
 \nexport LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:\$LIBRARY_PATH \
 \n# Basic PATH setup \
-\nexport PATH=/srcPkgs/bsc/bin:/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
+\nexport PATH=/srcPkgs/bsc/inst/bin:/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
 \n# Vitis HLS setup \
 \nexport VHLS=${VHLS_PATH} \
 \nsource ${VHLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
