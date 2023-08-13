@@ -71,7 +71,7 @@ RUN mkdir -p /srcPkgs \
     && git clone https://github.com/B-Lang-org/bsc-contrib.git \
     && cd bsc-contrib \
     && git submodule update --init --recursive \
-    && make PREFIX=/srcPkgs/bsc
+    && make PREFIX=/srcPkgs/bsc/inst
 
 RUN locale-gen en_US.UTF-8
 
