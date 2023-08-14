@@ -16,6 +16,7 @@ shell: build-docker
 
 build:
 	@bash scripts/build-cheri.sh
+	@bash scripts/build-flute.sh
 
 test:
 	@bash scripts/test-cheri-hls.sh

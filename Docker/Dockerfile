@@ -14,11 +14,12 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 # Install basic packages 
 RUN apt-get upgrade -y 
 RUN apt-get update -y \
-    && apt-get install -y verilator gcc-riscv64-unknown-elf \
+    && apt-get install -y gcc-riscv64-unknown-elf \
                           libgmp-dev python3 python3-pip g++\
                           clang llvm lld clang-tidy clang-format \
                           gcc-multilib gcc cmake sudo wget vim \
-                          curl tmux git bc locales libncurses5
+                          curl tmux git bc locales libncurses5 \
+                          help2man
 
 # Install CHERI dependencies
 RUN apt-get update -y \
@@ -35,6 +36,42 @@ RUN mkdir -p /srcPkgs \
     && wget https://github.com/chipsalliance/verible/releases/download/v0.0-2776-gbaf0efe9/verible-v0.0-2776-gbaf0efe9-Ubuntu-22.04-jammy-x86_64.tar.gz \
     && mkdir -p verible \
     && tar xzvf verible-*-x86_64.tar.gz -C verible --strip-components 1
+
+# Install Verilator
+RUN mkdir -p /srcPkgs \
+    && cd /srcPkgs \
+    && git clone https://github.com/verilator/verilator \ 
+    && unset VERILATOR_ROOT \
+    && cd verilator \
+    && git checkout v5.006 \
+    && autoconf \
+    && ./configure \
+    && make -j \
+    && make install
+
+# Install Bluespec
+RUN apt-get update -y \
+    && apt-get install -y ghc \
+    && apt-get install -y libghc-regex-compat-dev libghc-syb-dev \
+                          libghc-old-time-dev libghc-split-dev \
+                          ghc-prof libghc-regex-compat-prof libghc-split-prof \
+                          libghc-syb-prof libghc-old-time-prof \
+                          tcl-dev build-essential pkg-config autoconf \
+                          gperf flex bison iverilog
+RUN mkdir -p /srcPkgs \
+    && cd /srcPkgs \
+    && git clone https://github.com/B-Lang-org/bsc.git \
+    && cd bsc \
+    && git submodule update --init --recursive \
+    && make install-src
+# Install Bluespec Contributed libraries and utilities
+ENV PATH="/srcPkgs/bsc/inst/bin:${PATH}"
+RUN mkdir -p /srcPkgs \
+    && cd /srcPkgs \
+    && git clone https://github.com/B-Lang-org/bsc-contrib.git \
+    && cd bsc-contrib \
+    && git submodule update --init --recursive \
+    && make PREFIX=/srcPkgs/bsc/inst
 
 RUN locale-gen en_US.UTF-8
 
@@ -55,11 +92,16 @@ ENV PATH="${PATH}:/home/dev-user/.local/bin"
 RUN pip3 install --user --upgrade pip \
     && pip3 install black colorlog toml tabulate
 
+# Install vim package manager
+RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Add environment variables
 ENV vhls $VHLS_PATH
 RUN printf "\
 \nexport LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:\$LIBRARY_PATH \
 \n# Basic PATH setup \
-\nexport PATH=/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
+\nexport PATH=/srcPkgs/bsc/inst/bin:/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
 \n# Vitis HLS setup \
 \nexport VHLS=${VHLS_PATH} \
 \nsource ${VHLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
@@ -82,7 +124,12 @@ RUN printf "\
 \nautocmd BufWritePost *.py  silent! !python3 -m black <afile> \
 \nautocmd BufWritePost *.sv  silent! !verible-verilog-format --inplace <afile> \
 \nautocmd BufWritePost *.v  silent! !verible-verilog-format --inplace <afile> \
-\nautocmd BufWritePost * redraw! \
 \nau BufNewFile,BufRead Jenkinsfile setf groovy \
+\nautocmd BufWritePost * redraw! \
+\ncall plug#begin() \
+\nPlug 'mtikekar/vim-bsv' \
+\ncall plug#end() \
 \n" >> /home/dev-user/.vimrc
 
+# Update vimrc
+RUN vim +PlugInstall +qall 
