@@ -85,7 +85,8 @@ CMD ["bash"]
 RUN groupadd -o -g $GID dev-user
 RUN useradd -r -g $GID -u $UID -m -d /home/dev-user -s /sbin/nologin -c "User" dev-user
 RUN echo "dev-user     ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-USER dev-user
+# Comment it out because there is an error with home directory permission on bar
+# USER dev-user
 
 # Install Python packages 
 ENV PATH="${PATH}:/home/dev-user/.local/bin"
@@ -93,7 +94,7 @@ RUN pip3 install --user --upgrade pip \
     && pip3 install black colorlog toml tabulate
 
 # Install vim package manager
-RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+RUN curl -fLo /home/dev-user/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Add environment variables
@@ -130,6 +131,10 @@ RUN printf "\
 \nPlug 'mtikekar/vim-bsv' \
 \ncall plug#end() \
 \n" >> /home/dev-user/.vimrc
+
+USER dev-user
+
+CMD ["bash"]
 
 # Update vimrc
 RUN vim +PlugInstall +qall 
