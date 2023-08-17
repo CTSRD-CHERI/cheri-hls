@@ -6,14 +6,14 @@ First, make sure the repo is up to date:
 ```sh
 make sync
 ```
-Start with the docker container by running the following command under the repo:
-```sh
-make shell vhls=${YOUR_VITIS_DIR}
-```
-PS: To check your `${YOUR_VITIS_DIR}`, you should see the following when run:
+Check your Xilinx Vitis directory `${YOUR_VITIS_DIR}`, you should see the following when run:
 ```
 $ ls ${YOUR_VITIS_DIR}
 DocNav  Model_Composer  Vitis  Vitis_HLS  Vivado  xic
+```
+Start with the docker container by running the following command under the repo:
+```sh
+make shell vhls=${YOUR_VITIS_DIR}
 ```
 
 It may take long time to build the docker container for the first time. Once done, you should enter the docker container. To build the tool, run the following command:
@@ -21,5 +21,8 @@ It may take long time to build the docker container for the first time. Once don
 cd /workspace
 make build 
 ```
-This should also take long time to finish.
-
+This should also take long time to finish. To test:
+```sh
+cd /workspace
+make test 
+```
