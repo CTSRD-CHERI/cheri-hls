@@ -18,4 +18,4 @@ CHERI_HLS=${SCRIPT_DIR}/..
 # --------------------------------------------------------------------
 
 # Run a simple vector multiplication test case
-(cd ${CHERI_HLS}/examples/vect_mult; vitis_hls vhls.tcl; grep -rnw vitis_hls.log -e PASS)
+(cd ${CHERI_HLS}/examples/vect_mult; run-vitis-hls.sh vhls.tcl; grep -rnw vitis_hls.log -e PASS)

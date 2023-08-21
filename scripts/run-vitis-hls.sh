@@ -19,4 +19,4 @@ set -o nounset
 
 source ${VHLS}/Vitis_HLS/2023.1/settings64.sh 
 
-vitis_hls $1 $2 $3 $4
+vitis_hls $1
