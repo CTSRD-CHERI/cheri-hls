@@ -25,7 +25,7 @@ pipeline {
           filename 'Dockerfile' 
           dir 'Docker' 
           additionalBuildArgs '--no-cache --build-arg UID=$(id -u) --build-arg GID=$(id -g) --tag chls-u22'
-          args '--restart=always --shm-size 256m -v /local/scratch/jenkins/xilinx:/local/scratch/jenkins/xilinx:ro,z'
+          args '--restart=always --shm-size 256m -v /local/scratch/jenkins/xilinx:/local/scratch/jenkins/xilinx:ro,z --cap-add=NET_ADMIN --device /dev/net/tun:/dev/net/tun:ro,z'
         }
       }
       steps {

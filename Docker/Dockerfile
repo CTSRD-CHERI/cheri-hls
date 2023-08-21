@@ -28,7 +28,8 @@ RUN apt-get update -y \
                           samba flex texinfo time libglib2.0-dev \
                           libpixman-1-dev libarchive-dev libarchive-tools \
                           libbz2-dev libattr1-dev libcap-ng-dev \
-                          libexpat1-dev libgmp-dev
+                          libexpat1-dev libgmp-dev uml-utilities \
+                          net-tools
 
 # Install SystemVerilog formatter
 RUN mkdir -p /srcPkgs \
