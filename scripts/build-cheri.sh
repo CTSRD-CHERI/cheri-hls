@@ -90,7 +90,5 @@ cd $CHERI_HLS/cheri-tools/cheribuild && \
 --cheribsd/source-directory ../cheribsd \
 --gdb/source-directory ../gdb \
 --run/custom-qemu-path ../qemu \
---source-root $CHERI_OUTPUT &&\
-./cheribuild.py device-model \
 --source-root $CHERI_OUTPUT
 
