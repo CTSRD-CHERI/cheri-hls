@@ -137,6 +137,7 @@ USER dev-user
 CMD ["bash"]
 
 # Update vimrc
+RUN sudo chown -Rh dev-user:dev-user ~/.vim
 RUN vim +PlugInstall +qall 
 # Entrypoint set up
 WORKDIR workspace
