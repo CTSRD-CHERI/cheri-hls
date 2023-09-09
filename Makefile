@@ -14,6 +14,15 @@ build-docker:
 shell: build-docker
 	@docker run -it --shm-size 256m --hostname chls-ubuntu2204 -u $(user) -w /workspace -v $(vhls):$(vhls) -v $(shell pwd):/workspace chls-ubuntu2204:latest /bin/bash
 
+# This is a temporary solution because of an unexpected error on bar
+shell-bar: build-docker
+	@docker run -it --shm-size 256m --hostname chls-ubuntu2204 -u $(user) -w /workspace -v $(shell pwd):/workspace chls-ubuntu2204:latest /bin/bash
+
+# This is a temporary solution because of an unexpected error on bar
+bar: 
+	sudo chown -R dev-user:dev-user /home/dev-user
+	bash
+
 build:
 	@bash scripts/build-cheri.sh
 	@bash scripts/build-flute.sh
