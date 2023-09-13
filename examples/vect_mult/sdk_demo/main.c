@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 // Add header file for calling the HLS IP
 #include "xvect_mult.h"
 

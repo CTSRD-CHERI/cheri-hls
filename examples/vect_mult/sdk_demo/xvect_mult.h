@@ -13,37 +13,17 @@ extern "C" {
 #endif
 
 /***************************** Include Files *********************************/
-#ifndef __linux__
-#include "xil_assert.h"
-#include "xil_io.h"
-#include "xil_types.h"
-#include "xstatus.h"
-#else
-#include <assert.h>
-#include <dirent.h>
-#include <fcntl.h>
-#include <stddef.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/mman.h>
-#include <unistd.h>
-#endif
 #include "xvect_mult_hw.h"
 
 /**************************** Type Definitions ******************************/
-#ifdef __linux__
-typedef uint8_t u8;
-typedef uint16_t u16;
-typedef uint32_t u32;
-typedef uint64_t u64;
-#else
-typedef struct {
-  u16 DeviceId;
-  u64 Control_BaseAddress;
-} XVect_mult_Config;
-#endif
+typedef unsigned char uint8_t;
+typedef unsigned short uint16_t;
+typedef unsigned int uint32_t;
+typedef unsigned long uint64_t;
+typedef unsigned char u8;
+typedef unsigned short u16;
+typedef unsigned int u32;
+typedef unsigned long u64;
 
 typedef struct {
   u64 Control_BaseAddress;
@@ -53,12 +33,6 @@ typedef struct {
 typedef u32 word_type;
 
 /***************** Macros (Inline Functions) Definitions *********************/
-#ifndef __linux__
-#define XVect_mult_WriteReg(BaseAddress, RegOffset, Data)                      \
-  Xil_Out32((BaseAddress) + (RegOffset), (u32)(Data))
-#define XVect_mult_ReadReg(BaseAddress, RegOffset)                             \
-  Xil_In32((BaseAddress) + (RegOffset))
-#else
 #define XVect_mult_WriteReg(BaseAddress, RegOffset, Data)                      \
   *(volatile u32 *)((BaseAddress) + (RegOffset)) = (u32)(Data)
 #define XVect_mult_ReadReg(BaseAddress, RegOffset)                             \
@@ -71,18 +45,10 @@ typedef u32 word_type;
 #define XST_DEVICE_NOT_FOUND 2
 #define XST_OPEN_DEVICE_FAILED 3
 #define XIL_COMPONENT_IS_READY 1
-#endif
 
 /************************** Function Prototypes *****************************/
-#ifndef __linux__
-int XVect_mult_Initialize(XVect_mult *InstancePtr, u16 DeviceId);
-XVect_mult_Config *XVect_mult_LookupConfig(u16 DeviceId);
-int XVect_mult_CfgInitialize(XVect_mult *InstancePtr,
-                             XVect_mult_Config *ConfigPtr);
-#else
 int XVect_mult_Initialize(XVect_mult *InstancePtr, const char *InstanceName);
 int XVect_mult_Release(XVect_mult *InstancePtr);
-#endif
 
 void XVect_mult_Start(XVect_mult *InstancePtr);
 u32 XVect_mult_IsDone(XVect_mult *InstancePtr);
