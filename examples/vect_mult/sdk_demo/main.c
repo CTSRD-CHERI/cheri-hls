@@ -38,7 +38,7 @@ static int setup_interrupt() {
 static int hls_vect_mult_init(XVect_mult *vect_mult_ptr) {
   int status = XVect_mult_Initialize(vect_mult_ptr, "vect_mult");
   if (status != XST_SUCCESS) {
-    printf("ERROR: Could not initialize accelerator.\n");
+    // printf("ERROR: Could not initialize accelerator.\n");
     return XST_DEVICE_NOT_FOUND;
   }
   return status;
@@ -66,21 +66,22 @@ int main() {
   // Setup the matrix mult
   status = hls_vect_mult_init(&vect_mult);
   if (status != XST_SUCCESS) {
-    printf("HLS peripheral setup failed\n\r");
-    exit(-1);
+    // printf("HLS peripheral setup failed\n\r");
+    return -1;
   }
   // Setup the interrupt
   status = setup_interrupt();
   if (status != XST_SUCCESS) {
-    printf("Interrupt setup failed\n\r");
-    exit(-1);
+    // printf("Interrupt setup failed\n\r");
+    return -1;
   }
 
   if (XVect_mult_IsReady(&vect_mult))
-    printf("HLS peripheral is ready.  Starting... ");
+    // printf("HLS peripheral is ready.  Starting... ");
+    ;
   else {
-    printf("!!! HLS peripheral is not ready! Exiting...\n\r");
-    exit(-1);
+    // printf("!!! HLS peripheral is not ready! Exiting...\n\r");
+    return -1;
   }
 
   // Initialize data

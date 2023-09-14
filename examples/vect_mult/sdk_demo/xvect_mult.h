@@ -38,8 +38,10 @@ typedef u32 word_type;
 #define XVect_mult_ReadReg(BaseAddress, RegOffset)                             \
   *(volatile u32 *)((BaseAddress) + (RegOffset))
 
-#define Xil_AssertVoid(expr) assert(expr)
-#define Xil_AssertNonvoid(expr) assert(expr)
+#define Xil_AssertVoid(expr) (expr)
+#define Xil_AssertNonvoid(expr) (expr)
+// #define Xil_AssertVoid(expr) assert(expr)
+// #define Xil_AssertNonvoid(expr) assert(expr)
 
 #define XST_SUCCESS 0
 #define XST_DEVICE_NOT_FOUND 2
