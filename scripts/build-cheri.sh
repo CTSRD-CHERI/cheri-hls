@@ -86,6 +86,7 @@ cd ..
 # --------------------------------------------------------------------
 cd $CHERI_HLS/cheri-tools/cheribuild && \
 ./cheribuild.py sdk-riscv64-purecap \
+--skip-update \
 --llvm/source-directory ../llvm-project \
 --cheribsd/source-directory ../cheribsd \
 --gdb/source-directory ../gdb \

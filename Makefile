@@ -26,6 +26,8 @@ bar:
 build:
 	@bash scripts/build-cheri.sh
 	@bash scripts/build-flute.sh
+	@bash scripts/build-llvm.sh
+	@bash scripts/build-hls-extract.sh
 
 test:
 	@bash scripts/test-cheri-hls.sh
