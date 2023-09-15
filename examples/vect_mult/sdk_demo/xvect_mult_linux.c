@@ -46,6 +46,7 @@ static int uio_info_read_map_size(XVect_mult_uio_info *info, int n) {
 }
 
 int XVect_mult_Initialize(XVect_mult *InstancePtr, const char *InstanceName) {
+  InstancePtr->Control_BaseAddress = 0xC0002000;
 
   return XST_SUCCESS;
 }
