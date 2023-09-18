@@ -6,10 +6,10 @@ echo "Building Pedia using $th threads..."
 
 # The absolute path to the directory of this script.
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-PEDIA=${SCRIPT_DIR}/..
+CHERI_HLS=${SCRIPT_DIR}/..
 
-mkdir -p $PEDIA/hls_extract/build
-cd $PEDIA/hls_extract/build
+mkdir -p $CHERI_HLS/hls_extract/build
+cd $CHERI_HLS/hls_extract/build
 cmake .. \
  -DLLVM_ROOT=../../cheri/build/llvm-project-build \
  -DCMAKE_C_COMPILER=$(which gcc) \
