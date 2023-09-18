@@ -102,10 +102,10 @@ ENV vhls $VHLS_PATH
 RUN printf "\
 \nexport LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:\$LIBRARY_PATH \
 \n# Basic PATH setup \
-\nexport PATH=/srcPkgs/bsc/inst/bin:/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
+\nexport PATH=/workspace/cheri/output/sdk/bin:/srcPkgs/bsc/inst/bin:/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
 \n# Vitis HLS setup \
 \nexport VHLS=${VHLS_PATH} \
-\nsource ${VHLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
+\n# source ${VHLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
 \n# Thread setup \
 \nexport nproc=\$(grep -c ^processor /proc/cpuinfo) \
 \n# Terminal color... \

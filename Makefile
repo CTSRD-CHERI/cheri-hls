@@ -23,9 +23,15 @@ bar:
 	sudo chown -R dev-user:dev-user /home/dev-user
 	bash
 
-build:
+build: build-hls build-cheri 
+
+build-cheri:
 	@bash scripts/build-cheri.sh
 	@bash scripts/build-flute.sh
+
+build-hls:
+	@bash scripts/build-llvm.sh
+	@bash scripts/build-hls-extract.sh
 
 test:
 	@bash scripts/test-cheri-hls.sh
