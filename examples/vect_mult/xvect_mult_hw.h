@@ -3,7 +3,7 @@
 // Tool Version Limit: 2023.05
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
-// 
+//
 // ==============================================================
 // control
 // 0x00 : Control signals
@@ -43,18 +43,18 @@
 // 0x34 : Data signal of c
 //        bit 31~0 - c[63:32] (Read/Write)
 // 0x38 : reserved
-// (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
+// (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on
+// Handshake)
 
-#define XVECT_MULT_CONTROL_ADDR_AP_CTRL   0x00
-#define XVECT_MULT_CONTROL_ADDR_GIE       0x04
-#define XVECT_MULT_CONTROL_ADDR_IER       0x08
-#define XVECT_MULT_CONTROL_ADDR_ISR       0x0c
+#define XVECT_MULT_CONTROL_ADDR_AP_CTRL 0x00
+#define XVECT_MULT_CONTROL_ADDR_GIE 0x04
+#define XVECT_MULT_CONTROL_ADDR_IER 0x08
+#define XVECT_MULT_CONTROL_ADDR_ISR 0x0c
 #define XVECT_MULT_CONTROL_ADDR_SIZE_DATA 0x10
 #define XVECT_MULT_CONTROL_BITS_SIZE_DATA 32
-#define XVECT_MULT_CONTROL_ADDR_A_DATA    0x18
-#define XVECT_MULT_CONTROL_BITS_A_DATA    64
-#define XVECT_MULT_CONTROL_ADDR_B_DATA    0x24
-#define XVECT_MULT_CONTROL_BITS_B_DATA    64
-#define XVECT_MULT_CONTROL_ADDR_C_DATA    0x30
-#define XVECT_MULT_CONTROL_BITS_C_DATA    64
-
+#define XVECT_MULT_CONTROL_ADDR_A_DATA 0x18
+#define XVECT_MULT_CONTROL_BITS_A_DATA 64
+#define XVECT_MULT_CONTROL_ADDR_B_DATA 0x24
+#define XVECT_MULT_CONTROL_BITS_B_DATA 64
+#define XVECT_MULT_CONTROL_ADDR_C_DATA 0x30
+#define XVECT_MULT_CONTROL_BITS_C_DATA 64
