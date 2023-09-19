@@ -24,3 +24,8 @@ make compile
 cd ${FLUTE}/builds 
 make -f Resources/Build_all.mk ARCH=RV64ACIMUxCHERI SIM=verilator PROC=Flute build
 
+# --------------------------------------------------------------------
+# Build elf_to_hex in Flute 
+# --------------------------------------------------------------------
+cd ${FLUTE}/Tests/elf_to_hex
+gcc -g  -o elf_to_hex  elf_to_hex.c -lelf -mcmodel=medium
