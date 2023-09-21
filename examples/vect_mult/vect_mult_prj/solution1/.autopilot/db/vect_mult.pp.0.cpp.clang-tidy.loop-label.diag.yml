@@ -1,0 +1,31 @@
+---
+MainSourceFile:  /workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp
+Diagnostics:     
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_10_1:  '
+    FileOffset:      10
+    FilePath:        vect_mult.cpp
+    Replacements:    
+      - FilePath:        /workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp
+        Offset:          10093
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_10_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_18_1:  '
+    FileOffset:      18
+    FilePath:        vect_mult.cpp
+    Replacements:    
+      - FilePath:        /workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp
+        Offset:          10228
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_18_1: '
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_28_2:  '
+    FileOffset:      28
+    FilePath:        vect_mult.cpp
+    Replacements:    
+      - FilePath:        /workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp
+        Offset:          10381
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_28_2: '
+...

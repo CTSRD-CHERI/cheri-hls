@@ -1,0 +1,24 @@
+<xilinx:hls_fe_msgs>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="/workspace/examples/vect_mult/vhls.tcl:11:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaContext="directive" ARG_PragmaFunction="vect_mult" ARG_PragmaIsValid="1" ARG_PragmaOptions="name=vect_mult" ARG_PragmaType="top" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="vect_mult.cpp:4:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="vect_mult" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi port = a" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="vect_mult.cpp:5:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="vect_mult" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi port = b" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="vect_mult.cpp:6:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="vect_mult" ARG_PragmaIsValid="1" ARG_PragmaOptions="m_axi port = c" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="vect_mult.cpp:7:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="vect_mult" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port = size" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="vect_mult.cpp:8:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="vect_mult" ARG_PragmaIsValid="1" ARG_PragmaOptions="s_axilite port = return" ARG_PragmaType="interface" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+    <msg msg_groups="PRAGMA_VERBOSE_DUMP" msg_id="207-5471" msg_severity="WARNING" msg_loc="vect_mult.cpp:11:9" msg_body="HLS pragma dump">
+        <args ARG_PragmaFunction="vect_mult" ARG_PragmaIsValid="1" ARG_PragmaType="pipeline" ClangWarningOption="dump-hls-pragmas"/>
+    </msg>
+</xilinx:hls_fe_msgs>
+
