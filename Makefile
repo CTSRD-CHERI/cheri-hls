@@ -30,7 +30,6 @@ build-cheri:
 	@bash scripts/build-flute.sh
 
 build-hls:
-	@bash scripts/build-llvm.sh
 	@bash scripts/build-hls-extract.sh
 
 test:
