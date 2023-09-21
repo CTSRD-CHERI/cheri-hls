@@ -45,7 +45,7 @@ u32 XVect_mult_IsIdle(XVect_mult *InstancePtr) {
 }
 
 u32 XVect_mult_IsReady(XVect_mult *InstancePtr) {
-  u32 Data;
+  u64 Data;
 
   Xil_AssertNonvoid(InstancePtr != 0);
   Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);

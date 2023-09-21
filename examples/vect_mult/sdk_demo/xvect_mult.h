@@ -34,9 +34,9 @@ typedef u32 word_type;
 
 /***************** Macros (Inline Functions) Definitions *********************/
 #define XVect_mult_WriteReg(BaseAddress, RegOffset, Data)                      \
-  *(volatile u32 *)((BaseAddress) + (RegOffset)) = (u32)(Data)
+  *(volatile u64 *)((BaseAddress) + (RegOffset)) = (u64)(Data)
 #define XVect_mult_ReadReg(BaseAddress, RegOffset)                             \
-  *(volatile u32 *)((BaseAddress) + (RegOffset))
+  *(volatile u64 *)((BaseAddress) + (RegOffset))
 
 #define Xil_AssertVoid(expr) (expr)
 #define Xil_AssertNonvoid(expr) (expr)

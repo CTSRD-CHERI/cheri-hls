@@ -4,41 +4,11 @@
 // HLS IP instance
 #define XVECT_MULT_0_DEVICE_ID 0
 XVect_mult vect_mult;
-int vect_mult_done = 0;
-
-static int setup_interrupt() {
-  // JC: Need to replace this with RSIC V
-  // int result;
-  // XScuGic_Config *pCfg = XScuGic_LookupConfig(XPAR_SCUGIC_SINGLE_DEVICE_ID);
-  // if (pCfg == NULL) {
-  //   print("Interrupt Configuration Lookup Failed\n\r");
-  //   return XST_FAILURE;
-  // }
-  // result = XScuGic_CfgInitialize(&ScuGic, pCfg, pCfg->CpuBaseAddress);
-  // if (result != XST_SUCCESS) {
-  //   return result;
-  // }
-  // // self test
-  // result = XScuGic_SelfTest(&ScuGic);
-  // if (result != XST_SUCCESS) {
-  //   return result;
-  // }
-
-  // auto result =
-  //     XScuGic_Connect(&ScuGic, XPAR_FABRIC_SVM_CLASSIFIER_0_INTERRUPT_INTR,
-  //                     (Xil_InterruptHandler)hls_classifier_isr, &classifier);
-  // if (result != XST_SUCCESS) {
-  //   return result;
-  // }
-  // XScuGic_Enable(&ScuGic, XPAR_FABRIC_SVM_CLASSIFIER_0_INTERRUPT_INTR);
-
-  return XST_SUCCESS;
-}
+volatile int vect_mult_done = 0;
 
 static int hls_vect_mult_init(XVect_mult *vect_mult_ptr) {
   int status = XVect_mult_Initialize(vect_mult_ptr, "vect_mult");
   if (status != XST_SUCCESS) {
-    // printf("ERROR: Could not initialize accelerator.\n");
     return XST_DEVICE_NOT_FOUND;
   }
   return status;
@@ -70,11 +40,6 @@ int main() {
     return -1;
   }
   // Setup the interrupt
-  status = setup_interrupt();
-  if (status != XST_SUCCESS) {
-    // printf("Interrupt setup failed\n\r");
-    return -1;
-  }
 
   if (XVect_mult_IsReady(&vect_mult))
     // printf("HLS peripheral is ready.  Starting... ");
@@ -96,7 +61,7 @@ int main() {
 
   hls_vect_mult_start(&vect_mult);
 
-  while (!vect_mult_done)
-    ;
-  return 0;
+  // while (!vect_mult_done)
+  //   ;
+  return 8;
 }
