@@ -23,7 +23,7 @@ bar:
 	sudo chown -R dev-user:dev-user /home/dev-user
 	bash
 
-build: build-hls build-cheri 
+build: build-cheri build-hls 
 
 build-cheri:
 	@bash scripts/build-cheri.sh
