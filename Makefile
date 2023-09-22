@@ -38,3 +38,4 @@ test:
 clean:
 	@rm -rf cheri-tools
 	@rm -rf cheri
+	@rm -rf hls_extract/build
