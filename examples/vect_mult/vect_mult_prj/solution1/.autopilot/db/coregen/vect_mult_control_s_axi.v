@@ -32,7 +32,7 @@ module vect_mult_control_s_axi
     output wire                          RVALID,
     input  wire                          RREADY,
     output wire                          interrupt,
-    output wire [63:0]                   size,
+    output wire [31:0]                   size,
     output wire [63:0]                   a,
     output wire [63:0]                   b,
     output wire [63:0]                   c,
@@ -63,24 +63,22 @@ module vect_mult_control_s_axi
 //        others - reserved
 // 0x10 : Data signal of size
 //        bit 31~0 - size[31:0] (Read/Write)
-// 0x14 : Data signal of size
-//        bit 31~0 - size[63:32] (Read/Write)
-// 0x18 : reserved
-// 0x1c : Data signal of a
+// 0x14 : reserved
+// 0x18 : Data signal of a
 //        bit 31~0 - a[31:0] (Read/Write)
-// 0x20 : Data signal of a
+// 0x1c : Data signal of a
 //        bit 31~0 - a[63:32] (Read/Write)
-// 0x24 : reserved
-// 0x28 : Data signal of b
+// 0x20 : reserved
+// 0x24 : Data signal of b
 //        bit 31~0 - b[31:0] (Read/Write)
-// 0x2c : Data signal of b
+// 0x28 : Data signal of b
 //        bit 31~0 - b[63:32] (Read/Write)
-// 0x30 : reserved
-// 0x34 : Data signal of c
+// 0x2c : reserved
+// 0x30 : Data signal of c
 //        bit 31~0 - c[31:0] (Read/Write)
-// 0x38 : Data signal of c
+// 0x34 : Data signal of c
 //        bit 31~0 - c[63:32] (Read/Write)
-// 0x3c : reserved
+// 0x38 : reserved
 // (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
 //------------------------Parameter----------------------
@@ -90,17 +88,16 @@ localparam
     ADDR_IER         = 6'h08,
     ADDR_ISR         = 6'h0c,
     ADDR_SIZE_DATA_0 = 6'h10,
-    ADDR_SIZE_DATA_1 = 6'h14,
-    ADDR_SIZE_CTRL   = 6'h18,
-    ADDR_A_DATA_0    = 6'h1c,
-    ADDR_A_DATA_1    = 6'h20,
-    ADDR_A_CTRL      = 6'h24,
-    ADDR_B_DATA_0    = 6'h28,
-    ADDR_B_DATA_1    = 6'h2c,
-    ADDR_B_CTRL      = 6'h30,
-    ADDR_C_DATA_0    = 6'h34,
-    ADDR_C_DATA_1    = 6'h38,
-    ADDR_C_CTRL      = 6'h3c,
+    ADDR_SIZE_CTRL   = 6'h14,
+    ADDR_A_DATA_0    = 6'h18,
+    ADDR_A_DATA_1    = 6'h1c,
+    ADDR_A_CTRL      = 6'h20,
+    ADDR_B_DATA_0    = 6'h24,
+    ADDR_B_DATA_1    = 6'h28,
+    ADDR_B_CTRL      = 6'h2c,
+    ADDR_C_DATA_0    = 6'h30,
+    ADDR_C_DATA_1    = 6'h34,
+    ADDR_C_CTRL      = 6'h38,
     WRIDLE           = 2'd0,
     WRDATA           = 2'd1,
     WRRESP           = 2'd2,
@@ -137,7 +134,7 @@ localparam
     reg                           int_gie = 1'b0;
     reg  [1:0]                    int_ier = 2'b0;
     reg  [1:0]                    int_isr = 2'b0;
-    reg  [63:0]                   int_size = 'b0;
+    reg  [31:0]                   int_size = 'b0;
     reg  [63:0]                   int_a = 'b0;
     reg  [63:0]                   int_b = 'b0;
     reg  [63:0]                   int_c = 'b0;
@@ -252,9 +249,6 @@ always @(posedge ACLK) begin
                 end
                 ADDR_SIZE_DATA_0: begin
                     rdata <= int_size[31:0];
-                end
-                ADDR_SIZE_DATA_1: begin
-                    rdata <= int_size[63:32];
                 end
                 ADDR_A_DATA_0: begin
                     rdata <= int_a[31:0];
@@ -429,16 +423,6 @@ always @(posedge ACLK) begin
     else if (ACLK_EN) begin
         if (w_hs && waddr == ADDR_SIZE_DATA_0)
             int_size[31:0] <= (WDATA[31:0] & wmask) | (int_size[31:0] & ~wmask);
-    end
-end
-
-// int_size[63:32]
-always @(posedge ACLK) begin
-    if (ARESET)
-        int_size[63:32] <= 0;
-    else if (ACLK_EN) begin
-        if (w_hs && waddr == ADDR_SIZE_DATA_1)
-            int_size[63:32] <= (WDATA[31:0] & wmask) | (int_size[63:32] & ~wmask);
     end
 end
 

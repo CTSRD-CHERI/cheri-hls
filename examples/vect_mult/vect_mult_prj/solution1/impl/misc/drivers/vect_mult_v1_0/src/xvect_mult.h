@@ -90,8 +90,8 @@ u32 XVect_mult_IsReady(XVect_mult *InstancePtr);
 void XVect_mult_EnableAutoRestart(XVect_mult *InstancePtr);
 void XVect_mult_DisableAutoRestart(XVect_mult *InstancePtr);
 
-void XVect_mult_Set_size(XVect_mult *InstancePtr, u64 Data);
-u64 XVect_mult_Get_size(XVect_mult *InstancePtr);
+void XVect_mult_Set_size(XVect_mult *InstancePtr, u32 Data);
+u32 XVect_mult_Get_size(XVect_mult *InstancePtr);
 void XVect_mult_Set_a(XVect_mult *InstancePtr, u64 Data);
 u64 XVect_mult_Get_a(XVect_mult *InstancePtr);
 void XVect_mult_Set_b(XVect_mult *InstancePtr, u64 Data);

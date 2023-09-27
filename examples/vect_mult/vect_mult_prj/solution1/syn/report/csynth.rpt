@@ -4,7 +4,7 @@
 == Synthesis Summary Report of 'vect_mult'
 ================================================================
 + General Information: 
-    * Date:           Thu Sep 21 16:35:50 2023
+    * Date:           Tue Sep 26 08:38:18 2023
     * Version:        2023.1 (Build 3854077 on May  4 2023)
     * Project:        vect_mult_prj
     * Solution:       solution1 (Vivado IP Flow Target)
@@ -19,7 +19,7 @@
     |       Modules      | Issue|      | Latency | Latency| Iteration|         | Trip |          |         |         |            |            |     |
     |       & Loops      | Type | Slack| (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined|  BRAM   |   DSP   |     FF     |     LUT    | URAM|
     +--------------------+------+------+---------+--------+----------+---------+------+----------+---------+---------+------------+------------+-----+
-    |+ vect_mult         |     -|  0.00|        -|       -|         -|        -|     -|        no|  2 (~0%)|  3 (~0%)|  1833 (~0%)|  1927 (~0%)|    -|
+    |+ vect_mult         |     -|  0.00|        -|       -|         -|        -|     -|        no|  2 (~0%)|  3 (~0%)|  1734 (~0%)|  1732 (~0%)|    -|
     | o VITIS_LOOP_10_1  |    II|  2.92|        -|       -|        19|        2|     -|       yes|        -|        -|           -|           -|    -|
     +--------------------+------+------+---------+--------+----------+---------+------+----------+---------+---------+------------+------------+-----+
 
@@ -50,14 +50,13 @@
 | s_axi_control | GIER     | 0x04   | 32    | RW     | Global Interrupt Enable Register | 0=Enable                                                             |
 | s_axi_control | IP_IER   | 0x08   | 32    | RW     | IP Interrupt Enable Register     | 0=CHAN0_INT_EN 1=CHAN1_INT_EN                                        |
 | s_axi_control | IP_ISR   | 0x0c   | 32    | RW     | IP Interrupt Status Register     | 0=CHAN0_INT_ST 1=CHAN1_INT_ST                                        |
-| s_axi_control | size_1   | 0x10   | 32    | W      | Data signal of size              |                                                                      |
-| s_axi_control | size_2   | 0x14   | 32    | W      | Data signal of size              |                                                                      |
-| s_axi_control | a_1      | 0x1c   | 32    | W      | Data signal of a                 |                                                                      |
-| s_axi_control | a_2      | 0x20   | 32    | W      | Data signal of a                 |                                                                      |
-| s_axi_control | b_1      | 0x28   | 32    | W      | Data signal of b                 |                                                                      |
-| s_axi_control | b_2      | 0x2c   | 32    | W      | Data signal of b                 |                                                                      |
-| s_axi_control | c_1      | 0x34   | 32    | W      | Data signal of c                 |                                                                      |
-| s_axi_control | c_2      | 0x38   | 32    | W      | Data signal of c                 |                                                                      |
+| s_axi_control | size     | 0x10   | 32    | W      | Data signal of size              |                                                                      |
+| s_axi_control | a_1      | 0x18   | 32    | W      | Data signal of a                 |                                                                      |
+| s_axi_control | a_2      | 0x1c   | 32    | W      | Data signal of a                 |                                                                      |
+| s_axi_control | b_1      | 0x24   | 32    | W      | Data signal of b                 |                                                                      |
+| s_axi_control | b_2      | 0x28   | 32    | W      | Data signal of b                 |                                                                      |
+| s_axi_control | c_1      | 0x30   | 32    | W      | Data signal of c                 |                                                                      |
+| s_axi_control | c_2      | 0x34   | 32    | W      | Data signal of c                 |                                                                      |
 +---------------+----------+--------+-------+--------+----------------------------------+----------------------------------------------------------------------+
 
 * TOP LEVEL CONTROL
@@ -78,28 +77,27 @@
 +----------+-----------+----------+
 | Argument | Direction | Datatype |
 +----------+-----------+----------+
-| size     | in        | long int |
+| size     | in        | int      |
 | a        | inout     | int*     |
 | b        | inout     | int*     |
 | c        | inout     | int*     |
 +----------+-----------+----------+
 
 * SW-to-HW Mapping
-+----------+---------------+-----------+----------+----------------------------------+
-| Argument | HW Interface  | HW Type   | HW Usage | HW Info                          |
-+----------+---------------+-----------+----------+----------------------------------+
-| size     | s_axi_control | register  |          | name=size_1 offset=0x10 range=32 |
-| size     | s_axi_control | register  |          | name=size_2 offset=0x14 range=32 |
-| a        | m_axi_gmem    | interface |          |                                  |
-| a        | s_axi_control | register  | offset   | name=a_1 offset=0x1c range=32    |
-| a        | s_axi_control | register  | offset   | name=a_2 offset=0x20 range=32    |
-| b        | m_axi_gmem    | interface |          |                                  |
-| b        | s_axi_control | register  | offset   | name=b_1 offset=0x28 range=32    |
-| b        | s_axi_control | register  | offset   | name=b_2 offset=0x2c range=32    |
-| c        | m_axi_gmem    | interface |          |                                  |
-| c        | s_axi_control | register  | offset   | name=c_1 offset=0x34 range=32    |
-| c        | s_axi_control | register  | offset   | name=c_2 offset=0x38 range=32    |
-+----------+---------------+-----------+----------+----------------------------------+
++----------+---------------+-----------+----------+--------------------------------+
+| Argument | HW Interface  | HW Type   | HW Usage | HW Info                        |
++----------+---------------+-----------+----------+--------------------------------+
+| size     | s_axi_control | register  |          | name=size offset=0x10 range=32 |
+| a        | m_axi_gmem    | interface |          |                                |
+| a        | s_axi_control | register  | offset   | name=a_1 offset=0x18 range=32  |
+| a        | s_axi_control | register  | offset   | name=a_2 offset=0x1c range=32  |
+| b        | m_axi_gmem    | interface |          |                                |
+| b        | s_axi_control | register  | offset   | name=b_1 offset=0x24 range=32  |
+| b        | s_axi_control | register  | offset   | name=b_2 offset=0x28 range=32  |
+| c        | m_axi_gmem    | interface |          |                                |
+| c        | s_axi_control | register  | offset   | name=c_1 offset=0x30 range=32  |
+| c        | s_axi_control | register  | offset   | name=c_2 offset=0x34 range=32  |
++----------+---------------+-----------+----------+--------------------------------+
 
 
 ================================================================
@@ -136,9 +134,9 @@
 | Name                    | DSP | Pragma | Variable   | Op  | Impl   | Latency |
 +-------------------------+-----+--------+------------+-----+--------+---------+
 | + vect_mult             | 3   |        |            |     |        |         |
-|   add_ln10_fu_259_p2    | -   |        | add_ln10   | add | fabric | 0       |
-|   add_ln12_fu_253_p2    | -   |        | add_ln12   | add | fabric | 0       |
-|   add_ln12_1_fu_270_p2  | -   |        | add_ln12_1 | add | fabric | 0       |
+|   add_ln10_fu_267_p2    | -   |        | add_ln10   | add | fabric | 0       |
+|   add_ln12_fu_257_p2    | -   |        | add_ln12   | add | fabric | 0       |
+|   add_ln12_1_fu_282_p2  | -   |        | add_ln12_1 | add | fabric | 0       |
 |   mul_32s_32s_32_2_1_U1 | 3   |        | mul_ln12   | mul | auto   | 1       |
 +-------------------------+-----+--------+------------+-----+--------+---------+
 

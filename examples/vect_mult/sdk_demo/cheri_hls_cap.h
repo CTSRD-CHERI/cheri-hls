@@ -6,14 +6,13 @@ struct ctrl_reg {
   int size;
   // Buffer size
   int buffer_size;
-
-  // Init
-  ctrl_reg(int o, int s, int b) {
-    offset = o;
-    size = s;
-    buffer_size = b;
-  }
 };
+
+static ctrl_reg_init(ctrl_reg *x, int o, int s, int b) {
+  x->offset = o;
+  x->size = s;
+  x->buffer_size = b;
+}
 
 // HLS Kernel Information
 struct hls_kernel {

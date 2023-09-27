@@ -2,7 +2,7 @@
 Pass:            reflow-burst-inference
 Name:            BurstInferred
 DebugLoc:        { File: vect_mult.cpp, Line: 10, Column: 19 }
-Function:        _Z9vect_multlPiS_S_
+Function:        _Z9vect_multiPiS_S_
 Args:            
   - String:          'Sequential '
   - Direction:       read
@@ -20,7 +20,7 @@ Args:
   - String:          ' '
   - LoopLoc:         'vect_mult.cpp:10:19'
   - String:          ' '
-  - Function:        'vect_mult(long, int*, int*, int*)'
+  - Function:        'vect_mult(int, int*, int*, int*)'
     DebugLoc:        { File: vect_mult.cpp, Line: 3, Column: 0 }
   - String:          ' '
   - String:          ' _XLX_SEP_ '
@@ -33,7 +33,7 @@ Args:
 Pass:            reflow-burst-inference
 Name:            BurstInferred
 DebugLoc:        { File: vect_mult.cpp, Line: 10, Column: 19 }
-Function:        _Z9vect_multlPiS_S_
+Function:        _Z9vect_multiPiS_S_
 Args:            
   - String:          'Sequential '
   - Direction:       read
@@ -51,7 +51,7 @@ Args:
   - String:          ' '
   - LoopLoc:         'vect_mult.cpp:10:19'
   - String:          ' '
-  - Function:        'vect_mult(long, int*, int*, int*)'
+  - Function:        'vect_mult(int, int*, int*, int*)'
     DebugLoc:        { File: vect_mult.cpp, Line: 3, Column: 0 }
   - String:          ' '
   - String:          ' _XLX_SEP_ '
@@ -64,7 +64,7 @@ Args:
 Pass:            reflow-burst-inference
 Name:            BurstInferred
 DebugLoc:        { File: vect_mult.cpp, Line: 10, Column: 19 }
-Function:        _Z9vect_multlPiS_S_
+Function:        _Z9vect_multiPiS_S_
 Args:            
   - String:          'Sequential '
   - Direction:       write
@@ -82,7 +82,7 @@ Args:
   - String:          ' '
   - LoopLoc:         'vect_mult.cpp:10:19'
   - String:          ' '
-  - Function:        'vect_mult(long, int*, int*, int*)'
+  - Function:        'vect_mult(int, int*, int*, int*)'
     DebugLoc:        { File: vect_mult.cpp, Line: 3, Column: 0 }
   - String:          ' '
   - String:          ' _XLX_SEP_ '
@@ -95,7 +95,7 @@ Args:
 Pass:            reflow-burst-widen
 Name:            GreaterOrEqualThreshold
 DebugLoc:        { File: vect_mult.cpp, Line: 10, Column: 19 }
-Function:        _Z9vect_multlPiS_S_
+Function:        _Z9vect_multiPiS_S_
 Args:            
   - String:          'Could not widen since type '
   - Type:            i32
@@ -114,7 +114,7 @@ Args:
   - String:          ' '
   - LoopLoc:         'vect_mult.cpp:10:19'
   - String:          ' '
-  - Function:        'vect_mult(long, int*, int*, int*)'
+  - Function:        'vect_mult(int, int*, int*, int*)'
     DebugLoc:        { File: vect_mult.cpp, Line: 3, Column: 0 }
   - String:          ' '
 ...
@@ -122,7 +122,7 @@ Args:
 Pass:            reflow-burst-widen
 Name:            GreaterOrEqualThreshold
 DebugLoc:        { File: vect_mult.cpp, Line: 10, Column: 19 }
-Function:        _Z9vect_multlPiS_S_
+Function:        _Z9vect_multiPiS_S_
 Args:            
   - String:          'Could not widen since type '
   - Type:            i32
@@ -141,7 +141,7 @@ Args:
   - String:          ' '
   - LoopLoc:         'vect_mult.cpp:10:19'
   - String:          ' '
-  - Function:        'vect_mult(long, int*, int*, int*)'
+  - Function:        'vect_mult(int, int*, int*, int*)'
     DebugLoc:        { File: vect_mult.cpp, Line: 3, Column: 0 }
   - String:          ' '
 ...
@@ -149,7 +149,7 @@ Args:
 Pass:            reflow-burst-widen
 Name:            GreaterOrEqualThreshold
 DebugLoc:        { File: vect_mult.cpp, Line: 10, Column: 19 }
-Function:        _Z9vect_multlPiS_S_
+Function:        _Z9vect_multiPiS_S_
 Args:            
   - String:          'Could not widen since type '
   - Type:            i32
@@ -168,7 +168,7 @@ Args:
   - String:          ' '
   - LoopLoc:         'vect_mult.cpp:10:19'
   - String:          ' '
-  - Function:        'vect_mult(long, int*, int*, int*)'
+  - Function:        'vect_mult(int, int*, int*, int*)'
     DebugLoc:        { File: vect_mult.cpp, Line: 3, Column: 0 }
   - String:          ' '
 ...
@@ -176,7 +176,7 @@ Args:
 Pass:            reflow-burst-inference
 Name:            BurstConflict
 DebugLoc:        { File: vect_mult.cpp, Line: 10, Column: 19 }
-Function:        _Z9vect_multlPiS_S_
+Function:        _Z9vect_multiPiS_S_
 Args:            
   - String:          'Could not burst due to multiple potential '
   - Direction:       reads
@@ -190,7 +190,7 @@ Args:
   - String:          ' '
   - BundleName:      gmem
   - String:          ' '
-  - Function:        'vect_mult(long, int*, int*, int*)'
+  - Function:        'vect_mult(int, int*, int*, int*)'
     DebugLoc:        { File: vect_mult.cpp, Line: 3, Column: 0 }
   - String:          ' '
 ...
@@ -198,7 +198,7 @@ Args:
 Pass:            reflow-burst-summary
 Name:            BurstInferredVerboseSummary
 DebugLoc:        { File: vect_mult.cpp, Line: 10, Column: 19 }
-Function:        _Z9vect_multlPiS_S_
+Function:        _Z9vect_multiPiS_S_
 Args:            
   - String:          'Multiple burst '
   - Direction:       writes
@@ -218,7 +218,7 @@ Args:
   - String:          ' '
   - LoopLoc:         'vect_mult.cpp:10:19'
   - String:          ' '
-  - Function:        'vect_mult(long, int*, int*, int*)'
+  - Function:        'vect_mult(int, int*, int*, int*)'
     DebugLoc:        { File: vect_mult.cpp, Line: 3, Column: 0 }
   - String:          ' '
 ...
@@ -226,7 +226,7 @@ Args:
 Pass:            reflow-burst-summary
 Name:            BurstInferredSummary
 DebugLoc:        { File: vect_mult.cpp, Line: 10, Column: 19 }
-Function:        _Z9vect_multlPiS_S_
+Function:        _Z9vect_multiPiS_S_
 Args:            
   - String:          'Multiple burst '
   - Direction:       writes

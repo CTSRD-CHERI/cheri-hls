@@ -350,29 +350,29 @@ class AESL_RUNTIME_BC {
     string mName;
 };
 using hls::sim::Byte;
-extern "C" void vect_mult(Byte<4>*, long long, int, int, int);
-extern "C" void apatb_vect_mult_hw(long long __xlx_apatb_param_size, volatile void * __xlx_apatb_param_a, volatile void * __xlx_apatb_param_b, volatile void * __xlx_apatb_param_c) {
+extern "C" void vect_mult(Byte<4>*, int, int, int, int);
+extern "C" void apatb_vect_mult_hw(int __xlx_apatb_param_size, volatile void * __xlx_apatb_param_a, volatile void * __xlx_apatb_param_b, volatile void * __xlx_apatb_param_c) {
 using hls::sim::createStream;
   // Collect __xlx_a_b_c__tmp_vec
 std::vector<Byte<4>> __xlx_a_b_c__tmp_vec;
-for (size_t i = 0; i < 100; ++i){
+for (size_t i = 0; i < 10; ++i){
 __xlx_a_b_c__tmp_vec.push_back(((Byte<4>*)__xlx_apatb_param_a)[i]);
 }
-  int __xlx_size_param_a = 100;
+  int __xlx_size_param_a = 10;
   int __xlx_offset_param_a = 0;
   int __xlx_offset_byte_param_a = 0*4;
-for (size_t i = 0; i < 100; ++i){
+for (size_t i = 0; i < 10; ++i){
 __xlx_a_b_c__tmp_vec.push_back(((Byte<4>*)__xlx_apatb_param_b)[i]);
 }
-  int __xlx_size_param_b = 100;
-  int __xlx_offset_param_b = 100;
-  int __xlx_offset_byte_param_b = 100*4;
-for (size_t i = 0; i < 100; ++i){
+  int __xlx_size_param_b = 10;
+  int __xlx_offset_param_b = 10;
+  int __xlx_offset_byte_param_b = 10*4;
+for (size_t i = 0; i < 10; ++i){
 __xlx_a_b_c__tmp_vec.push_back(((Byte<4>*)__xlx_apatb_param_c)[i]);
 }
-  int __xlx_size_param_c = 100;
-  int __xlx_offset_param_c = 200;
-  int __xlx_offset_byte_param_c = 200*4;
+  int __xlx_size_param_c = 10;
+  int __xlx_offset_param_c = 20;
+  int __xlx_offset_byte_param_c = 20*4;
   // DUT call
   vect_mult(__xlx_a_b_c__tmp_vec.data(), __xlx_apatb_param_size, __xlx_offset_byte_param_a, __xlx_offset_byte_param_b, __xlx_offset_byte_param_c);
 // print __xlx_apatb_param_a

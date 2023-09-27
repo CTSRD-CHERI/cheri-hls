@@ -1140,14 +1140,14 @@ namespace hls::sim
 
 
 extern "C"
-void vect_mult_hw_stub_wrapper(hls::sim::Byte<8>, void*, void*, void*);
+void vect_mult_hw_stub_wrapper(hls::sim::Byte<4>, void*, void*, void*);
 
 extern "C"
-void apatb_vect_mult_hw(hls::sim::Byte<8> __xlx_apatb_param_size, void* __xlx_apatb_param_a, void* __xlx_apatb_param_b, void* __xlx_apatb_param_c)
+void apatb_vect_mult_hw(hls::sim::Byte<4> __xlx_apatb_param_size, void* __xlx_apatb_param_a, void* __xlx_apatb_param_b, void* __xlx_apatb_param_c)
 {
   static hls::sim::Register port0 {
     .name = "size",
-    .width = 64,
+    .width = 32,
 #ifdef POST_CHECK
 #else
     .owriter = nullptr,
@@ -1221,11 +1221,11 @@ void apatb_vect_mult_hw(hls::sim::Byte<8> __xlx_apatb_param_size, void* __xlx_ap
 #endif
   };
   __xlx_offset_byte_param_a = 0*4;
-  __xlx_offset_byte_param_b = 100*4;
-  __xlx_offset_byte_param_c = 200*4;
+  __xlx_offset_byte_param_b = 10*4;
+  __xlx_offset_byte_param_c = 20*4;
   port4.param = { __xlx_apatb_param_a, __xlx_apatb_param_b, __xlx_apatb_param_c };
-  port4.nbytes = { 400, 400, 400 };
-  port4.offset = { 0, 100, 200 };
+  port4.nbytes = { 40, 40, 40 };
+  port4.offset = { 0, 10, 20 };
   port4.hasWrite = { true, true, true };
 
   try {

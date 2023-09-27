@@ -7,7 +7,7 @@ Diagnostics:
     FilePath:        vect_mult.cpp
     Replacements:    
       - FilePath:        /workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp
-        Offset:          10093
+        Offset:          10089
         Length:          0
         ReplacementText: 'VITIS_LOOP_10_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -16,7 +16,7 @@ Diagnostics:
     FilePath:        vect_mult.cpp
     Replacements:    
       - FilePath:        /workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp
-        Offset:          10228
+        Offset:          10220
         Length:          0
         ReplacementText: 'VITIS_LOOP_18_1: '
   - DiagnosticName:  xilinx-label-all-loops
@@ -25,7 +25,7 @@ Diagnostics:
     FilePath:        vect_mult.cpp
     Replacements:    
       - FilePath:        /workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp
-        Offset:          10381
+        Offset:          10371
         Length:          0
         ReplacementText: 'VITIS_LOOP_28_2: '
 ...

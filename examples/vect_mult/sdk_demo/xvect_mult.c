@@ -73,9 +73,6 @@ void XVect_mult_DisableAutoRestart(XVect_mult *InstancePtr) {
 }
 
 void XVect_mult_Set_size(XVect_mult *InstancePtr, u32 Data) {
-  Xil_AssertVoid(InstancePtr != 0);
-  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
   XVect_mult_WriteReg(InstancePtr->Control_BaseAddress,
                       XVECT_MULT_CONTROL_ADDR_SIZE_DATA, Data);
 }
@@ -83,18 +80,12 @@ void XVect_mult_Set_size(XVect_mult *InstancePtr, u32 Data) {
 u32 XVect_mult_Get_size(XVect_mult *InstancePtr) {
   u32 Data;
 
-  Xil_AssertNonvoid(InstancePtr != 0);
-  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
   Data = XVect_mult_ReadReg(InstancePtr->Control_BaseAddress,
                             XVECT_MULT_CONTROL_ADDR_SIZE_DATA);
   return Data;
 }
 
 void XVect_mult_Set_a(XVect_mult *InstancePtr, u64 Data) {
-  Xil_AssertVoid(InstancePtr != 0);
-  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
   XVect_mult_WriteReg(InstancePtr->Control_BaseAddress,
                       XVECT_MULT_CONTROL_ADDR_A_DATA, (u32)(Data));
   XVect_mult_WriteReg(InstancePtr->Control_BaseAddress,
@@ -103,9 +94,6 @@ void XVect_mult_Set_a(XVect_mult *InstancePtr, u64 Data) {
 
 u64 XVect_mult_Get_a(XVect_mult *InstancePtr) {
   u64 Data;
-
-  Xil_AssertNonvoid(InstancePtr != 0);
-  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
   Data = XVect_mult_ReadReg(InstancePtr->Control_BaseAddress,
                             XVECT_MULT_CONTROL_ADDR_A_DATA);
@@ -116,9 +104,6 @@ u64 XVect_mult_Get_a(XVect_mult *InstancePtr) {
 }
 
 void XVect_mult_Set_b(XVect_mult *InstancePtr, u64 Data) {
-  Xil_AssertVoid(InstancePtr != 0);
-  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
   XVect_mult_WriteReg(InstancePtr->Control_BaseAddress,
                       XVECT_MULT_CONTROL_ADDR_B_DATA, (u32)(Data));
   XVect_mult_WriteReg(InstancePtr->Control_BaseAddress,
@@ -127,10 +112,6 @@ void XVect_mult_Set_b(XVect_mult *InstancePtr, u64 Data) {
 
 u64 XVect_mult_Get_b(XVect_mult *InstancePtr) {
   u64 Data;
-
-  Xil_AssertNonvoid(InstancePtr != 0);
-  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
   Data = XVect_mult_ReadReg(InstancePtr->Control_BaseAddress,
                             XVECT_MULT_CONTROL_ADDR_B_DATA);
   Data += (u64)XVect_mult_ReadReg(InstancePtr->Control_BaseAddress,
@@ -140,9 +121,6 @@ u64 XVect_mult_Get_b(XVect_mult *InstancePtr) {
 }
 
 void XVect_mult_Set_c(XVect_mult *InstancePtr, u64 Data) {
-  Xil_AssertVoid(InstancePtr != 0);
-  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
   XVect_mult_WriteReg(InstancePtr->Control_BaseAddress,
                       XVECT_MULT_CONTROL_ADDR_C_DATA, (u32)(Data));
   XVect_mult_WriteReg(InstancePtr->Control_BaseAddress,
@@ -151,9 +129,6 @@ void XVect_mult_Set_c(XVect_mult *InstancePtr, u64 Data) {
 
 u64 XVect_mult_Get_c(XVect_mult *InstancePtr) {
   u64 Data;
-
-  Xil_AssertNonvoid(InstancePtr != 0);
-  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
   Data = XVect_mult_ReadReg(InstancePtr->Control_BaseAddress,
                             XVECT_MULT_CONTROL_ADDR_C_DATA);

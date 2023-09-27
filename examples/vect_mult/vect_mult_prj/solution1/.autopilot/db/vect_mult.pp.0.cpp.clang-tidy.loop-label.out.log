@@ -4,12 +4,12 @@
  VITIS_LOOP_10_1: 
 /workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp:172:2: note: FIX-IT applied suggested code changes
 /workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp:180:3: warning: Added loop label VITIS_LOOP_18_1:   [xilinx-label-all-loops]
-  for (int i = 0; i < 100; i++) {
+  for (int i = 0; i < 10; i++) {
   ^~~
   VITIS_LOOP_18_1: 
 /workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp:180:3: note: FIX-IT applied suggested code changes
 /workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp:190:3: warning: Added loop label VITIS_LOOP_28_2:   [xilinx-label-all-loops]
-  for (int i = 0; i < 100; i++) {
+  for (int i = 0; i < 10; i++) {
   ^~~
   VITIS_LOOP_28_2: 
 /workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp:190:3: note: FIX-IT applied suggested code changes

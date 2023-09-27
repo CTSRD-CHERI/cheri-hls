@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vitis HLS Report for 'vect_mult'" level="0">
-<item name = "Date">Thu Sep 21 16:35:49 2023
+<item name = "Date">Tue Sep 26 08:38:17 2023
 </item>
 <item name = "Version">2023.1 (Build 3854077 on May  4 2023)</item>
 <item name = "Project">vect_mult_prj</item>

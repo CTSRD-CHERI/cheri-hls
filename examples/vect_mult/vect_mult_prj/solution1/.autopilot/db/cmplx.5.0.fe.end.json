@@ -3,8 +3,8 @@
         "name": "vect_mult",
         "file": "vect_mult.cpp",
         "fileloc": "3",
-        "instructions": "59",
-        "total_instructions": "59",
+        "instructions": "63",
+        "total_instructions": "63",
         "calls": "",
         "basicblocks": "8",
         "loads": {

@@ -22,35 +22,35 @@ set axilite_register_dict [dict create]
 set port_control {
 size { 
 	dir I
-	width 64
+	width 32
 	depth 1
 	mode ap_none
 	offset 16
-	offset_end 27
+	offset_end 23
 }
 a { 
 	dir I
 	width 64
 	depth 1
 	mode ap_none
-	offset 28
-	offset_end 39
+	offset 24
+	offset_end 35
 }
 b { 
 	dir I
 	width 64
 	depth 1
 	mode ap_none
-	offset 40
-	offset_end 51
+	offset 36
+	offset_end 47
 }
 c { 
 	dir I
 	width 64
 	depth 1
 	mode ap_none
-	offset 52
-	offset_end 63
+	offset 48
+	offset_end 59
 }
 ap_start { }
 ap_done { }

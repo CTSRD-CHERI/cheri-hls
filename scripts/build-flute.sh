@@ -17,12 +17,13 @@ FLUTE=${CHERI_HLS}/Flute
 # --------------------------------------------------------------------
 # Build Flute 
 # --------------------------------------------------------------------
-cd ${FLUTE}/src_SSITH_P2
-make compile
+cd ${FLUTE}/builds
+Resources/mkBuild_Dir.py .. RV64ACIMUxCHERI verilator
 
-
-cd ${FLUTE}/builds 
-make -f Resources/Build_all.mk ARCH=RV64ACIMUxCHERI SIM=verilator PROC=Flute build
+cd ${FLUTE}/builds/RV64ACIMUxCHERI_Flute_verilator
+# Temporarily to copy hls kernels
+cp -r ${CHERI_HLS}/examples/vect_mult/vect_mult_prj/solution1/syn/verilog vect_mult
+make compile simulator SIM=verilator
 
 # --------------------------------------------------------------------
 # Build elf_to_hex in Flute 

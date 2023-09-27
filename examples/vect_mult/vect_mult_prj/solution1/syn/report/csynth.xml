@@ -44,8 +44,8 @@
         <Resources>
             <BRAM_18K>2</BRAM_18K>
             <DSP>3</DSP>
-            <FF>1833</FF>
-            <LUT>1927</LUT>
+            <FF>1734</FF>
+            <LUT>1732</LUT>
             <URAM>0</URAM>
         </Resources>
         <AvailableResources>
@@ -821,7 +821,7 @@
     <RTLDesignHierarchy>
         <TopModule MAX_DEPTH="2">
             <ModuleName>vect_mult</ModuleName>
-            <BindInstances>add_ln10_fu_259_p2 add_ln12_fu_253_p2 add_ln12_1_fu_270_p2 mul_32s_32s_32_2_1_U1</BindInstances>
+            <BindInstances>add_ln10_fu_267_p2 add_ln12_fu_257_p2 add_ln12_1_fu_282_p2 mul_32s_32s_32_2_1_U1</BindInstances>
         </TopModule>
     </RTLDesignHierarchy>
     <ModuleInformation>
@@ -868,10 +868,10 @@
                     <DSP>3</DSP>
                     <AVAIL_DSP>12288</AVAIL_DSP>
                     <UTIL_DSP>~0</UTIL_DSP>
-                    <FF>1833</FF>
+                    <FF>1734</FF>
                     <AVAIL_FF>3456000</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>1927</LUT>
+                    <LUT>1732</LUT>
                     <AVAIL_LUT>1728000</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <URAM>0</URAM>
@@ -880,9 +880,9 @@
                 </Resources>
             </AreaEstimates>
             <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_10_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln10_fu_259_p2" SOURCE="vect_mult.cpp:10" URAM="0" VARIABLE="add_ln10"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_10_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln12_fu_253_p2" SOURCE="vect_mult.cpp:12" URAM="0" VARIABLE="add_ln12"/>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_10_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln12_1_fu_270_p2" SOURCE="vect_mult.cpp:12" URAM="0" VARIABLE="add_ln12_1"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_10_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln10_fu_267_p2" SOURCE="vect_mult.cpp:10" URAM="0" VARIABLE="add_ln10"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_10_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln12_fu_257_p2" SOURCE="vect_mult.cpp:12" URAM="0" VARIABLE="add_ln12"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_10_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln12_1_fu_282_p2" SOURCE="vect_mult.cpp:12" URAM="0" VARIABLE="add_ln12_1"/>
                 <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="3" ID="" IMPL="auto" LATENCY="1" LOOP="VITIS_LOOP_10_1" OPTYPE="mul" PRAGMA="" RTLNAME="mul_32s_32s_32_2_1_U1" SOURCE="vect_mult.cpp:12" URAM="0" VARIABLE="mul_ln12"/>
             </BindNodes>
         </Module>
@@ -892,10 +892,9 @@
         <config_compile pipeline_loops="1"/>
     </UserConfigCommands>
     <Args>
-        <Arg ArgName="size" index="0" direction="in" srcType="long int" srcSize="64">
+        <Arg ArgName="size" index="0" direction="in" srcType="int" srcSize="32">
             <hwRefs>
-                <hwRef type="register" interface="s_axi_control" name="size_1" usage="data" direction="in"/>
-                <hwRef type="register" interface="s_axi_control" name="size_2" usage="data" direction="in"/>
+                <hwRef type="register" interface="s_axi_control" name="size" usage="data" direction="in"/>
             </hwRefs>
         </Arg>
         <Arg ArgName="a" index="1" direction="inout" srcType="int*" srcSize="32">
@@ -975,42 +974,37 @@
                         <field offset="2" width="30" name="RESERVED_0" access="R" description="Reserved.  0s on read."/>
                     </fields>
                 </register>
-                <register offset="0x10" name="size_1" access="W" description="Data signal of size" range="32">
+                <register offset="0x10" name="size" access="W" description="Data signal of size" range="32">
                     <fields>
                         <field offset="0" width="32" name="size" access="W" description="Bit 31 to 0 of size"/>
                     </fields>
                 </register>
-                <register offset="0x14" name="size_2" access="W" description="Data signal of size" range="32">
-                    <fields>
-                        <field offset="0" width="32" name="size" access="W" description="Bit 63 to 32 of size"/>
-                    </fields>
-                </register>
-                <register offset="0x1c" name="a_1" access="W" description="Data signal of a" range="32">
+                <register offset="0x18" name="a_1" access="W" description="Data signal of a" range="32">
                     <fields>
                         <field offset="0" width="32" name="a" access="W" description="Bit 31 to 0 of a"/>
                     </fields>
                 </register>
-                <register offset="0x20" name="a_2" access="W" description="Data signal of a" range="32">
+                <register offset="0x1c" name="a_2" access="W" description="Data signal of a" range="32">
                     <fields>
                         <field offset="0" width="32" name="a" access="W" description="Bit 63 to 32 of a"/>
                     </fields>
                 </register>
-                <register offset="0x28" name="b_1" access="W" description="Data signal of b" range="32">
+                <register offset="0x24" name="b_1" access="W" description="Data signal of b" range="32">
                     <fields>
                         <field offset="0" width="32" name="b" access="W" description="Bit 31 to 0 of b"/>
                     </fields>
                 </register>
-                <register offset="0x2c" name="b_2" access="W" description="Data signal of b" range="32">
+                <register offset="0x28" name="b_2" access="W" description="Data signal of b" range="32">
                     <fields>
                         <field offset="0" width="32" name="b" access="W" description="Bit 63 to 32 of b"/>
                     </fields>
                 </register>
-                <register offset="0x34" name="c_1" access="W" description="Data signal of c" range="32">
+                <register offset="0x30" name="c_1" access="W" description="Data signal of c" range="32">
                     <fields>
                         <field offset="0" width="32" name="c" access="W" description="Bit 31 to 0 of c"/>
                     </fields>
                 </register>
-                <register offset="0x38" name="c_2" access="W" description="Data signal of c" range="32">
+                <register offset="0x34" name="c_2" access="W" description="Data signal of c" range="32">
                     <fields>
                         <field offset="0" width="32" name="c" access="W" description="Bit 63 to 32 of c"/>
                     </fields>
@@ -1018,9 +1012,9 @@
             </registers>
             <constraints>
                 <constraint constraint_type="pragma interface" mode="s_axilite" register_option="0" offset="16" argName="size"/>
-                <constraint constraint_type="pragma interface" mode="s_axilite" register_option="0" offset="28" argName="a"/>
-                <constraint constraint_type="pragma interface" mode="s_axilite" register_option="0" offset="40" argName="b"/>
-                <constraint constraint_type="pragma interface" mode="s_axilite" register_option="0" offset="52" argName="c"/>
+                <constraint constraint_type="pragma interface" mode="s_axilite" register_option="0" offset="24" argName="a"/>
+                <constraint constraint_type="pragma interface" mode="s_axilite" register_option="0" offset="36" argName="b"/>
+                <constraint constraint_type="pragma interface" mode="s_axilite" register_option="0" offset="48" argName="c"/>
             </constraints>
         </Interface>
         <Interface InterfaceName="ap_clk" type="clock" busTypeName="clock" mode="slave">
@@ -1147,14 +1141,13 @@
                     <column name="s_axi_control">GIER, 0x04, 32, RW, Global Interrupt Enable Register, 0=Enable</column>
                     <column name="s_axi_control">IP_IER, 0x08, 32, RW, IP Interrupt Enable Register, 0=CHAN0_INT_EN 1=CHAN1_INT_EN</column>
                     <column name="s_axi_control">IP_ISR, 0x0c, 32, RW, IP Interrupt Status Register, 0=CHAN0_INT_ST 1=CHAN1_INT_ST</column>
-                    <column name="s_axi_control">size_1, 0x10, 32, W, Data signal of size, </column>
-                    <column name="s_axi_control">size_2, 0x14, 32, W, Data signal of size, </column>
-                    <column name="s_axi_control">a_1, 0x1c, 32, W, Data signal of a, </column>
-                    <column name="s_axi_control">a_2, 0x20, 32, W, Data signal of a, </column>
-                    <column name="s_axi_control">b_1, 0x28, 32, W, Data signal of b, </column>
-                    <column name="s_axi_control">b_2, 0x2c, 32, W, Data signal of b, </column>
-                    <column name="s_axi_control">c_1, 0x34, 32, W, Data signal of c, </column>
-                    <column name="s_axi_control">c_2, 0x38, 32, W, Data signal of c, </column>
+                    <column name="s_axi_control">size, 0x10, 32, W, Data signal of size, </column>
+                    <column name="s_axi_control">a_1, 0x18, 32, W, Data signal of a, </column>
+                    <column name="s_axi_control">a_2, 0x1c, 32, W, Data signal of a, </column>
+                    <column name="s_axi_control">b_1, 0x24, 32, W, Data signal of b, </column>
+                    <column name="s_axi_control">b_2, 0x28, 32, W, Data signal of b, </column>
+                    <column name="s_axi_control">c_1, 0x30, 32, W, Data signal of c, </column>
+                    <column name="s_axi_control">c_2, 0x34, 32, W, Data signal of c, </column>
                 </table>
             </item>
             <item name="TOP LEVEL CONTROL">
@@ -1173,7 +1166,7 @@
             <item name="Top Function Arguments">
                 <table>
                     <keys size="3">Argument, Direction, Datatype</keys>
-                    <column name="size">in, long int</column>
+                    <column name="size">in, int</column>
                     <column name="a">inout, int*</column>
                     <column name="b">inout, int*</column>
                     <column name="c">inout, int*</column>
@@ -1182,17 +1175,16 @@
             <item name="SW-to-HW Mapping">
                 <table>
                     <keys size="5">Argument, HW Interface, HW Type, HW Usage, HW Info</keys>
-                    <column name="size">s_axi_control, register, , name=size_1 offset=0x10 range=32</column>
-                    <column name="size">s_axi_control, register, , name=size_2 offset=0x14 range=32</column>
+                    <column name="size">s_axi_control, register, , name=size offset=0x10 range=32</column>
                     <column name="a">m_axi_gmem, interface, , </column>
-                    <column name="a">s_axi_control, register, offset, name=a_1 offset=0x1c range=32</column>
-                    <column name="a">s_axi_control, register, offset, name=a_2 offset=0x20 range=32</column>
+                    <column name="a">s_axi_control, register, offset, name=a_1 offset=0x18 range=32</column>
+                    <column name="a">s_axi_control, register, offset, name=a_2 offset=0x1c range=32</column>
                     <column name="b">m_axi_gmem, interface, , </column>
-                    <column name="b">s_axi_control, register, offset, name=b_1 offset=0x28 range=32</column>
-                    <column name="b">s_axi_control, register, offset, name=b_2 offset=0x2c range=32</column>
+                    <column name="b">s_axi_control, register, offset, name=b_1 offset=0x24 range=32</column>
+                    <column name="b">s_axi_control, register, offset, name=b_2 offset=0x28 range=32</column>
                     <column name="c">m_axi_gmem, interface, , </column>
-                    <column name="c">s_axi_control, register, offset, name=c_1 offset=0x34 range=32</column>
-                    <column name="c">s_axi_control, register, offset, name=c_2 offset=0x38 range=32</column>
+                    <column name="c">s_axi_control, register, offset, name=c_1 offset=0x30 range=32</column>
+                    <column name="c">s_axi_control, register, offset, name=c_2 offset=0x34 range=32</column>
                 </table>
             </item>
         </section>

@@ -35,7 +35,7 @@ port (
     RVALID                :out  STD_LOGIC;
     RREADY                :in   STD_LOGIC;
     interrupt             :out  STD_LOGIC;
-    size                  :out  STD_LOGIC_VECTOR(63 downto 0);
+    size                  :out  STD_LOGIC_VECTOR(31 downto 0);
     a                     :out  STD_LOGIC_VECTOR(63 downto 0);
     b                     :out  STD_LOGIC_VECTOR(63 downto 0);
     c                     :out  STD_LOGIC_VECTOR(63 downto 0);
@@ -68,24 +68,22 @@ end entity vect_mult_control_s_axi;
 --        others - reserved
 -- 0x10 : Data signal of size
 --        bit 31~0 - size[31:0] (Read/Write)
--- 0x14 : Data signal of size
---        bit 31~0 - size[63:32] (Read/Write)
--- 0x18 : reserved
--- 0x1c : Data signal of a
+-- 0x14 : reserved
+-- 0x18 : Data signal of a
 --        bit 31~0 - a[31:0] (Read/Write)
--- 0x20 : Data signal of a
+-- 0x1c : Data signal of a
 --        bit 31~0 - a[63:32] (Read/Write)
--- 0x24 : reserved
--- 0x28 : Data signal of b
+-- 0x20 : reserved
+-- 0x24 : Data signal of b
 --        bit 31~0 - b[31:0] (Read/Write)
--- 0x2c : Data signal of b
+-- 0x28 : Data signal of b
 --        bit 31~0 - b[63:32] (Read/Write)
--- 0x30 : reserved
--- 0x34 : Data signal of c
+-- 0x2c : reserved
+-- 0x30 : Data signal of c
 --        bit 31~0 - c[31:0] (Read/Write)
--- 0x38 : Data signal of c
+-- 0x34 : Data signal of c
 --        bit 31~0 - c[63:32] (Read/Write)
--- 0x3c : reserved
+-- 0x38 : reserved
 -- (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
 architecture behave of vect_mult_control_s_axi is
@@ -98,17 +96,16 @@ architecture behave of vect_mult_control_s_axi is
     constant ADDR_IER         : INTEGER := 16#08#;
     constant ADDR_ISR         : INTEGER := 16#0c#;
     constant ADDR_SIZE_DATA_0 : INTEGER := 16#10#;
-    constant ADDR_SIZE_DATA_1 : INTEGER := 16#14#;
-    constant ADDR_SIZE_CTRL   : INTEGER := 16#18#;
-    constant ADDR_A_DATA_0    : INTEGER := 16#1c#;
-    constant ADDR_A_DATA_1    : INTEGER := 16#20#;
-    constant ADDR_A_CTRL      : INTEGER := 16#24#;
-    constant ADDR_B_DATA_0    : INTEGER := 16#28#;
-    constant ADDR_B_DATA_1    : INTEGER := 16#2c#;
-    constant ADDR_B_CTRL      : INTEGER := 16#30#;
-    constant ADDR_C_DATA_0    : INTEGER := 16#34#;
-    constant ADDR_C_DATA_1    : INTEGER := 16#38#;
-    constant ADDR_C_CTRL      : INTEGER := 16#3c#;
+    constant ADDR_SIZE_CTRL   : INTEGER := 16#14#;
+    constant ADDR_A_DATA_0    : INTEGER := 16#18#;
+    constant ADDR_A_DATA_1    : INTEGER := 16#1c#;
+    constant ADDR_A_CTRL      : INTEGER := 16#20#;
+    constant ADDR_B_DATA_0    : INTEGER := 16#24#;
+    constant ADDR_B_DATA_1    : INTEGER := 16#28#;
+    constant ADDR_B_CTRL      : INTEGER := 16#2c#;
+    constant ADDR_C_DATA_0    : INTEGER := 16#30#;
+    constant ADDR_C_DATA_1    : INTEGER := 16#34#;
+    constant ADDR_C_CTRL      : INTEGER := 16#38#;
     constant ADDR_BITS         : INTEGER := 6;
 
     signal waddr               : UNSIGNED(ADDR_BITS-1 downto 0);
@@ -137,7 +134,7 @@ architecture behave of vect_mult_control_s_axi is
     signal int_gie             : STD_LOGIC := '0';
     signal int_ier             : UNSIGNED(1 downto 0) := (others => '0');
     signal int_isr             : UNSIGNED(1 downto 0) := (others => '0');
-    signal int_size            : UNSIGNED(63 downto 0) := (others => '0');
+    signal int_size            : UNSIGNED(31 downto 0) := (others => '0');
     signal int_a               : UNSIGNED(63 downto 0) := (others => '0');
     signal int_b               : UNSIGNED(63 downto 0) := (others => '0');
     signal int_c               : UNSIGNED(63 downto 0) := (others => '0');
@@ -271,8 +268,6 @@ begin
                         rdata_data(1 downto 0) <= int_isr;
                     when ADDR_SIZE_DATA_0 =>
                         rdata_data <= RESIZE(int_size(31 downto 0), 32);
-                    when ADDR_SIZE_DATA_1 =>
-                        rdata_data <= RESIZE(int_size(63 downto 32), 32);
                     when ADDR_A_DATA_0 =>
                         rdata_data <= RESIZE(int_a(31 downto 0), 32);
                     when ADDR_A_DATA_1 =>
@@ -480,17 +475,6 @@ begin
             if (ACLK_EN = '1') then
                 if (w_hs = '1' and waddr = ADDR_SIZE_DATA_0) then
                     int_size(31 downto 0) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_size(31 downto 0));
-                end if;
-            end if;
-        end if;
-    end process;
-
-    process (ACLK)
-    begin
-        if (ACLK'event and ACLK = '1') then
-            if (ACLK_EN = '1') then
-                if (w_hs = '1' and waddr = ADDR_SIZE_DATA_1) then
-                    int_size(63 downto 32) <= (UNSIGNED(WDATA(31 downto 0)) and wmask(31 downto 0)) or ((not wmask(31 downto 0)) and int_size(63 downto 32));
                 end if;
             end if;
         end if;

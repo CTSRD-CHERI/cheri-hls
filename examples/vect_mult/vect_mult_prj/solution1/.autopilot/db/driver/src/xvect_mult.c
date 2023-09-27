@@ -76,22 +76,20 @@ void XVect_mult_DisableAutoRestart(XVect_mult *InstancePtr) {
     XVect_mult_WriteReg(InstancePtr->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_AP_CTRL, 0);
 }
 
-void XVect_mult_Set_size(XVect_mult *InstancePtr, u64 Data) {
+void XVect_mult_Set_size(XVect_mult *InstancePtr, u32 Data) {
     Xil_AssertVoid(InstancePtr != NULL);
     Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
-    XVect_mult_WriteReg(InstancePtr->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_SIZE_DATA, (u32)(Data));
-    XVect_mult_WriteReg(InstancePtr->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_SIZE_DATA + 4, (u32)(Data >> 32));
+    XVect_mult_WriteReg(InstancePtr->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_SIZE_DATA, Data);
 }
 
-u64 XVect_mult_Get_size(XVect_mult *InstancePtr) {
-    u64 Data;
+u32 XVect_mult_Get_size(XVect_mult *InstancePtr) {
+    u32 Data;
 
     Xil_AssertNonvoid(InstancePtr != NULL);
     Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
     Data = XVect_mult_ReadReg(InstancePtr->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_SIZE_DATA);
-    Data += (u64)XVect_mult_ReadReg(InstancePtr->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_SIZE_DATA + 4) << 32;
     return Data;
 }
 

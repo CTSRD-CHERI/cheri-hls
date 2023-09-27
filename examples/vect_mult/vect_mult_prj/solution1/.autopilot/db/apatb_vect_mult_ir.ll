@@ -4,39 +4,39 @@ target datalayout = "e-m:e-i64:64-i128:128-i256:256-i512:512-i1024:1024-i2048:20
 target triple = "fpga64-xilinx-none"
 
 ; Function Attrs: inaccessiblemem_or_argmemonly noinline
-define void @apatb_vect_mult_ir(i64 %size, i32* noalias nocapture nonnull readonly "fpga.decayed.dim.hint"="100" "maxi" %a, i32* noalias nocapture nonnull readonly "fpga.decayed.dim.hint"="100" "maxi" %b, i32* noalias nocapture nonnull "fpga.decayed.dim.hint"="100" "maxi" %c) local_unnamed_addr #0 {
+define void @apatb_vect_mult_ir(i32 %size, i32* noalias nocapture nonnull readonly "fpga.decayed.dim.hint"="10" "maxi" %a, i32* noalias nocapture nonnull readonly "fpga.decayed.dim.hint"="10" "maxi" %b, i32* noalias nocapture nonnull "fpga.decayed.dim.hint"="10" "maxi" %c) local_unnamed_addr #0 {
 entry:
-  %a_copy = alloca [100 x i32], align 512
-  %b_copy = alloca [100 x i32], align 512
-  %c_copy = alloca [100 x i32], align 512
-  %0 = bitcast i32* %a to [100 x i32]*
-  %1 = bitcast i32* %b to [100 x i32]*
-  %2 = bitcast i32* %c to [100 x i32]*
-  call fastcc void @copy_in([100 x i32]* nonnull %0, [100 x i32]* nonnull align 512 %a_copy, [100 x i32]* nonnull %1, [100 x i32]* nonnull align 512 %b_copy, [100 x i32]* nonnull %2, [100 x i32]* nonnull align 512 %c_copy)
-  call void @apatb_vect_mult_hw(i64 %size, [100 x i32]* %a_copy, [100 x i32]* %b_copy, [100 x i32]* %c_copy)
-  call void @copy_back([100 x i32]* %0, [100 x i32]* %a_copy, [100 x i32]* %1, [100 x i32]* %b_copy, [100 x i32]* %2, [100 x i32]* %c_copy)
+  %a_copy = alloca [10 x i32], align 512
+  %b_copy = alloca [10 x i32], align 512
+  %c_copy = alloca [10 x i32], align 512
+  %0 = bitcast i32* %a to [10 x i32]*
+  %1 = bitcast i32* %b to [10 x i32]*
+  %2 = bitcast i32* %c to [10 x i32]*
+  call fastcc void @copy_in([10 x i32]* nonnull %0, [10 x i32]* nonnull align 512 %a_copy, [10 x i32]* nonnull %1, [10 x i32]* nonnull align 512 %b_copy, [10 x i32]* nonnull %2, [10 x i32]* nonnull align 512 %c_copy)
+  call void @apatb_vect_mult_hw(i32 %size, [10 x i32]* %a_copy, [10 x i32]* %b_copy, [10 x i32]* %c_copy)
+  call void @copy_back([10 x i32]* %0, [10 x i32]* %a_copy, [10 x i32]* %1, [10 x i32]* %b_copy, [10 x i32]* %2, [10 x i32]* %c_copy)
   ret void
 }
 
 ; Function Attrs: argmemonly noinline norecurse
-define internal fastcc void @copy_in([100 x i32]* noalias readonly, [100 x i32]* noalias align 512, [100 x i32]* noalias readonly, [100 x i32]* noalias align 512, [100 x i32]* noalias readonly, [100 x i32]* noalias align 512) unnamed_addr #1 {
+define internal fastcc void @copy_in([10 x i32]* noalias readonly, [10 x i32]* noalias align 512, [10 x i32]* noalias readonly, [10 x i32]* noalias align 512, [10 x i32]* noalias readonly, [10 x i32]* noalias align 512) unnamed_addr #1 {
 entry:
-  call fastcc void @onebyonecpy_hls.p0a100i32([100 x i32]* align 512 %1, [100 x i32]* %0)
-  call fastcc void @onebyonecpy_hls.p0a100i32([100 x i32]* align 512 %3, [100 x i32]* %2)
-  call fastcc void @onebyonecpy_hls.p0a100i32([100 x i32]* align 512 %5, [100 x i32]* %4)
+  call fastcc void @onebyonecpy_hls.p0a10i32([10 x i32]* align 512 %1, [10 x i32]* %0)
+  call fastcc void @onebyonecpy_hls.p0a10i32([10 x i32]* align 512 %3, [10 x i32]* %2)
+  call fastcc void @onebyonecpy_hls.p0a10i32([10 x i32]* align 512 %5, [10 x i32]* %4)
   ret void
 }
 
 ; Function Attrs: argmemonly noinline norecurse
-define internal fastcc void @onebyonecpy_hls.p0a100i32([100 x i32]* noalias align 512 %dst, [100 x i32]* noalias readonly %src) unnamed_addr #2 {
+define internal fastcc void @onebyonecpy_hls.p0a10i32([10 x i32]* noalias align 512 %dst, [10 x i32]* noalias readonly %src) unnamed_addr #2 {
 entry:
-  %0 = icmp eq [100 x i32]* %dst, null
-  %1 = icmp eq [100 x i32]* %src, null
+  %0 = icmp eq [10 x i32]* %dst, null
+  %1 = icmp eq [10 x i32]* %src, null
   %2 = or i1 %0, %1
   br i1 %2, label %ret, label %copy
 
 copy:                                             ; preds = %entry
-  call void @arraycpy_hls.p0a100i32([100 x i32]* nonnull %dst, [100 x i32]* nonnull %src, i64 100)
+  call void @arraycpy_hls.p0a10i32([10 x i32]* nonnull %dst, [10 x i32]* nonnull %src, i64 10)
   br label %ret
 
 ret:                                              ; preds = %copy, %entry
@@ -44,10 +44,10 @@ ret:                                              ; preds = %copy, %entry
 }
 
 ; Function Attrs: argmemonly noinline norecurse
-define void @arraycpy_hls.p0a100i32([100 x i32]* %dst, [100 x i32]* readonly %src, i64 %num) local_unnamed_addr #3 {
+define void @arraycpy_hls.p0a10i32([10 x i32]* %dst, [10 x i32]* readonly %src, i64 %num) local_unnamed_addr #3 {
 entry:
-  %0 = icmp eq [100 x i32]* %src, null
-  %1 = icmp eq [100 x i32]* %dst, null
+  %0 = icmp eq [10 x i32]* %src, null
+  %1 = icmp eq [10 x i32]* %dst, null
   %2 = or i1 %1, %0
   br i1 %2, label %ret, label %copy
 
@@ -60,8 +60,8 @@ for.loop.lr.ph:                                   ; preds = %copy
 
 for.loop:                                         ; preds = %for.loop, %for.loop.lr.ph
   %for.loop.idx2 = phi i64 [ 0, %for.loop.lr.ph ], [ %for.loop.idx.next, %for.loop ]
-  %dst.addr = getelementptr [100 x i32], [100 x i32]* %dst, i64 0, i64 %for.loop.idx2
-  %src.addr = getelementptr [100 x i32], [100 x i32]* %src, i64 0, i64 %for.loop.idx2
+  %dst.addr = getelementptr [10 x i32], [10 x i32]* %dst, i64 0, i64 %for.loop.idx2
+  %src.addr = getelementptr [10 x i32], [10 x i32]* %src, i64 0, i64 %for.loop.idx2
   %3 = load i32, i32* %src.addr, align 4
   store i32 %3, i32* %dst.addr, align 4
   %for.loop.idx.next = add nuw nsw i64 %for.loop.idx2, 1
@@ -76,35 +76,35 @@ ret:                                              ; preds = %copy.split, %entry
 }
 
 ; Function Attrs: argmemonly noinline norecurse
-define internal fastcc void @copy_out([100 x i32]* noalias, [100 x i32]* noalias readonly align 512, [100 x i32]* noalias, [100 x i32]* noalias readonly align 512, [100 x i32]* noalias, [100 x i32]* noalias readonly align 512) unnamed_addr #4 {
+define internal fastcc void @copy_out([10 x i32]* noalias, [10 x i32]* noalias readonly align 512, [10 x i32]* noalias, [10 x i32]* noalias readonly align 512, [10 x i32]* noalias, [10 x i32]* noalias readonly align 512) unnamed_addr #4 {
 entry:
-  call fastcc void @onebyonecpy_hls.p0a100i32([100 x i32]* %0, [100 x i32]* align 512 %1)
-  call fastcc void @onebyonecpy_hls.p0a100i32([100 x i32]* %2, [100 x i32]* align 512 %3)
-  call fastcc void @onebyonecpy_hls.p0a100i32([100 x i32]* %4, [100 x i32]* align 512 %5)
+  call fastcc void @onebyonecpy_hls.p0a10i32([10 x i32]* %0, [10 x i32]* align 512 %1)
+  call fastcc void @onebyonecpy_hls.p0a10i32([10 x i32]* %2, [10 x i32]* align 512 %3)
+  call fastcc void @onebyonecpy_hls.p0a10i32([10 x i32]* %4, [10 x i32]* align 512 %5)
   ret void
 }
 
-declare void @apatb_vect_mult_hw(i64, [100 x i32]*, [100 x i32]*, [100 x i32]*)
+declare void @apatb_vect_mult_hw(i32, [10 x i32]*, [10 x i32]*, [10 x i32]*)
 
 ; Function Attrs: argmemonly noinline norecurse
-define internal fastcc void @copy_back([100 x i32]* noalias, [100 x i32]* noalias readonly align 512, [100 x i32]* noalias, [100 x i32]* noalias readonly align 512, [100 x i32]* noalias, [100 x i32]* noalias readonly align 512) unnamed_addr #4 {
+define internal fastcc void @copy_back([10 x i32]* noalias, [10 x i32]* noalias readonly align 512, [10 x i32]* noalias, [10 x i32]* noalias readonly align 512, [10 x i32]* noalias, [10 x i32]* noalias readonly align 512) unnamed_addr #4 {
 entry:
-  call fastcc void @onebyonecpy_hls.p0a100i32([100 x i32]* %4, [100 x i32]* align 512 %5)
+  call fastcc void @onebyonecpy_hls.p0a10i32([10 x i32]* %4, [10 x i32]* align 512 %5)
   ret void
 }
 
-define void @vect_mult_hw_stub_wrapper(i64, [100 x i32]*, [100 x i32]*, [100 x i32]*) #5 {
+define void @vect_mult_hw_stub_wrapper(i32, [10 x i32]*, [10 x i32]*, [10 x i32]*) #5 {
 entry:
-  call void @copy_out([100 x i32]* null, [100 x i32]* %1, [100 x i32]* null, [100 x i32]* %2, [100 x i32]* null, [100 x i32]* %3)
-  %4 = bitcast [100 x i32]* %1 to i32*
-  %5 = bitcast [100 x i32]* %2 to i32*
-  %6 = bitcast [100 x i32]* %3 to i32*
-  call void @vect_mult_hw_stub(i64 %0, i32* %4, i32* %5, i32* %6)
-  call void @copy_in([100 x i32]* null, [100 x i32]* %1, [100 x i32]* null, [100 x i32]* %2, [100 x i32]* null, [100 x i32]* %3)
+  call void @copy_out([10 x i32]* null, [10 x i32]* %1, [10 x i32]* null, [10 x i32]* %2, [10 x i32]* null, [10 x i32]* %3)
+  %4 = bitcast [10 x i32]* %1 to i32*
+  %5 = bitcast [10 x i32]* %2 to i32*
+  %6 = bitcast [10 x i32]* %3 to i32*
+  call void @vect_mult_hw_stub(i32 %0, i32* %4, i32* %5, i32* %6)
+  call void @copy_in([10 x i32]* null, [10 x i32]* %1, [10 x i32]* null, [10 x i32]* %2, [10 x i32]* null, [10 x i32]* %3)
   ret void
 }
 
-declare void @vect_mult_hw_stub(i64, i32*, i32*, i32*)
+declare void @vect_mult_hw_stub(i32, i32*, i32*, i32*)
 
 attributes #0 = { inaccessiblemem_or_argmemonly noinline "fpga.wrapper.func"="wrapper" }
 attributes #1 = { argmemonly noinline norecurse "fpga.wrapper.func"="copyin" }

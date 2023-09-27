@@ -21,47 +21,52 @@ static void hls_vect_mult_start(void *vect_mult_ptr) {
   XVect_mult_Start(pAccelerator);
 }
 
-static void hls_vect_mult_isr(void *vect_mult_ptr) {
-  XVect_mult *pAccelerator = (XVect_mult *)vect_mult_ptr;
-  XVect_mult_InterruptClear(pAccelerator, 1);
-
-  // Fetch result C
-  int c = XVect_mult_Get_c(vect_mult_ptr);
-  vect_mult_done = 1;
-}
-
 int main() {
   int status;
 
-  // Setup the matrix mult
-  status = hls_vect_mult_init(&vect_mult);
-  if (status != XST_SUCCESS) {
-    // printf("HLS peripheral setup failed\n\r");
-    return -1;
-  }
-  // Setup the interrupt
+  vect_mult.Control_BaseAddress = 0xC0002000;
 
-  if (XVect_mult_IsReady(&vect_mult))
-    // printf("HLS peripheral is ready.  Starting... ");
-    ;
-  else {
-    // printf("!!! HLS peripheral is not ready! Exiting...\n\r");
-    return -1;
-  }
+  if (!XVect_mult_IsReady(&vect_mult))
+    // HLS peripheral is not ready!
+    return 2;
 
   // Initialize data
-  int size = 100;
+  int size = 10;
   XVect_mult_Set_size(&vect_mult, size);
 
-  int a[1000], b[1000];
-  int *buffer_a = &a[0];
-  int *buffer_b = &b[0];
-  XVect_mult_Set_a(&vect_mult, buffer_a);
-  XVect_mult_Set_b(&vect_mult, buffer_b);
+  // int *buffer_a = (int *)malloc(size * sizeof(int));
+  // // int *buffer_b = (int *)malloc(size * sizeof(int));
+  // // int *buffer_c = (int *)malloc(size * sizeof(int));
 
-  hls_vect_mult_start(&vect_mult);
+  u64 buffer_a = 0xC0002100;
+  u64 buffer_b = 0xC0002200;
+  u64 buffer_c = 0xC0002300;
 
-  // while (!vect_mult_done)
-  //   ;
+  // XVect_mult_Set_a(&vect_mult, buffer_a);
+  // XVect_mult_Set_b(&vect_mult, buffer_b);
+  // XVect_mult_Set_c(&vect_mult, buffer_c);
+
+  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+                      XVECT_MULT_CONTROL_ADDR_A_DATA, (u32)(buffer_a));
+
+  // XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+  //                     XVECT_MULT_CONTROL_ADDR_A_DATA + 4,
+  //                     (u32)(buffer_a >> 32));
+  // XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+  //                     XVECT_MULT_CONTROL_ADDR_A_DATA, (u32)(buffer_a));
+  // XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+  //                     XVECT_MULT_CONTROL_ADDR_B_DATA, (u32)(buffer_b));
+  // XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+  //                     XVECT_MULT_CONTROL_ADDR_C_DATA, (u32)(buffer_c));
+  // XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+  //                     XVECT_MULT_CONTROL_ADDR_B_DATA + 4,
+  //                     (u32)(buffer_b >> 32));
+  // XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+  //                     XVECT_MULT_CONTROL_ADDR_C_DATA + 4,
+  //                     (u32)(buffer_c >> 32));
+
+  // hls_vect_mult_start(&vect_mult);
+
+  // while (!vect_mult_done);
   return 8;
 }

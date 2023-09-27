@@ -158,7 +158,7 @@ extern "C" {
 # 1 "vect_mult.cpp" 2
 
 
-__attribute__((sdx_kernel("vect_mult", 0))) void vect_mult(long size, int a[100], int b[100], int c[100]) {
+__attribute__((sdx_kernel("vect_mult", 0))) void vect_mult(int size, int a[10], int b[10], int c[10]) {
 #line 11 "/workspace/examples/vect_mult/vhls.tcl"
 #pragma HLSDIRECTIVE TOP name=vect_mult
 # 3 "vect_mult.cpp"
@@ -176,20 +176,20 @@ __attribute__((sdx_kernel("vect_mult", 0))) void vect_mult(long size, int a[100]
 
 int main() {
 
-  int a[100], b[100], c[100], c_gold[100];
-  VITIS_LOOP_18_1: for (int i = 0; i < 100; i++) {
+  int a[10], b[10], c[10], c_gold[10];
+  VITIS_LOOP_18_1: for (int i = 0; i < 10; i++) {
     a[i] = i;
     b[i] = i;
     c[i] = 0;
     c_gold[i] = a[i] * b[i];
   }
 
-  vect_mult(100, a, b, c);
+  vect_mult(10, a, b, c);
 
   int res = 0;
-  VITIS_LOOP_28_2: for (int i = 0; i < 100; i++) {
+  VITIS_LOOP_28_2: for (int i = 0; i < 10; i++) {
     res += (c_gold[i] == c[i]);
   }
 
-  return (res != 100);
+  return (res != 10);
 }
