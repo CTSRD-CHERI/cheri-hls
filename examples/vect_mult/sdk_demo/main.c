@@ -49,21 +49,22 @@ int main() {
   XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
                       XVECT_MULT_CONTROL_ADDR_A_DATA, (u32)(buffer_a));
 
-  // XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-  //                     XVECT_MULT_CONTROL_ADDR_A_DATA + 4,
-  //                     (u32)(buffer_a >> 32));
-  // XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-  //                     XVECT_MULT_CONTROL_ADDR_A_DATA, (u32)(buffer_a));
-  // XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-  //                     XVECT_MULT_CONTROL_ADDR_B_DATA, (u32)(buffer_b));
-  // XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-  //                     XVECT_MULT_CONTROL_ADDR_C_DATA, (u32)(buffer_c));
-  // XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-  //                     XVECT_MULT_CONTROL_ADDR_B_DATA + 4,
-  //                     (u32)(buffer_b >> 32));
-  // XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-  //                     XVECT_MULT_CONTROL_ADDR_C_DATA + 4,
-  //                     (u32)(buffer_c >> 32));
+  // JC: The following commands cause reset
+  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+                      XVECT_MULT_CONTROL_ADDR_A_DATA + 4,
+                      (u32)(buffer_a >> 32));
+  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+                      XVECT_MULT_CONTROL_ADDR_A_DATA, (u32)(buffer_a));
+  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+                      XVECT_MULT_CONTROL_ADDR_B_DATA, (u32)(buffer_b));
+  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+                      XVECT_MULT_CONTROL_ADDR_C_DATA, (u32)(buffer_c));
+  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+                      XVECT_MULT_CONTROL_ADDR_B_DATA + 4,
+                      (u32)(buffer_b >> 32));
+  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+                      XVECT_MULT_CONTROL_ADDR_C_DATA + 4,
+                      (u32)(buffer_c >> 32));
 
   // hls_vect_mult_start(&vect_mult);
 
