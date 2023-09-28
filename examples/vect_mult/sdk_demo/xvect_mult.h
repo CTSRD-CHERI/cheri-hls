@@ -21,11 +21,15 @@ extern "C" {
 // typedef unsigned short uint16_t;
 // typedef unsigned int uint32_t;
 // typedef unsigned long uint64_t;
-typedef unsigned char u8;
-typedef unsigned short u16;
-typedef unsigned int u32;
-typedef unsigned long u64;
+// typedef unsigned char u8;
+// typedef unsigned short u16;
+// typedef unsigned int u32;
 // typedef unsigned long u64;
+
+typedef uint8_t u8;
+typedef uint16_t u16;
+typedef uint32_t u32;
+typedef uint64_t u64;
 
 typedef struct {
   u64 Control_BaseAddress;

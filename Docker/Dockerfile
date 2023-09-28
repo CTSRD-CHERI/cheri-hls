@@ -116,6 +116,7 @@ RUN printf "\
 #Add vim environment
 RUN printf "\
 \nset autoread \
+\nset hlsearch \
 \nautocmd BufWritePost *.cpp silent! !clang-format -i <afile> \
 \nautocmd BufWritePost *.c   silent! !clang-format -i <afile> \
 \nautocmd BufWritePost *.h   silent! !clang-format -i <afile> \

@@ -12,9 +12,6 @@
 void XVect_mult_Start(XVect_mult *InstancePtr) {
   u32 Data;
 
-  Xil_AssertVoid(InstancePtr != 0);
-  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
   Data = XVect_mult_ReadReg(InstancePtr->Control_BaseAddress,
                             XVECT_MULT_CONTROL_ADDR_AP_CTRL) &
          0x80;
@@ -24,9 +21,6 @@ void XVect_mult_Start(XVect_mult *InstancePtr) {
 
 u32 XVect_mult_IsDone(XVect_mult *InstancePtr) {
   u32 Data;
-
-  Xil_AssertNonvoid(InstancePtr != 0);
-  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
   Data = XVect_mult_ReadReg(InstancePtr->Control_BaseAddress,
                             XVECT_MULT_CONTROL_ADDR_AP_CTRL);
