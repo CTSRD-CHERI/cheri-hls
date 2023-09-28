@@ -1,5 +1,8 @@
 // Add header file for calling the HLS IP
+// #include "cheribgas_de10_bare.h"
+// #include "uart16550.h"
 #include "xvect_mult.h"
+#include <stdint.h>
 
 // HLS IP instance
 #define XVECT_MULT_0_DEVICE_ID 0
@@ -23,6 +26,8 @@ static void hls_vect_mult_start(void *vect_mult_ptr) {
 
 int main() {
   int status;
+  // uart_init();
+  // puts("hello");
 
   vect_mult.Control_BaseAddress = 0xC0002000;
 
@@ -38,9 +43,10 @@ int main() {
   // // int *buffer_b = (int *)malloc(size * sizeof(int));
   // // int *buffer_c = (int *)malloc(size * sizeof(int));
 
-  u64 buffer_a = 0xC0002100;
-  u64 buffer_b = 0xC0002200;
-  u64 buffer_c = 0xC0002300;
+  u64 base = 0xC0002000;
+  u64 buffer_a = 0x80000100;
+  u64 buffer_b = 0x80000200;
+  u64 buffer_c = 0x80000300;
 
   // XVect_mult_Set_a(&vect_mult, buffer_a);
   // XVect_mult_Set_b(&vect_mult, buffer_b);
@@ -48,26 +54,57 @@ int main() {
 
   XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
                       XVECT_MULT_CONTROL_ADDR_A_DATA, (u32)(buffer_a));
-
-  // JC: The following commands cause reset
-  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_A_DATA + 4,
-                      (u32)(buffer_a >> 32));
-  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_A_DATA, (u32)(buffer_a));
-  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_B_DATA, (u32)(buffer_b));
   XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
                       XVECT_MULT_CONTROL_ADDR_C_DATA, (u32)(buffer_c));
   XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_B_DATA + 4,
-                      (u32)(buffer_b >> 32));
+                      XVECT_MULT_CONTROL_ADDR_A_DATA + 4, (u32)(0));
   XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_C_DATA + 4,
-                      (u32)(buffer_c >> 32));
+                      XVECT_MULT_CONTROL_ADDR_B_DATA, (u32)(buffer_b));
+  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+                      XVECT_MULT_CONTROL_ADDR_B_DATA + 4, (u32)(0));
+  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+                      XVECT_MULT_CONTROL_ADDR_C_DATA + 4, (u32)(0));
 
-  // hls_vect_mult_start(&vect_mult);
+  u64 low_a = XVect_mult_ReadReg(vect_mult.Control_BaseAddress,
+                                 XVECT_MULT_CONTROL_ADDR_A_DATA);
+  u64 high_a = XVect_mult_ReadReg(vect_mult.Control_BaseAddress,
+                                  XVECT_MULT_CONTROL_ADDR_A_DATA + 4);
+  u64 new_a = low_a | (high_a << 32);
+  if (high_a != 0)
+    return 1;
+  if (buffer_a != low_a)
+    return 1;
+  if (buffer_a != new_a)
+    return 1;
 
-  // while (!vect_mult_done);
+  u64 low_b = XVect_mult_ReadReg(vect_mult.Control_BaseAddress,
+                                 XVECT_MULT_CONTROL_ADDR_B_DATA);
+  u64 high_b = XVect_mult_ReadReg(vect_mult.Control_BaseAddress,
+                                  XVECT_MULT_CONTROL_ADDR_B_DATA + 4);
+  u64 new_b = low_b | (high_b << 32);
+  if (high_b != 0)
+    return 2;
+  if (buffer_b != low_b)
+    return 2;
+  if (buffer_b != new_b)
+    return 2;
+
+  u64 low_c = XVect_mult_ReadReg(vect_mult.Control_BaseAddress,
+                                 XVECT_MULT_CONTROL_ADDR_C_DATA);
+  u64 high_c = XVect_mult_ReadReg(vect_mult.Control_BaseAddress,
+                                  XVECT_MULT_CONTROL_ADDR_C_DATA + 4);
+  u64 new_c = low_c | (high_c << 32);
+  if (high_c != 0)
+    return 3;
+  if (buffer_c != low_c)
+    return 3;
+  if (buffer_c != new_c)
+    return 3;
+
+  XVect_mult_Start(&vect_mult);
+
+  while (!XVect_mult_IsDone(&vect_mult))
+    ;
+
   return 8;
 }
