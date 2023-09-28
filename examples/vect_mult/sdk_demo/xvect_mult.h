@@ -14,16 +14,18 @@ extern "C" {
 
 /***************************** Include Files *********************************/
 #include "xvect_mult_hw.h"
+#include <stdint.h>
 
 /**************************** Type Definitions ******************************/
-typedef unsigned char uint8_t;
-typedef unsigned short uint16_t;
-typedef unsigned int uint32_t;
-typedef unsigned long uint64_t;
+// typedef unsigned char uint8_t;
+// typedef unsigned short uint16_t;
+// typedef unsigned int uint32_t;
+// typedef unsigned long uint64_t;
 typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned int u32;
 typedef unsigned long u64;
+// typedef unsigned long u64;
 
 typedef struct {
   u64 Control_BaseAddress;
@@ -34,9 +36,9 @@ typedef u32 word_type;
 
 /***************** Macros (Inline Functions) Definitions *********************/
 #define XVect_mult_WriteReg(BaseAddress, RegOffset, Data)                      \
-  *(volatile u64 *)((BaseAddress) + (RegOffset)) = (u64)(Data)
+  *(volatile u32 *)((BaseAddress) + (RegOffset)) = (u32)(Data)
 #define XVect_mult_ReadReg(BaseAddress, RegOffset)                             \
-  *(volatile u64 *)((BaseAddress) + (RegOffset))
+  *(volatile u32 *)((BaseAddress) + (RegOffset))
 
 #define Xil_AssertVoid(expr) (expr)
 #define Xil_AssertNonvoid(expr) (expr)
