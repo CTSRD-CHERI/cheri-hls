@@ -1,17 +1,17 @@
 {
   "0": {
-    "basicblocks": 1,
+    "basicblocks": 7,
     "calls": "",
     "file": "vect_mult.cpp",
     "fileloc": 3,
-    "instructions": 10,
+    "instructions": 25,
     "loads": {
-      "T": 1
+      "T": 2
     },
     "name": "vect_mult",
     "stores": {
       "T": 1
     },
-    "total_instructions": 10
+    "total_instructions": 25
   }
 }

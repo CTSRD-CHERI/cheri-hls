@@ -122,21 +122,26 @@ int main() {
     *(xc + i) = 0;
   }
 
-  XVect_mult_Start(&vect_mult);
+  // __asm("fence");
+  asm("fence");
 
+  XVect_mult_Start(&vect_mult);
   while (!XVect_mult_IsDone(&vect_mult))
     ;
 
+  // __asm("fence");
+  asm("fence");
+
   u32 res = 0;
   for (int i = 0; i < 10; i++) {
-    u32 c_value = *(xc + 1);
+    u32 c_value = *(xc + i);
     res += ((u32)c_value == c[i]);
     // res += (c_value == 0);
   }
 
   // return 8;
 
-  if (res == 1) {
+  if (res == 10) {
     success();
     return 8;
   } else {

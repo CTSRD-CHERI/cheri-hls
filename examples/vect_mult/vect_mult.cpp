@@ -7,11 +7,11 @@ void vect_mult(int size, int a[N], int b[N], int c[N]) {
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
 
-  c[1] = a[0];
+  // c[1] = a[0];
 
-  //   for (int i = 0; i < size; i++)
-  // #pragma HLS PIPELINE
-  //     c[i] = a[i] * b[i];
+  for (int i = 0; i < size; i++)
+#pragma HLS PIPELINE
+    c[i] = a[i] * b[i];
 }
 
 int main() {
@@ -21,10 +21,10 @@ int main() {
     a[i] = i;
     b[i] = i;
     c[i] = 0;
-    c_gold[i] = c[i];
-    // c_gold[i] = a[i] * b[i];
+    // c_gold[i] = c[i];
+    c_gold[i] = a[i] * b[i];
   }
-  c_gold[1] = a[0];
+  // c_gold[1] = a[0];
 
   vect_mult(N, a, b, c);
 

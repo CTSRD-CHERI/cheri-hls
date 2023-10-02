@@ -1,3 +1,8 @@
+/workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp:174:2: warning: Added loop label VITIS_LOOP_12_1:   [xilinx-label-all-loops]
+ for (int i = 0; i < size; i++)
+ ^~~
+ VITIS_LOOP_12_1: 
+/workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp:174:2: note: FIX-IT applied suggested code changes
 /workspace/examples/vect_mult/vect_mult_prj/solution1/.autopilot/db/vect_mult.pp.0.cpp:182:3: warning: Added loop label VITIS_LOOP_20_1:   [xilinx-label-all-loops]
   for (int i = 0; i < 10; i++) {
   ^~~

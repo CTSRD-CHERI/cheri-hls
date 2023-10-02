@@ -19,23 +19,34 @@
         </SummaryOfTimingAnalysis>
         <SummaryOfOverallLatency>
             <unit>clock cycles</unit>
-            <Best-caseLatency>15</Best-caseLatency>
-            <Average-caseLatency>15</Average-caseLatency>
-            <Worst-caseLatency>15</Worst-caseLatency>
-            <Best-caseRealTimeLatency>60.000 ns</Best-caseRealTimeLatency>
-            <Average-caseRealTimeLatency>60.000 ns</Average-caseRealTimeLatency>
-            <Worst-caseRealTimeLatency>60.000 ns</Worst-caseRealTimeLatency>
-            <Interval-min>16</Interval-min>
-            <Interval-max>16</Interval-max>
+            <Best-caseLatency>undef</Best-caseLatency>
+            <Average-caseLatency>undef</Average-caseLatency>
+            <Worst-caseLatency>undef</Worst-caseLatency>
+            <Best-caseRealTimeLatency>undef</Best-caseRealTimeLatency>
+            <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
+            <Worst-caseRealTimeLatency>undef</Worst-caseRealTimeLatency>
+            <Interval-min>undef</Interval-min>
+            <Interval-max>undef</Interval-max>
         </SummaryOfOverallLatency>
+        <SummaryOfLoopLatency>
+            <VITIS_LOOP_12_1>
+                <Slack>2.92</Slack>
+                <TripCount>undef</TripCount>
+                <Latency>undef</Latency>
+                <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
+                <PipelineII>2</PipelineII>
+                <PipelineDepth>19</PipelineDepth>
+                <InstanceList/>
+            </VITIS_LOOP_12_1>
+        </SummaryOfLoopLatency>
     </PerformanceEstimates>
     <AreaEstimates>
         <Resources>
             <BRAM_18K>2</BRAM_18K>
-            <FF>1124</FF>
-            <LUT>1416</LUT>
+            <DSP>3</DSP>
+            <FF>1734</FF>
+            <LUT>1732</LUT>
             <URAM>0</URAM>
-            <DSP>0</DSP>
         </Resources>
         <AvailableResources>
             <BRAM_18K>5376</BRAM_18K>
@@ -810,12 +821,15 @@
     <RTLDesignHierarchy>
         <TopModule MAX_DEPTH="2">
             <ModuleName>vect_mult</ModuleName>
-            <BindInstances>add_ln10_fu_132_p2</BindInstances>
+            <BindInstances>add_ln12_fu_267_p2 add_ln14_fu_257_p2 add_ln14_1_fu_282_p2 mul_32s_32s_32_2_1_U1</BindInstances>
         </TopModule>
     </RTLDesignHierarchy>
     <ModuleInformation>
         <Module>
             <Name>vect_mult</Name>
+            <Loops>
+                <VITIS_LOOP_12_1/>
+            </Loops>
             <PerformanceEstimates>
                 <SummaryOfTimingAnalysis>
                     <TargetClockPeriod>4.00</TargetClockPeriod>
@@ -823,37 +837,53 @@
                     <EstimatedClockPeriod>2.920</EstimatedClockPeriod>
                 </SummaryOfTimingAnalysis>
                 <SummaryOfOverallLatency>
-                    <Best-caseLatency>15</Best-caseLatency>
-                    <Average-caseLatency>15</Average-caseLatency>
-                    <Worst-caseLatency>15</Worst-caseLatency>
-                    <Best-caseRealTimeLatency>60.000 ns</Best-caseRealTimeLatency>
-                    <Average-caseRealTimeLatency>60.000 ns</Average-caseRealTimeLatency>
-                    <Worst-caseRealTimeLatency>60.000 ns</Worst-caseRealTimeLatency>
-                    <PipelineInitiationInterval>16</PipelineInitiationInterval>
+                    <Best-caseLatency>undef</Best-caseLatency>
+                    <Average-caseLatency>undef</Average-caseLatency>
+                    <Worst-caseLatency>undef</Worst-caseLatency>
+                    <Best-caseRealTimeLatency>undef</Best-caseRealTimeLatency>
+                    <Average-caseRealTimeLatency>undef</Average-caseRealTimeLatency>
+                    <Worst-caseRealTimeLatency>undef</Worst-caseRealTimeLatency>
+                    <PipelineInitiationInterval>undef</PipelineInitiationInterval>
                     <PipelineType>no</PipelineType>
                 </SummaryOfOverallLatency>
+                <SummaryOfLoopLatency>
+                    <VITIS_LOOP_12_1>
+                        <Name>VITIS_LOOP_12_1</Name>
+                        <Slack>2.92</Slack>
+                        <TripCount>undef</TripCount>
+                        <Latency>undef</Latency>
+                        <AbsoluteTimeLatency>undef</AbsoluteTimeLatency>
+                        <PipelineII>2</PipelineII>
+                        <PipelineDepth>19</PipelineDepth>
+                        <PipelineType>yes</PipelineType>
+                        <InstanceList/>
+                    </VITIS_LOOP_12_1>
+                </SummaryOfLoopLatency>
             </PerformanceEstimates>
             <AreaEstimates>
                 <Resources>
                     <BRAM_18K>2</BRAM_18K>
                     <AVAIL_BRAM>5376</AVAIL_BRAM>
                     <UTIL_BRAM>~0</UTIL_BRAM>
-                    <FF>1124</FF>
+                    <DSP>3</DSP>
+                    <AVAIL_DSP>12288</AVAIL_DSP>
+                    <UTIL_DSP>~0</UTIL_DSP>
+                    <FF>1734</FF>
                     <AVAIL_FF>3456000</AVAIL_FF>
                     <UTIL_FF>~0</UTIL_FF>
-                    <LUT>1416</LUT>
+                    <LUT>1732</LUT>
                     <AVAIL_LUT>1728000</AVAIL_LUT>
                     <UTIL_LUT>~0</UTIL_LUT>
                     <URAM>0</URAM>
                     <AVAIL_URAM>1280</AVAIL_URAM>
                     <UTIL_URAM>0</UTIL_URAM>
-                    <DSP>0</DSP>
-                    <AVAIL_DSP>12288</AVAIL_DSP>
-                    <UTIL_DSP>0</UTIL_DSP>
                 </Resources>
             </AreaEstimates>
             <BindNodes>
-                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="" OPTYPE="add" PRAGMA="" RTLNAME="add_ln10_fu_132_p2" SOURCE="vect_mult.cpp:10" URAM="0" VARIABLE="add_ln10"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_12_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln12_fu_267_p2" SOURCE="vect_mult.cpp:12" URAM="0" VARIABLE="add_ln12"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_12_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln14_fu_257_p2" SOURCE="vect_mult.cpp:14" URAM="0" VARIABLE="add_ln14"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op add" DSP="0" ID="" IMPL="fabric" LATENCY="0" LOOP="VITIS_LOOP_12_1" OPTYPE="add" PRAGMA="" RTLNAME="add_ln14_1_fu_282_p2" SOURCE="vect_mult.cpp:14" URAM="0" VARIABLE="add_ln14_1"/>
+                <BindNode BINDTYPE="op" BRAM="0" BUNDLEDNAME="" DISPNAME="bind_op mul" DSP="3" ID="" IMPL="auto" LATENCY="1" LOOP="VITIS_LOOP_12_1" OPTYPE="mul" PRAGMA="" RTLNAME="mul_32s_32s_32_2_1_U1" SOURCE="vect_mult.cpp:14" URAM="0" VARIABLE="mul_ln14"/>
             </BindNodes>
         </Module>
     </ModuleInformation>
@@ -1160,12 +1190,35 @@
         </section>
     </ReportSWInterface>
     <ResolutionUrl key="ZZZ">www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=ZZZ.html</ResolutionUrl>
+    <ReportBurst>
+        <section name="M_AXI Burst Information" level="0" HEADER_NOTE="Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.">
+            <item name="Inferred Burst Summary">
+                <table>
+                    <keys size="6">HW Interface, Direction, Length, Width, Loop, Loop Location</keys>
+                    <column name="m_axi_gmem">write, variable, 32, VITIS_LOOP_12_1, vect_mult.cpp:12:19</column>
+                </table>
+            </item>
+            <item name="All M_AXI Variable Accesses">
+                <table>
+                    <keys size="10">HW Interface, Variable, Access Location, Direction, Burst Status, Length, Loop, Loop Location, Resolution, Problem</keys>
+                    <column name="m_axi_gmem">, vect_mult.cpp:12:19, read, Fail, , , , 214-224, Could not burst due to multiple potential reads to the same bundle in the same region.</column>
+                    <column name="m_axi_gmem">c, vect_mult.cpp:14:7, write, Widen Fail, , VITIS_LOOP_12_1, vect_mult.cpp:12:19, 214-353, Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0</column>
+                    <column name="m_axi_gmem">b, vect_mult.cpp:14:16, read, Widen Fail, , VITIS_LOOP_12_1, vect_mult.cpp:12:19, 214-353, Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0</column>
+                    <column name="m_axi_gmem">a, vect_mult.cpp:14:9, read, Widen Fail, , VITIS_LOOP_12_1, vect_mult.cpp:12:19, 214-353, Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0</column>
+                    <column name="m_axi_gmem">c, vect_mult.cpp:14:7, write, Inferred, variable, VITIS_LOOP_12_1, vect_mult.cpp:12:19, , </column>
+                    <column name="m_axi_gmem">b, vect_mult.cpp:14:16, read, Inferred, variable, VITIS_LOOP_12_1, vect_mult.cpp:12:19, , </column>
+                    <column name="m_axi_gmem">a, vect_mult.cpp:14:9, read, Inferred, variable, VITIS_LOOP_12_1, vect_mult.cpp:12:19, , </column>
+                </table>
+            </item>
+        </section>
+    </ReportBurst>
     <PragmaReport>
         <Pragma type="interface" location="vect_mult.cpp:4" status="valid" parentFunction="vect_mult" variable="" isDirective="0" options="m_axi port = a"/>
         <Pragma type="interface" location="vect_mult.cpp:5" status="valid" parentFunction="vect_mult" variable="" isDirective="0" options="m_axi port = b"/>
         <Pragma type="interface" location="vect_mult.cpp:6" status="valid" parentFunction="vect_mult" variable="" isDirective="0" options="m_axi port = c"/>
         <Pragma type="interface" location="vect_mult.cpp:7" status="valid" parentFunction="vect_mult" variable="" isDirective="0" options="s_axilite port = size"/>
         <Pragma type="interface" location="vect_mult.cpp:8" status="valid" parentFunction="vect_mult" variable="" isDirective="0" options="s_axilite port = return"/>
+        <Pragma type="pipeline" location="vect_mult.cpp:13" status="valid" parentFunction="vect_mult" variable="" isDirective="0" options=""/>
     </PragmaReport>
 </profile>
 

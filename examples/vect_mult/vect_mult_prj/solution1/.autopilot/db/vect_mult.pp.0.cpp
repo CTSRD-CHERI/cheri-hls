@@ -169,11 +169,11 @@ __attribute__((sdx_kernel("vect_mult", 0))) void vect_mult(int size, int a[10], 
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
 
- c[1] = a[0];
 
 
-
-
+ VITIS_LOOP_12_1: for (int i = 0; i < size; i++)
+#pragma HLS PIPELINE
+ c[i] = a[i] * b[i];
 }
 
 int main() {
@@ -183,10 +183,10 @@ int main() {
     a[i] = i;
     b[i] = i;
     c[i] = 0;
-    c_gold[i] = c[i];
 
+    c_gold[i] = a[i] * b[i];
   }
-  c_gold[1] = a[0];
+
 
   vect_mult(10, a, b, c);
 

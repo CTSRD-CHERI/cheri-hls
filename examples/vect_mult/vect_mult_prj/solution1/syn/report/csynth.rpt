@@ -4,7 +4,7 @@
 == Synthesis Summary Report of 'vect_mult'
 ================================================================
 + General Information: 
-    * Date:           Mon Oct  2 14:11:00 2023
+    * Date:           Mon Oct  2 15:00:55 2023
     * Version:        2023.1 (Build 3854077 on May  4 2023)
     * Project:        vect_mult_prj
     * Solution:       solution1 (Vivado IP Flow Target)
@@ -15,12 +15,13 @@
 + Performance & Resource Estimates: 
     
     PS: '+' for module; 'o' for loop; '*' for dataflow
-    +-------------+------+------+---------+--------+----------+---------+------+----------+---------+----+------------+------------+-----+
-    |   Modules   | Issue|      | Latency | Latency| Iteration|         | Trip |          |         |    |            |            |     |
-    |   & Loops   | Type | Slack| (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined|  BRAM   | DSP|     FF     |     LUT    | URAM|
-    +-------------+------+------+---------+--------+----------+---------+------+----------+---------+----+------------+------------+-----+
-    |+ vect_mult  |     -|  0.00|       15|  60.000|         -|       16|     -|        no|  2 (~0%)|   -|  1124 (~0%)|  1416 (~0%)|    -|
-    +-------------+------+------+---------+--------+----------+---------+------+----------+---------+----+------------+------------+-----+
+    +--------------------+------+------+---------+--------+----------+---------+------+----------+---------+---------+------------+------------+-----+
+    |       Modules      | Issue|      | Latency | Latency| Iteration|         | Trip |          |         |         |            |            |     |
+    |       & Loops      | Type | Slack| (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined|  BRAM   |   DSP   |     FF     |     LUT    | URAM|
+    +--------------------+------+------+---------+--------+----------+---------+------+----------+---------+---------+------------+------------+-----+
+    |+ vect_mult         |     -|  0.00|        -|       -|         -|        -|     -|        no|  2 (~0%)|  3 (~0%)|  1734 (~0%)|  1732 (~0%)|    -|
+    | o VITIS_LOOP_12_1  |    II|  2.92|        -|       -|        19|        2|     -|       yes|        -|        -|           -|           -|    -|
+    +--------------------+------+------+---------+--------+----------+---------+------+----------+---------+---------+------------+------------+-----+
 
 
 ================================================================
@@ -100,14 +101,44 @@
 
 
 ================================================================
+== M_AXI Burst Information
+================================================================
+ Note: All burst requests might be further partitioned into multiple requests during RTL generation based on max_read_burst_length or max_write_burst_length settings.
+
+* Inferred Burst Summary
++--------------+-----------+----------+-------+-----------------+---------------------+
+| HW Interface | Direction | Length   | Width | Loop            | Loop Location       |
++--------------+-----------+----------+-------+-----------------+---------------------+
+| m_axi_gmem   | write     | variable | 32    | VITIS_LOOP_12_1 | vect_mult.cpp:12:19 |
++--------------+-----------+----------+-------+-----------------+---------------------+
+
+* All M_AXI Variable Accesses
++--------------+----------+---------------------+-----------+--------------+----------+-----------------+---------------------+------------+-------------------------------------------------------------------------------------------------------+
+| HW Interface | Variable | Access Location     | Direction | Burst Status | Length   | Loop            | Loop Location       | Resolution | Problem                                                                                               |
++--------------+----------+---------------------+-----------+--------------+----------+-----------------+---------------------+------------+-------------------------------------------------------------------------------------------------------+
+| m_axi_gmem   |          | vect_mult.cpp:12:19 | read      | Fail         |          |                 |                     | 214-224    | Could not burst due to multiple potential reads to the same bundle in the same region.                |
+| m_axi_gmem   | c        | vect_mult.cpp:14:7  | write     | Widen Fail   |          | VITIS_LOOP_12_1 | vect_mult.cpp:12:19 | 214-353    | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 |
+| m_axi_gmem   | b        | vect_mult.cpp:14:16 | read      | Widen Fail   |          | VITIS_LOOP_12_1 | vect_mult.cpp:12:19 | 214-353    | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 |
+| m_axi_gmem   | a        | vect_mult.cpp:14:9  | read      | Widen Fail   |          | VITIS_LOOP_12_1 | vect_mult.cpp:12:19 | 214-353    | Could not widen since type i32 size is greater than or equal to the max_widen_bitwidth threshold of 0 |
+| m_axi_gmem   | c        | vect_mult.cpp:14:7  | write     | Inferred     | variable | VITIS_LOOP_12_1 | vect_mult.cpp:12:19 |            |                                                                                                       |
+| m_axi_gmem   | b        | vect_mult.cpp:14:16 | read      | Inferred     | variable | VITIS_LOOP_12_1 | vect_mult.cpp:12:19 |            |                                                                                                       |
+| m_axi_gmem   | a        | vect_mult.cpp:14:9  | read      | Inferred     | variable | VITIS_LOOP_12_1 | vect_mult.cpp:12:19 |            |                                                                                                       |
++--------------+----------+---------------------+-----------+--------------+----------+-----------------+---------------------+------------+-------------------------------------------------------------------------------------------------------+
+
+    * Resolution URL: www.xilinx.com/cgi-bin/docs/rdoc?v=2023.1;t=hls+guidance;d=XXX-YYY.html (replace XXX-YYY with column value)
+
+================================================================
 == Bind Op Report
 ================================================================
-+----------------------+-----+--------+----------+-----+--------+---------+
-| Name                 | DSP | Pragma | Variable | Op  | Impl   | Latency |
-+----------------------+-----+--------+----------+-----+--------+---------+
-| + vect_mult          | 0   |        |          |     |        |         |
-|   add_ln10_fu_132_p2 | -   |        | add_ln10 | add | fabric | 0       |
-+----------------------+-----+--------+----------+-----+--------+---------+
++-------------------------+-----+--------+------------+-----+--------+---------+
+| Name                    | DSP | Pragma | Variable   | Op  | Impl   | Latency |
++-------------------------+-----+--------+------------+-----+--------+---------+
+| + vect_mult             | 3   |        |            |     |        |         |
+|   add_ln12_fu_267_p2    | -   |        | add_ln12   | add | fabric | 0       |
+|   add_ln14_fu_257_p2    | -   |        | add_ln14   | add | fabric | 0       |
+|   add_ln14_1_fu_282_p2  | -   |        | add_ln14_1 | add | fabric | 0       |
+|   mul_32s_32s_32_2_1_U1 | 3   |        | mul_ln14   | mul | auto   | 1       |
++-------------------------+-----+--------+------------+-----+--------+---------+
 
 
 ================================================================
@@ -119,14 +150,15 @@
 == Pragma Report
 ================================================================
 * Valid Pragma Syntax
-+-----------+-------------------------+------------------------------+
-| Type      | Options                 | Location                     |
-+-----------+-------------------------+------------------------------+
-| interface | m_axi port = a          | vect_mult.cpp:4 in vect_mult |
-| interface | m_axi port = b          | vect_mult.cpp:5 in vect_mult |
-| interface | m_axi port = c          | vect_mult.cpp:6 in vect_mult |
-| interface | s_axilite port = size   | vect_mult.cpp:7 in vect_mult |
-| interface | s_axilite port = return | vect_mult.cpp:8 in vect_mult |
-+-----------+-------------------------+------------------------------+
++-----------+-------------------------+-------------------------------+
+| Type      | Options                 | Location                      |
++-----------+-------------------------+-------------------------------+
+| interface | m_axi port = a          | vect_mult.cpp:4 in vect_mult  |
+| interface | m_axi port = b          | vect_mult.cpp:5 in vect_mult  |
+| interface | m_axi port = c          | vect_mult.cpp:6 in vect_mult  |
+| interface | s_axilite port = size   | vect_mult.cpp:7 in vect_mult  |
+| interface | s_axilite port = return | vect_mult.cpp:8 in vect_mult  |
+| pipeline  |                         | vect_mult.cpp:13 in vect_mult |
++-----------+-------------------------+-------------------------------+
 
 
