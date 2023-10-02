@@ -16,14 +16,14 @@ set C_modelName {vect_mult}
 set C_modelType { void 0 }
 set C_modelArgList {
 	{ gmem int 32 regular {axi_master 2}  }
-	{ size int 32 regular {axi_slave 0}  }
+	{ size int 32 unused {axi_slave 0}  }
 	{ a int 64 regular {axi_slave 0}  }
-	{ b int 64 regular {axi_slave 0}  }
+	{ b int 64 unused {axi_slave 0}  }
 	{ c int 64 regular {axi_slave 0}  }
 }
 set hasAXIMCache 0
 set C_modelArgMapList {[ 
-	{ "Name" : "gmem", "interface" : "axi_master", "bitwidth" : 32, "direction" : "READWRITE", "bitSlice":[ {"cElement": [{"cName": "a","offset": { "type": "dynamic","port_name": "a","bundle": "control"},"direction": "READONLY"},{"cName": "b","offset": { "type": "dynamic","port_name": "b","bundle": "control"},"direction": "READONLY"},{"cName": "c","offset": { "type": "dynamic","port_name": "c","bundle": "control"},"direction": "WRITEONLY"}]}]} , 
+	{ "Name" : "gmem", "interface" : "axi_master", "bitwidth" : 32, "direction" : "READWRITE", "bitSlice":[ {"cElement": [{"cName": "a","offset": { "type": "dynamic","port_name": "a","bundle": "control"},"direction": "READONLY"},{"cName": "b","offset": { "type": "dynamic","port_name": "b","bundle": "control"},},{"cName": "c","offset": { "type": "dynamic","port_name": "c","bundle": "control"},"direction": "WRITEONLY"}]}]} , 
  	{ "Name" : "size", "interface" : "axi_slave", "bundle":"control","type":"ap_none","bitwidth" : 32, "direction" : "READONLY", "offset" : {"in":16}, "offset_end" : {"in":23}} , 
  	{ "Name" : "a", "interface" : "axi_slave", "bundle":"control","type":"ap_none","bitwidth" : 64, "direction" : "READONLY", "offset" : {"in":24}, "offset_end" : {"in":35}} , 
  	{ "Name" : "b", "interface" : "axi_slave", "bundle":"control","type":"ap_none","bitwidth" : 64, "direction" : "READONLY", "offset" : {"in":36}, "offset_end" : {"in":47}} , 
@@ -165,13 +165,13 @@ set NewPortList {[
  	{ "name": "m_axi_gmem_BUSER", "direction": "in", "datatype": "sc_lv", "bitwidth":1, "type": "signal", "bundle":{"name": "gmem", "role": "BUSER" }}  ]}
 
 set RtlHierarchyInfo {[
-	{"ID" : "0", "Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : ["1", "2", "3"],
+	{"ID" : "0", "Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : ["1", "2"],
 		"CDFG" : "vect_mult",
 		"Protocol" : "ap_ctrl_hs",
 		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1", "real_start" : "0",
 		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
 		"II" : "0",
-		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "-1", "EstimateLatencyMax" : "-1",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "15", "EstimateLatencyMax" : "15",
 		"Combinational" : "0",
 		"Datapath" : "0",
 		"ClockEnable" : "0",
@@ -182,40 +182,35 @@ set RtlHierarchyInfo {[
 		"Port" : [
 			{"Name" : "gmem", "Type" : "MAXI", "Direction" : "IO",
 				"BlockSignal" : [
+					{"Name" : "gmem_blk_n_AR", "Type" : "RtlSignal"},
+					{"Name" : "gmem_blk_n_R", "Type" : "RtlSignal"},
 					{"Name" : "gmem_blk_n_AW", "Type" : "RtlSignal"},
 					{"Name" : "gmem_blk_n_W", "Type" : "RtlSignal"},
-					{"Name" : "gmem_blk_n_B", "Type" : "RtlSignal"},
-					{"Name" : "gmem_blk_n_AR", "Type" : "RtlSignal"},
-					{"Name" : "gmem_blk_n_R", "Type" : "RtlSignal"}]},
+					{"Name" : "gmem_blk_n_B", "Type" : "RtlSignal"}]},
 			{"Name" : "size", "Type" : "None", "Direction" : "I"},
 			{"Name" : "a", "Type" : "None", "Direction" : "I"},
 			{"Name" : "b", "Type" : "None", "Direction" : "I"},
-			{"Name" : "c", "Type" : "None", "Direction" : "I"}],
-		"Loop" : [
-			{"Name" : "VITIS_LOOP_10_1", "PipelineType" : "pipeline",
-				"LoopDec" : {"FSMBitwidth" : "4", "FirstState" : "ap_ST_fsm_pp0_stage0", "FirstStateIter" : "ap_enable_reg_pp0_iter0", "FirstStateBlock" : "ap_block_pp0_stage0_subdone", "LastState" : "ap_ST_fsm_pp0_stage0", "LastStateIter" : "ap_enable_reg_pp0_iter9", "LastStateBlock" : "ap_block_pp0_stage0_subdone", "PreState" : ["ap_ST_fsm_state1"], "QuitState" : "ap_ST_fsm_pp0_stage0", "QuitStateIter" : "ap_enable_reg_pp0_iter9", "QuitStateBlock" : "ap_block_pp0_stage0_subdone", "PostState" : ["ap_ST_fsm_state21"]}}]},
+			{"Name" : "c", "Type" : "None", "Direction" : "I"}]},
 	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.control_s_axi_U", "Parent" : "0"},
-	{"ID" : "2", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.gmem_m_axi_U", "Parent" : "0"},
-	{"ID" : "3", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.mul_32s_32s_32_2_1_U1", "Parent" : "0"}]}
+	{"ID" : "2", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.gmem_m_axi_U", "Parent" : "0"}]}
 
 
 set ArgLastReadFirstWriteLatency {
 	vect_mult {
-		gmem {Type IO LastRead 15 FirstWrite 14}
-		size {Type I LastRead 0 FirstWrite -1}
+		gmem {Type IO LastRead 11 FirstWrite 10}
+		size {Type I LastRead -1 FirstWrite -1}
 		a {Type I LastRead 0 FirstWrite -1}
-		b {Type I LastRead 0 FirstWrite -1}
+		b {Type I LastRead -1 FirstWrite -1}
 		c {Type I LastRead 0 FirstWrite -1}}}
 
 set hasDtUnsupportedChannel 0
 
 set PerformanceInfo {[
-	{"Name" : "Latency", "Min" : "-1", "Max" : "-1"}
-	, {"Name" : "Interval", "Min" : "0", "Max" : "0"}
+	{"Name" : "Latency", "Min" : "15", "Max" : "15"}
+	, {"Name" : "Interval", "Min" : "16", "Max" : "16"}
 ]}
 
 set PipelineEnableSignalInfo {[
-	{"Pipeline" : "0", "EnableSignal" : "ap_enable_pp0"}
 ]}
 
 set Spec2ImplPortList { 

@@ -1,4 +1,3 @@
-vect_mult_mul_32s_32s_32_2_1
 vect_mult_gmem_m_axi
 vect_mult_control_s_axi
 vect_mult
