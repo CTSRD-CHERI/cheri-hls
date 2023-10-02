@@ -8,6 +8,20 @@
 #define XVECT_MULT_0_DEVICE_ID 0
 XVect_mult vect_mult;
 volatile int vect_mult_done = 0;
+volatile char *uart_base = 0xC0000000;
+
+void success() {
+
+  *uart_base = 's';
+  while (1)
+    ;
+}
+
+void fail() {
+  while (1)
+    ;
+  // *uart_base = 'f';
+}
 
 static int hls_vect_mult_init(XVect_mult *vect_mult_ptr) {
   int status = XVect_mult_Initialize(vect_mult_ptr, "vect_mult");
@@ -39,31 +53,22 @@ int main() {
   int size = 10;
   XVect_mult_Set_size(&vect_mult, size);
 
-  // int *buffer_a = (int *)malloc(size * sizeof(int));
-  // // int *buffer_b = (int *)malloc(size * sizeof(int));
-  // // int *buffer_c = (int *)malloc(size * sizeof(int));
+  u64 buffer_a = 0x90001000;
+  u64 buffer_b = 0x90002000;
+  u64 buffer_c = 0x90003000;
 
-  u64 base = 0xC0002000;
-  u64 buffer_a = 0x80000100;
-  u64 buffer_b = 0x80000200;
-  u64 buffer_c = 0x80000300;
-
-  // XVect_mult_Set_a(&vect_mult, buffer_a);
-  // XVect_mult_Set_b(&vect_mult, buffer_b);
-  // XVect_mult_Set_c(&vect_mult, buffer_c);
-
-  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_A_DATA, (u32)(buffer_a));
-  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_C_DATA, (u32)(buffer_c));
   XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
                       XVECT_MULT_CONTROL_ADDR_A_DATA + 4, (u32)(0));
-  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_B_DATA, (u32)(buffer_b));
   XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
                       XVECT_MULT_CONTROL_ADDR_B_DATA + 4, (u32)(0));
   XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
                       XVECT_MULT_CONTROL_ADDR_C_DATA + 4, (u32)(0));
+  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+                      XVECT_MULT_CONTROL_ADDR_A_DATA, (u32)(buffer_a));
+  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+                      XVECT_MULT_CONTROL_ADDR_B_DATA, (u32)(buffer_b));
+  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+                      XVECT_MULT_CONTROL_ADDR_C_DATA, (u32)(buffer_c));
 
   u64 low_a = XVect_mult_ReadReg(vect_mult.Control_BaseAddress,
                                  XVECT_MULT_CONTROL_ADDR_A_DATA);
@@ -101,10 +106,41 @@ int main() {
   if (buffer_c != new_c)
     return 3;
 
+  u32 *xa = (volatile u32 *)(buffer_a);
+  u32 *xb = (volatile u32 *)(buffer_b);
+  u32 *xc = (volatile u32 *)(buffer_c);
+
+  u32 a[10], b[10], c[10];
+
+  for (int i = 0; i < 10; i++) {
+    a[i] = i;
+    b[i] = i;
+    c[i] = i * i;
+
+    *(xa + i) = i;
+    *(xb + i) = i;
+    *(xc + i) = 0;
+  }
+
   XVect_mult_Start(&vect_mult);
 
   while (!XVect_mult_IsDone(&vect_mult))
     ;
 
-  return 8;
+  u32 res = 0;
+  for (int i = 0; i < 10; i++) {
+    u32 c_value = *(xc + 1);
+    res += ((u32)c_value == c[i]);
+    // res += (c_value == 0);
+  }
+
+  // return 8;
+
+  if (res == 1) {
+    success();
+    return 8;
+  } else {
+    fail();
+    return 1;
+  }
 }
