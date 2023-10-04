@@ -50,7 +50,8 @@ int main() {
     return 2;
 
   // Initialize data
-  int size = 10;
+  // int size = 10;
+  int size = 20;
   XVect_mult_Set_size(&vect_mult, size);
 
   u64 buffer_a = 0x90001000;
