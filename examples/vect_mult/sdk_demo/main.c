@@ -5,8 +5,15 @@
 #include <stdint.h>
 
 // HLS IP instance
-#define XVECT_MULT_0_DEVICE_ID 0
-XVect_mult vect_mult;
+#define NUM 8
+XVect_mult vect_mult_insts[NUM];
+u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
+                          0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
+u64 base_buff_phy_addr[NUM] = {0x90010000, 0x90011000, 0x90012000, 0x90013000,
+                               0x90014000, 0x90015000, 0x90016000, 0x90017000};
+
+int test_case = 0;
+
 volatile int vect_mult_done = 0;
 volatile char *uart_base = 0xC0000000;
 
@@ -20,60 +27,41 @@ void success() {
 void fail() {
   while (1)
     ;
-  // *uart_base = 'f';
 }
 
-static int hls_vect_mult_init(XVect_mult *vect_mult_ptr) {
-  int status = XVect_mult_Initialize(vect_mult_ptr, "vect_mult");
-  if (status != XST_SUCCESS) {
-    return XST_DEVICE_NOT_FOUND;
-  }
-  return status;
-}
+u32 c[NUM][10];
 
-static void hls_vect_mult_start(void *vect_mult_ptr) {
-  XVect_mult *pAccelerator = (XVect_mult *)vect_mult_ptr;
-  XVect_mult_InterruptEnable(pAccelerator, 1);
-  XVect_mult_InterruptGlobalEnable(pAccelerator);
-  XVect_mult_Start(pAccelerator);
-}
+static u32 hls_vect_mult_start(XVect_mult *top, u64 base_address,
+                               u64 base_buffer_address) {
 
-int main() {
-  int status;
-  // uart_init();
-  // puts("hello");
+  top->Control_BaseAddress = base_address;
 
-  vect_mult.Control_BaseAddress = 0xC0002000;
+  if (!XVect_mult_IsReady(top))
+    return 4;
 
-  if (!XVect_mult_IsReady(&vect_mult))
-    // HLS peripheral is not ready!
-    return 2;
+  int size = 10;
+  XVect_mult_Set_size(top, size);
 
-  // Initialize data
-  // int size = 10;
-  int size = 20;
-  XVect_mult_Set_size(&vect_mult, size);
+  u64 buffer_a = base_buffer_address;
+  u64 buffer_b = base_buffer_address + 100;
+  u64 buffer_c = base_buffer_address + 200;
 
-  u64 buffer_a = 0x90001000;
-  u64 buffer_b = 0x90002000;
-  u64 buffer_c = 0x90003000;
-
-  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+  XVect_mult_WriteReg(top->Control_BaseAddress,
                       XVECT_MULT_CONTROL_ADDR_A_DATA + 4, (u32)(0));
-  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+  XVect_mult_WriteReg(top->Control_BaseAddress,
                       XVECT_MULT_CONTROL_ADDR_B_DATA + 4, (u32)(0));
-  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
+  XVect_mult_WriteReg(top->Control_BaseAddress,
                       XVECT_MULT_CONTROL_ADDR_C_DATA + 4, (u32)(0));
-  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_A_DATA, (u32)(buffer_a));
-  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_B_DATA, (u32)(buffer_b));
-  XVect_mult_WriteReg(vect_mult.Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_C_DATA, (u32)(buffer_c));
+  XVect_mult_WriteReg(top->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_A_DATA,
+                      (u32)(buffer_a));
+  XVect_mult_WriteReg(top->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_B_DATA,
+                      (u32)(buffer_b));
+  XVect_mult_WriteReg(top->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_C_DATA,
+                      (u32)(buffer_c));
 
-  u64 low_a = XVect_mult_ReadReg(vect_mult.Control_BaseAddress,
+  u64 low_a = XVect_mult_ReadReg(top->Control_BaseAddress,
                                  XVECT_MULT_CONTROL_ADDR_A_DATA);
-  u64 high_a = XVect_mult_ReadReg(vect_mult.Control_BaseAddress,
+  u64 high_a = XVect_mult_ReadReg(top->Control_BaseAddress,
                                   XVECT_MULT_CONTROL_ADDR_A_DATA + 4);
   u64 new_a = low_a | (high_a << 32);
   if (high_a != 0)
@@ -83,9 +71,9 @@ int main() {
   if (buffer_a != new_a)
     return 1;
 
-  u64 low_b = XVect_mult_ReadReg(vect_mult.Control_BaseAddress,
+  u64 low_b = XVect_mult_ReadReg(top->Control_BaseAddress,
                                  XVECT_MULT_CONTROL_ADDR_B_DATA);
-  u64 high_b = XVect_mult_ReadReg(vect_mult.Control_BaseAddress,
+  u64 high_b = XVect_mult_ReadReg(top->Control_BaseAddress,
                                   XVECT_MULT_CONTROL_ADDR_B_DATA + 4);
   u64 new_b = low_b | (high_b << 32);
   if (high_b != 0)
@@ -95,9 +83,9 @@ int main() {
   if (buffer_b != new_b)
     return 2;
 
-  u64 low_c = XVect_mult_ReadReg(vect_mult.Control_BaseAddress,
+  u64 low_c = XVect_mult_ReadReg(top->Control_BaseAddress,
                                  XVECT_MULT_CONTROL_ADDR_C_DATA);
-  u64 high_c = XVect_mult_ReadReg(vect_mult.Control_BaseAddress,
+  u64 high_c = XVect_mult_ReadReg(top->Control_BaseAddress,
                                   XVECT_MULT_CONTROL_ADDR_C_DATA + 4);
   u64 new_c = low_c | (high_c << 32);
   if (high_c != 0)
@@ -111,38 +99,51 @@ int main() {
   u32 *xb = (volatile u32 *)(buffer_b);
   u32 *xc = (volatile u32 *)(buffer_c);
 
-  u32 a[10], b[10], c[10];
+  u32 a[10], b[10];
 
   for (int i = 0; i < 10; i++) {
-    a[i] = i;
-    b[i] = i;
-    c[i] = i * i;
+    a[i] = i + test_case;
+    b[i] = i + test_case;
+    c[test_case][i] = (i + test_case) * (i + test_case);
 
-    *(xa + i) = i;
-    *(xb + i) = i;
+    *(xa + i) = i + test_case;
+    *(xb + i) = i + test_case;
     *(xc + i) = 0;
   }
 
-  // __asm("fence");
+  test_case++;
+  return buffer_c;
+}
+
+int main() {
+  int status;
+
+  // Initialize
+  u32 c_addr[8];
+  for (int i = 0; i < NUM; i++)
+    c_addr[i] = hls_vect_mult_start(vect_mult_insts + i, base_phy_addr[i],
+                                    base_buff_phy_addr[i]);
+
+  // Compute
   asm("fence");
-
-  XVect_mult_Start(&vect_mult);
-  while (!XVect_mult_IsDone(&vect_mult))
-    ;
-
-  // __asm("fence");
+  for (int i = 0; i < NUM; i++)
+    XVect_mult_Start(vect_mult_insts + i);
+  for (int i = 0; i < NUM; i++)
+    while (!XVect_mult_IsDone(vect_mult_insts + i))
+      ;
   asm("fence");
 
   u32 res = 0;
-  for (int i = 0; i < 10; i++) {
-    u32 c_value = *(xc + i);
-    res += ((u32)c_value == c[i]);
-    // res += (c_value == 0);
+  for (int n = 0; n < NUM; n++) {
+    u32 *xc = (volatile u32 *)(c_addr[n]);
+    for (int i = 0; i < 10; i++) {
+      u32 c_value = *(xc + i);
+      res += ((u32)c_value == c[n][i]);
+    }
   }
 
-  // return 8;
-
-  if (res == 10) {
+  // Check
+  if (res == NUM * 10) {
     success();
     return 8;
   } else {
