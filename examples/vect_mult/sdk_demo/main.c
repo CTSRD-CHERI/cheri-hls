@@ -1,6 +1,11 @@
 #include "xvect_mult.h"
 #include <stdint.h>
 
+#ifdef CAP
+#include <cheri_init_globals.h>
+#include <cheriintrin.h>
+#endif
+
 // HLS IP instance
 #define NUM 8
 #define SIZE 10
@@ -63,7 +68,13 @@ u32 hls_vect_mult_init(int test_case, u64 phy) {
 }
 
 int main() {
-  int status;
+
+  // Initialise .captable
+#ifdef CAP
+  void *almighty = cheri_ddc_get();
+  cheri_init_globals_3(almighty, almighty, almighty);
+  return 7;
+#endif
 
   // Initialize
   for (int i = 0; i < NUM; i++)
