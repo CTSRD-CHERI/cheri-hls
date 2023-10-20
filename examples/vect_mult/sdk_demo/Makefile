@@ -1,5 +1,5 @@
-RV_ABI=rv64imaxcheri
-RV_ARCH=l64pc128
+RV_ABI=l64pc128
+RV_ARCH=rv64imaxcheri
 
 base:
 	riscv64-unknown-freebsd-cc -nostdlib -mno-relax -Tlink.ld -mcmodel=medany init.S main.c xvect_mult.c xvect_mult_linux.c xvect_mult_sinit.c
