@@ -6,7 +6,7 @@ MEMORY {
   /*UART (rw) : ORIGIN = 0x62300000, LENGTH = 0x1000*/
 }
 
-_MEM_END = ORIGIN(MEM) + LENGTH(MEM) - 8;
+_MEM_END = ORIGIN(MEM) + LENGTH(MEM) - 16;
 
 ENTRY(_start)
 

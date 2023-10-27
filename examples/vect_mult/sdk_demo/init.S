@@ -23,9 +23,13 @@ _capstart:
   cllc ct0, _MEM_END - STACK_SIZE
   li t1, STACK_SIZE
   csetbounds csp, ct0, t1
+  cincoffset csp, csp, t1
 
   # Install a trap vector
   cllc ct0, _trap
+  cgetaddr t1, ct0
+  ori t1, t1, 1
+  csetaddr ct0, ct0, t1
   cspecialw mtcc, ct0
 
   j main

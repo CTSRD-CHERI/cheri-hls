@@ -27,7 +27,7 @@ volatile void fail() {
     ;
 }
 
-u32 hls_vect_mult_init(int test_case, u64 phy) {
+u32 hls_vect_mult_init(int test_case, u32 *phy) {
 
   XVect_mult *top = vect_mult_insts + test_case;
   top->Control_BaseAddress = phy;
@@ -36,6 +36,7 @@ u32 hls_vect_mult_init(int test_case, u64 phy) {
     return 4;
 
   XVect_mult_Set_size(top, SIZE);
+  // XVect_mult_Set_size(top, 11);
 
   u64 buffer_a = a[test_case];
   // base_buffer_address;
@@ -73,13 +74,20 @@ int main() {
 #ifdef CAP
   void *almighty = cheri_ddc_get();
   cheri_init_globals_3(almighty, almighty, almighty);
-  return 7;
 #endif
 
   // Initialize
-  for (int i = 0; i < NUM; i++)
-    if (hls_vect_mult_init(i, base_phy_addr[i]))
+  for (int i = 0; i < NUM; i++) {
+#ifdef CAP
+    u32 *cap = __builtin_cheri_address_set(almighty, base_phy_addr[i]);
+    cap = __builtin_cheri_bounds_set(cap, 0x1000);
+#else
+    u32 *cap;
+    cap = (volatile u32 *)base_phy_addr[i];
+#endif
+    if (hls_vect_mult_init(i, cap))
       return 4;
+  }
 
   // Compute
   asm("fence");
