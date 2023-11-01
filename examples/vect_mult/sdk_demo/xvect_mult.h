@@ -32,17 +32,21 @@ typedef uint32_t u32;
 typedef uint64_t u64;
 
 typedef struct {
-  u32 *Control_BaseAddress;
+  volatile u32 *Control_BaseAddress;
   u32 IsReady;
 } XVect_mult;
 
 typedef u32 word_type;
 
 /***************** Macros (Inline Functions) Definitions *********************/
+// #define XVect_mult_WriteReg(BaseAddress, RegOffset, Data)                      \
+//   *(volatile u32 *)((BaseAddress) + (RegOffset >> 4)) = (u32)(Data)
+// #define XVect_mult_ReadReg(BaseAddress, RegOffset)                             \
+//   *(volatile u32 *)((BaseAddress) + (RegOffset >> 4))
 #define XVect_mult_WriteReg(BaseAddress, RegOffset, Data)                      \
-  *(volatile u32 *)((BaseAddress) + (RegOffset >> 4)) = (u32)(Data)
+  *(volatile u32 *)((BaseAddress) + (RegOffset >> 2)) = (u32)(Data)
 #define XVect_mult_ReadReg(BaseAddress, RegOffset)                             \
-  *(volatile u32 *)((BaseAddress) + (RegOffset >> 4))
+  *(volatile u32 *)((BaseAddress) + (RegOffset >> 2))
 
 #define Xil_AssertVoid(expr) (expr)
 #define Xil_AssertNonvoid(expr) (expr)

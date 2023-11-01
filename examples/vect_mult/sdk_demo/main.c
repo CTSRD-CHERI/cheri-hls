@@ -7,8 +7,9 @@
 #endif
 
 // HLS IP instance
-#define NUM 8
+#define NUM 1
 #define SIZE 10
+// #define SIZE 10
 XVect_mult vect_mult_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
@@ -27,6 +28,11 @@ volatile void fail() {
     ;
 }
 
+volatile void reg_error() {
+  while (1)
+    ;
+}
+
 u32 hls_vect_mult_init(int test_case, u32 *phy) {
 
   XVect_mult *top = vect_mult_insts + test_case;
@@ -38,11 +44,11 @@ u32 hls_vect_mult_init(int test_case, u32 *phy) {
   XVect_mult_Set_size(top, SIZE);
   // XVect_mult_Set_size(top, 11);
 
-  u64 buffer_a = a[test_case];
+  u32 buffer_a = a[test_case];
   // base_buffer_address;
-  u64 buffer_b = b[test_case];
+  u32 buffer_b = b[test_case];
   // base_buffer_address + 100;
-  u64 buffer_c = c[test_case];
+  u32 buffer_c = c[test_case];
   // base_buffer_address + 200;
 
   XVect_mult_WriteReg(top->Control_BaseAddress,
@@ -53,10 +59,42 @@ u32 hls_vect_mult_init(int test_case, u32 *phy) {
                       XVECT_MULT_CONTROL_ADDR_C_DATA + 4, (u32)(0));
   XVect_mult_WriteReg(top->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_A_DATA,
                       (u32)(buffer_a));
+
+  // XVect_mult_WriteReg(top->Control_BaseAddress,
+  // XVECT_MULT_CONTROL_ADDR_A_DATA,
+  //                     10);
+
   XVect_mult_WriteReg(top->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_B_DATA,
                       (u32)(buffer_b));
   XVect_mult_WriteReg(top->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_C_DATA,
                       (u32)(buffer_c));
+
+  // u32 d;
+  // d = XVect_mult_ReadReg(top->Control_BaseAddress,
+  //                        XVECT_MULT_CONTROL_ADDR_A_DATA + 4);
+  // if (d != 0)
+  //   reg_error();
+  // d = XVect_mult_ReadReg(top->Control_BaseAddress,
+  //                        XVECT_MULT_CONTROL_ADDR_B_DATA + 4);
+  // if (d != 0)
+  //   reg_error();
+  // d = XVect_mult_ReadReg(top->Control_BaseAddress,
+  //                        XVECT_MULT_CONTROL_ADDR_C_DATA + 4);
+  // if (d != 0)
+  //   reg_error();
+  // d = XVect_mult_ReadReg(top->Control_BaseAddress,
+  //                        XVECT_MULT_CONTROL_ADDR_A_DATA);
+  // if (d != buffer_a)
+  //   // if (d != 10)
+  //   reg_error();
+  // d = XVect_mult_ReadReg(top->Control_BaseAddress,
+  //                        XVECT_MULT_CONTROL_ADDR_B_DATA);
+  // if (d != buffer_b)
+  //   reg_error();
+  // d = XVect_mult_ReadReg(top->Control_BaseAddress,
+  //                        XVECT_MULT_CONTROL_ADDR_C_DATA);
+  // if (d != buffer_c)
+  //   reg_error();
 
   for (int i = 0; i < 10; i++) {
     a[test_case][i] = i + test_case;
@@ -79,13 +117,13 @@ int main() {
   // Initialize
   for (int i = 0; i < NUM; i++) {
 #ifdef CAP
-    u32 *cap = __builtin_cheri_address_set(almighty, base_phy_addr[i]);
-    cap = __builtin_cheri_bounds_set(cap, 0x1000);
+    u32 *physical_addr =
+        __builtin_cheri_address_set(almighty, base_phy_addr[i]);
+    physical_addr = __builtin_cheri_bounds_set(physical_addr, 0x1000);
 #else
-    u32 *cap;
-    cap = (volatile u32 *)base_phy_addr[i];
+    u32 *physical_addr = (volatile u32 *)base_phy_addr[i];
 #endif
-    if (hls_vect_mult_init(i, cap))
+    if (hls_vect_mult_init(i, physical_addr))
       return 4;
   }
 
