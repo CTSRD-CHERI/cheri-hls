@@ -25,8 +25,7 @@ Resources/mkBuild_Dir.py .. RV64ACIMUxCHERI verilator
 cd ${FLUTE}/builds/RV64ACIMUxCHERI_Flute_verilator
 # Temporarily to copy hls kernels
 cp -r ${CHERI_HLS}/examples/vect_mult/vect_mult_prj/solution1/syn/verilog vect_mult
-make compile simulator SIM=verilator N_HLS=8 HLS_CAP_CHECKER=YES
-# make compile simulator SIM=verilator N_HLS=8
+make compile simulator SIM=verilator N_HLS=8
 
 # --------------------------------------------------------------------
 # Build elf_to_hex in Flute 

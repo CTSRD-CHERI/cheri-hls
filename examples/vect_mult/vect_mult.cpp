@@ -1,4 +1,4 @@
-#define N 100
+#define N 10
 
 void vect_mult(int size, int a[N], int b[N], int c[N]) {
 #pragma HLS INTERFACE m_axi port = a

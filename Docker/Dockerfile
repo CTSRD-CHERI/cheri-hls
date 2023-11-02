@@ -28,7 +28,7 @@ RUN apt-get update -y \
                           samba flex texinfo time libglib2.0-dev \
                           libpixman-1-dev libarchive-dev libarchive-tools \
                           libbz2-dev libattr1-dev libcap-ng-dev \
-                          libexpat1-dev libgmp-dev
+                          libexpat1-dev libgmp-dev libelf-dev
 
 # Install SystemVerilog formatter
 RUN mkdir -p /srcPkgs \
@@ -102,10 +102,10 @@ ENV vhls $VHLS_PATH
 RUN printf "\
 \nexport LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:\$LIBRARY_PATH \
 \n# Basic PATH setup \
-\nexport PATH=/srcPkgs/bsc/inst/bin:/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
+\nexport PATH=/workspace/cheri/output/sdk/bin:/srcPkgs/bsc/inst/bin:/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
 \n# Vitis HLS setup \
 \nexport VHLS=${VHLS_PATH} \
-\nsource ${VHLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
+\n# source ${VHLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
 \n# Thread setup \
 \nexport nproc=\$(grep -c ^processor /proc/cpuinfo) \
 \n# Terminal color... \
@@ -116,6 +116,7 @@ RUN printf "\
 #Add vim environment
 RUN printf "\
 \nset autoread \
+\nset hlsearch \
 \nautocmd BufWritePost *.cpp silent! !clang-format -i <afile> \
 \nautocmd BufWritePost *.c   silent! !clang-format -i <afile> \
 \nautocmd BufWritePost *.h   silent! !clang-format -i <afile> \
