@@ -20,6 +20,7 @@ u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
 u32 a[NUM][SIZE];
 u32 b[NUM][SIZE];
 u32 c[NUM][SIZE];
+// u32 c[NUM][SIZE - 1];
 u32 c_gold[NUM][SIZE];
 
 #ifdef CAPCHECKER
@@ -144,7 +145,8 @@ u32 hls_vect_mult_init(int test_case, u32 *phy) {
     a[test_case][i] = i + test_case;
     b[test_case][i] = i + test_case;
     c_gold[test_case][i] = (i + test_case) * (i + test_case);
-    c[test_case][i] = 0;
+    // if (i != 9)
+    // c[test_case][i] = 0;
   }
 
   return 0;
