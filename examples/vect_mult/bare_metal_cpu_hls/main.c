@@ -142,7 +142,7 @@ u32 hls_vect_mult_init(int test_case, u32 *phy) {
   // if (d != buffer_c)
   //   reg_error();
 
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < SIZE; i++) {
     a[test_case][i] = i + test_case;
     b[test_case][i] = i + test_case;
     c_gold[test_case][i] = (i + test_case) * (i + test_case);
