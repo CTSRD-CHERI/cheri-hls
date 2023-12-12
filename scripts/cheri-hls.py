@@ -149,28 +149,31 @@ class CheriHLS:
         ]
         result, _ = self.execute(cmd, cwd=test_dir)
         if result:
-            self.logger(f"Running Vitis HLS for {test} failed.")
+            self.logger.error(f"Running Vitis HLS for {test} failed.")
             return result
 
         # Get Flute
         cap = "cap" if "chls" in mode else "nocap"
         flute_build = os.path.join(self.root, "Flute", "builds", f"{test}_{cap}")
-        flute_source = os.path.join(
+        flute_src = os.path.join(
             self.root, "Flute", "builds", "RV64ACIMUxCHERI_Flute_verilator"
         )
         if os.path.exists(flute_build):
             shutil.rmtree(flute_build)
+            self.logger.debug(f"Removed (old) {flute_build}")
         cwd = os.path.join(self.root, "Flute", "builds")
         cmd = ["Resources/mkBuild_Dir.py", "..", "RV64ACIMUxCHERI", "verilator"]
         result, _ = self.execute(cmd, cwd=cwd)
         if result:
-            self.logger(f"Flute code gen failed.")
+            self.logger.error(f"Flute code gen failed.")
             return result
-        shutil.move(flute_source, flute_build)
+        shutil.move(flute_src, flute_build)
+        self.logger.debug(f"Moved {flute_src} to {flute_build}")
 
         # Combine HLS and Flute
         hls_src = os.path.join(test_dir, f"{test}_prj", "solution1", "syn", "verilog")
-        shutil.copytree(hls_src, test)
+        shutil.copytree(hls_src, os.path.join(flute_build, test))
+        self.logger.debug(f"Copied {hls_src} to {os.path.join(flute_build, test)}")
         cmd = [
             "make",
             "compile",
@@ -184,7 +187,7 @@ class CheriHLS:
             ]
         result, _ = self.execute(cmd, cwd=flute_build)
         if result:
-            self.logger(f"Flute building with HLS failed.")
+            self.logger.error(f"Flute building with HLS failed.")
             return result
 
         self.logger.info(f"Synthesized hardware for {test} with mode {mode}.")
@@ -210,7 +213,7 @@ class CheriHLS:
             "cheri-hls", os.path.join(self.project, "cheri-hls.log")
         )
         if self.debug:
-            self.logger.setLevel(logging.DEBUG)
+            self.logger.setLevel(logging.TRACE)
         else:
             self.logger.setLevel(logging.INFO)
         if to_backup:
@@ -224,7 +227,7 @@ class CheriHLS:
         if self.args.mode not in MODES:
             self.logger.error(f"Unknown mode: {self.args.mode}. Known modes: {MODES}")
             return 1
-        self.logger.info(
+        self.logger.trace(
             """
 ===============================================
   CHERI High-Level Synthesis
@@ -244,22 +247,22 @@ class CheriHLS:
         ) as result:
             if log_file:
                 f = open(log_file, "w")
-            if result.stdout or result.stderr:
-                self.logger.info("")
             if result.stdout:
                 for line in result.stdout:
                     buff += line
                     if log_file and self.debug:
                         f.write(line)
                     line = line.rstrip("\n")
-                    self.logger.debug(line)
+                    if self.debug:
+                        self.logger.trace(line)
             if result.stderr:
                 for line in result.stderr:
                     buff += line
                     if log_file and self.debug:
                         f.write(line)
                     line = line.rstrip("\n")
-                    self.logger.debug(line)
+                    if self.debug:
+                        self.logger.trace(line)
             if log_file:
                 f.close()
         return result.returncode, buff
