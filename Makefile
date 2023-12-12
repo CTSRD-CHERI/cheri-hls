@@ -27,6 +27,7 @@ build: build-cheri build-hls
 
 build-cheri:
 	@bash scripts/build-cheri.sh
+	@bash scripts/build-flute-nocap.sh
 	@bash scripts/build-flute.sh
 
 build-hls:

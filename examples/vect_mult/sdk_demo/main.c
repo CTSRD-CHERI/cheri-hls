@@ -13,14 +13,15 @@
 // HLS IP instance
 #define NUM 8
 #define SIZE 10
-// #define SIZE 10
 XVect_mult vect_mult_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
 u32 a[NUM][SIZE];
 u32 b[NUM][SIZE];
+
 u32 c[NUM][SIZE];
 // u32 c[NUM][SIZE - 1];
+
 u32 c_gold[NUM][SIZE];
 
 #ifdef CAPCHECKER
