@@ -13,8 +13,6 @@ BENCHMARKS = {"vect_mult": 8}
 MODES = ["cpu", "cpu+hls", "ccpu+hls", "ccpu+chls"]
 RV_ABI = "l64pc128"
 RV_ARCH = "rv64imaxcheri"
-# In seconds
-TIME_OUT = 4
 
 # ---------------------------------------
 # Logger setup
@@ -139,8 +137,8 @@ class CheriHLS:
 
     def __init__(self, args):
         self.args = args
-        # self.debug = self.args.debug
-        self.debug = False
+        self.debug = self.args.debug
+        # self.debug = False
         # Root path of cheri-hls
         self.root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -163,18 +161,19 @@ class CheriHLS:
         if mode == "cpu":
             self.logger.error("cpu not implemented yet")
             return 1
-        elif mode == "ccpu+chls":
-            return self.simulate_ccpu_chls(test)
         elif mode == "ccpu+hls":
-            self.logger.error("ccpu+hls not implemented yet")
-            return 1
+            return self.simulate_ccpu_hls(test, cheri_hls=False)
+        elif mode == "ccpu+chls":
+            return self.simulate_ccpu_hls(test, cheri_hls=True)
         else:  # mode == "cpu+hls":
             self.logger.error("cpu+hls not implemented yet")
             return 1
 
-    def simulate_ccpu_chls(self, test):
+    def simulate_ccpu_hls(self, test, cheri_hls=False):
+        mode = "hls" if cheri_hls == False else "chls"
+
         self.logger.info(
-            f"Running hardware simulation for test {test} with mode (ccpu+chls)..."
+            f"Running hardware simulation for test {test} with mode (ccpu+{mode})..."
         )
 
         sim_dir = os.path.join(self.root, "examples", test, "bare_metal_cpu_hls")
@@ -182,8 +181,8 @@ class CheriHLS:
         # Compile C code
         cmd = [
             "riscv64-unknown-freebsd-cc",
-            "-g",
-            "-O0",
+            # "-g",
+            # "-O0",
             "-nostdlib",
             "-mno-relax",
             "-Tlink.ld",
@@ -196,11 +195,12 @@ class CheriHLS:
             "xvect_mult_linux.c",
             "xvect_mult_sinit.c",
             "-DCAP",
-            "-DCAPCHECKER",
         ]
+        if cheri_hls:
+            cmd += ["-DCAPCHECKER"]
         result, _ = self.execute(cmd, cwd=sim_dir)
         if result:
-            self.logger.error(f"Compiling error for {test} (ccpu+chls).")
+            self.logger.error(f"Compiling error for {test} (ccpu+{mode}).")
             return result
 
         # Dump assembly code
@@ -210,44 +210,45 @@ class CheriHLS:
             "--mattr=+m,+a,+f,+d,+c,+xcheri",
             "a.out",
         ]
-        obj_dump = os.path.join(sim_dir, "ccpu_chls.dump")
+        obj_dump = os.path.join(sim_dir, "ccpu_hls.dump")
         result, obj_buff = self.execute(cmd, log_file=obj_dump, cwd=sim_dir)
         if result:
-            self.logger.error(f"Compiling error for {test} (ccpu+chls).")
+            self.logger.error(f"Compiling error for {test} (ccpu+{mode}).")
             return result
 
         # elf to hex
+        cap = "cap" if "chls" in mode else "nocap"
         cmd = [
             os.path.join(self.root, "Flute", "Tests", "elf_to_hex", "elf_to_hex"),
             "a.out",
-            os.path.join(self.root, "Flute", "builds", f"{test}_cap", "Mem.hex"),
+            os.path.join(self.root, "Flute", "builds", f"{test}_{cap}", "Mem.hex"),
         ]
         result, _ = self.execute(cmd, cwd=sim_dir)
         if result:
-            self.logger.error(f"Compiling error for {test} (ccpu+chls).")
+            self.logger.error(f"Compiling error for {test} (ccpu+{mode}).")
             return result
 
         # run simulation
-        flute_build = os.path.join(self.root, "Flute", "builds", f"{test}_cap")
-        sim_log = os.path.join(sim_dir, "ccpu_chls.log")
+        flute_build = os.path.join(self.root, "Flute", "builds", f"{test}_{cap}")
+        sim_log = os.path.join(sim_dir, "ccpu_hls.log")
         # No result checking since it does not terminate
-        cmd = f"(cd {flute_build}; timeout {TIME_OUT}s ./exe_HW_sim +v2 > {sim_log})"
+        cmd = f"(cd {flute_build}; timeout {self.args.timeout} ./exe_HW_sim +v2 > {sim_log})"
         self.logger.debug(cmd)
         os.system(cmd)
 
         pc = get_success_op_pc(obj_buff)
-        self.logger.debug(f"Success PC for {test} (ccpu+chls) is 0x{pc}")
+        self.logger.debug(f"Success PC for {test} (ccpu+{mode}) is 0x{pc}")
         if not pc:
-            self.logger.error(f"Cannot find success PC for {test} (ccpu+chls).")
+            self.logger.error(f"Cannot find success PC for {test} (ccpu+{mode}).")
             return result
 
         cycles = get_total_cycles(sim_log, pc)
         if not cycles:
-            self.logger.error(f"Cannot find total cycles for {test} (ccpu+chls).")
+            self.logger.error(f"Cannot find total cycles for {test} (ccpu+{mode}).")
             return result
 
         self.logger.info(
-            f"Simulation for {test} (ccpu+chls) finished. Total cycles = {cycles}"
+            f"Simulation for {test} (ccpu+{mode}) finished. Total cycles = {cycles}"
         )
         return 0
 
@@ -405,6 +406,12 @@ cheri-hls.py -a"""
         dest="debug",
         default=False,
         help="Run in debug mode, Default=False",
+    )
+    parser.add_argument(
+        "--to",
+        default="10s",
+        dest="timeout",
+        help="Simulation Timeout, Default=10s",
     )
     parser.add_argument(
         "-t",
