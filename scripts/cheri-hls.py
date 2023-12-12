@@ -11,13 +11,17 @@ from argparse import ArgumentParser
 
 BENCHMARKS = {"vect_mult": 8}
 MODES = ["cpu", "cpu+hls", "ccpu+hls", "ccpu+chls"]
+RV_ABI = "l64pc128"
+RV_ARCH = "rv64imaxcheri"
+# In seconds
+TIME_OUT = 4
 
 # ---------------------------------------
 # Logger setup
 # ---------------------------------------
 
 
-def getLogger(name: str, logFile: str = "", console: bool = True) -> logging.Logger:
+def getLogger(name: str, log_file: str = "", console: bool = True) -> logging.Logger:
     # add a trace level
     logging.TRACE = logging.DEBUG - 5
     logging.addLevelName(logging.TRACE, "TRACE")
@@ -27,9 +31,9 @@ def getLogger(name: str, logFile: str = "", console: bool = True) -> logging.Log
     logger = logging.getLogger(name)
     logger.setLevel(logging.TRACE)
 
-    if logFile:
-        if os.path.isfile(logFile):
-            os.remove(logFile)
+    if log_file:
+        if os.path.isfile(log_file):
+            os.remove(log_file)
 
         # File handle
         class customFileFormat(logging.Formatter):
@@ -44,7 +48,7 @@ def getLogger(name: str, logFile: str = "", console: bool = True) -> logging.Log
                 formatter = logging.Formatter(logformat, "%Y-%m-%d %H:%M:%S")
                 return formatter.format(record)
 
-        fh = logging.FileHandler(logFile)
+        fh = logging.FileHandler(log_file)
         fh.setFormatter(customFileFormat())
         fh.setLevel(logging.TRACE)
         logger.addHandler(fh)
@@ -85,6 +89,35 @@ def getLogger(name: str, logFile: str = "", console: bool = True) -> logging.Log
 
 
 # ---------------------------------------
+# Utils
+# ---------------------------------------
+
+
+def get_success_op_pc(obj_dump):
+    pc = -1
+    for i, line in enumerate(obj_dump):
+        if "<success>:" in line:
+            pc = i + 1
+            break
+
+    return "" if pc == -1 else obj_dump[pc][: obj_dump[pc].find(":")]
+
+
+def get_total_cycles(sim_log, pc):
+    with open(sim_log) as f:
+        lines = f.readlines()
+
+    count = 0
+    lc = 0
+    for i, line in enumerate(lines):
+        if f"PC:0x{pc}" in line:
+            count += 1
+            lc = i + 1
+
+    return int(lines[lc][: lines[lc].find(" ")]) if count == 1 else -1
+
+
+# ---------------------------------------
 # CHERI HLS
 # ---------------------------------------
 
@@ -107,7 +140,7 @@ class CheriHLS:
     def __init__(self, args):
         self.args = args
         # self.debug = self.args.debug
-        self.debug = True
+        self.debug = False
         # Root path of cheri-hls
         self.root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -131,15 +164,97 @@ class CheriHLS:
             self.logger.error("cpu not implemented yet")
             return 1
         elif mode == "ccpu+chls":
-            self.logger.error("ccpu+chls not implemented yet")
-            return 1
+            return self.simulate_ccpu_chls(test)
         elif mode == "ccpu+hls":
-            return 0
+            self.logger.error("ccpu+hls not implemented yet")
+            return 1
         else:  # mode == "cpu+hls":
             self.logger.error("cpu+hls not implemented yet")
             return 1
 
+    def simulate_ccpu_chls(self, test):
+        self.logger.info(
+            f"Running hardware simulation for test {test} with mode (ccpu+chls)..."
+        )
+
+        sim_dir = os.path.join(self.root, "examples", test, "bare_metal_cpu_hls")
+
+        # Compile C code
+        cmd = [
+            "riscv64-unknown-freebsd-cc",
+            "-g",
+            "-O0",
+            "-nostdlib",
+            "-mno-relax",
+            "-Tlink.ld",
+            "-mcmodel=medany",
+            f"-mabi={RV_ABI}",
+            f"-march={RV_ARCH}",
+            "init.S",
+            "main.c",
+            "xvect_mult.c",
+            "xvect_mult_linux.c",
+            "xvect_mult_sinit.c",
+            "-DCAP",
+            "-DCAPCHECKER",
+        ]
+        result, _ = self.execute(cmd, cwd=sim_dir)
+        if result:
+            self.logger.error(f"Compiling error for {test} (ccpu+chls).")
+            return result
+
+        # Dump assembly code
+        cmd = [
+            "riscv64-unknown-freebsd-objdump",
+            "-d",
+            "--mattr=+m,+a,+f,+d,+c,+xcheri",
+            "a.out",
+        ]
+        obj_dump = os.path.join(sim_dir, "ccpu_chls.dump")
+        result, obj_buff = self.execute(cmd, log_file=obj_dump, cwd=sim_dir)
+        if result:
+            self.logger.error(f"Compiling error for {test} (ccpu+chls).")
+            return result
+
+        # elf to hex
+        cmd = [
+            os.path.join(self.root, "Flute", "Tests", "elf_to_hex", "elf_to_hex"),
+            "a.out",
+            os.path.join(self.root, "Flute", "builds", f"{test}_cap", "Mem.hex"),
+        ]
+        result, _ = self.execute(cmd, cwd=sim_dir)
+        if result:
+            self.logger.error(f"Compiling error for {test} (ccpu+chls).")
+            return result
+
+        # run simulation
+        flute_build = os.path.join(self.root, "Flute", "builds", f"{test}_cap")
+        sim_log = os.path.join(sim_dir, "ccpu_chls.log")
+        # No result checking since it does not terminate
+        cmd = f"(cd {flute_build}; timeout {TIME_OUT}s ./exe_HW_sim +v2 > {sim_log})"
+        self.logger.debug(cmd)
+        os.system(cmd)
+
+        pc = get_success_op_pc(obj_buff)
+        self.logger.debug(f"Success PC for {test} (ccpu+chls) is 0x{pc}")
+        if not pc:
+            self.logger.error(f"Cannot find success PC for {test} (ccpu+chls).")
+            return result
+
+        cycles = get_total_cycles(sim_log, pc)
+        if not cycles:
+            self.logger.error(f"Cannot find total cycles for {test} (ccpu+chls).")
+            return result
+
+        self.logger.info(
+            f"Simulation for {test} (ccpu+chls) finished. Total cycles = {cycles}"
+        )
+        return 0
+
     def run_synthesis(self, test, mode):
+        self.logger.info(
+            f"Running hardware synthesis for test {test} with mode {mode}..."
+        )
         # Generate HLS hardware
         test_dir = os.path.join(self.root, "examples", test)
         cmd = [
@@ -240,7 +355,7 @@ class CheriHLS:
         return 0
 
     def execute(self, cmd, log_file=None, cwd="."):
-        buff = ""
+        buff = []
         self.logger.debug(subprocess.list2cmdline(cmd))
         with subprocess.Popen(
             cmd, stdout=subprocess.PIPE, bufsize=1, universal_newlines=True, cwd=cwd
@@ -249,16 +364,16 @@ class CheriHLS:
                 f = open(log_file, "w")
             if result.stdout:
                 for line in result.stdout:
-                    buff += line
-                    if log_file and self.debug:
+                    buff += [line]
+                    if log_file:
                         f.write(line)
                     line = line.rstrip("\n")
                     if self.debug:
                         self.logger.trace(line)
             if result.stderr:
                 for line in result.stderr:
-                    buff += line
-                    if log_file and self.debug:
+                    buff += [line]
+                    if log_file:
                         f.write(line)
                     line = line.rstrip("\n")
                     if self.debug:
