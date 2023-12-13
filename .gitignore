@@ -1,4 +1,7 @@
 cheri/
 cheri-tools/
 *.log
+*.out
+*.dump
+*.txt
 *_prj/

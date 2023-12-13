@@ -43,7 +43,7 @@ RUN mkdir -p /srcPkgs \
     && git clone https://github.com/verilator/verilator \ 
     && unset VERILATOR_ROOT \
     && cd verilator \
-    && git checkout v4.200 \
+    && git checkout v5.018 \
     && autoconf \
     && ./configure \
     && make -j 4 \
