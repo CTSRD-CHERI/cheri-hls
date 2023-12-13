@@ -210,7 +210,7 @@ class CheriHLS:
             "--mattr=+m,+a,+f,+d,+c,+xcheri",
             "a.out",
         ]
-        obj_dump = os.path.join(sim_dir, "ccpu_hls.dump")
+        obj_dump = os.path.join(sim_dir, "ccpu_{mode}.dump")
         result, obj_buff = self.execute(cmd, log_file=obj_dump, cwd=sim_dir)
         if result:
             self.logger.error(f"Compiling error for {test} (ccpu+{mode}).")
@@ -230,7 +230,7 @@ class CheriHLS:
 
         # run simulation
         flute_build = os.path.join(self.root, "Flute", "builds", f"{test}_{cap}")
-        sim_log = os.path.join(sim_dir, "ccpu_hls.log")
+        sim_log = os.path.join(sim_dir, "ccpu_{mode}.log")
         # No result checking since it does not terminate
         cmd = f"(cd {flute_build}; timeout {self.args.timeout} ./exe_HW_sim +v2 > {sim_log})"
         self.logger.debug(cmd)
