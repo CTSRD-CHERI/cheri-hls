@@ -91,31 +91,53 @@ def getLogger(name: str, log_file: str = "", console: bool = True) -> logging.Lo
 # ---------------------------------------
 
 
-def get_success_op_pc(obj_dump):
+def get_relevant_op_pc(obj_dump):
     with open(obj_dump) as f:
         lines = f.readlines()
 
-    pc = -1
+    success_pc = ""
+    fence_pc = []
     for i, line in enumerate(lines):
         if "<success>:" in line:
-            pc = i + 1
+            success_pc = i + 1
+        if "fence" in line:
+            fence_pc.append(line[: line.find(":")])
+        if success_pc != -1 and len(fence_pc) == 2:
             break
 
-    return "" if pc == -1 else lines[pc][: lines[pc].find(":")]
+    success_pc = (
+        "" if success_pc == -1 else lines[success_pc][: lines[success_pc].find(":")]
+    )
+    fence_pc_0 = "" if len(fence_pc) < 1 else fence_pc[0]
+    fence_pc_1 = "" if len(fence_pc) < 2 else fence_pc[1]
+
+    return [success_pc, fence_pc_0, fence_pc_1]
 
 
-def get_total_cycles(sim_log, pc):
+def get_total_cycles(sim_log, pcs, logger):
     with open(sim_log) as f:
         lines = f.readlines()
 
-    count = 0
     lc = 0
+    pc_cycles = [0] * len(pcs)
+    count = [0] * len(pcs)
     for i, line in enumerate(lines):
-        if f"PC:0x{pc}" in line:
-            count += 1
-            lc = i + 1
+        for j, pc in enumerate(pcs):
+            if f"PC:0x{pc}" in line:
+                lc = i + 1
+                cycle = lines[lc][
+                    : min(max(0, lines[lc].find(":")), max(0, lines[lc].find(" ")))
+                ]
+                if cycle.isnumeric():
+                    logger.debug(f"{line}{lines[lc]}Cycle = {cycle}")
+                    pc_cycles[j] = int(cycle)
+                    count[j] += 1
 
-    return int(lines[lc][: lines[lc].find(" ")]) if count == 1 else -1
+    for i, c in enumerate(count):
+        if c != 1:
+            pc_cycles[i] = -1
+
+    return pc_cycles
 
 
 # ---------------------------------------
@@ -221,32 +243,38 @@ class CheriHLS:
         # No result checking since it does not terminate
         cmd = f"(cd {flute_build}; timeout {self.args.timeout} ./exe_HW_sim +v2 > {sim_log})"
         self.logger.debug(cmd)
+        # os.system(cmd)
+
+        pc = get_relevant_op_pc(obj_dump)
+        self.logger.debug(f"Relevant PCs for {test} (cpu+hls) are 0x{pc}")
+        for p in pc:
+            if not p:
+                self.logger.error(f"Cannot find relevant PC for {test} (cpu+hls).")
+                return result
+
+        # Emit instret log
+        instret_log = os.path.join(sim_dir, f"instret_cpu_hls.log")
+        cmd = f'grep -A2 "instret" {sim_log} > {instret_log}'
+        self.logger.debug(cmd)
         os.system(cmd)
 
-        pc = get_success_op_pc(obj_buff)
-        self.logger.debug(f"Success PC for {test} (cpu+hls) is 0x{pc}")
-        if not pc:
-            self.logger.error(f"Cannot find success PC for {test} (cpu+hls).")
-            return result
-
-        cycles = get_total_cycles(sim_log, pc)
-        if not cycles:
-            self.logger.error(f"Cannot find total cycles for {test} (cpu+hls).")
-            return result
+        cycles = get_total_cycles(instret_log, pc, self.logger)
+        self.logger.debug(f"Relevant cycles for {test} (cpu+hls) are {cycles}")
+        for cycle in cycles:
+            if not cycle:
+                self.logger.error(f"Cannot find total cycles for {test} (cpu+hls).")
+                return result
 
         self.logger.info(
-            f"Simulation for {test} (cpu+hls) finished. Total cycles = {cycles}"
+            f"Simulation for {test} (cpu+hls) finished. Total cycles = {cycles[0]}, and relevant break points are {cycles[1] and {cycles[2]}}"
         )
 
         if self.debug:
-            # Emit instret log
-            instret_log = os.path.join(sim_dir, f"instret_cpu_hls.log")
-            cmd = f'grep -A2 "instret" -rnw {sim_log} > {instret_log}'
-            self.logger.debug(cmd)
-            os.system(cmd)
-            cmd = f'grep -A2 "0x{pc}" {instret_log}'
-            self.logger.debug(cmd)
-            os.system(cmd)
+            for p in pc:
+                if p:
+                    cmd = f'grep -A2 "PC:0x{p}" {instret_log}'
+                    self.logger.debug(cmd)
+                    os.system(cmd)
         return 0
 
     def simulate_ccpu_hls(self, test, cheri_hls=False):
@@ -309,30 +337,36 @@ class CheriHLS:
         self.logger.debug(cmd)
         os.system(cmd)
 
-        pc = get_success_op_pc(obj_buff)
-        self.logger.debug(f"Success PC for {test} (ccpu+{mode}) is 0x{pc}")
-        if not pc:
-            self.logger.error(f"Cannot find success PC for {test} (ccpu+{mode}).")
-            return result
+        pc = get_relevant_op_pc(obj_dump)
+        self.logger.debug(f"Relevant PCs for {test} (ccpu+{mode}) are 0x{pc}")
+        for p in pc:
+            if not p:
+                self.logger.error(f"Cannot find relevant PC for {test} (ccpu+{mode}).")
+                return result
 
-        cycles = get_total_cycles(sim_log, pc)
-        if not cycles:
-            self.logger.error(f"Cannot find total cycles for {test} (ccpu+{mode}).")
-            return result
+        # Emit instret log
+        instret_log = os.path.join(sim_dir, f"instret_ccpu_{mode}.log")
+        cmd = f'grep -A2 "instret" {sim_log} > {instret_log}'
+        self.logger.debug(cmd)
+        os.system(cmd)
+
+        cycles = get_total_cycles(instret_log, pc, self.logger)
+        self.logger.debug(f"Relevant cycles for {test} (ccpu+{mode})  are {cycles}")
+        for cycle in cycles:
+            if not cycles:
+                self.logger.error(f"Cannot find total cycles for {test} (ccpu+{mode}).")
+                return result
 
         self.logger.info(
             f"Simulation for {test} (ccpu+{mode}) finished. Total cycles = {cycles}"
         )
 
         if self.debug:
-            # Emit instret log
-            instret_log = os.path.join(sim_dir, f"instret_ccpu_{mode}.log")
-            cmd = f'grep -A2 "instret" -rnw {sim_log} > {instret_log}'
-            self.logger.debug(cmd)
-            os.system(cmd)
-            cmd = f'grep -A2 "0x{pc}" {instret_log}'
-            self.logger.debug(cmd)
-            os.system(cmd)
+            for p in pc:
+                if p:
+                    cmd = f'grep -A2 "PC:0x{p}" {instret_log}'
+                    self.logger.debug(cmd)
+                    os.system(cmd)
 
         return 0
 
