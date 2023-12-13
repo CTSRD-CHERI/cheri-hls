@@ -92,13 +92,16 @@ def getLogger(name: str, log_file: str = "", console: bool = True) -> logging.Lo
 
 
 def get_success_op_pc(obj_dump):
+    with open(obj_dump) as f:
+        lines = f.readlines()
+
     pc = -1
-    for i, line in enumerate(obj_dump):
+    for i, line in enumerate(lines):
         if "<success>:" in line:
             pc = i + 1
             break
 
-    return "" if pc == -1 else obj_dump[pc][: obj_dump[pc].find(":")]
+    return "" if pc == -1 else lines[pc][: lines[pc].find(":")]
 
 
 def get_total_cycles(sim_log, pc):
@@ -166,8 +169,85 @@ class CheriHLS:
         elif mode == "ccpu+chls":
             return self.simulate_ccpu_hls(test, cheri_hls=True)
         else:  # mode == "cpu+hls":
-            self.logger.error("cpu+hls not implemented yet")
-            return 1
+            return self.simulate_cpu_hls(test)
+
+    def simulate_cpu_hls(self, test):
+        self.logger.info(
+            f"Running hardware simulation for test {test} with mode (cpu+hls)..."
+        )
+
+        sim_dir = os.path.join(self.root, "examples", test, "bare_metal_cpu_hls")
+
+        # Compile C code
+        cmd = [
+            "riscv64-unknown-freebsd-cc",
+            # "-g",
+            # "-O0",
+            "-nostdlib",
+            "-mno-relax",
+            "-Tlink.ld",
+            "-mcmodel=medany",
+            "init_nocap.S",
+            "main.c",
+            "xvect_mult.c",
+            "xvect_mult_linux.c",
+            "xvect_mult_sinit.c",
+        ]
+        result, _ = self.execute(cmd, cwd=sim_dir)
+        if result:
+            self.logger.error(f"Compiling error for {test} (cpu+hls).")
+            return result
+
+        # Dump assembly code
+        obj_dump = os.path.join(sim_dir, f"cpu_hls.dump")
+        cmd = f"(cd {sim_dir}; riscv64-unknown-freebsd-objdump -d --mattr=+m,+a,+f,+d,+c,+xcheri a.out > {obj_dump})"
+        self.logger.debug(cmd)
+        os.system(cmd)
+
+        # elf to hex
+        cmd = [
+            os.path.join(self.root, "Flute", "Tests", "elf_to_hex", "elf_to_hex"),
+            "a.out",
+            os.path.join(self.root, "Flute", "builds", f"{test}_nocap", "Mem.hex"),
+        ]
+        result, _ = self.execute(cmd, cwd=sim_dir)
+        if result:
+            self.logger.error(f"Compiling error for {test} (cpu+hls).")
+            return result
+
+        # run simulation
+        flute_build = os.path.join(self.root, "Flute", "builds", f"{test}_nocap")
+        sim_log = os.path.join(sim_dir, f"cpu_hls.log")
+        # No result checking since it does not terminate
+        cmd = f"(cd {flute_build}; timeout {self.args.timeout} ./exe_HW_sim +v2 > {sim_log})"
+        self.logger.debug(cmd)
+        os.system(cmd)
+
+        pc = get_success_op_pc(obj_buff)
+        self.logger.debug(f"Success PC for {test} (cpu+hls) is 0x{pc}")
+        if not pc:
+            self.logger.error(f"Cannot find success PC for {test} (cpu+hls).")
+            return result
+
+        cycles = get_total_cycles(sim_log, pc)
+        if not cycles:
+            self.logger.error(f"Cannot find total cycles for {test} (cpu+hls).")
+            return result
+
+        self.logger.info(
+            f"Simulation for {test} (cpu+hls) finished. Total cycles = {cycles}"
+        )
+
+        if self.debug:
+            # Emit instret log
+            instret_log = os.path.join(sim_dir, f"instret_cpu_hls.log")
+            cmd = f"grep -rnw {sim_log} -e instret > {instret_log}"
+            self.logger.debug(cmd)
+            os.system(cmd)
+            cmd = f"grep -rn {instret_log} -e 0x{pc}"
+            self.logger.debug(cmd)
+            os.system(cmd)
+        return 0
 
     def simulate_ccpu_hls(self, test, cheri_hls=False):
         mode = "hls" if cheri_hls == False else "chls"
@@ -204,17 +284,10 @@ class CheriHLS:
             return result
 
         # Dump assembly code
-        cmd = [
-            "riscv64-unknown-freebsd-objdump",
-            "-d",
-            "--mattr=+m,+a,+f,+d,+c,+xcheri",
-            "a.out",
-        ]
-        obj_dump = os.path.join(sim_dir, "ccpu_{mode}.dump")
-        result, obj_buff = self.execute(cmd, log_file=obj_dump, cwd=sim_dir)
-        if result:
-            self.logger.error(f"Compiling error for {test} (ccpu+{mode}).")
-            return result
+        obj_dump = os.path.join(sim_dir, f"ccpu_{mode}.dump")
+        cmd = f"(cd {sim_dir}; riscv64-unknown-freebsd-objdump -d --mattr=+m,+a,+f,+d,+c,+xcheri a.out > {obj_dump})"
+        self.logger.debug(cmd)
+        os.system(cmd)
 
         # elf to hex
         cap = "cap" if "chls" in mode else "nocap"
@@ -230,7 +303,7 @@ class CheriHLS:
 
         # run simulation
         flute_build = os.path.join(self.root, "Flute", "builds", f"{test}_{cap}")
-        sim_log = os.path.join(sim_dir, "ccpu_{mode}.log")
+        sim_log = os.path.join(sim_dir, f"ccpu_{mode}.log")
         # No result checking since it does not terminate
         cmd = f"(cd {flute_build}; timeout {self.args.timeout} ./exe_HW_sim +v2 > {sim_log})"
         self.logger.debug(cmd)
@@ -250,6 +323,17 @@ class CheriHLS:
         self.logger.info(
             f"Simulation for {test} (ccpu+{mode}) finished. Total cycles = {cycles}"
         )
+
+        if self.debug:
+            # Emit instret log
+            instret_log = os.path.join(sim_dir, f"instret_ccpu_{mode}.log")
+            cmd = f"grep -rnw {sim_log} -e instret > {instret_log}"
+            self.logger.debug(cmd)
+            os.system(cmd)
+            cmd = f"grep -rn {instret_log} -e 0x{pc}"
+            self.logger.debug(cmd)
+            os.system(cmd)
+
         return 0
 
     def run_synthesis(self, test, mode):
