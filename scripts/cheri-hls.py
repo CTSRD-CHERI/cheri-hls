@@ -243,7 +243,7 @@ class CheriHLS:
         # No result checking since it does not terminate
         cmd = f"(cd {flute_build}; timeout {self.args.timeout} ./exe_HW_sim +v2 > {sim_log})"
         self.logger.debug(cmd)
-        # os.system(cmd)
+        os.system(cmd)
 
         pc = get_relevant_op_pc(obj_dump)
         self.logger.debug(f"Relevant PCs for {test} (cpu+hls) are 0x{pc}")

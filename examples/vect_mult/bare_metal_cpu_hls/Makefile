@@ -27,10 +27,5 @@ capchecker:
 cc: capchecker
 	@echo "Simulation finished"	
 
-check:
-	grep -rnw ccpu_hls.log -e instret > instret.log
-	grep -rn instret.log -e "80000054" 
-
-check2:
-	grep -rnw sim.log -e instret > instret.log
-	grep -rn instret.log -e "80000054" 
+clean:
+	rm *.log *.dump
