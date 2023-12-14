@@ -91,7 +91,7 @@ RUN echo "dev-user     ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 # Install Python packages 
 ENV PATH="${PATH}:/home/dev-user/.local/bin"
 RUN pip3 install --user --upgrade pip \
-    && pip3 install black colorlog toml tabulate
+    && pip3 install black colorlog toml tabulate pyserial
 
 # Install vim package manager
 RUN curl -fLo /home/dev-user/.vim/autoload/plug.vim --create-dirs \
