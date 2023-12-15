@@ -3,7 +3,8 @@
 FROM ubuntu:22.04
 ARG UID
 ARG GID
-ARG VHLS_PATH
+ARG HLS_PATH
+ARG VIVADO_PATH
 RUN echo "Group ID: $GID"
 RUN echo "User ID: $UID"
 
@@ -91,21 +92,22 @@ RUN echo "dev-user     ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 # Install Python packages 
 ENV PATH="${PATH}:/home/dev-user/.local/bin"
 RUN pip3 install --user --upgrade pip \
-    && pip3 install black colorlog toml tabulate
+    && pip3 install black colorlog toml tabulate pyserial
 
 # Install vim package manager
 RUN curl -fLo /home/dev-user/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Add environment variables
-ENV vhls $VHLS_PATH
 RUN printf "\
 \nexport LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:\$LIBRARY_PATH \
 \n# Basic PATH setup \
 \nexport PATH=/workspace/cheri/output/sdk/bin:/srcPkgs/bsc/inst/bin:/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
 \n# Vitis HLS setup \
-\nexport VHLS=${VHLS_PATH} \
-\n# source ${VHLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
+\nexport VHLS=${HLS_PATH} \
+\n# source ${HLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
+\nexport VIVADO=${VIVADO_PATH} \
+\n# source ${VIVADO_PATH}/Vivado/2019.1/settings64.sh \
 \n# Thread setup \
 \nexport nproc=\$(grep -c ^processor /proc/cpuinfo) \
 \n# Terminal color... \

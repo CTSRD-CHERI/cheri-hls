@@ -166,6 +166,9 @@ class CheriHLS:
         # self.debug = False
         # Root path of cheri-hls
         self.root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        self.flute = os.path.abspath(
+            os.path.join(self.root, "BESSPIN-GFE", "bluespec-processors", "P2", "Flute")
+        )
 
     def run(self):
         result = 0
@@ -228,9 +231,9 @@ class CheriHLS:
 
         # elf to hex
         cmd = [
-            os.path.join(self.root, "Flute", "Tests", "elf_to_hex", "elf_to_hex"),
+            os.path.join(self.flute, "Tests", "elf_to_hex", "elf_to_hex"),
             "a.out",
-            os.path.join(self.root, "Flute", "builds", f"{test}_nocap", "Mem.hex"),
+            os.path.join(self.flute, "builds", f"{test}_nocap", "Mem.hex"),
         ]
         result, _ = self.execute(cmd, cwd=sim_dir)
         if result:
@@ -238,7 +241,7 @@ class CheriHLS:
             return result
 
         # run simulation
-        flute_build = os.path.join(self.root, "Flute", "builds", f"{test}_nocap")
+        flute_build = os.path.join(self.flute, "builds", f"{test}_nocap")
         sim_log = os.path.join(sim_dir, f"cpu_hls.log")
         # No result checking since it does not terminate
         cmd = f"(cd {flute_build}; timeout {self.args.timeout} ./exe_HW_sim +v2 > {sim_log})"
@@ -320,9 +323,9 @@ class CheriHLS:
         # elf to hex
         cap = "cap" if "chls" in mode else "nocap"
         cmd = [
-            os.path.join(self.root, "Flute", "Tests", "elf_to_hex", "elf_to_hex"),
+            os.path.join(self.flute, "Tests", "elf_to_hex", "elf_to_hex"),
             "a.out",
-            os.path.join(self.root, "Flute", "builds", f"{test}_{cap}", "Mem.hex"),
+            os.path.join(self.flute, "builds", f"{test}_{cap}", "Mem.hex"),
         ]
         result, _ = self.execute(cmd, cwd=sim_dir)
         if result:
@@ -330,7 +333,7 @@ class CheriHLS:
             return result
 
         # run simulation
-        flute_build = os.path.join(self.root, "Flute", "builds", f"{test}_{cap}")
+        flute_build = os.path.join(self.flute, "builds", f"{test}_{cap}")
         sim_log = os.path.join(sim_dir, f"ccpu_{mode}.log")
         # No result checking since it does not terminate
         cmd = f"(cd {flute_build}; timeout {self.args.timeout} ./exe_HW_sim +v2 > {sim_log})"
@@ -388,14 +391,14 @@ class CheriHLS:
 
         # Get Flute
         cap = "cap" if "chls" in mode else "nocap"
-        flute_build = os.path.join(self.root, "Flute", "builds", f"{test}_{cap}")
+        flute_build = os.path.join(self.flute, "builds", f"{test}_{cap}")
         flute_src = os.path.join(
-            self.root, "Flute", "builds", "RV64ACIMUxCHERI_Flute_verilator"
+            self.flute, "builds", "RV64ACIMUxCHERI_Flute_verilator"
         )
         if os.path.exists(flute_build):
             shutil.rmtree(flute_build)
             self.logger.debug(f"Removed (old) {flute_build}")
-        cwd = os.path.join(self.root, "Flute", "builds")
+        cwd = os.path.join(self.flute, "builds")
         cmd = ["Resources/mkBuild_Dir.py", "..", "RV64ACIMUxCHERI", "verilator"]
         result, _ = self.execute(cmd, cwd=cwd)
         if result:
@@ -566,3 +569,19 @@ ccpu+chls (fullcap cpu + fullcap hls)""",
 
 if __name__ == "__main__":
     cheri_hls()
+
+# TODO: Compile software for CheriBSD:
+# ----
+# #include <stdio.h>
+# int main() {
+#
+#   printf("hello\n");
+#   return 0;
+# }
+# ----
+# riscv64-unknown-freebsd-cc \
+#   --sysroot=/workspace/cheri/output/sdk/sysroot-riscv64-purecap \
+#   -B/workspace/cheri/output/sdk/bin \
+#   -march=rv64imafdc \
+#   -mabi=lp64d -mno-relax -fuse-ld=lld \
+#   --ld-path=/workspace/cheri/output/sdk/bin/ld.lld -Wl,--whole-archive -lstatcounters -Wl,--no-whole-archive main.c
