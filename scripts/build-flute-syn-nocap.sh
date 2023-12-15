@@ -16,6 +16,11 @@ BESSPINGFE=${CHERI_HLS}/BESSPIN-GFE
 FLUTE=${BESSPINGFE}/bluespec-processors/P2/Flute
 
 cd ${FLUTE}/src_SSITH_P2
+
+# rsync -r \
+# jc2489@128.232.81.162:/home/jc2489/work/cheri-hls/BESSPIN-GFE/bluespec-processors/P2/Flute/src_SSITH_P2/Verilog_RTL \
+# /home/jc2489/cheri-hls/BESSPIN-GFE/bluespec-processors/P2/Flute/src_SSITH_P2 
+
 # make compile
 
 # copy verilog to hdl and add them to component.xml
