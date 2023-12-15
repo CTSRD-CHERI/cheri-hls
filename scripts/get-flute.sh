@@ -12,11 +12,18 @@ set -o nounset
 # --------------------------------------------------------------------
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 CHERI_HLS=${SCRIPT_DIR}/..
+BESSPINGFE=${CHERI_HLS}/BESSPIN-GFE
+FLUTE=${BESSPINGFE}/bluespec-processors/P2/Flute
 
 cd $CHERI_HLS
-git clone git@github.com:CTSRD-CHERI/BESSPIN-GFE.git
-cd BESSPIN-GFE/bluespec-processors/P2
+if [ ! -d "${CHERI_HLS}/BESSPIN-GFE" ]; then
+	git clone git@github.com:CTSRD-CHERI/BESSPIN-GFE.git
+fi
+cd ${BESSPINGFE}/bluespec-processors/P2
+git submodule update --init --recursive Flute
 cd Flute
 git checkout hls
-cd ..
-git submodule udpate --init --recursive
+git submodule update --init --recursive
+
+cd ${FLUTE}/Tests/elf_to_hex
+gcc -g  -o elf_to_hex  elf_to_hex.c -lelf -mcmodel=medium
