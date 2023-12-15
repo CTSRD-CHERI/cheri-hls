@@ -16,12 +16,12 @@ BESSPINGFE=${CHERI_HLS}/BESSPIN-GFE
 FLUTE=${BESSPINGFE}/bluespec-processors/P2/Flute
 
 cd ${FLUTE}/src_SSITH_P2
-make compile
+# make compile
 
 # copy verilog to hdl and add them to component.xml
 # copy hlsWrapper.v as well
 
-source ${VIVADO}/Vivado/2019.1/settings.sh
+source ${VIVADO}/Vivado/2019.1/settings64.sh
 
 cd $BESSPINGFE
 ./setup_soc_project.sh bluespec_p2

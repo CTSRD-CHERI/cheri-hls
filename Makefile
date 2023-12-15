@@ -1,7 +1,7 @@
 user=$(if $(shell id -u),$(shell id -u),9001)
 group=$(if $(shell id -g),$(shell id -g),1000)
 vhls=/home/jc2489/tools/Xilinx/2023.1
-vivado=/home/jc2489/tools/Xilinx/2019.2
+vivado=/home/jc2489/tools/Xilinx/2019.1
 
 # Build Docker container
 build-docker: 
