@@ -22,5 +22,5 @@ make build
 This should also take long time to finish. To test:
 ```sh
 cd /workspace
-make test 
+cheri-hls.py -t vect_mult -s -d --to 1000s 
 ```
