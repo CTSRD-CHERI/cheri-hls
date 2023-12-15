@@ -12,13 +12,17 @@ set -o nounset
 # --------------------------------------------------------------------
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 CHERI_HLS=${SCRIPT_DIR}/..
+BESSPINGFE=${CHERI_HLS}/BESSPIN-GFE
+FLUTE=${BESSPINGFE}/bluespec-processors/P2/Flute
 
-cd $CHERI_HLS
-git clone git@github.com:CTSRD-CHERI/BESSPIN-GFE.git
-cd BESSPIN-GFE/bluespec-processors/P2
-git submodule udpate --init --recursive Flute
-cd Flute
-git checkout hls
-
-cd src_SSITH_P2
+cd ${FLUTE}/src_SSITH_P2
 make compile
+
+# copy verilog to hdl and add them to component.xml
+# copy hlsWrapper.v as well
+
+source ${VIVADO}/Vivado/2019.1/settings.sh
+
+cd $BESSPINGFE
+./setup_soc_project.sh bluespec_p2
+./build.sh bluespec_p2

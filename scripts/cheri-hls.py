@@ -569,3 +569,19 @@ ccpu+chls (fullcap cpu + fullcap hls)""",
 
 if __name__ == "__main__":
     cheri_hls()
+
+# TODO: Compile software for CheriBSD:
+# ----
+# #include <stdio.h>
+# int main() {
+#
+#   printf("hello\n");
+#   return 0;
+# }
+# ----
+# riscv64-unknown-freebsd-cc \
+#   --sysroot=/workspace/cheri/output/sdk/sysroot-riscv64-purecap \
+#   -B/workspace/cheri/output/sdk/bin \
+#   -march=rv64imafdc \
+#   -mabi=lp64d -mno-relax -fuse-ld=lld \
+#   --ld-path=/workspace/cheri/output/sdk/bin/ld.lld -Wl,--whole-archive -lstatcounters -Wl,--no-whole-archive main.c
