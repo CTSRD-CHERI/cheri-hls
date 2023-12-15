@@ -19,8 +19,17 @@ It may take long time to build the docker container for the first time. Once don
 cd /workspace
 make build 
 ```
-This should also take long time to finish. To test:
+This should also take long time to finish. 
+
+
+## Test bare metal examples
+
+To test:
 ```sh
 cd /workspace
 cheri-hls.py -t vect_mult -s -d --to 1000s 
 ```
+
+## Test examples with operating systems
+
+TODO
