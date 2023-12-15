@@ -23,8 +23,7 @@ build: build-cheri build-hls
 
 build-cheri:
 	@bash scripts/build-cheri.sh
-	@bash scripts/build-flute-sim-nocap.sh
-	@bash scripts/build-flute-sim.sh
+	@bash scripts/get-flute.sh
 
 build-hls:
 	@bash scripts/build-hls-extract.sh
