@@ -1,0 +1,6 @@
+[submodule "benchmarks/machsuite"]
+	path = benchmarks/machsuite
+	url = git@github.com:jianyicheng/MachSuite.git
+[submodule "benchmarks/polybench"]
+	path = benchmarks/polybench
+	url = git@github.com:jianyicheng/PolyBenchC.git
