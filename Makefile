@@ -7,7 +7,7 @@ vivado=/home/jc2489/tools/Xilinx/2019.1
 build-docker: 
 	@docker build --build-arg UID=$(user) --build-arg GID=$(group) --build-arg HLS_PATH=$(vhls) --build-arg VIVADO_PATH=$(vivado) -f Docker/Dockerfile --tag chls-ubuntu2204 Docker
 
-shell: build-docker
+shell: 
 	@docker run -it --shm-size 256m --hostname chls-ubuntu2204 -u $(user) -w /workspace -v $(vhls):$(vhls) -v $(vivado):$(vivado) -v /home/$(shell whoami)/.gitconfig:/home/dev-user/.gitconfig -v /home/$(shell whoami)/.ssh:/home/dev-user/.ssh -v $(shell pwd):/workspace chls-ubuntu2204:latest /bin/bash
 
 # Make sure the repo is up to date

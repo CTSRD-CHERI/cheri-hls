@@ -57,6 +57,7 @@ RUN mkdir -p /srcPkgs \
     && cd /srcPkgs \
     && git clone https://github.com/B-Lang-org/bsc.git \
     && cd bsc \
+    && git checkout f00d205 \
     && git submodule update --init --recursive \
     && make install-src
 # Install Bluespec Contributed libraries and utilities
