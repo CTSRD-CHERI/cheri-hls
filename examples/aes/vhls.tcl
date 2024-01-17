@@ -1,9 +1,9 @@
-open_project aes_syn
+open_project aes_prj
 
 add_files aes.c 
 add_files -tb aes.c 
 
-set_top aes 
+set_top hls_top 
 
 open_solution -reset solution
 set_part "xqzu29dr-ffrf1760-1-i"
