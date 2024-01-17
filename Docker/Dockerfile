@@ -1,12 +1,6 @@
 # This Dockerfile configures a Docker environment that 
 # contains all the required packages for the tool
 FROM ubuntu:22.04
-ARG UID
-ARG GID
-ARG HLS_PATH
-ARG VIVADO_PATH
-RUN echo "Group ID: $GID"
-RUN echo "User ID: $UID"
 
 USER root
 RUN apt-get update -y && apt-get install apt-utils -y
@@ -81,6 +75,13 @@ RUN locale-gen en_US.UTF-8
 #     && apt-get install -y ...
 
 CMD ["bash"]
+
+ARG UID
+ARG GID
+ARG HLS_PATH
+ARG VIVADO_PATH
+RUN echo "Group ID: $GID"
+RUN echo "User ID: $UID"
 
 # Add dev-user
 RUN groupadd -o -g $GID dev-user
