@@ -1,4 +1,4 @@
-open_project fft_prj
+open_project fft_strided_prj
 
 add_files fft.cpp
 add_files -tb fft.cpp

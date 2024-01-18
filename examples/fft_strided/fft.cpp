@@ -9,16 +9,22 @@ struct bench_args_t {
   int real_twid[FFT_SIZE / 2];
   int img_twid[FFT_SIZE / 2];
 };
-void fft(int real[FFT_SIZE], int img[FFT_SIZE], int real_twid[FFT_SIZE / 2],
-         int img_twid[FFT_SIZE / 2]) {
+void hls_top(int real[FFT_SIZE], int img[FFT_SIZE], int real_twid[FFT_SIZE / 2],
+             int img_twid[FFT_SIZE / 2], int size) {
+#pragma HLS INTERFACE m_axi port = real
+#pragma HLS INTERFACE m_axi port = img
+#pragma HLS INTERFACE m_axi port = real_twid
+#pragma HLS INTERFACE m_axi port = img_twid
+#pragma HLS INTERFACE s_axilite port = size
+#pragma HLS INTERFACE s_axilite port = return
   int even, odd, span, log, rootindex;
   int temp;
   log = 0;
 
 outer:
-  for (span = FFT_SIZE >> 1; span; span >>= 1, log++) {
+  for (span = size >> 1; span; span >>= 1, log++) {
   inner:
-    for (odd = span; odd < FFT_SIZE; odd++) {
+    for (odd = span; odd < size; odd++) {
       odd |= span;
       even = odd ^ span;
 
@@ -30,7 +36,7 @@ outer:
       img[odd] = img[even] - img[odd];
       img[even] = temp;
 
-      rootindex = (even << log) & (FFT_SIZE - 1);
+      rootindex = (even << log) & (size - 1);
       if (rootindex) {
         temp =
             real_twid[rootindex] * real[odd] - img_twid[rootindex] * img[odd];
@@ -68,6 +74,8 @@ int main() {
     data_x[i] = (int)(i);
     data_y[i] = (int)(i);
   }
+
+  hls_top(data_x, data_y, real, img, size);
 
   return 0;
 }
