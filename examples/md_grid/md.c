@@ -28,10 +28,16 @@ typedef struct {
   int z;
 } ivector_t;
 
-void hls_top(
-    int n_points[blockSide][blockSide][blockSide],
-    dvector_t force[blockSide][blockSide][blockSide][densityFactor],
-    dvector_t position[blockSide][blockSide][blockSide][densityFactor]) {
+void hls_top(int n_points[blockSide][blockSide][blockSide],
+             dvector_t force[blockSide][blockSide][blockSide][densityFactor],
+             dvector_t position[blockSide][blockSide][blockSide][densityFactor],
+             int size) {
+#pragma HLS INTERFACE m_axi port = n_points
+#pragma HLS INTERFACE m_axi port = force
+#pragma HLS INTERFACE m_axi port = position
+#pragma HLS INTERFACE s_axilite port = size
+#pragma HLS INTERFACE s_axilite port = return
+
   ivector_t b0, b1; // b0 is the current block, b1 is b0 or a neighboring block
   dvector_t p, q;   // p is a point in b0, q is a point in either b0 or b1
   int p_idx, q_idx;
@@ -39,21 +45,19 @@ void hls_top(
 
 // Iterate over the grid, block by block
 loop_grid0_x:
-  for (b0.x = 0; b0.x < blockSide; b0.x++) {
+  for (b0.x = 0; b0.x < size; b0.x++) {
   loop_grid0_y:
-    for (b0.y = 0; b0.y < blockSide; b0.y++) {
+    for (b0.y = 0; b0.y < size; b0.y++) {
     loop_grid0_z:
-      for (b0.z = 0; b0.z < blockSide; b0.z++) {
+      for (b0.z = 0; b0.z < size; b0.z++) {
       // Iterate over the 3x3x3 (modulo boundary conditions) cube of blocks
       // around b0
       loop_grid1_x:
-        for (b1.x = MAX(0, b0.x - 1); b1.x < MIN(blockSide, b0.x + 2); b1.x++) {
+        for (b1.x = MAX(0, b0.x - 1); b1.x < MIN(size, b0.x + 2); b1.x++) {
         loop_grid1_y:
-          for (b1.y = MAX(0, b0.y - 1); b1.y < MIN(blockSide, b0.y + 2);
-               b1.y++) {
+          for (b1.y = MAX(0, b0.y - 1); b1.y < MIN(size, b0.y + 2); b1.y++) {
           loop_grid1_z:
-            for (b1.z = MAX(0, b0.z - 1); b1.z < MIN(blockSide, b0.z + 2);
-                 b1.z++) {
+            for (b1.z = MAX(0, b0.z - 1); b1.z < MIN(size, b0.z + 2); b1.z++) {
               // For all points in b0
               dvector_t *base_q = position[b1.x][b1.y][b1.z];
               int q_idx_range = n_points[b1.x][b1.y][b1.z];
@@ -102,7 +106,7 @@ int main() {
   dvector_t force[blockSide][blockSide][blockSide][densityFactor] = {{1, 1, 1}};
   dvector_t position[blockSide][blockSide][blockSide][densityFactor] = {
       {1, 1, 1}};
-  hls_top(n_points, force, position);
+  hls_top(n_points, force, position, blockSide);
 
   return 0;
 }
