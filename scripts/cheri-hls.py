@@ -9,7 +9,30 @@ from argparse import ArgumentParser
 # Test setup
 # ---------------------------------------
 
-BENCHMARKS = {"vect_mult": 8}
+BENCHMARKS = {
+    "aes": 8,
+    "bfs_bulk": 8,
+    "fft_strided": 8,
+    "gemm_blocked": 8,
+    "md_grid": 8,
+    "nw": 8,
+    "sort_radix": 8,
+    "spmv_ellpack": 8,
+    "stencil3d": 8,
+    "viterbi": 8,
+    "backprop": 8,
+    "bfs_queue": 8,
+    "fft_transpose": 8,
+    "gemm_ncubed": 8,
+    "kmp": 8,
+    "md_knn": 8,
+    "sort_merge": 8,
+    "spmv_crs": 8,
+    "stencil2d": 8,
+    "vect_mult": 8,
+}
+
+
 MODES = ["cpu", "cpu+hls", "ccpu+hls", "ccpu+chls"]
 RV_ABI = "l64pc128"
 RV_ARCH = "rv64imaxcheri"
@@ -163,7 +186,6 @@ class CheriHLS:
     def __init__(self, args):
         self.args = args
         self.debug = self.args.debug
-        # self.debug = False
         # Root path of cheri-hls
         self.root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
         self.flute = os.path.abspath(
@@ -206,8 +228,6 @@ class CheriHLS:
         # Compile C code
         cmd = [
             "riscv64-unknown-freebsd-cc",
-            # "-g",
-            # "-O0",
             "-nostdlib",
             "-mno-relax",
             "-Tlink.ld",
@@ -292,8 +312,6 @@ class CheriHLS:
         # Compile C code
         cmd = [
             "riscv64-unknown-freebsd-cc",
-            # "-g",
-            # "-O0",
             "-nostdlib",
             "-mno-relax",
             "-Tlink.ld",
@@ -456,7 +474,7 @@ class CheriHLS:
         if to_backup:
             self.logger.warning(f"Last run not deleted, now moved to {backup}")
 
-        if self.args.test not in BENCHMARKS.keys():
+        if self.args.test not in BENCHMARKS.keys() and not self.args.run_all:
             self.logger.error(
                 f"Unknown benchmarks: {self.args.test}. Known benchmarks: {BENCHMARKS.keys()}"
             )
@@ -530,9 +548,9 @@ cheri-hls.py -a"""
     )
     parser.add_argument(
         "--to",
-        default="10s",
+        default="1800s",
         dest="timeout",
-        help="Simulation Timeout, Default=10s",
+        help="Simulation Timeout, Default=1800s",
     )
     parser.add_argument(
         "-t",
