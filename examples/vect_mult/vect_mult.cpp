@@ -1,6 +1,6 @@
 #define N 1000
 
-void vect_mult(int size, int a[N], int b[N], int c[N]) {
+void hls_top(int size, int a[N], int b[N], int c[N]) {
 #pragma HLS INTERFACE m_axi port = a
 #pragma HLS INTERFACE m_axi port = b
 #pragma HLS INTERFACE m_axi port = c
@@ -22,7 +22,7 @@ int main() {
     c_gold[i] = a[i] * b[i];
   }
 
-  vect_mult(N, a, b, c);
+  hls_top(N, a, b, c);
 
   int res = 0;
   for (int i = 0; i < N; i++) {

@@ -1,5 +1,5 @@
 open_project -reset vect_mult_prj
-set_top vect_mult 
+set_top hls_top 
 add_files { vect_mult.cpp }
 add_files -tb { vect_mult.cpp }
 open_solution -reset "solution1"
