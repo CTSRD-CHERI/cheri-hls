@@ -264,11 +264,12 @@ class CheriHLS:
         flute_build = os.path.join(self.flute, "builds", f"{test}_nocap")
         sim_log = os.path.join(sim_dir, f"cpu_hls.log")
         # No result checking since it does not terminate
-        cmd = f"(cd {flute_build}; timeout {self.args.timeout} ./exe_HW_sim +v2 > {sim_log})"
+        cmd = f"(cd {flute_build}; ./exe_HW_sim +v2 +tohost > {sim_log})"
         self.logger.debug(cmd)
         os.system(cmd)
 
         pc = get_relevant_op_pc(obj_dump)
+        self.logger.info("Simulation done.")
         self.logger.debug(f"Relevant PCs for {test} (cpu+hls) are 0x{pc}")
         for p in pc:
             if not p:
@@ -354,11 +355,12 @@ class CheriHLS:
         flute_build = os.path.join(self.flute, "builds", f"{test}_{cap}")
         sim_log = os.path.join(sim_dir, f"ccpu_{mode}.log")
         # No result checking since it does not terminate
-        cmd = f"(cd {flute_build}; timeout {self.args.timeout} ./exe_HW_sim +v2 > {sim_log})"
+        cmd = f"(cd {flute_build}; ./exe_HW_sim +v2 +tohost > {sim_log})"
         self.logger.debug(cmd)
         os.system(cmd)
 
         pc = get_relevant_op_pc(obj_dump)
+        self.logger.info("Simulation done.")
         self.logger.debug(f"Relevant PCs for {test} (ccpu+{mode}) are 0x{pc}")
         for p in pc:
             if not p:
@@ -545,12 +547,6 @@ cheri-hls.py -a"""
         dest="debug",
         default=False,
         help="Run in debug mode, Default=False",
-    )
-    parser.add_argument(
-        "--to",
-        default="1800s",
-        dest="timeout",
-        help="Simulation Timeout, Default=1800s",
     )
     parser.add_argument(
         "-t",

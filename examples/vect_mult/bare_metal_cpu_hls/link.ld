@@ -17,5 +17,6 @@ SECTIONS
   .data : { *(.data) } > MEM
   .bss (NOLOAD) : { *(.bss) } > MEM
   .sbss (NOLOAD) : { *(.sbss) } > MEM
+  .tohost : { *(.tohost) } > MEM
   /*.uart (NOLOAD) : { uart16550 = .; } > UART*/
 }

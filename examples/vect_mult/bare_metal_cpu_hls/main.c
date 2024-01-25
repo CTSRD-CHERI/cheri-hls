@@ -1,6 +1,9 @@
 #include "xvect_mult.h"
 #include <stdint.h>
 
+extern volatile u32 tohost;
+#define TERM (&tohost)
+
 #ifdef CAPCHECKER
 #define CAP
 #endif
@@ -38,15 +41,9 @@ void capchecker_install_cap(int cap_idx, void *cap) {
 }
 #endif
 
-volatile void success() {
-  while (1)
-    asm("li a0, 0xbee");
-}
+volatile void success() { *((volatile u32 *)&tohost) = 1; }
 
-volatile void fail() {
-  while (1)
-    asm("li a1, 0xb00");
-}
+volatile void fail() { *((volatile u32 *)&tohost) = 10; }
 
 volatile void reg_error() {
   while (1)
