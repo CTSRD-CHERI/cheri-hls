@@ -13,3 +13,7 @@ _end:
   
 _trap:
   j _trap
+
+.global tohost
+tohost:
+  .dword 0
