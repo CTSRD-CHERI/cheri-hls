@@ -8,8 +8,8 @@
 #define MAX 1000
 #define MIN 1
 
-void hls_top(TYPE orig[row_size * col_size], TYPE sol[row_size * col_size],
-             TYPE filter[f_size], int size) {
+void hls_top(int size, TYPE orig[row_size * col_size],
+             TYPE sol[row_size * col_size], TYPE filter[f_size]) {
 #pragma HLS INTERFACE m_axi port = orig
 #pragma HLS INTERFACE m_axi port = sol
 #pragma HLS INTERFACE m_axi port = filter
@@ -40,7 +40,7 @@ int main() {
   TYPE orig[row_size * col_size];
   TYPE sol[row_size * col_size];
   TYPE filter[f_size];
-  hls_top(orig, sol, filter, row_size);
+  hls_top(row_size, orig, sol, filter);
 
   return 0;
 }
