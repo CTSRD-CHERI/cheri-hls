@@ -26,7 +26,7 @@ BENCHMARKS = {
     "gemm_ncubed": 8,
     # "kmp": 8,
     # "md_knn": 8,
-    # "sort_merge": 8,
+    "sort_merge": 8,
     # "spmv_crs": 8,
     "stencil2d": 8,
     "vect_mult": 8,

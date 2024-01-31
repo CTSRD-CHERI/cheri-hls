@@ -1,4 +1,4 @@
-open_project sort_prj
+open_project sort_merge_prj
 
 add_files sort.c 
 add_files -tb sort.c

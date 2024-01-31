@@ -32,7 +32,7 @@ merge_label3:
   }
 }
 
-void hls_top(TYPE a[SIZE], int size) {
+void hls_top(int size, TYPE a[SIZE]) {
 #pragma HLS INTERFACE m_axi port = a
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
@@ -64,6 +64,6 @@ int main() {
   for (int i = 0; i < SIZE; i++)
     a[i] = i;
 
-  hls_top(a, SIZE);
+  hls_top(SIZE, a);
   return 0;
 }
