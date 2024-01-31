@@ -234,9 +234,8 @@ class CheriHLS:
             "-mcmodel=medany",
             "init_nocap.S",
             "main.c",
-            "xvect_mult.c",
-            "xvect_mult_linux.c",
-            "xvect_mult_sinit.c",
+            "xhls_top.c",
+            "xhls_top_linux.c",
         ]
         result, _ = self.execute(cmd, cwd=sim_dir)
         if result:

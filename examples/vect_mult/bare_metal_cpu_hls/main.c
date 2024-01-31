@@ -1,4 +1,4 @@
-#include "xtop.h"
+#include "xhls_top.h"
 #include <stdint.h>
 
 extern volatile u32 tohost;
@@ -16,7 +16,7 @@ extern volatile u32 tohost;
 // HLS IP instance
 #define NUM 8
 #define SIZE 1000
-XTop top_insts[NUM];
+XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
 u32 a[NUM][SIZE];
@@ -72,14 +72,14 @@ volatile void reg_error() {
 
 u32 hls_top_init(int test_case, u32 *phy) {
 
-  XTop *top = top_insts + test_case;
+  XHls_top *top = top_insts + test_case;
   top->Control_BaseAddress = phy;
 
-  if (!XTop_IsReady(top))
+  if (!XHls_top_IsReady(top))
     return 4;
 
-  XTop_Set_size(top, SIZE);
-  // XTop_Set_size(top, 11);
+  XHls_top_Set_size(top, SIZE);
+  // XHls_top_Set_size(top, 11);
 
   u32 buffer_a = a[test_case];
   // base_buffer_address;
@@ -94,28 +94,28 @@ u32 hls_top_init(int test_case, u32 *phy) {
   u32 c_cap_id = (test_case << 5) + 2;
 
   // Configuring data buffers
-  XTop_WriteReg(top->Control_BaseAddress, XTOP_CONTROL_ADDR_A_DATA + 4,
-                (u32)(a_cap_id << (32 - 8)));
-  XTop_WriteReg(top->Control_BaseAddress, XTOP_CONTROL_ADDR_B_DATA + 4,
-                (u32)(b_cap_id << (32 - 8)));
-  XTop_WriteReg(top->Control_BaseAddress, XTOP_CONTROL_ADDR_C_DATA + 4,
-                (u32)(c_cap_id << (32 - 8)));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA + 4,
+                    (u32)(a_cap_id << (32 - 8)));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA + 4,
+                    (u32)(b_cap_id << (32 - 8)));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA + 4,
+                    (u32)(c_cap_id << (32 - 8)));
 #else
   // Configuring data buffers
-  XTop_WriteReg(top->Control_BaseAddress, XTOP_CONTROL_ADDR_A_DATA + 4,
-                (u32)(0));
-  XTop_WriteReg(top->Control_BaseAddress, XTOP_CONTROL_ADDR_B_DATA + 4,
-                (u32)(0));
-  XTop_WriteReg(top->Control_BaseAddress, XTOP_CONTROL_ADDR_C_DATA + 4,
-                (u32)(0));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA + 4,
+                    (u32)(0));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA + 4,
+                    (u32)(0));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA + 4,
+                    (u32)(0));
 #endif
 
-  XTop_WriteReg(top->Control_BaseAddress, XTOP_CONTROL_ADDR_A_DATA,
-                (u32)(buffer_a));
-  XTop_WriteReg(top->Control_BaseAddress, XTOP_CONTROL_ADDR_B_DATA,
-                (u32)(buffer_b));
-  XTop_WriteReg(top->Control_BaseAddress, XTOP_CONTROL_ADDR_C_DATA,
-                (u32)(buffer_c));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA,
+                    (u32)(buffer_a));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA,
+                    (u32)(buffer_b));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA,
+                    (u32)(buffer_c));
 
 #ifdef CAPCHECKER
   // Configuring capchecker
@@ -159,9 +159,9 @@ int main() {
   // Compute
   asm("fence");
   for (int i = 0; i < NUM; i++)
-    XTop_Start(top_insts + i);
+    XHls_top_Start(top_insts + i);
   for (int i = 0; i < NUM; i++)
-    while (!XTop_IsDone(top_insts + i))
+    while (!XHls_top_IsDone(top_insts + i))
       ;
   asm("fence");
 
