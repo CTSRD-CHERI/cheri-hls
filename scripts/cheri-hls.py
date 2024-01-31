@@ -10,11 +10,11 @@ from argparse import ArgumentParser
 # ---------------------------------------
 
 BENCHMARKS = {
-    # "aes": 8,
+    "aes": 8,
     # "bfs_bulk": 8,
     # "fft_strided": 8,
     "gemm_blocked": 8,
-    # "md_grid": 8,
+    "md_grid": 8,
     # "nw": 8,
     # "sort_radix": 8,
     # "spmv_ellpack": 8,

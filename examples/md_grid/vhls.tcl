@@ -1,4 +1,4 @@
-open_project md_prj
+open_project md_grid_prj
 
 add_files md.c 
 add_files -tb md.c 

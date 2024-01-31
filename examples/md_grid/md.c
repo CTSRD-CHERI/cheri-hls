@@ -28,10 +28,10 @@ typedef struct {
   int z;
 } ivector_t;
 
-void hls_top(int n_points[blockSide][blockSide][blockSide],
-             dvector_t force[blockSide][blockSide][blockSide][densityFactor],
-             dvector_t position[blockSide][blockSide][blockSide][densityFactor],
-             int size) {
+void hls_top(
+    int size, int n_points[blockSide][blockSide][blockSide],
+    dvector_t force[blockSide][blockSide][blockSide][densityFactor],
+    dvector_t position[blockSide][blockSide][blockSide][densityFactor]) {
 #pragma HLS INTERFACE m_axi port = n_points
 #pragma HLS INTERFACE m_axi port = force
 #pragma HLS INTERFACE m_axi port = position
@@ -106,7 +106,7 @@ int main() {
   dvector_t force[blockSide][blockSide][blockSide][densityFactor] = {{1, 1, 1}};
   dvector_t position[blockSide][blockSide][blockSide][densityFactor] = {
       {1, 1, 1}};
-  hls_top(n_points, force, position, blockSide);
+  hls_top(blockSide, n_points, force, position);
 
   return 0;
 }
