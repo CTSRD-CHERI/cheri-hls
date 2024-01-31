@@ -249,7 +249,7 @@ ecb3:
   aes_addRoundKey(buf, ctx->key);
 } /* aes256_encrypt */
 
-void hls_top(aes256_context ctx[NUM], int size) {
+void hls_top(int size, aes256_context ctx[NUM]) {
 #pragma HLS INTERFACE m_axi port = ctx
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
@@ -266,14 +266,14 @@ void hls_top(aes256_context ctx[NUM], int size) {
     key[i] = i;
   }
 
-  for (i = 0; i < NUM; i++) {
+  for (i = 0; i < size; i++) {
     aes256_encrypt_ecb(ctx + i, key, buf);
   }
 }
 
 int main(int argc, char *argv[]) {
   aes256_context ctx[NUM];
-  hls_top(ctx, NUM);
+  hls_top(NUM, ctx);
 
   return 0;
 } /* main */
