@@ -140,9 +140,10 @@ void loady8(TYPE a_y[], TYPE x[], int offset, int sx) {
   a_y[7] = x[7 * sx + offset];
 }
 
-void hls_top(TYPE work_x[512], TYPE work_y[512]) {
+void hls_top(int size, TYPE work_x[512], TYPE work_y[512]) {
 #pragma HLS INTERFACE m_axi port = work_x
 #pragma HLS INTERFACE m_axi port = work_y
+#pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
   int tid, hi, lo, stride;
   int reversed[] = {0, 4, 2, 6, 1, 5, 3, 7};
@@ -206,7 +207,7 @@ loop1:
   int sx, offset;
   sx = 66;
 loop2:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     hi = tid >> 3;
     lo = tid & 7;
     offset = hi * 8 + lo;
@@ -221,7 +222,7 @@ loop2:
   }
   sx = 8;
 loop3:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     hi = tid >> 3;
     lo = tid & 7;
     offset = lo * 66 + hi;
@@ -238,7 +239,7 @@ loop3:
 
   sx = 66;
 loop4:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     hi = tid >> 3;
     lo = tid & 7;
     offset = hi * 8 + lo;
@@ -254,7 +255,7 @@ loop4:
   }
 
 loop5:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     data_y[0] = DATA_y[tid * 8 + 0];
     data_y[1] = DATA_y[tid * 8 + 1];
     data_y[2] = DATA_y[tid * 8 + 2];
@@ -280,7 +281,7 @@ loop5:
   }
 
 loop6:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     data_x[0] = DATA_x[tid * 8 + 0];
     data_x[1] = DATA_x[tid * 8 + 1];
     data_x[2] = DATA_x[tid * 8 + 2];
@@ -305,9 +306,9 @@ loop6:
     // Calculate hi for second twiddle calculation...
     hi = tid >> 3;
 
-    // Second twiddles calc, use hi and 64 stride version as defined in
+    // Second twiddles calc, use hi and size stride version as defined in
     // G80/SHOC...
-    twiddles8(data_x, data_y, hi, 64);
+    twiddles8(data_x, data_y, hi, size);
 
     // Save for final transpose...
     DATA_x[tid * 8] = data_x[0];
@@ -332,7 +333,7 @@ loop6:
   // Transpose..
   sx = 72;
 loop7:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     hi = tid >> 3;
     lo = tid & 7;
     offset = hi * 8 + lo;
@@ -348,7 +349,7 @@ loop7:
 
   sx = 8;
 loop8:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     hi = tid >> 3;
     lo = tid & 7;
     offset = hi * 72 + lo;
@@ -365,7 +366,7 @@ loop8:
 
   sx = 72;
 loop9:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     hi = tid >> 3;
     lo = tid & 7;
     offset = hi * 8 + lo;
@@ -381,7 +382,7 @@ loop9:
   }
 
 loop10:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     data_y[0] = DATA_y[tid * 8 + 0];
     data_y[1] = DATA_y[tid * 8 + 1];
     data_y[2] = DATA_y[tid * 8 + 2];
@@ -407,7 +408,7 @@ loop10:
   }
 
 loop11:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     // Load post-trans
     data_y[0] = DATA_y[tid * 8];
     data_y[1] = DATA_y[tid * 8 + 1];
@@ -466,7 +467,7 @@ int main() {
         (TYPE)(i); //(((double) rand() / (RAND_MAX)) * (max-min) + min);//i;
   }
 
-  hls_top(a_x, a_y);
+  hls_top(64, a_x, a_y);
 
   return 0;
 }

@@ -22,7 +22,7 @@ BENCHMARKS = {
     # "viterbi": 8,
     # "backprop": 8,
     # "bfs_queue": 8,
-    # "fft_transpose": 8,
+    "fft_transpose": 8,
     "gemm_ncubed": 8,
     # "kmp": 8,
     # "md_knn": 8,
