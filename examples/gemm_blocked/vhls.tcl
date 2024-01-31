@@ -1,4 +1,4 @@
-open_project gemm_prj
+open_project gemm_blocked_prj
 
 add_files gemm.c
 add_files -tb gemm.c

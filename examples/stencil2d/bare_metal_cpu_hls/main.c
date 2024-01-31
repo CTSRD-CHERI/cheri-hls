@@ -15,17 +15,19 @@ extern volatile u32 tohost;
 
 // HLS IP instance
 #define NUM 8
-#define SIZE 1000
+#define SIZE_A 8192
+#define SIZE_B 8192
+#define SIZE_C 9
 XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
-u32 a[NUM][SIZE];
-u32 b[NUM][SIZE];
+u32 a[NUM][SIZE_A];
+u32 b[NUM][SIZE_B];
 
-u32 c[NUM][SIZE];
+u32 c[NUM][SIZE_C];
 // u32 c[NUM][SIZE - 1];
 
-u32 c_gold[NUM][SIZE];
+u32 c_gold[NUM][SIZE_C];
 
 #ifdef CAPCHECKER
 u64 capchecker_base_phy_addr = 0xc0020000;
@@ -78,8 +80,7 @@ u32 hls_top_init(int test_case, u32 *phy) {
   if (!XHls_top_IsReady(top))
     return 4;
 
-  XHls_top_Set_size(top, SIZE);
-  // XHls_top_Set_size(top, 11);
+  XHls_top_Set_size(top, 128);
 
   u32 buffer_a = a[test_case];
   // base_buffer_address;
@@ -124,12 +125,14 @@ u32 hls_top_init(int test_case, u32 *phy) {
   capchecker_install_cap(c_cap_id, &c);
 #endif
 
-  for (int i = 0; i < SIZE; i++) {
+  for (int i = 0; i < SIZE_A; i++) {
     a[test_case][i] = i + test_case;
+  }
+  for (int i = 0; i < SIZE_B; i++) {
     b[test_case][i] = i + test_case;
+  }
+  for (int i = 0; i < SIZE_C; i++) {
     c_gold[test_case][i] = (i + test_case) * (i + test_case);
-    // if (i != 9)
-    // c[test_case][i] = 0;
   }
 
   return 0;
@@ -167,12 +170,12 @@ int main() {
 
   u32 res = 0;
   for (int n = 0; n < NUM; n++) {
-    for (int i = 0; i < SIZE; i++) {
+    for (int i = 0; i < SIZE_C; i++) {
       res += (c_gold[n][i] == c[n][i]);
     }
   }
 
-  if (res == NUM * SIZE)
+  if (res == NUM * SIZE_C)
     success();
   else
     fail();
