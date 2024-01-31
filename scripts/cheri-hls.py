@@ -169,7 +169,6 @@ def get_total_cycles(sim_log, pcs, logger):
 
 
 class CheriHLS:
-
     """
     args:
         - run_all : Run the whole regression test, Default=False
