@@ -16,7 +16,7 @@ Oliker, D. Patterson, J. Shalf, K. Yelick SC 2008
 #define INDX(_row_size, _col_size, _i, _j, _k)                                 \
   ((_i) + _row_size * ((_j) + _col_size * (_k)))
 
-void hls_top(TYPE C[2], TYPE orig[SIZE], TYPE sol[SIZE], int size) {
+void hls_top(int size, TYPE C[2], TYPE orig[SIZE], TYPE sol[SIZE]) {
 #pragma HLS INTERFACE m_axi port = C
 #pragma HLS INTERFACE m_axi port = orig
 #pragma HLS INTERFACE m_axi port = sol
@@ -80,7 +80,7 @@ int main() {
   TYPE C[2] = {1};
   TYPE orig[SIZE] = {1};
   TYPE sol[SIZE] = {1};
-  hls_top(C, orig, sol, col_size);
+  hls_top(col_size, C, orig, sol);
 
   return 0;
 }
