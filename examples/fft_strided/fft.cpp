@@ -3,12 +3,6 @@
 #define FFT_SIZE 1024
 // #define twoPI 6.28318530717959
 
-struct bench_args_t {
-  int real[FFT_SIZE];
-  int img[FFT_SIZE];
-  int real_twid[FFT_SIZE / 2];
-  int img_twid[FFT_SIZE / 2];
-};
 void hls_top(int real[FFT_SIZE], int img[FFT_SIZE], int real_twid[FFT_SIZE / 2],
              int img_twid[FFT_SIZE / 2], int size) {
 #pragma HLS INTERFACE m_axi port = real

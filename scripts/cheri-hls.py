@@ -320,9 +320,8 @@ class CheriHLS:
             f"-march={RV_ARCH}",
             "init.S",
             "main.c",
-            "xvect_mult.c",
-            "xvect_mult_linux.c",
-            "xvect_mult_sinit.c",
+            f"xhls_top.c",
+            f"xhls_top_linux.c",
             "-DCAP",
         ]
         if cheri_hls:
@@ -430,7 +429,7 @@ class CheriHLS:
 
         # Combine HLS and Flute
         hls_src = os.path.join(test_dir, f"{test}_prj", "solution", "syn", "verilog")
-        shutil.copytree(hls_src, os.path.join(flute_build, test))
+        shutil.copytree(hls_src, os.path.join(flute_build, "vect_mult"))
         self.logger.debug(f"Copied {hls_src} to {os.path.join(flute_build, test)}")
         cmd = [
             "make",
