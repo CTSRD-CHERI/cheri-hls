@@ -17,13 +17,13 @@ extern volatile u32 tohost;
 #define NUM 8
 #define SIZE 2048
 XHls_top top_insts[NUM];
-u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
-                          0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
+u64 base_phy_addr[NUM] = {0xC0010000, 0xC0020000, 0xC0030000, 0xC0040000,
+                          0xC0050000, 0xC0060000, 0xC0070000, 0xC0080000};
 u32 a[NUM][SIZE];
 u32 a_gold[NUM][SIZE];
 
 #ifdef CAPCHECKER
-u64 capchecker_base_phy_addr = 0xc0020000;
+u64 capchecker_base_phy_addr = 0xc0100000;
 u64 capchecker_size = 0x00002000;
 #define capchecker_nbentries (capchecker_size / sizeof(void *))
 

@@ -3,8 +3,6 @@ Implementations based on:
 V. Volkov and B. Kazian. Fitting fft onto the g80 architecture. 2008.
 */
 
-#include <math.h>
-
 #define TYPE int
 
 typedef struct complex_t {
@@ -49,8 +47,8 @@ void twiddles8(TYPE a_x[8], TYPE a_y[8], int i, int n) {
 twiddles:
   for (j = 1; j < 8; j++) {
     phi = ((-2 * PI * reversed8[j] / n) * i);
-    phi_x = cos(phi);
-    phi_y = sin(phi);
+    phi_x = phi % 7;
+    phi_y = phi % 3;
     tmp = a_x[j];
     a_x[j] = cmplx_M_x(a_x[j], a_y[j], phi_x, phi_y);
     a_y[j] = cmplx_M_y(tmp, a_y[j], phi_x, phi_y);
@@ -73,8 +71,8 @@ twiddles:
     TYPE exp_1_44_x;                                                           \
     TYPE exp_1_44_y;                                                           \
     TYPE tmp;                                                                  \
-    exp_1_44_x = 0.0;                                                          \
-    exp_1_44_y = -1.0;                                                         \
+    exp_1_44_x = 0;                                                            \
+    exp_1_44_y = -1;                                                           \
     FF2(a0_x, a0_y, a2_x, a2_y);                                               \
     FF2(a1_x, a1_y, a3_x, a3_y);                                               \
     tmp = *a3_x;                                                               \
