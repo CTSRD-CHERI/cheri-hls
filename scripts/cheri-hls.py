@@ -429,7 +429,7 @@ class CheriHLS:
         self.logger.debug(f"Moved {flute_src} to {flute_build}")
 
         # Combine HLS and Flute
-        hls_src = os.path.join(test_dir, f"{test}_prj", "solution1", "syn", "verilog")
+        hls_src = os.path.join(test_dir, f"{test}_prj", "solution", "syn", "verilog")
         shutil.copytree(hls_src, os.path.join(flute_build, test))
         self.logger.debug(f"Copied {hls_src} to {os.path.join(flute_build, test)}")
         cmd = [
