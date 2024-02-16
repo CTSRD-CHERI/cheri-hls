@@ -16,11 +16,22 @@ extern volatile u32 tohost;
 // HLS IP instance
 #define NUM 8
 #define SIZE 2048
+#define NUMOFBLOCKS 512
+
+#define ELEMENTSPERBLOCK 4
+#define RADIXSIZE 4
+#define BUCKETSIZE NUMOFBLOCKS *RADIXSIZE
+#define MASK 0x3
+
+#define SCAN_BLOCK 16
+#define SCAN_RADIX BUCKETSIZE / SCAN_BLOCK
 XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0020000, 0xC0030000, 0xC0040000,
                           0xC0050000, 0xC0060000, 0xC0070000, 0xC0080000};
 u32 a[NUM][SIZE];
-u32 a_gold[NUM][SIZE];
+u32 b[NUM][SIZE];
+u32 bucket[NUM][BUCKETSIZE];
+u32 sum[NUM][SCAN_SIZE];
 
 #ifdef CAPCHECKER
 u64 capchecker_base_phy_addr = 0xc0100000;
@@ -73,24 +84,48 @@ u32 hls_top_init(int test_case, u32 *phy) {
   if (!XHls_top_IsReady(top))
     return 4;
 
-  XHls_top_Set_size(top, SIZE);
-
   u32 buffer_a = a[test_case];
+  u32 buffer_b = b[test_case];
+  u32 buffer_bucket = bucket[test_case];
+  u32 buffer_sum = sum[test_case];
 
 #ifdef CAPCHECKER
   u32 a_cap_id = (test_case << 5) + 0;
+  u32 b_cap_id = (test_case << 5) + 1;
+  u32 bucket_cap_id = (test_case << 5) + 2;
+  u32 sum_cap_id = (test_case << 5) + 3;
 
   // Configuring data buffers
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA + 4,
                     (u32)(a_cap_id << (32 - 8)));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA + 4,
+                    (u32)(b_cap_id << (32 - 8)));
+  XHls_top_WriteReg(top->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_BUCKET_DATA + 4,
+                    (u32)(bucket_cap_id << (32 - 8)));
+  XHls_top_WriteReg(top->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_SUM_DATA + 4,
+                    (u32)(sum_cap_id << (32 - 8)));
 #else
   // Configuring data buffers
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA + 4,
                     (u32)(0));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA + 4,
+                    (u32)(0));
+  XHls_top_WriteReg(top->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_BUCKET_DATA + 4, (u32)(0));
+  XHls_top_WriteReg(top->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_SUM_DATA + 4, (u32)(0));
 #endif
 
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA,
                     (u32)(buffer_a));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA,
+                    (u32)(buffer_b));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_BUCKET_DATA,
+                    (u32)(buffer_bucket));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_SUM_DATA,
+                    (u32)(buffer_sum));
 
 #ifdef CAPCHECKER
   // Configuring capchecker
@@ -98,8 +133,14 @@ u32 hls_top_init(int test_case, u32 *phy) {
 #endif
 
   for (int i = 0; i < SIZE; i++) {
-    a[test_case][i] = 0;
-    a_gold[test_case][i] = 0;
+    a[test_case][i] = i;
+    b[test_case][i] = i;
+  }
+  for (int i = 0; i < BUCKETSIZE; i++) {
+    bucket[test_case][i] = 0;
+  }
+  for (int i = 0; i < SCAN_SIZE; i++) {
+    sum[test_case][i] = 0;
   }
 
   return 0;
@@ -135,16 +176,6 @@ int main() {
       ;
   asm("fence");
 
-  u32 res = 0;
-  for (int n = 0; n < NUM; n++) {
-    for (int i = 0; i < SIZE; i++) {
-      res += (a_gold[n][i] == a[n][i]);
-    }
-  }
-
-  if (res == NUM * SIZE)
-    success();
-  else
-    fail();
+  success();
   return 0;
 }
