@@ -263,6 +263,7 @@ class CheriHLS:
         flute_build = os.path.join(self.flute, "builds", f"{test}_nocap")
         symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
         shutil.copy(symbol_table, flute_build)
+        self.logger.debug(f"cp {symbol_table} {flute_build}")
         sim_log = os.path.join(sim_dir, f"cpu_hls.log")
         cmd = f"(cd {flute_build}; ./exe_HW_sim +v2 +tohost > {sim_log})"
         self.logger.debug(cmd)
@@ -354,6 +355,7 @@ class CheriHLS:
         flute_build = os.path.join(self.flute, "builds", f"{test}_{cap}")
         symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
         shutil.copy(symbol_table, flute_build)
+        self.logger.debug(f"cp {symbol_table} {flute_build}")
         sim_log = os.path.join(sim_dir, f"ccpu_{mode}.log")
         cmd = f"(cd {flute_build}; ./exe_HW_sim +v2 +tohost > {sim_log})"
         self.logger.debug(cmd)

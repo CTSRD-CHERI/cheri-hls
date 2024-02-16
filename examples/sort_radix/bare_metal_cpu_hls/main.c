@@ -26,12 +26,12 @@ extern volatile u32 tohost;
 #define SCAN_BLOCK 16
 #define SCAN_RADIX BUCKETSIZE / SCAN_BLOCK
 XHls_top top_insts[NUM];
-u64 base_phy_addr[NUM] = {0xC0010000, 0xC0020000, 0xC0030000, 0xC0040000,
-                          0xC0050000, 0xC0060000, 0xC0070000, 0xC0080000};
+u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
+                          0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
 u32 a[NUM][SIZE];
 u32 b[NUM][SIZE];
 u32 bucket[NUM][BUCKETSIZE];
-u32 sum[NUM][SCAN_SIZE];
+u32 sum[NUM][SCAN_RADIX];
 
 #ifdef CAPCHECKER
 u64 capchecker_base_phy_addr = 0xc0100000;
@@ -130,6 +130,9 @@ u32 hls_top_init(int test_case, u32 *phy) {
 #ifdef CAPCHECKER
   // Configuring capchecker
   capchecker_install_cap(a_cap_id, &a);
+  capchecker_install_cap(b_cap_id, &b);
+  capchecker_install_cap(bucket_cap_id, &bucket);
+  capchecker_install_cap(sum_cap_id, &sum);
 #endif
 
   for (int i = 0; i < SIZE; i++) {
@@ -139,7 +142,7 @@ u32 hls_top_init(int test_case, u32 *phy) {
   for (int i = 0; i < BUCKETSIZE; i++) {
     bucket[test_case][i] = 0;
   }
-  for (int i = 0; i < SCAN_SIZE; i++) {
+  for (int i = 0; i < SCAN_RADIX; i++) {
     sum[test_case][i] = 0;
   }
 

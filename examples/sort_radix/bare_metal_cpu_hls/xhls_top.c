@@ -66,19 +66,6 @@ void XHls_top_DisableAutoRestart(XHls_top *InstancePtr) {
                     XHLS_TOP_CONTROL_ADDR_AP_CTRL, 0);
 }
 
-void XHls_top_Set_size(XHls_top *InstancePtr, u32 Data) {
-  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_SIZE_DATA, Data);
-}
-
-u32 XHls_top_Get_size(XHls_top *InstancePtr) {
-  u32 Data;
-
-  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
-                          XHLS_TOP_CONTROL_ADDR_SIZE_DATA);
-  return Data;
-}
-
 void XHls_top_InterruptGlobalEnable(XHls_top *InstancePtr) {
   Xil_AssertVoid(InstancePtr != 0);
   Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
