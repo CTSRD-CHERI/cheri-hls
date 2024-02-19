@@ -148,14 +148,16 @@ def get_total_cycles(sim_log, pcs, logger):
     for i, line in enumerate(lines):
         for j, pc in enumerate(pcs):
             if f"PC:0x{pc}" in line:
-                lc = i + 1
-                cycle = lines[lc][
-                    : min(max(0, lines[lc].find(":")), max(0, lines[lc].find(" ")))
-                ]
-                if cycle.isnumeric():
-                    logger.debug(f"{line}{lines[lc]}Cycle = {cycle}")
-                    pc_cycles[j] = int(cycle)
-                    count[j] += 1
+                for k in range(0, 5):
+                    lc = i + k
+                    cycle = lines[lc][
+                        : min(max(0, lines[lc].find(":")), max(0, lines[lc].find(" ")))
+                    ]
+                    if cycle.isnumeric():
+                        logger.debug(f"{line}{lines[lc]}Cycle = {cycle}")
+                        pc_cycles[j] = int(cycle)
+                        count[j] += 1
+                        break
 
     for i, c in enumerate(count):
         if c != 1:
