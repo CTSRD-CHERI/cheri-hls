@@ -20,12 +20,6 @@ typedef struct {
 ////////////////////////////////////////////////////////////////////////////////
 // Test harness interface code.
 
-struct bench_args_t {
-  aes256_context ctx;
-  uint8_t k[32];
-  uint8_t buf[16];
-};
-
 #define BACK_TO_TABLES
 #ifdef BACK_TO_TABLES
 

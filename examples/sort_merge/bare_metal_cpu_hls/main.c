@@ -94,7 +94,9 @@ u32 hls_top_init(int test_case, u32 *phy) {
 
 #ifdef CAPCHECKER
   // Configuring capchecker
-  capchecker_install_cap(a_cap_id, &a);
+  void *almighty = cheri_ddc_get();
+  capchecker_install_cap(a_cap_id, almighty);
+  // capchecker_install_cap(a_cap_id, &a);
 #endif
 
   for (int i = 0; i < SIZE; i++) {

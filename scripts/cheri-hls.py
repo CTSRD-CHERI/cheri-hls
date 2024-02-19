@@ -279,7 +279,7 @@ class CheriHLS:
 
         # Emit instret log
         instret_log = os.path.join(sim_dir, f"instret_cpu_hls.log")
-        cmd = f'grep -A2 "instret" {sim_log} > {instret_log}'
+        cmd = f'grep -A5 "^instret:" {sim_log} > {instret_log}'
         self.logger.debug(cmd)
         os.system(cmd)
 
@@ -297,7 +297,7 @@ class CheriHLS:
         if self.debug:
             for p in pc:
                 if p:
-                    cmd = f'grep -A2 "PC:0x{p}" {instret_log}'
+                    cmd = f'grep -A5 "PC:0x{p}" {instret_log}'
                     self.logger.debug(cmd)
                     os.system(cmd)
         return 0
@@ -371,7 +371,7 @@ class CheriHLS:
 
         # Emit instret log
         instret_log = os.path.join(sim_dir, f"instret_ccpu_{mode}.log")
-        cmd = f'grep -A2 "instret" {sim_log} > {instret_log}'
+        cmd = f'grep -A5 "^instret:" {sim_log} > {instret_log}'
         self.logger.debug(cmd)
         os.system(cmd)
 
@@ -389,7 +389,7 @@ class CheriHLS:
         if self.debug:
             for p in pc:
                 if p:
-                    cmd = f'grep -A2 "PC:0x{p}" {instret_log}'
+                    cmd = f'grep -A5 "PC:0x{p}" {instret_log}'
                     self.logger.debug(cmd)
                     os.system(cmd)
 
