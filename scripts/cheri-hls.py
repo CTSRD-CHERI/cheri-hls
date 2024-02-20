@@ -34,7 +34,7 @@ BENCHMARKS = {
 }
 
 
-MODES = ["cpu", "cpu+hls", "ccpu+hls", "ccpu+chls"]
+MODES = ["cpu", "ccpu", "cpu+hls", "ccpu+hls", "ccpu+chls"]
 RV_ABI = "l64pc128"
 RV_ARCH = "rv64imaxcheri"
 
@@ -211,14 +211,99 @@ class CheriHLS:
             if self.run_synthesis(test, mode):
                 return 1
         if mode == "cpu":
-            self.logger.error("cpu not implemented yet")
-            return 1
+            return self.simulate_cpu(test, cheri=False)
+        elif mode == "ccpu":
+            return self.simulate_cpu(test, cheri=True)
         elif mode == "ccpu+hls":
             return self.simulate_ccpu_hls(test, cheri_hls=False)
         elif mode == "ccpu+chls":
             return self.simulate_ccpu_hls(test, cheri_hls=True)
         else:  # mode == "cpu+hls":
             return self.simulate_cpu_hls(test)
+
+    def simulate_cpu(self, test, cheri=False):
+        mode = "cpu" if cheri == False else "ccpu"
+        self.logger.info(
+            f"Running hardware simulation for test {test} with mode {mode}..."
+        )
+
+        sim_dir = os.path.join(self.root, "examples", test, "bare_metal_cpu")
+
+        # Compile C code
+        asm = "init_nocap.S" if cheri == False else "init.S"
+        cmd = [
+            "riscv64-unknown-freebsd-cc",
+            "-nostdlib",
+            "-mno-relax",
+            "-Tlink.ld",
+            "-mcmodel=medany",
+            asm,
+            "main.c",
+        ]
+        result, _ = self.execute(cmd, cwd=sim_dir)
+        if result:
+            self.logger.error(f"Compiling error for {test} {mode}.")
+            return result
+
+        # Dump assembly code
+        obj_dump = os.path.join(sim_dir, f"{mode}.dump")
+        cmd = f"(cd {sim_dir}; riscv64-unknown-freebsd-objdump -d --mattr=+m,+a,+f,+d,+c,+xcheri a.out > {obj_dump})"
+        self.logger.debug(cmd)
+        os.system(cmd)
+
+        # elf to hex
+        cmd = [
+            os.path.join(self.flute, "Tests", "elf_to_hex", "elf_to_hex"),
+            "a.out",
+            os.path.join(self.flute, "builds", f"{test}_nocap", "Mem.hex"),
+        ]
+        result, _ = self.execute(cmd, cwd=sim_dir)
+        if result:
+            self.logger.error(f"Compiling error for {test} {mode}.")
+            return result
+
+        # run simulation
+        flute_build = os.path.join(self.flute, "builds", f"{test}_nocap")
+        symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
+        shutil.copy(symbol_table, flute_build)
+        self.logger.debug(f"cp {symbol_table} {flute_build}")
+        sim_log = os.path.join(sim_dir, f"{mode}.log")
+        cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost > {sim_log})"
+        self.logger.debug(cmd)
+        os.system(cmd)
+
+        pc = get_relevant_op_pc(obj_dump)
+        self.logger.info("Simulation done.")
+        self.logger.debug(f"Relevant PCs for {test} {mode} are 0x{pc}")
+        for p in pc:
+            if not p:
+                self.logger.error(f"Cannot find relevant PC for {test} {mode}.")
+                return result
+
+        # Emit instret log
+        instret_log = os.path.join(sim_dir, f"instret_{mode}.log")
+        cmd = f'grep -A5 "^instret:" {sim_log} > {instret_log}'
+        self.logger.debug(cmd)
+        os.system(cmd)
+
+        cycles = get_total_cycles(instret_log, pc, self.logger)
+        self.logger.debug(f"Relevant cycles for {test} ({mode}) are {cycles}")
+        for cycle in cycles:
+            if not cycle:
+                self.logger.error(f"Cannot find total cycles for {test} ({mode}).")
+                return result
+
+        self.logger.info(
+            f"Simulation for {test} ({mode}) finished. Total cycles = {cycles[0]}, and relevant break points are {cycles[1] and {cycles[2]}}"
+        )
+
+        if self.debug:
+            for p in pc:
+                if p:
+                    cmd = f'grep -A5 "PC:0x{p}" {instret_log}'
+                    self.logger.debug(cmd)
+                    os.system(cmd)
+        return 0
 
     def simulate_cpu_hls(self, test):
         self.logger.info(
@@ -573,7 +658,8 @@ cheri-hls.py -a"""
         default="ccpu+chls",
         dest="mode",
         help="""Test target system:
-cpu (fullcap),
+cpu (nocap),
+ccpu (fullcap),
 cpu+hls (cpu+hls),
 ccpu+hls (fullcap cpu + hls),
 ccpu+chls (fullcap cpu + fullcap hls)""",
