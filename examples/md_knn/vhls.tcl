@@ -1,4 +1,4 @@
-open_project md_prj
+open_project md_knn_prj
 
 add_files md.c
 add_files -tb md.c

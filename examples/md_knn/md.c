@@ -15,9 +15,10 @@ Computation on Graphics Processing Units, 2010.
 #define lj1 2
 #define lj2 3
 
-void hls_top(TYPE force_x[nAtoms], TYPE force_y[nAtoms], TYPE force_z[nAtoms],
-             TYPE position_x[nAtoms], TYPE position_y[nAtoms],
-             TYPE position_z[nAtoms], int NL[nAtoms * maxNeighbors], int size) {
+void hls_top(int size, TYPE force_x[nAtoms], TYPE force_y[nAtoms],
+             TYPE force_z[nAtoms], TYPE position_x[nAtoms],
+             TYPE position_y[nAtoms], TYPE position_z[nAtoms],
+             int NL[nAtoms * maxNeighbors]) {
 #pragma HLS INTERFACE m_axi port = force_x
 #pragma HLS INTERFACE m_axi port = force_y
 #pragma HLS INTERFACE m_axi port = force_z
@@ -79,8 +80,8 @@ int main() {
   TYPE position_y[nAtoms] = {0};
   TYPE position_z[nAtoms] = {0};
   int NL[nAtoms * maxNeighbors] = {0};
-  hls_top(force_x, force_y, force_z, position_x, position_y, position_z, NL,
-          nAtoms);
+  hls_top(nAtoms, force_x, force_y, force_z, position_x, position_y, position_z,
+          NL);
 
   return 0;
 }
