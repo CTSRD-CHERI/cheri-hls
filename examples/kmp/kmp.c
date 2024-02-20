@@ -23,8 +23,8 @@ c1:
   }
 }
 
-void hls_top(char pattern[PATTERN_SIZE], char input[STRING_SIZE],
-             int kmpNext[PATTERN_SIZE], int n_matches[1], int size) {
+void hls_top(int size, char pattern[PATTERN_SIZE], char input[STRING_SIZE],
+             int kmpNext[PATTERN_SIZE], int n_matches[1]) {
 #pragma HLS INTERFACE m_axi port = pattern
 #pragma HLS INTERFACE m_axi port = input
 #pragma HLS INTERFACE m_axi port = kmpNext
@@ -38,7 +38,7 @@ void hls_top(char pattern[PATTERN_SIZE], char input[STRING_SIZE],
 
   q = 0;
 k1:
-  for (i = 0; i < STRING_SIZE; i++) {
+  for (i = 0; i < size; i++) {
   k2:
     while (q > 0 && pattern[q] != input[i]) {
       q = kmpNext[q];
@@ -511,6 +511,6 @@ int main() {
   int kmpNext[PATTERN_SIZE];
   int n_matches[1];
 
-  hls_top(pattern, input, kmpNext, n_matches, PATTERN_SIZE);
+  hls_top(STRING_SIZE, pattern, input, kmpNext, n_matches);
   return 0;
 }
