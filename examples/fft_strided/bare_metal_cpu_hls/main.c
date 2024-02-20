@@ -21,11 +21,8 @@ u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
 u32 a[NUM][SIZE];
 u32 b[NUM][SIZE];
-
 u32 c[NUM][SIZE];
-// u32 c[NUM][SIZE - 1];
-
-u32 c_gold[NUM][SIZE];
+u32 d[NUM][SIZE];
 
 #ifdef CAPCHECKER
 u64 capchecker_base_phy_addr = 0xc0020000;
@@ -78,20 +75,18 @@ u32 hls_top_init(int test_case, u32 *phy) {
   if (!XHls_top_IsReady(top))
     return 4;
 
-  XHls_top_Set_size(top, 64);
-  // XHls_top_Set_size(top, 8);
+  XHls_top_Set_size(top, SIZE);
 
   u32 buffer_a = a[test_case];
-  // base_buffer_address;
   u32 buffer_b = b[test_case];
-  // base_buffer_address + 100;
   u32 buffer_c = c[test_case];
-  // base_buffer_address + 200;
+  u32 buffer_d = c[test_case];
 
 #ifdef CAPCHECKER
   u32 a_cap_id = (test_case << 5) + 0;
   u32 b_cap_id = (test_case << 5) + 1;
   u32 c_cap_id = (test_case << 5) + 2;
+  u32 d_cap_id = (test_case << 5) + 3;
 
   // Configuring data buffers
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA + 4,
@@ -100,6 +95,8 @@ u32 hls_top_init(int test_case, u32 *phy) {
                     (u32)(b_cap_id << (32 - 8)));
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA + 4,
                     (u32)(c_cap_id << (32 - 8)));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_D_DATA + 4,
+                    (u32)(d_cap_id << (32 - 8)));
 #else
   // Configuring data buffers
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA + 4,
@@ -107,6 +104,8 @@ u32 hls_top_init(int test_case, u32 *phy) {
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA + 4,
                     (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA + 4,
+                    (u32)(0));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_D_DATA + 4,
                     (u32)(0));
 #endif
 
@@ -116,20 +115,30 @@ u32 hls_top_init(int test_case, u32 *phy) {
                     (u32)(buffer_b));
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA,
                     (u32)(buffer_c));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_D_DATA,
+                    (u32)(buffer_d));
 
 #ifdef CAPCHECKER
   // Configuring capchecker
   capchecker_install_cap(a_cap_id, &a);
   capchecker_install_cap(b_cap_id, &b);
   capchecker_install_cap(c_cap_id, &c);
+  capchecker_install_cap(d_cap_id, &d);
 #endif
 
-  for (int i = 0; i < SIZE; i++) {
-    a[test_case][i] = i + test_case;
-    b[test_case][i] = i + test_case;
-    c_gold[test_case][i] = (i + test_case) * (i + test_case);
-    // if (i != 9)
-    // c[test_case][i] = 0;
+  // Init data
+  for (int i = 0; i < 1024; i++) {
+    c[test_case][n] = 0;
+    d[test_case][n] = 0;
+    a[test_case][i] = (int)(i);
+    b[test_case][i] = (int)(i);
+  }
+
+  // Pre-calc twiddles
+  for (int n = 0; n < (1024 >> 1); n++) {
+    typed = (int)(6283 * n / size);
+    c[test_case][n] = 2000 * typed;
+    d[test_case][n] = -2000 * typed;
   }
 
   return 0;
@@ -164,13 +173,6 @@ int main() {
     while (!XHls_top_IsDone(top_insts + i))
       ;
   asm("fence");
-
-  u32 res = 0;
-  for (int n = 0; n < NUM; n++) {
-    for (int i = 0; i < SIZE; i++) {
-      res += (c_gold[n][i] == c[n][i]);
-    }
-  }
 
   success();
   return 0;
