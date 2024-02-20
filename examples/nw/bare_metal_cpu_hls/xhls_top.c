@@ -9,6 +9,40 @@
 #include "xhls_top.h"
 
 /************************** Function Implementation *************************/
+
+void XHls_top_Set_alen(XHls_top *InstancePtr, u32 Data) {
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_ALEN_DATA, Data);
+}
+
+u32 XHls_top_Get_alen(XHls_top *InstancePtr) {
+  u32 Data;
+
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_ALEN_DATA);
+  return Data;
+}
+
+void XHls_top_Set_blen(XHls_top *InstancePtr, u32 Data) {
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_BLEN_DATA, Data);
+}
+
+u32 XHls_top_Get_blen(XHls_top *InstancePtr) {
+  u32 Data;
+
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_BLEN_DATA);
+  return Data;
+}
 void XHls_top_Start(XHls_top *InstancePtr) {
   u32 Data;
 
@@ -64,72 +98,6 @@ void XHls_top_DisableAutoRestart(XHls_top *InstancePtr) {
 
   XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
                     XHLS_TOP_CONTROL_ADDR_AP_CTRL, 0);
-}
-
-void XHls_top_Set_size(XHls_top *InstancePtr, u32 Data) {
-  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_SIZE_DATA, Data);
-}
-
-u32 XHls_top_Get_size(XHls_top *InstancePtr) {
-  u32 Data;
-
-  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
-                          XHLS_TOP_CONTROL_ADDR_SIZE_DATA);
-  return Data;
-}
-
-void XHls_top_Set_a(XHls_top *InstancePtr, u64 Data) {
-  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_A_DATA, (u32)(Data));
-  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_A_DATA + 4, (u32)(Data >> 32));
-}
-
-u64 XHls_top_Get_a(XHls_top *InstancePtr) {
-  u64 Data;
-
-  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
-                          XHLS_TOP_CONTROL_ADDR_A_DATA);
-  Data += (u64)XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
-                                XHLS_TOP_CONTROL_ADDR_A_DATA + 4)
-          << 32;
-  return Data;
-}
-
-void XHls_top_Set_b(XHls_top *InstancePtr, u64 Data) {
-  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_B_DATA, (u32)(Data));
-  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_B_DATA + 4, (u32)(Data >> 32));
-}
-
-u64 XHls_top_Get_b(XHls_top *InstancePtr) {
-  u64 Data;
-  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
-                          XHLS_TOP_CONTROL_ADDR_B_DATA);
-  Data += (u64)XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
-                                XHLS_TOP_CONTROL_ADDR_B_DATA + 4)
-          << 32;
-  return Data;
-}
-
-void XHls_top_Set_c(XHls_top *InstancePtr, u64 Data) {
-  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_C_DATA, (u32)(Data));
-  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_C_DATA + 4, (u32)(Data >> 32));
-}
-
-u64 XHls_top_Get_c(XHls_top *InstancePtr) {
-  u64 Data;
-
-  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
-                          XHLS_TOP_CONTROL_ADDR_C_DATA);
-  Data += (u64)XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
-                                XHLS_TOP_CONTROL_ADDR_C_DATA + 4)
-          << 32;
-  return Data;
 }
 
 void XHls_top_InterruptGlobalEnable(XHls_top *InstancePtr) {

@@ -86,39 +86,13 @@ void XHls_top_InterruptClear(XHls_top *InstancePtr, u32 Mask);
 u32 XHls_top_InterruptGetEnabled(XHls_top *InstancePtr);
 u32 XHls_top_InterruptGetStatus(XHls_top *InstancePtr);
 
-void XHls_top_Set_alen(XHls_top *InstancePtr, u32 Data) {
-  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+void XHls_top_Set_alen(XHls_top *InstancePtr, u32 Data);
 
-  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_ALEN_DATA, Data);
-}
+u32 XHls_top_Get_alen(XHls_top *InstancePtr);
 
-u32 XHls_top_Get_alen(XHls_top *InstancePtr) {
-  u32 Data;
+void XHls_top_Set_blen(XHls_top *InstancePtr, u32 Data);
 
-  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
-  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
-                          XHLS_TOP_CONTROL_ADDR_ALEN_DATA);
-  return Data;
-}
-
-void XHls_top_Set_blen(XHls_top *InstancePtr, u32 Data) {
-  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
-  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_BLEN_DATA, Data);
-}
-
-u32 XHls_top_Get_blen(XHls_top *InstancePtr) {
-  u32 Data;
-
-  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
-  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
-                          XHLS_TOP_CONTROL_ADDR_BLEN_DATA);
-  return Data;
-}
+u32 XHls_top_Get_blen(XHls_top *InstancePtr);
 
 #ifdef __cplusplus
 }
