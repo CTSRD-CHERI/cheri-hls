@@ -128,15 +128,15 @@ u32 hls_top_init(int test_case, u32 *phy) {
 
   // Init data
   for (int i = 0; i < 1024; i++) {
-    c[test_case][n] = 0;
-    d[test_case][n] = 0;
+    c[test_case][i] = 0;
+    d[test_case][i] = 0;
     a[test_case][i] = (int)(i);
     b[test_case][i] = (int)(i);
   }
 
   // Pre-calc twiddles
   for (int n = 0; n < (1024 >> 1); n++) {
-    typed = (int)(6283 * n / size);
+    int typed = (int)(6283 * n / 1024);
     c[test_case][n] = 2000 * typed;
     d[test_case][n] = -2000 * typed;
   }

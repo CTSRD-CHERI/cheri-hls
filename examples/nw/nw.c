@@ -11,9 +11,9 @@
 
 #define MAX(A, B) (((A) > (B)) ? (A) : (B))
 
-void hls_top(char SEQA[ALEN], char SEQB[BLEN], char alignedA[ALEN + BLEN],
-             char alignedB[ALEN + BLEN], int M[(ALEN + 1) * (BLEN + 1)],
-             char ptr[(ALEN + 1) * (BLEN + 1)], int alen, int blen) {
+void hls_top(int alen, int blen, int SEQA[ALEN], int SEQB[BLEN],
+             int alignedA[ALEN + BLEN], int alignedB[ALEN + BLEN],
+             int M[(ALEN + 1) * (BLEN + 1)], int ptr[(ALEN + 1) * (BLEN + 1)]) {
 #pragma HLS INTERFACE m_axi port = SEQA
 #pragma HLS INTERFACE m_axi port = SEQB
 #pragma HLS INTERFACE m_axi port = alignedA
@@ -107,12 +107,13 @@ pad_b:
 
 int main() {
 
-  char SEQA[ALEN] = {0};
-  char SEQB[BLEN] = {0};
-  char alignedA[ALEN + BLEN] = {0};
-  char alignedB[ALEN + BLEN] = {0};
+  int SEQA[ALEN] = {0};
+  int SEQB[BLEN] = {0};
+  int alignedA[ALEN + BLEN] = {0};
+  int alignedB[ALEN + BLEN] = {0};
   int M[(ALEN + 1) * (BLEN + 1)] = {0};
-  char ptr[(ALEN + 1) * (BLEN + 1)] = {0};
-  hls_top(SEQA, SEQB, alignedA, alignedB, M, ptr, ALEN, BLEN);
+  int ptr[(ALEN + 1) * (BLEN + 1)] = {0};
+
+  hls_top(ALEN, BLEN, SEQA, SEQB, alignedA, alignedB, M, ptr);
   return 0;
 }
