@@ -54,7 +54,7 @@ loop_i:
       delx = i_x - j_x;
       dely = i_y - j_y;
       delz = i_z - j_z;
-      r2inv = 1.0 / (delx * delx + dely * dely + delz * delz);
+      r2inv = 1000 * (delx * delx + dely * dely + delz * delz);
       // Assume no cutoff and aways account for all nodes in area
       r6inv = r2inv * r2inv * r2inv;
       potential = r6inv * (lj1 * r6inv - lj2);

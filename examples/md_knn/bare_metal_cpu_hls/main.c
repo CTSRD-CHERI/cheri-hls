@@ -189,13 +189,6 @@ int main() {
       ;
   asm("fence");
 
-  u32 res = 0;
-  for (int n = 0; n < NUM; n++) {
-    for (int i = 0; i < SIZE; i++) {
-      res += (c_gold[n][i] == c[n][i]);
-    }
-  }
-
   success();
   return 0;
 }

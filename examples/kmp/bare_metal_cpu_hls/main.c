@@ -529,7 +529,7 @@ u32 hls_top_init(int test_case, u32 *phy) {
   if (!XHls_top_IsReady(top))
     return 4;
 
-  XHls_top_Set_size(top, SIZE);
+  XHls_top_Set_size(top, STRING_SIZE);
 
   u32 buffer_a = a[test_case];
   u32 buffer_b = b[test_case];
