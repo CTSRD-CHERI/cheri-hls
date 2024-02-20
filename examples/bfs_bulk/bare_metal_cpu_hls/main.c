@@ -98,7 +98,7 @@ u32 hls_top_init(int test_case, u32 *phy) {
     return 4;
 
   XHls_top_Set_starting_node(top, starting_node[test_case]);
-  XHls_top_Set_level(top, N_LEVELS);
+  XHls_top_Set_levels(top, N_LEVELS);
   XHls_top_Set_node(top, N_NODES);
 
   u32 buffer_nodes = nodes[test_case];

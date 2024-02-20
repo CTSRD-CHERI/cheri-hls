@@ -1,10 +1,8 @@
-#include <math.h>
-
 #define FFT_SIZE 1024
 // #define twoPI 6.28318530717959
 
-void hls_top(int real[FFT_SIZE], int img[FFT_SIZE], int real_twid[FFT_SIZE / 2],
-             int img_twid[FFT_SIZE / 2], int size) {
+void hls_top(int size, int real[FFT_SIZE], int img[FFT_SIZE],
+             int real_twid[FFT_SIZE / 2], int img_twid[FFT_SIZE / 2]) {
 #pragma HLS INTERFACE m_axi port = real
 #pragma HLS INTERFACE m_axi port = img
 #pragma HLS INTERFACE m_axi port = real_twid
@@ -53,14 +51,13 @@ int main() {
   // set up twiddles...
   int twoPI = (int)6283;
   int typed;
-  int n, N;
-  N = size;
+  int n;
 
   // Pre-calc twiddles
-  for (n = 0; n < (N >> 1); n++) {
-    typed = (int)(twoPI * n / N);
-    real[n] = 1000 * cos(typed);
-    img[n] = -1000 * sin(typed);
+  for (n = 0; n < (size >> 1); n++) {
+    typed = (int)(twoPI * n / size);
+    real[n] = 2000 * typed;
+    img[n] = -2000 * typed;
   }
 
   // Init data
@@ -69,7 +66,7 @@ int main() {
     data_y[i] = (int)(i);
   }
 
-  hls_top(data_x, data_y, real, img, size);
+  hls_top(size, data_x, data_y, real, img);
 
   return 0;
 }

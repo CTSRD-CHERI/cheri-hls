@@ -9,6 +9,57 @@
 #include "xhls_top.h"
 
 /************************** Function Implementation *************************/
+void XHls_top_Set_starting_node(XHls_top *InstancePtr, u32 Data) {
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_STARTING_NODE_DATA, Data);
+}
+
+u32 XHls_top_Get_starting_node(XHls_top *InstancePtr) {
+  u32 Data;
+
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_STARTING_NODE_DATA);
+  return Data;
+}
+
+void XHls_top_Set_levels(XHls_top *InstancePtr, u32 Data) {
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_LEVELS_DATA, Data);
+}
+
+u32 XHls_top_Get_levels(XHls_top *InstancePtr) {
+  u32 Data;
+
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_LEVELS_DATA);
+  return Data;
+}
+
+void XHls_top_Set_node(XHls_top *InstancePtr, u32 Data) {
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_NODE_DATA, Data);
+}
+
+u32 XHls_top_Get_node(XHls_top *InstancePtr) {
+  u32 Data;
+
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_NODE_DATA);
+  return Data;
+}
+
 void XHls_top_Start(XHls_top *InstancePtr) {
   u32 Data;
 
