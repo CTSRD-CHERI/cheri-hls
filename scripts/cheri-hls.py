@@ -268,7 +268,7 @@ class CheriHLS:
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
         sim_log = os.path.join(sim_dir, f"{mode}.log")
-        cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost > {sim_log})"
+        cmd = f"(cd {flute_build}; ./exe_HW_sim +v2 +tohost > {sim_log})"
         self.logger.debug(cmd)
         os.system(cmd)
 
