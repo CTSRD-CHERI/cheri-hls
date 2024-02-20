@@ -34,15 +34,15 @@ typedef struct node_t_struct {
 
 typedef int level_t;
 
-void hls_top(node_t nodes[N_NODES], edge_t edges[N_EDGES],
-             node_index_t starting_node, level_t level[N_NODES],
-             edge_index_t level_counts[N_LEVELS], int levels, int node) {
+void hls_top(node_index_t starting_node, int levels, int node,
+             node_t nodes[N_NODES], edge_t edges[N_EDGES],
+             level_t level[N_NODES], edge_index_t level_counts[N_LEVELS]) {
 #pragma HLS INTERFACE m_axi port = nodes
 #pragma HLS INTERFACE m_axi port = edges
 #pragma HLS INTERFACE m_axi port = level
 #pragma HLS INTERFACE m_axi port = level_counts
 #pragma HLS INTERFACE s_axilite port = starting_node
-#pragma HLS INTERFACE s_axilite port = level
+#pragma HLS INTERFACE s_axilite port = levels
 #pragma HLS INTERFACE s_axilite port = node
 #pragma HLS INTERFACE s_axilite port = return
 
@@ -87,6 +87,6 @@ int main() {
   level_t level[N_NODES] = {0};
   edge_index_t level_counts[N_LEVELS] = {1};
 
-  hls_top(nodes, edges, starting_node, level, level_counts, N_LEVELS, N_NODES);
+  hls_top(starting_node, N_LEVELS, N_NODES, nodes, edges, level, level_counts);
   return 0;
 }

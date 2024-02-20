@@ -81,7 +81,7 @@ u32 hls_top_init(int test_case, u32 *phy) {
   XHls_top_Set_size(top, 32);
   // XHls_top_Set_size(top, 11);
 
-  aes256_context buffer_a = a[test_case];
+  u32 buffer_a = a[test_case];
 
 #ifdef CAPCHECKER
   u32 a_cap_id = (test_case << 5) + 0;
