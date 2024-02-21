@@ -230,16 +230,29 @@ class CheriHLS:
         sim_dir = os.path.join(self.root, "examples", test, "bare_metal_cpu")
 
         # Compile C code
-        asm = "init_nocap.S" if cheri == False else "init.S"
-        cmd = [
-            "riscv64-unknown-freebsd-cc",
-            "-nostdlib",
-            "-mno-relax",
-            "-Tlink.ld",
-            "-mcmodel=medany",
-            asm,
-            "main.c",
-        ]
+        if cheri:
+            cmd = [
+                "riscv64-unknown-freebsd-cc",
+                "-nostdlib",
+                "-mno-relax",
+                "-Tlink.ld",
+                "-mcmodel=medany",
+                "init_nocap.S",
+                "main.c",
+            ]
+        else:
+            cmd = [
+                "riscv64-unknown-freebsd-cc",
+                "-nostdlib",
+                "-mno-relax",
+                "-Tlink.ld",
+                "-mcmodel=medany",
+                f"-mabi={RV_ABI}",
+                f"-march={RV_ARCH}",
+                "init.S",
+                "main.c",
+                "-DCAP",
+            ]
         result, _ = self.execute(cmd, cwd=sim_dir)
         if result:
             self.logger.error(f"Compiling error for {test} {mode}.")
@@ -267,8 +280,8 @@ class CheriHLS:
         symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
-        sim_log = os.path.join(sim_dir, f"{mode}.log")
-        cmd = f"(cd {flute_build}; ./exe_HW_sim +v2 +tohost > {sim_log})"
+        instret_log = os.path.join(sim_dir, f"instret_{mode}.log")
+        cmd = f"(cd {flute_build}; ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
         self.logger.debug(cmd)
         os.system(cmd)
 
@@ -279,12 +292,6 @@ class CheriHLS:
             if not p:
                 self.logger.error(f"Cannot find relevant PC for {test} {mode}.")
                 return result
-
-        # Emit instret log
-        instret_log = os.path.join(sim_dir, f"instret_{mode}.log")
-        cmd = f'grep -A5 "^instret:" {sim_log} > {instret_log}'
-        self.logger.debug(cmd)
-        os.system(cmd)
 
         cycles = get_total_cycles(instret_log, pc, self.logger)
         self.logger.debug(f"Relevant cycles for {test} ({mode}) are {cycles}")
@@ -351,8 +358,8 @@ class CheriHLS:
         symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
-        sim_log = os.path.join(sim_dir, f"cpu_hls.log")
-        cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost > {sim_log})"
+        instret_log = os.path.join(sim_dir, f"instret_cpu_hls.log")
+        cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
         self.logger.debug(cmd)
         os.system(cmd)
 
@@ -363,12 +370,6 @@ class CheriHLS:
             if not p:
                 self.logger.error(f"Cannot find relevant PC for {test} (cpu+hls).")
                 return result
-
-        # Emit instret log
-        instret_log = os.path.join(sim_dir, f"instret_cpu_hls.log")
-        cmd = f'grep -A5 "^instret:" {sim_log} > {instret_log}'
-        self.logger.debug(cmd)
-        os.system(cmd)
 
         cycles = get_total_cycles(instret_log, pc, self.logger)
         self.logger.debug(f"Relevant cycles for {test} (cpu+hls) are {cycles}")
@@ -443,8 +444,8 @@ class CheriHLS:
         symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
-        sim_log = os.path.join(sim_dir, f"ccpu_{mode}.log")
-        cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost > {sim_log})"
+        instret_log = os.path.join(sim_dir, f"instret_ccpu_{mode}.log")
+        cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
         self.logger.debug(cmd)
         os.system(cmd)
 
@@ -455,12 +456,6 @@ class CheriHLS:
             if not p:
                 self.logger.error(f"Cannot find relevant PC for {test} (ccpu+{mode}).")
                 return result
-
-        # Emit instret log
-        instret_log = os.path.join(sim_dir, f"instret_ccpu_{mode}.log")
-        cmd = f'grep -A5 "^instret:" {sim_log} > {instret_log}'
-        self.logger.debug(cmd)
-        os.system(cmd)
 
         cycles = get_total_cycles(instret_log, pc, self.logger)
         self.logger.debug(f"Relevant cycles for {test} (ccpu+{mode})  are {cycles}")
