@@ -1,15 +1,11 @@
-/*
- *   Byte-oriented AES-256 implementation.
- *   All lookup tables replaced with 'on the fly' calculations.
- */
 #include <stdint.h>
-// #include <stdio.h>
-// #include <stdlib.h>
+typedef uint32_t u32;
+typedef uint32_t u64;
 
 #define F(x) (((x) << 1) ^ ((((x) >> 7) & 1) * 0x1b))
 #define FD(x) (((x) >> 1) ^ (((x)&1) ? 0x8d : 0))
 
-#define NUM 32
+#define AES_NUM 32
 
 typedef struct {
   uint8_t key[32];
@@ -52,6 +48,7 @@ const uint8_t sbox[256] = {
 #else /* tableless subroutines */
 
 /* -------------------------------------------------------------------------- */
+
 uint8_t gf_alog(uint8_t x) // calculate anti-logarithm gen 3
 {
   uint8_t atb = 1, z;
@@ -243,10 +240,7 @@ ecb3:
   aes_addRoundKey(buf, ctx->key);
 } /* aes256_encrypt */
 
-void hls_top(int size, aes256_context ctx[NUM]) {
-#pragma HLS INTERFACE m_axi port = ctx
-#pragma HLS INTERFACE s_axilite port = size
-#pragma HLS INTERFACE s_axilite port = return
+void hls_top(int size, aes256_context ctx[AES_NUM]) {
 
   uint8_t key[32];
   uint8_t buf[16], i;
@@ -265,9 +259,80 @@ void hls_top(int size, aes256_context ctx[NUM]) {
   }
 }
 
-int main(int argc, char *argv[]) {
-  aes256_context ctx[NUM];
-  hls_top(NUM, ctx);
+/* -------------------------------------------------------------------------- */
 
+extern volatile u32 tohost;
+#define TERM (&tohost)
+
+#ifdef CAP
+#include <cheri_init_globals.h>
+#include <cheriintrin.h>
+#endif
+
+// HLS IP instance
+#define NUM 8
+#define SIZE 32
+
+u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
+                          0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
+aes256_context a[NUM][SIZE];
+
+#ifdef CAPCHECKER
+u64 capchecker_base_phy_addr = 0xc0020000;
+u64 capchecker_size = 0x00002000;
+#define capchecker_nbentries (capchecker_size / sizeof(void *))
+
+void capchecker_install_cap(int cap_idx, void *cap) {
+  void *almighty = cheri_ddc_get();
+  volatile void **capchecker_ptr =
+      __builtin_cheri_address_set(almighty, capchecker_base_phy_addr);
+  capchecker_ptr = __builtin_cheri_bounds_set(capchecker_ptr, capchecker_size);
+  capchecker_ptr[cap_idx] = cap;
+}
+#endif
+
+volatile void success() {
+#ifdef CAP
+  void *almighty = cheri_ddc_get();
+  volatile u32 *physical_addr =
+      __builtin_cheri_address_set(almighty, (volatile u32 *)&tohost);
+  physical_addr = __builtin_cheri_bounds_set(physical_addr, 0x4);
+  *physical_addr = 1;
+#else
+  *((volatile u32 *)&tohost) = 1;
+#endif
+}
+
+volatile void fail() {
+#ifdef CAP
+  void *almighty = cheri_ddc_get();
+  volatile u32 *physical_addr =
+      __builtin_cheri_address_set(almighty, (volatile u32 *)&tohost);
+  physical_addr = __builtin_cheri_bounds_set(physical_addr, 0x4);
+  *physical_addr = 1;
+#else
+  *((volatile u32 *)&tohost) = 1;
+#endif
+}
+
+volatile void reg_error() {
+  while (1)
+    ;
+}
+
+int main() {
+
+  // Initialise .captable
+#ifdef CAP
+  void *almighty = cheri_ddc_get();
+  cheri_init_globals_3(almighty, almighty, almighty);
+#endif
+
+  asm("fence");
+  for (int i = 0; i < NUM; i++)
+    hls_top(32, a[i]);
+  asm("fence");
+
+  success();
   return 0;
-} /* main */
+}
