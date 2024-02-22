@@ -276,7 +276,10 @@ class CheriHLS:
             return result
 
         # run simulation
-        flute_build = os.path.join(self.flute, "builds", f"{test}_nocap")
+        if cheri:
+            flute_build = os.path.join(self.flute, "builds", f"{test}_cap")
+        else:
+            flute_build = os.path.join(self.flute, "builds", f"{test}_nocap")
         symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
@@ -452,9 +455,7 @@ class CheriHLS:
         self.logger.debug(f"cp {symbol_table} {flute_build}")
         instret_log = os.path.join(sim_dir, f"instret_ccpu_{mode}.log")
         if self.args.fulltrace:
-            cmd = (
-            f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost  > {instret_log})"
-        )
+            cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost  > {instret_log})"
         else:
             cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
         self.logger.debug(cmd)
