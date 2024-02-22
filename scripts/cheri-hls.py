@@ -276,10 +276,7 @@ class CheriHLS:
             return result
 
         # run simulation
-        if cheri:
-            flute_build = os.path.join(self.flute, "builds", f"{test}_cap")
-        else:
-            flute_build = os.path.join(self.flute, "builds", f"{test}_nocap")
+        flute_build = os.path.join(self.flute, "builds", f"{test}_nocap")
         symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
