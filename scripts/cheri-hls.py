@@ -237,8 +237,11 @@ class CheriHLS:
                 "-mno-relax",
                 "-Tlink.ld",
                 "-mcmodel=medany",
-                "init_nocap.S",
+                f"-mabi={RV_ABI}",
+                f"-march={RV_ARCH}",
+                "init.S",
                 "main.c",
+                "-DCAP",
             ]
         else:
             cmd = [
@@ -247,11 +250,8 @@ class CheriHLS:
                 "-mno-relax",
                 "-Tlink.ld",
                 "-mcmodel=medany",
-                f"-mabi={RV_ABI}",
-                f"-march={RV_ARCH}",
-                "init.S",
+                "init_nocap.S",
                 "main.c",
-                "-DCAP",
             ]
         result, _ = self.execute(cmd, cwd=sim_dir)
         if result:
@@ -281,7 +281,10 @@ class CheriHLS:
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
         instret_log = os.path.join(sim_dir, f"instret_{mode}.log")
-        cmd = f"(cd {flute_build}; ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
+        if self.args.fulltrace:
+            cmd = f"(cd {flute_build}; ./exe_HW_sim +v2 +tohost > {instret_log})"
+        else:
+            cmd = f"(cd {flute_build}; ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
         self.logger.debug(cmd)
         os.system(cmd)
 
@@ -359,7 +362,10 @@ class CheriHLS:
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
         instret_log = os.path.join(sim_dir, f"instret_cpu_hls.log")
-        cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
+        if self.args.fulltrace:
+            cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost > {instret_log})"
+        else:
+            cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
         self.logger.debug(cmd)
         os.system(cmd)
 
@@ -445,7 +451,12 @@ class CheriHLS:
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
         instret_log = os.path.join(sim_dir, f"instret_ccpu_{mode}.log")
-        cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
+        if self.args.fulltrace:
+            cmd = (
+            f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost  > {instret_log})"
+        )
+        else:
+            cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
         self.logger.debug(cmd)
         os.system(cmd)
 
@@ -523,9 +534,7 @@ class CheriHLS:
             f"N_HLS={BENCHMARKS[test]}",
         ]
         if "chls" in mode:
-            cmd += [
-                "HLS_CAP_CHECKER=YES",
-            ]
+            cmd += ["HLS_CAP_CHECKER=YES", "CAPCHECKER_UNFORGIVING=YES"]
         result, _ = self.execute(cmd, cwd=flute_build)
         if result:
             self.logger.error(f"Flute building with HLS failed.")
@@ -638,6 +647,13 @@ cheri-hls.py -a"""
         default="",
         dest="test",
         help="Test an individual example",
+    )
+    parser.add_argument(
+        "--full-trace",
+        action="store_true",
+        default=False,
+        dest="fulltrace",
+        help="Run with full simulation trace",
     )
     parser.add_argument(
         "-s",
