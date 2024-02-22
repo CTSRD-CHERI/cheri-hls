@@ -15,7 +15,7 @@ extern volatile u32 tohost;
 
 // HLS IP instance
 #define NUM 8
-#define SIZE 4096
+#define SIZE 1024
 XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
@@ -128,8 +128,6 @@ u32 hls_top_init(int test_case, u32 *phy) {
 
   // Init data
   for (int i = 0; i < 1024; i++) {
-    c[test_case][i] = 0;
-    d[test_case][i] = 0;
     a[test_case][i] = (int)(i);
     b[test_case][i] = (int)(i);
   }
