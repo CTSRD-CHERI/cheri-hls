@@ -21,13 +21,11 @@ extern volatile u32 tohost;
 XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
-u32 a[NUM][SIZE_A];
-u32 b[NUM][SIZE_B];
-
-u32 c[NUM][SIZE_C];
-// u32 c[NUM][SIZE - 1];
-
-u32 c_gold[NUM][SIZE_C];
+int a[NUM][blockSide][blockSide][blockSide] = {{0}};
+dvector_t b[NUM][blockSide][blockSide][blockSide][densityFactor] = {
+    {{1, 1, 1}}};
+dvector_t c[NUM][blockSide][blockSide][blockSide][densityFactor] = {
+    {{1, 1, 1}}};
 
 #ifdef CAPCHECKER
 u64 capchecker_base_phy_addr = 0xc0020000;
@@ -125,16 +123,6 @@ u32 hls_top_init(int test_case, u32 *phy) {
   capchecker_install_cap(c_cap_id, &c);
 #endif
 
-  for (int i = 0; i < SIZE_A; i++) {
-    a[test_case][i] = i + test_case;
-  }
-  for (int i = 0; i < SIZE_B; i++) {
-    b[test_case][i] = i + test_case;
-  }
-  for (int i = 0; i < SIZE_C; i++) {
-    c_gold[test_case][i] = (i + test_case) * (i + test_case);
-  }
-
   return 0;
 }
 
@@ -167,13 +155,6 @@ int main() {
     while (!XHls_top_IsDone(top_insts + i))
       ;
   asm("fence");
-
-  u32 res = 0;
-  for (int n = 0; n < NUM; n++) {
-    for (int i = 0; i < SIZE_C; i++) {
-      res += (c_gold[n][i] == c[n][i]);
-    }
-  }
 
   success();
   return 0;
