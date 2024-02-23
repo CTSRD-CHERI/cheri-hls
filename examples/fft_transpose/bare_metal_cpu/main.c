@@ -3,24 +3,13 @@ typedef uint32_t u32;
 typedef uint32_t u64;
 #define TYPE int
 
-typedef struct complex_t {
-  TYPE x;
-  TYPE y;
-} complex;
-
 #define PI 3142
 #ifndef M_SQRT1_2
 #define M_SQRT1_2 707
 #endif
-void fft1D_512(TYPE work_x[512], TYPE work_y[512]);
 
 ////////////////////////////////////////////////////////////////////////////////
 // Test harness interface code.
-
-struct bench_args_t {
-  TYPE work_x[512];
-  TYPE work_y[512];
-};
 
 //////BEGIN TWIDDLES ////////
 #define THREADS 64

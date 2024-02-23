@@ -120,8 +120,10 @@ sort_1:
   // If trip count is even, buffer A will be valid at the end.
 }
 
+#ifdef DEBUG
 extern volatile u32 tohost;
 #define TERM (&tohost)
+#endif
 
 #ifdef CAPCHECKER
 #define CAP
@@ -155,6 +157,7 @@ void capchecker_install_cap(int cap_idx, void *cap) {
 }
 #endif
 
+#ifdef DEBUG
 volatile void success() {
 #ifdef CAP
   void *almighty = cheri_ddc_get();
@@ -178,6 +181,9 @@ volatile void fail() {
   *((volatile u32 *)&tohost) = 1;
 #endif
 }
+#else
+volatile void success() {}
+#endif
 
 volatile void reg_error() {
   while (1)
@@ -215,11 +221,14 @@ int main() {
   }
 
   // Compute
+#ifdef DEBUG
   asm("fence");
+#endif
   for (int i = 0; i < NUM; i++)
     hls_top(a[i], b[i], bucket[i], sum[i]);
+#ifdef DEBUG
   asm("fence");
-
   success();
+#endif
   return 0;
 }

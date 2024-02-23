@@ -14,8 +14,8 @@ http://www.cs.berkeley.edu/~mhoemmen/matrix-seminar/slides/UCB_sparse_tutorial_1
 #define MIN 10
 #define ran 100
 
-void hls_top(TYPE nzval[N * L], int cols[N * L], TYPE vec[N], TYPE out[N],
-             int n, int l) {
+void hls_top(int n, int l, TYPE nzval[N * L], int cols[N * L], TYPE vec[N],
+             TYPE out[N]) {
 #pragma HLS INTERFACE m_axi port = nzval
 #pragma HLS INTERFACE m_axi port = cols
 #pragma HLS INTERFACE m_axi port = vec
@@ -67,6 +67,6 @@ int main() {
   fillVal(nzval, colind, x);
   initOut(y);
 
-  hls_top(nzval, colind, x, y, N, L);
+  hls_top(N, L, nzval, colind, x, y);
   return 0;
 }
