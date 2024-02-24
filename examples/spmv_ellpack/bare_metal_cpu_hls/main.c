@@ -136,12 +136,12 @@ u32 hls_top_init(int test_case, u32 *phy) {
 #endif
 
   for (int i = 0; i < N * L; i++) {
-    a[test_case][i] = i;
-    b[test_case][i] = i;
+    a[test_case][i] = 0;
+    b[test_case][i] = 0;
   }
   for (int i = 0; i < N; i++) {
-    c[test_case][i] = i;
-    d[test_case][i] = i;
+    c[test_case][i] = 0;
+    d[test_case][i] = 0;
   }
 
   return 0;

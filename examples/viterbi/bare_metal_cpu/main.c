@@ -2,8 +2,10 @@
 typedef uint32_t u32;
 typedef uint32_t u64;
 
+#ifndef DEBUG
 extern volatile u32 tohost;
 #define TERM (&tohost)
+#endif
 
 #ifdef CAPCHECKER
 #define CAP
@@ -115,6 +117,7 @@ void capchecker_install_cap(int cap_idx, void *cap) {
 }
 #endif
 
+#ifndef DEBUG
 volatile void success() {
 #ifdef CAP
   void *almighty = cheri_ddc_get();
@@ -138,6 +141,9 @@ volatile void fail() {
   *((volatile u32 *)&tohost) = 1;
 #endif
 }
+#else
+void success() {}
+#endif
 
 volatile void reg_error() {
   while (1)
@@ -153,10 +159,14 @@ int main() {
 #endif
 
   // Compute
+#ifndef DEBUG
   asm("fence");
+#endif
   for (int i = 0; i < NUM; i++)
     hls_top(N_TOKENS, a[i], b[i], c[i], d[i], e[i]);
+#ifndef DEBUG
   asm("fence");
+#endif
 
   success();
   return 0;
