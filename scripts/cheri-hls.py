@@ -281,10 +281,14 @@ class CheriHLS:
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
         instret_log = os.path.join(sim_dir, f"instret_{mode}.log")
-        if self.args.fulltrace:
-            cmd = f"(cd {flute_build}; ./exe_HW_sim +v2 +tohost > {instret_log})"
+        if self.args.timeout != -1:
+            timeout = f"timeout {self.args.timeout}"
         else:
-            cmd = f"(cd {flute_build}; ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
+            timeout = ""
+        if self.args.fulltrace:
+            cmd = f"(cd {flute_build}; {timeout} ./exe_HW_sim +v2 +tohost > {instret_log})"
+        else:
+            cmd = f"(cd {flute_build}; {timeout} ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
         self.logger.debug(cmd)
         os.system(cmd)
 
@@ -362,10 +366,14 @@ class CheriHLS:
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
         instret_log = os.path.join(sim_dir, f"instret_cpu_hls.log")
-        if self.args.fulltrace:
-            cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost > {instret_log})"
+        if self.args.timeout != -1:
+            timeout = f"timeout {self.args.timeout}"
         else:
-            cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
+            timeout = ""
+        if self.args.fulltrace:
+            cmd = f"(cd {flute_build}; {timeout} ./exe_HW_sim +v2 +tohost > {instret_log})"
+        else:
+            cmd = f"(cd {flute_build}; {timeout} ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
         self.logger.debug(cmd)
         os.system(cmd)
 
@@ -451,10 +459,14 @@ class CheriHLS:
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
         instret_log = os.path.join(sim_dir, f"instret_ccpu_{mode}.log")
-        if self.args.fulltrace:
-            cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost  > {instret_log})"
+        if self.args.timeout != -1:
+            timeout = f"timeout {self.args.timeout}"
         else:
-            cmd = f"(cd {flute_build}; timeout 6h ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
+            timeout = ""
+        if self.args.fulltrace:
+            cmd = f"(cd {flute_build}; {timeout} ./exe_HW_sim +v2 +tohost  > {instret_log})"
+        else:
+            cmd = f"(cd {flute_build}; {timeout} ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
         self.logger.debug(cmd)
         os.system(cmd)
 
@@ -652,6 +664,12 @@ cheri-hls.py -a"""
         default=False,
         dest="fulltrace",
         help="Run with full simulation trace",
+    )
+    parser.add_argument(
+        "--to",
+        default=-1,
+        dest="timeout",
+        help="Set timeout for simulation",
     )
     parser.add_argument(
         "-s",
