@@ -29,8 +29,10 @@ ellpack_1:
   }
 }
 
+#ifndef DEBUG
 extern volatile u32 tohost;
 #define TERM (&tohost)
+#endif
 
 #ifdef CAPCHECKER
 #define CAP
@@ -64,6 +66,7 @@ void capchecker_install_cap(int cap_idx, void *cap) {
 }
 #endif
 
+#ifndef DEBUG
 volatile void success() {
 #ifdef CAP
   void *almighty = cheri_ddc_get();
@@ -87,6 +90,9 @@ volatile void fail() {
   *((volatile u32 *)&tohost) = 1;
 #endif
 }
+#else
+volatile void success() {}
+#endif
 
 volatile void reg_error() {
   while (1)
@@ -122,10 +128,14 @@ int main() {
   }
 
   // Compute
+#ifndef DEBUG
   asm("fence");
+#endif
   for (int i = 0; i < NUM; i++)
     hls_top(N, L, a[i], b[i], c[i], d[i]);
+#ifndef DEBUG
   asm("fence");
+#endif
 
   success();
   return 0;
