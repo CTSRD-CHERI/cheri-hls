@@ -1,4 +1,6 @@
 #include <stdint.h>
+typedef uint32_t u32;
+typedef uint32_t u64;
 
 extern volatile u32 tohost;
 #define TERM (&tohost)
