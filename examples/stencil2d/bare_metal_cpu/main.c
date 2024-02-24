@@ -1,4 +1,3 @@
-#include "xhls_top.h"
 #include <stdint.h>
 
 extern volatile u32 tohost;
@@ -15,14 +14,42 @@ extern volatile u32 tohost;
 
 // HLS IP instance
 #define NUM 8
+// Define input sizes
 #define col_size 64
 #define row_size 128
 #define f_size 9
 
+// Data Bounds
+#define TYPE int
+#define MAX 1000
+#define MIN 1
+
+void hls_top(int size, TYPE orig[row_size * col_size],
+             TYPE sol[row_size * col_size], TYPE filter[f_size]) {
+  int r, c, k1, k2;
+  TYPE temp, mul;
+
+stencil_label1:
+  for (r = 0; r < size - 2; r++) {
+  stencil_label2:
+    for (c = 0; c < col_size - 2; c++) {
+      temp = (TYPE)0;
+    stencil_label3:
+      for (k1 = 0; k1 < 3; k1++) {
+      stencil_label4:
+        for (k2 = 0; k2 < 3; k2++) {
+          mul = filter[k1 * 3 + k2] * orig[(r + k1) * col_size + c + k2];
+          temp += mul;
+        }
+      }
+      sol[(r * col_size) + c] = temp;
+    }
+  }
+}
+
 #define SIZE_A row_size *col_size
 #define SIZE_B row_size *col_size
 #define SIZE_C f_size
-XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
 u32 a[NUM][SIZE_A];
@@ -72,58 +99,7 @@ volatile void reg_error() {
     ;
 }
 
-u32 hls_top_init(int test_case, u32 *phy) {
-
-  XHls_top *top = top_insts + test_case;
-  top->Control_BaseAddress = phy;
-
-  if (!XHls_top_IsReady(top))
-    return 4;
-
-  XHls_top_Set_size(top, 128);
-
-  u32 buffer_a = a[test_case];
-  // base_buffer_address;
-  u32 buffer_b = b[test_case];
-  // base_buffer_address + 100;
-  u32 buffer_c = c[test_case];
-  // base_buffer_address + 200;
-
-#ifdef CAPCHECKER
-  u32 a_cap_id = (test_case << 5) + 0;
-  u32 b_cap_id = (test_case << 5) + 1;
-  u32 c_cap_id = (test_case << 5) + 2;
-
-  // Configuring data buffers
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA + 4,
-                    (u32)(a_cap_id << (32 - 8)));
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA + 4,
-                    (u32)(b_cap_id << (32 - 8)));
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA + 4,
-                    (u32)(c_cap_id << (32 - 8)));
-#else
-  // Configuring data buffers
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA + 4,
-                    (u32)(0));
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA + 4,
-                    (u32)(0));
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA + 4,
-                    (u32)(0));
-#endif
-
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA,
-                    (u32)(buffer_a));
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA,
-                    (u32)(buffer_b));
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA,
-                    (u32)(buffer_c));
-
-#ifdef CAPCHECKER
-  // Configuring capchecker
-  capchecker_install_cap(a_cap_id, &a);
-  capchecker_install_cap(b_cap_id, &b);
-  capchecker_install_cap(c_cap_id, &c);
-#endif
+u32 hls_top_init(int test_case) {
 
   for (int i = 0; i < SIZE_A; i++) {
     a[test_case][i] = i + test_case;
@@ -148,24 +124,14 @@ int main() {
 
   // Initialize
   for (int i = 0; i < NUM; i++) {
-#ifdef CAP
-    u32 *physical_addr =
-        __builtin_cheri_address_set(almighty, base_phy_addr[i]);
-    physical_addr = __builtin_cheri_bounds_set(physical_addr, 0x1000);
-#else
-    u32 *physical_addr = (volatile u32 *)base_phy_addr[i];
-#endif
-    if (hls_top_init(i, physical_addr))
+    if (hls_top_init(i))
       return 4;
   }
 
   // Compute
   asm("fence");
   for (int i = 0; i < NUM; i++)
-    XHls_top_Start(top_insts + i);
-  for (int i = 0; i < NUM; i++)
-    while (!XHls_top_IsDone(top_insts + i))
-      ;
+    hls_top(64, a[i], b[i], c[i]);
   asm("fence");
 
   success();
