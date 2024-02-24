@@ -132,7 +132,7 @@ u32 hls_top_init(int test_case, u32 *phy) {
     b[test_case][i] = i + test_case;
   }
   for (int i = 0; i < SIZE_C; i++) {
-    c_gold[test_case][i] = (i + test_case) * (i + test_case);
+    c[test_case][i] = (i + test_case) * (i + test_case);
   }
 
   return 0;
