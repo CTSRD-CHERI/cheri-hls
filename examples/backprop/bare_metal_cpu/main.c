@@ -1,4 +1,10 @@
-// Fixed parameters
+#include <stdint.h>
+
+// Data Type
+#define TYPE int
+typedef uint32_t u32;
+
+// Algorithm Parameters
 #define input_dimension 13
 #define possible_outputs 3
 #define training_sets 163
@@ -277,15 +283,6 @@ void hls_top(int sets, int weights1[input_dimension * nodes_per_layer],
              int biases3[possible_outputs],
              int training_data[training_sets * input_dimension],
              int training_targets[training_sets * possible_outputs]) {
-#pragma HLS INTERFACE m_axi port = weights1
-#pragma HLS INTERFACE m_axi port = weights2
-#pragma HLS INTERFACE m_axi port = weights3
-#pragma HLS INTERFACE m_axi port = biases1
-#pragma HLS INTERFACE m_axi port = biases2
-#pragma HLS INTERFACE m_axi port = biases3
-#pragma HLS INTERFACE m_axi port = training_data
-#pragma HLS INTERFACE m_axi port = training_targets
-#pragma HLS INTERFACE s_axilite port = return
   int i, j;
   // Forward and training structures
   int activations1[nodes_per_layer];
@@ -338,18 +335,106 @@ void hls_top(int sets, int weights1[input_dimension * nodes_per_layer],
   }
 }
 
+#ifndef DEBUG
+extern volatile u32 tohost;
+#define TERM (&tohost)
+#endif
+
+#ifdef CAPCHECKER
+#define CAP
+#endif
+
+#ifdef CAP
+#include <cheri_init_globals.h>
+#include <cheriintrin.h>
+#endif
+
+// HLS IP instance
+#define NUM 8
+int a[NUM][input_dimension * nodes_per_layer] = {{1}};
+int b[NUM][nodes_per_layer * nodes_per_layer] = {{1}};
+int c[NUM][nodes_per_layer * possible_outputs] = {{1}};
+int d[NUM][nodes_per_layer] = {{1}};
+int e[NUM][nodes_per_layer] = {{1}};
+int f[NUM][possible_outputs] = {{1}};
+int g[NUM][training_sets * input_dimension] = {{1}};
+int h[NUM][training_sets * possible_outputs] = {{1}};
+
+#ifdef CAPCHECKER
+u64 capchecker_base_phy_addr = 0xc0020000;
+u64 capchecker_size = 0x00002000;
+#define capchecker_nbentries (capchecker_size / sizeof(void *))
+
+void capchecker_install_cap(int cap_idx, void *cap) {
+  void *almighty = cheri_ddc_get();
+  volatile void **capchecker_ptr =
+      __builtin_cheri_address_set(almighty, capchecker_base_phy_addr);
+  capchecker_ptr = __builtin_cheri_bounds_set(capchecker_ptr, capchecker_size);
+  capchecker_ptr[cap_idx] = cap;
+}
+#endif
+
+#ifndef DEBUG
+volatile void success() {
+#ifdef CAP
+  void *almighty = cheri_ddc_get();
+  volatile u32 *physical_addr =
+      __builtin_cheri_address_set(almighty, (volatile u32 *)&tohost);
+  physical_addr = __builtin_cheri_bounds_set(physical_addr, 0x4);
+  *physical_addr = 1;
+#else
+  *((volatile u32 *)&tohost) = 1;
+#endif
+}
+
+volatile void fail() {
+#ifdef CAP
+  void *almighty = cheri_ddc_get();
+  volatile u32 *physical_addr =
+      __builtin_cheri_address_set(almighty, (volatile u32 *)&tohost);
+  physical_addr = __builtin_cheri_bounds_set(physical_addr, 0x4);
+  *physical_addr = 1;
+#else
+  *((volatile u32 *)&tohost) = 1;
+#endif
+}
+#else
+void success() {}
+#endif
+
+volatile void reg_error() {
+  while (1)
+    ;
+}
+
+u32 hls_top_init(int test_case) { return 0; }
+
 int main() {
 
-  int weights1[input_dimension * nodes_per_layer];
-  int weights2[nodes_per_layer * nodes_per_layer];
-  int weights3[nodes_per_layer * possible_outputs];
-  int biases1[nodes_per_layer];
-  int biases2[nodes_per_layer];
-  int biases3[possible_outputs];
-  int training_data[training_sets * input_dimension];
-  int training_targets[training_sets * possible_outputs];
-  hls_top(training_sets, weights1, weights2, weights3, biases1, biases2,
-          biases3, training_data, training_targets);
+  // Initialise .captable
+#ifdef CAP
+  void *almighty = cheri_ddc_get();
+  cheri_init_globals_3(almighty, almighty, almighty);
+#endif
 
+  // Initialize
+  for (int i = 0; i < NUM; i++) {
+    if (hls_top_init(i))
+      return 4;
+  }
+
+  // Compute
+#ifndef DEBUG
+  asm("fence");
+#endif
+
+  for (int i = 0; i < NUM; i++) {
+    hls_top(training_sets, a[i], b[i], c[i], d[i], e[i], f[i], g[i], h[i]);
+  }
+#ifndef DEBUG
+  asm("fence");
+#endif
+
+  success();
   return 0;
 }
