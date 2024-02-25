@@ -53,7 +53,7 @@ void hls_top(node_index_t starting_node, int levels, int node,
 #pragma HLS INTERFACE m_axi port = level
 #pragma HLS INTERFACE m_axi port = level_counts
 #pragma HLS INTERFACE s_axilite port = starting_node
-#pragma HLS INTERFACE s_axilite port = level
+#pragma HLS INTERFACE s_axilite port = levels
 #pragma HLS INTERFACE s_axilite port = node
 #pragma HLS INTERFACE s_axilite port = return
 

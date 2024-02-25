@@ -1,4 +1,4 @@
-open_project bfs_prj
+open_project bfs_queue_prj
 
 add_files bfs.c
 add_files -tb bfs.c
