@@ -285,6 +285,7 @@ void hls_top(int sets, int weights1[input_dimension * nodes_per_layer],
 #pragma HLS INTERFACE m_axi port = biases3
 #pragma HLS INTERFACE m_axi port = training_data
 #pragma HLS INTERFACE m_axi port = training_targets
+#pragma HLS INTERFACE s_axilite port = sets
 #pragma HLS INTERFACE s_axilite port = return
   int i, j;
   // Forward and training structures
