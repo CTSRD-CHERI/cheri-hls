@@ -1,9 +1,12 @@
 #include <stdint.h>
 typedef uint32_t u32;
 typedef uint32_t u64;
+#define MAX_LEVEL 255
 
+#ifndef DEBUG
 extern volatile u32 tohost;
 #define TERM (&tohost)
+#endif
 
 #ifdef CAPCHECKER
 #define CAP
@@ -50,7 +53,7 @@ typedef int level_t;
 
 void hls_top(node_index_t starting_node, int levels, int node,
              node_t nodes[N_NODES], edge_t edges[N_EDGES],
-             level_t level[N_NODES], edge_index_t level_counts[N_LEVELS], ) {
+             level_t level[N_NODES], edge_index_t level_counts[N_LEVELS]) {
 
   node_index_t queue[N_NODES];
   node_index_t q_in, q_out;
@@ -110,6 +113,7 @@ void capchecker_install_cap(int cap_idx, void *cap) {
 }
 #endif
 
+#ifndef DEBUG
 volatile void success() {
 #ifdef CAP
   void *almighty = cheri_ddc_get();
@@ -133,6 +137,9 @@ volatile void fail() {
   *((volatile u32 *)&tohost) = 1;
 #endif
 }
+#else
+void success() {}
+#endif
 
 volatile void reg_error() {
   while (1)
@@ -148,11 +155,15 @@ int main() {
 #endif
 
   // Compute
+#ifndef DEBUG
   asm("fence");
+#endif
   for (int i = 0; i < NUM; i++)
     hls_top(starting_node[i], N_LEVELS, N_NODES, nodes[i], edges[i], level[i],
             level_counts[i]);
+#ifndef DEBUG
   asm("fence");
+#endif
 
   success();
   return 0;

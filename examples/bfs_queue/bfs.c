@@ -47,7 +47,7 @@ typedef int level_t;
 
 void hls_top(node_index_t starting_node, int levels, int node,
              node_t nodes[N_NODES], edge_t edges[N_EDGES],
-             level_t level[N_NODES], edge_index_t level_counts[N_LEVELS], ) {
+             level_t level[N_NODES], edge_index_t level_counts[N_LEVELS]) {
 #pragma HLS INTERFACE m_axi port = nodes
 #pragma HLS INTERFACE m_axi port = edges
 #pragma HLS INTERFACE m_axi port = level
