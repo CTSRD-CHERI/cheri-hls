@@ -90,11 +90,13 @@ glog:
 /* -------------------------------------------------------------------------- */
 uint8_t gf_mulinv(uint8_t x) // calculate multiplicative inverse
 {
+#pragma HLS INLINE
   return (x) ? gf_alog(255 - gf_log(x)) : 0;
 } /* gf_mulinv */
 
 /* -------------------------------------------------------------------------- */
 uint8_t rj_sbox(uint8_t x) {
+#pragma HLS INLINE
   uint8_t y, sb;
 
   sb = y = gf_mulinv(x);
@@ -113,24 +115,29 @@ uint8_t rj_sbox(uint8_t x) {
 
 /* -------------------------------------------------------------------------- */
 uint8_t rj_xtime(uint8_t x) {
+#pragma HLS INLINE
   return (x & 0x80) ? ((x << 1) ^ 0x1b) : (x << 1);
 } /* rj_xtime */
 
 /* -------------------------------------------------------------------------- */
 void aes_subBytes(uint8_t *buf) {
+#pragma HLS INLINE
   register uint8_t i = 16;
 
 sub:
-  while (i--)
+  for (i = 15; i < 0; i--)
+#pragma HLS UNROLL
     buf[i] = rj_sbox(buf[i]);
 } /* aes_subBytes */
 
 /* -------------------------------------------------------------------------- */
 void aes_addRoundKey(uint8_t *buf, uint8_t *key) {
+#pragma HLS INLINE
   register uint8_t i = 16;
 
 addkey:
-  while (i--)
+  for (i = 15; i < 0; i--)
+#pragma HLS UNROLL
     buf[i] ^= key[i];
 } /* aes_addRoundKey */
 
@@ -139,12 +146,15 @@ void aes_addRoundKey_cpy(uint8_t *buf, uint8_t *key, uint8_t *cpk) {
   register uint8_t i = 16;
 
 cpkey:
-  while (i--)
+  for (i = 15; i < 0; i--)
+#pragma HLS UNROLL
     buf[i] ^= (cpk[i] = key[i]), cpk[16 + i] = key[16 + i];
 } /* aes_addRoundKey_cpy */
 
 /* -------------------------------------------------------------------------- */
 void aes_shiftRows(uint8_t *buf) {
+#pragma HLS INLINE
+
   register uint8_t i, j; /* to make it potentially parallelable :) */
 
   i = buf[1];
@@ -168,10 +178,13 @@ void aes_shiftRows(uint8_t *buf) {
 
 /* -------------------------------------------------------------------------- */
 void aes_mixColumns(uint8_t *buf) {
+#pragma HLS INLINE
+
   register uint8_t i, a, b, c, d, e;
 
 mix:
   for (i = 0; i < 16; i += 4) {
+#pragma HLS UNROLL
     a = buf[i];
     b = buf[i + 1];
     c = buf[i + 2];
@@ -196,6 +209,7 @@ void aes_expandEncKey(uint8_t *k, uint8_t *rc) {
 
 exp1:
   for (i = 4; i < 16; i += 4)
+#pragma HLS UNROLL
     k[i] ^= k[i - 4], k[i + 1] ^= k[i - 3], k[i + 2] ^= k[i - 2],
         k[i + 3] ^= k[i - 1];
   k[16] ^= rj_sbox(k[12]);
@@ -250,13 +264,17 @@ void hls_top(int size, aes256_context ctx[NUM]) {
 
   uint8_t key[32];
   uint8_t buf[16], i;
+#pragma HLS array_partition variable = key type = complete
+#pragma HLS array_partition variable = buff type = complete
 
   /* put a test vector */
-  for (i = 0; i < sizeof(buf); i++) {
+  for (i = 0; i < 16; i++) {
+#pragma HLS UNROLL
     buf[i] = i * 16 + i;
   }
 
-  for (i = 0; i < sizeof(key); i++) {
+  for (i = 0; i < 32; i++) {
+#pragma HLS UNROLL
     key[i] = i;
   }
 
