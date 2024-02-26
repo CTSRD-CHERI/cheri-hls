@@ -265,7 +265,7 @@ void hls_top(int size, aes256_context ctx[NUM]) {
   uint8_t key[32];
   uint8_t buf[16], i;
 #pragma HLS array_partition variable = key type = complete
-#pragma HLS array_partition variable = buff type = complete
+#pragma HLS array_partition variable = buf type = complete
 
   /* put a test vector */
   for (i = 0; i < 16; i++) {
