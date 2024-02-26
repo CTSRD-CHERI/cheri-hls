@@ -16,7 +16,6 @@ typedef uint32_t u32;
 #define norm_param 5
 
 #define max 1000
-#define offset 5
 
 // Data Bounds
 #define MAX 1000
