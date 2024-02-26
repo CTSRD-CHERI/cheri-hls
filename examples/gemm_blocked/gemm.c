@@ -27,9 +27,9 @@ void hls_top(int size, TYPE xm1[N], TYPE xm2[N], TYPE xprod[N]) {
 
   TYPE m1[N], m2[N], prod[N];
 
-  for (i = 0; i < N; i++)
+  for (i = 0; i < size * size; i++)
     m1[i] = xm1[i];
-  for (i = 0; i < N; i++)
+  for (i = 0; i < size * size; i++)
     m2[i] = xm2[i];
 
 loopjj:
@@ -52,7 +52,7 @@ loopjj:
       }
     }
   }
-  for (i = 0; i < N; i++)
+  for (i = 0; i < size * size; i++)
     xprod[i] = prod[i];
 }
 
