@@ -15,12 +15,34 @@ extern volatile u32 tohost;
 
 // HLS IP instance
 #define NUM 8
-#define SIZE_A 64
-#define SIZE_B 640
-#define SIZE_C 640
+#define nAtoms 256
+#define domainEdge 20
+#define blockSide 4
+//#define blockSide     1
+#define nBlocks (blockSide * blockSide * blockSide)
+#define blockEdge (domainEdge / ((TYPE)blockSide))
+// Memory Bound
+// This is an artifact of using statically-allocated arrays. We'll pretend that
+// it doesn't exist and instead track the actual number of points.
+#define densityFactor 10
+// LJ coefficients
+#define lj1 2
+#define lj2 3
+
 XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
+typedef struct {
+  int x;
+  int y;
+  int z;
+} dvector_t;
+typedef struct {
+  int x;
+  int y;
+  int z;
+} ivector_t;
+
 int a[NUM][blockSide][blockSide][blockSide] = {{0}};
 dvector_t b[NUM][blockSide][blockSide][blockSide][densityFactor] = {
     {{1, 1, 1}}};
