@@ -32,8 +32,9 @@ merge_label3:
   }
 }
 
-void hls_top(int size, TYPE xa[SIZE]) {
+void hls_top(int size, TYPE xa[SIZE], TYPE xb[SIZE]) {
 #pragma HLS INTERFACE m_axi port = xa
+#pragma HLS INTERFACE m_axi port = xb
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
   int start, stop;
@@ -63,7 +64,7 @@ mergesort_label1:
   }
 
   for (i = 0; i < size; i++)
-    xa[i] = a[i];
+    xb[i] = a[i];
 }
 
 int main() {
@@ -72,6 +73,6 @@ int main() {
   for (int i = 0; i < SIZE; i++)
     a[i] = 0;
 
-  hls_top(SIZE, a);
+  hls_top(SIZE, a, a);
   return 0;
 }
