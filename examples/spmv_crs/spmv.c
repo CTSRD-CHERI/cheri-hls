@@ -11,17 +11,30 @@ http://www.cs.berkeley.edu/~mhoemmen/matrix-seminar/slides/UCB_sparse_tutorial_1
 #define MIN 10
 #define ran 100
 
-void hls_top(int size, TYPE val[NNZ], int cols[NNZ], int rowDelimiters[N + 1],
-             TYPE vec[N], TYPE out[N]) {
-#pragma HLS INTERFACE m_axi port = val
-#pragma HLS INTERFACE m_axi port = cols
-#pragma HLS INTERFACE m_axi port = rowDelimiters
-#pragma HLS INTERFACE m_axi port = vec
-#pragma HLS INTERFACE m_axi port = out
+void hls_top(int size, TYPE xval[NNZ], int xcols[NNZ],
+             int xrowDelimiters[N + 1], TYPE xvec[N], TYPE xout[N]) {
+#pragma HLS INTERFACE m_axi port = xval
+#pragma HLS INTERFACE m_axi port = xcols
+#pragma HLS INTERFACE m_axi port = xrowDelimiters
+#pragma HLS INTERFACE m_axi port = xvec
+#pragma HLS INTERFACE m_axi port = xout
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
   int i, j;
   TYPE sum, Si;
+
+  TYPE val[NNZ];
+  int cols[NNZ];
+  int rowDelimiters[N + 1];
+  TYPE vec[N];
+  TYPE out[N];
+
+  for (i = 0; i < NNZ; i++)
+    val[i] = xval[i];
+  for (i = 0; i < NNZ; i++)
+    cols[i] = xcols[i];
+  for (i = 0; i < size + 1; i++)
+    rowDelimiters[i] = xrowDelimiters[i];
 
 spmv_1:
   for (i = 0; i < size; i++) {
@@ -36,6 +49,9 @@ spmv_1:
     }
     out[i] = sum;
   }
+
+  for (i = 0; i < size; i++)
+    xout[i] = out[i];
 }
 
 void fillVal(TYPE A[NNZ]) {

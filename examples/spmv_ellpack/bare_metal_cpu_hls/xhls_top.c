@@ -10,7 +10,6 @@
 
 /************************** Function Implementation *************************/
 void XHls_top_Set_n(XHls_top *InstancePtr, u32 Data) {
-  Xil_AssertVoid(InstancePtr != NULL);
   Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
   XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
@@ -20,7 +19,6 @@ void XHls_top_Set_n(XHls_top *InstancePtr, u32 Data) {
 u32 XHls_top_Get_n(XHls_top *InstancePtr) {
   u32 Data;
 
-  Xil_AssertNonvoid(InstancePtr != NULL);
   Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
   Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
@@ -29,7 +27,6 @@ u32 XHls_top_Get_n(XHls_top *InstancePtr) {
 }
 
 void XHls_top_Set_l(XHls_top *InstancePtr, u32 Data) {
-  Xil_AssertVoid(InstancePtr != NULL);
   Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
   XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
@@ -39,7 +36,6 @@ void XHls_top_Set_l(XHls_top *InstancePtr, u32 Data) {
 u32 XHls_top_Get_l(XHls_top *InstancePtr) {
   u32 Data;
 
-  Xil_AssertNonvoid(InstancePtr != NULL);
   Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
   Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,

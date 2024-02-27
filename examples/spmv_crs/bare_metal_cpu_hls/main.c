@@ -130,7 +130,6 @@ u32 hls_top_init(int test_case, u32 *phy) {
     return 4;
 
   XHls_top_Set_n(top, N);
-  XHls_top_Set_l(top, L);
 
   u32 buffer_a = a[test_case];
   u32 buffer_b = b[test_case];
