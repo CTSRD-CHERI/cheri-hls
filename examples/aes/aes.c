@@ -90,13 +90,11 @@ glog:
 /* -------------------------------------------------------------------------- */
 uint8_t gf_mulinv(uint8_t x) // calculate multiplicative inverse
 {
-#pragma HLS INLINE
   return (x) ? gf_alog(255 - gf_log(x)) : 0;
 } /* gf_mulinv */
 
 /* -------------------------------------------------------------------------- */
 uint8_t rj_sbox(uint8_t x) {
-#pragma HLS INLINE
   uint8_t y, sb;
 
   sb = y = gf_mulinv(x);
@@ -115,24 +113,20 @@ uint8_t rj_sbox(uint8_t x) {
 
 /* -------------------------------------------------------------------------- */
 uint8_t rj_xtime(uint8_t x) {
-#pragma HLS INLINE
   return (x & 0x80) ? ((x << 1) ^ 0x1b) : (x << 1);
 } /* rj_xtime */
 
 /* -------------------------------------------------------------------------- */
 void aes_subBytes(uint8_t *buf) {
-#pragma HLS INLINE
   register uint8_t i = 16;
 
 sub:
   for (i = 15; i < 0; i--)
-#pragma HLS UNROLL
     buf[i] = rj_sbox(buf[i]);
 } /* aes_subBytes */
 
 /* -------------------------------------------------------------------------- */
 void aes_addRoundKey(uint8_t *buf, uint8_t *key) {
-#pragma HLS INLINE
   register uint8_t i = 16;
 
 addkey:
@@ -153,7 +147,6 @@ cpkey:
 
 /* -------------------------------------------------------------------------- */
 void aes_shiftRows(uint8_t *buf) {
-#pragma HLS INLINE
 
   register uint8_t i, j; /* to make it potentially parallelable :) */
 
@@ -178,7 +171,6 @@ void aes_shiftRows(uint8_t *buf) {
 
 /* -------------------------------------------------------------------------- */
 void aes_mixColumns(uint8_t *buf) {
-#pragma HLS INLINE
 
   register uint8_t i, a, b, c, d, e;
 

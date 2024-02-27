@@ -147,11 +147,16 @@ void hls_top(int size, TYPE work_x[512], TYPE work_y[512]) {
   int reversed[] = {0, 4, 2, 6, 1, 5, 3, 7};
   TYPE DATA_x[THREADS * 8];
   TYPE DATA_y[THREADS * 8];
+#pragma HLS array_partition variable = DATA_x type = complete
+#pragma HLS array_partition variable = DATA_y type = complete
 
   TYPE data_x[8];
   TYPE data_y[8];
+#pragma HLS array_partition variable = data_x type = complete
+#pragma HLS array_partition variable = data_y type = complete
 
   TYPE smem[8 * 8 * 9];
+#pragma HLS array_partition variable = data_y type = cyclic factor = 8
 
   stride = THREADS;
 
