@@ -19,7 +19,7 @@ extern volatile u32 tohost;
 XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
-u32 a[NUM][SIZE];
+int a[NUM][SIZE];
 
 #ifdef CAPCHECKER
 u64 capchecker_base_phy_addr = 0xc0100000;
@@ -93,9 +93,9 @@ u32 hls_top_init(int test_case, u32 *phy) {
 
 #ifdef CAPCHECKER
   // Configuring capchecker
-  void *almighty = cheri_ddc_get();
-  capchecker_install_cap(a_cap_id, almighty);
-  // capchecker_install_cap(a_cap_id, &a);
+  // void *almighty = cheri_ddc_get();
+  // capchecker_install_cap(a_cap_id, almighty);
+  capchecker_install_cap(a_cap_id, &a);
 #endif
 
   for (int i = 0; i < SIZE; i++) {

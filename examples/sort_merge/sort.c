@@ -40,7 +40,7 @@ void hls_top(int size, TYPE xa[SIZE]) {
   int i, m, from, mid, to;
 
   start = 0;
-  stop = SIZE;
+  stop = size;
 
   TYPE a[SIZE];
 
@@ -70,7 +70,7 @@ int main() {
   TYPE a[SIZE];
 
   for (int i = 0; i < SIZE; i++)
-    a[i] = i;
+    a[i] = 0;
 
   hls_top(SIZE, a);
   return 0;

@@ -1,17 +1,31 @@
 #define FFT_SIZE 1024
 // #define twoPI 6.28318530717959
 
-void hls_top(int size, int real[FFT_SIZE], int img[FFT_SIZE],
-             int real_twid[FFT_SIZE / 2], int img_twid[FFT_SIZE / 2]) {
-#pragma HLS INTERFACE m_axi port = real
-#pragma HLS INTERFACE m_axi port = img
-#pragma HLS INTERFACE m_axi port = real_twid
-#pragma HLS INTERFACE m_axi port = img_twid
+void hls_top(int size, int xreal[FFT_SIZE], int ximg[FFT_SIZE],
+             int xreal_twid[FFT_SIZE / 2], int ximg_twid[FFT_SIZE / 2]) {
+#pragma HLS INTERFACE m_axi port = xreal
+#pragma HLS INTERFACE m_axi port = ximg
+#pragma HLS INTERFACE m_axi port = xreal_twid
+#pragma HLS INTERFACE m_axi port = ximg_twid
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
   int even, odd, span, log, rootindex;
   int temp;
   log = 0;
+
+  int real[FFT_SIZE];
+  int img[FFT_SIZE];
+  int real_twid[FFT_SIZE / 2];
+  int img_twid[FFT_SIZE / 2];
+
+  for (int i = 0; i < size; i++)
+    real[i] = xreal[i];
+  for (int i = 0; i < size; i++)
+    img[i] = ximg[i];
+  for (int i = 0; i < size / 2; i++)
+    real_twid[i] = xreal_twid[i];
+  for (int i = 0; i < size / 2; i++)
+    img_twid[i] = ximg_twid[i];
 
 outer:
   for (span = size >> 1; span; span >>= 1, log++) {
@@ -38,6 +52,10 @@ outer:
       }
     }
   }
+  for (int i = 0; i < size; i++)
+    xreal[i] = real[i];
+  for (int i = 0; i < size; i++)
+    ximg[i] = img[i];
 }
 
 int main() {
