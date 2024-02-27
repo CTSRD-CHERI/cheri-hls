@@ -16,14 +16,21 @@ Oliker, D. Patterson, J. Shalf, K. Yelick SC 2008
 #define INDX(_row_size, _col_size, _i, _j, _k)                                 \
   ((_i) + _row_size * ((_j) + _col_size * (_k)))
 
-void hls_top(int size, TYPE C[2], TYPE orig[SIZE], TYPE sol[SIZE]) {
-#pragma HLS INTERFACE m_axi port = C
-#pragma HLS INTERFACE m_axi port = orig
-#pragma HLS INTERFACE m_axi port = sol
+void hls_top(int size, TYPE xC[2], TYPE xorig[SIZE], TYPE xsol[SIZE]) {
+#pragma HLS INTERFACE m_axi port = xC
+#pragma HLS INTERFACE m_axi port = xorig
+#pragma HLS INTERFACE m_axi port = xsol
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
   int i, j, k;
   TYPE sum0, sum1, mul0, mul1;
+
+  TYPE C[2], orig[SIZE], sol[SIZE];
+
+  C[0] = xC[0];
+  C[1] = xC[1];
+  for (i = 0; i < row_size * size * height_size; i++)
+    orig[i] = xorig[i];
 
 // Handle boundary conditions by filling with original values
 height_bound_col:
@@ -74,6 +81,8 @@ loop_height:
       }
     }
   }
+  for (i = 0; i < row_size * size * height_size; i++)
+    xsol[i] = sol[i];
 }
 
 int main() {

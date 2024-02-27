@@ -23,15 +23,28 @@ c1:
   }
 }
 
-void hls_top(int size, char pattern[PATTERN_SIZE], char input[STRING_SIZE],
-             int kmpNext[PATTERN_SIZE], int n_matches[1]) {
-#pragma HLS INTERFACE m_axi port = pattern
-#pragma HLS INTERFACE m_axi port = input
-#pragma HLS INTERFACE m_axi port = kmpNext
-#pragma HLS INTERFACE m_axi port = n_matches
+void hls_top(int size, char xpattern[PATTERN_SIZE], char xinput[STRING_SIZE],
+             int xkmpNext[PATTERN_SIZE], int xn_matches[1]) {
+#pragma HLS INTERFACE m_axi port = xpattern
+#pragma HLS INTERFACE m_axi port = xinput
+#pragma HLS INTERFACE m_axi port = xkmpNext
+#pragma HLS INTERFACE m_axi port = xn_matches
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
   int i, q;
+
+  char pattern[PATTERN_SIZE];
+  char input[STRING_SIZE];
+  int kmpNext[PATTERN_SIZE];
+  int n_matches[1];
+
+  for (i = 0; i < PATTERN_SIZE; i++)
+    pattern[i] = xpattern[i];
+  for (i = 0; i < PATTERN_SIZE; i++)
+    kmpNext[i] = xkmpNext[i];
+  for (i = 0; i < size; i++)
+    input[i] = xinput[i];
+
   n_matches[0] = 0;
 
   CPF(pattern, kmpNext);
@@ -51,6 +64,8 @@ k1:
       q = kmpNext[q - 1];
     }
   }
+
+  xn_matches[0] = n_matches[0];
 }
 
 int main() {

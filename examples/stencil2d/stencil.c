@@ -8,15 +8,22 @@
 #define MAX 1000
 #define MIN 1
 
-void hls_top(int size, TYPE orig[row_size * col_size],
-             TYPE sol[row_size * col_size], TYPE filter[f_size]) {
-#pragma HLS INTERFACE m_axi port = orig
-#pragma HLS INTERFACE m_axi port = sol
-#pragma HLS INTERFACE m_axi port = filter
+void hls_top(int size, TYPE xorig[row_size * col_size],
+             TYPE xsol[row_size * col_size], TYPE xfilter[f_size]) {
+#pragma HLS INTERFACE m_axi port = xorig
+#pragma HLS INTERFACE m_axi port = xsol
+#pragma HLS INTERFACE m_axi port = xfilter
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
-  int r, c, k1, k2;
+  int i, r, c, k1, k2;
   TYPE temp, mul;
+
+  TYPE orig[row_size * col_size], filter[row_size * col_size], sol[f_size];
+
+  for (i = 0; i < size * col_size; i++)
+    orig[i] = xorig[i];
+  for (i = 0; i < f_size; i++)
+    filter[i] = xfilter[i];
 
 stencil_label1:
   for (r = 0; r < size - 2; r++) {
@@ -34,6 +41,8 @@ stencil_label1:
       sol[(r * col_size) + c] = temp;
     }
   }
+  for (i = 0; i < size * col_size; i++)
+    xsol[i] = sol[i];
 }
 
 int main() {
