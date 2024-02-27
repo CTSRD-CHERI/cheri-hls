@@ -2,9 +2,12 @@
 // #define twoPI 6.28318530717959
 
 void hls_top(int size, int xreal[FFT_SIZE], int ximg[FFT_SIZE],
-             int xreal_twid[FFT_SIZE / 2], int ximg_twid[FFT_SIZE / 2]) {
+             int xreal_twid[FFT_SIZE], int ximg_twid[FFT_SIZE],
+             int yreal[FFT_SIZE], int yimg[FFT_SIZE]) {
 #pragma HLS INTERFACE m_axi port = xreal
 #pragma HLS INTERFACE m_axi port = ximg
+#pragma HLS INTERFACE m_axi port = yreal
+#pragma HLS INTERFACE m_axi port = yimg
 #pragma HLS INTERFACE m_axi port = xreal_twid
 #pragma HLS INTERFACE m_axi port = ximg_twid
 #pragma HLS INTERFACE s_axilite port = size
@@ -53,15 +56,17 @@ outer:
     }
   }
   for (int i = 0; i < size; i++)
-    xreal[i] = real[i];
+    yreal[i] = real[i];
   for (int i = 0; i < size; i++)
-    ximg[i] = img[i];
+    yimg[i] = img[i];
 }
 
 int main() {
   int size = FFT_SIZE;
   int data_x[size];
   int data_y[size];
+  int ydata_x[size];
+  int ydata_y[size];
   int img[size];
   int real[size];
   int i;
@@ -84,7 +89,7 @@ int main() {
     data_y[i] = (int)(i);
   }
 
-  hls_top(size, data_x, data_y, real, img);
+  hls_top(size, data_x, data_y, real, img, ydata_x, ydata_y);
 
   return 0;
 }
