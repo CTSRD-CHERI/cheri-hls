@@ -25,26 +25,16 @@ extern volatile u32 tohost;
 // upper limit
 #define N_LEVELS 10
 
-typedef int edge_index_t;
-typedef int node_index_t;
-typedef struct edge_t_struct {
-  node_index_t dst;
-} edge_t;
-typedef struct node_t_struct {
-  edge_index_t edge_begin;
-  edge_index_t edge_end;
-} node_t;
-typedef int level_t;
-
 XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
 
-node_t nodes[NUM][N_NODES] = {{{1, 1}}};
-edge_t edges[NUM][N_EDGES] = {{{1}}};
-node_index_t starting_node[NUM] = {0};
-level_t level[NUM][N_NODES] = {{0}};
-edge_index_t level_counts[NUM][N_LEVELS] = {{1}};
+int nodes_b[NUM][N_NODES] = {{1, 1}};
+int nodes_e[NUM][N_NODES] = {{1, 1}};
+int edges[NUM][N_EDGES] = {{1}};
+int starting_node[NUM] = {0};
+int level[NUM][N_NODES] = {{0}};
+int level_counts[NUM][N_LEVELS] = {{1}};
 
 #ifdef CAPCHECKER
 u64 capchecker_base_phy_addr = 0xc0020000;
@@ -101,21 +91,26 @@ u32 hls_top_init(int test_case, u32 *phy) {
   XHls_top_Set_levels(top, N_LEVELS);
   XHls_top_Set_node(top, N_NODES);
 
-  u32 buffer_nodes = nodes[test_case];
+  u32 buffer_nodes_b = nodes_b[test_case];
+  u32 buffer_nodes_e = nodes_e[test_case];
   u32 buffer_edges = edges[test_case];
   u32 buffer_level = level[test_case];
   u32 buffer_level_counts = level_counts[test_case];
 
 #ifdef CAPCHECKER
-  u32 nodes_cap_id = (test_case << 5) + 0;
-  u32 edges_cap_id = (test_case << 5) + 1;
-  u32 level_cap_id = (test_case << 5) + 2;
-  u32 level_counts_cap_id = (test_case << 5) + 3;
+  u32 nodes_b_cap_id = (test_case << 5) + 0;
+  u32 nodes_e_cap_id = (test_case << 5) + 1;
+  u32 edges_cap_id = (test_case << 5) + 2;
+  u32 level_cap_id = (test_case << 5) + 3;
+  u32 level_counts_cap_id = (test_case << 5) + 4;
 
   // Configuring data buffers
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_NODES_DATA + 4,
-                    (u32)(nodes_cap_id << (32 - 8)));
+                    XHLS_TOP_CONTROL_ADDR_NODES_B_DATA + 4,
+                    (u32)(nodes_b_cap_id << (32 - 8)));
+  XHls_top_WriteReg(top->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_NODES_E_DATA + 4,
+                    (u32)(nodes_e_cap_id << (32 - 8)));
   XHls_top_WriteReg(top->Control_BaseAddress,
                     XHLS_TOP_CONTROL_ADDR_EDGES_DATA + 4,
                     (u32)(edges_cap_id << (32 - 8)));
@@ -128,7 +123,9 @@ u32 hls_top_init(int test_case, u32 *phy) {
 #else
   // Configuring data buffers
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_NODES_DATA + 4, (u32)(0));
+                    XHLS_TOP_CONTROL_ADDR_NODES_B_DATA + 4, (u32)(0));
+  XHls_top_WriteReg(top->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_NODES_E_DATA + 4, (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress,
                     XHLS_TOP_CONTROL_ADDR_EDGES_DATA + 4, (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress,
@@ -137,8 +134,10 @@ u32 hls_top_init(int test_case, u32 *phy) {
                     XHLS_TOP_CONTROL_ADDR_LEVEL_COUNTS_DATA + 4, (u32)(0));
 #endif
 
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_NODES_DATA,
-                    (u32)(buffer_nodes));
+  XHls_top_WriteReg(top->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_NODES_B_DATA, (u32)(buffer_nodes_b));
+  XHls_top_WriteReg(top->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_NODES_E_DATA, (u32)(buffer_nodes_e));
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_EDGES_DATA,
                     (u32)(buffer_edges));
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_LEVEL_DATA,
@@ -149,7 +148,8 @@ u32 hls_top_init(int test_case, u32 *phy) {
 
 #ifdef CAPCHECKER
   // Configuring capchecker
-  capchecker_install_cap(nodes_cap_id, &nodes);
+  capchecker_install_cap(nodes_b_cap_id, &nodes_b);
+  capchecker_install_cap(nodes_e_cap_id, &nodes_e);
   capchecker_install_cap(edges_cap_id, &edges);
   capchecker_install_cap(level_cap_id, &level);
   capchecker_install_cap(level_counts_cap_id, &level_counts);
