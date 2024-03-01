@@ -69,8 +69,11 @@ RUN mkdir -p /srcPkgs \
     && git submodule update --init --recursive \
     && make PREFIX=/srcPkgs/bsc/inst
 
-RUN locale-gen en_US.UTF-8
+# Install board mapping dependencies 
+RUN apt-get install -y openocd
 
+
+RUN locale-gen en_US.UTF-8
 # Append any packages you need here
 # RUN apt-get update -y \
 #     && apt-get install -y ...
