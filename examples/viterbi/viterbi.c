@@ -8,10 +8,9 @@ typedef int step_t;
 #define N_OBS 140
 #define N_TOKENS 64
 
-void hls_top(tok_t obs[N_OBS], prob_t init[N_STATES],
+void hls_top(int n_tokens, tok_t obs[N_OBS], prob_t init[N_STATES],
              prob_t transition[N_STATES * N_STATES],
-             prob_t emission[N_STATES * N_TOKENS], state_t path[N_OBS],
-             int n_tokens) {
+             prob_t emission[N_STATES * N_TOKENS], state_t path[N_OBS]) {
 #pragma HLS INTERFACE m_axi port = obs
 #pragma HLS INTERFACE m_axi port = init
 #pragma HLS INTERFACE m_axi port = transition
@@ -90,7 +89,7 @@ int main() {
   prob_t transition[N_STATES * N_STATES] = {0};
   prob_t emission[N_STATES * N_TOKENS] = {0};
   state_t path[N_OBS] = {0};
-  hls_top(obs, init, transition, emission, path, N_TOKENS);
+  hls_top(N_TOKENS, obs, init, transition, emission, path);
 
   return 0;
 }

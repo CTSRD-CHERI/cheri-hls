@@ -1,5 +1,8 @@
-#include "xvect_mult.h"
+#include "xhls_top.h"
 #include <stdint.h>
+
+extern volatile u32 tohost;
+#define TERM (&tohost)
 
 #ifdef CAPCHECKER
 #define CAP
@@ -13,7 +16,7 @@
 // HLS IP instance
 #define NUM 8
 #define SIZE 1000
-XVect_mult vect_mult_insts[NUM];
+XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
 u32 a[NUM][SIZE];
@@ -39,13 +42,27 @@ void capchecker_install_cap(int cap_idx, void *cap) {
 #endif
 
 volatile void success() {
-  while (1)
-    asm("li a0, 0xbee");
+#ifdef CAP
+  void *almighty = cheri_ddc_get();
+  volatile u32 *physical_addr =
+      __builtin_cheri_address_set(almighty, (volatile u32 *)&tohost);
+  physical_addr = __builtin_cheri_bounds_set(physical_addr, 0x4);
+  *physical_addr = 1;
+#else
+  *((volatile u32 *)&tohost) = 1;
+#endif
 }
 
 volatile void fail() {
-  while (1)
-    asm("li a1, 0xb00");
+#ifdef CAP
+  void *almighty = cheri_ddc_get();
+  volatile u32 *physical_addr =
+      __builtin_cheri_address_set(almighty, (volatile u32 *)&tohost);
+  physical_addr = __builtin_cheri_bounds_set(physical_addr, 0x4);
+  *physical_addr = 1;
+#else
+  *((volatile u32 *)&tohost) = 1;
+#endif
 }
 
 volatile void reg_error() {
@@ -53,16 +70,16 @@ volatile void reg_error() {
     ;
 }
 
-u32 hls_vect_mult_init(int test_case, u32 *phy) {
+u32 hls_top_init(int test_case, u32 *phy) {
 
-  XVect_mult *top = vect_mult_insts + test_case;
+  XHls_top *top = top_insts + test_case;
   top->Control_BaseAddress = phy;
 
-  if (!XVect_mult_IsReady(top))
+  if (!XHls_top_IsReady(top))
     return 4;
 
-  XVect_mult_Set_size(top, SIZE);
-  // XVect_mult_Set_size(top, 11);
+  XHls_top_Set_size(top, SIZE);
+  // XHls_top_Set_size(top, 11);
 
   u32 buffer_a = a[test_case];
   // base_buffer_address;
@@ -77,70 +94,35 @@ u32 hls_vect_mult_init(int test_case, u32 *phy) {
   u32 c_cap_id = (test_case << 5) + 2;
 
   // Configuring data buffers
-  XVect_mult_WriteReg(top->Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_A_DATA + 4,
-                      (u32)(a_cap_id << (32 - 8)));
-  XVect_mult_WriteReg(top->Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_B_DATA + 4,
-                      (u32)(b_cap_id << (32 - 8)));
-  XVect_mult_WriteReg(top->Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_C_DATA + 4,
-                      (u32)(c_cap_id << (32 - 8)));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA + 4,
+                    (u32)(a_cap_id << (32 - 8)));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA + 4,
+                    (u32)(b_cap_id << (32 - 8)));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA + 4,
+                    (u32)(c_cap_id << (32 - 8)));
 #else
   // Configuring data buffers
-  XVect_mult_WriteReg(top->Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_A_DATA + 4, (u32)(0));
-  XVect_mult_WriteReg(top->Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_B_DATA + 4, (u32)(0));
-  XVect_mult_WriteReg(top->Control_BaseAddress,
-                      XVECT_MULT_CONTROL_ADDR_C_DATA + 4, (u32)(0));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA + 4,
+                    (u32)(0));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA + 4,
+                    (u32)(0));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA + 4,
+                    (u32)(0));
 #endif
 
-  XVect_mult_WriteReg(top->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_A_DATA,
-                      (u32)(buffer_a));
-  XVect_mult_WriteReg(top->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_B_DATA,
-                      (u32)(buffer_b));
-  XVect_mult_WriteReg(top->Control_BaseAddress, XVECT_MULT_CONTROL_ADDR_C_DATA,
-                      (u32)(buffer_c));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA,
+                    (u32)(buffer_a));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA,
+                    (u32)(buffer_b));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA,
+                    (u32)(buffer_c));
 
 #ifdef CAPCHECKER
   // Configuring capchecker
-  // TODO per buffer
   capchecker_install_cap(a_cap_id, &a);
   capchecker_install_cap(b_cap_id, &b);
   capchecker_install_cap(c_cap_id, &c);
-  // XXX for now just init everything to almighty
-  // void *almighty = cheri_ddc_get();
-  // for (int i = 0; i < capchecker_nbentries; i++)
-  //  capchecker_install_cap(i, almighty);
 #endif
-
-  // u32 d;
-  // d = XVect_mult_ReadReg(top->Control_BaseAddress,
-  //                        XVECT_MULT_CONTROL_ADDR_A_DATA + 4);
-  // if (d != 0)
-  //   reg_error();
-  // d = XVect_mult_ReadReg(top->Control_BaseAddress,
-  //                        XVECT_MULT_CONTROL_ADDR_B_DATA + 4);
-  // if (d != 0)
-  //   reg_error();
-  // d = XVect_mult_ReadReg(top->Control_BaseAddress,
-  //                        XVECT_MULT_CONTROL_ADDR_C_DATA + 4);
-  // if (d != 0)
-  //   reg_error();
-  // d = XVect_mult_ReadReg(top->Control_BaseAddress,
-  //                    k    XVECT_MULT_CONTROL_ADDR_A_DATA);
-  // if (d != buffer_a)k
-  //   // if (d != 10)k
-  //   reg_error();
-  // d = XVect_mult_ReadReg(top->Control_BaseAddress,
-  //                        XVECT_MULT_CONTROL_ADDR_B_DATA);
-  // if (d != buffer_b)
-  //   reg_error();
-  // d = XVect_mult_ReadReg(top->Control_BaseAddress,
-  //                        XVECT_MULT_CONTROL_ADDR_C_DATA);
-  // if (d != buffer_c)
-  //   reg_error();
 
   for (int i = 0; i < SIZE; i++) {
     a[test_case][i] = i + test_case;
@@ -170,16 +152,16 @@ int main() {
 #else
     u32 *physical_addr = (volatile u32 *)base_phy_addr[i];
 #endif
-    if (hls_vect_mult_init(i, physical_addr))
+    if (hls_top_init(i, physical_addr))
       return 4;
   }
 
   // Compute
   asm("fence");
   for (int i = 0; i < NUM; i++)
-    XVect_mult_Start(vect_mult_insts + i);
+    XHls_top_Start(top_insts + i);
   for (int i = 0; i < NUM; i++)
-    while (!XVect_mult_IsDone(vect_mult_insts + i))
+    while (!XHls_top_IsDone(top_insts + i))
       ;
   asm("fence");
 
@@ -190,12 +172,9 @@ int main() {
     }
   }
 
-  // Check
-  if (res == NUM * SIZE) {
+  if (res == NUM * SIZE)
     success();
-    return 8;
-  } else {
+  else
     fail();
-    return 1;
-  }
+  return 0;
 }

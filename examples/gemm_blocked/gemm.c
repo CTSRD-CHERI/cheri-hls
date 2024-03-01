@@ -15,15 +15,22 @@ ASPLOS 1991
 #define block_size 8
 #define NUMOFBLOCKS N / block_size / block_size
 
-void hls_top(TYPE m1[N], TYPE m2[N], TYPE prod[N], int size) {
-#pragma HLS INTERFACE m_axi port = m1
-#pragma HLS INTERFACE m_axi port = m2
-#pragma HLS INTERFACE m_axi port = prod
+void hls_top(int size, TYPE xm1[N], TYPE xm2[N], TYPE xprod[N]) {
+#pragma HLS INTERFACE m_axi port = xm1
+#pragma HLS INTERFACE m_axi port = xm2
+#pragma HLS INTERFACE m_axi port = xprod
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
   int i, k, j, jj, kk;
   int i_row, k_row;
   TYPE temp_x, mul;
+
+  TYPE m1[N], m2[N], prod[N];
+
+  for (i = 0; i < size * size; i++)
+    m1[i] = xm1[i];
+  for (i = 0; i < size * size; i++)
+    m2[i] = xm2[i];
 
 loopjj:
   for (jj = 0; jj < size; jj += block_size) {
@@ -45,12 +52,14 @@ loopjj:
       }
     }
   }
+  for (i = 0; i < size * size; i++)
+    xprod[i] = prod[i];
 }
 
 int main() {
 
   TYPE m1[N] = {0}, m2[N] = {0}, prod[N] = {0};
-  hls_top(m1, m2, prod, row_size);
+  hls_top(row_size, m1, m2, prod);
 
   return 0;
 }

@@ -1,4 +1,4 @@
-open_project stencil_prj
+open_project stencil2d_prj
 
 add_files stencil.c
 add_files -tb stencil.c

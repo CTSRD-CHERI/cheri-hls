@@ -28,13 +28,20 @@ typedef struct {
   int z;
 } ivector_t;
 
-void hls_top(int n_points[blockSide][blockSide][blockSide],
-             dvector_t force[blockSide][blockSide][blockSide][densityFactor],
-             dvector_t position[blockSide][blockSide][blockSide][densityFactor],
-             int size) {
-#pragma HLS INTERFACE m_axi port = n_points
-#pragma HLS INTERFACE m_axi port = force
-#pragma HLS INTERFACE m_axi port = position
+void hls_top(int size, int xn_points[blockSide][blockSide][blockSide],
+             int force_x[blockSide][blockSide][blockSide][densityFactor],
+             int force_y[blockSide][blockSide][blockSide][densityFactor],
+             int force_z[blockSide][blockSide][blockSide][densityFactor],
+             int position_x[blockSide][blockSide][blockSide][densityFactor],
+             int position_y[blockSide][blockSide][blockSide][densityFactor],
+             int position_z[blockSide][blockSide][blockSide][densityFactor]) {
+#pragma HLS INTERFACE m_axi port = xn_points
+#pragma HLS INTERFACE m_axi port = force_x
+#pragma HLS INTERFACE m_axi port = force_y
+#pragma HLS INTERFACE m_axi port = force_z
+#pragma HLS INTERFACE m_axi port = position_x
+#pragma HLS INTERFACE m_axi port = position_y
+#pragma HLS INTERFACE m_axi port = position_z
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
 
@@ -42,6 +49,46 @@ void hls_top(int n_points[blockSide][blockSide][blockSide],
   dvector_t p, q;   // p is a point in b0, q is a point in either b0 or b1
   int p_idx, q_idx;
   TYPE dx, dy, dz, r2inv, r6inv, potential, f;
+
+  int n_points[blockSide][blockSide][blockSide];
+  dvector_t force[blockSide][blockSide][blockSide][densityFactor];
+  dvector_t position[blockSide][blockSide][blockSide][densityFactor];
+
+  for (int i = 0; i < size; i++)
+    for (int j = 0; j < size; j++)
+      for (int k = 0; k < size; k++)
+        n_points[i][j][k] = xn_points[i][j][k];
+
+  for (int i = 0; i < size; i++)
+    for (int j = 0; j < size; j++)
+      for (int k = 0; k < size; k++)
+        for (int h = 0; h < densityFactor; h++)
+          force[i][j][k][h].x = force_x[i][j][k][h];
+  for (int i = 0; i < size; i++)
+    for (int j = 0; j < size; j++)
+      for (int k = 0; k < size; k++)
+        for (int h = 0; h < densityFactor; h++)
+          force[i][j][k][h].y = force_y[i][j][k][h];
+  for (int i = 0; i < size; i++)
+    for (int j = 0; j < size; j++)
+      for (int k = 0; k < size; k++)
+        for (int h = 0; h < densityFactor; h++)
+          force[i][j][k][h].z = force_z[i][j][k][h];
+  for (int i = 0; i < size; i++)
+    for (int j = 0; j < size; j++)
+      for (int k = 0; k < size; k++)
+        for (int h = 0; h < densityFactor; h++)
+          position[i][j][k][h].x = position_x[i][j][k][h];
+  for (int i = 0; i < size; i++)
+    for (int j = 0; j < size; j++)
+      for (int k = 0; k < size; k++)
+        for (int h = 0; h < densityFactor; h++)
+          position[i][j][k][h].y = position_y[i][j][k][h];
+  for (int i = 0; i < size; i++)
+    for (int j = 0; j < size; j++)
+      for (int k = 0; k < size; k++)
+        for (int h = 0; h < densityFactor; h++)
+          position[i][j][k][h].z = position_z[i][j][k][h];
 
 // Iterate over the grid, block by block
 loop_grid0_x:
@@ -98,15 +145,35 @@ loop_grid0_x:
       }
     }
   } // loop_grid0_*
+
+  for (int i = 0; i < size; i++)
+    for (int j = 0; j < size; j++)
+      for (int k = 0; k < size; k++)
+        for (int h = 0; h < densityFactor; h++)
+          force_x[i][j][k][h] = force[i][j][k][h].x;
+  for (int i = 0; i < size; i++)
+    for (int j = 0; j < size; j++)
+      for (int k = 0; k < size; k++)
+        for (int h = 0; h < densityFactor; h++)
+          force_y[i][j][k][h] = force[i][j][k][h].y;
+  for (int i = 0; i < size; i++)
+    for (int j = 0; j < size; j++)
+      for (int k = 0; k < size; k++)
+        for (int h = 0; h < densityFactor; h++)
+          force_z[i][j][k][h] = force[i][j][k][h].z;
 }
 
 int main() {
 
   int n_points[blockSide][blockSide][blockSide] = {0};
-  dvector_t force[blockSide][blockSide][blockSide][densityFactor] = {{1, 1, 1}};
-  dvector_t position[blockSide][blockSide][blockSide][densityFactor] = {
-      {1, 1, 1}};
-  hls_top(n_points, force, position, blockSide);
+  int force_x[blockSide][blockSide][blockSide][densityFactor] = {{1, 1, 1}};
+  int force_y[blockSide][blockSide][blockSide][densityFactor] = {{1, 1, 1}};
+  int force_z[blockSide][blockSide][blockSide][densityFactor] = {{1, 1, 1}};
+  int position_x[blockSide][blockSide][blockSide][densityFactor] = {{1, 1, 1}};
+  int position_y[blockSide][blockSide][blockSide][densityFactor] = {{1, 1, 1}};
+  int position_z[blockSide][blockSide][blockSide][densityFactor] = {{1, 1, 1}};
+  hls_top(blockSide, n_points, force_x, force_y, force_z, position_x,
+          position_y, position_z);
 
   return 0;
 }

@@ -1,4 +1,4 @@
-open_project spmv_prj
+open_project spmv_ellpack_prj
 
 add_files spmv.c
 add_files -tb spmv.c

@@ -3,8 +3,8 @@
  *   All lookup tables replaced with 'on the fly' calculations.
  */
 #include <stdint.h>
-#include <stdio.h>
-#include <stdlib.h>
+// #include <stdio.h>
+// #include <stdlib.h>
 
 #define F(x) (((x) << 1) ^ ((((x) >> 7) & 1) * 0x1b))
 #define FD(x) (((x) >> 1) ^ (((x)&1) ? 0x8d : 0))
@@ -19,12 +19,6 @@ typedef struct {
 
 ////////////////////////////////////////////////////////////////////////////////
 // Test harness interface code.
-
-struct bench_args_t {
-  aes256_context ctx;
-  uint8_t k[32];
-  uint8_t buf[16];
-};
 
 #define BACK_TO_TABLES
 #ifdef BACK_TO_TABLES
@@ -127,7 +121,7 @@ void aes_subBytes(uint8_t *buf) {
   register uint8_t i = 16;
 
 sub:
-  while (i--)
+  for (i = 15; i < 0; i--)
     buf[i] = rj_sbox(buf[i]);
 } /* aes_subBytes */
 
@@ -136,7 +130,8 @@ void aes_addRoundKey(uint8_t *buf, uint8_t *key) {
   register uint8_t i = 16;
 
 addkey:
-  while (i--)
+  for (i = 15; i < 0; i--)
+#pragma HLS UNROLL
     buf[i] ^= key[i];
 } /* aes_addRoundKey */
 
@@ -145,12 +140,14 @@ void aes_addRoundKey_cpy(uint8_t *buf, uint8_t *key, uint8_t *cpk) {
   register uint8_t i = 16;
 
 cpkey:
-  while (i--)
+  for (i = 15; i < 0; i--)
+#pragma HLS UNROLL
     buf[i] ^= (cpk[i] = key[i]), cpk[16 + i] = key[16 + i];
 } /* aes_addRoundKey_cpy */
 
 /* -------------------------------------------------------------------------- */
 void aes_shiftRows(uint8_t *buf) {
+
   register uint8_t i, j; /* to make it potentially parallelable :) */
 
   i = buf[1];
@@ -174,10 +171,12 @@ void aes_shiftRows(uint8_t *buf) {
 
 /* -------------------------------------------------------------------------- */
 void aes_mixColumns(uint8_t *buf) {
+
   register uint8_t i, a, b, c, d, e;
 
 mix:
   for (i = 0; i < 16; i += 4) {
+#pragma HLS UNROLL
     a = buf[i];
     b = buf[i + 1];
     c = buf[i + 2];
@@ -202,6 +201,7 @@ void aes_expandEncKey(uint8_t *k, uint8_t *rc) {
 
 exp1:
   for (i = 4; i < 16; i += 4)
+#pragma HLS UNROLL
     k[i] ^= k[i - 4], k[i + 1] ^= k[i - 3], k[i + 2] ^= k[i - 2],
         k[i + 3] ^= k[i - 1];
   k[16] ^= rj_sbox(k[12]);
@@ -249,31 +249,35 @@ ecb3:
   aes_addRoundKey(buf, ctx->key);
 } /* aes256_encrypt */
 
-void hls_top(aes256_context ctx[NUM], int size) {
+void hls_top(int size, aes256_context ctx[NUM]) {
 #pragma HLS INTERFACE m_axi port = ctx
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
 
   uint8_t key[32];
   uint8_t buf[16], i;
+#pragma HLS array_partition variable = key type = complete
+#pragma HLS array_partition variable = buf type = complete
 
   /* put a test vector */
-  for (i = 0; i < sizeof(buf); i++) {
+  for (i = 0; i < 16; i++) {
+#pragma HLS UNROLL
     buf[i] = i * 16 + i;
   }
 
-  for (i = 0; i < sizeof(key); i++) {
+  for (i = 0; i < 32; i++) {
+#pragma HLS UNROLL
     key[i] = i;
   }
 
-  for (i = 0; i < NUM; i++) {
+  for (i = 0; i < size; i++) {
     aes256_encrypt_ecb(ctx + i, key, buf);
   }
 }
 
 int main(int argc, char *argv[]) {
   aes256_context ctx[NUM];
-  hls_top(ctx, NUM);
+  hls_top(NUM, ctx);
 
   return 0;
 } /* main */

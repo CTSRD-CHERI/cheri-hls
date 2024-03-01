@@ -1,4 +1,4 @@
-open_project sort_prj
+open_project sort_radix_prj
 
 set_top hls_top 
 
@@ -9,7 +9,7 @@ set clock 10
 set part "xqzu29dr-ffrf1760-1-i"
 
 
-open_solution solution
+open_solution -reset solution
 set_part $part
 create_clock -period $clock
 

@@ -34,15 +34,17 @@ typedef struct node_t_struct {
 
 typedef int level_t;
 
-void hls_top(node_t nodes[N_NODES], edge_t edges[N_EDGES],
-             node_index_t starting_node, level_t level[N_NODES],
-             edge_index_t level_counts[N_LEVELS], int levels, int node) {
-#pragma HLS INTERFACE m_axi port = nodes
-#pragma HLS INTERFACE m_axi port = edges
-#pragma HLS INTERFACE m_axi port = level
-#pragma HLS INTERFACE m_axi port = level_counts
+void hls_top(node_index_t starting_node, int levels, int node,
+             int xnodes_b[N_NODES], int xnodes_e[N_NODES], int xedges[N_EDGES],
+             int xlevel[N_NODES], int xlevel_counts[N_LEVELS]) {
+
+#pragma HLS INTERFACE m_axi port = xnodes_b
+#pragma HLS INTERFACE m_axi port = xnodes_e
+#pragma HLS INTERFACE m_axi port = xedges
+#pragma HLS INTERFACE m_axi port = xlevel
+#pragma HLS INTERFACE m_axi port = xlevel_counts
 #pragma HLS INTERFACE s_axilite port = starting_node
-#pragma HLS INTERFACE s_axilite port = level
+#pragma HLS INTERFACE s_axilite port = levels
 #pragma HLS INTERFACE s_axilite port = node
 #pragma HLS INTERFACE s_axilite port = return
 
@@ -50,6 +52,19 @@ void hls_top(node_t nodes[N_NODES], edge_t edges[N_EDGES],
   edge_index_t e;
   level_t horizon;
   edge_index_t cnt;
+
+  node_t nodes[N_NODES];
+  edge_t edges[N_EDGES];
+  level_t level[N_NODES] = {0};
+  edge_index_t level_counts[N_LEVELS] = {0};
+
+  for (int i = 0; i < node; i++)
+    nodes[i].edge_begin = xnodes_b[i];
+  for (int i = 0; i < node; i++)
+    nodes[i].edge_end = xnodes_e[i];
+
+  for (int i = 0; i < N_EDGES; i++)
+    edges[i].dst = xedges[i];
 
   level[starting_node] = 0;
   level_counts[0] = 1;
@@ -78,15 +93,23 @@ loop_horizons:
     if ((level_counts[horizon + 1] = cnt) == 0)
       break;
   }
+
+  for (int i = 0; i < node; i++)
+    xlevel[i] = level[i];
+
+  for (int i = 0; i < levels; i++)
+    xlevel_counts[i] = level_counts[i];
 }
 
 int main() {
-  node_t nodes[N_NODES] = {{1, 1}};
-  edge_t edges[N_EDGES] = {{1}};
-  node_index_t starting_node = 0;
-  level_t level[N_NODES] = {0};
-  edge_index_t level_counts[N_LEVELS] = {1};
+  int nodes_b[N_NODES] = {1};
+  int nodes_e[N_NODES] = {1};
+  int edges[N_EDGES] = {1};
+  int starting_node = 0;
+  int level[N_NODES] = {0};
+  int level_counts[N_LEVELS] = {1};
 
-  hls_top(nodes, edges, starting_node, level, level_counts, N_LEVELS, N_NODES);
+  hls_top(starting_node, N_LEVELS, N_NODES, nodes_b, nodes_e, edges, level,
+          level_counts);
   return 0;
 }

@@ -14,17 +14,29 @@ http://www.cs.berkeley.edu/~mhoemmen/matrix-seminar/slides/UCB_sparse_tutorial_1
 #define MIN 10
 #define ran 100
 
-void hls_top(TYPE nzval[N * L], int cols[N * L], TYPE vec[N], TYPE out[N],
-             int n, int l) {
-#pragma HLS INTERFACE m_axi port = nzval
-#pragma HLS INTERFACE m_axi port = cols
-#pragma HLS INTERFACE m_axi port = vec
-#pragma HLS INTERFACE m_axi port = out
+void hls_top(int n, int l, TYPE xnzval[N * L], int xcols[N * L], TYPE xvec[N],
+             TYPE xout[N]) {
+#pragma HLS INTERFACE m_axi port = xnzval
+#pragma HLS INTERFACE m_axi port = xcols
+#pragma HLS INTERFACE m_axi port = xvec
+#pragma HLS INTERFACE m_axi port = xout
 #pragma HLS INTERFACE s_axilite port = n
 #pragma HLS INTERFACE s_axilite port = l
 #pragma HLS INTERFACE s_axilite port = return
   int i, j;
   TYPE Si;
+
+  TYPE nzval[N * L];
+  int cols[N * L];
+  TYPE vec[N];
+  TYPE out[N];
+
+  for (i = 0; i < n * l; i++)
+    nzval[i] = xnzval[i];
+  for (i = 0; i < n * l; i++)
+    cols[i] = xcols[i];
+  for (i = 0; i < n; i++)
+    vec[i] = xvec[i];
 
 ellpack_1:
   for (i = 0; i < n; i++) {
@@ -36,6 +48,8 @@ ellpack_1:
     }
     out[i] = sum;
   }
+  for (i = 0; i < n; i++)
+    xout[i] = out[i];
 }
 
 void fillVal(TYPE nzval[N * L], int colind[N * L], TYPE x[N]) {
@@ -67,6 +81,6 @@ int main() {
   fillVal(nzval, colind, x);
   initOut(y);
 
-  hls_top(nzval, colind, x, y, N, L);
+  hls_top(N, L, nzval, colind, x, y);
   return 0;
 }

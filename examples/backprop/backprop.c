@@ -270,7 +270,7 @@ void update_weights(int weights1[input_dimension * nodes_per_layer],
   }
 }
 
-void hls_top(int weights1[input_dimension * nodes_per_layer],
+void hls_top(int sets, int weights1[input_dimension * nodes_per_layer],
              int weights2[nodes_per_layer * nodes_per_layer],
              int weights3[nodes_per_layer * possible_outputs],
              int biases1[nodes_per_layer], int biases2[nodes_per_layer],
@@ -285,6 +285,7 @@ void hls_top(int weights1[input_dimension * nodes_per_layer],
 #pragma HLS INTERFACE m_axi port = biases3
 #pragma HLS INTERFACE m_axi port = training_data
 #pragma HLS INTERFACE m_axi port = training_targets
+#pragma HLS INTERFACE s_axilite port = sets
 #pragma HLS INTERFACE s_axilite port = return
   int i, j;
   // Forward and training structures
@@ -303,7 +304,7 @@ void hls_top(int weights1[input_dimension * nodes_per_layer],
   int oracle_activations1[nodes_per_layer];
   int oracle_activations2[nodes_per_layer];
 
-  for (i = 0; i < training_sets; i++) {
+  for (i = 0; i < sets; i++) {
     for (j = 0; j < nodes_per_layer; j++) {
       activations1[j] = 0;
       activations2[j] = 0;
@@ -348,8 +349,8 @@ int main() {
   int biases3[possible_outputs];
   int training_data[training_sets * input_dimension];
   int training_targets[training_sets * possible_outputs];
-  hls_top(weights1, weights2, weights3, biases1, biases2, biases3,
-          training_data, training_targets);
+  hls_top(training_sets, weights1, weights2, weights3, biases1, biases2,
+          biases3, training_data, training_targets);
 
   return 0;
 }

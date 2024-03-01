@@ -3,8 +3,6 @@ Implementations based on:
 V. Volkov and B. Kazian. Fitting fft onto the g80 architecture. 2008.
 */
 
-#include <math.h>
-
 #define TYPE int
 
 typedef struct complex_t {
@@ -49,8 +47,8 @@ void twiddles8(TYPE a_x[8], TYPE a_y[8], int i, int n) {
 twiddles:
   for (j = 1; j < 8; j++) {
     phi = ((-2 * PI * reversed8[j] / n) * i);
-    phi_x = cos(phi);
-    phi_y = sin(phi);
+    phi_x = phi % 7;
+    phi_y = phi % 3;
     tmp = a_x[j];
     a_x[j] = cmplx_M_x(a_x[j], a_y[j], phi_x, phi_y);
     a_y[j] = cmplx_M_y(tmp, a_y[j], phi_x, phi_y);
@@ -73,8 +71,8 @@ twiddles:
     TYPE exp_1_44_x;                                                           \
     TYPE exp_1_44_y;                                                           \
     TYPE tmp;                                                                  \
-    exp_1_44_x = 0.0;                                                          \
-    exp_1_44_y = -1.0;                                                         \
+    exp_1_44_x = 0;                                                            \
+    exp_1_44_y = -1;                                                           \
     FF2(a0_x, a0_y, a2_x, a2_y);                                               \
     FF2(a1_x, a1_y, a3_x, a3_y);                                               \
     tmp = *a3_x;                                                               \
@@ -140,19 +138,25 @@ void loady8(TYPE a_y[], TYPE x[], int offset, int sx) {
   a_y[7] = x[7 * sx + offset];
 }
 
-void hls_top(TYPE work_x[512], TYPE work_y[512]) {
+void hls_top(int size, TYPE work_x[512], TYPE work_y[512]) {
 #pragma HLS INTERFACE m_axi port = work_x
 #pragma HLS INTERFACE m_axi port = work_y
+#pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
   int tid, hi, lo, stride;
   int reversed[] = {0, 4, 2, 6, 1, 5, 3, 7};
   TYPE DATA_x[THREADS * 8];
   TYPE DATA_y[THREADS * 8];
+#pragma HLS array_partition variable = DATA_x type = complete
+#pragma HLS array_partition variable = DATA_y type = complete
 
   TYPE data_x[8];
   TYPE data_y[8];
+#pragma HLS array_partition variable = data_x type = complete
+#pragma HLS array_partition variable = data_y type = complete
 
   TYPE smem[8 * 8 * 9];
+#pragma HLS array_partition variable = data_y type = cyclic factor = 8
 
   stride = THREADS;
 
@@ -206,7 +210,7 @@ loop1:
   int sx, offset;
   sx = 66;
 loop2:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     hi = tid >> 3;
     lo = tid & 7;
     offset = hi * 8 + lo;
@@ -221,7 +225,7 @@ loop2:
   }
   sx = 8;
 loop3:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     hi = tid >> 3;
     lo = tid & 7;
     offset = lo * 66 + hi;
@@ -238,7 +242,7 @@ loop3:
 
   sx = 66;
 loop4:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     hi = tid >> 3;
     lo = tid & 7;
     offset = hi * 8 + lo;
@@ -254,7 +258,7 @@ loop4:
   }
 
 loop5:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     data_y[0] = DATA_y[tid * 8 + 0];
     data_y[1] = DATA_y[tid * 8 + 1];
     data_y[2] = DATA_y[tid * 8 + 2];
@@ -280,7 +284,7 @@ loop5:
   }
 
 loop6:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     data_x[0] = DATA_x[tid * 8 + 0];
     data_x[1] = DATA_x[tid * 8 + 1];
     data_x[2] = DATA_x[tid * 8 + 2];
@@ -305,9 +309,9 @@ loop6:
     // Calculate hi for second twiddle calculation...
     hi = tid >> 3;
 
-    // Second twiddles calc, use hi and 64 stride version as defined in
+    // Second twiddles calc, use hi and size stride version as defined in
     // G80/SHOC...
-    twiddles8(data_x, data_y, hi, 64);
+    twiddles8(data_x, data_y, hi, size);
 
     // Save for final transpose...
     DATA_x[tid * 8] = data_x[0];
@@ -332,7 +336,7 @@ loop6:
   // Transpose..
   sx = 72;
 loop7:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     hi = tid >> 3;
     lo = tid & 7;
     offset = hi * 8 + lo;
@@ -348,7 +352,7 @@ loop7:
 
   sx = 8;
 loop8:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     hi = tid >> 3;
     lo = tid & 7;
     offset = hi * 72 + lo;
@@ -365,7 +369,7 @@ loop8:
 
   sx = 72;
 loop9:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     hi = tid >> 3;
     lo = tid & 7;
     offset = hi * 8 + lo;
@@ -381,7 +385,7 @@ loop9:
   }
 
 loop10:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     data_y[0] = DATA_y[tid * 8 + 0];
     data_y[1] = DATA_y[tid * 8 + 1];
     data_y[2] = DATA_y[tid * 8 + 2];
@@ -407,7 +411,7 @@ loop10:
   }
 
 loop11:
-  for (tid = 0; tid < 64; tid++) {
+  for (tid = 0; tid < size; tid++) {
     // Load post-trans
     data_y[0] = DATA_y[tid * 8];
     data_y[1] = DATA_y[tid * 8 + 1];
@@ -466,7 +470,7 @@ int main() {
         (TYPE)(i); //(((double) rand() / (RAND_MAX)) * (max-min) + min);//i;
   }
 
-  hls_top(a_x, a_y);
+  hls_top(64, a_x, a_y);
 
   return 0;
 }
