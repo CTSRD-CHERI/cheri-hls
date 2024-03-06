@@ -11,8 +11,8 @@ typedef uint32_t u64;
 #define MIN 10
 #define ran 100
 
-void hls_top(int size, TYPE val[NNZ], int cols[NNZ], int rowDelimiters[N + 1],
-             TYPE vec[N], TYPE out[N]) {
+volatile void hls_top(int size, TYPE val[NNZ], int cols[NNZ],
+                      int rowDelimiters[N + 1], TYPE vec[N], TYPE out[N]) {
 #pragma HLS INTERFACE m_axi port = val
 #pragma HLS INTERFACE m_axi port = cols
 #pragma HLS INTERFACE m_axi port = rowDelimiters
@@ -38,7 +38,7 @@ spmv_1:
   }
 }
 
-void fillVal(TYPE A[NNZ]) {
+volatile void fillVal(TYPE A[NNZ]) {
   int j;
   for (j = 0; j < NNZ; j++) {
     A[j] = ran;
@@ -52,7 +52,7 @@ void fill(TYPE x[N]) {
   }
 }
 
-void initMat(int colind[NNZ], int rowDelimiters[N + 1]) {
+volatile void initMat(int colind[NNZ], int rowDelimiters[N + 1]) {
   int nnzAssigned = 0;
   float prob = (float)NNZ / ((float)N * (float)N);
 
@@ -74,13 +74,6 @@ void initMat(int colind[NNZ], int rowDelimiters[N + 1]) {
     }
   }
   rowDelimiters[N] = NNZ;
-}
-
-void initOut(TYPE y[N]) {
-  int i;
-  for (i = 0; i < N; i++) {
-    y[i] = 0;
-  }
 }
 
 #ifndef DEBUG
@@ -105,7 +98,7 @@ u32 a[NUM][NNZ];
 u32 b[NUM][NNZ];
 u32 c[NUM][N + 1];
 u32 d[NUM][N];
-u32 e[NUM][N];
+u32 e[NUM][N] = {{0}};
 
 #ifdef CAPCHECKER
 u64 capchecker_base_phy_addr = 0xc0020000;
@@ -159,7 +152,6 @@ u32 hls_top_init(int test_case) {
   fillVal(a[test_case]);
   fill(d[test_case]);
   initMat(b[test_case], c[test_case]);
-  initOut(e[test_case]);
 
   return 0;
 }
