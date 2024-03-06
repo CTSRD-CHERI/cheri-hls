@@ -1,5 +1,15 @@
 # Temporary script to record commands to map bistream on the board:
 
+BLUESPEC 
+
+cd src_ssTIH -j2
+./setup_soc
+./build.sh
+./get_ppa
+
+
+
+
 python3 vcu118-run.py \
   --bitfile /home/jc2489/design_1.bit \
   --ltxfile /home/jc2489/design_1.ltx \
