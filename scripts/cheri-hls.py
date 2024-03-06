@@ -236,6 +236,7 @@ class CheriHLS:
                 "-nostdlib",
                 "-mno-relax",
                 "-Tlink.ld",
+                "-O2",
                 "-mcmodel=medany",
                 f"-mabi={RV_ABI}",
                 f"-march={RV_ARCH}",
@@ -247,6 +248,7 @@ class CheriHLS:
             cmd = [
                 "riscv64-unknown-freebsd-cc",
                 "-nostdlib",
+                "-O2",
                 "-mno-relax",
                 "-Tlink.ld",
                 "-mcmodel=medany",
@@ -280,7 +282,10 @@ class CheriHLS:
         symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
-        instret_log = os.path.join(sim_dir, f"instret_{mode}.log")
+        if self.args.logloc == False:
+            instret_log = os.path.join(sim_dir, f"{test}_instret_{mode}.log")
+        else:
+            instret_log = os.path.join(self.args.logloc, f"{test}_instret_{mode}.log")
         if self.args.timeout != -1:
             timeout = f"timeout {self.args.timeout}"
         else:
@@ -331,6 +336,7 @@ class CheriHLS:
             "riscv64-unknown-freebsd-cc",
             "-nostdlib",
             "-mno-relax",
+            "-O2",
             "-Tlink.ld",
             "-mcmodel=medany",
             "init_nocap.S",
@@ -365,7 +371,10 @@ class CheriHLS:
         symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
-        instret_log = os.path.join(sim_dir, f"instret_cpu_hls.log")
+        if self.args.logloc == False:
+            instret_log = os.path.join(sim_dir, f"{test}_instret_cpu_hls.log")
+        else:
+            instret_log = os.path.join(self.args.logloc, f"{test}_instret_cpu_hls.log")
         if self.args.timeout != -1:
             timeout = f"timeout {self.args.timeout}"
         else:
@@ -417,6 +426,7 @@ class CheriHLS:
         cmd = [
             "riscv64-unknown-freebsd-cc",
             "-nostdlib",
+            "-O2",
             "-mno-relax",
             "-Tlink.ld",
             "-mcmodel=medany",
@@ -458,7 +468,10 @@ class CheriHLS:
         symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
-        instret_log = os.path.join(sim_dir, f"instret_ccpu_{mode}.log")
+        if self.args.logloc == False:
+            instret_log = os.path.join(sim_dir, f"{test}_instret_ccpu_hls.log")
+        else:
+            instret_log = os.path.join(self.args.logloc, f"{test}_instret_ccpu_hls.log")
         if self.args.timeout != -1:
             timeout = f"timeout {self.args.timeout}"
         else:
@@ -670,6 +683,13 @@ cheri-hls.py -a"""
         default=-1,
         dest="timeout",
         help="Set timeout for simulation",
+    )
+    parser.add_argument(
+        "--logloc",
+        default="/local/sata/chls_logs",
+        # default=False,
+        dest="logloc",
+        help="Log location - in case of disk space limit",
     )
     parser.add_argument(
         "-s",
