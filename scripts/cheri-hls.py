@@ -174,7 +174,6 @@ def get_total_cycles(sim_log, pcs, logger):
 class CheriHLS:
     """
     args:
-        - run_all : Run the whole regression test, Default=False
         - debug : Run in debug mode, Default=False
         - test : Test an individual example
         - synth : Run hardware synthesis of the system
@@ -199,10 +198,11 @@ class CheriHLS:
         if self.init_project():
             self.logger.error("Initialize project failed.")
             return 1
-        if self.args.run_all:
-            result += self.run_all_tests()
-        else:
-            result += self.run_single_test(test=self.args.test, mode=self.args.mode)
+        ms = MODES if self.args.mode == "all" else [self.args.mode]
+        bs = BENCHMARKS if self.args.test == "all" else [self.args.test]
+        for b in bs:
+            for m in ms:
+                result += self.run_single_test(test=self.args.test, mode=m)
         self.logger.info(f"Test finish. {result} errors.")
 
     def run_single_test(self, test, mode):
@@ -236,6 +236,9 @@ class CheriHLS:
                 "-nostdlib",
                 "-mno-relax",
                 "-Tlink.ld",
+                "-O2",
+                "-fno-builtin",
+                "-fno-lto",
                 "-mcmodel=medany",
                 f"-mabi={RV_ABI}",
                 f"-march={RV_ARCH}",
@@ -247,6 +250,9 @@ class CheriHLS:
             cmd = [
                 "riscv64-unknown-freebsd-cc",
                 "-nostdlib",
+                "-O2",
+                "-fno-builtin",
+                "-fno-lto",
                 "-mno-relax",
                 "-Tlink.ld",
                 "-mcmodel=medany",
@@ -280,7 +286,10 @@ class CheriHLS:
         symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
-        instret_log = os.path.join(sim_dir, f"instret_{mode}.log")
+        if self.args.logloc == False:
+            instret_log = os.path.join(sim_dir, f"{test}_instret_{mode}.log")
+        else:
+            instret_log = os.path.join(self.args.logloc, f"{test}_instret_{mode}.log")
         if self.args.timeout != -1:
             timeout = f"timeout {self.args.timeout}"
         else:
@@ -331,6 +340,9 @@ class CheriHLS:
             "riscv64-unknown-freebsd-cc",
             "-nostdlib",
             "-mno-relax",
+            "-O2",
+            "-fno-builtin",
+            "-fno-lto",
             "-Tlink.ld",
             "-mcmodel=medany",
             "init_nocap.S",
@@ -365,7 +377,10 @@ class CheriHLS:
         symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
-        instret_log = os.path.join(sim_dir, f"instret_cpu_hls.log")
+        if self.args.logloc == False:
+            instret_log = os.path.join(sim_dir, f"{test}_instret_cpu_hls.log")
+        else:
+            instret_log = os.path.join(self.args.logloc, f"{test}_instret_cpu_hls.log")
         if self.args.timeout != -1:
             timeout = f"timeout {self.args.timeout}"
         else:
@@ -417,6 +432,9 @@ class CheriHLS:
         cmd = [
             "riscv64-unknown-freebsd-cc",
             "-nostdlib",
+            "-O2",
+            "-fno-builtin",
+            "-fno-lto",
             "-mno-relax",
             "-Tlink.ld",
             "-mcmodel=medany",
@@ -458,7 +476,10 @@ class CheriHLS:
         symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
-        instret_log = os.path.join(sim_dir, f"instret_ccpu_{mode}.log")
+        if self.args.logloc == False:
+            instret_log = os.path.join(sim_dir, f"{test}_instret_ccpu_hls.log")
+        else:
+            instret_log = os.path.join(self.args.logloc, f"{test}_instret_ccpu_hls.log")
         if self.args.timeout != -1:
             timeout = f"timeout {self.args.timeout}"
         else:
@@ -553,13 +574,6 @@ class CheriHLS:
         self.logger.info(f"Synthesized hardware for {test} with mode {mode}.")
         return 0
 
-    def run_all_tests(self):
-        result = 0
-        for test in BENCHMARKS.keys():
-            for mode in MODES:
-                result += self.run_single_test(test=test, mode=mode)
-        return result
-
     def init_project(self):
         self.project = os.path.join(self.root, "output")
         to_backup = os.path.exists(self.project)
@@ -579,13 +593,15 @@ class CheriHLS:
         if to_backup:
             self.logger.warning(f"Last run not deleted, now moved to {backup}")
 
-        if self.args.test not in BENCHMARKS.keys() and not self.args.run_all:
+        if self.args.test not in BENCHMARKS.keys() and self.args.test != "all":
             self.logger.error(
-                f"Unknown benchmarks: {self.args.test}. Known benchmarks: {BENCHMARKS.keys()}"
+                f"Unknown benchmarks: {self.args.test}. Known benchmarks: {BENCHMARKS.keys()} or all"
             )
             return 1
-        if self.args.mode not in MODES:
-            self.logger.error(f"Unknown mode: {self.args.mode}. Known modes: {MODES}")
+        if self.args.mode not in MODES and self.args.mode != "all":
+            self.logger.error(
+                f"Unknown mode: {self.args.mode}. Known modes: {MODES} or all"
+            )
             return 1
         self.logger.trace(
             """
@@ -636,14 +652,6 @@ cheri-hls.py -a"""
 
     parser = ArgumentParser(usage=USAGE)
     parser.add_argument(
-        "-a",
-        "--all",
-        action="store_true",
-        dest="run_all",
-        default=False,
-        help="Run the whole regression test, Default=False",
-    )
-    parser.add_argument(
         "-d",
         "--debug",
         action="store_true",
@@ -670,6 +678,13 @@ cheri-hls.py -a"""
         default=-1,
         dest="timeout",
         help="Set timeout for simulation",
+    )
+    parser.add_argument(
+        "--logloc",
+        default="/local/sata/chls_logs",
+        # default=False,
+        dest="logloc",
+        help="Log location - in case of disk space limit",
     )
     parser.add_argument(
         "-s",
