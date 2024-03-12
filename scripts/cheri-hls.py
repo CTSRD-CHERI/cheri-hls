@@ -203,7 +203,7 @@ class CheriHLS:
         for b in bs:
             for m in ms:
                 result += self.run_single_test(test=b, mode=m)
-        self.logger.info(f"Test finish. {result} errors.")
+        self.logger.info(f"Test finish. {result} errors. Log file = {self.log_name}")
 
     def run_single_test(self, test, mode):
         self.logger.info(f"Running test {test} with mode {mode}...")
@@ -594,12 +594,10 @@ class CheriHLS:
                 shutil.rmtree(backup)
             shutil.move(self.project, backup)
         os.mkdir(self.project)
+        self.log_name = "cheri-hls.{}.log".format(time.strftime("%d-%m-%Y-%H-%M-%S"))
         self.logger = getLogger(
             "cheri-hls",
-            os.path.join(
-                self.project,
-                "cheri-hls.{}.log".format(time.strftime("%d-%m-%Y-%H-%M-%S")),
-            ),
+            os.path.join(self.project, self.log_name),
         )
         if self.debug:
             self.logger.setLevel(logging.TRACE)
