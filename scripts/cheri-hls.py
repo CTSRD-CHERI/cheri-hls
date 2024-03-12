@@ -326,6 +326,10 @@ class CheriHLS:
                     cmd = f'grep -A5 "PC:0x{p}" {instret_log}'
                     self.logger.debug(cmd)
                     os.system(cmd)
+
+        if self.args.no_log:
+            os.remove(f"{instret_log}")
+
         return 0
 
     def simulate_cpu_hls(self, test):
@@ -417,6 +421,10 @@ class CheriHLS:
                     cmd = f'grep -A5 "PC:0x{p}" {instret_log}'
                     self.logger.debug(cmd)
                     os.system(cmd)
+
+        if self.args.no_log:
+            os.remove(f"{instret_log}")
+
         return 0
 
     def simulate_ccpu_hls(self, test, cheri_hls=False):
@@ -516,6 +524,9 @@ class CheriHLS:
                     cmd = f'grep -A5 "PC:0x{p}" {instret_log}'
                     self.logger.debug(cmd)
                     os.system(cmd)
+
+        if self.args.no_log:
+            os.remove(f"{instret_log}")
 
         return 0
 
@@ -655,6 +666,13 @@ cheri-hls.py --test vect_mult --mode
 cheri-hls.py -a"""
 
     parser = ArgumentParser(usage=USAGE)
+    parser.add_argument(
+        "--no-log",
+        action="store_true",
+        dest="no_log",
+        default=False,
+        help="Clear the log to save disk space",
+    )
     parser.add_argument(
         "-d",
         "--debug",
