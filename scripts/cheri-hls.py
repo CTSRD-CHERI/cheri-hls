@@ -202,7 +202,7 @@ class CheriHLS:
         bs = BENCHMARKS if self.args.test == "all" else [self.args.test]
         for b in bs:
             for m in ms:
-                result += self.run_single_test(test=self.args.test, mode=m)
+                result += self.run_single_test(test=b, mode=m)
         self.logger.info(f"Test finish. {result} errors.")
 
     def run_single_test(self, test, mode):
@@ -584,7 +584,11 @@ class CheriHLS:
             shutil.move(self.project, backup)
         os.mkdir(self.project)
         self.logger = getLogger(
-            "cheri-hls", os.path.join(self.project, "cheri-hls.log")
+            "cheri-hls",
+            os.path.join(
+                self.project,
+                "cheri-hls.{}.log".format(time.strftime("%d-%m-%Y-%H-%M-%S")),
+            ),
         )
         if self.debug:
             self.logger.setLevel(logging.TRACE)
