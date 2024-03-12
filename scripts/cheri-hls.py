@@ -34,7 +34,7 @@ BENCHMARKS = {
 }
 
 
-MODES = ["cpu", "ccpu", "cpu+hls", "ccpu+hls", "ccpu+chls"]
+MODES = ["cpu+hls", "ccpu+hls", "ccpu+chls", "cpu", "ccpu"]
 RV_ABI = "l64pc128"
 RV_ARCH = "rv64imaxcheri"
 
@@ -200,16 +200,30 @@ class CheriHLS:
             return 1
         ms = MODES if self.args.mode == "all" else [self.args.mode]
         bs = BENCHMARKS if self.args.test == "all" else [self.args.test]
+        self.run_synthesis(bs, ms)
+        self.run_test(bs, ms)
+        self.logger.info(f"Test finish. {result} errors. Log file = {self.log_name}")
+
+    def run_test(self, bs, ms):
+        self.logger.info(f"----\nRunning tests...\n----")
         for b in bs:
             for m in ms:
                 result += self.run_single_test(test=b, mode=m)
-        self.logger.info(f"Test finish. {result} errors. Log file = {self.log_name}")
+
+    def run_synthesis(self, bs, ms):
+        self.logger.info(f"----\nRunning synthesis...\n----")
+        if self.args.synth:
+            for b in bs:
+                if "cpu" in ms or "cpu+hls" in ms or "ccpu" in ms:
+                    if self.run_single_synthesis(b, "cpu+hls")
+                        return 1
+                if "ccpu+chls" in ms:
+                    if self.run_single_synthesis(b, "ccpu+chls")
+                        return 1
+
 
     def run_single_test(self, test, mode):
         self.logger.info(f"Running test {test} with mode {mode}...")
-        if self.args.synth:
-            if self.run_synthesis(test, mode):
-                return 1
         if mode == "cpu":
             return self.simulate_cpu(test, cheri=False)
         elif mode == "ccpu":
@@ -530,7 +544,7 @@ class CheriHLS:
 
         return 0
 
-    def run_synthesis(self, test, mode):
+    def run_single_synthesis(self, test, mode):
         self.logger.info(
             f"Running hardware synthesis for test {test} with mode {mode}..."
         )
