@@ -194,33 +194,34 @@ class CheriHLS:
         )
 
     def run(self):
-        result = 0
         if self.init_project():
             self.logger.error("Initialize project failed.")
             return 1
         ms = MODES if self.args.mode == "all" else [self.args.mode]
         bs = BENCHMARKS if self.args.test == "all" else [self.args.test]
-        self.run_synthesis(bs, ms)
-        self.run_test(bs, ms)
+        if self.run_synthesis(bs, ms):
+            return 1
+        result = self.run_test(bs, ms)
         self.logger.info(f"Test finish. {result} errors. Log file = {self.log_name}")
 
     def run_test(self, bs, ms):
+        result = 0
         self.logger.info(f"----\nRunning tests...\n----")
         for b in bs:
             for m in ms:
                 result += self.run_single_test(test=b, mode=m)
+        return result
 
     def run_synthesis(self, bs, ms):
-        self.logger.info(f"----\nRunning synthesis...\n----")
         if self.args.synth:
+            self.logger.info(f"----\nRunning synthesis...\n----")
             for b in bs:
                 if "cpu" in ms or "cpu+hls" in ms or "ccpu" in ms:
-                    if self.run_single_synthesis(b, "cpu+hls")
+                    if self.run_single_synthesis(b, "cpu+hls"):
                         return 1
                 if "ccpu+chls" in ms:
-                    if self.run_single_synthesis(b, "ccpu+chls")
+                    if self.run_single_synthesis(b, "ccpu+chls"):
                         return 1
-
 
     def run_single_test(self, test, mode):
         self.logger.info(f"Running test {test} with mode {mode}...")
@@ -731,7 +732,7 @@ cheri-hls.py -a"""
     parser.add_argument(
         "-m",
         "--mode",
-        default="ccpu+chls",
+        default=None,
         dest="mode",
         help="""Test target system:
 cpu (nocap),
