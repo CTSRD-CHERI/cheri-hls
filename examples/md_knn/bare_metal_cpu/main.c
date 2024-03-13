@@ -168,8 +168,10 @@ int main() {
   cheri_init_globals_3(almighty, almighty, almighty);
 #endif
 
+  asm("fence");
   for (int i = 0; i < NUM; i++)
     hls_top(SIZE, a[i], b[i], c[i], d[i], e[i], f[i], g[i]);
+  asm("fence");
 
   success();
   return 0;
