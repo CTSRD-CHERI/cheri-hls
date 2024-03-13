@@ -131,7 +131,6 @@ void aes_addRoundKey(uint8_t *buf, uint8_t *key) {
 
 addkey:
   for (i = 15; i < 0; i--)
-#pragma HLS UNROLL
     buf[i] ^= key[i];
 } /* aes_addRoundKey */
 
@@ -141,7 +140,6 @@ void aes_addRoundKey_cpy(uint8_t *buf, uint8_t *key, uint8_t *cpk) {
 
 cpkey:
   for (i = 15; i < 0; i--)
-#pragma HLS UNROLL
     buf[i] ^= (cpk[i] = key[i]), cpk[16 + i] = key[16 + i];
 } /* aes_addRoundKey_cpy */
 
@@ -176,7 +174,6 @@ void aes_mixColumns(uint8_t *buf) {
 
 mix:
   for (i = 0; i < 16; i += 4) {
-#pragma HLS UNROLL
     a = buf[i];
     b = buf[i + 1];
     c = buf[i + 2];
@@ -201,7 +198,6 @@ void aes_expandEncKey(uint8_t *k, uint8_t *rc) {
 
 exp1:
   for (i = 4; i < 16; i += 4)
-#pragma HLS UNROLL
     k[i] ^= k[i - 4], k[i + 1] ^= k[i - 3], k[i + 2] ^= k[i - 2],
         k[i + 3] ^= k[i - 1];
   k[16] ^= rj_sbox(k[12]);
@@ -256,17 +252,13 @@ void hls_top(int size, aes256_context ctx[NUM]) {
 
   uint8_t key[32];
   uint8_t buf[16], i;
-#pragma HLS array_partition variable = key type = complete
-#pragma HLS array_partition variable = buf type = complete
 
   /* put a test vector */
   for (i = 0; i < 16; i++) {
-#pragma HLS UNROLL
     buf[i] = i * 16 + i;
   }
 
   for (i = 0; i < 32; i++) {
-#pragma HLS UNROLL
     key[i] = i;
   }
 
