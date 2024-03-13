@@ -1,4 +1,7 @@
 #include <stdint.h>
+typedef uint32_t u32;
+typedef uint32_t u64;
+#define TYPE int
 
 extern volatile u32 tohost;
 #define TERM (&tohost)
@@ -167,15 +170,6 @@ int main() {
 
   for (int i = 0; i < NUM; i++)
     hls_top(SIZE, a[i], b[i], c[i], d[i], e[i], f[i], g[i]);
-
-  // Compute
-  asm("fence");
-  for (int i = 0; i < NUM; i++)
-    XHls_top_Start(top_insts + i);
-  for (int i = 0; i < NUM; i++)
-    while (!XHls_top_IsDone(top_insts + i))
-      ;
-  asm("fence");
 
   success();
   return 0;
