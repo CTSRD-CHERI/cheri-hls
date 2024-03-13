@@ -34,7 +34,7 @@ BENCHMARKS = {
 }
 
 
-MODES = ["cpu+hls", "ccpu+hls", "ccpu+chls", "cpu", "ccpu"]
+MODES = ["cpu", "ccpu", "cpu+hls", "ccpu+hls", "ccpu+chls"]
 RV_ABI = "l64pc128"
 RV_ARCH = "rv64imaxcheri"
 
@@ -500,9 +500,11 @@ class CheriHLS:
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
         if self.args.logloc == False:
-            instret_log = os.path.join(sim_dir, f"{test}_instret_ccpu_hls.log")
+            instret_log = os.path.join(sim_dir, f"{test}_instret_ccpu_{mode}.log")
         else:
-            instret_log = os.path.join(self.args.logloc, f"{test}_instret_ccpu_hls.log")
+            instret_log = os.path.join(
+                self.args.logloc, f"{test}_instret_ccpu_{mode}.log"
+            )
         if self.args.timeout != -1:
             timeout = f"timeout {self.args.timeout}"
         else:
@@ -601,25 +603,18 @@ class CheriHLS:
         return 0
 
     def init_project(self):
-        self.project = os.path.join(self.root, "output")
-        to_backup = os.path.exists(self.project)
-        if to_backup:
-            backup = os.path.join(self.root, "output_backup")
-            if os.path.exists(backup):
-                shutil.rmtree(backup)
-            shutil.move(self.project, backup)
-        os.mkdir(self.project)
+        log_dir = os.path.join(self.root, "output")
+        if not os.path.exists(log_dir):
+            os.mkdir(log_dir)
         self.log_name = "cheri-hls.{}.log".format(time.strftime("%d-%m-%Y-%H-%M-%S"))
         self.logger = getLogger(
             "cheri-hls",
-            os.path.join(self.project, self.log_name),
+            os.path.join(log_dir, self.log_name),
         )
         if self.debug:
             self.logger.setLevel(logging.TRACE)
         else:
             self.logger.setLevel(logging.INFO)
-        if to_backup:
-            self.logger.warning(f"Last run not deleted, now moved to {backup}")
 
         if self.args.test not in BENCHMARKS.keys() and self.args.test != "all":
             self.logger.error(
