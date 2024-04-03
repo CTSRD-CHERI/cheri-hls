@@ -100,18 +100,26 @@ update_1:
   }
 }
 
-void hls_top(int a[SIZE], int b[SIZE], int bucket[BUCKETSIZE],
-             int sum[SCAN_RADIX]) {
-#pragma HLS INTERFACE m_axi port = a
-#pragma HLS INTERFACE m_axi port = b
-#pragma HLS INTERFACE m_axi port = bucket
-#pragma HLS INTERFACE m_axi port = sum
+void hls_top(int xa[SIZE], int xb[SIZE], int xbucket[BUCKETSIZE],
+             int xsum[SCAN_RADIX]) {
+#pragma HLS INTERFACE m_axi port = xa
+#pragma HLS INTERFACE m_axi port = xb
+#pragma HLS INTERFACE m_axi port = xbucket
+#pragma HLS INTERFACE m_axi port = xsum
 #pragma HLS INTERFACE s_axilite port = return
 
   int exp = 0;
   int valid_buffer = 0;
 #define BUFFER_A 0
 #define BUFFER_B 1
+
+  int a[SIZE];
+  int b[SIZE];
+  int bucket[BUCKETSIZE];
+  int sum[SCAN_RADIX];
+
+  for (int i = 0; i < SIZE; i++)
+    a[i] = xa[i];
 
 sort_1:
   for (exp = 0; exp < 32; exp += 2) {
@@ -134,7 +142,9 @@ sort_1:
       valid_buffer = BUFFER_A;
     }
   }
-  // If trip count is even, buffer A will be valid at the end.
+
+  for (int i = 0; i < SIZE; i++)
+    xb[i] = b[i];
 }
 
 int main() {
