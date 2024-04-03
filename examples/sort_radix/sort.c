@@ -34,10 +34,13 @@ local_1:
 void sum_scan(int sum[SCAN_RADIX], int bucket[BUCKETSIZE]) {
   int radixID, bucket_indx;
   sum[0] = 0;
+  int temp = 0;
+
 sum_1:
   for (radixID = 1; radixID < SCAN_RADIX; radixID++) {
-    bucket_indx = radixID * SCAN_BLOCK - 1;
-    sum[radixID] = sum[radixID - 1] + bucket[bucket_indx];
+    bucket_indx = radixID << 4 - 1;
+    temp += bucket[bucket_indx];
+    sum[radixID] = temp;
   }
 }
 
@@ -70,6 +73,8 @@ hist_1:
     for (i = 0; i < 4; i++) {
       a_indx = blockID * ELEMENTSPERBLOCK + i;
       bucket_indx = ((a[a_indx] >> exp) & 0x3) * NUMOFBLOCKS + blockID + 1;
+      if (bucket_indx >= BUCKETSIZE)
+        bucket_indx = BUCKETSIZE - 1;
       bucket[bucket_indx]++;
     }
   }
@@ -88,6 +93,8 @@ update_1:
           blockID;
       a_indx = blockID * ELEMENTSPERBLOCK + i;
       b[bucket[bucket_indx]] = a[a_indx];
+      if (bucket_indx >= BUCKETSIZE)
+        bucket_indx = BUCKETSIZE - 1;
       bucket[bucket_indx]++;
     }
   }
