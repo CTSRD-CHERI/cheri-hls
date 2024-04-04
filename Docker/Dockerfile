@@ -72,8 +72,7 @@ RUN mkdir -p /srcPkgs \
 RUN locale-gen en_US.UTF-8
 
 # Append any packages you need here
-# RUN apt-get update -y \
-#     && apt-get install -y ...
+RUN apt install -y gcc-11-riscv64-linux-gnu
 
 CMD ["bash"]
 

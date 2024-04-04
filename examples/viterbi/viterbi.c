@@ -1,23 +1,38 @@
 #define TYPE int
-typedef char tok_t;
-typedef TYPE prob_t;
-typedef char state_t;
+typedef int tok_t;
+typedef int prob_t;
+typedef int state_t;
 typedef int step_t;
 
 #define N_STATES 64
 #define N_OBS 140
 #define N_TOKENS 64
 
-void hls_top(int n_tokens, tok_t obs[N_OBS], prob_t init[N_STATES],
-             prob_t transition[N_STATES * N_STATES],
-             prob_t emission[N_STATES * N_TOKENS], state_t path[N_OBS]) {
-#pragma HLS INTERFACE m_axi port = obs
-#pragma HLS INTERFACE m_axi port = init
-#pragma HLS INTERFACE m_axi port = transition
-#pragma HLS INTERFACE m_axi port = emission
-#pragma HLS INTERFACE m_axi port = path
+void hls_top(int n_tokens, int xobs[N_OBS], int xinit[N_STATES],
+             int xtransition[N_STATES * N_STATES],
+             int xemission[N_STATES * N_TOKENS], int xpath[N_OBS]) {
+#pragma HLS INTERFACE m_axi port = xobs
+#pragma HLS INTERFACE m_axi port = xinit
+#pragma HLS INTERFACE m_axi port = xtransition
+#pragma HLS INTERFACE m_axi port = xemission
+#pragma HLS INTERFACE m_axi port = xpath
 #pragma HLS INTERFACE s_axilite port = n_tokens
 #pragma HLS INTERFACE s_axilite port = return
+
+  int obs[N_OBS];
+  int init[N_STATES];
+  int transition[N_STATES * N_STATES];
+  int emission[N_STATES * N_TOKENS];
+  int path[N_OBS] = {0};
+
+  for (int i = 0; i < N_OBS; i++)
+    obs[i] = xobs[i];
+  for (int i = 0; i < N_STATES; i++)
+    init[i] = xinit[i];
+  for (int i = 0; i < N_STATES * N_STATES; i++)
+    transition[i] = xtransition[i];
+  for (int i = 0; i < N_STATES * n_tokens; i++)
+    emission[i] = xemission[i];
 
   prob_t llike[N_OBS][N_STATES];
   step_t t;
@@ -81,6 +96,9 @@ L_backtrack:
     }
     path[t] = min_s;
   }
+
+  for (int i = 0; i < N_OBS; i++)
+    xpath[i] = path[i];
 }
 
 int main() {

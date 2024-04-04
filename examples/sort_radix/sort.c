@@ -34,10 +34,13 @@ local_1:
 void sum_scan(int sum[SCAN_RADIX], int bucket[BUCKETSIZE]) {
   int radixID, bucket_indx;
   sum[0] = 0;
+  int temp = 0;
+
 sum_1:
   for (radixID = 1; radixID < SCAN_RADIX; radixID++) {
-    bucket_indx = radixID * SCAN_BLOCK - 1;
-    sum[radixID] = sum[radixID - 1] + bucket[bucket_indx];
+    bucket_indx = radixID << 4 - 1;
+    temp += bucket[bucket_indx];
+    sum[radixID] = temp;
   }
 }
 
@@ -70,6 +73,8 @@ hist_1:
     for (i = 0; i < 4; i++) {
       a_indx = blockID * ELEMENTSPERBLOCK + i;
       bucket_indx = ((a[a_indx] >> exp) & 0x3) * NUMOFBLOCKS + blockID + 1;
+      if (bucket_indx >= BUCKETSIZE)
+        bucket_indx = BUCKETSIZE - 1;
       bucket[bucket_indx]++;
     }
   }
@@ -88,23 +93,33 @@ update_1:
           blockID;
       a_indx = blockID * ELEMENTSPERBLOCK + i;
       b[bucket[bucket_indx]] = a[a_indx];
+      if (bucket_indx >= BUCKETSIZE)
+        bucket_indx = BUCKETSIZE - 1;
       bucket[bucket_indx]++;
     }
   }
 }
 
-void hls_top(int a[SIZE], int b[SIZE], int bucket[BUCKETSIZE],
-             int sum[SCAN_RADIX]) {
-#pragma HLS INTERFACE m_axi port = a
-#pragma HLS INTERFACE m_axi port = b
-#pragma HLS INTERFACE m_axi port = bucket
-#pragma HLS INTERFACE m_axi port = sum
+void hls_top(int xa[SIZE], int xb[SIZE], int xbucket[BUCKETSIZE],
+             int xsum[SCAN_RADIX]) {
+#pragma HLS INTERFACE m_axi port = xa
+#pragma HLS INTERFACE m_axi port = xb
+#pragma HLS INTERFACE m_axi port = xbucket
+#pragma HLS INTERFACE m_axi port = xsum
 #pragma HLS INTERFACE s_axilite port = return
 
   int exp = 0;
   int valid_buffer = 0;
 #define BUFFER_A 0
 #define BUFFER_B 1
+
+  int a[SIZE];
+  int b[SIZE];
+  int bucket[BUCKETSIZE];
+  int sum[SCAN_RADIX];
+
+  for (int i = 0; i < SIZE; i++)
+    a[i] = xa[i];
 
 sort_1:
   for (exp = 0; exp < 32; exp += 2) {
@@ -127,7 +142,9 @@ sort_1:
       valid_buffer = BUFFER_A;
     }
   }
-  // If trip count is even, buffer A will be valid at the end.
+
+  for (int i = 0; i < SIZE; i++)
+    xb[i] = b[i];
 }
 
 int main() {

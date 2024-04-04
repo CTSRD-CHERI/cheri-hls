@@ -133,7 +133,7 @@ int main() {
   // Compute
   asm("fence");
   for (int i = 0; i < NUM; i++)
-    hls_top(64, a[i], b[i], c[i]);
+    hls_top(row_size, a[i], b[i], c[i]);
   asm("fence");
 
   success();

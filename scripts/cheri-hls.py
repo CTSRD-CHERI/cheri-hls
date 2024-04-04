@@ -194,22 +194,37 @@ class CheriHLS:
         )
 
     def run(self):
-        result = 0
         if self.init_project():
             self.logger.error("Initialize project failed.")
             return 1
         ms = MODES if self.args.mode == "all" else [self.args.mode]
         bs = BENCHMARKS if self.args.test == "all" else [self.args.test]
+        if self.run_synthesis(bs, ms):
+            return 1
+        result = self.run_test(bs, ms)
+        self.logger.info(f"Test finish. {result} errors. Log file = {self.log_name}")
+
+    def run_test(self, bs, ms):
+        result = 0
+        self.logger.info(f"----\nRunning tests...\n----")
         for b in bs:
             for m in ms:
-                result += self.run_single_test(test=self.args.test, mode=m)
-        self.logger.info(f"Test finish. {result} errors.")
+                result += self.run_single_test(test=b, mode=m)
+        return result
+
+    def run_synthesis(self, bs, ms):
+        if self.args.synth:
+            self.logger.info(f"----\nRunning synthesis...\n----")
+            for b in bs:
+                if "cpu" in ms or "cpu+hls" in ms or "ccpu" in ms:
+                    if self.run_single_synthesis(b, "cpu+hls"):
+                        return 1
+                if "ccpu+chls" in ms:
+                    if self.run_single_synthesis(b, "ccpu+chls"):
+                        return 1
 
     def run_single_test(self, test, mode):
         self.logger.info(f"Running test {test} with mode {mode}...")
-        if self.args.synth:
-            if self.run_synthesis(test, mode):
-                return 1
         if mode == "cpu":
             return self.simulate_cpu(test, cheri=False)
         elif mode == "ccpu":
@@ -243,6 +258,7 @@ class CheriHLS:
                 f"-mabi={RV_ABI}",
                 f"-march={RV_ARCH}",
                 "init.S",
+                f"-DNUM={self.args.inst}",
                 "main.c",
                 "-DCAP",
             ]
@@ -257,6 +273,7 @@ class CheriHLS:
                 "-Tlink.ld",
                 "-mcmodel=medany",
                 "init_nocap.S",
+                f"-DNUM={self.args.inst}",
                 "main.c",
             ]
         result, _ = self.execute(cmd, cwd=sim_dir)
@@ -326,6 +343,10 @@ class CheriHLS:
                     cmd = f'grep -A5 "PC:0x{p}" {instret_log}'
                     self.logger.debug(cmd)
                     os.system(cmd)
+
+        if self.args.no_log:
+            os.remove(f"{instret_log}")
+
         return 0
 
     def simulate_cpu_hls(self, test):
@@ -346,6 +367,7 @@ class CheriHLS:
             "-Tlink.ld",
             "-mcmodel=medany",
             "init_nocap.S",
+            f"-DNUM={self.args.inst}",
             "main.c",
             "xhls_top.c",
             "xhls_top_linux.c",
@@ -417,6 +439,10 @@ class CheriHLS:
                     cmd = f'grep -A5 "PC:0x{p}" {instret_log}'
                     self.logger.debug(cmd)
                     os.system(cmd)
+
+        if self.args.no_log:
+            os.remove(f"{instret_log}")
+
         return 0
 
     def simulate_ccpu_hls(self, test, cheri_hls=False):
@@ -441,6 +467,7 @@ class CheriHLS:
             f"-mabi={RV_ABI}",
             f"-march={RV_ARCH}",
             "init.S",
+            f"-DNUM={self.args.inst}",
             "main.c",
             f"xhls_top.c",
             f"xhls_top_linux.c",
@@ -477,9 +504,11 @@ class CheriHLS:
         shutil.copy(symbol_table, flute_build)
         self.logger.debug(f"cp {symbol_table} {flute_build}")
         if self.args.logloc == False:
-            instret_log = os.path.join(sim_dir, f"{test}_instret_ccpu_hls.log")
+            instret_log = os.path.join(sim_dir, f"{test}_instret_ccpu_{mode}.log")
         else:
-            instret_log = os.path.join(self.args.logloc, f"{test}_instret_ccpu_hls.log")
+            instret_log = os.path.join(
+                self.args.logloc, f"{test}_instret_ccpu_{mode}.log"
+            )
         if self.args.timeout != -1:
             timeout = f"timeout {self.args.timeout}"
         else:
@@ -517,9 +546,12 @@ class CheriHLS:
                     self.logger.debug(cmd)
                     os.system(cmd)
 
+        if self.args.no_log:
+            os.remove(f"{instret_log}")
+
         return 0
 
-    def run_synthesis(self, test, mode):
+    def run_single_synthesis(self, test, mode):
         self.logger.info(
             f"Running hardware synthesis for test {test} with mode {mode}..."
         )
@@ -575,23 +607,18 @@ class CheriHLS:
         return 0
 
     def init_project(self):
-        self.project = os.path.join(self.root, "output")
-        to_backup = os.path.exists(self.project)
-        if to_backup:
-            backup = os.path.join(self.root, "output_backup")
-            if os.path.exists(backup):
-                shutil.rmtree(backup)
-            shutil.move(self.project, backup)
-        os.mkdir(self.project)
+        log_dir = os.path.join(self.root, "output")
+        if not os.path.exists(log_dir):
+            os.mkdir(log_dir)
+        self.log_name = "cheri-hls.{}.log".format(time.strftime("%d-%m-%Y-%H-%M-%S"))
         self.logger = getLogger(
-            "cheri-hls", os.path.join(self.project, "cheri-hls.log")
+            "cheri-hls",
+            os.path.join(log_dir, self.log_name),
         )
         if self.debug:
             self.logger.setLevel(logging.TRACE)
         else:
             self.logger.setLevel(logging.INFO)
-        if to_backup:
-            self.logger.warning(f"Last run not deleted, now moved to {backup}")
 
         if self.args.test not in BENCHMARKS.keys() and self.args.test != "all":
             self.logger.error(
@@ -652,6 +679,13 @@ cheri-hls.py -a"""
 
     parser = ArgumentParser(usage=USAGE)
     parser.add_argument(
+        "--no-log",
+        action="store_true",
+        dest="no_log",
+        default=False,
+        help="Clear the log to save disk space",
+    )
+    parser.add_argument(
         "-d",
         "--debug",
         action="store_true",
@@ -695,9 +729,16 @@ cheri-hls.py -a"""
         help="Run synthesis of the system",
     )
     parser.add_argument(
+        "-i",
+        "--inst",
+        default=8,
+        dest="inst",
+        help="""HLS instances, default = 8""",
+    )
+    parser.add_argument(
         "-m",
         "--mode",
-        default="ccpu+chls",
+        default=None,
         dest="mode",
         help="""Test target system:
 cpu (nocap),

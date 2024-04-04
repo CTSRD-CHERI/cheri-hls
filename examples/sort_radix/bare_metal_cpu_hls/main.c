@@ -34,7 +34,7 @@ u32 bucket[NUM][BUCKETSIZE];
 u32 sum[NUM][SCAN_RADIX];
 
 #ifdef CAPCHECKER
-u64 capchecker_base_phy_addr = 0xc0100000;
+u64 capchecker_base_phy_addr = 0xc0020000;
 u64 capchecker_size = 0x00002000;
 #define capchecker_nbentries (capchecker_size / sizeof(void *))
 

@@ -80,21 +80,17 @@ u32 hls_top_init(int test_case, u32 *phy) {
   if (!XHls_top_IsReady(top))
     return 4;
 
-  XHls_top_Set_size(top, 128);
+  XHls_top_Set_size(top, row_size);
 
   u32 buffer_a = a[test_case];
-  // base_buffer_address;
   u32 buffer_b = b[test_case];
-  // base_buffer_address + 100;
   u32 buffer_c = c[test_case];
-  // base_buffer_address + 200;
 
 #ifdef CAPCHECKER
   u32 a_cap_id = (test_case << 5) + 0;
   u32 b_cap_id = (test_case << 5) + 1;
   u32 c_cap_id = (test_case << 5) + 2;
 
-  // Configuring data buffers
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA + 4,
                     (u32)(a_cap_id << (32 - 8)));
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA + 4,
@@ -102,7 +98,6 @@ u32 hls_top_init(int test_case, u32 *phy) {
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA + 4,
                     (u32)(c_cap_id << (32 - 8)));
 #else
-  // Configuring data buffers
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA + 4,
                     (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA + 4,
@@ -119,7 +114,6 @@ u32 hls_top_init(int test_case, u32 *phy) {
                     (u32)(buffer_c));
 
 #ifdef CAPCHECKER
-  // Configuring capchecker
   capchecker_install_cap(a_cap_id, &a);
   capchecker_install_cap(b_cap_id, &b);
   capchecker_install_cap(c_cap_id, &c);
