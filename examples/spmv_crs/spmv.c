@@ -29,29 +29,21 @@ void hls_top(int size, TYPE xval[NNZ], int xcols[NNZ],
   TYPE vec[N];
   TYPE out[N];
 
-  for (i = 0; i < NNZ; i++)
-    val[i] = xval[i];
-  for (i = 0; i < NNZ; i++)
-    cols[i] = xcols[i];
-  for (i = 0; i < size + 1; i++)
-    rowDelimiters[i] = xrowDelimiters[i];
-
+  int temp = xrowDelimiters[0];
 spmv_1:
   for (i = 0; i < size; i++) {
     sum = 0;
     Si = 0;
-    int tmp_begin = rowDelimiters[i];
-    int tmp_end = rowDelimiters[i + 1];
+    int tmp_begin = temp;
+    int tmp_end = xrowDelimiters[i + 1];
+    temp = tmp_end;
   spmv_2:
     for (j = tmp_begin; j < tmp_end; j++) {
-      Si = val[j] * vec[cols[j]];
+      Si = xval[j] * xvec[xcols[j]];
       sum = sum + Si;
     }
-    out[i] = sum;
+    xout[i] = sum;
   }
-
-  for (i = 0; i < size; i++)
-    xout[i] = out[i];
 }
 
 void fillVal(TYPE A[NNZ]) {
