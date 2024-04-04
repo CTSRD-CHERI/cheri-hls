@@ -258,6 +258,7 @@ class CheriHLS:
                 f"-mabi={RV_ABI}",
                 f"-march={RV_ARCH}",
                 "init.S",
+                f"-DNUM={self.args.inst}",
                 "main.c",
                 "-DCAP",
             ]
@@ -272,6 +273,7 @@ class CheriHLS:
                 "-Tlink.ld",
                 "-mcmodel=medany",
                 "init_nocap.S",
+                f"-DNUM={self.args.inst}",
                 "main.c",
             ]
         result, _ = self.execute(cmd, cwd=sim_dir)
@@ -365,6 +367,7 @@ class CheriHLS:
             "-Tlink.ld",
             "-mcmodel=medany",
             "init_nocap.S",
+            f"-DNUM={self.args.inst}",
             "main.c",
             "xhls_top.c",
             "xhls_top_linux.c",
@@ -464,6 +467,7 @@ class CheriHLS:
             f"-mabi={RV_ABI}",
             f"-march={RV_ARCH}",
             "init.S",
+            f"-DNUM={self.args.inst}",
             "main.c",
             f"xhls_top.c",
             f"xhls_top_linux.c",
@@ -723,6 +727,13 @@ cheri-hls.py -a"""
         default=False,
         dest="synth",
         help="Run synthesis of the system",
+    )
+    parser.add_argument(
+        "-i",
+        "--inst",
+        default=8,
+        dest="inst",
+        help="""HLS instances, default = 8""",
     )
     parser.add_argument(
         "-m",
