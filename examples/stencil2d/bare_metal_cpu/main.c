@@ -72,7 +72,7 @@ void capchecker_install_cap(int cap_idx, void *cap) {
 }
 #endif
 
-volatile void success() {
+volatile void __attribute__((noinline)) success() {
 #ifdef CAP
   void *almighty = cheri_ddc_get();
   volatile u32 *physical_addr =
@@ -133,7 +133,7 @@ int main() {
   // Compute
   asm("fence");
   for (int i = 0; i < NUM; i++)
-    hls_top(64, a[i], b[i], c[i]);
+    hls_top(row_size, a[i], b[i], c[i]);
   asm("fence");
 
   success();

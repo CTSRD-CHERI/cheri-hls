@@ -91,4 +91,6 @@ cd $CHERI_HLS/cheri-tools/cheribuild && \
 --cheribsd/source-directory ../cheribsd \
 --gdb/source-directory ../gdb \
 --run/custom-qemu-path ../qemu \
---source-root $CHERI_OUTPUT
+--source-root $CHERI_OUTPUT \
+--allow-running-as-root \
+-j 16

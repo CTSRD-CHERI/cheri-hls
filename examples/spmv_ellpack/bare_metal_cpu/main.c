@@ -67,7 +67,7 @@ void capchecker_install_cap(int cap_idx, void *cap) {
 #endif
 
 #ifndef DEBUG
-volatile void success() {
+volatile void __attribute__((noinline)) success() {
 #ifdef CAP
   void *almighty = cheri_ddc_get();
   volatile u32 *physical_addr =

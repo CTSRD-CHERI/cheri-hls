@@ -75,39 +75,27 @@ RUN apt-get install -y openocd
 
 RUN locale-gen en_US.UTF-8
 # Append any packages you need here
-# RUN apt-get update -y \
-#     && apt-get install -y ...
+RUN apt install -y gcc-11-riscv64-linux-gnu
 
 CMD ["bash"]
 
-ARG UID
-ARG GID
-ARG HLS_PATH
-ARG VIVADO_PATH
-RUN echo "Group ID: $GID"
-RUN echo "User ID: $UID"
-
-# Add dev-user
-RUN groupadd -o -g $GID dev-user
-RUN useradd -r -g $GID -u $UID -m -d /home/dev-user -s /sbin/nologin -c "User" dev-user
-RUN echo "dev-user     ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-# Comment it out because there is an error with home directory permission on bar
-# USER dev-user
-
 # Install Python packages 
-ENV PATH="${PATH}:/home/dev-user/.local/bin"
+ENV PATH="${PATH}:/root/.local/bin"
 RUN pip3 install --user --upgrade pip \
     && pip3 install black colorlog toml tabulate pyserial
 
 # Install vim package manager
-RUN curl -fLo /home/dev-user/.vim/autoload/plug.vim --create-dirs \
+RUN curl -fLo /root/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+ARG HLS_PATH
+ARG VIVADO_PATH
 
 # Add environment variables
 RUN printf "\
 \nexport LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:\$LIBRARY_PATH \
 \n# Basic PATH setup \
-\nexport PATH=/workspace/cheri/output/sdk/bin:/srcPkgs/bsc/inst/bin:/workspace/scripts:/home/dev-user/.local/bin:\$PATH \
+\nexport PATH=/workspace/cheri/output/sdk/bin:/srcPkgs/bsc/inst/bin:/workspace/scripts:/root/.local/bin:\$PATH \
 \n# Vitis HLS setup \
 \nexport VHLS=${HLS_PATH} \
 \n# source ${HLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
@@ -118,8 +106,10 @@ RUN printf "\
 \n# Terminal color... \
 \nexport PS1=\"[\\\\\\[\$(tput setaf 3)\\\\\\]\\\t\\\\\\[\$(tput setaf 2)\\\\\\] \\\u\\\\\\[\$(tput sgr0)\\\\\\]@\\\\\\[\$(tput setaf 2)\\\\\\]\\\h \\\\\\[\$(tput setaf 7)\\\\\\]\\\w \\\\\\[\$(tput sgr0)\\\\\\]] \\\\\\[\$(tput setaf 6)\\\\\\]$ \\\\\\[\$(tput sgr0)\\\\\\]\" \
 \nexport LS_COLORS='rs=0:di=01;96:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01' \
+\n# cambridge vivado lic \
+\nexport XILINXD_LICENSE_FILE=27020@lmserv-xilinx.cl.cam.ac.uk \
 \nalias ls='ls --color' \
-\nalias grep='grep --color'\n" >> /home/dev-user/.bashrc
+\nalias grep='grep --color'\n" >> /root/.bashrc
 #Add vim environment
 RUN printf "\
 \nset autoread \
@@ -138,14 +128,12 @@ RUN printf "\
 \ncall plug#begin() \
 \nPlug 'mtikekar/vim-bsv' \
 \ncall plug#end() \
-\n" >> /home/dev-user/.vimrc
-
-USER dev-user
+\n" >> /root/.vimrc
 
 CMD ["bash"]
 
 # Update vimrc
-RUN sudo chown -Rh dev-user:dev-user ~/.vim
+RUN chown -Rh root:root /root/.vim
 RUN vim +PlugInstall +qall 
 # Entrypoint set up
 WORKDIR workspace

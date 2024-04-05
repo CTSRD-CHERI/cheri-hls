@@ -60,13 +60,6 @@ void initMat(int colind[NNZ], int rowDelimiters[N + 1]) {
   rowDelimiters[N] = NNZ;
 }
 
-void initOut(TYPE y[N]) {
-  int i;
-  for (i = 0; i < N; i++) {
-    y[i] = 0;
-  }
-}
-
 // HLS IP instance
 #define NUM 8
 XHls_top top_insts[NUM];
@@ -76,7 +69,7 @@ u32 a[NUM][NNZ];
 u32 b[NUM][NNZ];
 u32 c[NUM][N + 1];
 u32 d[NUM][N];
-u32 e[NUM][N];
+u32 e[NUM][N] = {{0}};
 
 #ifdef CAPCHECKER
 u64 capchecker_base_phy_addr = 0xc0020000;
@@ -92,7 +85,7 @@ void capchecker_install_cap(int cap_idx, void *cap) {
 }
 #endif
 
-volatile void success() {
+volatile void __attribute__((noinline)) success() {
 #ifdef CAP
   void *almighty = cheri_ddc_get();
   volatile u32 *physical_addr =
@@ -192,7 +185,6 @@ u32 hls_top_init(int test_case, u32 *phy) {
   fillVal(a[test_case]);
   fill(d[test_case]);
   initMat(b[test_case], c[test_case]);
-  initOut(e[test_case]);
 
   return 0;
 }
