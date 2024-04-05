@@ -19,9 +19,9 @@ extern volatile u32 tohost;
 // HLS IP instance
 #define NUM 8
 #define TYPE int
-typedef char tok_t;
+typedef int tok_t;
 typedef TYPE prob_t;
-typedef char state_t;
+typedef int state_t;
 typedef int step_t;
 
 #define N_STATES 64
@@ -36,20 +36,16 @@ void hls_top(int n_tokens, tok_t obs[N_OBS], prob_t init[N_STATES],
   state_t prev, curr;
   prob_t min_p, p;
   state_t min_s, s;
-// All probabilities are in -log space. (i.e.: P(x) => -log(P(x)) )
 
-// Initialize with first observation and initial probabilities
 L_init:
   for (s = 0; s < N_STATES; s++) {
     llike[0][s] = init[s] + emission[s * n_tokens + obs[0]];
   }
 
-// Iteratively compute the probabilities over time
 L_timestep:
   for (t = 1; t < N_OBS; t++) {
   L_curr_state:
     for (curr = 0; curr < N_STATES; curr++) {
-      // Compute likelihood HMM is in current state and where it came from.
       prev = 0;
       min_p = llike[t - 1][prev] + transition[prev * N_STATES + curr] +
               emission[curr * n_tokens + obs[t]];
@@ -65,7 +61,6 @@ L_timestep:
     }
   }
 
-  // Identify end state
   min_s = 0;
   min_p = llike[N_OBS - 1][min_s];
 L_end:
