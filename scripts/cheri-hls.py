@@ -195,7 +195,7 @@ class CheriHLS:
 
     def exit(self, result):
         self.logger.info(f"Finish. {result} errors. Log file = {self.log_name}")
-        return result
+        sys.exit(result)
 
     def run(self):
         if self.init_project():
@@ -210,8 +210,10 @@ class CheriHLS:
         if self.run_evaluation(bs, ms):
             self.exit(1)
 
+        results = 0
         if self.args.mode != None:
-            result += self.run_test(bs, ms)
+            results += self.run_test(bs, ms)
+        self.exit(results)
 
     def run_test(self, bs, ms):
         result = 0
@@ -606,10 +608,10 @@ class CheriHLS:
             "bash",
             os.path.join(self.root, "scripts", "run-vivado.sh"),
         ]
-        result, _ = self.execute(cmd, cwd=self.gfe)
+        result, _ = self.execute(cmd)
         if result:
             self.logger.error(f"Get bitstream for {test}({mode}) failed.")
-            return result
+            self.exit(result)
 
         # Generate bistream
         return 0
