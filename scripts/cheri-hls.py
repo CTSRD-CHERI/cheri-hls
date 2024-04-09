@@ -2,7 +2,7 @@
 # ---------------------------------------
 # This script runs cheri hls
 # ---------------------------------------
-import sys, os, time, logging, colorlog, functools, shutil, subprocess
+import sys, os, time, logging, colorlog, functools, shutil, subprocess, glob
 from argparse import ArgumentParser
 
 # ---------------------------------------
@@ -189,9 +189,8 @@ class CheriHLS:
         self.debug = self.args.debug
         # Root path of cheri-hls
         self.root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-        self.gfe = os.path.abspath(os.path.join(self.root, "BESSPIN-GFE"))
         self.flute = os.path.abspath(
-            os.path.join(self.gfe, "bluespec-processors", "P2", "Flute")
+            os.path.join(self.root, "BESSPIN-GFE", "bluespec-processors", "P2", "Flute")
         )
 
     def exit(self, result):
@@ -582,7 +581,8 @@ class CheriHLS:
         cap = "cap" if "chls" in mode else "nocap"
         flute_build = os.path.join(self.flute, "builds", f"{test}_{cap}")
         hdl_dir = os.path.join(
-            self.gfe,
+            self.root,
+            "BESSPIN-GFE",
             "bluespec-processors",
             "P2",
             "Flute",
@@ -592,48 +592,23 @@ class CheriHLS:
         )
 
         # Copy Verilog files to the vivado directory
-        flute_verilog = os.path.join(self.flute_build, "Verilog_RTL", "*.v")
+        flute_verilog = os.path.join(flute_build, "Verilog_RTL", "*.v")
         for vfile in glob.glob(flute_verilog):
             shutil.copy(vfile, hdl_dir)
-        hls_verilog = os.path.join(self.flute_build, "vect_mult", "*.v")
+        hls_verilog = os.path.join(flute_build, "vect_mult", "*.v")
         for vfile in glob.glob(hls_verilog):
             shutil.copy(vfile, hdl_dir)
-        wrapper_verilog = os.path.join(
-            self.flute_build, "..", "Resources", "hlsWrapper.v"
-        )
+        wrapper_verilog = os.path.join(flute_build, "..", "Resources", "hlsWrapper.v")
         shutil.copy(wrapper_verilog, hdl_dir)
 
         # Run Vivado project
-        vproj = os.path.join(self.gfe, "vivado", "soc_bluespec_p2")
-        if os.path.exists(vproj):
-            shutil.rmtree(vproj)
-            self.logger.debug(f"Removed (old) {vproj}")
-
         cmd = [
-            "./setup_soc_project.sh",
-            "bluespec_p2",
+            "bash",
+            os.path.join(self.root, "scripts", "run-vivado.sh"),
         ]
         result, _ = self.execute(cmd, cwd=self.gfe)
         if result:
-            self.logger.error(f"Init Vivado project for {test}({mode}) failed.")
-            return result
-
-        cmd = [
-            "./build.sh",
-            "bluespec_p2",
-        ]
-        result, _ = self.execute(cmd, cwd=self.gfe)
-        if result:
-            self.logger.error(f"Build Vivado project for {test}({mode}) failed.")
-            return result
-
-        cmd = [
-            "./get_ppa.sh",
-            "bluespec_p2",
-        ]
-        result, _ = self.execute(cmd, cwd=self.gfe)
-        if result:
-            self.logger.error(f"Get PPA for {test}({mode}) failed.")
+            self.logger.error(f"Get bitstream for {test}({mode}) failed.")
             return result
 
         # Generate bistream
