@@ -12,8 +12,8 @@ set -o nounset
 # --------------------------------------------------------------------
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 CHERI_HLS=${SCRIPT_DIR}/..
-CHERI_TOOLS=${CHERI_HLS}/cheri-tools
-CHERI_OUTPUT=${CHERI_HLS}/cheri
+CHERI_TOOLS=${CHERI_HLS}/cheri-qemu-tools
+CHERI_OUTPUT=${CHERI_HLS}/cheri-qemu
 
 mkdir -p $CHERI_TOOLS
 

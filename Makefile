@@ -46,5 +46,7 @@ test:
 clean:
 	@rm -rf cheri-tools
 	@rm -rf cheri
+	@rm -rf cheri-qemu-tools
+	@rm -rf cheri-qemu
 	@rm -rf hls_extract/build
 	@rm -rf BESSPIN-GFE 
