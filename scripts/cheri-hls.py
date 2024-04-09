@@ -193,16 +193,25 @@ class CheriHLS:
             os.path.join(self.root, "BESSPIN-GFE", "bluespec-processors", "P2", "Flute")
         )
 
+    def exit(self, result):
+        self.logger.info(f"Finish. {result} errors. Log file = {self.log_name}")
+        return result
+
     def run(self):
         if self.init_project():
             self.logger.error("Initialize project failed.")
-            return 1
+            self.exit(1)
         ms = MODES if self.args.mode == "all" else [self.args.mode]
         bs = BENCHMARKS if self.args.test == "all" else [self.args.test]
+
         if self.run_synthesis(bs, ms):
-            return 1
-        result = self.run_test(bs, ms)
-        self.logger.info(f"Test finish. {result} errors. Log file = {self.log_name}")
+            self.exit(1)
+
+        if self.run_evaluation(bs, ms):
+            self.exit(1)
+
+        if self.args.mode != None:
+            result += self.run_test(bs, ms)
 
     def run_test(self, bs, ms):
         result = 0
@@ -211,6 +220,18 @@ class CheriHLS:
             for m in ms:
                 result += self.run_single_test(test=b, mode=m)
         return result
+
+    def run_evaluation(self, bs, ms):
+        if self.args.eval:
+            self.logger.info(f"----\nRunning evaluation...\n----")
+            for b in bs:
+                if "cpu" in ms or "cpu+hls" in ms or "ccpu" in ms:
+                    if self.run_single_evaluation(b, "cpu+hls"):
+                        return 1
+                if "ccpu+chls" in ms:
+                    if self.run_single_evaluation(b, "ccpu+chls"):
+                        return 1
+        return 0
 
     def run_synthesis(self, bs, ms):
         if self.args.synth:
@@ -222,6 +243,7 @@ class CheriHLS:
                 if "ccpu+chls" in ms:
                     if self.run_single_synthesis(b, "ccpu+chls"):
                         return 1
+        return 0
 
     def run_single_test(self, test, mode):
         self.logger.info(f"Running test {test} with mode {mode}...")
@@ -551,6 +573,13 @@ class CheriHLS:
 
         return 0
 
+    def run_single_evaluation(self, test, mode):
+        self.logger.info(
+            f"Running hardware evaluation for test {test} with mode {mode}..."
+        )
+        # Generate bistream
+        return 0
+
     def run_single_synthesis(self, test, mode):
         self.logger.info(
             f"Running hardware synthesis for test {test} with mode {mode}..."
@@ -729,6 +758,16 @@ cheri-hls.py -a"""
         help="Run synthesis of the system",
     )
     parser.add_argument(
+        "-e",
+        "--eval",
+        action="store_true",
+        default=False,
+        dest="eval",
+        help="""Generate bitstream
+report PPA results (area, Fmax, and power)
+""",
+    )
+    parser.add_argument(
         "-i",
         "--inst",
         default=8,
@@ -741,6 +780,8 @@ cheri-hls.py -a"""
         default=None,
         dest="mode",
         help="""Test target system:
+None (no test)
+all (all modes)
 cpu (nocap),
 ccpu (fullcap),
 cpu+hls (cpu+hls),
