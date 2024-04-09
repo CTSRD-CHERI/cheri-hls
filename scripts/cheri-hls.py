@@ -19,7 +19,6 @@ BENCHMARKS = {
     "sort_merge": 8,
     "stencil2d": 8,
     "vect_mult": 8,
-    # untested
     "bfs_bulk": 8,
     "fft_strided": 8,
     "nw": 8,
@@ -210,17 +209,17 @@ class CheriHLS:
         if self.run_evaluation(bs, ms):
             self.exit(1)
 
-        results = 0
-        if self.args.mode != None:
-            results += self.run_test(bs, ms)
-        self.exit(results)
+        if self.run_test(bs, ms):
+            self.exit(1)
+        return 0
 
     def run_test(self, bs, ms):
         result = 0
-        self.logger.info(f"----\nRunning tests...\n----")
-        for b in bs:
-            for m in ms:
-                result += self.run_single_test(test=b, mode=m)
+        if self.args.cosim:
+            self.logger.info(f"----\nRunning tests...\n----")
+            for b in bs:
+                for m in ms:
+                    result += self.run_single_test(test=b, mode=m)
         return result
 
     def run_evaluation(self, bs, ms):
@@ -229,10 +228,10 @@ class CheriHLS:
             for b in bs:
                 if "cpu" in ms or "cpu+hls" in ms or "ccpu" in ms:
                     if self.run_single_evaluation(b, "cpu+hls"):
-                        return 1
+                        self.exit(1)
                 if "ccpu+chls" in ms:
                     if self.run_single_evaluation(b, "ccpu+chls"):
-                        return 1
+                        self.exit(1)
         return 0
 
     def run_synthesis(self, bs, ms):
@@ -241,10 +240,10 @@ class CheriHLS:
             for b in bs:
                 if "cpu" in ms or "cpu+hls" in ms or "ccpu" in ms:
                     if self.run_single_synthesis(b, "cpu+hls"):
-                        return 1
+                        self.exit(1)
                 if "ccpu+chls" in ms:
                     if self.run_single_synthesis(b, "ccpu+chls"):
-                        return 1
+                        self.exit(1)
         return 0
 
     def run_single_test(self, test, mode):
@@ -659,7 +658,7 @@ class CheriHLS:
             "compile",
             "simulator",
             "SIM=verilator",
-            f"N_HLS={BENCHMARKS[test]}",
+            f"N_HLS={self.args.inst}",
         ]
         if "chls" in mode:
             cmd += ["HLS_CAP_CHECKER=YES", "CAPCHECKER_UNFORGIVING=YES"]
@@ -689,12 +688,12 @@ class CheriHLS:
             self.logger.error(
                 f"Unknown benchmarks: {self.args.test}. Known benchmarks: {BENCHMARKS.keys()} or all"
             )
-            return 1
+            self.exit(1)
         if self.args.mode not in MODES and self.args.mode != "all":
             self.logger.error(
                 f"Unknown mode: {self.args.mode}. Known modes: {MODES} or all"
             )
-            return 1
+            self.exit(1)
         self.logger.trace(
             """
 ===============================================
@@ -757,6 +756,13 @@ cheri-hls.py -a"""
         dest="debug",
         default=False,
         help="Run in debug mode, Default=False",
+    )
+    parser.add_argument(
+        "-c",
+        "--cosim",
+        default="",
+        dest="cosim",
+        help="Run simulation using Verilator",
     )
     parser.add_argument(
         "-t",
