@@ -602,7 +602,42 @@ class CheriHLS:
         wrapper_verilog = os.path.join(flute_build, "..", "Resources", "hlsWrapper.v")
         shutil.copy(wrapper_verilog, hdl_dir)
 
+        flute_src = os.path.join(
+            self.root,
+            "BESSPIN-GFE",
+            "bluespec-processors",
+            "P2",
+            "Flute",
+            "src_SSITH_P2",
+            "Verilog_RTL",
+        )
+        if not os.path.exists(flute_src):
+            self.logger.info(
+                f"Flute source does not exists. Try to build from scratch."
+            )
+            cmd = [
+                "make",
+                "compile",
+            ]
+            result, _ = self.execute(cmd, cwd=os.path.join(flute_src, ".."))
+            if result:
+                self.logger.error(f"Build Flute source failed.")
+                self.exit(result)
+        flute_srcs = os.path.join(flue_src, "*.v")
+        for vfile in glob.glob(flute_srcs):
+            shutil.copy(vfile, hdl_dir)
+
         # Run Vivado project
+        vproj = os.path.join(
+            self.root,
+            "BESSPIN-GFE",
+            "vivado",
+            "soc_bluespec_p2",
+        )
+        if os.path.exists(vproj):
+            shutil.rmtree(vproj)
+            self.logger.debug(f"Removed (old) {vproj}")
+
         cmd = [
             "bash",
             os.path.join(self.root, "scripts", "run-vivado.sh"),
