@@ -593,14 +593,14 @@ class CheriHLS:
         )
 
         # Copy Verilog files to the vivado directory
-        flute_verilog = os.path.join(flute_build, "Verilog_RTL", "*.v")
-        for vfile in glob.glob(flute_verilog):
-            shutil.copy(vfile, hdl_dir)
+        # flute_verilog = os.path.join(flute_build, "Verilog_RTL", "*.v")
+        # for vfile in glob.glob(flute_verilog):
+        #     shutil.copy(vfile, hdl_dir)
         hls_verilog = os.path.join(flute_build, "vect_mult", "*.v")
         for vfile in glob.glob(hls_verilog):
             shutil.copy(vfile, hdl_dir)
         wrapper_verilog = os.path.join(flute_build, "..", "Resources", "hlsWrapper.v")
-        shutil.copy(wrapper_verilog, hdl_dir)
+        shutil.copy(wrapper_verilog, os.path.join(hdl_dir, "mkHLS_Sig.v"))
 
         flute_src = os.path.join(
             self.root,
@@ -611,19 +611,20 @@ class CheriHLS:
             "src_SSITH_P2",
             "Verilog_RTL",
         )
-        if not os.path.exists(flute_src):
-            self.logger.info(
-                f"Flute source does not exists. Try to build from scratch."
-            )
-            cmd = [
-                "make",
-                "compile",
+        self.logger.info(f"Flute source does not exists. Try to build from scratch.")
+        cmd = [
+            "make",
+            "compile",
+        ]
+        if cap == "cap":
+            cmd += [
+                f"N_HLS={self.args.inst}",
             ]
-            result, _ = self.execute(cmd, cwd=os.path.join(flute_src, ".."))
-            if result:
-                self.logger.error(f"Build Flute source failed.")
-                self.exit(result)
-        flute_srcs = os.path.join(flue_src, "*.v")
+        result, _ = self.execute(cmd, cwd=os.path.join(flute_src, ".."))
+        if result:
+            self.logger.error(f"Build Flute source failed.")
+            self.exit(result)
+        flute_srcs = os.path.join(flute_src, "*.v")
         for vfile in glob.glob(flute_srcs):
             shutil.copy(vfile, hdl_dir)
 
