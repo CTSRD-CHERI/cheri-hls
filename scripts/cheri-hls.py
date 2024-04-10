@@ -636,7 +636,7 @@ class CheriHLS:
         )
         if os.path.exists(vproj):
             shutil.rmtree(vproj)
-            self.logger.debug(f"Removed (old) {vproj}")
+            self.logger.info(f"Removed (old) {vproj}")
 
         cmd = [
             "bash",
@@ -674,7 +674,7 @@ class CheriHLS:
         )
         if os.path.exists(flute_build):
             shutil.rmtree(flute_build)
-            self.logger.debug(f"Removed (old) {flute_build}")
+            self.logger.info(f"Removed (old) {flute_build}")
         cwd = os.path.join(self.flute, "builds")
         cmd = ["Resources/mkBuild_Dir.py", "..", "RV64ACIMUxCHERI", "verilator"]
         result, _ = self.execute(cmd, cwd=cwd)
