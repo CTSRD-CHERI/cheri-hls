@@ -2294,8 +2294,7 @@ TEMPLATE = """
         <spirit:name>../Verilog_RTL/mkFPU.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
-{}
-      <spirit:file>
+{}      <spirit:file>
         <spirit:name>../Verilog_RTL/mkDM_FPR_Tap.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_223a0d1a</spirit:userFileType>
