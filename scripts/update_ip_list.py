@@ -2408,11 +2408,11 @@ class Updater:
         )
         if os.path.exists(vproj):
             shutil.rmtree(vproj)
-            self.logger.info(f"Removed (old) {vproj}")
+            print(f"Removed (old) {vproj}")
 
-        # Copy HLS sources to the Vivado project
+        # Copy HS sources to the Vivado project
         hls_src = os.path.join(
-            self.hls_build, f"{test}_prj", "solution", "syn", "verilog"
+            self.hls_build, f"{self.test}_prj", "solution", "syn", "verilog"
         )
         # If HLS source does not exist, run Vitis HLS to create it from scratch
         if not os.path.exists(hls_src):
@@ -2420,33 +2420,31 @@ class Updater:
             os.system(f"cd {self.hls_build}; bash f{hls_tool} vhls.tcl")
             if not os.path.exists(hls_src):
                 raise RuntimeError("Cannot generate HLS source.")
-        shutil.copytree(hls_src, vproj))
-    
-        # Copy HLS wrapper
-        wrapper = os.path.join(
-            self.flute_build, f"Resources", "hlsWrapper.v"
-        )
-        shutil.copy(wrapper, vproj)
+        shutil.copytree(hls_src, vproj)
 
+        # Copy HLS wrapper
+        wrapper = os.path.join(self.flute_build, f"Resources", "hlsWrapper.v")
+        shutil.copy(wrapper, vproj)
 
         # Generate file list for HLS
         buff = ""
-        for f in glob(os.path.join(vproj, "*.v")):
+        for f in glob.glob(os.path.join(vproj, "*.v")):
             fname = os.path.basename(f)
-            buff +=f"""      <spirit:file>
+            buff += f"""      <spirit:file>
         <spirit:name>../{self.test}_hls/{fname}</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
 """
 
         # Update ip list
-        ip_list = os.path.join(self.proj, xilinx_ip, "component.xml")
+        ip_list = os.path.join(self.proj, "xilinx_ip", "component.xml")
         if os.path.isfile(ip_list):
             os.remove(ip_list)
         with open(ip_list, "w") as f:
             f.write(TEMPLATE.format(buff))
 
         print(f"IP list updated for {self.test}")
+
 
 # ---------- main function --------------
 def cheri_hls():
