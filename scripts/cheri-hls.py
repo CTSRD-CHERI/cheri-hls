@@ -639,10 +639,7 @@ class CheriHLS:
             shutil.rmtree(vproj)
             self.logger.info(f"Removed (old) {vproj}")
 
-        cmd = [
-            "bash",
-            os.path.join(self.root, "scripts", "run-vivado.sh", f"{test}"),
-        ]
+        cmd = ["bash", os.path.join(self.root, "scripts", "run-vivado.sh"), f"{test}"]
         result, _ = self.execute(cmd)
         if result:
             self.logger.error(f"Get bitstream for {test}({mode}) failed.")
