@@ -641,7 +641,7 @@ class CheriHLS:
 
         cmd = [
             "bash",
-            os.path.join(self.root, "scripts", "run-vivado.sh"),
+            os.path.join(self.root, "scripts", "run-vivado.sh", f"{test}"),
         ]
         result, _ = self.execute(cmd)
         if result:
@@ -796,6 +796,7 @@ cheri-hls.py -a"""
     parser.add_argument(
         "-c",
         "--cosim",
+        action="store_true",
         default="",
         dest="cosim",
         help="Run simulation using Verilator",

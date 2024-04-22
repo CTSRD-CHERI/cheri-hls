@@ -19,6 +19,7 @@ GFE=${CHERI_HLS}/BESSPIN-GFE
 
 cd $GFE
 
+${SCRIPT_DIR}/update_ip_list.py --test $1
 ./setup_soc_project.sh bluespec_p2 
 ./build.sh bluespec_p2
 ./get_ppa.sh bluespec_p2
