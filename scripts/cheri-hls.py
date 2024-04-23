@@ -2,7 +2,7 @@
 # ---------------------------------------
 # This script runs cheri hls
 # ---------------------------------------
-import sys, os, time, logging, colorlog, functools, shutil, subprocess
+import sys, os, time, logging, colorlog, functools, shutil, subprocess, glob
 from argparse import ArgumentParser
 
 # ---------------------------------------
@@ -19,7 +19,6 @@ BENCHMARKS = {
     "sort_merge": 8,
     "stencil2d": 8,
     "vect_mult": 8,
-    # untested
     "bfs_bulk": 8,
     "fft_strided": 8,
     "nw": 8,
@@ -193,24 +192,47 @@ class CheriHLS:
             os.path.join(self.root, "BESSPIN-GFE", "bluespec-processors", "P2", "Flute")
         )
 
+    def exit(self, result):
+        self.logger.info(f"Finish. {result} errors. Log file = {self.log_name}")
+        sys.exit(result)
+
     def run(self):
         if self.init_project():
             self.logger.error("Initialize project failed.")
-            return 1
+            self.exit(1)
         ms = MODES if self.args.mode == "all" else [self.args.mode]
         bs = BENCHMARKS if self.args.test == "all" else [self.args.test]
+
         if self.run_synthesis(bs, ms):
-            return 1
-        result = self.run_test(bs, ms)
-        self.logger.info(f"Test finish. {result} errors. Log file = {self.log_name}")
+            self.exit(1)
+
+        if self.run_evaluation(bs, ms):
+            self.exit(1)
+
+        if self.run_test(bs, ms):
+            self.exit(1)
+        return 0
 
     def run_test(self, bs, ms):
         result = 0
-        self.logger.info(f"----\nRunning tests...\n----")
-        for b in bs:
-            for m in ms:
-                result += self.run_single_test(test=b, mode=m)
+        if self.args.cosim:
+            self.logger.info(f"----\nRunning tests...\n----")
+            for b in bs:
+                for m in ms:
+                    result += self.run_single_test(test=b, mode=m)
         return result
+
+    def run_evaluation(self, bs, ms):
+        if self.args.eval:
+            self.logger.info(f"----\nRunning evaluation...\n----")
+            for b in bs:
+                if "cpu" in ms or "cpu+hls" in ms or "ccpu" in ms:
+                    if self.run_single_evaluation(b, "cpu+hls"):
+                        self.exit(1)
+                if "ccpu+chls" in ms:
+                    if self.run_single_evaluation(b, "ccpu+chls"):
+                        self.exit(1)
+        return 0
 
     def run_synthesis(self, bs, ms):
         if self.args.synth:
@@ -218,10 +240,11 @@ class CheriHLS:
             for b in bs:
                 if "cpu" in ms or "cpu+hls" in ms or "ccpu" in ms:
                     if self.run_single_synthesis(b, "cpu+hls"):
-                        return 1
+                        self.exit(1)
                 if "ccpu+chls" in ms:
                     if self.run_single_synthesis(b, "ccpu+chls"):
-                        return 1
+                        self.exit(1)
+        return 0
 
     def run_single_test(self, test, mode):
         self.logger.info(f"Running test {test} with mode {mode}...")
@@ -551,6 +574,78 @@ class CheriHLS:
 
         return 0
 
+    def run_single_evaluation(self, test, mode):
+        self.logger.info(
+            f"Running hardware evaluation for test {test} with mode {mode}..."
+        )
+
+        cap = "cap" if "chls" in mode else "nocap"
+        flute_build = os.path.join(self.flute, "builds", f"{test}_{cap}")
+        hdl_dir = os.path.join(
+            self.root,
+            "BESSPIN-GFE",
+            "bluespec-processors",
+            "P2",
+            "Flute",
+            "src_SSITH_P2",
+            "xilinx_ip",
+            "hdl",
+        )
+
+        # Copy Verilog files to the vivado directory
+        # flute_verilog = os.path.join(flute_build, "Verilog_RTL", "*.v")
+        # for vfile in glob.glob(flute_verilog):
+        #     shutil.copy(vfile, hdl_dir)
+        hls_verilog = os.path.join(flute_build, "vect_mult", "*.v")
+        for vfile in glob.glob(hls_verilog):
+            shutil.copy(vfile, hdl_dir)
+        wrapper_verilog = os.path.join(flute_build, "..", "Resources", "hlsWrapper.v")
+        shutil.copy(wrapper_verilog, os.path.join(hdl_dir, "mkHLS_Sig.v"))
+
+        flute_src = os.path.join(
+            self.root,
+            "BESSPIN-GFE",
+            "bluespec-processors",
+            "P2",
+            "Flute",
+            "src_SSITH_P2",
+            "Verilog_RTL",
+        )
+        cmd = [
+            "make",
+            "compile",
+            f"N_HLS={self.args.inst}",
+        ]
+        if cap == "cap":
+            cmd += ["HLS_CAP_CHECKER=YES"]
+        result, _ = self.execute(cmd, cwd=os.path.join(flute_src, ".."))
+        if result:
+            self.logger.error(f"Build Flute source failed.")
+            self.exit(result)
+        flute_srcs = os.path.join(flute_src, "*.v")
+        for vfile in glob.glob(flute_srcs):
+            shutil.copy(vfile, hdl_dir)
+
+        # Run Vivado project
+        vproj = os.path.join(
+            self.root,
+            "BESSPIN-GFE",
+            "vivado",
+            "soc_bluespec_p2",
+        )
+        if os.path.exists(vproj):
+            shutil.rmtree(vproj)
+            self.logger.info(f"Removed (old) {vproj}")
+
+        cmd = ["bash", os.path.join(self.root, "scripts", "run-vivado.sh"), f"{test}"]
+        result, _ = self.execute(cmd)
+        if result:
+            self.logger.error(f"Get bitstream for {test}({mode}) failed.")
+            self.exit(result)
+
+        # Generate bistream
+        return 0
+
     def run_single_synthesis(self, test, mode):
         self.logger.info(
             f"Running hardware synthesis for test {test} with mode {mode}..."
@@ -575,7 +670,7 @@ class CheriHLS:
         )
         if os.path.exists(flute_build):
             shutil.rmtree(flute_build)
-            self.logger.debug(f"Removed (old) {flute_build}")
+            self.logger.info(f"Removed (old) {flute_build}")
         cwd = os.path.join(self.flute, "builds")
         cmd = ["Resources/mkBuild_Dir.py", "..", "RV64ACIMUxCHERI", "verilator"]
         result, _ = self.execute(cmd, cwd=cwd)
@@ -594,7 +689,7 @@ class CheriHLS:
             "compile",
             "simulator",
             "SIM=verilator",
-            f"N_HLS={BENCHMARKS[test]}",
+            f"N_HLS={self.args.inst}",
         ]
         if "chls" in mode:
             cmd += ["HLS_CAP_CHECKER=YES", "CAPCHECKER_UNFORGIVING=YES"]
@@ -624,12 +719,12 @@ class CheriHLS:
             self.logger.error(
                 f"Unknown benchmarks: {self.args.test}. Known benchmarks: {BENCHMARKS.keys()} or all"
             )
-            return 1
+            self.exit(1)
         if self.args.mode not in MODES and self.args.mode != "all":
             self.logger.error(
                 f"Unknown mode: {self.args.mode}. Known modes: {MODES} or all"
             )
-            return 1
+            self.exit(1)
         self.logger.trace(
             """
 ===============================================
@@ -694,6 +789,14 @@ cheri-hls.py -a"""
         help="Run in debug mode, Default=False",
     )
     parser.add_argument(
+        "-c",
+        "--cosim",
+        action="store_true",
+        default="",
+        dest="cosim",
+        help="Run simulation using Verilator",
+    )
+    parser.add_argument(
         "-t",
         "--test",
         default="",
@@ -729,6 +832,16 @@ cheri-hls.py -a"""
         help="Run synthesis of the system",
     )
     parser.add_argument(
+        "-e",
+        "--eval",
+        action="store_true",
+        default=False,
+        dest="eval",
+        help="""Generate bitstream
+report PPA results (area, Fmax, and power)
+""",
+    )
+    parser.add_argument(
         "-i",
         "--inst",
         default=8,
@@ -741,6 +854,8 @@ cheri-hls.py -a"""
         default=None,
         dest="mode",
         help="""Test target system:
+None (no test)
+all (all modes)
 cpu (nocap),
 ccpu (fullcap),
 cpu+hls (cpu+hls),
