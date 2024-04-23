@@ -46,7 +46,6 @@
 // (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on
 // Handshake)
 
-// TODO!!!
 #define XHLS_TOP_CONTROL_ADDR_AP_CTRL 0x00
 #define XHLS_TOP_CONTROL_ADDR_GIE 0x04
 #define XHLS_TOP_CONTROL_ADDR_IER 0x08

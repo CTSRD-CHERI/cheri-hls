@@ -14,7 +14,7 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
+#define NUM 1
 #define input_dimension 13
 #define possible_outputs 3
 #define training_sets 163
@@ -28,14 +28,23 @@ extern volatile u32 tohost;
 XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
-int a[NUM][input_dimension * nodes_per_layer] = {{1}};
-int b[NUM][nodes_per_layer * nodes_per_layer] = {{1}};
-int c[NUM][nodes_per_layer * possible_outputs] = {{1}};
-int d[NUM][nodes_per_layer] = {{1}};
-int e[NUM][nodes_per_layer] = {{1}};
-int f[NUM][possible_outputs] = {{1}};
-int g[NUM][training_sets * input_dimension] = {{1}};
-int h[NUM][training_sets * possible_outputs] = {{1}};
+// u32 a[NUM][input_dimension * nodes_per_layer] = {{1}};
+// u32 b[NUM][nodes_per_layer * nodes_per_layer] = {{1}};
+// u32 c[NUM][nodes_per_layer * possible_outputs] = {{1}};
+// u32 d[NUM][nodes_per_layer] = {{1}};
+// u32 e[NUM][nodes_per_layer] = {{1}};
+// u32 f[NUM][possible_outputs] = {{1}};
+// u32 g[NUM][training_sets * input_dimension] = {{1}};
+// u32 h[NUM][training_sets * possible_outputs] = {{1}};
+
+int a[NUM][input_dimension * nodes_per_layer];
+int b[NUM][nodes_per_layer * nodes_per_layer];
+int c[NUM][nodes_per_layer * possible_outputs];
+int d[NUM][nodes_per_layer];
+int e[NUM][nodes_per_layer];
+int f[NUM][possible_outputs];
+int g[NUM][training_sets * input_dimension];
+int h[NUM][training_sets * possible_outputs];
 
 #ifdef CAPCHECKER
 u64 capchecker_base_phy_addr = 0xc0020000;
@@ -88,7 +97,8 @@ u32 hls_top_init(int test_case, u32 *phy) {
   if (!XHls_top_IsReady(top))
     return 4;
 
-  XHls_top_Set_size(top, training_sets);
+  // XHls_top_Set_size(top, training_sets);
+  XHls_top_Set_size(top, 1);
 
   u32 buffer_a = a[test_case];
   u32 buffer_b = b[test_case];
