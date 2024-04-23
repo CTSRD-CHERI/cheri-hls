@@ -602,13 +602,16 @@ class CheriHLS:
         wrapper_verilog = os.path.join(flute_build, "..", "Resources", "hlsWrapper.v")
         shutil.copy(wrapper_verilog, os.path.join(hdl_dir, "mkHLS_Sig.v"))
 
-        flute_src = os.path.join(
+        flute_dir = os.path.join(
             self.root,
             "BESSPIN-GFE",
             "bluespec-processors",
             "P2",
             "Flute",
             "src_SSITH_P2",
+        )
+        flute_src = os.path.join(
+            flute_dir,
             "Verilog_RTL",
         )
         cmd = [
@@ -618,7 +621,7 @@ class CheriHLS:
         ]
         if cap == "cap":
             cmd += ["HLS_CAP_CHECKER=YES"]
-        result, _ = self.execute(cmd, cwd=os.path.join(flute_src, ".."))
+        result, _ = self.execute(cmd, cwd=flute_dir)
         if result:
             self.logger.error(f"Build Flute source failed.")
             self.exit(result)
