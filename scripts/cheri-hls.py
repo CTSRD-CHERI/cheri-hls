@@ -611,15 +611,13 @@ class CheriHLS:
             "src_SSITH_P2",
             "Verilog_RTL",
         )
-        self.logger.info(f"Flute source does not exists. Try to build from scratch.")
         cmd = [
             "make",
             "compile",
+            f"N_HLS={self.args.inst}",
         ]
         if cap == "cap":
-            cmd += [
-                f"N_HLS={self.args.inst}",
-            ]
+            cmd += ["HLS_CAP_CHECKER=YES"]
         result, _ = self.execute(cmd, cwd=os.path.join(flute_src, ".."))
         if result:
             self.logger.error(f"Build Flute source failed.")
