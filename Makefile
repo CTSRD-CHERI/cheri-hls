@@ -39,6 +39,10 @@ build-cheri:
 build-hls:
 	@bash scripts/build-hls-extract.sh
 
+# Development only: build qemu for driver testing
+build-qemu:
+	@bash scripts/build-qemu.sh
+
 # Run regression test 
 test:
 	@bash scripts/test-cheri-hls.sh
