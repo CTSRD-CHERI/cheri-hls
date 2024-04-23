@@ -94,3 +94,6 @@ cd $CHERI_HLS/cheri-tools/cheribuild && \
 --run/custom-qemu-path ../qemu \
 --source-root $CHERI_OUTPUT \
 --allow-running-as-root
+
+# Log in as 'root' to skip password
+# Ctrl-A + X to exit
