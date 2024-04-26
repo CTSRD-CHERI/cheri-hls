@@ -660,7 +660,7 @@ class CheriHLS:
             os.path.join(self.root, "scripts", "run-vitis-hls.sh"),
             "vhls.tcl",
         ]
-        result, _ = self.execute(cmd, cwd=test_dir)
+        # result, _ = self.execute(cmd, cwd=test_dir)
         if result:
             self.logger.error(f"Running Vitis HLS for {test} failed.")
             return result

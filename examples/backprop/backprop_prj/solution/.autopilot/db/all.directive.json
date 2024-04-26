@@ -1,0 +1,23 @@
+[
+  {
+    "functionLabel": "",
+    "functionName": "hls_top",
+    "id": 0,
+    "ifcond": "",
+    "insert_position": "",
+    "label": "",
+    "pragma": {
+      "name": "TOP",
+      "option": [
+        {
+          "name": "name",
+          "value": "hls_top"
+        }
+      ]
+    },
+    "slx": false,
+    "sourceFile": "/workspace/examples/backprop/vhls.tcl",
+    "sourceLine": 14,
+    "success": true
+  }
+]

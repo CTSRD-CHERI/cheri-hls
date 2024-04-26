@@ -1,0 +1,216 @@
+--- !Passed
+Pass:            reflow-burst-inference
+Name:            BurstInferred
+DebugLoc:        { File: backprop.c, Line: 33, Column: 19 }
+Function:        hls_top
+Args:            
+  - String:          'Sequential '
+  - Direction:       read
+  - String:          ' of length '
+  - Length:          '3'
+  - String:          ' has been inferred'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        xtraining_data3seq
+  - ArrayName:       xtraining_data
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_33_1
+  - String:          ' '
+  - LoopLoc:         'backprop.c:33:19'
+  - String:          ' '
+  - Function:        hls_top
+    DebugLoc:        { File: backprop.c, Line: 21, Column: 0 }
+  - String:          ' '
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      load
+    DebugLoc:        { File: backprop.c, Line: 34, Column: 19 }
+  - OrigDirection:   read
+  - OrigID:          for.inc.load.4
+...
+--- !Passed
+Pass:            reflow-burst-inference
+Name:            BurstInferred
+DebugLoc:        { File: backprop.c, Line: 33, Column: 19 }
+Function:        hls_top
+Args:            
+  - String:          'Sequential '
+  - Direction:       write
+  - String:          ' of length '
+  - Length:          '3'
+  - String:          ' has been inferred'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        xbiases34seq
+  - ArrayName:       xbiases3
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_33_1
+  - String:          ' '
+  - LoopLoc:         'backprop.c:33:19'
+  - String:          ' '
+  - Function:        hls_top
+    DebugLoc:        { File: backprop.c, Line: 21, Column: 0 }
+  - String:          ' '
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      store
+    DebugLoc:        { File: backprop.c, Line: 34, Column: 17 }
+  - OrigDirection:   write
+  - OrigID:          for.inc.store.7
+...
+--- !Missed
+Pass:            reflow-burst-widen
+Name:            GreaterOrEqualAlignment
+DebugLoc:        { File: backprop.c, Line: 33, Column: 19 }
+Function:        hls_top
+Args:            
+  - String:          'Could not widen since type '
+  - Type:            i32
+  - String:          ' size is greater than or equal to alignment '
+  - Alignment:       '1'
+  - String:          '(bytes)'
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      call
+    DebugLoc:        { File: backprop.c, Line: 33, Column: 19 }
+  - OrigDirection:   read
+  - OrigID:          xtraining_data3seq
+  - ArrayName:       xtraining_data
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_33_1
+  - String:          ' '
+  - LoopLoc:         'backprop.c:33:19'
+  - String:          ' '
+  - Function:        hls_top
+    DebugLoc:        { File: backprop.c, Line: 21, Column: 0 }
+  - String:          ' '
+...
+--- !Missed
+Pass:            reflow-burst-widen
+Name:            GreaterOrEqualAlignment
+DebugLoc:        { File: backprop.c, Line: 33, Column: 19 }
+Function:        hls_top
+Args:            
+  - String:          'Could not widen since type '
+  - Type:            i32
+  - String:          ' size is greater than or equal to alignment '
+  - Alignment:       '1'
+  - String:          '(bytes)'
+  - String:          ' _XLX_SEP_ '
+  - OrigAccess:      call
+    DebugLoc:        { File: backprop.c, Line: 33, Column: 19 }
+  - OrigDirection:   write
+  - OrigID:          xbiases34seq
+  - ArrayName:       xbiases3
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_33_1
+  - String:          ' '
+  - LoopLoc:         'backprop.c:33:19'
+  - String:          ' '
+  - Function:        hls_top
+    DebugLoc:        { File: backprop.c, Line: 21, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredVerboseSummary
+DebugLoc:        { File: backprop.c, Line: 33, Column: 19 }
+Function:        hls_top
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       reads
+  - String:          ' of length '
+  - Length:          '3'
+  - String:          ' and bit width '
+  - Width:           '32'
+  - String:          ' has been inferred.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        seq
+  - ArrayName:       ''
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_33_1
+  - String:          ' '
+  - LoopLoc:         'backprop.c:33:19'
+  - String:          ' '
+  - Function:        hls_top
+    DebugLoc:        { File: backprop.c, Line: 21, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredSummary
+DebugLoc:        { File: backprop.c, Line: 33, Column: 19 }
+Function:        hls_top
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       reads
+  - String:          ' of length '
+  - Length:          '3'
+  - String:          ' and bit width '
+  - Width:           '32'
+  - String:          ' in loop '''
+  - LoopName:        VITIS_LOOP_33_1
+  - String:          '''('
+  - LoopLoc:         'backprop.c:33:19'
+  - String:          ')'
+  - String:          ' has been inferred on bundle '''
+  - BundleName:      gmem
+  - String:          '''.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredVerboseSummary
+DebugLoc:        { File: backprop.c, Line: 33, Column: 19 }
+Function:        hls_top
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       writes
+  - String:          ' of length '
+  - Length:          '3'
+  - String:          ' and bit width '
+  - Width:           '32'
+  - String:          ' has been inferred.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+  - String:          ' _XLX_SEP_ '
+  - AccessID:        seq1
+  - ArrayName:       ''
+  - String:          ' '
+  - BundleName:      gmem
+  - String:          ' '
+  - LoopName:        VITIS_LOOP_33_1
+  - String:          ' '
+  - LoopLoc:         'backprop.c:33:19'
+  - String:          ' '
+  - Function:        hls_top
+    DebugLoc:        { File: backprop.c, Line: 21, Column: 0 }
+  - String:          ' '
+...
+--- !Passed
+Pass:            reflow-burst-summary
+Name:            BurstInferredSummary
+DebugLoc:        { File: backprop.c, Line: 33, Column: 19 }
+Function:        hls_top
+Args:            
+  - String:          'Multiple burst '
+  - Direction:       writes
+  - String:          ' of length '
+  - Length:          '3'
+  - String:          ' and bit width '
+  - Width:           '32'
+  - String:          ' in loop '''
+  - LoopName:        VITIS_LOOP_33_1
+  - String:          '''('
+  - LoopLoc:         'backprop.c:33:19'
+  - String:          ')'
+  - String:          ' has been inferred on bundle '''
+  - BundleName:      gmem
+  - String:          '''.'
+  - String:          ' These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.'
+...

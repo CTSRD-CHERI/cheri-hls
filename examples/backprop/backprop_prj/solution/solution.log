@@ -1,0 +1,81 @@
+==============================================================
+Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2023.1 (64-bit)
+Tool Version Limit: 2023.05
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+==============================================================
+INFO: [HLS 200-1505] Using default flow_target 'vivado'
+INFO: [HLS 200-1510] Running: set_part xqzu29dr-ffrf1760-1-i 
+INFO: [HLS 200-1611] Setting target device to 'xqzu29dr-ffrf1760-1-i'
+INFO: [HLS 200-1510] Running: create_clock -period 10 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [HLS 200-1510] Running: csim_design 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [HLS 200-2036] Building debug C Simulation binaries
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [HLS 200-111] Finished Command csim_design CPU user time: 2.79 seconds. CPU system time: 0.43 seconds. Elapsed time: 3.1 seconds; current allocated memory: 0.078 MB.
+INFO: [HLS 200-1510] Running: csynth_design 
+INFO: [HLS 200-111] Finished File checks and directory preparation: CPU user time: 0.05 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.06 seconds; current allocated memory: 1.064 GB.
+INFO: [HLS 200-10] Analyzing design file 'backprop.c' ... 
+INFO: [HLS 200-111] Finished Source Code Analysis and Preprocessing: CPU user time: 0.2 seconds. CPU system time: 0.35 seconds. Elapsed time: 0.53 seconds; current allocated memory: 1.066 GB.
+INFO: [HLS 200-777] Using interface defaults for 'Vivado' flow target.
+INFO: [HLS 200-1995] There were 26 instructions in the design after the 'Compile/Link' phase of compilation. See the Design Size Report for more details: /workspace/examples/backprop/backprop_prj/solution/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 24 instructions in the design after the 'Unroll/Inline' phase of compilation. See the Design Size Report for more details: /workspace/examples/backprop/backprop_prj/solution/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 38 instructions in the design after the 'Performance/Pipeline' phase of compilation. See the Design Size Report for more details: /workspace/examples/backprop/backprop_prj/solution/syn/report/csynth_design_size.rpt
+INFO: [HLS 200-1995] There were 41 instructions in the design after the 'Optimizations' phase of compilation. See the Design Size Report for more details: /workspace/examples/backprop/backprop_prj/solution/syn/report/csynth_design_size.rpt
+INFO: [HLS 214-115] Multiple burst reads of length 3 and bit width 32 in loop 'VITIS_LOOP_33_1'(backprop.c:33:19) has been inferred on bundle 'gmem'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (backprop.c:33:19)
+INFO: [HLS 214-115] Multiple burst writes of length 3 and bit width 32 in loop 'VITIS_LOOP_33_1'(backprop.c:33:19) has been inferred on bundle 'gmem'. These burst requests might be further partitioned into multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings. (backprop.c:33:19)
+INFO: [HLS 200-111] Finished Compiling Optimization and Transform: CPU user time: 1.59 seconds. CPU system time: 0.39 seconds. Elapsed time: 6.73 seconds; current allocated memory: 1.067 GB.
+INFO: [HLS 200-111] Finished Checking Pragmas: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0 seconds; current allocated memory: 1.067 GB.
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms: CPU user time: 0 seconds. CPU system time: 0 seconds. Elapsed time: 0.01 seconds; current allocated memory: 1.067 GB.
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [HLS 200-111] Finished Checking Synthesizability: CPU user time: 0 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.01 seconds; current allocated memory: 1.067 GB.
+INFO: [XFORM 203-510] Pipelining loop 'VITIS_LOOP_33_1' (backprop.c:33) in function 'hls_top' automatically.
+INFO: [HLS 200-111] Finished Loop, function and other optimizations: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 1.088 GB.
+INFO: [HLS 200-111] Finished Architecture Synthesis: CPU user time: 0.02 seconds. CPU system time: 0 seconds. Elapsed time: 0.02 seconds; current allocated memory: 1.088 GB.
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'hls_top' ...
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'hls_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'VITIS_LOOP_33_1'.
+INFO: [HLS 200-1470] Pipelining result : Target II = NA, Final II = 1, Depth = 16, loop 'VITIS_LOOP_33_1'
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111] Finished Scheduling: CPU user time: 0.11 seconds. CPU system time: 0.03 seconds. Elapsed time: 0.14 seconds; current allocated memory: 1.088 GB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111] Finished Binding: CPU user time: 0.2 seconds. CPU system time: 0 seconds. Elapsed time: 0.2 seconds; current allocated memory: 1.088 GB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'hls_top' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Design contains AXI ports. Reset is fixed to synchronous and active low.
+INFO: [RTGEN 206-500] Setting interface mode on port 'hls_top/gmem' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'hls_top/sets' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'hls_top/xweights1' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'hls_top/xweights2' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'hls_top/xweights3' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'hls_top/xbiases1' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'hls_top/xbiases2' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'hls_top/xbiases3' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'hls_top/xtraining_data' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'hls_top/xtraining_targets' to 's_axilite & ap_none'.
+INFO: [RTGEN 206-500] Setting interface mode on function 'hls_top' to 's_axilite & ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'sets', 'xweights1', 'xweights2', 'xweights3', 'xbiases1', 'xbiases2', 'xbiases3', 'xtraining_data', 'xtraining_targets' to AXI-Lite port control.
+INFO: [RTGEN 206-100] Finished creating RTL model for 'hls_top'.
+INFO: [HLS 200-111] Finished Creating RTL model: CPU user time: 0.05 seconds. CPU system time: 0 seconds. Elapsed time: 0.05 seconds; current allocated memory: 1.088 GB.
+INFO: [HLS 200-111] Finished Generating all RTL models: CPU user time: 0.33 seconds. CPU system time: 0 seconds. Elapsed time: 0.32 seconds; current allocated memory: 1.088 GB.
+INFO: [HLS 200-1603] Design has inferred MAXI bursts and missed bursts, see Vitis HLS GUI synthesis summary report for detailed information.
+INFO: [HLS 200-111] Finished Updating report files: CPU user time: 0.44 seconds. CPU system time: 0.01 seconds. Elapsed time: 0.46 seconds; current allocated memory: 1.088 GB.
+INFO: [VHDL 208-304] Generating VHDL RTL for hls_top.
+INFO: [VLOG 209-307] Generating Verilog RTL for hls_top.
+INFO: [HLS 200-790] **** Loop Constraint Status: All loop constraints were satisfied.
+INFO: [HLS 200-789] **** Estimated Fmax: 136.99 MHz
+INFO: [HLS 200-111] Finished Command csynth_design CPU user time: 3.01 seconds. CPU system time: 0.8 seconds. Elapsed time: 8.57 seconds; current allocated memory: 25.426 MB.

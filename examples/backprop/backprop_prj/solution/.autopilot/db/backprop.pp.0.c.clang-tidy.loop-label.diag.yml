@@ -1,0 +1,13 @@
+---
+MainSourceFile:  /workspace/examples/backprop/backprop_prj/solution/.autopilot/db/backprop.pp.0.c
+Diagnostics:     
+  - DiagnosticName:  xilinx-label-all-loops
+    Message:         'Added loop label VITIS_LOOP_33_1:  '
+    FileOffset:      33
+    FilePath:        backprop.c
+    Replacements:    
+      - FilePath:        /workspace/examples/backprop/backprop_prj/solution/.autopilot/db/backprop.pp.0.c
+        Offset:          7323
+        Length:          0
+        ReplacementText: 'VITIS_LOOP_33_1: '
+...
