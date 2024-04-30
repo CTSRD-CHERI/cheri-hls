@@ -19,7 +19,11 @@ cd $CHERI_HLS
 if [ ! -d "${CHERI_HLS}/BESSPIN-GFE" ]; then
 	git clone git@github.com:CTSRD-CHERI/BESSPIN-GFE.git
 fi
-cd ${BESSPINGFE}/bluespec-processors/P2
+
+cd ${BESSPINGFE}
+git checkout cheri-hls 
+
+cd bluespec-processors/P2
 git submodule update --init --recursive Flute
 cd Flute
 git checkout hls
