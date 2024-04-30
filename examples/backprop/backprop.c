@@ -270,7 +270,7 @@ void update_weights(int weights1[input_dimension * nodes_per_layer],
   }
 }
 
-void hls_top(int xsets, int xweights1[input_dimension * nodes_per_layer],
+void hls_top(int sets, int xweights1[input_dimension * nodes_per_layer],
              int xweights2[nodes_per_layer * nodes_per_layer],
              int xweights3[nodes_per_layer * possible_outputs],
              int xbiases1[nodes_per_layer], int xbiases2[nodes_per_layer],
