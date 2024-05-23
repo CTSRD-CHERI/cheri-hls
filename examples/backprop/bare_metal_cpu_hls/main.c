@@ -15,10 +15,10 @@ extern volatile u32 tohost;
 
 // HLS IP instance
 #define NUM 8
-#define input_dimension 13
+#define input_dimension 16
 #define possible_outputs 3
 #define training_sets 163
-#define nodes_per_layer 64
+#define nodes_per_layer 16
 #define layers 2
 #define learning_rate 1
 #define epochs 1
@@ -88,7 +88,8 @@ u32 hls_top_init(int test_case, u32 *phy) {
   if (!XHls_top_IsReady(top))
     return 4;
 
-  XHls_top_Set_size(top, training_sets);
+  // XHls_top_Set_size(top, training_sets);
+  XHls_top_Set_size(top, 1);
 
   u32 buffer_a = a[test_case];
   u32 buffer_b = b[test_case];
