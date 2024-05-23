@@ -331,13 +331,14 @@ void hls_top(int sets, int xweights1[input_dimension * nodes_per_layer],
     }
     matrix_vector_product_with_bias_input_layer(biases1, weights1, activations1,
                                                 training_data[i]);
-    // RELU(activations1, dactivations1, nodes_per_layer);
-    // matrix_vector_product_with_bias_second_layer(biases2, weights2,
-    //                                              activations2, activations1);
-    // RELU(activations2, dactivations2, nodes_per_layer);
-    // matrix_vector_product_with_bias_output_layer(biases3, weights3,
-    //                                              activations3, activations2);
-    // RELU(activations3, dactivations3, possible_outputs);
+    RELU(activations1, dactivations1, nodes_per_layer);
+    matrix_vector_product_with_bias_second_layer(biases2, weights2,
+                                                 activations2, activations1);
+    RELU(activations2, dactivations2, nodes_per_layer);
+    matrix_vector_product_with_bias_output_layer(biases3, weights3,
+                                                 activations3, activations2);
+    RELU(activations3, dactivations3, possible_outputs);
+
     // soft_max(net_outputs, activations3);
     // take_difference(net_outputs, training_targets[i],
     //                 output_difference, dactivations3);
