@@ -24,7 +24,7 @@ cheribuild_commithash="8269a4e28db50868cc6ee6f1a376317248fa0af8"
 llvm_commithash="ed9d9964fb200af225739a89bfb988cbe8d8f69e"
 gdb_commithash="dfce87821d784de68b8f0a90b8dbf6724d82132c"
 qemu_commithash="7d0b88cfb982267676573a4dce6565c7518964ca"
-cheribsd_commithash="565ae56372dec95ac74e3cc3f5130ada41a80b05"
+cheribsd_commithash="hls"
 
 # --------------------------------------------------------------------
 # Clone the submodules with certain commit number
