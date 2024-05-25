@@ -350,7 +350,9 @@ class CheriHLS:
                 return result
 
         cycles = get_total_cycles(instret_log, pc, self.logger)
-        self.logger.debug(f"Relevant cycles for {test} ({mode}) are {cycles}")
+        self.logger.debug(
+            f"Relevant cycles (inst = {self.args.inst}) for {test} ({mode}) are {cycles}"
+        )
         for cycle in cycles:
             if cycle < 0:
                 self.logger.error(f"Cannot find total cycles for {test} ({mode}).")
@@ -446,7 +448,9 @@ class CheriHLS:
                 return result
 
         cycles = get_total_cycles(instret_log, pc, self.logger)
-        self.logger.debug(f"Relevant cycles for {test} (cpu+hls) are {cycles}")
+        self.logger.debug(
+            f"Relevant cycles (inst = {self.args.inst}) for {test} (cpu+hls) are {cycles}"
+        )
         for cycle in cycles:
             if cycle < 0:
                 self.logger.error(f"Cannot find total cycles for {test} (cpu+hls).")
@@ -552,7 +556,9 @@ class CheriHLS:
                 return result
 
         cycles = get_total_cycles(instret_log, pc, self.logger)
-        self.logger.debug(f"Relevant cycles for {test} (ccpu+{mode})  are {cycles}")
+        self.logger.debug(
+            f"Relevant cycles (inst = {self.args.inst}) for {test} (ccpu+{mode})  are {cycles}"
+        )
         for cycle in cycles:
             if cycle < 0:
                 self.logger.error(f"Cannot find total cycles for {test} (ccpu+{mode}).")
