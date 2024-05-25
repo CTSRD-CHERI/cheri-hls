@@ -14,7 +14,6 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
 // Define input sizes
 #define height_size 32
 #define col_size 32

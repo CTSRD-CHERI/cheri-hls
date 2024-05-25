@@ -14,7 +14,6 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
 #define input_dimension 16
 #define possible_outputs 3
 #define training_sets 163

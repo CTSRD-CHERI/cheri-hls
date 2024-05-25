@@ -14,7 +14,6 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
 #define SIZE 32
 typedef struct {
   uint8_t key[32];

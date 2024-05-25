@@ -202,6 +202,7 @@ class CheriHLS:
             self.exit(1)
         ms = MODES if self.args.mode == "all" else [self.args.mode]
         bs = BENCHMARKS if self.args.test == "all" else [self.args.test]
+        insts = list(range(1, 9)) if self.args.inst == "all" else [self.args.inst]
 
         if self.run_synthesis(bs, ms):
             self.exit(1)
@@ -209,17 +210,28 @@ class CheriHLS:
         if self.run_evaluation(bs, ms):
             self.exit(1)
 
-        if self.run_test(bs, ms):
+        if self.run_test(bs, ms, insts):
             self.exit(1)
+
+        print("--------")
+        print(" Latency Result collection")
+        print("--------")
+        os.system(
+            'grep "Relevant cycles (inst" {}'.format(
+                os.path.join(self.root, "output", self.log_name)
+            )
+        )
+
         return 0
 
-    def run_test(self, bs, ms):
+    def run_test(self, bs, ms, insts):
         result = 0
         if self.args.cosim:
             self.logger.info(f"----\nRunning tests...\n----")
-            for b in bs:
-                for m in ms:
-                    result += self.run_single_test(test=b, mode=m)
+            for i in insts:
+                for b in bs:
+                    for m in ms:
+                        result += self.run_single_test(test=b, mode=m, inst=i)
         return result
 
     def run_evaluation(self, bs, ms):
@@ -246,23 +258,23 @@ class CheriHLS:
                         self.exit(1)
         return 0
 
-    def run_single_test(self, test, mode):
-        self.logger.info(f"Running test {test} with mode {mode}...")
+    def run_single_test(self, test, mode, inst):
+        self.logger.info(f"Running test {test} (inst = {inst}) with mode {mode}...")
         if mode == "cpu":
-            return self.simulate_cpu(test, cheri=False)
+            return self.simulate_cpu(test, inst=inst, cheri=False)
         elif mode == "ccpu":
-            return self.simulate_cpu(test, cheri=True)
+            return self.simulate_cpu(test, inst=inst, cheri=True)
         elif mode == "ccpu+hls":
-            return self.simulate_ccpu_hls(test, cheri_hls=False)
+            return self.simulate_ccpu_hls(test, inst=inst, cheri_hls=False)
         elif mode == "ccpu+chls":
-            return self.simulate_ccpu_hls(test, cheri_hls=True)
+            return self.simulate_ccpu_hls(test, inst=inst, cheri_hls=True)
         else:  # mode == "cpu+hls":
-            return self.simulate_cpu_hls(test)
+            return self.simulate_cpu_hls(test, inst=inst)
 
-    def simulate_cpu(self, test, cheri=False):
+    def simulate_cpu(self, test, inst, cheri=False):
         mode = "cpu" if cheri == False else "ccpu"
         self.logger.info(
-            f"Running hardware simulation for test {test} with mode {mode}..."
+            f"Running hardware simulation for test {test} (inst = {inst}) with mode {mode}..."
         )
 
         sim_dir = os.path.join(self.root, "examples", test, "bare_metal_cpu")
@@ -281,7 +293,7 @@ class CheriHLS:
                 f"-mabi={RV_ABI}",
                 f"-march={RV_ARCH}",
                 "init.S",
-                f"-DNUM={self.args.inst}",
+                f"-DNUM={inst}",
                 "main.c",
                 "-DCAP",
             ]
@@ -296,7 +308,7 @@ class CheriHLS:
                 "-Tlink.ld",
                 "-mcmodel=medany",
                 "init_nocap.S",
-                f"-DNUM={self.args.inst}",
+                f"-DNUM={inst}",
                 "main.c",
             ]
         result, _ = self.execute(cmd, cwd=sim_dir)
@@ -350,7 +362,9 @@ class CheriHLS:
                 return result
 
         cycles = get_total_cycles(instret_log, pc, self.logger)
-        self.logger.debug(f"Relevant cycles for {test} ({mode}) are {cycles}")
+        self.logger.debug(
+            f"Relevant cycles (inst = {inst}) for {test} ({mode}) are {cycles}"
+        )
         for cycle in cycles:
             if cycle < 0:
                 self.logger.error(f"Cannot find total cycles for {test} ({mode}).")
@@ -372,9 +386,9 @@ class CheriHLS:
 
         return 0
 
-    def simulate_cpu_hls(self, test):
+    def simulate_cpu_hls(self, test, inst):
         self.logger.info(
-            f"Running hardware simulation for test {test} with mode (cpu+hls)..."
+            f"Running hardware simulation for test {test} (inst = {inst}) with mode (cpu+hls)..."
         )
 
         sim_dir = os.path.join(self.root, "examples", test, "bare_metal_cpu_hls")
@@ -390,7 +404,7 @@ class CheriHLS:
             "-Tlink.ld",
             "-mcmodel=medany",
             "init_nocap.S",
-            f"-DNUM={self.args.inst}",
+            f"-DNUM={inst}",
             "main.c",
             "xhls_top.c",
             "xhls_top_linux.c",
@@ -446,7 +460,9 @@ class CheriHLS:
                 return result
 
         cycles = get_total_cycles(instret_log, pc, self.logger)
-        self.logger.debug(f"Relevant cycles for {test} (cpu+hls) are {cycles}")
+        self.logger.debug(
+            f"Relevant cycles (inst = {inst}) for {test} (cpu+hls) are {cycles}"
+        )
         for cycle in cycles:
             if cycle < 0:
                 self.logger.error(f"Cannot find total cycles for {test} (cpu+hls).")
@@ -468,11 +484,11 @@ class CheriHLS:
 
         return 0
 
-    def simulate_ccpu_hls(self, test, cheri_hls=False):
+    def simulate_ccpu_hls(self, test, inst, cheri_hls=False):
         mode = "hls" if cheri_hls == False else "chls"
 
         self.logger.info(
-            f"Running hardware simulation for test {test} with mode (ccpu+{mode})..."
+            f"Running hardware simulation for test {test} (inst = {inst}) with mode (ccpu+{mode})..."
         )
 
         sim_dir = os.path.join(self.root, "examples", test, "bare_metal_cpu_hls")
@@ -490,7 +506,7 @@ class CheriHLS:
             f"-mabi={RV_ABI}",
             f"-march={RV_ARCH}",
             "init.S",
-            f"-DNUM={self.args.inst}",
+            f"-DNUM={inst}",
             "main.c",
             f"xhls_top.c",
             f"xhls_top_linux.c",
@@ -552,7 +568,9 @@ class CheriHLS:
                 return result
 
         cycles = get_total_cycles(instret_log, pc, self.logger)
-        self.logger.debug(f"Relevant cycles for {test} (ccpu+{mode})  are {cycles}")
+        self.logger.debug(
+            f"Relevant cycles (inst = {inst}) for {test} (ccpu+{mode})  are {cycles}"
+        )
         for cycle in cycles:
             if cycle < 0:
                 self.logger.error(f"Cannot find total cycles for {test} (ccpu+{mode}).")
@@ -576,7 +594,7 @@ class CheriHLS:
 
     def run_single_evaluation(self, test, mode):
         self.logger.info(
-            f"Running hardware evaluation for test {test} with mode {mode}..."
+            f"Running hardware evaluation for test {test} (inst = {inst}) with mode {mode}..."
         )
 
         cap = "cap" if "chls" in mode else "nocap"
@@ -617,7 +635,7 @@ class CheriHLS:
         cmd = [
             "make",
             "compile",
-            f"N_HLS={self.args.inst}",
+            f"N_HLS=8",
         ]
         if cap == "cap":
             cmd += ["HLS_CAP_CHECKER=YES"]
@@ -651,7 +669,7 @@ class CheriHLS:
 
     def run_single_synthesis(self, test, mode):
         self.logger.info(
-            f"Running hardware synthesis for test {test} with mode {mode}..."
+            f"Running hardware synthesis for test {test} (inst = {inst}) with mode {mode}..."
         )
         # Generate HLS hardware
         test_dir = os.path.join(self.root, "examples", test)
@@ -692,7 +710,7 @@ class CheriHLS:
             "compile",
             "simulator",
             "SIM=verilator",
-            f"N_HLS={self.args.inst}",
+            f"N_HLS=8",
         ]
         if "chls" in mode:
             cmd += ["HLS_CAP_CHECKER=YES", "CAPCHECKER_UNFORGIVING=YES"]
@@ -849,7 +867,7 @@ report PPA results (area, Fmax, and power)
         "--inst",
         default=8,
         dest="inst",
-        help="""HLS instances, default = 8""",
+        help="""HLS instances, default = 8 (all = 1 to 8)""",
     )
     parser.add_argument(
         "-m",

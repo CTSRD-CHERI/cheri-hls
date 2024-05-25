@@ -349,7 +349,6 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
 int a[NUM][input_dimension * nodes_per_layer] = {{1}};
 int b[NUM][nodes_per_layer * nodes_per_layer] = {{1}};
 int c[NUM][nodes_per_layer * possible_outputs] = {{1}};
