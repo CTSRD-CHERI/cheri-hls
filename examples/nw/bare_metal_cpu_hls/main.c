@@ -14,7 +14,6 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
 #define ALEN 128
 #define BLEN 128
 XHls_top top_insts[NUM];

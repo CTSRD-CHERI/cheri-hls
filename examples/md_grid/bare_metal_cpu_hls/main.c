@@ -14,7 +14,6 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
 #define nAtoms 256
 #define domainEdge 20
 #define blockSide 4
