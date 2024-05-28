@@ -594,7 +594,7 @@ class CheriHLS:
 
     def run_single_evaluation(self, test, mode):
         self.logger.info(
-            f"Running hardware evaluation for test {test} (inst = {inst}) with mode {mode}..."
+            f"Running hardware evaluation for test {test} with mode {mode}..."
         )
 
         cap = "cap" if "chls" in mode else "nocap"
