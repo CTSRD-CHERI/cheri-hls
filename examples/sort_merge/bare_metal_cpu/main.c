@@ -18,7 +18,6 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
 #define SIZE 2048
 void merge(TYPE a[SIZE], int start, int m, int stop) {
   TYPE temp[SIZE];

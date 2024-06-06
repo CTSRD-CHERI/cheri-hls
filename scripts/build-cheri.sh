@@ -23,7 +23,7 @@ mkdir -p $CHERI_TOOLS
 cheribuild_commithash="8269a4e28db50868cc6ee6f1a376317248fa0af8"
 llvm_commithash="ed9d9964fb200af225739a89bfb988cbe8d8f69e"
 gdb_commithash="dfce87821d784de68b8f0a90b8dbf6724d82132c"
-qemu_commithash="7d0b88cfb982267676573a4dce6565c7518964ca"
+qemu_commithash="qemu-cheri"
 cheribsd_commithash="hls"
 
 # --------------------------------------------------------------------
@@ -67,8 +67,8 @@ then
    git clone --recursive https://github.com/CTSRD-CHERI/qemu.git
 fi
 cd qemu
-git fetch --depth=1 origin $qemu_commithash
-git checkout $qemu_commithash 
+# git fetch --depth=1 origin $qemu_commithash
+# git checkout $qemu_commithash 
 cd ..
 
 # cheribsd 

@@ -5,10 +5,10 @@
 typedef uint32_t u32;
 
 // Algorithm Parameters
-#define input_dimension 13
+#define input_dimension 16
 #define possible_outputs 3
 #define training_sets 163
-#define nodes_per_layer 64
+#define nodes_per_layer 16
 #define layers 2
 #define learning_rate 1
 #define epochs 1
@@ -349,7 +349,6 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
 int a[NUM][input_dimension * nodes_per_layer] = {{1}};
 int b[NUM][nodes_per_layer * nodes_per_layer] = {{1}};
 int c[NUM][nodes_per_layer * possible_outputs] = {{1}};

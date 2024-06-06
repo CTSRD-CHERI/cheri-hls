@@ -17,7 +17,6 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
 #define TYPE int
 typedef int tok_t;
 typedef TYPE prob_t;
