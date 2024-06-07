@@ -1,7 +1,9 @@
+// clang-format off
+#include <sys/types.h>
 #include <sys/accel.h>
 #include <sys/module.h>
 #include <sys/syscall.h>
-#include <sys/types.h>
+// clang-format on 
 
 #include <err.h>
 #include <stdio.h>
@@ -17,31 +19,38 @@ int main(int argc __unused, char **argv __unused) {
   struct accel_ctrl_args aca;
 
   // Initialize accelerator processes
-  aca.accel_count = NUM;
-  aca.accels = malloc((accel_config)*aca.accel_count);
-  int bytes = 0;
-  for (int i = 0; i < NUM; i++) {
-    init_xbfs_queue(aca.accels[i]);
-    bytes += aca.accel[i].bytes;
-  }
-  aca.bytes = bytes;
+  struct accel_config * aa = set_accel_count(&aca, NUM);
+  aa =  malloc(sizeof(struct buffer_config)*NUM);
+
+  for (int i = 0; i < NUM; i++) 
+    init_xbfs_queue(get_accel_config(&aca, i));
 
   // Initialize buffer data
-  for (int i = 0; i < NUM; i++)
-    for (int j = 0; j < aca.accels[i]->buffer_count; j++) {
-      aca.accels[i]->buffers[j]->data = malloc((int)*aca.accel_count);
-      for (int k = 0; k < aca.accels[i]->buffers[j]->size; k++)
-        aca.accels[i]->buffers[j]->data[k] = 1;
+  for (int i = 0; i < NUM; i++) {
+struct accel_config* a = get_accel_config(&aca, i);
+    for (int j = 0; j < get_buffer_count(a); j++) {
+struct 	    buffer_config *bc = get_buffer_config(a, j);
+	    int *data = get_buffer_data_ptr(bc);
+	    int size = get_buffer_size(bc);
+      for (int k = 0; k < size; k++)
+        *(data++) = 1;
     }
+  }
 
-  rc = __syscall(584, &aca);
+  int rc = __syscall(584, &aca);
   rc = __syscall(585, &aca);
 
-  for (int i = 0; i < NUM; i++)
-    for (int j = 0; j < aca.accels[i]->buffer_count; j++)
-      for (int k = 0; k < aca.accels[i]->buffers[j]->size; k++)
-        print("buffer value: accelerator %d buffer %d element %d = %d\n", i, j,
-              k, aca.accels[i]->buffers[j]->data[k]);
-
+  for (int i = 0; i < NUM; i++) {
+struct accel_config* a = get_accel_config(&aca, i);
+    for (int j = 0; j < get_buffer_count(a); j++) {
+struct 	    buffer_config *bc = get_buffer_config(a, j);
+	    int *data = get_buffer_data_ptr(bc);
+	    int size = get_buffer_size(bc);
+      for (int k = 0; k < size; k++)
+	      ;
+        // print("buffer value: accelerator %d buffer %d element %d = %d\n", i, j,
+        //       k, *(data++));
+    }
+  }
   return rc;
 }
