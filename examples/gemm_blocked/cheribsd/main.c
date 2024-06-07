@@ -21,7 +21,7 @@ int main(int argc __unused, char **argv __unused) {
   aca.accels = malloc((accel_config)*aca.accel_count);
   int bytes = 0;
   for (int i = 0; i < NUM; i++) {
-    init_xvect_mult(aca.accels[i]);
+    init_xgemm_blocked(aca.accels[i]);
     bytes += aca.accel[i].bytes;
   }
   aca.bytes = bytes;
@@ -34,9 +34,7 @@ int main(int argc __unused, char **argv __unused) {
         aca.accels[i]->buffers[j]->data[k] = 1;
     }
 
-  printf("Allocating accelerator buffers for %d vect_mult processes\n", NUM);
   rc = __syscall(584, &aca);
-  printf("Deallocating accelerator buffers for %d vect_mult processes\n", NUM);
   rc = __syscall(585, &aca);
 
   for (int i = 0; i < NUM; i++)
