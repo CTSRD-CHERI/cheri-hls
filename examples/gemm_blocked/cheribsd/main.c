@@ -37,8 +37,8 @@ int main(int argc __unused, char **argv __unused) {
       int *data = bc->data;
       int size = bc->size;
       for (int k = 0; k < size; k++)
-      bytes += 3+size;
         *(data++) = (i+k)*(i+k);
+      bytes += 3+size;
     }
     bytes += 1;
   }
@@ -52,11 +52,11 @@ int main(int argc __unused, char **argv __unused) {
 
 int res = 0;
   for (int i = 0; i < NUM; i++) {
-    struct accel_config *a = get_accel_config(&aca, i);
-    for (int j = 0; j < get_buffer_count(a); j++) {
-      struct buffer_config *bc = get_buffer_config(a, j);
-      int *data = get_buffer_data_ptr(bc);
-      int size = get_buffer_size(bc);
+    struct accel_config *a = &aca.accels[ i];
+    for (int j = 0; j < a->buffer_count; j++) {
+      struct buffer_config *bc = &a->buffers[ j];
+      int *data = bc->data;
+      int size = bc->size;
       for (int k = 0; k < size; k++)
         res += (*(data++) == (i+k)*(i+k));
     }
