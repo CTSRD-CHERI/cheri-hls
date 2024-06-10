@@ -36,7 +36,7 @@ for b in ${benchmarks[@]}; do
     -DMAXPATHLEN=1024 \
     -DNUM=$NUM \
     --ld-path=${CHERI_OUTPUT}/output/sdk/bin/ld.lld -Wl,--whole-archive -lstatcounters -Wl,--no-whole-archive \
-    -o $CHERI_HLS/$b.out \
+    -o "$CHERI_HLS/test/$b.out" \
     main.c
 done
 
