@@ -18,7 +18,6 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
 
 #define SCALE 8
 #define EDGE_FACTOR 16

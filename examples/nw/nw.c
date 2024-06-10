@@ -11,18 +11,31 @@
 
 #define MAX(A, B) (((A) > (B)) ? (A) : (B))
 
-void hls_top(int alen, int blen, int SEQA[ALEN], int SEQB[BLEN],
-             int alignedA[ALEN + BLEN], int alignedB[ALEN + BLEN],
-             int M[(ALEN + 1) * (BLEN + 1)], int ptr[(ALEN + 1) * (BLEN + 1)]) {
-#pragma HLS INTERFACE m_axi port = SEQA
-#pragma HLS INTERFACE m_axi port = SEQB
-#pragma HLS INTERFACE m_axi port = alignedA
-#pragma HLS INTERFACE m_axi port = alignedB
-#pragma HLS INTERFACE m_axi port = M
-#pragma HLS INTERFACE m_axi port = ptr
+void hls_top(int alen, int blen, int xSEQA[ALEN], int xSEQB[BLEN],
+             int xalignedA[ALEN + BLEN], int xalignedB[ALEN + BLEN],
+             int xM[(ALEN + 1) * (BLEN + 1)],
+             int xptr[(ALEN + 1) * (BLEN + 1)]) {
+#pragma HLS INTERFACE m_axi port = xSEQA
+#pragma HLS INTERFACE m_axi port = xSEQB
+#pragma HLS INTERFACE m_axi port = xalignedA
+#pragma HLS INTERFACE m_axi port = xalignedB
+#pragma HLS INTERFACE m_axi port = xM
+#pragma HLS INTERFACE m_axi port = xptr
 #pragma HLS INTERFACE s_axilite port = alen
 #pragma HLS INTERFACE s_axilite port = blen
 #pragma HLS INTERFACE s_axilite port = return
+
+  int SEQA[ALEN];
+  int SEQB[BLEN];
+  int alignedA[ALEN + BLEN];
+  int alignedB[ALEN + BLEN];
+  int M[(ALEN + 1) * (BLEN + 1)];
+  int ptr[(ALEN + 1) * (BLEN + 1)];
+
+  for (int i = 0; i < ALEN; i++)
+    SEQA[i] = xSEQA[i];
+  for (int i = 0; i < BLEN; i++)
+    SEQB[i] = xSEQB[i];
 
   int score, up_left, up, left, max;
   int row, row_up, r;
@@ -103,6 +116,15 @@ pad_b:
   for (; b_str_idx < ALEN + BLEN; b_str_idx++) {
     alignedB[b_str_idx] = '_';
   }
+
+  for (int i = 0; i < ALEN + BLEN; i++)
+    xalignedA[i] = alignedA[i];
+  for (int i = 0; i < ALEN + BLEN; i++)
+    xalignedB[i] = alignedB[i];
+  for (int i = 0; i < (ALEN + 1) * (BLEN + 1); i++)
+    xM[i] = M[i];
+  for (int i = 0; i < (ALEN + 1) * (BLEN + 1); i++)
+    xptr[i] = ptr[i];
 }
 
 int main() {

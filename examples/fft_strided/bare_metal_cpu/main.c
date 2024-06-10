@@ -15,7 +15,6 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
 #define SIZE 1024
 #define FFT_SIZE 1024
 void hls_top(int size, int real[FFT_SIZE], int img[FFT_SIZE],

@@ -14,7 +14,6 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
 #define PATTERN_SIZE 4
 #define STRING_SIZE (16206)
 XHls_top top_insts[NUM];

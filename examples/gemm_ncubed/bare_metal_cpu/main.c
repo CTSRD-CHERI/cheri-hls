@@ -46,7 +46,6 @@ extern volatile u32 tohost;
 #endif
 
 // HLS IP instance
-#define NUM 8
 #define SIZE 4096
 u32 a[NUM][SIZE];
 u32 b[NUM][SIZE];

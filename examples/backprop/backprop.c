@@ -1,8 +1,8 @@
 // Fixed parameters
-#define input_dimension 13
+#define input_dimension 16
 #define possible_outputs 3
 #define training_sets 163
-#define nodes_per_layer 64
+#define nodes_per_layer 16
 #define layers 2
 #define learning_rate 1
 #define epochs 1
@@ -270,23 +270,41 @@ void update_weights(int weights1[input_dimension * nodes_per_layer],
   }
 }
 
-void hls_top(int sets, int weights1[input_dimension * nodes_per_layer],
-             int weights2[nodes_per_layer * nodes_per_layer],
-             int weights3[nodes_per_layer * possible_outputs],
-             int biases1[nodes_per_layer], int biases2[nodes_per_layer],
-             int biases3[possible_outputs],
-             int training_data[training_sets * input_dimension],
-             int training_targets[training_sets * possible_outputs]) {
-#pragma HLS INTERFACE m_axi port = weights1
-#pragma HLS INTERFACE m_axi port = weights2
-#pragma HLS INTERFACE m_axi port = weights3
-#pragma HLS INTERFACE m_axi port = biases1
-#pragma HLS INTERFACE m_axi port = biases2
-#pragma HLS INTERFACE m_axi port = biases3
-#pragma HLS INTERFACE m_axi port = training_data
-#pragma HLS INTERFACE m_axi port = training_targets
+void hls_top(int sets, int xweights1[input_dimension * nodes_per_layer],
+             int xweights2[nodes_per_layer * nodes_per_layer],
+             int xweights3[nodes_per_layer * possible_outputs],
+             int xbiases1[nodes_per_layer], int xbiases2[nodes_per_layer],
+             int xbiases3[possible_outputs],
+             int xtraining_data[training_sets * input_dimension],
+             int xtraining_targets[training_sets][possible_outputs]) {
+#pragma HLS INTERFACE m_axi port = xweights1
+#pragma HLS INTERFACE m_axi port = xweights2
+#pragma HLS INTERFACE m_axi port = xweights3
+#pragma HLS INTERFACE m_axi port = xbiases1
+#pragma HLS INTERFACE m_axi port = xbiases2
+#pragma HLS INTERFACE m_axi port = xbiases3
+#pragma HLS INTERFACE m_axi port = xtraining_data
+#pragma HLS INTERFACE m_axi port = xtraining_targets
 #pragma HLS INTERFACE s_axilite port = sets
 #pragma HLS INTERFACE s_axilite port = return
+
+  int weights1[input_dimension * nodes_per_layer] = {1};
+  int weights2[nodes_per_layer * nodes_per_layer] = {1};
+  int weights3[nodes_per_layer * possible_outputs] = {1};
+  int biases1[nodes_per_layer] = {1};
+  int biases2[nodes_per_layer] = {1};
+  int biases3[possible_outputs] = {1};
+  int training_data[training_sets][input_dimension] = {1};
+  int training_targets[training_sets][possible_outputs] = {1};
+
+  for (int i = 0; i < training_sets; i++)
+    for (int j = 0; j < input_dimension; j++)
+      training_data[i][j] = xtraining_data[i * input_dimension + j];
+
+  for (int i = 0; i < training_sets; i++)
+    for (int j = 0; j < possible_outputs; j++)
+      training_targets[i][j] = xtraining_targets[i * possible_outputs + j];
+
   int i, j;
   // Forward and training structures
   int activations1[nodes_per_layer];
@@ -312,8 +330,8 @@ void hls_top(int sets, int weights1[input_dimension * nodes_per_layer],
         activations3[j] = 0;
       }
     }
-    matrix_vector_product_with_bias_input_layer(
-        biases1, weights1, activations1, &training_data[i * input_dimension]);
+    matrix_vector_product_with_bias_input_layer(biases1, weights1, activations1,
+                                                training_data[i]);
     RELU(activations1, dactivations1, nodes_per_layer);
     matrix_vector_product_with_bias_second_layer(biases2, weights2,
                                                  activations2, activations1);
@@ -321,9 +339,10 @@ void hls_top(int sets, int weights1[input_dimension * nodes_per_layer],
     matrix_vector_product_with_bias_output_layer(biases3, weights3,
                                                  activations3, activations2);
     RELU(activations3, dactivations3, possible_outputs);
+
     soft_max(net_outputs, activations3);
-    take_difference(net_outputs, &training_targets[i * possible_outputs],
-                    output_difference, dactivations3);
+    take_difference(net_outputs, training_targets[i], output_difference,
+                    dactivations3);
     get_delta_matrix_weights3(delta_weights3, output_difference, activations2);
     get_oracle_activations2(weights3, output_difference, oracle_activations2,
                             dactivations2);
@@ -332,11 +351,25 @@ void hls_top(int sets, int weights1[input_dimension * nodes_per_layer],
     get_oracle_activations1(weights2, oracle_activations2, oracle_activations1,
                             dactivations1);
     get_delta_matrix_weights1(delta_weights1, oracle_activations1,
-                              &training_data[i * input_dimension]);
+                              training_data[i]);
     update_weights(weights1, weights2, weights3, delta_weights1, delta_weights2,
                    delta_weights3, biases1, biases2, biases3,
                    oracle_activations1, oracle_activations2, output_difference);
   }
+
+  for (int i = 0; i < input_dimension * nodes_per_layer; i++)
+    xweights1[i] = weights1[i];
+  for (int i = 0; i < nodes_per_layer * nodes_per_layer; i++)
+    xweights2[i] = weights2[i];
+  for (int i = 0; i < nodes_per_layer * possible_outputs; i++)
+    xweights3[i] = weights3[i];
+
+  for (int i = 0; i < nodes_per_layer; i++)
+    xbiases1[i] = biases1[i];
+  for (int i = 0; i < nodes_per_layer; i++)
+    xbiases2[i] = biases2[i];
+  for (int i = 0; i < possible_outputs; i++)
+    xbiases3[i] = biases3[i];
 }
 
 int main() {
