@@ -3,13 +3,17 @@ vivado=/home/jc2489/tools/Xilinx/2019.1
 # To avoid disk space limit
 extra_ssd=/local/sata
 
-# Build Docker container
+# Build Docker container from scratch
 build-docker: 
 	@docker build \
         --build-arg HLS_PATH=$(vhls) \
         --build-arg VIVADO_PATH=$(vivado) \
         -f Docker/Dockerfile \
         --tag chls-ubuntu2204 Docker
+
+# Pull Docker container from DockerHub
+pull-docker:
+	docker pull docker.io/jc9016/cheri-hls:latest
 
 shell: 
 	@docker run \
