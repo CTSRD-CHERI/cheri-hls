@@ -66,6 +66,7 @@ RUN mkdir -p /srcPkgs \
     && cd /srcPkgs \
     && git clone https://github.com/B-Lang-org/bsc-contrib.git \
     && cd bsc-contrib \
+    && git checkout fc26b91c8add9660204c4311dcc60d223ed23ea5 \
     && git submodule update --init --recursive \
     && make PREFIX=/srcPkgs/bsc/inst
 
