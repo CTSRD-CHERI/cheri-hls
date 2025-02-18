@@ -22,7 +22,8 @@ u32 a[NUM][SIZE];
 u32 b[NUM][SIZE];
 
 u32 c[NUM][SIZE];
-// u32 c[NUM][SIZE - 1];
+
+u32 cap[4] = {0xffffffff, 0xeeeeeeee, 0xdddddddd, 0xcccccccc};
 
 u32 c_gold[NUM][SIZE];
 
@@ -77,15 +78,25 @@ u32 hls_top_init(int test_case, u32 *phy) {
   if (!XHls_top_IsReady(top))
     return 4;
 
-  // XHls_top_Set_size(top, SIZE);
-  XHls_top_Set_size(top, 11);
-
   u32 buffer_a = a[test_case];
   // base_buffer_address;
   u32 buffer_b = b[test_case];
   // base_buffer_address + 100;
   u32 buffer_c = c[test_case];
   // base_buffer_address + 200;
+  // u64 buffer_ret = ret;
+
+  u32 *c = __builtin_cheri_bounds_set(c, 81);
+  //  u32 *c = __builtin_cheri_perms_and(c, 0x77fff);
+  //        Make a table of pointers to 32-bit ints, u32*, and a pointer to a
+  //        pointer is u32**. Array of u32 pointers. Set first element to be
+  //        pointer to c (which is a pointer to an array), and store that to
+  //        table. Assuming purecap, will store in first 128bits of the table.
+  u32 **capp = (u32 **)cap;
+  capp[0] = c;
+
+  XHls_top_Set_cap(top, (capp));
+  // XHls_top_Set_size(top, 10);
 
 #ifdef CAPCHECKER
   u32 a_cap_id = (test_case << 5) + 0;
@@ -107,6 +118,8 @@ u32 hls_top_init(int test_case, u32 *phy) {
                     (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA + 4,
                     (u32)(0));
+  // XHls_top_WriteReg(top->Control_BaseAddress,
+  //                  XHLS_TOP_CONTROL_ADDR_RET_DATA + 4, (u32)(0));
 #endif
 
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA,
@@ -115,6 +128,8 @@ u32 hls_top_init(int test_case, u32 *phy) {
                     (u32)(buffer_b));
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA,
                     (u32)(buffer_c));
+  // XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_RET_DATA,
+  //(u32)(cap));
 
 #ifdef CAPCHECKER
   // Configuring capchecker
@@ -154,26 +169,37 @@ int main() {
     if (hls_top_init(i, physical_addr))
       return 4;
   }
+  u32 flag = 2;
 
   // Compute
   asm("fence");
   for (int i = 0; i < NUM; i++)
     XHls_top_Start(top_insts + i);
+
+  while (!XHls_top_Get_flag_vld(top_insts)) {
+    flag = XHls_top_Get_flag(top_insts);
+  }
+
   for (int i = 0; i < NUM; i++)
     while (!XHls_top_IsDone(top_insts + i))
       ;
   asm("fence");
 
-  u32 res = 0;
-  for (int n = 0; n < NUM; n++) {
-    for (int i = 0; i < SIZE; i++) {
-      res += (c_gold[n][i] == c[n][i]);
-    }
-  }
-
-  if (res == NUM * SIZE)
+  if (flag == 0)
     success();
   else
     fail();
+
+  // u32 res = 0;
+  // for (int n = 0; n < NUM; n++) {
+  //   for (int i = 0; i < SIZE; i++) {
+  //     res += (c_gold[n][i] == c[n][i]);
+  //   }
+  // }
+
+  // if (res == NUM * SIZE)
+  //   success();
+  // else
+  //   fail();
   return 0;
 }

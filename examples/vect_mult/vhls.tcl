@@ -7,6 +7,10 @@ set_part {xcu250-figd2104-2L-e}
 create_clock -period 4 -name default
 config_bind -effort high
 config_compile -pipeline_loops 1
-csim_design
+# Call GCC and see if it works in software, including the ap_int header file! 
+csim_design 
+# Comment the following two if I want to verify in software 
+# Generate  Verilog for HLS code
 csynth_design
+# Run h/w simulation and compare with the software (gcc) results
 cosim_design

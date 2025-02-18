@@ -60,12 +60,14 @@ RUN mkdir -p /srcPkgs \
     && git checkout f00d205 \
     && git submodule update --init --recursive \
     && make install-src
+
 # Install Bluespec Contributed libraries and utilities
 ENV PATH="/srcPkgs/bsc/inst/bin:${PATH}"
 RUN mkdir -p /srcPkgs \
     && cd /srcPkgs \
     && git clone https://github.com/B-Lang-org/bsc-contrib.git \
     && cd bsc-contrib \
+    && git checkout fc26b91c8add9660204c4311dcc60d223ed23ea5 \
     && git submodule update --init --recursive \
     && make PREFIX=/srcPkgs/bsc/inst
 
@@ -109,11 +111,29 @@ RUN printf "\
 \n# cambridge vivado lic \
 \nexport XILINXD_LICENSE_FILE=27020@lmserv-xilinx.cl.cam.ac.uk \
 \nalias ls='ls --color' \
+\nalias cd-flute='cd /workspace/BESSPIN-GFE/bluespec-processors/P2/Flute/builds/' \
 \nalias grep='grep --color'\n" >> /root/.bashrc
 #Add vim environment
 RUN printf "\
+\nset number\
+\nset relativenumber\
+\nsyntax on\
+\nset noswapfile\
+\nset hlsearch\
 \nset autoread \
 \nset hlsearch \
+\nset ignorecase\
+\nset incsearch\
+\ninoremap jk <ESC>\
+\nlet mapleader = \"'\"\
+\nset showcmd\
+\nset wrapmargin=3\
+\nset smartindent\
+\nset mouse=a\
+\nset wrapmargin=0\
+\nfiletype on\
+\nset tabstop=2\
+\nset shiftwidth=2\
 \nautocmd BufWritePost *.cpp silent! !clang-format -i <afile> \
 \nautocmd BufWritePost *.c   silent! !clang-format -i <afile> \
 \nautocmd BufWritePost *.h   silent! !clang-format -i <afile> \

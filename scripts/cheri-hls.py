@@ -33,7 +33,7 @@ BENCHMARKS = {
 }
 
 
-MODES = ["cpu", "ccpu", "cpu+hls", "ccpu+hls", "ccpu+chls"]
+MODES = ["cpu", "ccpu", "cpu+hls", "ccpu+hls", "ccpu+chls", "ccpu+hls_fg"]
 RV_ABI = "l64pc128"
 RV_ARCH = "rv64imaxcheri"
 
@@ -238,7 +238,12 @@ class CheriHLS:
         if self.args.eval:
             self.logger.info(f"----\nRunning evaluation...\n----")
             for b in bs:
-                if "cpu" in ms or "cpu+hls" in ms or "ccpu" in ms:
+                if (
+                    "cpu" in ms
+                    or "cpu+hls" in ms
+                    or "ccpu" in ms
+                    or "ccpu+hls_fg" in ms
+                ):
                     if self.run_single_evaluation(b, "cpu+hls"):
                         self.exit(1)
                 if "ccpu+chls" in ms:
@@ -256,6 +261,9 @@ class CheriHLS:
                 if "ccpu+chls" in ms:
                     if self.run_single_synthesis(b, "ccpu+chls"):
                         self.exit(1)
+                if "ccpu+hls_fg" in ms:
+                    if self.run_single_synthesis(b, "ccpu+hls_fg"):
+                        self.exit(1)
         return 0
 
     def run_single_test(self, test, mode, inst):
@@ -268,6 +276,8 @@ class CheriHLS:
             return self.simulate_ccpu_hls(test, inst=inst, cheri_hls=False)
         elif mode == "ccpu+chls":
             return self.simulate_ccpu_hls(test, inst=inst, cheri_hls=True)
+        elif mode == "ccpu+hls_fg":
+            return self.simulate_ccpu_hls_fg(test, inst=inst)
         else:  # mode == "cpu+hls":
             return self.simulate_cpu_hls(test, inst=inst)
 
@@ -592,12 +602,119 @@ class CheriHLS:
 
         return 0
 
+    def simulate_ccpu_hls_fg(self, test, inst):
+        mode = "hls_fg"
+
+        self.logger.info(
+            f"Running hardware simulation for test {test} (inst = {inst}) with mode (ccpu+{mode})..."
+        )
+
+        sim_dir = os.path.join(self.root, "examples", test, "bare_metal_cpu_hls_fg")
+
+        # Compile C code
+        cmd = [
+            "riscv64-unknown-freebsd-cc",
+            "-nostdlib",
+            "-O2",
+            "-fno-builtin",
+            "-fno-lto",
+            "-mno-relax",
+            "-Tlink.ld",
+            "-mcmodel=medany",
+            f"-mabi={RV_ABI}",
+            f"-march={RV_ARCH}",
+            "init.S",
+            f"-DNUM={inst}",
+            "main.c",
+            f"xhls_top.c",
+            f"xhls_top_linux.c",
+            "-DCAP",
+        ]
+        self.logger.debug(cmd)
+        result, _ = self.execute(cmd, cwd=sim_dir)
+        if result:
+            self.logger.error(f"Compiling error for {test} (ccpu+{mode}).")
+            return result
+
+        # Dump assembly code
+        obj_dump = os.path.join(sim_dir, f"ccpu_{mode}.dump")
+        cmd = f"(cd {sim_dir}; riscv64-unknown-freebsd-objdump -d --mattr=+m,+a,+f,+d,+c,+xcheri a.out > {obj_dump})"
+        self.logger.debug(cmd)
+        os.system(cmd)
+
+        # elf to hex
+        cap = "cap_fg"
+        cmd = [
+            os.path.join(self.flute, "Tests", "elf_to_hex", "elf_to_hex"),
+            "a.out",
+            os.path.join(self.flute, "builds", f"{test}_{cap}", "Mem.hex"),
+        ]
+        result, _ = self.execute(cmd, cwd=sim_dir)
+        if result:
+            self.logger.error(f"Compiling error for {test} (ccpu+{mode}).")
+            return result
+
+        # run simulation
+        flute_build = os.path.join(self.flute, "builds", f"{test}_{cap}")
+        symbol_table = os.path.join(sim_dir, f"symbol_table.txt")
+        shutil.copy(symbol_table, flute_build)
+        self.logger.debug(f"cp {symbol_table} {flute_build}")
+        if self.args.logloc == False:
+            instret_log = os.path.join(sim_dir, f"{test}_instret_ccpu_{mode}.log")
+        else:
+            instret_log = os.path.join(
+                self.args.logloc, f"{test}_instret_ccpu_{mode}.log"
+            )
+        if self.args.timeout != -1:
+            timeout = f"timeout {self.args.timeout}"
+        else:
+            timeout = ""
+        if self.args.fulltrace:
+            cmd = f"(cd {flute_build}; {timeout} ./exe_HW_sim +v2 +tohost  > {instret_log})"
+        else:
+            cmd = f"(cd {flute_build}; {timeout} ./exe_HW_sim +v2 +tohost | grep -A5 '^instret:' > {instret_log})"
+        self.logger.debug(cmd)
+        os.system(cmd)
+
+        pc = get_relevant_op_pc(obj_dump)
+        self.logger.debug("Simulation done.")
+        self.logger.debug(f"Relevant PCs for {test} (ccpu+{mode}) are 0x{pc}")
+        for p in pc:
+            if not p:
+                self.logger.error(f"Cannot find relevant PC for {test} (ccpu+{mode}).")
+                return result
+
+        cycles = get_total_cycles(instret_log, pc, self.logger)
+        self.logger.debug(
+            f"Relevant cycles (inst = {inst}) for {test} (ccpu+{mode})  are {cycles}"
+        )
+        for cycle in cycles:
+            if cycle < 0:
+                self.logger.error(f"Cannot find total cycles for {test} (ccpu+{mode}).")
+                return result
+
+        self.logger.debug(
+            f"Simulation for {test} (ccpu+{mode}) finished. Total cycles = {cycles}"
+        )
+
+        if self.debug:
+            for p in pc:
+                if p:
+                    cmd = f'grep -A5 "PC:0x{p}" {instret_log}'
+                    self.logger.debug(cmd)
+                    os.system(cmd)
+
+        if self.args.no_log:
+            os.remove(f"{instret_log}")
+
+        return 0
+
     def run_single_evaluation(self, test, mode):
         self.logger.info(
             f"Running hardware evaluation for test {test} (inst = {inst}) with mode {mode}..."
         )
 
-        cap = "cap" if "chls" in mode else "nocap"
+        cap = "cap" if "chls" in mode else ("cap_fg" if "hls_fg" in mode else "nocap")
         flute_build = os.path.join(self.flute, "builds", f"{test}_{cap}")
         hdl_dir = os.path.join(
             self.root,
@@ -669,7 +786,7 @@ class CheriHLS:
 
     def run_single_synthesis(self, test, mode):
         self.logger.info(
-            f"Running hardware synthesis for test {test} (inst = {inst}) with mode {mode}..."
+            f"Running hardware synthesis for test {test} (inst = inst) with mode {mode}..."
         )
         # Generate HLS hardware
         test_dir = os.path.join(self.root, "examples", test)
@@ -684,25 +801,27 @@ class CheriHLS:
             return result
 
         # Get Flute
-        cap = "cap" if "chls" in mode else "nocap"
+        cap = "cap" if "chls" in mode else ("cap_fg" if "hls_fg" in mode else "nocap")
         flute_build = os.path.join(self.flute, "builds", f"{test}_{cap}")
         flute_src = os.path.join(
             self.flute, "builds", "RV64ACIMUxCHERI_Flute_verilator"
         )
-        if os.path.exists(flute_build):
-            shutil.rmtree(flute_build)
-            self.logger.info(f"Removed (old) {flute_build}")
-        cwd = os.path.join(self.flute, "builds")
-        cmd = ["Resources/mkBuild_Dir.py", "..", "RV64ACIMUxCHERI", "verilator"]
-        result, _ = self.execute(cmd, cwd=cwd)
-        if result:
-            self.logger.error(f"Flute code gen failed.")
-            return result
-        shutil.move(flute_src, flute_build)
-        self.logger.debug(f"Moved {flute_src} to {flute_build}")
+        # if os.path.exists(flute_build):
+        #     shutil.rmtree(flute_build)
+        #     self.logger.info(f"Removed (old) {flute_build}")
+        # cwd = os.path.join(self.flute, "builds")
+        # cmd = ["Resources/mkBuild_Dir.py", "..", "RV64ACIMUxCHERI", "verilator"]
+        # result, _ = self.execute(cmd, cwd=cwd)
+        # if result:
+        #     self.logger.error(f"Flute code gen failed.")
+        #     return result
+        # shutil.move(flute_src, flute_build)
+        # self.logger.debug(f"Moved {flute_src} to {flute_build}")
 
         # Combine HLS and Flute
         hls_src = os.path.join(test_dir, f"{test}_prj", "solution", "syn", "verilog")
+        if os.path.exists(os.path.join(flute_build, "vect_mult")):
+            shutil.rmtree(os.path.join(flute_build, "vect_mult"))
         shutil.copytree(hls_src, os.path.join(flute_build, "vect_mult"))
         self.logger.debug(f"Copied {hls_src} to {os.path.join(flute_build, test)}")
         cmd = [
@@ -820,7 +939,7 @@ cheri-hls.py -a"""
     parser.add_argument(
         "-t",
         "--test",
-        default="",
+        default="vect_mult",
         dest="test",
         help="Test an individual example",
     )
@@ -833,13 +952,13 @@ cheri-hls.py -a"""
     )
     parser.add_argument(
         "--to",
-        default=-1,
+        default=30,
         dest="timeout",
         help="Set timeout for simulation",
     )
     parser.add_argument(
         "--logloc",
-        default="/local/sata/chls_logs",
+        default="/local/scratch/jhyc3/logs",
         # default=False,
         dest="logloc",
         help="Log location - in case of disk space limit",

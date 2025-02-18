@@ -77,6 +77,10 @@ void XHls_top_Set_b(XHls_top *InstancePtr, u64 Data);
 u64 XHls_top_Get_b(XHls_top *InstancePtr);
 void XHls_top_Set_c(XHls_top *InstancePtr, u64 Data);
 u64 XHls_top_Get_c(XHls_top *InstancePtr);
+u32 XHls_top_Get_flag(XHls_top *InstancePtr);
+u32 XHls_top_Get_flag_vld(XHls_top *InstancePtr);
+void XHls_top_Set_cap(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_cap(XHls_top *InstancePtr);
 
 void XHls_top_InterruptGlobalEnable(XHls_top *InstancePtr);
 void XHls_top_InterruptGlobalDisable(XHls_top *InstancePtr);
