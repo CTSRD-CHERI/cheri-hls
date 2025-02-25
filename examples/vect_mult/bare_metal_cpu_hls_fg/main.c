@@ -23,7 +23,11 @@ u32 b[NUM][SIZE];
 
 u32 c[NUM][SIZE];
 
-u32 cap[4] = {0xffffffff, 0xeeeeeeee, 0xdddddddd, 0xcccccccc};
+// u32 cap[8] = {0xffffffff, 0xeeeeeeee, 0xdddddddd, 0xcccccccc,
+//               0x77777777, 0x66666666, 0x55555555, 0x44444444};
+u32 cap[12] = {0xffffffff, 0xeeeeeeee, 0xdddddddd, 0xcccccccc,
+               0xbbbbbbbb, 0xaaaaaaaa, 0x99999999, 0x88888888,
+               0x77777777, 0x66666666, 0x55555555, 0x44444444};
 
 u32 c_gold[NUM][SIZE];
 
@@ -78,6 +82,7 @@ u32 hls_top_init(int test_case, u32 *phy) {
   if (!XHls_top_IsReady(top))
     return 4;
 
+  XHls_top_Set_size(top, 10);
   u32 buffer_a = a[test_case];
   // base_buffer_address;
   u32 buffer_b = b[test_case];
@@ -86,17 +91,23 @@ u32 hls_top_init(int test_case, u32 *phy) {
   // base_buffer_address + 200;
   // u64 buffer_ret = ret;
 
-  u32 *c = __builtin_cheri_bounds_set(c, 81);
-  //  u32 *c = __builtin_cheri_perms_and(c, 0x77fff);
-  //        Make a table of pointers to 32-bit ints, u32*, and a pointer to a
-  //        pointer is u32**. Array of u32 pointers. Set first element to be
-  //        pointer to c (which is a pointer to an array), and store that to
-  //        table. Assuming purecap, will store in first 128bits of the table.
+  u32 *a = __builtin_cheri_bounds_set(a, 40);
+  u32 *b = __builtin_cheri_bounds_set(b, 41);
+  u32 *c = __builtin_cheri_bounds_set(c, 41);
+  // u32 *a = __builtin_cheri_perms_and(c, 0x77fff);
+  // u32 *b = __builtin_cheri_perms_and(c, 0x77fff);
+  // u32 *c = __builtin_cheri_perms_and(c, 0x6ffff);
+  //             Make a table of pointers to 32-bit ints, u32*, and a pointer to
+  //             a pointer is u32**. Array of u32 pointers. Set first element to
+  //             be pointer to c (which is a pointer to an array), and store
+  //             that to table. Assuming purecap, will store in first 128bits of
+  //             the table.
   u32 **capp = (u32 **)cap;
   capp[0] = c;
+  capp[1] = b;
+  capp[2] = a;
 
   XHls_top_Set_cap(top, (capp));
-  // XHls_top_Set_size(top, 10);
 
 #ifdef CAPCHECKER
   u32 a_cap_id = (test_case << 5) + 0;
@@ -139,8 +150,8 @@ u32 hls_top_init(int test_case, u32 *phy) {
 #endif
 
   for (int i = 0; i < SIZE; i++) {
-    a[test_case][i] = i + test_case;
-    b[test_case][i] = i + test_case;
+    // a[test_case][i] = i + test_case;
+    //  b[test_case][i] = i + test_case;
     c_gold[test_case][i] = (i + test_case) * (i + test_case);
     // if (i != 9)
     // c[test_case][i] = 0;
