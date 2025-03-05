@@ -4,3 +4,6 @@
 [submodule "benchmarks/polybench"]
 	path = benchmarks/polybench
 	url = git@github.com:jianyicheng/PolyBenchC.git
+[submodule "llvm"]
+	path = llvm
+	url = https://github.com/Xilinx/hls-llvm-project.git
