@@ -19,6 +19,7 @@ BENCHMARKS = {
     "sort_merge": 8,
     "stencil2d": 8,
     "vect_mult": 8,
+    "vect_mult_base": 8,
     "bfs_bulk": 8,
     "fft_strided": 8,
     "nw": 8,
@@ -255,7 +256,8 @@ class CheriHLS:
         if self.args.synth:
             self.logger.info(f"----\nRunning synthesis...\n----")
             for b in bs:
-                if "cpu" in ms or "cpu+hls" in ms or "ccpu" in ms:
+                if "cpu" in ms or "cpu+hls" in ms or "ccpu+hls" in ms:
+                    print(ms)
                     if self.run_single_synthesis(b, "cpu+hls"):
                         self.exit(1)
                 if "ccpu+chls" in ms:

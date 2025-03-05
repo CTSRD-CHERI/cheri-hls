@@ -8,42 +8,40 @@ typedef uint32_t u32;
 typedef uint64_t u64;
 
 typedef struct {
-  int base; // remove - talk to Theo if he can come up with attack to
-            // necessitate having the lower bound
-  int top;
-  // u64 addr; // remove
-  bool read;
-  bool write;
+  u64 addr;          // remove
+  u64 base;          // remove - talk to Theo if he can come up with attack to
+                     // necessitate having the lower bound
+  u64 top;           // remove
+                     // u64 array_size;
+  ap_uint<18> otype; // remove
+  ap_uint<12> perms; // simplify to read and write
+  ap_uint<4> uperms; // remove?
 } Cap;
 
 static inline uint64_t getField(u64 val, unsigned startBit, unsigned length) {
-#pragma HLS INLINE
   u64 shifted = val >> startBit;
   u64 mask = (1ULL << length) - 1ULL;
   return shifted & mask;
 }
 
-void checkAccess(u32 *flag_buf, Cap cap, u64 offset, u64 nBytes, bool isWrite) {
-#pragma HLS INLINE
-  *flag_buf |=
-      !((cap.base <= (4 * offset)) && ((4 * offset + nBytes) <= cap.top) &&
-        (!isWrite || (cap.write)) && (isWrite || (cap.read)));
+bool checkAccess(Cap cap, u64 offset, u64 nBytes, bool isRead, bool isWrite) {
+  return cap.base <= (cap.addr + offset) &&
+         ((cap.addr + offset + nBytes) <= cap.top) &&
+         (!isWrite || ((cap.perms >> 8) & 0x1)) &&
+         (!isRead || ((cap.perms >> 9 & 0x1)));
 }
 
 Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
            ap_uint<32> buffer_3) {
-#pragma HLS INLINE
 
   ap_uint<64> cap = (buffer_3, buffer_2);
   ap_uint<64> addr = (buffer_1, buffer_0);
 
-  cap ^= 0x00001ffffc018004; // nullptr [127:64]
-  bool read = getField(cap, 61, 1);
-  bool write = getField(cap, 60, 1);
-  // ap_uint<12> perms = getField(cap, 52, 12); // bits [127:112]
-  //  ap_uint<4> uperms = getField(cap, 48, 4);  // bits [115:112]
-  bool f = (getField(cap, 47, 1) != 0); // bit 111
-  // ap_uint<18> otype = getField(cap, 27, 18); // bits [109:91]
+  cap ^= 0x00001ffffc018004;                 // nullptr [127:64]
+  ap_uint<12> perms = getField(cap, 52, 12); // bits [127:112]
+  ap_uint<4> uperms = getField(cap, 48, 4);  // bits [115:112]
+  bool f = (getField(cap, 47, 1) != 0);      // bit 111
+  ap_uint<18> otype = getField(cap, 27, 18); // bits [109:91]
   bool I_E = (getField(cap, 26, 1) != 0);    // bit 90
   ap_uint<9> T_11_3 = getField(cap, 17, 9);  // bits [89:81]
   ap_uint<3> T_E = getField(cap, 14, 3);     // bits [80:78]
@@ -52,6 +50,7 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
   ap_uint<6> E = 0;
   ap_uint<14> T_13_0 = 0;
   ap_uint<14> B_13_0 = 0;
+  bool L_msb = false;
   bool L_carry_out = false;
 
   if (!I_E) {
@@ -61,6 +60,7 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
     ap_uint<12> T_11_0 = T_13_0 & 0x0fff;
     ap_uint<12> B_11_0 = B_13_0 & 0x0fff;
     L_carry_out = (T_11_0 < B_11_0);
+    L_msb = false;
   } else {
     E = (T_E, B_E);
     T_13_0 = (T_11_3 << 3);
@@ -68,9 +68,10 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
     ap_uint<12> T_11_3_only = (T_13_0 >> 3) & 0x01ff;
     ap_uint<12> B_11_3_only = (B_13_0 >> 3) & 0x01ff;
     L_carry_out = (T_11_3_only < B_11_3_only);
+    L_msb = true;
   }
   ap_uint<2> B_13_12 = (B_13_0 >> 12) & 0x3;
-  ap_uint<2> T_13_12 = B_13_12 + (L_carry_out ? 1 : 0) + (I_E ? 1 : 0);
+  ap_uint<2> T_13_12 = B_13_12 + (L_carry_out ? 1 : 0) + (L_msb ? 1 : 0);
   T_13_12 &= 0x3;
 
   T_13_0 &= 0x0fff;
@@ -99,31 +100,17 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
   u64 base = ((a_top + c_b) << (E + 14)) | ((u64)(B_13_0 & 0x3FFF) << E);
 
   Cap c;
-  // c.addr = addr;
-  c.base = base - addr;
-  c.top = top - addr;
-  c.read = read;
-  c.write = write;
+  c.top = top;
+  c.base = base;
+  c.addr = addr;
+  c.otype = otype;
+  c.perms = perms;
+  c.uperms = uperms;
   return c;
 }
 void load_capability(int n_bytes, u32 *cap, u32 *buffer) {
-#pragma HLS INLINE
   for (auto i = 0; i < n_bytes; i++)
     buffer[i] = cap[i];
-}
-
-void load_cap_new(int num, u32 *buffer, u32 *cap, Cap *caps) {
-#pragma HLS INLINE
-
-  for (int i = 0; i < num * 4; i++)
-#pragma HLS PIPELINE
-    buffer[i] = cap[i];
-
-  int i = 0;
-  for (int j = 0; j < num; j++) {
-    caps[j] = decode(buffer[i], buffer[i + 1], buffer[i + 2], buffer[i + 3]);
-    i += 4;
-  }
 }
 
 void hls_top(int size, int a[N], int b[N], int c[N], u32 *flag, u32 cap[12]) {
@@ -136,24 +123,32 @@ void hls_top(int size, int a[N], int b[N], int c[N], u32 *flag, u32 cap[12]) {
 #pragma HLS INTERFACE s_axilite port = return
 
   u32 flag_buf = 0;
-  // 3 and 12 comes from program analysis
-  Cap caps[3];
   u32 buffer[12];
 #pragma HLS array_partition variable = buffer type = complete
 
-  // load_capability(12, cap, buffer);
-  load_cap_new(3, buffer, cap, caps);
+  // load cap to buffer
+  load_capability(12, cap, buffer);
+  // distribute buffer to multiple decode function
 
-  // Cap cap_c = decode(buffer[0], buffer[1], buffer[2], buffer[3]);
-  // Cap cap_b = decode(buffer[4], buffer[5], buffer[6], buffer[7]);
-  // Cap cap_a = decode(buffer[8], buffer[9], buffer[10], buffer[11]);
+  Cap cap_c = decode(buffer[0], buffer[1], buffer[2], buffer[3]);
+  Cap cap_b = decode(buffer[4], buffer[5], buffer[6], buffer[7]);
+  Cap cap_a = decode(buffer[8], buffer[9], buffer[10], buffer[11]);
 
+  // check capabilities for a b and c
   for (int i = 0; i < size; i++) {
-#pragma HLS PIPELINE
-    checkAccess(&flag_buf, caps[2], i, 4, false);
-    checkAccess(&flag_buf, caps[1], i, 4, false);
-    checkAccess(&flag_buf, caps[0], i, 4, true); // addr, struct, offset, nBytes
+    //  //  //#pragma HLS PIPELINE
+    // a[i] = b[i];
+    // c[i] = i;
 
+    flag_buf |=
+        !(checkAccess(cap_a, 4 * i, 4, true,
+                      false)); // cap struct,offset, nBytes, isRead, isWrite
+    flag_buf |=
+        !(checkAccess(cap_b, 4 * i, 4, true,
+                      false)); // cap struct,offset, nBytes, isRead, isWrite
+    flag_buf |=
+        !(checkAccess(cap_c, 4 * i, 4, false,
+                      true)); // cap struct,offset, nBytes, isRead, isWrite
     c[i] = a[i] * b[i];
   }
 
@@ -219,18 +214,15 @@ int main() {
   // u64 cap = 0xdf7d000007ab8e84ULL;
   // u64 addr = 0x0000000080000e80ULL;
 
-  // Cap x = decode(addr & 0xffffffff, addr >> 32, cap & 0xffffffff, cap >> 32);
-  //  printf("addr: %lx\n", x.addr);
+  // Cap x = decode(cap, addr);
+  // printf("addr: %lx\n", x.addr);
   // printf("base: %lx\n", x.base);
   // printf("top:  %lx\n", x.top);
-  // printf("read:%d\n", x.read);
-  // printf("write:%d\n", x.write);
-  //  printf("otype:%x\n", x.otype);
-  //  printf("perms:%x\n", x.perms);
-  //  printf("uperm:%x\n", x.uperms);
-  //  bool y = checkWrite(addr, x, 5, 15);
-  //  printf("access:%d\n", y);
+  // printf("otype:%x\n", x.otype);
+  // printf("perms:%x\n", x.perms);
+  // printf("uperm:%x\n", x.uperms);
+  // bool y = checkAccess(x, 20, true, true); // cap, nBytes, isRead, isWrite
 
-  // return (y != 1);
+  // return (ret[5] != 0xabcd);
   return 0;
 }
