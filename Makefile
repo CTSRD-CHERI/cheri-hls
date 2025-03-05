@@ -36,6 +36,10 @@ build-cheri:
 	@bash scripts/build-cheri.sh
 	@bash scripts/get-flute.sh
 
+build-hls-llvm:
+	@ln -s /usr/include/c++/11 "/usr/include/c++/11.2.0"
+	@(cd llvm; bash build-hls-llvm-project.sh)
+
 build-hls:
 	@bash scripts/build-hls-extract.sh
 
@@ -48,5 +52,6 @@ clean:
 	@rm -rf cheri
 	@rm -rf cheri-qemu-tools
 	@rm -rf cheri-qemu
+	@rm -rf llvm/hls-build
 	@rm -rf hls_extract/build
 	@rm -rf BESSPIN-GFE
