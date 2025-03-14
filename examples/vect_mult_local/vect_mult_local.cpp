@@ -11,7 +11,6 @@ typedef struct {
   int base; // remove - talk to Theo if he can come up with attack to
             // necessitate having the lower bound
   int top;
-  // u64 addr; // remove
   bool read;
   bool write;
 } Cap;
@@ -114,6 +113,17 @@ void load_cap(int num, u32 *buffer, u32 *cap, Cap *caps) {
   }
 }
 
+void create_cap(int size, Cap *caps, int index) {
+#pragma HLS INLINE
+  Cap new_cap;
+  new_cap.base = 0;
+  new_cap.top = size * 4;
+  new_cap.write = true;
+  new_cap.read = true;
+  caps[index] = new_cap;
+  return;
+}
+
 void checkAccess(u32 *flag_buf, Cap cap, u64 offset, u64 nBytes, bool isWrite) {
 #pragma HLS INLINE
   *flag_buf |=
@@ -137,14 +147,14 @@ void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
   return;
 }
 
-void hls_top(int size, int a[N], int b[N], int c[N], u32 *flag, u32 cap[12]) {
+void hls_top(int size, int a[N], int c[N], u32 *flag, u32 cap[8]) {
 #pragma HLS INTERFACE m_axi port = a
-#pragma HLS INTERFACE m_axi port = b
 #pragma HLS INTERFACE m_axi port = c
 #pragma HLS INTERFACE m_axi port = cap
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = flag
 #pragma HLS INTERFACE s_axilite port = return
+  int b[N] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
   u32 flag_buf = 0;
   // 3 and 12 comes from program analysis
@@ -153,17 +163,18 @@ void hls_top(int size, int a[N], int b[N], int c[N], u32 *flag, u32 cap[12]) {
 #pragma HLS array_partition variable = buffer type = complete
 #pragma HLS array_partition variable = caps type = complete
 
-  load_cap(3, buffer, cap, caps);
+  load_cap(2, buffer, cap, caps);
+  create_cap(N, caps, 2);
 
   for (int i = 0; i < size; i++) {
 #pragma HLS PIPELINE
 
     int a_elem = cheri_load(a, i, &flag_buf, caps[0]);
-    int b_elem = cheri_load(b, i, &flag_buf, caps[1]);
+    int b_elem = cheri_load(b, i, &flag_buf, caps[2]);
 
     int c_elem = a_elem * b_elem;
 
-    cheri_store(c, i, c_elem, &flag_buf, caps[2]);
+    cheri_store(c, i, c_elem, &flag_buf, caps[1]);
   }
 
   *flag = flag_buf;
@@ -186,7 +197,7 @@ int main() {
 
   u32 flag[1] = {0};
 
-  hls_top(N, a, b, c, flag, ret);
+  hls_top(N, a, c, flag, ret);
 
   // can check return values, see if it returns exception, no exception,
   // etc. non-standard in C but might need additional hls library pc, gcc;
@@ -236,6 +247,12 @@ int main() {
   cheri_store(a, 0, 3, &flag_buf, caps[0]);
   printf("Value stored: %d\n", a[0]);
   printf("Flag buf: %d\n", flag_buf);
+
+  // flag_buf = 0;
+  // Cap b_cap = create_cap(3);
+  // int z = cheri_load(b, 2, &flag_buf, b_cap);
+  // printf("Value read: %d\n", z);
+  // printf("Flag buf: %d\n", flag_buf);
 
   // Cap x = decode(addr & 0xffffffff, addr >> 32, cap & 0xffffffff, cap >> 32);
   //  printf("addr: %lx\n", x.addr);

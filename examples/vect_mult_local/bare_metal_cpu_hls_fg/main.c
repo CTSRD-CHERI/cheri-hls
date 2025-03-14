@@ -19,15 +19,17 @@ XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
 u32 a[NUM][SIZE];
-u32 b[NUM][SIZE];
+// u32 b[NUM][SIZE];
 
 u32 c[NUM][SIZE];
 
-// u32 cap[8] = {0xffffffff, 0xeeeeeeee, 0xdddddddd, 0xcccccccc,
-//               0x77777777, 0x66666666, 0x55555555, 0x44444444};
-u32 cap[12] = {0xffffffff, 0xeeeeeeee, 0xdddddddd, 0xcccccccc,
-               0xbbbbbbbb, 0xaaaaaaaa, 0x99999999, 0x88888888,
-               0x77777777, 0x66666666, 0x55555555, 0x44444444};
+u32 cap[8] = {0xffffffff, 0xeeeeeeee, 0xdddddddd, 0xcccccccc,
+              0x77777777, 0x66666666, 0x55555555, 0x44444444};
+// u32 cap[12] = {0xffffffff, 0xeeeeeeee, 0xdddddddd, 0xcccccccc,
+// 0xbbbbbbbb, 0xaaaaaaaa, 0x99999999, 0x88888888, 0x77777777, 0x66666666,
+//    0x55555555, 0x44444444
+//}
+//;
 
 u32 c_gold[NUM][SIZE];
 
@@ -85,18 +87,18 @@ u32 hls_top_init(int test_case, u32 *phy) {
   XHls_top_Set_size(top, 10);
   u32 buffer_a = a[test_case];
   // base_buffer_address;
-  u32 buffer_b = b[test_case];
+  // u32 buffer_b = b[test_case];
   // base_buffer_address + 100;
   u32 buffer_c = c[test_case];
   // base_buffer_address + 200;
   // u64 buffer_ret = ret;
 
-  u32 *a = __builtin_cheri_bounds_set(a, 40);
+  // u32 *a = __builtin_cheri_bounds_set(a, 40);
   // u32 *b = __builtin_cheri_bounds_set(b, 40);
-  // u32 *c = __builtin_cheri_bounds_set(c, 40);
+  // u32 *c = __builtin_cheri_bounds_set(c, 39);
   // u32 *a = __builtin_cheri_perms_and(a, 0x6ffff);
   // u32 *b = __builtin_cheri_perms_and(c, 0x6ffff);
-  // u32 *c = __builtin_cheri_perms_and(c, 0x77fff);
+  // u32 *c = __builtin_cheri_perms_and(c, 0x6ffff);
   //                      Make a table of pointers to 32-bit ints, u32*, and a
   //                      pointer to a pointer is u32**. Array of u32 pointers.
   //                      Set first element to be pointer to c (which is a
@@ -104,8 +106,8 @@ u32 hls_top_init(int test_case, u32 *phy) {
   //                      Assuming purecap, will store in first 128bits of the
   //                      table.
   u32 **capp = (u32 **)cap;
-  capp[2] = c;
-  capp[1] = b;
+  capp[1] = c;
+  // capp[1] = b;
   capp[0] = a;
 
   XHls_top_Set_cap(top, (capp));
@@ -126,8 +128,8 @@ u32 hls_top_init(int test_case, u32 *phy) {
   // Configuring data buffers
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA + 4,
                     (u32)(0));
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA + 4,
-                    (u32)(0));
+  // XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA +
+  // 4, (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA + 4,
                     (u32)(0));
   // XHls_top_WriteReg(top->Control_BaseAddress,
@@ -136,8 +138,8 @@ u32 hls_top_init(int test_case, u32 *phy) {
 
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_A_DATA,
                     (u32)(buffer_a));
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA,
-                    (u32)(buffer_b));
+  //  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_B_DATA,
+  //                    (u32)(buffer_b));
   XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_C_DATA,
                     (u32)(buffer_c));
   // XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_RET_DATA,
@@ -146,7 +148,7 @@ u32 hls_top_init(int test_case, u32 *phy) {
 #ifdef CAPCHECKER
   // Configuring capchecker
   capchecker_install_cap(a_cap_id, &a);
-  capchecker_install_cap(b_cap_id, &b);
+  // capchecker_install_cap(b_cap_id, &b);
   capchecker_install_cap(c_cap_id, &c);
 #endif
 

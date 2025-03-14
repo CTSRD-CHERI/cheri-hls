@@ -20,6 +20,7 @@ BENCHMARKS = {
     "stencil2d": 8,
     "vect_mult": 8,
     "vect_mult_base": 8,
+    "vect_mult_local": 8,
     "bfs_bulk": 8,
     "fft_strided": 8,
     "nw": 8,
@@ -808,17 +809,15 @@ class CheriHLS:
         flute_src = os.path.join(
             self.flute, "builds", "RV64ACIMUxCHERI_Flute_verilator"
         )
-        # if os.path.exists(flute_build):
-        #     shutil.rmtree(flute_build)
-        #     self.logger.info(f"Removed (old) {flute_build}")
-        # cwd = os.path.join(self.flute, "builds")
-        # cmd = ["Resources/mkBuild_Dir.py", "..", "RV64ACIMUxCHERI", "verilator"]
-        # result, _ = self.execute(cmd, cwd=cwd)
-        # if result:
-        #     self.logger.error(f"Flute code gen failed.")
-        #     return result
-        # shutil.move(flute_src, flute_build)
-        # self.logger.debug(f"Moved {flute_src} to {flute_build}")
+        if not os.path.exists(flute_build):
+            cwd = os.path.join(self.flute, "builds")
+            cmd = ["Resources/mkBuild_Dir.py", "..", "RV64ACIMUxCHERI", "verilator"]
+            result, _ = self.execute(cmd, cwd=cwd)
+            if result:
+                self.logger.error(f"Flute code gen failed.")
+                return result
+            shutil.move(flute_src, flute_build)
+            self.logger.debug(f"Moved {flute_src} to {flute_build}")
 
         # Combine HLS and Flute
         hls_src = os.path.join(test_dir, f"{test}_prj", "solution", "syn", "verilog")
