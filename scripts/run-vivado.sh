@@ -11,7 +11,7 @@ set -o nounset
 # The absolute path to the directory of this script.
 # --------------------------------------------------------------------
 
-source $VIVADO/Vivado/2019.1/settings64.sh
+source $VIVADO/settings64.sh
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 CHERI_HLS=${SCRIPT_DIR}/..

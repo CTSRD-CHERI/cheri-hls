@@ -18,6 +18,7 @@ shell:
         -w /workspace \
         -v $(vhls):$(vhls) \
         -v $(vivado):$(vivado) \
+				-v /local/ecad/xilinx/SDK:/local/ecad/xilinx/SDK\
         -v /home/$(shell whoami)/.gitconfig:/root/.gitconfig \
         -v /home/$(shell whoami)/.ssh:/root/.ssh \
         -v $(extra_ssd):$(extra_ssd) \

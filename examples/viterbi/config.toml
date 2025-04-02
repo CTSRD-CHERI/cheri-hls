@@ -1,0 +1,67 @@
+# Configuration file for LLVM IR Transformer
+# Maps array references to capability indices
+
+["%emission"]
+"cap" = 0
+"device" = "local"
+"size" = 4096
+
+["%obs"]
+"cap" = 1
+"device" = "local"
+"size" = 140
+#"omit_array" = true
+
+["%init"]
+"cap" = 2
+"device" = "local"
+"size" = 64
+#"omit_array" = true
+
+["%transition"]
+"cap" = 3
+"device" = "local"
+"size" = 4096
+#"omit_array" = true
+
+["%path"]
+"cap" = 4
+"device" = "local"
+"size" = 140
+#"omit_array" = true
+
+["%llike"]
+"cap" = 5
+"device" = "local"
+"size" = 8960
+#"omit_array" = true
+
+["%xpath"]
+"cap" = 6
+"device" = "host"
+"size" = 140
+#"omit_array" = true
+
+["%xobs"]
+"cap" = 7
+"device" = "host"
+"size" = 140
+#"omit_array" = true
+
+["%xtransition"]
+"cap" = 9
+"device" = "host"
+"size" = 4096
+"omit_array" = true
+
+["%xinit"]
+"cap" = 8
+"device" = "host"
+"size" = 64
+"omit_array" = true
+
+["%xemission"]
+"cap" = 10
+"device" = "host"
+"size" = 4096
+"omit_array" = true

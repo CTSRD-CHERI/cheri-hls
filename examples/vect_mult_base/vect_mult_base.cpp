@@ -8,6 +8,13 @@
 //     a[i] = i;
 //   }
 // }
+//
+void mult(int size, int a[N], int b[N], int c[N]) {
+  for (int i = 0; i < size; i++)
+#pragma HLS PIPELINE
+    c[i] = a[i] * b[i];
+  return;
+}
 
 void hls_top(int size, int a[N], int b[N], int c[N]) {
 #pragma HLS INTERFACE m_axi port = a
@@ -15,10 +22,8 @@ void hls_top(int size, int a[N], int b[N], int c[N]) {
 #pragma HLS INTERFACE m_axi port = c
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
-
-  for (int i = 0; i < size; i++)
-#pragma HLS PIPELINE
-    c[i] = a[i] * b[i];
+  mult(size, a, b, c);
+  return;
 }
 
 int main() {

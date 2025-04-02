@@ -9,7 +9,7 @@ config_bind -effort high
 config_compile -pipeline_loops 1
 # Call GCC and see if it works in software, including the ap_int header file! 
 csim_design 
-set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -mem2reg $LLVM_CUSTOM_INPUT -o $LLVM_CUSTOM_OUTPUT}
+#set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -mem2reg $LLVM_CUSTOM_INPUT -o $LLVM_CUSTOM_OUTPUT}
 # Comment the following two if I want to verify in software 
 # Generate  Verilog for HLS code
 csynth_design
@@ -17,4 +17,4 @@ csynth_design
 cosim_design
 
 
-#export_design -flow syn -format ip_catalog
+export_design -flow syn -format ip_catalog

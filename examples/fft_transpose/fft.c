@@ -39,7 +39,7 @@ struct bench_args_t {
 #define cm_fl_mul_x(a_x, b) (b * a_x)
 #define cm_fl_mul_y(a_y, b) (b * a_y)
 
-void twiddles8(TYPE a_x[8], TYPE a_y[8], int i, int n) {
+void twiddles8(TYPE data_x[8], TYPE data_y[8], int i, int n) {
   int reversed8[8] = {0, 4, 2, 6, 1, 5, 3, 7};
   int j;
   TYPE phi, tmp, phi_x, phi_y;
@@ -49,9 +49,9 @@ twiddles:
     phi = ((-2 * PI * reversed8[j] / n) * i);
     phi_x = phi % 7;
     phi_y = phi % 3;
-    tmp = a_x[j];
-    a_x[j] = cmplx_M_x(a_x[j], a_y[j], phi_x, phi_y);
-    a_y[j] = cmplx_M_y(tmp, a_y[j], phi_x, phi_y);
+    tmp = data_x[j];
+    data_x[j] = cmplx_M_x(data_x[j], data_y[j], phi_x, phi_y);
+    data_y[j] = cmplx_M_y(tmp, data_y[j], phi_x, phi_y);
   }
 }
 ////END TWIDDLES ////
@@ -127,15 +127,15 @@ void loadx8(TYPE a_x[], TYPE x[], int offset, int sx) {
   a_x[7] = x[7 * sx + offset];
 }
 
-void loady8(TYPE a_y[], TYPE x[], int offset, int sx) {
-  a_y[0] = x[0 * sx + offset];
-  a_y[1] = x[1 * sx + offset];
-  a_y[2] = x[2 * sx + offset];
-  a_y[3] = x[3 * sx + offset];
-  a_y[4] = x[4 * sx + offset];
-  a_y[5] = x[5 * sx + offset];
-  a_y[6] = x[6 * sx + offset];
-  a_y[7] = x[7 * sx + offset];
+void loady8(TYPE data_y[], TYPE smem[], int offset, int sx) {
+  data_y[0] = smem[0 * sx + offset];
+  data_y[1] = smem[1 * sx + offset];
+  data_y[2] = smem[2 * sx + offset];
+  data_y[3] = smem[3 * sx + offset];
+  data_y[4] = smem[4 * sx + offset];
+  data_y[5] = smem[5 * sx + offset];
+  data_y[6] = smem[6 * sx + offset];
+  data_y[7] = smem[7 * sx + offset];
 }
 
 void hls_top(int size, TYPE work_x[512], TYPE work_y[512]) {
@@ -469,6 +469,8 @@ int main() {
     a_y[i] =
         (TYPE)(i); //(((double) rand() / (RAND_MAX)) * (max-min) + min);//i;
   }
+  int flag[1] = {0};
+  int caps[8];
 
   hls_top(64, a_x, a_y);
 

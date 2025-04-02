@@ -23,7 +23,7 @@ void hls_top(int n_tokens, int xobs[N_OBS], int xinit[N_STATES],
   int init[N_STATES];
   int transition[N_STATES * N_STATES];
   int emission[N_STATES * N_TOKENS];
-  int path[N_OBS] = {0};
+  int path[N_OBS];
 
   for (int i = 0; i < N_OBS; i++)
     obs[i] = xobs[i];
@@ -34,7 +34,7 @@ void hls_top(int n_tokens, int xobs[N_OBS], int xinit[N_STATES],
   for (int i = 0; i < N_STATES * n_tokens; i++)
     emission[i] = xemission[i];
 
-  prob_t llike[N_OBS][N_STATES];
+  prob_t llike[N_OBS * N_STATES];
   step_t t;
   state_t prev, curr;
   prob_t min_p, p;
@@ -44,7 +44,7 @@ void hls_top(int n_tokens, int xobs[N_OBS], int xinit[N_STATES],
 // Initialize with first observation and initial probabilities
 L_init:
   for (s = 0; s < N_STATES; s++) {
-    llike[0][s] = init[s] + emission[s * n_tokens + obs[0]];
+    llike[0 + s] = init[s] + emission[s * n_tokens + obs[0]];
   }
 
 // Iteratively compute the probabilities over time
@@ -54,26 +54,28 @@ L_timestep:
     for (curr = 0; curr < N_STATES; curr++) {
       // Compute likelihood HMM is in current state and where it came from.
       prev = 0;
-      min_p = llike[t - 1][prev] + transition[prev * N_STATES + curr] +
+      min_p = llike[(t - 1) * N_STATES + prev] +
+              transition[prev * N_STATES + curr] +
               emission[curr * n_tokens + obs[t]];
     L_prev_state:
       for (prev = 1; prev < N_STATES; prev++) {
-        p = llike[t - 1][prev] + transition[prev * N_STATES + curr] +
+        p = llike[(t - 1) * N_STATES + prev] +
+            transition[prev * N_STATES + curr] +
             emission[curr * n_tokens + obs[t]];
         if (p < min_p) {
           min_p = p;
         }
       }
-      llike[t][curr] = min_p;
+      llike[t * N_STATES + curr] = min_p;
     }
   }
 
   // Identify end state
   min_s = 0;
-  min_p = llike[N_OBS - 1][min_s];
+  min_p = llike[(N_OBS - 1) * N_STATES + min_s];
 L_end:
   for (s = 1; s < N_STATES; s++) {
-    p = llike[N_OBS - 1][s];
+    p = llike[(N_OBS - 1) * N_STATES + s];
     if (p < min_p) {
       min_p = p;
       min_s = s;
@@ -85,10 +87,11 @@ L_end:
 L_backtrack:
   for (t = N_OBS - 2; t >= 0; t--) {
     min_s = 0;
-    min_p = llike[t][min_s] + transition[min_s * N_STATES + path[t + 1]];
+    min_p = llike[t * N_STATES + min_s] +
+            transition[min_s * N_STATES + path[t + 1]];
   L_state:
     for (s = 1; s < N_STATES; s++) {
-      p = llike[t][s] + transition[s * N_STATES + path[t + 1]];
+      p = llike[t * N_STATES + s] + transition[s * N_STATES + path[t + 1]];
       if (p < min_p) {
         min_p = p;
         min_s = s;

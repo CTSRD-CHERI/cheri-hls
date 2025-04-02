@@ -8,10 +8,8 @@ typedef uint32_t u32;
 typedef uint64_t u64;
 
 typedef struct {
-  int base; // remove - talk to Theo if he can come up with attack to
-            // necessitate having the lower bound
+  int base;
   int top;
-  // u64 addr; // remove
   bool read;
   bool write;
 } Cap;
@@ -154,7 +152,6 @@ void hls_top(int size, int a[N], int b[N], int c[N], u32 *flag, u32 cap[12]) {
 #pragma HLS array_partition variable = caps type = complete
 
   load_cap(3, buffer, cap, caps);
-
   for (int i = 0; i < size; i++) {
 #pragma HLS PIPELINE
 
@@ -192,10 +189,10 @@ int main() {
   // etc. non-standard in C but might need additional hls library pc, gcc;
   // hls
 
-  int res = 0;
-  for (int i = 0; i < N; i++) {
-    res += (c_gold[i] == c[i]);
-  }
+  // int res = 0;
+  // for (int i = 0; i < N; i++) {
+  //   res += (c_gold[i] == c[i]);
+  // }
 
   // u64 cap = 0xff7d0000048190c4ULL;
   // u64 addr = 0x00000000800010c0ULL;
@@ -217,25 +214,37 @@ int main() {
   // __builtin_cheri_perms_and(c,0x77fff); cannot write
   // u64 cap = 0xef7d000007ab8e84ULL;
   // u64 addr = 0x0000000080000e80ULL;
-  u32 cap[4] = {0x80000e80, 0x00000000, 0x07ab8e84, 0xff7d0000};
+  // ju32 cap[4] = {0x80000e80, 0x00000000, 0x07ab8e84, 0xff7d0000};
 
   // __builtin_cheri_perms_and(c,0x6ffff); cannot read
   // u64 cap = 0xdf7d000007ab8e84ULL;
   // u64 addr = 0x0000000080000e80ULL;
 
-  u32 flag_buf = 0;
-  Cap caps[1];
-  u32 buffer[4];
+  // u32 cap[4] = {0x80001050, 0x00000000, 0x04659054, 0xff7d0000};
+  //  u32 cap[4] = {0x80001190, 0x00000000, 0x04b59194, 0xff7d0000};
+  //   u32 cap[4] = {0x800012d0, 0x00000000, 0x050592d4, 0xff7d0000};
 
-  load_cap(1, buffer, cap, caps);
-  int y = cheri_load(a, 3, &flag_buf, caps[0]);
-  printf("Value read: %d\n", y);
-  printf("Flag buf: %d\n", flag_buf);
+  // array a, set to bounds 39
+  // u32 cap[4] = {0x80001050, 0x00000000, 0x04199054, 0xff7d0000};
+  // u32 cap[4] = {0x80000eb0, 0x00000000, 0x07b44eb4, 0xff7d0000};
 
-  flag_buf = 0;
-  cheri_store(a, 0, 3, &flag_buf, caps[0]);
-  printf("Value stored: %d\n", a[0]);
-  printf("Flag buf: %d\n", flag_buf);
+  // u32 flag_buf = 0;
+  // Cap caps[1];
+  // u32 buffer[4];
+
+  // load_cap(1, buffer, cap, caps);
+  // printf("CAPbase: %lx\n", caps[0].base);
+  // printf("CAP top: %lx\n", caps[0].top);
+  // printf("CAP write: %d\n", caps[0].write);
+  // printf("CAP read: %d\n", caps[0].read);
+  // int y = cheri_load(a, 8, &flag_buf, caps[0]);
+  // printf("Value read: %d\n", y);
+  // printf("Flag buf: %d\n", flag_buf);
+
+  // flag_buf = 0;
+  // cheri_store(a, 0, 3, &flag_buf, caps[0]);
+  // printf("Value stored: %d\n", a[0]);
+  // printf("Flag buf: %d\n", flag_buf);
 
   // Cap x = decode(addr & 0xffffffff, addr >> 32, cap & 0xffffffff, cap >> 32);
   //  printf("addr: %lx\n", x.addr);

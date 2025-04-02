@@ -12,7 +12,7 @@ config_compile -pipeline_loops 1
 csim_design 
 # Comment the following two if I want to verify in software 
 # Generate  Verilog for HLS code
-set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -mem2reg $LLVM_CUSTOM_INPUT -o /workspace/test.bc}
+set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -mem2reg $LLVM_CUSTOM_INPUT -o /workspace/examples/vect_mult/temp/test.bc}
  #set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -mem2reg $LLVM_CUSTOM_INPUT -o $LLVM_CUSTOM_OUTPUT}
 #set ::LLVM_CUSTOM_CMD {/local/ecad/xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/llvm-dis $LLVM_CUSTOM_INPUT}
 #a.g.ld.6.user.ll

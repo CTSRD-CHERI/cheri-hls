@@ -1,0 +1,72 @@
+# Configuration file for LLVM IR Transformer
+# Maps array references to capability indices
+
+["%xn_points"]
+"cap" = 0
+"device" = "host"
+"size" = 64
+
+["%force_x"]
+"cap" = 1
+"device" = "host"
+"size" = 640
+
+["%force_y"]
+"cap" = 2
+"device" = "host"
+"size" = 640
+
+["%force_z"]
+"cap" = 3
+"device" = "host"
+"size" = 640
+
+["%position_x"]
+"cap" = 4
+"device" = "host"
+"size" = 640
+
+["%position_y"]
+"cap" = 5
+"device" = "host"
+"size" = 640
+
+["%position_z"]
+"cap" = 6
+"device" = "host"
+"size" = 640
+
+["%n_points"]
+"cap" = 7
+"device" = "local"
+"size" = 64
+
+["%force_x_local"]
+"cap" = 8
+"device" = "local"
+"size" = 640
+
+["%force_y_local"]
+"cap" = 9
+"device" = "local"
+"size" = 640
+
+["%force_z_local"]
+"cap" = 10
+"device" = "local"
+"size" = 640
+
+["%pos_x_local"]
+"cap" = 11
+"device" = "local"
+"size" = 640
+
+["%pos_y_local"]
+"cap" = 12
+"device" = "local"
+"size" = 640
+
+["%pos_z_local"]
+"cap" = 13
+"device" = "local"
+"size" = 640

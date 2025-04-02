@@ -1,20 +1,15 @@
-open_project sort_radix_prj
-
+open_project -reset sort_radix_baseline_prj
 set_top hls_top 
+add_files { sort_radix.c }
+add_files -tb { sort_radix.c }
+open_solution -reset "solution"
+set_part {xcu250-figd2104-2L-e}
+create_clock -period 4 -name default
+config_bind -effort high
+config_compile -pipeline_loops 1
 
-add_files sort.c
-add_files -tb sort.c
-
-set clock 10
-set part "xqzu29dr-ffrf1760-1-i"
-
-
-open_solution -reset solution
-set_part $part
-create_clock -period $clock
-
-csim_design
-csynth_design 
+csim_design 
+csynth_design
 cosim_design
 
-exit
+export_design -flow syn -format ip_catalog

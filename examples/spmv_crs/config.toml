@@ -1,0 +1,52 @@
+# Configuration file for LLVM IR Transformer
+# Maps array references to capability indices
+
+["%xval"]
+"cap" = 0
+"device" = "host"
+"size" = 1666
+
+["%xcols"]
+"cap" = 1
+"device" = "host"
+"size" = 1666
+
+["%xrowDelimiters"]
+"cap" = 2
+"device" = "host"
+"size" = 495
+
+["%xvec"]
+"cap" = 3
+"device" = "host"
+"size" = 494
+
+["%xout"]
+"cap" = 4
+"device" = "host"
+"size" = 494
+
+#["%val"]
+#"cap" = 5
+#"device" = "local"
+#"size" = 1666
+#
+#["%cols"]
+#"cap" = 6
+#"device" = "local"
+#"size" = 1666
+#
+#["%rowDelimiters"]
+#"cap" = 7
+#"device" = "local"
+#"size" = 495
+#
+#["%vec"]
+#"cap" = 8
+#"device" = "local"
+#"size" = 494
+#
+#["%out"]
+#"cap" = 9
+#"device" = "local"
+#"size" = 494

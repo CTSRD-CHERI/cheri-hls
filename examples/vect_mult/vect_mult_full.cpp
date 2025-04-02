@@ -8,36 +8,31 @@ typedef uint32_t u32;
 typedef uint64_t u64;
 
 typedef struct {
-  u64 addr;          // remove
-  u64 base;          // remove - talk to Theo if he can come up with attack to
-                     // necessitate having the lower bound
-  u64 top;           // remove
-                     // u64 array_size;
-  ap_uint<18> otype; // remove
-  ap_uint<12> perms; // simplify to read and write
-  ap_uint<4> uperms; // remove?
+  u64 addr;
+  u64 base;
+  u64 top;
+  ap_uint<18> otype;
+  ap_uint<12> perms;
+  ap_uint<4> uperms;
 } Cap;
 
 static inline uint64_t getField(u64 val, unsigned startBit, unsigned length) {
+#pragma HLS INLINE
   u64 shifted = val >> startBit;
   u64 mask = (1ULL << length) - 1ULL;
   return shifted & mask;
 }
 
-bool checkAccess(Cap cap, u64 offset, u64 nBytes, bool isRead, bool isWrite) {
-  return cap.base <= (cap.addr + offset) &&
-         ((cap.addr + offset + nBytes) <= cap.top) &&
-         (!isWrite || ((cap.perms >> 8) & 0x1)) &&
-         (!isRead || ((cap.perms >> 9 & 0x1)));
-}
-
 Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
            ap_uint<32> buffer_3) {
+#pragma HLS INLINE
 
   ap_uint<64> cap = (buffer_3, buffer_2);
   ap_uint<64> addr = (buffer_1, buffer_0);
 
-  cap ^= 0x00001ffffc018004;                 // nullptr [127:64]
+  cap ^= 0x00001ffffc018004; // nullptr [127:64]
+  bool read = getField(cap, 61, 1);
+  bool write = getField(cap, 60, 1);
   ap_uint<12> perms = getField(cap, 52, 12); // bits [127:112]
   ap_uint<4> uperms = getField(cap, 48, 4);  // bits [115:112]
   bool f = (getField(cap, 47, 1) != 0);      // bit 111
@@ -50,7 +45,6 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
   ap_uint<6> E = 0;
   ap_uint<14> T_13_0 = 0;
   ap_uint<14> B_13_0 = 0;
-  bool L_msb = false;
   bool L_carry_out = false;
 
   if (!I_E) {
@@ -60,7 +54,6 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
     ap_uint<12> T_11_0 = T_13_0 & 0x0fff;
     ap_uint<12> B_11_0 = B_13_0 & 0x0fff;
     L_carry_out = (T_11_0 < B_11_0);
-    L_msb = false;
   } else {
     E = (T_E, B_E);
     T_13_0 = (T_11_3 << 3);
@@ -68,10 +61,9 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
     ap_uint<12> T_11_3_only = (T_13_0 >> 3) & 0x01ff;
     ap_uint<12> B_11_3_only = (B_13_0 >> 3) & 0x01ff;
     L_carry_out = (T_11_3_only < B_11_3_only);
-    L_msb = true;
   }
   ap_uint<2> B_13_12 = (B_13_0 >> 12) & 0x3;
-  ap_uint<2> T_13_12 = B_13_12 + (L_carry_out ? 1 : 0) + (L_msb ? 1 : 0);
+  ap_uint<2> T_13_12 = B_13_12 + (L_carry_out ? 1 : 0) + (I_E ? 1 : 0);
   T_13_12 &= 0x3;
 
   T_13_0 &= 0x0fff;
@@ -108,9 +100,43 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
   c.uperms = uperms;
   return c;
 }
-void load_capability(int n_bytes, u32 *cap, u32 *buffer) {
-  for (auto i = 0; i < n_bytes; i++)
+
+void load_cap(int num, u32 *buffer, u32 *cap, Cap *caps) {
+#pragma HLS INLINE
+
+  for (int i = 0; i < num * 4; i++)
+#pragma HLS PIPELINE
     buffer[i] = cap[i];
+
+  int i = 0;
+  for (int j = 0; j < num; j++) {
+    caps[j] = decode(buffer[i], buffer[i + 1], buffer[i + 2], buffer[i + 3]);
+    i += 4;
+  }
+}
+
+void checkAccess(u32 *flag_buf, Cap cap, u64 offset, u64 nBytes, bool isWrite) {
+#pragma HLS INLINE
+  *flag_buf |= !((cap.base <= cap.addr + (4 * offset)) &&
+                 ((cap.addr + 4 * offset + nBytes) <= cap.top) &&
+                 (!isWrite || ((cap.perms >> 8) & 0x1)) &&
+                 (isWrite || ((cap.perms >> 9) & 0x1)));
+}
+
+int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {
+#pragma HLS INLINE
+  checkAccess(flag_buf, cap, i, 4, false);
+  return (*flag_buf) ? 0 : buf[i];
+}
+
+void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
+#pragma HLS INLINE
+  checkAccess(flag_buf, cap, i, 4, true);
+
+  if (!(*flag_buf)) {
+    buf[i] = val;
+  }
+  return;
 }
 
 void hls_top(int size, int a[N], int b[N], int c[N], u32 *flag, u32 cap[12]) {
@@ -123,33 +149,23 @@ void hls_top(int size, int a[N], int b[N], int c[N], u32 *flag, u32 cap[12]) {
 #pragma HLS INTERFACE s_axilite port = return
 
   u32 flag_buf = 0;
+  // 3 and 12 comes from program analysis
+  Cap caps[3];
   u32 buffer[12];
 #pragma HLS array_partition variable = buffer type = complete
+#pragma HLS array_partition variable = caps type = complete
 
-  // load cap to buffer
-  load_capability(12, cap, buffer);
-  // distribute buffer to multiple decode function
+  load_cap(3, buffer, cap, caps);
 
-  Cap cap_c = decode(buffer[0], buffer[1], buffer[2], buffer[3]);
-  Cap cap_b = decode(buffer[4], buffer[5], buffer[6], buffer[7]);
-  Cap cap_a = decode(buffer[8], buffer[9], buffer[10], buffer[11]);
-
-  // check capabilities for a b and c
   for (int i = 0; i < size; i++) {
-    //  //  //#pragma HLS PIPELINE
-    // a[i] = b[i];
-    // c[i] = i;
+#pragma HLS PIPELINE
 
-    flag_buf |=
-        !(checkAccess(cap_a, 4 * i, 4, true,
-                      false)); // cap struct,offset, nBytes, isRead, isWrite
-    flag_buf |=
-        !(checkAccess(cap_b, 4 * i, 4, true,
-                      false)); // cap struct,offset, nBytes, isRead, isWrite
-    flag_buf |=
-        !(checkAccess(cap_c, 4 * i, 4, false,
-                      true)); // cap struct,offset, nBytes, isRead, isWrite
-    c[i] = a[i] * b[i];
+    int a_elem = cheri_load(a, i, &flag_buf, caps[0]);
+    int b_elem = cheri_load(b, i, &flag_buf, caps[1]);
+
+    int c_elem = a_elem * b_elem;
+
+    cheri_store(c, i, c_elem, &flag_buf, caps[2]);
   }
 
   *flag = flag_buf;
@@ -168,14 +184,9 @@ int main() {
   }
   u32 ret[4] = {0x800010c0LL, 0x00000000LL, 0x048190c4LL, 0xff7d0000};
 
-  // encoder to create capabilities?
-  // create a 128-bit value that matches cheri specification
-  // see if it's decoded correctly
   // xilinx ap_int<128> but for now int x[4]
 
   u32 flag[1] = {0};
-
-  // assert(i=>0 && i <n);
 
   hls_top(N, a, b, c, flag, ret);
 
@@ -191,8 +202,7 @@ int main() {
   // u64 cap = 0xff7d0000048190c4ULL;
   // u64 addr = 0x00000000800010c0ULL;
 
-  // u64 cap = 0xff7d000007938e24ULL;
-  // u64 addr = 0x0000000080000e20ULL;
+  // u32 cap[4] = {0x80000e20, 0x00000000, 0x07938e24, 0xef7d0000};
 
   // __builtin_cheri_bounds_set(c,1);
   // u64 cap = 0xff7d000007b5ced4ULL;
@@ -209,20 +219,50 @@ int main() {
   // __builtin_cheri_perms_and(c,0x77fff); cannot write
   // u64 cap = 0xef7d000007ab8e84ULL;
   // u64 addr = 0x0000000080000e80ULL;
+  // ju32 cap[4] = {0x80000e80, 0x00000000, 0x07ab8e84, 0xff7d0000};
 
   // __builtin_cheri_perms_and(c,0x6ffff); cannot read
   // u64 cap = 0xdf7d000007ab8e84ULL;
   // u64 addr = 0x0000000080000e80ULL;
 
-  // Cap x = decode(cap, addr);
-  // printf("addr: %lx\n", x.addr);
+  // u32 cap[4] = {0x80001050, 0x00000000, 0x04659054, 0xff7d0000};
+  //  u32 cap[4] = {0x80001190, 0x00000000, 0x04b59194, 0xff7d0000};
+  //   u32 cap[4] = {0x800012d0, 0x00000000, 0x050592d4, 0xff7d0000};
+
+  // array a, set to bounds 39
+  // u32 cap[4] = {0x80001050, 0x00000000, 0x04199054, 0xff7d0000};
+  u32 cap[4] = {0x80000eb0, 0x00000000, 0x07b44eb4, 0xff7d0000};
+
+  u32 flag_buf = 0;
+  Cap caps[1];
+  u32 buffer[4];
+
+  load_cap(1, buffer, cap, caps);
+  printf("CAPbase: %lx\n", caps[0].base);
+  printf("CAP top: %lx\n", caps[0].top);
+  // printf("CAP write: %d\n", caps[0].write);
+  // printf("CAP read: %d\n", caps[0].read);
+  int y = cheri_load(a, 8, &flag_buf, caps[0]);
+  printf("Value read: %d\n", y);
+  printf("Flag buf: %d\n", flag_buf);
+
+  // flag_buf = 0;
+  // cheri_store(a, 0, 3, &flag_buf, caps[0]);
+  // printf("Value stored: %d\n", a[0]);
+  // printf("Flag buf: %d\n", flag_buf);
+
+  // Cap x = decode(addr & 0xffffffff, addr >> 32, cap & 0xffffffff, cap >> 32);
+  //  printf("addr: %lx\n", x.addr);
   // printf("base: %lx\n", x.base);
   // printf("top:  %lx\n", x.top);
-  // printf("otype:%x\n", x.otype);
-  // printf("perms:%x\n", x.perms);
-  // printf("uperm:%x\n", x.uperms);
-  // bool y = checkAccess(x, 20, true, true); // cap, nBytes, isRead, isWrite
+  // printf("read:%d\n", x.read);
+  // printf("write:%d\n", x.write);
+  //  printf("otype:%x\n", x.otype);
+  //  printf("perms:%x\n", x.perms);
+  //  printf("uperm:%x\n", x.uperms);
+  //  bool y = checkWrite(addr, x, 5, 15);
+  //  printf("access:%d\n", y);
 
-  // return (ret[5] != 0xabcd);
+  // return (y != 1);
   return 0;
 }

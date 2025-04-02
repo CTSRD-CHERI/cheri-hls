@@ -91,18 +91,19 @@ u32 hls_top_init(int test_case, u32 *phy) {
   // base_buffer_address + 200;
   // u64 buffer_ret = ret;
 
-  u32 *a = __builtin_cheri_bounds_set(a, 40);
+  // u32 *a = __builtin_cheri_bounds_set(a, 39);
   // u32 *b = __builtin_cheri_bounds_set(b, 40);
-  // u32 *c = __builtin_cheri_bounds_set(c, 40);
+  //        u32 *c = __builtin_cheri_bounds_set(c, 39);
   // u32 *a = __builtin_cheri_perms_and(a, 0x6ffff);
-  // u32 *b = __builtin_cheri_perms_and(c, 0x6ffff);
-  // u32 *c = __builtin_cheri_perms_and(c, 0x77fff);
-  //                      Make a table of pointers to 32-bit ints, u32*, and a
-  //                      pointer to a pointer is u32**. Array of u32 pointers.
-  //                      Set first element to be pointer to c (which is a
-  //                      pointer to an array), and store that to table.
-  //                      Assuming purecap, will store in first 128bits of the
-  //                      table.
+  // u32 *b = __builtin_cheri_perms_and(b, 0x6ffff);
+  //           u32 *c = __builtin_cheri_perms_and(c, 0x7ffff);
+  //           Make a table of pointers to 32-bit ints, u32*, and
+  //           a pointer to a pointer is u32**. Array of u32
+  //                                   pointers. Set first element to be pointer
+  //                                   to c (which is a pointer to an array),
+  //                                   and store that to table. Assuming
+  //                                   purecap, will store in first 128bits of
+  //                                   the table.
   u32 **capp = (u32 **)cap;
   capp[2] = c;
   capp[1] = b;
@@ -181,20 +182,23 @@ int main() {
     if (hls_top_init(i, physical_addr))
       return 4;
   }
-  u32 flag = 2;
+  u32 flag = 0;
 
   // Compute
   asm("fence");
   for (int i = 0; i < NUM; i++)
     XHls_top_Start(top_insts + i);
 
-  while (!XHls_top_Get_flag_vld(top_insts)) {
-    flag = XHls_top_Get_flag(top_insts);
+  for (int i = 0; i < NUM; i++) {
+    while (!XHls_top_Get_flag_vld(top_insts + i)) {
+      flag |= (XHls_top_Get_flag(top_insts + i)) << i;
+    }
   }
 
   for (int i = 0; i < NUM; i++)
     while (!XHls_top_IsDone(top_insts + i))
       ;
+
   asm("fence");
 
   if (flag == 0)

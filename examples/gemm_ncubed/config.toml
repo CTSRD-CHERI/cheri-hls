@@ -1,0 +1,33 @@
+# Configuration file for LLVM IR Transformer
+# Maps array references to capability indices
+
+["%xm1"]
+"cap" = 0
+"device" = "host"
+"size" = 4096
+
+["%xm2"]
+"cap" = 1
+"device" = "host"
+"size" = 4096
+
+["%xprod"]
+"cap" = 2
+"device" = "host"
+"size" = 4096
+
+["%m1"]
+"cap" = 3
+"device" = "local"
+"size" = 4096
+
+["%m2"]
+"cap" = 4
+"device" = "local"
+"size" = 4096
+
+["%prod"]
+"cap" = 5
+"device" = "local"
+"size" = 4096
+

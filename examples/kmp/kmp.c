@@ -5,7 +5,7 @@ Implementation based on http://www-igm.univ-mlv.fr/~lecroq/string/node8.html
 #define PATTERN_SIZE 4
 #define STRING_SIZE (16206)
 
-void CPF(char pattern[PATTERN_SIZE], int kmpNext[PATTERN_SIZE]) {
+void CPF(int pattern[PATTERN_SIZE], int kmpNext[PATTERN_SIZE]) {
   int k, q;
   k = 0;
   kmpNext[0] = 0;
@@ -23,7 +23,7 @@ c1:
   }
 }
 
-void hls_top(int size, char xpattern[PATTERN_SIZE], char xinput[STRING_SIZE],
+void hls_top(int size, int xpattern[PATTERN_SIZE], int xinput[STRING_SIZE],
              int xkmpNext[PATTERN_SIZE], int xn_matches[1]) {
 #pragma HLS INTERFACE m_axi port = xpattern
 #pragma HLS INTERFACE m_axi port = xinput
@@ -33,8 +33,8 @@ void hls_top(int size, char xpattern[PATTERN_SIZE], char xinput[STRING_SIZE],
 #pragma HLS INTERFACE s_axilite port = return
   int i, q;
 
-  char pattern[PATTERN_SIZE];
-  char input[STRING_SIZE];
+  int pattern[PATTERN_SIZE];
+  int input[STRING_SIZE];
   int kmpNext[PATTERN_SIZE];
   int n_matches[1];
 
@@ -60,7 +60,7 @@ k1:
       q++;
     }
     if (q >= PATTERN_SIZE) {
-      n_matches[0]++;
+      n_matches[0] = n_matches[0] + 1;
       q = kmpNext[q - 1];
     }
   }
@@ -525,7 +525,16 @@ int main() {
       "causeofprogressthroughoutthisUnion";
   int kmpNext[PATTERN_SIZE];
   int n_matches[1];
+  int int_pattern[PATTERN_SIZE];
+  int int_input[STRING_SIZE];
 
-  hls_top(STRING_SIZE, pattern, input, kmpNext, n_matches);
+  for (int i = 0; i < PATTERN_SIZE; i++) {
+    int_pattern[i] = (int)pattern[i];
+  }
+  for (int i = 0; i < STRING_SIZE; i++) {
+    int_input[i] = (int)input[i];
+  }
+
+  hls_top(STRING_SIZE, int_pattern, int_input, kmpNext, n_matches);
   return 0;
 }

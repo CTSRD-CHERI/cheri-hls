@@ -111,6 +111,7 @@ RUN printf "\
 \n# cambridge vivado lic \
 \nexport XILINXD_LICENSE_FILE=27020@lmserv-xilinx.cl.cam.ac.uk \
 \nalias ls='ls --color' \
+\nexport LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libudev.so.1 \
 \nalias cd-flute='cd /workspace/BESSPIN-GFE/bluespec-processors/P2/Flute/builds/' \
 \nalias grep='grep --color'\n" >> /root/.bashrc
 #Add vim environment

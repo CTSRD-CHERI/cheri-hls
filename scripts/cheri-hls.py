@@ -240,16 +240,14 @@ class CheriHLS:
         if self.args.eval:
             self.logger.info(f"----\nRunning evaluation...\n----")
             for b in bs:
-                if (
-                    "cpu" in ms
-                    or "cpu+hls" in ms
-                    or "ccpu" in ms
-                    or "ccpu+hls_fg" in ms
-                ):
+                if "cpu" in ms or "cpu+hls" in ms or "ccpu" in ms:
                     if self.run_single_evaluation(b, "cpu+hls"):
                         self.exit(1)
                 if "ccpu+chls" in ms:
                     if self.run_single_evaluation(b, "ccpu+chls"):
+                        self.exit(1)
+                if "ccpu+hls_fg" in ms:
+                    if self.run_single_evaluation(b, "ccpu+hls_fg"):
                         self.exit(1)
         return 0
 
@@ -714,7 +712,7 @@ class CheriHLS:
 
     def run_single_evaluation(self, test, mode):
         self.logger.info(
-            f"Running hardware evaluation for test {test} (inst = {inst}) with mode {mode}..."
+            f"Running hardware evaluation for test {test} (inst = inst) with mode {mode}..."
         )
 
         cap = "cap" if "chls" in mode else ("cap_fg" if "hls_fg" in mode else "nocap")
@@ -793,12 +791,45 @@ class CheriHLS:
         )
         # Generate HLS hardware
         test_dir = os.path.join(self.root, "examples", test)
-        cmd = [
-            "bash",
-            os.path.join(self.root, "scripts", "run-vitis-hls.sh"),
-            "vhls.tcl",
-        ]
-        result, _ = self.execute(cmd, cwd=test_dir)
+        if "hls_fg" in mode:
+            if not os.path.exists(os.path.join(test_dir, "temp")):
+                os.mkdir(os.path.join(test_dir, "temp"))
+            cmd = [
+                "bash",
+                os.path.join(self.root, "scripts", "run-vitis-hls.sh"),
+                "mem2reg.tcl",
+            ]
+            result, _ = self.execute(cmd, cwd=test_dir)
+            cmd = [
+                "bash",
+                os.path.join(self.root, "scripts", "run-vitis-hls.sh"),
+                "pre.tcl",
+            ]
+            result, _ = self.execute(cmd, cwd=test_dir)
+            cmd = [
+                os.path.join(self.root, "scripts", "cherify-ir.py"),
+                os.path.join(test_dir, "temp", "test.ll"),
+                os.path.join(test_dir, "temp", "output.ll"),
+                "-c",
+                os.path.join(test_dir, "config.toml"),
+            ]
+            result, _ = self.execute(cmd, cwd=test_dir)
+            if result:
+                self.logger.error(f"Running Vitis HLS for {test} failed.")
+                return result
+            cmd = [
+                "bash",
+                os.path.join(self.root, "scripts", "run-vitis-hls.sh"),
+                "post.tcl",
+            ]
+            result, _ = self.execute(cmd, cwd=test_dir)
+        else:
+            cmd = [
+                "bash",
+                os.path.join(self.root, "scripts", "run-vitis-hls.sh"),
+                "vhls.tcl",
+            ]
+            result, _ = self.execute(cmd, cwd=test_dir)
         if result:
             self.logger.error(f"Running Vitis HLS for {test} failed.")
             return result
@@ -1001,6 +1032,7 @@ cpu (nocap),
 ccpu (fullcap),
 cpu+hls (cpu+hls),
 ccpu+hls (fullcap cpu + hls),
+ccpu+hls_fg (fullcap cpu + fine-grained fullcap hls),
 ccpu+chls (fullcap cpu + fullcap hls)""",
     )
 

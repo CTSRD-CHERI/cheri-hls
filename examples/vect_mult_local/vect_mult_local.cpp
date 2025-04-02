@@ -134,14 +134,14 @@ void checkAccess(u32 *flag_buf, Cap cap, u64 offset, u64 nBytes, bool isWrite) {
 int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, false);
-  return (*flag_buf) ? 0 : buf[i];
+  return (*flag_buf) ? buf[i] : 0;
 }
 
 void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, true);
 
-  if (!(*flag_buf)) {
+  if ((*flag_buf)) {
     buf[i] = val;
   }
   return;
@@ -164,7 +164,7 @@ void hls_top(int size, int a[N], int c[N], u32 *flag, u32 cap[8]) {
 #pragma HLS array_partition variable = caps type = complete
 
   load_cap(2, buffer, cap, caps);
-  create_cap(N, caps, 2);
+  create_cap(N, caps, 2); // size, caps array, cap index of b
 
   for (int i = 0; i < size; i++) {
 #pragma HLS PIPELINE

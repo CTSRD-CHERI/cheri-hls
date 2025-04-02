@@ -1,0 +1,52 @@
+# Configuration file for LLVM IR Transformer
+# Maps array references to capability indices
+
+["%xnodes_b"]
+"cap" = 0
+"device" = "host"
+"size" = 256
+
+["%xnodes_e"]
+"cap" = 1
+"device" = "host"
+"size" = 256
+
+["%xedges"]
+"cap" = 2
+"device" = "host"
+"size" = 4096 
+
+["%xlevel"]
+"cap" = 3
+"device" = "host"
+"size" = 256 
+
+["%xlevel_counts"]
+"cap" = 4
+"device" = "host"
+"size" = 10
+
+["%node_edge_begin"]
+"cap" = 5
+"device" = "local"
+"size" = 256
+
+["%node_edge_end"]
+"cap" = 6
+"device" = "local"
+"size" = 256
+
+["%edges_dst"]
+"cap" = 7
+"device" = "local"
+"size" = 4096
+
+["%level"]
+"cap" = 8
+"device" = "local"
+"size" = 256
+
+["%level_counts"]
+"cap" = 9
+"device" = "local"
+"size" = 10
