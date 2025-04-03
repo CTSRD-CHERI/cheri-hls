@@ -25,6 +25,8 @@ class LLVMTransformer:
         self.new_function_declarations = []
         self.curr_func_args = []
         self.cap_indices = []
+        self.ext_caps = 0
+        self.numcaps = 0
         self.func_args_mapping = {}
 
         self.arrayidx = 0
@@ -53,27 +55,23 @@ class LLVMTransformer:
             with open(config_file, "rb") as f:
                 config = tomli.load(f)
                 self.array_info = config
-                for k, v in config.items():
-                    v["name"] = k
-                if not self.local_caps:
-                    new_config = {}
-                    for k, v in config.items():
-                        if v["device"] == "host":
-                            new_config[k] = v
-                    config = new_config
-                if self.selective_caps:
-                    new_config = {}
-                    for k, v in config.items():
-                        if v.get("omit_array"):
-                            continue
-                        new_config[k] = v
-                    config = new_config
 
                 for k, v in config.items():
+                    v["name"] = k
+                    if v["device"] == "host":
+                        self.ext_caps += 1
+                    if not self.local_caps:
+                        if v["device"] == "local":
+                            continue
+                    if self.selective_caps:
+                        if v["device"] == "local" and v.get("omit_array"):
+                            continue
+                    self.numcaps += 1
+
                     if self.selective_caps and v.get("omit_array"):
                         continue
                     self.cap_indices.append(v["cap"])
-                self.numcaps = len(config)
+
                 print(f"Loaded array mappings from {config_file}")
         except Exception as e:
             print(f"Error loading config from {config_file}: {e}")
@@ -102,7 +100,7 @@ class LLVMTransformer:
         if is_top:
             new_params = (
                 params
-                + f', i32* %flag, i32* "fpga.decayed.dim.hint"="{self.numcaps * 4}" %cap'
+                + f', i32* %flag, i32* "fpga.decayed.dim.hint"="{self.ext_caps * 4}" %cap'
             )
         else:
             new_params = (
@@ -127,7 +125,7 @@ class LLVMTransformer:
                 [
                     f"  %flag_buf = alloca i32, align 4",
                     f"  %caps = alloca [{self.numcaps} x %struct.Cap], align 4",
-                    f"  %buffer = alloca [{self.numcaps * 4} x i32], align 4",
+                    f"  %buffer = alloca [{self.ext_caps * 4} x i32], align 4",
                 ]
                 + [
                     f"  %agg.tmp{i} = alloca %struct.Cap, align 4"
@@ -321,14 +319,14 @@ class LLVMTransformer:
             f"  %init.1 = bitcast [{self.numcaps} x %struct.Cap]* %caps to i8*, !dbg !101494",
             f"  call void @llvm.lifetime.start.p0i8(i64 {self.numcaps * 12}, i8* %init.1) #9003, !dbg !101494",
             f"  call void @llvm.dbg.declare(metadata [{self.numcaps} x %struct.Cap]* %caps, metadata !101495, metadata !DIExpression()), !dbg !101499",
-            f"  %init.2 = bitcast [{self.numcaps * 4} x i32]* %buffer to i8*, !dbg !101500",
-            f"  call void @llvm.lifetime.start.p0i8(i64 {self.numcaps * 16}, i8* %init.2) #9003, !dbg !101500",
-            f"  call void @llvm.dbg.declare(metadata [{self.numcaps * 4} x i32]* %buffer, metadata !101501, metadata !DIExpression()), !dbg !101505",
-            f'  call void @llvm.sideeffect() #9000 [ "xlx_array_partition"([{self.numcaps * 4} x i32]* %buffer, i32 2, i32 0, i32 1, i1 false) ], !dbg !101506',
+            f"  %init.2 = bitcast [{self.ext_caps * 4} x i32]* %buffer to i8*, !dbg !101500",
+            f"  call void @llvm.lifetime.start.p0i8(i64 {self.ext_caps * 16}, i8* %init.2) #9003, !dbg !101500",
+            f"  call void @llvm.dbg.declare(metadata [{self.ext_caps * 4} x i32]* %buffer, metadata !101501, metadata !DIExpression()), !dbg !101505",
+            f'  call void @llvm.sideeffect() #9000 [ "xlx_array_partition"([{self.ext_caps * 4} x i32]* %buffer, i32 2, i32 0, i32 1, i1 false) ], !dbg !101506',
             f'  call void @llvm.sideeffect() #9002 [ "xlx_array_partition"([{self.numcaps} x %struct.Cap]* %caps, i32 2, i32 0, i32 1, i1 false) ], !dbg !101507',
-            f"  %cap.arraydecay = getelementptr inbounds [{self.numcaps * 4} x i32], [{self.numcaps * 4} x i32]* %buffer, i32 0, i32 0, !dbg !101508",
+            f"  %cap.arraydecay = getelementptr inbounds [{self.ext_caps * 4} x i32], [{self.ext_caps * 4} x i32]* %buffer, i32 0, i32 0, !dbg !101508",
             f"  %cap.arraydecay1 = getelementptr inbounds [{self.numcaps} x %struct.Cap], [{self.numcaps} x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101509",
-            f"  call void @_Z8load_capiPjS_P3Cap(i32 {self.numcaps}, i32* %cap.arraydecay, i32* %cap, %struct.Cap* %cap.arraydecay1), !dbg !101510",
+            f"  call void @_Z8load_capiPjS_P3Cap(i32 {self.ext_caps}, i32* %cap.arraydecay, i32* %cap, %struct.Cap* %cap.arraydecay1), !dbg !101510",
         ] + [
             f"  call void @_Z10create_capiP3Capi(i32 {local_arr['size']}, %struct.Cap* %cap.arraydecay1, i32 {local_arr['cap']}), !dbg !101542"
             for local_arr in local_arrs
@@ -340,8 +338,8 @@ class LLVMTransformer:
         cleanup = [
             "  %end.1 = load i32, i32* %flag_buf, align 4, !dbg !101540",
             "  store i32 %end.1, i32* %flag, align 4, !dbg !101541",
-            f"  %end.2 = bitcast [{self.numcaps * 4} x i32]* %buffer to i8*, !dbg !101542",
-            f"  call void @llvm.lifetime.end.p0i8(i64 {self.numcaps * 16}, i8* %end.2) #9003, !dbg !101542",
+            f"  %end.2 = bitcast [{self.ext_caps * 4} x i32]* %buffer to i8*, !dbg !101542",
+            f"  call void @llvm.lifetime.end.p0i8(i64 {self.ext_caps * 16}, i8* %end.2) #9003, !dbg !101542",
             f"  %end.3 = bitcast [{self.numcaps} x %struct.Cap]* %caps to i8*, !dbg !101542",
             f"  call void @llvm.lifetime.end.p0i8(i64 {self.numcaps * 12}, i8* %end.3) #9003, !dbg !101542",
             "  %end.4 = bitcast i32* %flag_buf to i8*, !dbg !101542",

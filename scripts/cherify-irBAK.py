@@ -12,15 +12,19 @@ from typing import List, Dict, Optional, Tuple
 
 
 class LLVMTransformer:
-    def __init__(self, config_file=None, no_local=False, full_caps=False):
+    def __init__(
+        self, config_file=None, no_local=False, full_caps=False, selective_caps=False
+    ):
         self.flag_buf_added = False
         self.caps_added = False
         self.buffer_added = False
         self.attributes_added = False
         self.local_caps = not no_local
         self.full_caps = full_caps
+        self.selective_caps = selective_caps
         self.new_function_declarations = []
         self.curr_func_args = []
+        self.cap_indices = []
         self.func_args_mapping = {}
 
         self.arrayidx = 0
@@ -57,6 +61,18 @@ class LLVMTransformer:
                         if v["device"] == "host":
                             new_config[k] = v
                     config = new_config
+                if self.selective_caps:
+                    new_config = {}
+                    for k, v in config.items():
+                        if v.get("omit_array"):
+                            continue
+                        new_config[k] = v
+                    config = new_config
+
+                for k, v in config.items():
+                    if self.selective_caps and v.get("omit_array"):
+                        continue
+                    self.cap_indices.append(v["cap"])
                 self.numcaps = len(config)
                 print(f"Loaded array mappings from {config_file}")
         except Exception as e:
@@ -175,27 +191,39 @@ class LLVMTransformer:
         arr_name: str,
         index: str,
         in_main: bool = False,
+        current_function: str = None,
+        current_block: str = None,
         debug: bool = False,
     ) -> str:
         """Transform load and store instructions to add capability checks."""
         # Check if line is a load instruction
+
         load_match = re.search(r"(%\w+) = load (i32), i32\* ([^,]+), .*", line)
         if load_match:
             dest = load_match.group(1)
             type_val = load_match.group(2)
             source = load_match.group(3)
 
-            # Extract the original array reference
-            array_ref_match = re.search(r"([^,]+)", source)
-            array_ref = array_ref_match.group(1) if array_ref_match else source
-
-            # Determine which cap to use
             arr_info = self.array_info[arr_name]
-            cap_idx = arr_info["cap"]
 
             cap_access = ""
             if arr_info["device"] == "local" and not self.local_caps:
                 return line
+
+            if self.selective_caps:
+                if arr_info.get("omit_array"):
+                    return line
+                accesses_to_omit = arr_info.get("accesses_to_omit")
+
+            cap_idx = self.cap_indices.index(arr_info["cap"])
+
+            print(
+                "LOAD ",
+                current_function,
+                current_block,
+                arr_name,
+                dest,
+            )
 
             if (
                 arr_info["device"] == "local"
@@ -230,10 +258,21 @@ class LLVMTransformer:
             dest = store_match.group(3)
 
             arr_info = self.array_info[arr_name]
-            cap_idx = arr_info["cap"]
             if arr_info["device"] == "local" and not self.local_caps:
                 return line
 
+            if self.selective_caps:
+                if arr_info.get("omit_array"):
+                    return line
+            print(
+                "STORE",
+                current_function,
+                current_block,
+                arr_name,
+                dest,
+            )
+
+            cap_idx = self.cap_indices.index(arr_info["cap"])
             cap_access = ""
 
             if (
@@ -267,7 +306,9 @@ class LLVMTransformer:
 
         if self.local_caps:
             for k, v in self.array_info.items():
-                if v["device"] == "local":
+                if v["device"] == "local" and (
+                    (not self.selective_caps) or (not v.get("omit_array"))
+                ):
                     local_arrs.append(v)
 
         cap_init = [
@@ -348,7 +389,8 @@ class LLVMTransformer:
 
         in_function = False
         debug = False
-        current_function = {}
+        current_function = None
+        current_block = None
         vars_info = {}
         i += 1
 
@@ -357,6 +399,10 @@ class LLVMTransformer:
 
             if line.startswith("define ") and "hls_top" in line:
                 in_function = True
+                func_match = re.search(r"define [^@]+ @([^(]+)", line)
+                if func_match:
+                    current_function = func_match.group(1)
+                    # print(f"Processing function: {current_function}")
                 new_sig, additional_instrs = self.transform_function_signature(
                     line, True
                 )
@@ -368,9 +414,8 @@ class LLVMTransformer:
                     j += 1
 
                 if j < len(lines):
-                    transformed_lines.append(lines[j].rstrip())  # Add entry: line
+                    transformed_lines.append(lines[j].rstrip())
 
-                    # Insert additional instructions after entry
                     for instr in additional_instrs:
                         transformed_lines.append(instr)
 
@@ -378,7 +423,16 @@ class LLVMTransformer:
                     transformed_lines.append(instr)
                 i = j + 1
                 continue
+            elif re.match(r"^\s*[\w.]+:", line):
+                block_match = re.match(r"^\s*([\w.]+):", line)
+                if block_match:
+                    current_block = block_match.group(1)
+                transformed_lines.append(line)
             elif line.startswith("define ") and (not "hls_top" in line):
+                func_match = re.search(r"define [^@]+ @([^(]+)", line)
+                if func_match:
+                    current_function = func_match.group(1)
+                    # print(f"Processing function: {current_function}")
                 new_sig, additional_instrs = self.transform_function_signature(
                     line, False
                 )
@@ -390,9 +444,8 @@ class LLVMTransformer:
                     j += 1
 
                 if j < len(lines):
-                    transformed_lines.append(lines[j].rstrip())  # Add entry: line
+                    transformed_lines.append(lines[j].rstrip())
 
-                    # Insert additional instructions after entry
                     for instr in additional_instrs:
                         transformed_lines.append(instr)
 
@@ -422,7 +475,12 @@ class LLVMTransformer:
                 index = match.group(2)
 
                 new_line = self.transform_load_store(
-                    lines[i + 1], arr_name, index, in_function
+                    lines[i + 1],
+                    arr_name,
+                    index,
+                    in_function,
+                    current_function,
+                    current_block,
                 )
 
                 # Skip the next 2 lines if this was a load/store we transformed
@@ -440,23 +498,19 @@ class LLVMTransformer:
                 match = re.search(
                     r"getelementptr inbounds [^,]+, [^*]+\* ([%@]\w+)", lines[i + 1]
                 )
-                if match is None:
-                    print(lines[i])
-                    print(lines[i + 1])
-                    print(lines[i + 2])
                 arr_name = match.group(1)
 
                 match = re.search(r"sext i\d+ (%[\w.]+)", lines[i])
 
                 index = match.group(1)
-                if debug:
-                    print(lines[i])
-                    print(lines[i + 1])
-                    print(lines[i + 2])
-                    print("arr_name", arr_name)
 
                 new_line = self.transform_load_store(
-                    lines[i + 2], arr_name, index, in_function
+                    lines[i + 2],
+                    arr_name,
+                    index,
+                    in_function,
+                    current_function,
+                    current_block,
                 )
 
                 # Skip the next 3 lines if this was a load/store we transformed
@@ -524,6 +578,14 @@ def main():
         default=False,
     )
     parser.add_argument(
+        "--selective-caps",
+        "-s",
+        action="store_true",
+        dest="selective_caps",
+        help="Only CHERI-fy certain loads/stores",
+        default=False,
+    )
+    parser.add_argument(
         "--config",
         "-c",
         help="TOML configuration file path",
@@ -533,7 +595,9 @@ def main():
     args = parser.parse_args()
 
     # Initialize transformer with config file
-    transformer = LLVMTransformer(args.config, args.no_local, args.full_caps)
+    transformer = LLVMTransformer(
+        args.config, args.no_local, args.full_caps, args.selective_caps
+    )
     transformer.transform_file(args.input_file, args.output_file)
 
     print(f"Transformation complete. Output written to {args.output_file}")

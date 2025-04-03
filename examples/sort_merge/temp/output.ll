@@ -4495,12 +4495,11 @@ entry:
 
 
 ; Function Attrs: nounwind
-define void @merge(i32* "fpga.decayed.dim.hint"="2048" %a, i32 %start, i32 %m, i32 %stop, i32* %flag_buf, %struct.Cap* "fpga.decayed.dim.hint"="4" %caps) #0 !dbg !101665 {
+define void @merge(i32* "fpga.decayed.dim.hint"="2048" %a, i32 %start, i32 %m, i32 %stop, i32* %flag_buf, %struct.Cap* "fpga.decayed.dim.hint"="3" %caps) #0 !dbg !101665 {
 entry:
   %agg.tmp0 = alloca %struct.Cap, align 4
   %agg.tmp1 = alloca %struct.Cap, align 4
   %agg.tmp2 = alloca %struct.Cap, align 4
-  %agg.tmp3 = alloca %struct.Cap, align 4
   call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101505, metadata !DIExpression()), !dbg !101506
   call void @llvm.dbg.value(metadata %struct.Cap* %caps, metadata !101507, metadata !DIExpression()), !dbg !101508
   %temp = alloca [2048 x i32], align 4
@@ -4524,17 +4523,15 @@ for.cond:                                         ; preds = %for.inc, %merge_lab
   br i1 %cmp, label %for.body, label %for.end, !dbg !34
 
 for.body:                                         ; preds = %for.cond
+  %idxprom = sext i32 %i.0 to i64, !dbg !35
+  %arrayidx = getelementptr inbounds i32, i32* %a, i64 %idxprom, !dbg !35
+  %1 = load i32, i32* %arrayidx, align 4, !dbg !35
+  %arraypointer0 = getelementptr inbounds [2048 x i32], [2048 x i32]* %temp, i32 0, i32 0, !dbg !101555
   %cap.arrayidx0 = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 2, !dbg !101550
-  %load.0 = load %struct.Cap, %struct.Cap* %cap.arrayidx0, align 4, !dbg !101550
-  store %struct.Cap %load.0, %struct.Cap* %agg.tmp2, align 4, !dbg !101550
-  %1 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %a, i32 %i.0, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101552
-  call void @llvm.dbg.value(metadata i32 %1, metadata !101521, metadata !DIExpression()), !dbg !101554
-  %arraypointer1 = getelementptr inbounds [2048 x i32], [2048 x i32]* %temp, i32 0, i32 0, !dbg !101555
-  %cap.arrayidx1 = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 3, !dbg !101550
   call void @llvm.dbg.value(metadata i32 %1, metadata !101528, metadata !DIExpression()), !dbg !101562
-  %store.1 = load %struct.Cap, %struct.Cap* %cap.arrayidx1, align 4, !dbg !101563
-  store %struct.Cap %store.1, %struct.Cap* %agg.tmp3, align 4, !dbg !101563
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer1, i32 %i.0, i32 %1, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp3), !dbg !101564
+  %store.0 = load %struct.Cap, %struct.Cap* %cap.arrayidx0, align 4, !dbg !101563
+  store %struct.Cap %store.0, %struct.Cap* %agg.tmp2, align 4, !dbg !101563
+  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer0, i32 %i.0, i32 %1, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101564
   br label %for.inc, !dbg !39
 
 for.inc:                                          ; preds = %for.body
@@ -4557,20 +4554,18 @@ for.cond3:                                        ; preds = %for.inc12, %merge_l
   br i1 %cmp4, label %for.body5, label %for.end14, !dbg !52
 
 for.body5:                                        ; preds = %for.cond3
-  %cap.arrayidx2 = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 2, !dbg !101550
-  %load.2 = load %struct.Cap, %struct.Cap* %cap.arrayidx2, align 4, !dbg !101550
-  store %struct.Cap %load.2, %struct.Cap* %agg.tmp2, align 4, !dbg !101550
-  %2 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %a, i32 %j.0, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101552
-  call void @llvm.dbg.value(metadata i32 %2, metadata !101521, metadata !DIExpression()), !dbg !101554
+  %idxprom6 = sext i32 %j.0 to i64, !dbg !53
+  %arrayidx7 = getelementptr inbounds i32, i32* %a, i64 %idxprom6, !dbg !53
+  %2 = load i32, i32* %arrayidx7, align 4, !dbg !53
   %add8 = add nsw i32 %m, 1, !dbg !55
   %add9 = add nsw i32 %add8, %stop, !dbg !56
   %sub = sub nsw i32 %add9, %j.0, !dbg !57
-  %arraypointer3 = getelementptr inbounds [2048 x i32], [2048 x i32]* %temp, i32 0, i32 0, !dbg !101555
-  %cap.arrayidx3 = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 3, !dbg !101550
+  %arraypointer1 = getelementptr inbounds [2048 x i32], [2048 x i32]* %temp, i32 0, i32 0, !dbg !101555
+  %cap.arrayidx1 = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 2, !dbg !101550
   call void @llvm.dbg.value(metadata i32 %2, metadata !101528, metadata !DIExpression()), !dbg !101562
-  %store.3 = load %struct.Cap, %struct.Cap* %cap.arrayidx3, align 4, !dbg !101563
-  store %struct.Cap %store.3, %struct.Cap* %agg.tmp3, align 4, !dbg !101563
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer3, i32 %sub, i32 %2, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp3), !dbg !101564
+  %store.1 = load %struct.Cap, %struct.Cap* %cap.arrayidx1, align 4, !dbg !101563
+  store %struct.Cap %store.1, %struct.Cap* %agg.tmp2, align 4, !dbg !101563
+  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer1, i32 %sub, i32 %2, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101564
   br label %for.inc12, !dbg !60
 
 for.inc12:                                        ; preds = %for.body5
@@ -4598,39 +4593,35 @@ for.cond15:                                       ; preds = %for.inc28, %merge_l
   br i1 %cmp16, label %for.body17, label %for.end30, !dbg !73
 
 for.body17:                                       ; preds = %for.cond15
-  %arraypointer4 = getelementptr inbounds [2048 x i32], [2048 x i32]* %temp, i32 0, i32 0, !dbg !101555
-  %cap.arrayidx4 = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 3, !dbg !101550
-  %load.4 = load %struct.Cap, %struct.Cap* %cap.arrayidx4, align 4, !dbg !101550
-  store %struct.Cap %load.4, %struct.Cap* %agg.tmp3, align 4, !dbg !101550
-  %3 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer4, i32 %j.1, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp3), !dbg !101552
+  %arraypointer2 = getelementptr inbounds [2048 x i32], [2048 x i32]* %temp, i32 0, i32 0, !dbg !101555
+  %cap.arrayidx2 = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 2, !dbg !101550
+  %load.2 = load %struct.Cap, %struct.Cap* %cap.arrayidx2, align 4, !dbg !101550
+  store %struct.Cap %load.2, %struct.Cap* %agg.tmp2, align 4, !dbg !101550
+  %3 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer2, i32 %j.1, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101552
   call void @llvm.dbg.value(metadata i32 %3, metadata !101521, metadata !DIExpression()), !dbg !101554
   call void @llvm.dbg.value(metadata i32 %3, metadata !76, metadata !DIExpression()), !dbg !77
-  %arraypointer5 = getelementptr inbounds [2048 x i32], [2048 x i32]* %temp, i32 0, i32 0, !dbg !101555
-  %cap.arrayidx5 = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 3, !dbg !101550
-  %load.5 = load %struct.Cap, %struct.Cap* %cap.arrayidx5, align 4, !dbg !101550
-  store %struct.Cap %load.5, %struct.Cap* %agg.tmp3, align 4, !dbg !101550
-  %4 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer5, i32 %i.1, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp3), !dbg !101552
+  %arraypointer3 = getelementptr inbounds [2048 x i32], [2048 x i32]* %temp, i32 0, i32 0, !dbg !101555
+  %cap.arrayidx3 = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 2, !dbg !101550
+  %load.3 = load %struct.Cap, %struct.Cap* %cap.arrayidx3, align 4, !dbg !101550
+  store %struct.Cap %load.3, %struct.Cap* %agg.tmp2, align 4, !dbg !101550
+  %4 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer3, i32 %i.1, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101552
   call void @llvm.dbg.value(metadata i32 %4, metadata !101521, metadata !DIExpression()), !dbg !101554
   call void @llvm.dbg.value(metadata i32 %4, metadata !79, metadata !DIExpression()), !dbg !80
   %cmp22 = icmp slt i32 %3, %4, !dbg !81
   br i1 %cmp22, label %if.then, label %if.else, !dbg !83
 
 if.then:                                          ; preds = %for.body17
-  %cap.arrayidx6 = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 2, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %3, metadata !101528, metadata !DIExpression()), !dbg !101562
-  %store.6 = load %struct.Cap, %struct.Cap* %cap.arrayidx6, align 4, !dbg !101563
-  store %struct.Cap %store.6, %struct.Cap* %agg.tmp2, align 4, !dbg !101563
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %a, i32 %k.0, i32 %3, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101564
+  %idxprom23 = sext i32 %k.0 to i64, !dbg !84
+  %arrayidx24 = getelementptr inbounds i32, i32* %a, i64 %idxprom23, !dbg !84
+  store i32 %3, i32* %arrayidx24, align 4, !dbg !86
   %dec = add nsw i32 %j.1, -1, !dbg !87
   call void @llvm.dbg.value(metadata i32 %dec, metadata !47, metadata !DIExpression()), !dbg !48
   br label %if.end, !dbg !88
 
 if.else:                                          ; preds = %for.body17
-  %cap.arrayidx7 = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 2, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %4, metadata !101528, metadata !DIExpression()), !dbg !101562
-  %store.7 = load %struct.Cap, %struct.Cap* %cap.arrayidx7, align 4, !dbg !101563
-  store %struct.Cap %store.7, %struct.Cap* %agg.tmp2, align 4, !dbg !101563
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %a, i32 %k.0, i32 %4, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101564
+  %idxprom25 = sext i32 %k.0 to i64, !dbg !89
+  %arrayidx26 = getelementptr inbounds i32, i32* %a, i64 %idxprom25, !dbg !89
+  store i32 %4, i32* %arrayidx26, align 4, !dbg !91
   %inc27 = add nsw i32 %i.1, 1, !dbg !92
   call void @llvm.dbg.value(metadata i32 %inc27, metadata !28, metadata !DIExpression()), !dbg !29
   br label %if.end
@@ -4660,15 +4651,14 @@ for.end30:                                        ; preds = %for.cond15
 ; Function Attrs: argmemonly nounwind
 
 ; Function Attrs: nounwind
-define void @hls_top(i32 %size, i32* "fpga.decayed.dim.hint"="2048" %xa, i32* "fpga.decayed.dim.hint"="2048" %xb, i32* %flag, i32* "fpga.decayed.dim.hint"="16" %cap) #3 !dbg !101665 !fpga.function.pragma !101668 {
+define void @hls_top(i32 %size, i32* "fpga.decayed.dim.hint"="2048" %xa, i32* "fpga.decayed.dim.hint"="2048" %xb, i32* %flag, i32* "fpga.decayed.dim.hint"="12" %cap) #3 !dbg !101665 !fpga.function.pragma !101668 {
 entry:
   %flag_buf = alloca i32, align 4
-  %caps = alloca [4 x %struct.Cap], align 4
-  %buffer = alloca [16 x i32], align 4
+  %caps = alloca [3 x %struct.Cap], align 4
+  %buffer = alloca [12 x i32], align 4
   %agg.tmp0 = alloca %struct.Cap, align 4
   %agg.tmp1 = alloca %struct.Cap, align 4
   %agg.tmp2 = alloca %struct.Cap, align 4
-  %agg.tmp3 = alloca %struct.Cap, align 4
   call void @llvm.dbg.value(metadata i32* %flag, metadata !101505, metadata !DIExpression()), !dbg !101506
   call void @llvm.dbg.value(metadata i32* %cap, metadata !101507, metadata !DIExpression()), !dbg !101508
   call void @llvm.sideeffect() #9000 [ "xlx_m_axi"(i32* %cap, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ]
@@ -4677,19 +4667,18 @@ entry:
   call void @llvm.lifetime.start.p0i8(i64 4, i8* %init.0) #9003, !dbg !101491
   call void @llvm.dbg.declare(metadata i32* %flag_buf, metadata !101492, metadata !DIExpression()), !dbg !101493
   store i32 0, i32* %flag_buf, align 4, !dbg !101493
-  %init.1 = bitcast [4 x %struct.Cap]* %caps to i8*, !dbg !101494
-  call void @llvm.lifetime.start.p0i8(i64 48, i8* %init.1) #9003, !dbg !101494
-  call void @llvm.dbg.declare(metadata [4 x %struct.Cap]* %caps, metadata !101495, metadata !DIExpression()), !dbg !101499
-  %init.2 = bitcast [16 x i32]* %buffer to i8*, !dbg !101500
-  call void @llvm.lifetime.start.p0i8(i64 64, i8* %init.2) #9003, !dbg !101500
-  call void @llvm.dbg.declare(metadata [16 x i32]* %buffer, metadata !101501, metadata !DIExpression()), !dbg !101505
-  call void @llvm.sideeffect() #9000 [ "xlx_array_partition"([16 x i32]* %buffer, i32 2, i32 0, i32 1, i1 false) ], !dbg !101506
-  call void @llvm.sideeffect() #9002 [ "xlx_array_partition"([4 x %struct.Cap]* %caps, i32 2, i32 0, i32 1, i1 false) ], !dbg !101507
-  %cap.arraydecay = getelementptr inbounds [16 x i32], [16 x i32]* %buffer, i32 0, i32 0, !dbg !101508
-  %cap.arraydecay1 = getelementptr inbounds [4 x %struct.Cap], [4 x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101509
-  call void @_Z8load_capiPjS_P3Cap(i32 4, i32* %cap.arraydecay, i32* %cap, %struct.Cap* %cap.arraydecay1), !dbg !101510
+  %init.1 = bitcast [3 x %struct.Cap]* %caps to i8*, !dbg !101494
+  call void @llvm.lifetime.start.p0i8(i64 36, i8* %init.1) #9003, !dbg !101494
+  call void @llvm.dbg.declare(metadata [3 x %struct.Cap]* %caps, metadata !101495, metadata !DIExpression()), !dbg !101499
+  %init.2 = bitcast [12 x i32]* %buffer to i8*, !dbg !101500
+  call void @llvm.lifetime.start.p0i8(i64 48, i8* %init.2) #9003, !dbg !101500
+  call void @llvm.dbg.declare(metadata [12 x i32]* %buffer, metadata !101501, metadata !DIExpression()), !dbg !101505
+  call void @llvm.sideeffect() #9000 [ "xlx_array_partition"([12 x i32]* %buffer, i32 2, i32 0, i32 1, i1 false) ], !dbg !101506
+  call void @llvm.sideeffect() #9002 [ "xlx_array_partition"([3 x %struct.Cap]* %caps, i32 2, i32 0, i32 1, i1 false) ], !dbg !101507
+  %cap.arraydecay = getelementptr inbounds [12 x i32], [12 x i32]* %buffer, i32 0, i32 0, !dbg !101508
+  %cap.arraydecay1 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101509
+  call void @_Z8load_capiPjS_P3Cap(i32 3, i32* %cap.arraydecay, i32* %cap, %struct.Cap* %cap.arraydecay1), !dbg !101510
   call void @_Z10create_capiP3Capi(i32 2048, %struct.Cap* %cap.arraydecay1, i32 2), !dbg !101542
-  call void @_Z10create_capiP3Capi(i32 2048, %struct.Cap* %cap.arraydecay1, i32 3), !dbg !101542
   %a = alloca [2048 x i32], align 4
   call void @llvm.dbg.value(metadata i32 %size, metadata !106, metadata !DIExpression()), !dbg !107
   call void @llvm.dbg.value(metadata i32* %xa, metadata !108, metadata !DIExpression()), !dbg !109
@@ -4716,17 +4705,14 @@ for.cond:                                         ; preds = %for.inc, %VITIS_LOO
   br i1 %cmp, label %for.body, label %for.end, !dbg !129
 
 for.body:                                         ; preds = %for.cond
-  %cap.arrayidx8 = getelementptr inbounds [4 x %struct.Cap], [4 x %struct.Cap]* %caps, i64 0, i64 0, !dbg !101550
-  %load.8 = load %struct.Cap, %struct.Cap* %cap.arrayidx8, align 4, !dbg !101550
-  store %struct.Cap %load.8, %struct.Cap* %agg.tmp0, align 4, !dbg !101550
+  %cap.arrayidx4 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i64 0, i64 0, !dbg !101550
+  %load.4 = load %struct.Cap, %struct.Cap* %cap.arrayidx4, align 4, !dbg !101550
+  store %struct.Cap %load.4, %struct.Cap* %agg.tmp0, align 4, !dbg !101550
   %1 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %xa, i32 %i.0, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp0), !dbg !101552
   call void @llvm.dbg.value(metadata i32 %1, metadata !101521, metadata !DIExpression()), !dbg !101554
-  %arraypointer9 = getelementptr inbounds [2048 x i32], [2048 x i32]* %a, i32 0, i32 0, !dbg !101555
-  %cap.arrayidx9 = getelementptr inbounds [4 x %struct.Cap], [4 x %struct.Cap]* %caps, i64 0, i64 2, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %1, metadata !101528, metadata !DIExpression()), !dbg !101562
-  %store.9 = load %struct.Cap, %struct.Cap* %cap.arrayidx9, align 4, !dbg !101563
-  store %struct.Cap %store.9, %struct.Cap* %agg.tmp2, align 4, !dbg !101563
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer9, i32 %i.0, i32 %1, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101564
+  %idxprom1 = sext i32 %i.0 to i64, !dbg !131
+  %arrayidx2 = getelementptr inbounds [2048 x i32], [2048 x i32]* %a, i64 0, i64 %idxprom1, !dbg !131
+  store i32 %1, i32* %arrayidx2, align 4, !dbg !132
   br label %for.inc, !dbg !131
 
 for.inc:                                          ; preds = %for.body
@@ -4814,16 +4800,13 @@ for.cond22:                                       ; preds = %for.inc29, %VITIS_L
   br i1 %cmp23, label %for.body24, label %for.end31, !dbg !192
 
 for.body24:                                       ; preds = %for.cond22
-  %arraypointer10 = getelementptr inbounds [2048 x i32], [2048 x i32]* %a, i32 0, i32 0, !dbg !101555
-  %cap.arrayidx10 = getelementptr inbounds [4 x %struct.Cap], [4 x %struct.Cap]* %caps, i64 0, i64 2, !dbg !101550
-  %load.10 = load %struct.Cap, %struct.Cap* %cap.arrayidx10, align 4, !dbg !101550
-  store %struct.Cap %load.10, %struct.Cap* %agg.tmp2, align 4, !dbg !101550
-  %2 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer10, i32 %i.2, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101552
-  call void @llvm.dbg.value(metadata i32 %2, metadata !101521, metadata !DIExpression()), !dbg !101554
-  %cap.arrayidx11 = getelementptr inbounds [4 x %struct.Cap], [4 x %struct.Cap]* %caps, i64 0, i64 1, !dbg !101550
+  %idxprom25 = sext i32 %i.2 to i64, !dbg !193
+  %arrayidx26 = getelementptr inbounds [2048 x i32], [2048 x i32]* %a, i64 0, i64 %idxprom25, !dbg !193
+  %2 = load i32, i32* %arrayidx26, align 4, !dbg !193
+  %cap.arrayidx5 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i64 0, i64 1, !dbg !101550
   call void @llvm.dbg.value(metadata i32 %2, metadata !101528, metadata !DIExpression()), !dbg !101562
-  %store.11 = load %struct.Cap, %struct.Cap* %cap.arrayidx11, align 4, !dbg !101563
-  store %struct.Cap %store.11, %struct.Cap* %agg.tmp1, align 4, !dbg !101563
+  %store.5 = load %struct.Cap, %struct.Cap* %cap.arrayidx5, align 4, !dbg !101563
+  store %struct.Cap %store.5, %struct.Cap* %agg.tmp1, align 4, !dbg !101563
   call void @_Z11cheri_storePiiiPj3Cap(i32* %xb, i32 %i.2, i32 %2, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp1), !dbg !101564
   br label %for.inc29, !dbg !194
 
@@ -4837,10 +4820,10 @@ for.end31:                                        ; preds = %for.cond22
   call void @llvm.lifetime.end.p0i8(i64 8192, i8* %3) #5, !dbg !201
   %end.1 = load i32, i32* %flag_buf, align 4, !dbg !101540
   store i32 %end.1, i32* %flag, align 4, !dbg !101541
-  %end.2 = bitcast [16 x i32]* %buffer to i8*, !dbg !101542
-  call void @llvm.lifetime.end.p0i8(i64 64, i8* %end.2) #9003, !dbg !101542
-  %end.3 = bitcast [4 x %struct.Cap]* %caps to i8*, !dbg !101542
-  call void @llvm.lifetime.end.p0i8(i64 48, i8* %end.3) #9003, !dbg !101542
+  %end.2 = bitcast [12 x i32]* %buffer to i8*, !dbg !101542
+  call void @llvm.lifetime.end.p0i8(i64 48, i8* %end.2) #9003, !dbg !101542
+  %end.3 = bitcast [3 x %struct.Cap]* %caps to i8*, !dbg !101542
+  call void @llvm.lifetime.end.p0i8(i64 36, i8* %end.3) #9003, !dbg !101542
   %end.4 = bitcast i32* %flag_buf to i8*, !dbg !101542
   call void @llvm.lifetime.end.p0i8(i64 4, i8* %end.4) #9003, !dbg !101542
   ret void, !dbg !201
