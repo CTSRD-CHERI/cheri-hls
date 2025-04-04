@@ -23,7 +23,7 @@ mkdir -p $CHERI_TOOLS
 cheribuild_commithash="8269a4e28db50868cc6ee6f1a376317248fa0af8"
 llvm_commithash="ed9d9964fb200af225739a89bfb988cbe8d8f69e"
 gdb_commithash="dfce87821d784de68b8f0a90b8dbf6724d82132c"
-qemu_commithash="7d0b88cfb982267676573a4dce6565c7518964ca"
+qemu_commithash="qemu-cheri"
 cheribsd_commithash="hls"
 
 # --------------------------------------------------------------------
@@ -67,8 +67,8 @@ then
    git clone --recursive https://github.com/CTSRD-CHERI/qemu.git
 fi
 cd qemu
-git fetch --depth=1 origin $qemu_commithash
-git checkout $qemu_commithash 
+# git fetch --depth=1 origin $qemu_commithash
+# git checkout $qemu_commithash 
 cd ..
 
 # cheribsd 
@@ -82,30 +82,20 @@ git checkout $cheribsd_commithash
 cd ..
 
 # --------------------------------------------------------------------
-# Build qemu 
+# Build cheri tools 
 # --------------------------------------------------------------------
 
-TARGET=riscv64-purecap
-# TARGET=morello-purecap
-
 cd $CHERI_HLS/cheri-tools/cheribuild && \
-./cheribuild.py run-$TARGET -d \
+./cheribuild.py \
+cheribsd-mfs-root-kernel-riscv64-purecap \
+-d \
 --skip-update \
 --llvm/source-directory ../llvm-project \
 --cheribsd/source-directory ../cheribsd \
 --gdb/source-directory ../gdb \
---run/custom-qemu-path ../qemu \
 --source-root $CHERI_OUTPUT \
---allow-running-as-root \
---run-$TARGET/extra-options="-netdev user,hostfwd=tcp::2222-:22"
-# Expect this to fail - so we can run the following command to create a fixed port:
-# /home/jc2489/work/cheri-hls/cheri/output/sdk/bin/qemu-system-riscv64cheri -M virt -m 2048 -nographic -bios bbl-riscv64cheri-virt-fw_jump.bin -kernel /home/jc2489/work/cheri-hls/cheri/output/rootfs-riscv64-purecap/boot/kernel/kernel -drive if=none,file=/home/jc2489/work/cheri-hls/cheri/output/cheribsd-riscv64-purecap.img,id=drv,format=raw -device virtio-blk-device,drive=drv -device virtio-net-device,netdev=net0 -netdev 'user,id=net0,smb=/home/jc2489/work/cheri-hls/cheri<<<source_root@ro:/home/jc2489/work/cheri-hls/cheri/build<<<build_root:/home/jc2489/work/cheri-hls/cheri/output<<<output_root@ro:/home/jc2489/work/cheri-hls/cheri/output/rootfs-riscv64-purecap<<<rootfs,hostfwd=tcp::10000-:22' -device virtio-rng-pci
+--cheribsd-mfs-root-kernel-riscv64-purecap/build-fpga-kernels \
+--allow-running-as-root
 
-# Log in as 'root' to skip password
-# Ctrl-A + X to exit
-
-# Host commands for copying data and ssh:
-# ssh root@localhost -p 10000
-# (cd ../test; freebsd-gcc.sh test.c)
-# scp -P 10000 ../test/a.out root@localhost:/root/hello.out
+# --run/custom-qemu-path ../qemu \
 

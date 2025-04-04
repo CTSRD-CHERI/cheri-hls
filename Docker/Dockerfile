@@ -14,7 +14,7 @@ RUN apt-get update -y \
                           clang llvm lld clang-tidy clang-format \
                           gcc-multilib gcc cmake sudo wget vim \
                           curl tmux git bc locales libncurses5 \
-                          help2man
+                          help2man net-tools
 
 # Install CHERI dependencies
 RUN apt-get update -y \
