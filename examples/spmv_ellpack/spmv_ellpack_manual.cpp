@@ -168,11 +168,13 @@ void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
 }
 
 void hls_top(int n, int l, TYPE xnzval[N * L], int xcols[N * L], TYPE xvec[N],
-             TYPE xout[N]) {
+             TYPE xout[N], u32 *flag, u32 cap[16]) {
 #pragma HLS INTERFACE m_axi port = xnzval
 #pragma HLS INTERFACE m_axi port = xcols
 #pragma HLS INTERFACE m_axi port = xvec
 #pragma HLS INTERFACE m_axi port = xout
+#pragma HLS INTERFACE m_axi port = cap
+#pragma HLS INTERFACE s_axilite port = flag
 #pragma HLS INTERFACE s_axilite port = n
 #pragma HLS INTERFACE s_axilite port = l
 #pragma HLS INTERFACE s_axilite port = return
@@ -249,7 +251,9 @@ int main() {
 
   fillVal(nzval, colind, x);
   initOut(y);
+  u32 cap[16];
+  u32 flag[1] = {0};
 
-  hls_top(N, L, nzval, colind, x, y);
+  hls_top(N, L, nzval, colind, x, y, flag, cap);
   return 0;
 }
