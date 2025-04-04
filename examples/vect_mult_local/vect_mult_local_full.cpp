@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
+typedef uint8_t u8;
 typedef uint16_t u16;
 typedef uint32_t u32;
 typedef uint64_t u64;
@@ -139,7 +140,7 @@ void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
   return;
 }
 
-void create_cap(int size, Cap *caps, int index) {
+void create_cap(int size, Cap *caps, u8 index) {
 #pragma HLS INLINE
   Cap new_cap;
   new_cap.base = 0;

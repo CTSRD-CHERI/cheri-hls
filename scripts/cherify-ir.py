@@ -111,8 +111,8 @@ class LLVMTransformer:
         # Create new function signature
         # metadata = "!101670" if self.full_caps else "!101493"
         # metadata2 = "!101673" if self.full_caps else "!101496"
-        metadata = "!101665" if self.full_caps else "!101493"
-        metadata2 = "!101668" if self.full_caps else "!101496"
+        metadata = "!101669" if self.full_caps else "!101468"
+        metadata2 = "!101672" if self.full_caps else "!101471"
         # metadata = "!101493"
         if is_top:
             new_sig = f"define {return_type} @{func_name}({new_params}) #{attribute_num} !dbg {metadata} !fpga.function.pragma {metadata2} {{"
@@ -228,7 +228,7 @@ class LLVMTransformer:
                 and (arr_name not in self.curr_func_args)
                 and self.local_caps
             ):
-                cap_access += f"""  %arraypointer{self.arrayidx} = getelementptr inbounds [{arr_info['size']} x i32], [{arr_info['size']} x i32]* {arr_info['name']}, i32 0, i32 0, !dbg !101555\n"""
+                cap_access += f"""  %arraypointer{self.arrayidx} = getelementptr inbounds [{arr_info['size']} x i32], [{arr_info['size']} x i32]* {arr_info['name']}, i32 0, i32 0, !dbg !101530\n"""
                 arr_name = f"%arraypointer{self.arrayidx}"
 
             if in_main:
@@ -239,8 +239,8 @@ class LLVMTransformer:
             # Create the cheri_load call
             cap_access += f"""  %load.{self.arrayidx} = load %struct.Cap, %struct.Cap* %cap.arrayidx{self.arrayidx}, align 4, !dbg !101550
   store %struct.Cap %load.{self.arrayidx}, %struct.Cap* %agg.tmp{cap_idx}, align 4, !dbg !101550
-  {dest} = call i32 @_Z10cheri_loadPiiPj3Cap(i32* {arr_name}, i32 {index}, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp{cap_idx}), !dbg !101552
-  call void @llvm.dbg.value(metadata i32 {dest}, metadata !101521, metadata !DIExpression()), !dbg !101554"""
+  {dest} = call i32 @_Z10cheri_loadPiiPj3Cap(i32* {arr_name}, i32 {index}, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp{cap_idx}), !dbg !101527
+  call void @llvm.dbg.value(metadata i32 {dest}, metadata !101521, metadata !DIExpression()), !dbg !101529"""
 
             self.arrayidx += 1
 
@@ -278,7 +278,7 @@ class LLVMTransformer:
                 and (arr_name not in self.curr_func_args)
                 and self.local_caps
             ):
-                cap_access += f"""  %arraypointer{self.arrayidx} = getelementptr inbounds [{arr_info['size']} x i32], [{arr_info['size']} x i32]* {arr_info['name']}, i32 0, i32 0, !dbg !101555\n"""
+                cap_access += f"""  %arraypointer{self.arrayidx} = getelementptr inbounds [{arr_info['size']} x i32], [{arr_info['size']} x i32]* {arr_info['name']}, i32 0, i32 0, !dbg !101530\n"""
                 arr_name = f"%arraypointer{self.arrayidx}"
 
             if in_main:
@@ -286,10 +286,10 @@ class LLVMTransformer:
             else:
                 cap_access += f"""  %cap.arrayidx{self.arrayidx} = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 {cap_idx}, !dbg !101550\n"""
             # Create the cheri_store call
-            cap_access += f"""  call void @llvm.dbg.value(metadata i32 {value}, metadata !101528, metadata !DIExpression()), !dbg !101562
-  %store.{self.arrayidx} = load %struct.Cap, %struct.Cap* %cap.arrayidx{self.arrayidx}, align 4, !dbg !101563
-  store %struct.Cap %store.{self.arrayidx}, %struct.Cap* %agg.tmp{cap_idx}, align 4, !dbg !101563
-  call void @_Z11cheri_storePiiiPj3Cap(i32* {arr_name}, i32 {index}, i32 {value}, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp{cap_idx}), !dbg !101564"""
+            cap_access += f"""  call void @llvm.dbg.value(metadata i32 {value}, metadata !101528, metadata !DIExpression()), !dbg !101539
+  %store.{self.arrayidx} = load %struct.Cap, %struct.Cap* %cap.arrayidx{self.arrayidx}, align 4, !dbg !101539
+  store %struct.Cap %store.{self.arrayidx}, %struct.Cap* %agg.tmp{cap_idx}, align 4, !dbg !101539
+  call void @_Z11cheri_storePiiiPj3Cap(i32* {arr_name}, i32 {index}, i32 {value}, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp{cap_idx}), !dbg !101539"""
 
             self.arrayidx += 1
 
@@ -328,7 +328,7 @@ class LLVMTransformer:
             f"  %cap.arraydecay1 = getelementptr inbounds [{self.numcaps} x %struct.Cap], [{self.numcaps} x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101509",
             f"  call void @_Z8load_capiPjS_P3Cap(i32 {self.ext_caps}, i32* %cap.arraydecay, i32* %cap, %struct.Cap* %cap.arraydecay1), !dbg !101510",
         ] + [
-            f"  call void @_Z10create_capiP3Capi(i32 {local_arr['size']}, %struct.Cap* %cap.arraydecay1, i32 {local_arr['cap']}), !dbg !101542"
+            f"  call void @_Z10create_capiP3Caph(i32 {local_arr['size']}, %struct.Cap* %cap.arraydecay1, i8 {local_arr['cap']}), !dbg !101542"
             for local_arr in local_arrs
         ]
         return cap_init

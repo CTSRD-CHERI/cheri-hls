@@ -4131,14 +4131,14 @@ entry:
   call void @llvm.dbg.value(metadata i32* %buffer, metadata !101475, metadata !DIExpression()), !dbg !101476
   call void @llvm.dbg.value(metadata i32* %cap, metadata !101477, metadata !DIExpression()), !dbg !101478
   call void @llvm.dbg.value(metadata %struct.Cap* %caps, metadata !101479, metadata !DIExpression()), !dbg !101480
-  br label %VITIS_LOOP_107_1, !dbg !101481
+  br label %VITIS_LOOP_108_1, !dbg !101481
 
-VITIS_LOOP_107_1:                                 ; preds = %entry
+VITIS_LOOP_108_1:                                 ; preds = %entry
   call void @llvm.dbg.value(metadata i32 0, metadata !101482, metadata !DIExpression()), !dbg !101484
   br label %for.cond, !dbg !101485
 
-for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_107_1
-  %i.0 = phi i32 [ 0, %VITIS_LOOP_107_1 ], [ %inc, %for.inc ]
+for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_108_1
+  %i.0 = phi i32 [ 0, %VITIS_LOOP_108_1 ], [ %inc, %for.inc ]
   call void @llvm.dbg.value(metadata i32 %i.0, metadata !101482, metadata !DIExpression()), !dbg !101484
   %mul = mul nsw i32 %num, 4, !dbg !101486
   %cmp = icmp slt i32 %i.0, %mul, !dbg !101488
@@ -4163,15 +4163,15 @@ for.inc:                                          ; preds = %for.body
 
 for.end:                                          ; preds = %for.cond.cleanup
   call void @llvm.dbg.value(metadata i32 0, metadata !101502, metadata !DIExpression()), !dbg !101503
-  br label %VITIS_LOOP_112_2, !dbg !101504
+  br label %VITIS_LOOP_113_2, !dbg !101504
 
-VITIS_LOOP_112_2:                                 ; preds = %for.end
+VITIS_LOOP_113_2:                                 ; preds = %for.end
   call void @llvm.dbg.value(metadata i32 0, metadata !101505, metadata !DIExpression()), !dbg !101507
   br label %for.cond4, !dbg !101508
 
-for.cond4:                                        ; preds = %for.inc24, %VITIS_LOOP_112_2
-  %i3.0 = phi i32 [ 0, %VITIS_LOOP_112_2 ], [ %add23, %for.inc24 ]
-  %j.0 = phi i32 [ 0, %VITIS_LOOP_112_2 ], [ %inc25, %for.inc24 ]
+for.cond4:                                        ; preds = %for.inc24, %VITIS_LOOP_113_2
+  %i3.0 = phi i32 [ 0, %VITIS_LOOP_113_2 ], [ %add23, %for.inc24 ]
+  %j.0 = phi i32 [ 0, %VITIS_LOOP_113_2 ], [ %inc25, %for.inc24 ]
   call void @llvm.dbg.value(metadata i32 %j.0, metadata !101505, metadata !DIExpression()), !dbg !101507
   call void @llvm.dbg.value(metadata i32 %i3.0, metadata !101502, metadata !DIExpression()), !dbg !101503
   %cmp5 = icmp slt i32 %j.0, %num, !dbg !101509
@@ -4441,40 +4441,40 @@ if.end:                                           ; preds = %if.then, %entry
 }
 
 ; Function Attrs: alwaysinline nounwind
-define void @_Z10create_capiP3Capi(i32 %size, %struct.Cap* %caps, i32 %index) #100018 !dbg !101635 !fpga.function.pragma !101638 {
+define void @_Z10create_capiP3Caph(i32 %size, %struct.Cap* %caps, i8 zeroext %index) #100018 !dbg !101635 !fpga.function.pragma !101642 {
 entry:
   %new_cap = alloca %struct.Cap, align 8
   %ref.tmp = alloca %"struct.ap_uint<12>", align 2
-  call void @llvm.dbg.value(metadata i32 %size, metadata !101641, metadata !DIExpression()), !dbg !101642
-  call void @llvm.dbg.value(metadata %struct.Cap* %caps, metadata !101643, metadata !DIExpression()), !dbg !101644
-  call void @llvm.dbg.value(metadata i32 %index, metadata !101645, metadata !DIExpression()), !dbg !101646
-  %0 = bitcast %struct.Cap* %new_cap to i8*, !dbg !101647
-  call void @llvm.lifetime.start.p0i8(i64 32, i8* %0) #100021, !dbg !101647
-  call void @llvm.dbg.declare(metadata %struct.Cap* %new_cap, metadata !101648, metadata !DIExpression()), !dbg !101649
-  call void @_ZN3CapC2Ev(%struct.Cap* %new_cap), !dbg !101649
-  %base = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 1, !dbg !101650
-  store i64 0, i64* %base, align 8, !dbg !101651
-  %addr = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 0, !dbg !101652
-  store i64 0, i64* %addr, align 8, !dbg !101653
-  %mul = mul nsw i32 %size, 4, !dbg !101654
-  %conv = sext i32 %mul to i64, !dbg !101655
-  %top = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 2, !dbg !101656
-  store i64 %conv, i64* %top, align 8, !dbg !101657
-  %1 = bitcast %"struct.ap_uint<12>"* %ref.tmp to i8*, !dbg !101658
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100021, !dbg !101658
-  call void @_ZN7ap_uintILi12EEC2Ei(%"struct.ap_uint<12>"* %ref.tmp, i32 4095), !dbg !101658
-  %perms = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 4, !dbg !101659
-  %2 = load %"struct.ap_uint<12>", %"struct.ap_uint<12>"* %ref.tmp, align 2, !dbg !101660
-  store %"struct.ap_uint<12>" %2, %"struct.ap_uint<12>"* %perms, align 4, !dbg !101660
-  %3 = bitcast %"struct.ap_uint<12>"* %ref.tmp to i8*, !dbg !101661
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %3) #100021, !dbg !101661
-  %idxprom = sext i32 %index to i64, !dbg !101662
-  %arrayidx = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 %idxprom, !dbg !101662
-  %4 = load %struct.Cap, %struct.Cap* %new_cap, align 8, !dbg !101663
-  store %struct.Cap %4, %struct.Cap* %arrayidx, align 8, !dbg !101663
-  %5 = bitcast %struct.Cap* %new_cap to i8*, !dbg !101664
-  call void @llvm.lifetime.end.p0i8(i64 32, i8* %5) #100021, !dbg !101664
-  ret void, !dbg !101664
+  call void @llvm.dbg.value(metadata i32 %size, metadata !101645, metadata !DIExpression()), !dbg !101646
+  call void @llvm.dbg.value(metadata %struct.Cap* %caps, metadata !101647, metadata !DIExpression()), !dbg !101648
+  call void @llvm.dbg.value(metadata i8 %index, metadata !101649, metadata !DIExpression()), !dbg !101650
+  %0 = bitcast %struct.Cap* %new_cap to i8*, !dbg !101651
+  call void @llvm.lifetime.start.p0i8(i64 32, i8* %0) #100021, !dbg !101651
+  call void @llvm.dbg.declare(metadata %struct.Cap* %new_cap, metadata !101652, metadata !DIExpression()), !dbg !101653
+  call void @_ZN3CapC2Ev(%struct.Cap* %new_cap), !dbg !101653
+  %base = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 1, !dbg !101654
+  store i64 0, i64* %base, align 8, !dbg !101655
+  %addr = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 0, !dbg !101656
+  store i64 0, i64* %addr, align 8, !dbg !101657
+  %mul = mul nsw i32 %size, 4, !dbg !101658
+  %conv = sext i32 %mul to i64, !dbg !101659
+  %top = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 2, !dbg !101660
+  store i64 %conv, i64* %top, align 8, !dbg !101661
+  %1 = bitcast %"struct.ap_uint<12>"* %ref.tmp to i8*, !dbg !101662
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100021, !dbg !101662
+  call void @_ZN7ap_uintILi12EEC2Ei(%"struct.ap_uint<12>"* %ref.tmp, i32 4095), !dbg !101662
+  %perms = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 4, !dbg !101663
+  %2 = load %"struct.ap_uint<12>", %"struct.ap_uint<12>"* %ref.tmp, align 2, !dbg !101664
+  store %"struct.ap_uint<12>" %2, %"struct.ap_uint<12>"* %perms, align 4, !dbg !101664
+  %3 = bitcast %"struct.ap_uint<12>"* %ref.tmp to i8*, !dbg !101665
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %3) #100021, !dbg !101665
+  %idxprom = zext i8 %index to i64, !dbg !101666
+  %arrayidx = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 %idxprom, !dbg !101666
+  %4 = load %struct.Cap, %struct.Cap* %new_cap, align 8, !dbg !101667
+  store %struct.Cap %4, %struct.Cap* %arrayidx, align 8, !dbg !101667
+  %5 = bitcast %struct.Cap* %new_cap to i8*, !dbg !101668
+  call void @llvm.lifetime.end.p0i8(i64 32, i8* %5) #100021, !dbg !101668
+  ret void, !dbg !101668
 }
 
 ; Function Attrs: alwaysinline nounwind
@@ -4494,7 +4494,7 @@ entry:
 }
 
 ; Function Attrs: nounwind
-define void @_Z7hls_topiPiS_PjS0_(i32 %size, i32* "fpga.decayed.dim.hint"="10" %a, i32* "fpga.decayed.dim.hint"="10" %c, i32* %flag, i32* "fpga.decayed.dim.hint"="8" %cap) #100019 !dbg !101665 !fpga.function.pragma !101668 {
+define void @_Z7hls_topiPiS_PjS0_(i32 %size, i32* "fpga.decayed.dim.hint"="10" %a, i32* "fpga.decayed.dim.hint"="10" %c, i32* %flag, i32* "fpga.decayed.dim.hint"="8" %cap) #100019 !dbg !101669 !fpga.function.pragma !101672 {
 entry:
   %b = alloca [10 x i32], align 4
   %flag_buf = alloca i32, align 4
@@ -4503,106 +4503,106 @@ entry:
   %agg.tmp = alloca %struct.Cap, align 8
   %agg.tmp6 = alloca %struct.Cap, align 8
   %agg.tmp9 = alloca %struct.Cap, align 8
-  call void @llvm.dbg.value(metadata i32 %size, metadata !101671, metadata !DIExpression()), !dbg !101672
-  call void @llvm.dbg.value(metadata i32* %a, metadata !101673, metadata !DIExpression()), !dbg !101674
-  call void @llvm.dbg.value(metadata i32* %c, metadata !101675, metadata !DIExpression()), !dbg !101676
-  call void @llvm.dbg.value(metadata i32* %flag, metadata !101677, metadata !DIExpression()), !dbg !101678
-  call void @llvm.dbg.value(metadata i32* %cap, metadata !101679, metadata !DIExpression()), !dbg !101680
-  call void @llvm.sideeffect() #100022 [ "xlx_m_axi"(i32* %a, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ], !dbg !101681
-  call void @llvm.sideeffect() #100022 [ "xlx_m_axi"(i32* %c, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ], !dbg !101682
-  call void @llvm.sideeffect() #100023 [ "xlx_m_axi"(i32* %cap, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ], !dbg !101683
-  call void @llvm.sideeffect() #100024 [ "xlx_s_axilite"(i32 %size, [0 x i8] zeroinitializer, i64 -1, i1 false, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer) ], !dbg !101684
-  call void @llvm.sideeffect() #100025 [ "xlx_s_axilite"(i32* %flag, [0 x i8] zeroinitializer, i64 -1, i1 false, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer) ], !dbg !101685
-  call void @llvm.sideeffect() #100025 [ "xlx_s_axilite"(i8* null, [0 x i8] zeroinitializer, i64 -1, i1 false, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer) ], !dbg !101686
-  %0 = bitcast [10 x i32]* %b to i8*, !dbg !101687
-  call void @llvm.lifetime.start.p0i8(i64 40, i8* %0) #100021, !dbg !101687
-  call void @llvm.dbg.declare(metadata [10 x i32]* %b, metadata !101688, metadata !DIExpression()), !dbg !101692
-  %1 = bitcast [10 x i32]* %b to i8*, !dbg !101692
-  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 4 %1, i8* align 4 bitcast ([10 x i32]* @_ZZ7hls_topiPiS_PjS0_E1b to i8*), i64 40, i1 false), !dbg !101692
-  %2 = bitcast i32* %flag_buf to i8*, !dbg !101693
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %2) #100021, !dbg !101693
-  call void @llvm.dbg.declare(metadata i32* %flag_buf, metadata !101694, metadata !DIExpression()), !dbg !101695
-  store i32 0, i32* %flag_buf, align 4, !dbg !101695
-  %3 = bitcast [3 x %struct.Cap]* %caps to i8*, !dbg !101696
-  call void @llvm.lifetime.start.p0i8(i64 96, i8* %3) #100021, !dbg !101696
-  call void @llvm.dbg.declare(metadata [3 x %struct.Cap]* %caps, metadata !101697, metadata !DIExpression()), !dbg !101701
-  %array.begin = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101701
-  br label %arrayctor.loop, !dbg !101701
+  call void @llvm.dbg.value(metadata i32 %size, metadata !101675, metadata !DIExpression()), !dbg !101676
+  call void @llvm.dbg.value(metadata i32* %a, metadata !101677, metadata !DIExpression()), !dbg !101678
+  call void @llvm.dbg.value(metadata i32* %c, metadata !101679, metadata !DIExpression()), !dbg !101680
+  call void @llvm.dbg.value(metadata i32* %flag, metadata !101681, metadata !DIExpression()), !dbg !101682
+  call void @llvm.dbg.value(metadata i32* %cap, metadata !101683, metadata !DIExpression()), !dbg !101684
+  call void @llvm.sideeffect() #100022 [ "xlx_m_axi"(i32* %a, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ], !dbg !101685
+  call void @llvm.sideeffect() #100022 [ "xlx_m_axi"(i32* %c, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ], !dbg !101686
+  call void @llvm.sideeffect() #100023 [ "xlx_m_axi"(i32* %cap, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ], !dbg !101687
+  call void @llvm.sideeffect() #100024 [ "xlx_s_axilite"(i32 %size, [0 x i8] zeroinitializer, i64 -1, i1 false, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer) ], !dbg !101688
+  call void @llvm.sideeffect() #100025 [ "xlx_s_axilite"(i32* %flag, [0 x i8] zeroinitializer, i64 -1, i1 false, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer) ], !dbg !101689
+  call void @llvm.sideeffect() #100025 [ "xlx_s_axilite"(i8* null, [0 x i8] zeroinitializer, i64 -1, i1 false, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer) ], !dbg !101690
+  %0 = bitcast [10 x i32]* %b to i8*, !dbg !101691
+  call void @llvm.lifetime.start.p0i8(i64 40, i8* %0) #100021, !dbg !101691
+  call void @llvm.dbg.declare(metadata [10 x i32]* %b, metadata !101692, metadata !DIExpression()), !dbg !101696
+  %1 = bitcast [10 x i32]* %b to i8*, !dbg !101696
+  call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 4 %1, i8* align 4 bitcast ([10 x i32]* @_ZZ7hls_topiPiS_PjS0_E1b to i8*), i64 40, i1 false), !dbg !101696
+  %2 = bitcast i32* %flag_buf to i8*, !dbg !101697
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %2) #100021, !dbg !101697
+  call void @llvm.dbg.declare(metadata i32* %flag_buf, metadata !101698, metadata !DIExpression()), !dbg !101699
+  store i32 0, i32* %flag_buf, align 4, !dbg !101699
+  %3 = bitcast [3 x %struct.Cap]* %caps to i8*, !dbg !101700
+  call void @llvm.lifetime.start.p0i8(i64 96, i8* %3) #100021, !dbg !101700
+  call void @llvm.dbg.declare(metadata [3 x %struct.Cap]* %caps, metadata !101701, metadata !DIExpression()), !dbg !101705
+  %array.begin = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101705
+  br label %arrayctor.loop, !dbg !101705
 
 arrayctor.loop:                                   ; preds = %arrayctor.loop, %entry
-  %indvar = phi i32 [ 0, %entry ], [ %indvarinc, %arrayctor.loop ], !dbg !101701
-  %indvarinc = add i32 %indvar, 1, !dbg !101701
-  %array.src = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i32 0, i32 %indvar, !dbg !101701
-  call void @_ZN3CapC2Ev(%struct.Cap* %array.src), !dbg !101701
-  %4 = icmp eq i32 %indvar, 2, !dbg !101701
-  br i1 %4, label %entry2, label %arrayctor.loop, !dbg !101701
+  %indvar = phi i32 [ 0, %entry ], [ %indvarinc, %arrayctor.loop ], !dbg !101705
+  %indvarinc = add i32 %indvar, 1, !dbg !101705
+  %array.src = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i32 0, i32 %indvar, !dbg !101705
+  call void @_ZN3CapC2Ev(%struct.Cap* %array.src), !dbg !101705
+  %4 = icmp eq i32 %indvar, 2, !dbg !101705
+  br i1 %4, label %entry2, label %arrayctor.loop, !dbg !101705
 
 entry2:                                           ; preds = %arrayctor.loop
-  br label %entry1, !dbg !101701
+  br label %entry1, !dbg !101705
 
 entry1:                                           ; preds = %entry2
-  %5 = bitcast [12 x i32]* %buffer to i8*, !dbg !101702
-  call void @llvm.lifetime.start.p0i8(i64 48, i8* %5) #100021, !dbg !101702
-  call void @llvm.dbg.declare(metadata [12 x i32]* %buffer, metadata !101703, metadata !DIExpression()), !dbg !101707
-  call void @llvm.sideeffect() #100026 [ "xlx_array_partition"([12 x i32]* %buffer, i32 2, i32 0, i32 1, i1 false) ], !dbg !101708
-  call void @llvm.sideeffect() #100027 [ "xlx_array_partition"([3 x %struct.Cap]* %caps, i32 2, i32 0, i32 1, i1 false) ], !dbg !101709
-  %arraydecay = getelementptr inbounds [12 x i32], [12 x i32]* %buffer, i32 0, i32 0, !dbg !101710
-  %arraydecay3 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101711
-  call void @_Z8load_capiPjS_P3Cap(i32 2, i32* %arraydecay, i32* %cap, %struct.Cap* %arraydecay3), !dbg !101712
-  %arraydecay4 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101713
-  call void @_Z10create_capiP3Capi(i32 10, %struct.Cap* %arraydecay4, i32 2), !dbg !101714
-  br label %VITIS_LOOP_172_1, !dbg !101714
+  %5 = bitcast [12 x i32]* %buffer to i8*, !dbg !101706
+  call void @llvm.lifetime.start.p0i8(i64 48, i8* %5) #100021, !dbg !101706
+  call void @llvm.dbg.declare(metadata [12 x i32]* %buffer, metadata !101707, metadata !DIExpression()), !dbg !101711
+  call void @llvm.sideeffect() #100026 [ "xlx_array_partition"([12 x i32]* %buffer, i32 2, i32 0, i32 1, i1 false) ], !dbg !101712
+  call void @llvm.sideeffect() #100027 [ "xlx_array_partition"([3 x %struct.Cap]* %caps, i32 2, i32 0, i32 1, i1 false) ], !dbg !101713
+  %arraydecay = getelementptr inbounds [12 x i32], [12 x i32]* %buffer, i32 0, i32 0, !dbg !101714
+  %arraydecay3 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101715
+  call void @_Z8load_capiPjS_P3Cap(i32 2, i32* %arraydecay, i32* %cap, %struct.Cap* %arraydecay3), !dbg !101716
+  %arraydecay4 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101717
+  call void @_Z10create_capiP3Caph(i32 10, %struct.Cap* %arraydecay4, i8 zeroext 2), !dbg !101718
+  br label %VITIS_LOOP_173_1, !dbg !101718
 
-VITIS_LOOP_172_1:                                 ; preds = %entry1
-  call void @llvm.dbg.value(metadata i32 0, metadata !101715, metadata !DIExpression()), !dbg !101717
-  br label %for.cond, !dbg !101718
+VITIS_LOOP_173_1:                                 ; preds = %entry1
+  call void @llvm.dbg.value(metadata i32 0, metadata !101719, metadata !DIExpression()), !dbg !101721
+  br label %for.cond, !dbg !101722
 
-for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_172_1
-  %i.0 = phi i32 [ 0, %VITIS_LOOP_172_1 ], [ %inc, %for.inc ]
-  call void @llvm.dbg.value(metadata i32 %i.0, metadata !101715, metadata !DIExpression()), !dbg !101717
-  %cmp = icmp slt i32 %i.0, %size, !dbg !101719
-  br i1 %cmp, label %for.body, label %for.cond.cleanup, !dbg !101721
+for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_173_1
+  %i.0 = phi i32 [ 0, %VITIS_LOOP_173_1 ], [ %inc, %for.inc ]
+  call void @llvm.dbg.value(metadata i32 %i.0, metadata !101719, metadata !DIExpression()), !dbg !101721
+  %cmp = icmp slt i32 %i.0, %size, !dbg !101723
+  br i1 %cmp, label %for.body, label %for.cond.cleanup, !dbg !101725
 
 for.cond.cleanup:                                 ; preds = %for.cond
   br label %for.end
 
 for.body:                                         ; preds = %for.cond
-  %arrayidx = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i64 0, i64 0, !dbg !101722
-  %6 = load %struct.Cap, %struct.Cap* %arrayidx, align 8, !dbg !101722
-  store %struct.Cap %6, %struct.Cap* %agg.tmp, align 8, !dbg !101722
-  %call = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %a, i32 %i.0, i32* %flag_buf, %struct.Cap* byval align 8 %agg.tmp), !dbg !101724
-  call void @llvm.dbg.value(metadata i32 %call, metadata !101725, metadata !DIExpression()), !dbg !101726
-  %arraydecay5 = getelementptr inbounds [10 x i32], [10 x i32]* %b, i32 0, i32 0, !dbg !101727
-  %arrayidx7 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i64 0, i64 2, !dbg !101728
-  %7 = load %struct.Cap, %struct.Cap* %arrayidx7, align 8, !dbg !101728
-  store %struct.Cap %7, %struct.Cap* %agg.tmp6, align 8, !dbg !101728
-  %call8 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraydecay5, i32 %i.0, i32* %flag_buf, %struct.Cap* byval align 8 %agg.tmp6), !dbg !101729
-  call void @llvm.dbg.value(metadata i32 %call8, metadata !101730, metadata !DIExpression()), !dbg !101731
-  %mul = mul nsw i32 %call, %call8, !dbg !101732
-  call void @llvm.dbg.value(metadata i32 %mul, metadata !101733, metadata !DIExpression()), !dbg !101734
-  %arrayidx10 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i64 0, i64 1, !dbg !101735
-  %8 = load %struct.Cap, %struct.Cap* %arrayidx10, align 8, !dbg !101735
-  store %struct.Cap %8, %struct.Cap* %agg.tmp9, align 8, !dbg !101735
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %c, i32 %i.0, i32 %mul, i32* %flag_buf, %struct.Cap* byval align 8 %agg.tmp9), !dbg !101736
-  br label %for.inc, !dbg !101737
+  %arrayidx = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i64 0, i64 0, !dbg !101726
+  %6 = load %struct.Cap, %struct.Cap* %arrayidx, align 8, !dbg !101726
+  store %struct.Cap %6, %struct.Cap* %agg.tmp, align 8, !dbg !101726
+  %call = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %a, i32 %i.0, i32* %flag_buf, %struct.Cap* byval align 8 %agg.tmp), !dbg !101728
+  call void @llvm.dbg.value(metadata i32 %call, metadata !101729, metadata !DIExpression()), !dbg !101730
+  %arraydecay5 = getelementptr inbounds [10 x i32], [10 x i32]* %b, i32 0, i32 0, !dbg !101731
+  %arrayidx7 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i64 0, i64 2, !dbg !101732
+  %7 = load %struct.Cap, %struct.Cap* %arrayidx7, align 8, !dbg !101732
+  store %struct.Cap %7, %struct.Cap* %agg.tmp6, align 8, !dbg !101732
+  %call8 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraydecay5, i32 %i.0, i32* %flag_buf, %struct.Cap* byval align 8 %agg.tmp6), !dbg !101733
+  call void @llvm.dbg.value(metadata i32 %call8, metadata !101734, metadata !DIExpression()), !dbg !101735
+  %mul = mul nsw i32 %call, %call8, !dbg !101736
+  call void @llvm.dbg.value(metadata i32 %mul, metadata !101737, metadata !DIExpression()), !dbg !101738
+  %arrayidx10 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i64 0, i64 1, !dbg !101739
+  %8 = load %struct.Cap, %struct.Cap* %arrayidx10, align 8, !dbg !101739
+  store %struct.Cap %8, %struct.Cap* %agg.tmp9, align 8, !dbg !101739
+  call void @_Z11cheri_storePiiiPj3Cap(i32* %c, i32 %i.0, i32 %mul, i32* %flag_buf, %struct.Cap* byval align 8 %agg.tmp9), !dbg !101740
+  br label %for.inc, !dbg !101741
 
 for.inc:                                          ; preds = %for.body
-  %inc = add nsw i32 %i.0, 1, !dbg !101738
-  call void @llvm.dbg.value(metadata i32 %inc, metadata !101715, metadata !DIExpression()), !dbg !101717
-  br label %for.cond, !dbg !101739, !llvm.loop !101740
+  %inc = add nsw i32 %i.0, 1, !dbg !101742
+  call void @llvm.dbg.value(metadata i32 %inc, metadata !101719, metadata !DIExpression()), !dbg !101721
+  br label %for.cond, !dbg !101743, !llvm.loop !101744
 
 for.end:                                          ; preds = %for.cond.cleanup
-  %9 = load i32, i32* %flag_buf, align 4, !dbg !101745
-  store i32 %9, i32* %flag, align 4, !dbg !101746
-  %10 = bitcast [12 x i32]* %buffer to i8*, !dbg !101747
-  call void @llvm.lifetime.end.p0i8(i64 48, i8* %10) #100021, !dbg !101747
-  %11 = bitcast [3 x %struct.Cap]* %caps to i8*, !dbg !101747
-  call void @llvm.lifetime.end.p0i8(i64 96, i8* %11) #100021, !dbg !101747
-  %12 = bitcast i32* %flag_buf to i8*, !dbg !101747
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %12) #100021, !dbg !101747
-  %13 = bitcast [10 x i32]* %b to i8*, !dbg !101747
-  call void @llvm.lifetime.end.p0i8(i64 40, i8* %13) #100021, !dbg !101747
-  ret void, !dbg !101747
+  %9 = load i32, i32* %flag_buf, align 4, !dbg !101749
+  store i32 %9, i32* %flag, align 4, !dbg !101750
+  %10 = bitcast [12 x i32]* %buffer to i8*, !dbg !101751
+  call void @llvm.lifetime.end.p0i8(i64 48, i8* %10) #100021, !dbg !101751
+  %11 = bitcast [3 x %struct.Cap]* %caps to i8*, !dbg !101751
+  call void @llvm.lifetime.end.p0i8(i64 96, i8* %11) #100021, !dbg !101751
+  %12 = bitcast i32* %flag_buf to i8*, !dbg !101751
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %12) #100021, !dbg !101751
+  %13 = bitcast [10 x i32]* %b to i8*, !dbg !101751
+  call void @llvm.lifetime.end.p0i8(i64 40, i8* %13) #100021, !dbg !101751
+  ret void, !dbg !101751
 }
 
 ; Function Attrs: inaccessiblememonly nounwind
@@ -4651,7 +4651,7 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !100001 = !DIFile(filename: "/workspace/examples/vect_mult_local/vect_mult_local_prj/solution/.autopilot/db/vect_mult_local_full.pp.0.cpp", directory: "/workspace/examples/vect_mult_local")
 !100002 = !{}
 !100003 = !{!100004, !100011, !100012, !100046, !100079, !100105, !100132, !100159, !100186, !100213, !100214, !100241, !100047, !100268, !100274, !100302, !100076}
-!100004 = !DIDerivedType(tag: DW_TAG_typedef, name: "u64", file: !100005, line: 8, baseType: !100006)
+!100004 = !DIDerivedType(tag: DW_TAG_typedef, name: "u64", file: !100005, line: 9, baseType: !100006)
 !100005 = !DIFile(filename: "vect_mult_local_full.cpp", directory: "/workspace/examples/vect_mult_local")
 !100006 = !DIDerivedType(tag: DW_TAG_typedef, name: "uint64_t", file: !100007, line: 27, baseType: !100008)
 !100007 = !DIFile(filename: "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h", directory: "/workspace/examples/vect_mult_local")
@@ -4984,16 +4984,16 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !100334 = !{i32 2, !"Dwarf Version", i32 4}
 !100335 = !{i32 2, !"Debug Info Version", i32 3}
 !100336 = !{i32 1, !"wchar_size", i32 4}
-!100337 = distinct !DISubprogram(name: "decode", linkageName: "_Z6decode7ap_uintILi32EES0_S0_S0_", scope: !100005, file: !100005, line: 26, type: !100338, isLocal: false, isDefinition: true, scopeLine: 27, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!100337 = distinct !DISubprogram(name: "decode", linkageName: "_Z6decode7ap_uintILi32EES0_S0_S0_", scope: !100005, file: !100005, line: 27, type: !100338, isLocal: false, isDefinition: true, scopeLine: 28, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !100338 = !DISubroutineType(types: !100339)
 !100339 = !{!100340, !100495, !100495, !100495, !100495}
-!100340 = !DIDerivedType(tag: DW_TAG_typedef, name: "Cap", file: !100005, line: 17, baseType: !100341)
-!100341 = distinct !DICompositeType(tag: DW_TAG_structure_type, file: !100005, line: 10, size: 256, flags: DIFlagTypePassByValue, elements: !100342, identifier: "_ZTS3Cap")
+!100340 = !DIDerivedType(tag: DW_TAG_typedef, name: "Cap", file: !100005, line: 18, baseType: !100341)
+!100341 = distinct !DICompositeType(tag: DW_TAG_structure_type, file: !100005, line: 11, size: 256, flags: DIFlagTypePassByValue, elements: !100342, identifier: "_ZTS3Cap")
 !100342 = !{!100343, !100344, !100345, !100346, !100399, !100447}
-!100343 = !DIDerivedType(tag: DW_TAG_member, name: "addr", scope: !100341, file: !100005, line: 11, baseType: !100004, size: 64)
-!100344 = !DIDerivedType(tag: DW_TAG_member, name: "base", scope: !100341, file: !100005, line: 12, baseType: !100004, size: 64, offset: 64)
-!100345 = !DIDerivedType(tag: DW_TAG_member, name: "top", scope: !100341, file: !100005, line: 13, baseType: !100004, size: 64, offset: 128)
-!100346 = !DIDerivedType(tag: DW_TAG_member, name: "otype", scope: !100341, file: !100005, line: 14, baseType: !100347, size: 32, offset: 192)
+!100343 = !DIDerivedType(tag: DW_TAG_member, name: "addr", scope: !100341, file: !100005, line: 12, baseType: !100004, size: 64)
+!100344 = !DIDerivedType(tag: DW_TAG_member, name: "base", scope: !100341, file: !100005, line: 13, baseType: !100004, size: 64, offset: 64)
+!100345 = !DIDerivedType(tag: DW_TAG_member, name: "top", scope: !100341, file: !100005, line: 14, baseType: !100004, size: 64, offset: 128)
+!100346 = !DIDerivedType(tag: DW_TAG_member, name: "otype", scope: !100341, file: !100005, line: 15, baseType: !100347, size: 32, offset: 192)
 !100347 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<18>", file: !100348, line: 181, size: 32, flags: DIFlagTypePassByValue, elements: !100349, templateParams: !100398, identifier: "_ZTS7ap_uintILi18EE")
 !100348 = !DIFile(filename: "/local/ecad/xilinx/new/Vitis_HLS/2023.1/common/technology/autopilot/ap_int.h", directory: "/workspace/examples/vect_mult_local")
 !100349 = !{!100350, !100378, !100383, !100387, !100392}
@@ -5046,7 +5046,7 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !100396 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100397, size: 64)
 !100397 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100347)
 !100398 = !{!100377}
-!100399 = !DIDerivedType(tag: DW_TAG_member, name: "perms", scope: !100341, file: !100005, line: 15, baseType: !100400, size: 16, offset: 224)
+!100399 = !DIDerivedType(tag: DW_TAG_member, name: "perms", scope: !100341, file: !100005, line: 16, baseType: !100400, size: 16, offset: 224)
 !100400 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<12>", file: !100348, line: 181, size: 16, flags: DIFlagTypePassByValue, elements: !100401, templateParams: !100446, identifier: "_ZTS7ap_uintILi12EE")
 !100401 = !{!100402, !100430, !100434, !100437, !100440}
 !100402 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100400, baseType: !100403)
@@ -5094,7 +5094,7 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !100444 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100445, size: 64)
 !100445 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100400)
 !100446 = !{!100429}
-!100447 = !DIDerivedType(tag: DW_TAG_member, name: "uperms", scope: !100341, file: !100005, line: 16, baseType: !100448, size: 8, offset: 240)
+!100447 = !DIDerivedType(tag: DW_TAG_member, name: "uperms", scope: !100341, file: !100005, line: 17, baseType: !100448, size: 8, offset: 240)
 !100448 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<4>", file: !100348, line: 181, size: 8, flags: DIFlagTypePassByValue, elements: !100449, templateParams: !100494, identifier: "_ZTS7ap_uintILi4EE")
 !100449 = !{!100450, !100478, !100482, !100485, !100488}
 !100450 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100448, baseType: !100451)
@@ -5188,17 +5188,17 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !100538 = !{!100104}
 !100539 = !{!100540}
 !100540 = !{!"fpga.inline", !"user", !100541}
-!100541 = !DILocation(line: 28, column: 9, scope: !100337)
-!100542 = !DILocalVariable(name: "buffer_0", arg: 1, scope: !100337, file: !100005, line: 26, type: !100495)
-!100543 = !DILocation(line: 26, column: 24, scope: !100337)
-!100544 = !DILocalVariable(name: "buffer_1", arg: 2, scope: !100337, file: !100005, line: 26, type: !100495)
-!100545 = !DILocation(line: 26, column: 46, scope: !100337)
-!100546 = !DILocalVariable(name: "buffer_2", arg: 3, scope: !100337, file: !100005, line: 26, type: !100495)
-!100547 = !DILocation(line: 26, column: 68, scope: !100337)
-!100548 = !DILocalVariable(name: "buffer_3", arg: 4, scope: !100337, file: !100005, line: 27, type: !100495)
-!100549 = !DILocation(line: 27, column: 24, scope: !100337)
-!100550 = !DILocation(line: 30, column: 2, scope: !100337)
-!100551 = !DILocalVariable(name: "cap", scope: !100337, file: !100005, line: 30, type: !100552)
+!100541 = !DILocation(line: 29, column: 9, scope: !100337)
+!100542 = !DILocalVariable(name: "buffer_0", arg: 1, scope: !100337, file: !100005, line: 27, type: !100495)
+!100543 = !DILocation(line: 27, column: 24, scope: !100337)
+!100544 = !DILocalVariable(name: "buffer_1", arg: 2, scope: !100337, file: !100005, line: 27, type: !100495)
+!100545 = !DILocation(line: 27, column: 46, scope: !100337)
+!100546 = !DILocalVariable(name: "buffer_2", arg: 3, scope: !100337, file: !100005, line: 27, type: !100495)
+!100547 = !DILocation(line: 27, column: 68, scope: !100337)
+!100548 = !DILocalVariable(name: "buffer_3", arg: 4, scope: !100337, file: !100005, line: 28, type: !100495)
+!100549 = !DILocation(line: 28, column: 24, scope: !100337)
+!100550 = !DILocation(line: 31, column: 2, scope: !100337)
+!100551 = !DILocalVariable(name: "cap", scope: !100337, file: !100005, line: 31, type: !100552)
 !100552 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<64>", file: !100348, line: 181, size: 64, flags: DIFlagTypePassByValue, elements: !100553, templateParams: !100571, identifier: "_ZTS7ap_uintILi64EE")
 !100553 = !{!100554, !100555, !100559, !100562, !100565}
 !100554 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100552, baseType: !100047)
@@ -5219,55 +5219,55 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !100569 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100570, size: 64)
 !100570 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100552)
 !100571 = !{!100045}
-!100572 = !DILocation(line: 30, column: 14, scope: !100337)
-!100573 = !DILocation(line: 30, column: 20, scope: !100337)
-!100574 = !DILocation(line: 30, column: 21, scope: !100337)
-!100575 = !DILocation(line: 30, column: 31, scope: !100337)
-!100576 = !DILocation(line: 30, column: 29, scope: !100337)
-!100577 = !DILocation(line: 31, column: 3, scope: !100337)
-!100578 = !DILocalVariable(name: "addr", scope: !100337, file: !100005, line: 31, type: !100552)
-!100579 = !DILocation(line: 31, column: 15, scope: !100337)
-!100580 = !DILocation(line: 31, column: 22, scope: !100337)
-!100581 = !DILocation(line: 31, column: 23, scope: !100337)
-!100582 = !DILocation(line: 31, column: 33, scope: !100337)
-!100583 = !DILocation(line: 31, column: 31, scope: !100337)
-!100584 = !DILocation(line: 33, column: 3, scope: !100337)
-!100585 = !DILocation(line: 33, column: 7, scope: !100337)
-!100586 = !DILocation(line: 34, column: 24, scope: !100337)
-!100587 = !DILocation(line: 34, column: 15, scope: !100337)
-!100588 = !DILocalVariable(name: "read", scope: !100337, file: !100005, line: 34, type: !100032)
-!100589 = !DILocation(line: 34, column: 8, scope: !100337)
-!100590 = !DILocation(line: 35, column: 25, scope: !100337)
-!100591 = !DILocation(line: 35, column: 16, scope: !100337)
-!100592 = !DILocalVariable(name: "write", scope: !100337, file: !100005, line: 35, type: !100032)
-!100593 = !DILocation(line: 35, column: 8, scope: !100337)
-!100594 = !DILocation(line: 36, column: 3, scope: !100337)
-!100595 = !DILocalVariable(name: "perms", scope: !100337, file: !100005, line: 36, type: !100400)
-!100596 = !DILocation(line: 36, column: 15, scope: !100337)
-!100597 = !DILocation(line: 36, column: 32, scope: !100337)
-!100598 = !DILocation(line: 36, column: 23, scope: !100337)
-!100599 = !DILocation(line: 37, column: 3, scope: !100337)
-!100600 = !DILocalVariable(name: "uperms", scope: !100337, file: !100005, line: 37, type: !100448)
-!100601 = !DILocation(line: 37, column: 14, scope: !100337)
-!100602 = !DILocation(line: 37, column: 32, scope: !100337)
-!100603 = !DILocation(line: 37, column: 23, scope: !100337)
-!100604 = !DILocation(line: 38, column: 22, scope: !100337)
-!100605 = !DILocation(line: 38, column: 13, scope: !100337)
-!100606 = !DILocation(line: 38, column: 34, scope: !100337)
-!100607 = !DILocalVariable(name: "f", scope: !100337, file: !100005, line: 38, type: !100032)
-!100608 = !DILocation(line: 38, column: 8, scope: !100337)
-!100609 = !DILocation(line: 39, column: 3, scope: !100337)
-!100610 = !DILocalVariable(name: "otype", scope: !100337, file: !100005, line: 39, type: !100347)
-!100611 = !DILocation(line: 39, column: 15, scope: !100337)
-!100612 = !DILocation(line: 39, column: 32, scope: !100337)
-!100613 = !DILocation(line: 39, column: 23, scope: !100337)
-!100614 = !DILocation(line: 40, column: 24, scope: !100337)
-!100615 = !DILocation(line: 40, column: 15, scope: !100337)
-!100616 = !DILocation(line: 40, column: 36, scope: !100337)
-!100617 = !DILocalVariable(name: "I_E", scope: !100337, file: !100005, line: 40, type: !100032)
-!100618 = !DILocation(line: 40, column: 8, scope: !100337)
-!100619 = !DILocation(line: 41, column: 3, scope: !100337)
-!100620 = !DILocalVariable(name: "T_11_3", scope: !100337, file: !100005, line: 41, type: !100621)
+!100572 = !DILocation(line: 31, column: 14, scope: !100337)
+!100573 = !DILocation(line: 31, column: 20, scope: !100337)
+!100574 = !DILocation(line: 31, column: 21, scope: !100337)
+!100575 = !DILocation(line: 31, column: 31, scope: !100337)
+!100576 = !DILocation(line: 31, column: 29, scope: !100337)
+!100577 = !DILocation(line: 32, column: 3, scope: !100337)
+!100578 = !DILocalVariable(name: "addr", scope: !100337, file: !100005, line: 32, type: !100552)
+!100579 = !DILocation(line: 32, column: 15, scope: !100337)
+!100580 = !DILocation(line: 32, column: 22, scope: !100337)
+!100581 = !DILocation(line: 32, column: 23, scope: !100337)
+!100582 = !DILocation(line: 32, column: 33, scope: !100337)
+!100583 = !DILocation(line: 32, column: 31, scope: !100337)
+!100584 = !DILocation(line: 34, column: 3, scope: !100337)
+!100585 = !DILocation(line: 34, column: 7, scope: !100337)
+!100586 = !DILocation(line: 35, column: 24, scope: !100337)
+!100587 = !DILocation(line: 35, column: 15, scope: !100337)
+!100588 = !DILocalVariable(name: "read", scope: !100337, file: !100005, line: 35, type: !100032)
+!100589 = !DILocation(line: 35, column: 8, scope: !100337)
+!100590 = !DILocation(line: 36, column: 25, scope: !100337)
+!100591 = !DILocation(line: 36, column: 16, scope: !100337)
+!100592 = !DILocalVariable(name: "write", scope: !100337, file: !100005, line: 36, type: !100032)
+!100593 = !DILocation(line: 36, column: 8, scope: !100337)
+!100594 = !DILocation(line: 37, column: 3, scope: !100337)
+!100595 = !DILocalVariable(name: "perms", scope: !100337, file: !100005, line: 37, type: !100400)
+!100596 = !DILocation(line: 37, column: 15, scope: !100337)
+!100597 = !DILocation(line: 37, column: 32, scope: !100337)
+!100598 = !DILocation(line: 37, column: 23, scope: !100337)
+!100599 = !DILocation(line: 38, column: 3, scope: !100337)
+!100600 = !DILocalVariable(name: "uperms", scope: !100337, file: !100005, line: 38, type: !100448)
+!100601 = !DILocation(line: 38, column: 14, scope: !100337)
+!100602 = !DILocation(line: 38, column: 32, scope: !100337)
+!100603 = !DILocation(line: 38, column: 23, scope: !100337)
+!100604 = !DILocation(line: 39, column: 22, scope: !100337)
+!100605 = !DILocation(line: 39, column: 13, scope: !100337)
+!100606 = !DILocation(line: 39, column: 34, scope: !100337)
+!100607 = !DILocalVariable(name: "f", scope: !100337, file: !100005, line: 39, type: !100032)
+!100608 = !DILocation(line: 39, column: 8, scope: !100337)
+!100609 = !DILocation(line: 40, column: 3, scope: !100337)
+!100610 = !DILocalVariable(name: "otype", scope: !100337, file: !100005, line: 40, type: !100347)
+!100611 = !DILocation(line: 40, column: 15, scope: !100337)
+!100612 = !DILocation(line: 40, column: 32, scope: !100337)
+!100613 = !DILocation(line: 40, column: 23, scope: !100337)
+!100614 = !DILocation(line: 41, column: 24, scope: !100337)
+!100615 = !DILocation(line: 41, column: 15, scope: !100337)
+!100616 = !DILocation(line: 41, column: 36, scope: !100337)
+!100617 = !DILocalVariable(name: "I_E", scope: !100337, file: !100005, line: 41, type: !100032)
+!100618 = !DILocation(line: 41, column: 8, scope: !100337)
+!100619 = !DILocation(line: 42, column: 3, scope: !100337)
+!100620 = !DILocalVariable(name: "T_11_3", scope: !100337, file: !100005, line: 42, type: !100621)
 !100621 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<9>", file: !100348, line: 181, size: 16, flags: DIFlagTypePassByValue, elements: !100622, templateParams: !100640, identifier: "_ZTS7ap_uintILi9EE")
 !100622 = !{!100623, !100624, !100628, !100631, !100634}
 !100623 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100621, baseType: !100105)
@@ -5288,11 +5288,11 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !100638 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100639, size: 64)
 !100639 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100621)
 !100640 = !{!100131}
-!100641 = !DILocation(line: 41, column: 14, scope: !100337)
-!100642 = !DILocation(line: 41, column: 32, scope: !100337)
-!100643 = !DILocation(line: 41, column: 23, scope: !100337)
-!100644 = !DILocation(line: 42, column: 3, scope: !100337)
-!100645 = !DILocalVariable(name: "T_E", scope: !100337, file: !100005, line: 42, type: !100646)
+!100641 = !DILocation(line: 42, column: 14, scope: !100337)
+!100642 = !DILocation(line: 42, column: 32, scope: !100337)
+!100643 = !DILocation(line: 42, column: 23, scope: !100337)
+!100644 = !DILocation(line: 43, column: 3, scope: !100337)
+!100645 = !DILocalVariable(name: "T_E", scope: !100337, file: !100005, line: 43, type: !100646)
 !100646 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<3>", file: !100348, line: 181, size: 8, flags: DIFlagTypePassByValue, elements: !100647, templateParams: !100692, identifier: "_ZTS7ap_uintILi3EE")
 !100647 = !{!100648, !100676, !100680, !100683, !100686}
 !100648 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100646, baseType: !100649)
@@ -5340,11 +5340,11 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !100690 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100691, size: 64)
 !100691 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100646)
 !100692 = !{!100675}
-!100693 = !DILocation(line: 42, column: 14, scope: !100337)
-!100694 = !DILocation(line: 42, column: 29, scope: !100337)
-!100695 = !DILocation(line: 42, column: 20, scope: !100337)
-!100696 = !DILocation(line: 43, column: 3, scope: !100337)
-!100697 = !DILocalVariable(name: "B_13_3", scope: !100337, file: !100005, line: 43, type: !100698)
+!100693 = !DILocation(line: 43, column: 14, scope: !100337)
+!100694 = !DILocation(line: 43, column: 29, scope: !100337)
+!100695 = !DILocation(line: 43, column: 20, scope: !100337)
+!100696 = !DILocation(line: 44, column: 3, scope: !100337)
+!100697 = !DILocalVariable(name: "B_13_3", scope: !100337, file: !100005, line: 44, type: !100698)
 !100698 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<11>", file: !100348, line: 181, size: 16, flags: DIFlagTypePassByValue, elements: !100699, templateParams: !100717, identifier: "_ZTS7ap_uintILi11EE")
 !100699 = !{!100700, !100701, !100705, !100708, !100711}
 !100700 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100698, baseType: !100132)
@@ -5365,16 +5365,16 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !100715 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100716, size: 64)
 !100716 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100698)
 !100717 = !{!100158}
-!100718 = !DILocation(line: 43, column: 15, scope: !100337)
-!100719 = !DILocation(line: 43, column: 33, scope: !100337)
-!100720 = !DILocation(line: 43, column: 24, scope: !100337)
-!100721 = !DILocation(line: 44, column: 3, scope: !100337)
-!100722 = !DILocalVariable(name: "B_E", scope: !100337, file: !100005, line: 44, type: !100646)
-!100723 = !DILocation(line: 44, column: 14, scope: !100337)
-!100724 = !DILocation(line: 44, column: 29, scope: !100337)
-!100725 = !DILocation(line: 44, column: 20, scope: !100337)
-!100726 = !DILocation(line: 45, column: 3, scope: !100337)
-!100727 = !DILocalVariable(name: "E", scope: !100337, file: !100005, line: 45, type: !100728)
+!100718 = !DILocation(line: 44, column: 15, scope: !100337)
+!100719 = !DILocation(line: 44, column: 33, scope: !100337)
+!100720 = !DILocation(line: 44, column: 24, scope: !100337)
+!100721 = !DILocation(line: 45, column: 3, scope: !100337)
+!100722 = !DILocalVariable(name: "B_E", scope: !100337, file: !100005, line: 45, type: !100646)
+!100723 = !DILocation(line: 45, column: 14, scope: !100337)
+!100724 = !DILocation(line: 45, column: 29, scope: !100337)
+!100725 = !DILocation(line: 45, column: 20, scope: !100337)
+!100726 = !DILocation(line: 46, column: 3, scope: !100337)
+!100727 = !DILocalVariable(name: "E", scope: !100337, file: !100005, line: 46, type: !100728)
 !100728 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<6>", file: !100348, line: 181, size: 8, flags: DIFlagTypePassByValue, elements: !100729, templateParams: !100747, identifier: "_ZTS7ap_uintILi6EE")
 !100729 = !{!100730, !100731, !100735, !100738, !100741}
 !100730 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100728, baseType: !100275)
@@ -5395,10 +5395,10 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !100745 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100746, size: 64)
 !100746 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100728)
 !100747 = !{!100301}
-!100748 = !DILocation(line: 45, column: 14, scope: !100337)
-!100749 = !DILocation(line: 45, column: 18, scope: !100337)
-!100750 = !DILocation(line: 46, column: 3, scope: !100337)
-!100751 = !DILocalVariable(name: "T_13_0", scope: !100337, file: !100005, line: 46, type: !100752)
+!100748 = !DILocation(line: 46, column: 14, scope: !100337)
+!100749 = !DILocation(line: 46, column: 18, scope: !100337)
+!100750 = !DILocation(line: 47, column: 3, scope: !100337)
+!100751 = !DILocalVariable(name: "T_13_0", scope: !100337, file: !100005, line: 47, type: !100752)
 !100752 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<14>", file: !100348, line: 181, size: 16, flags: DIFlagTypePassByValue, elements: !100753, templateParams: !100798, identifier: "_ZTS7ap_uintILi14EE")
 !100753 = !{!100754, !100782, !100786, !100789, !100792}
 !100754 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100752, baseType: !100755)
@@ -5446,84 +5446,84 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !100796 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100797, size: 64)
 !100797 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100752)
 !100798 = !{!100781}
-!100799 = !DILocation(line: 46, column: 15, scope: !100337)
-!100800 = !DILocation(line: 46, column: 24, scope: !100337)
-!100801 = !DILocation(line: 47, column: 3, scope: !100337)
-!100802 = !DILocalVariable(name: "B_13_0", scope: !100337, file: !100005, line: 47, type: !100752)
-!100803 = !DILocation(line: 47, column: 15, scope: !100337)
-!100804 = !DILocation(line: 47, column: 24, scope: !100337)
-!100805 = !DILocalVariable(name: "L_carry_out", scope: !100337, file: !100005, line: 48, type: !100032)
-!100806 = !DILocation(line: 48, column: 8, scope: !100337)
-!100807 = !DILocation(line: 50, column: 7, scope: !100337)
-!100808 = !DILocation(line: 51, column: 9, scope: !100809)
-!100809 = distinct !DILexicalBlock(scope: !100810, file: !100005, line: 50, column: 13)
-!100810 = distinct !DILexicalBlock(scope: !100337, file: !100005, line: 50, column: 7)
-!100811 = !DILocation(line: 51, column: 7, scope: !100809)
-!100812 = !DILocation(line: 51, column: 5, scope: !100809)
-!100813 = !DILocation(line: 52, column: 14, scope: !100809)
-!100814 = !DILocation(line: 52, column: 15, scope: !100809)
-!100815 = !DILocation(line: 52, column: 23, scope: !100809)
-!100816 = !DILocation(line: 52, column: 21, scope: !100809)
-!100817 = !DILocation(line: 52, column: 12, scope: !100809)
-!100818 = !DILocation(line: 52, column: 5, scope: !100809)
-!100819 = !DILocation(line: 53, column: 14, scope: !100809)
-!100820 = !DILocation(line: 53, column: 15, scope: !100809)
-!100821 = !DILocation(line: 53, column: 23, scope: !100809)
-!100822 = !DILocation(line: 53, column: 21, scope: !100809)
-!100823 = !DILocation(line: 53, column: 12, scope: !100809)
-!100824 = !DILocation(line: 53, column: 5, scope: !100809)
-!100825 = !DILocation(line: 54, column: 5, scope: !100809)
-!100826 = !DILocalVariable(name: "T_11_0", scope: !100809, file: !100005, line: 54, type: !100400)
-!100827 = !DILocation(line: 54, column: 17, scope: !100809)
-!100828 = !DILocation(line: 54, column: 26, scope: !100809)
-!100829 = !DILocation(line: 54, column: 33, scope: !100809)
-!100830 = !DILocation(line: 55, column: 5, scope: !100809)
-!100831 = !DILocalVariable(name: "B_11_0", scope: !100809, file: !100005, line: 55, type: !100400)
-!100832 = !DILocation(line: 55, column: 17, scope: !100809)
-!100833 = !DILocation(line: 55, column: 26, scope: !100809)
-!100834 = !DILocation(line: 55, column: 33, scope: !100809)
-!100835 = !DILocation(line: 56, column: 20, scope: !100809)
-!100836 = !DILocation(line: 56, column: 29, scope: !100809)
-!100837 = !DILocation(line: 56, column: 27, scope: !100809)
-!100838 = !DILocation(line: 57, column: 3, scope: !100810)
-!100839 = !DILocation(line: 57, column: 3, scope: !100809)
-!100840 = !DILocation(line: 58, column: 9, scope: !100841)
-!100841 = distinct !DILexicalBlock(scope: !100810, file: !100005, line: 57, column: 10)
-!100842 = !DILocation(line: 58, column: 10, scope: !100841)
-!100843 = !DILocation(line: 58, column: 15, scope: !100841)
-!100844 = !DILocation(line: 58, column: 13, scope: !100841)
-!100845 = !DILocation(line: 58, column: 7, scope: !100841)
-!100846 = !DILocation(line: 58, column: 5, scope: !100841)
-!100847 = !DILocation(line: 59, column: 14, scope: !100841)
-!100848 = !DILocation(line: 59, column: 15, scope: !100841)
-!100849 = !DILocation(line: 59, column: 22, scope: !100841)
-!100850 = !DILocation(line: 59, column: 12, scope: !100841)
-!100851 = !DILocation(line: 59, column: 5, scope: !100841)
-!100852 = !DILocation(line: 60, column: 14, scope: !100841)
-!100853 = !DILocation(line: 60, column: 15, scope: !100841)
-!100854 = !DILocation(line: 60, column: 22, scope: !100841)
-!100855 = !DILocation(line: 60, column: 12, scope: !100841)
-!100856 = !DILocation(line: 60, column: 5, scope: !100841)
-!100857 = !DILocation(line: 61, column: 5, scope: !100841)
-!100858 = !DILocalVariable(name: "T_11_3_only", scope: !100841, file: !100005, line: 61, type: !100400)
-!100859 = !DILocation(line: 61, column: 17, scope: !100841)
-!100860 = !DILocation(line: 61, column: 31, scope: !100841)
-!100861 = !DILocation(line: 61, column: 32, scope: !100841)
-!100862 = !DILocation(line: 61, column: 39, scope: !100841)
-!100863 = !DILocation(line: 61, column: 45, scope: !100841)
-!100864 = !DILocation(line: 62, column: 5, scope: !100841)
-!100865 = !DILocalVariable(name: "B_11_3_only", scope: !100841, file: !100005, line: 62, type: !100400)
-!100866 = !DILocation(line: 62, column: 17, scope: !100841)
-!100867 = !DILocation(line: 62, column: 31, scope: !100841)
-!100868 = !DILocation(line: 62, column: 32, scope: !100841)
-!100869 = !DILocation(line: 62, column: 39, scope: !100841)
-!100870 = !DILocation(line: 62, column: 45, scope: !100841)
-!100871 = !DILocation(line: 63, column: 20, scope: !100841)
-!100872 = !DILocation(line: 63, column: 34, scope: !100841)
-!100873 = !DILocation(line: 63, column: 32, scope: !100841)
-!100874 = !DILocation(line: 64, column: 3, scope: !100810)
-!100875 = !DILocation(line: 65, column: 3, scope: !100337)
-!100876 = !DILocalVariable(name: "B_13_12", scope: !100337, file: !100005, line: 65, type: !100877)
+!100799 = !DILocation(line: 47, column: 15, scope: !100337)
+!100800 = !DILocation(line: 47, column: 24, scope: !100337)
+!100801 = !DILocation(line: 48, column: 3, scope: !100337)
+!100802 = !DILocalVariable(name: "B_13_0", scope: !100337, file: !100005, line: 48, type: !100752)
+!100803 = !DILocation(line: 48, column: 15, scope: !100337)
+!100804 = !DILocation(line: 48, column: 24, scope: !100337)
+!100805 = !DILocalVariable(name: "L_carry_out", scope: !100337, file: !100005, line: 49, type: !100032)
+!100806 = !DILocation(line: 49, column: 8, scope: !100337)
+!100807 = !DILocation(line: 51, column: 7, scope: !100337)
+!100808 = !DILocation(line: 52, column: 9, scope: !100809)
+!100809 = distinct !DILexicalBlock(scope: !100810, file: !100005, line: 51, column: 13)
+!100810 = distinct !DILexicalBlock(scope: !100337, file: !100005, line: 51, column: 7)
+!100811 = !DILocation(line: 52, column: 7, scope: !100809)
+!100812 = !DILocation(line: 52, column: 5, scope: !100809)
+!100813 = !DILocation(line: 53, column: 14, scope: !100809)
+!100814 = !DILocation(line: 53, column: 15, scope: !100809)
+!100815 = !DILocation(line: 53, column: 23, scope: !100809)
+!100816 = !DILocation(line: 53, column: 21, scope: !100809)
+!100817 = !DILocation(line: 53, column: 12, scope: !100809)
+!100818 = !DILocation(line: 53, column: 5, scope: !100809)
+!100819 = !DILocation(line: 54, column: 14, scope: !100809)
+!100820 = !DILocation(line: 54, column: 15, scope: !100809)
+!100821 = !DILocation(line: 54, column: 23, scope: !100809)
+!100822 = !DILocation(line: 54, column: 21, scope: !100809)
+!100823 = !DILocation(line: 54, column: 12, scope: !100809)
+!100824 = !DILocation(line: 54, column: 5, scope: !100809)
+!100825 = !DILocation(line: 55, column: 5, scope: !100809)
+!100826 = !DILocalVariable(name: "T_11_0", scope: !100809, file: !100005, line: 55, type: !100400)
+!100827 = !DILocation(line: 55, column: 17, scope: !100809)
+!100828 = !DILocation(line: 55, column: 26, scope: !100809)
+!100829 = !DILocation(line: 55, column: 33, scope: !100809)
+!100830 = !DILocation(line: 56, column: 5, scope: !100809)
+!100831 = !DILocalVariable(name: "B_11_0", scope: !100809, file: !100005, line: 56, type: !100400)
+!100832 = !DILocation(line: 56, column: 17, scope: !100809)
+!100833 = !DILocation(line: 56, column: 26, scope: !100809)
+!100834 = !DILocation(line: 56, column: 33, scope: !100809)
+!100835 = !DILocation(line: 57, column: 20, scope: !100809)
+!100836 = !DILocation(line: 57, column: 29, scope: !100809)
+!100837 = !DILocation(line: 57, column: 27, scope: !100809)
+!100838 = !DILocation(line: 58, column: 3, scope: !100810)
+!100839 = !DILocation(line: 58, column: 3, scope: !100809)
+!100840 = !DILocation(line: 59, column: 9, scope: !100841)
+!100841 = distinct !DILexicalBlock(scope: !100810, file: !100005, line: 58, column: 10)
+!100842 = !DILocation(line: 59, column: 10, scope: !100841)
+!100843 = !DILocation(line: 59, column: 15, scope: !100841)
+!100844 = !DILocation(line: 59, column: 13, scope: !100841)
+!100845 = !DILocation(line: 59, column: 7, scope: !100841)
+!100846 = !DILocation(line: 59, column: 5, scope: !100841)
+!100847 = !DILocation(line: 60, column: 14, scope: !100841)
+!100848 = !DILocation(line: 60, column: 15, scope: !100841)
+!100849 = !DILocation(line: 60, column: 22, scope: !100841)
+!100850 = !DILocation(line: 60, column: 12, scope: !100841)
+!100851 = !DILocation(line: 60, column: 5, scope: !100841)
+!100852 = !DILocation(line: 61, column: 14, scope: !100841)
+!100853 = !DILocation(line: 61, column: 15, scope: !100841)
+!100854 = !DILocation(line: 61, column: 22, scope: !100841)
+!100855 = !DILocation(line: 61, column: 12, scope: !100841)
+!100856 = !DILocation(line: 61, column: 5, scope: !100841)
+!100857 = !DILocation(line: 62, column: 5, scope: !100841)
+!100858 = !DILocalVariable(name: "T_11_3_only", scope: !100841, file: !100005, line: 62, type: !100400)
+!100859 = !DILocation(line: 62, column: 17, scope: !100841)
+!100860 = !DILocation(line: 62, column: 31, scope: !100841)
+!100861 = !DILocation(line: 62, column: 32, scope: !100841)
+!100862 = !DILocation(line: 62, column: 39, scope: !100841)
+!100863 = !DILocation(line: 62, column: 45, scope: !100841)
+!100864 = !DILocation(line: 63, column: 5, scope: !100841)
+!100865 = !DILocalVariable(name: "B_11_3_only", scope: !100841, file: !100005, line: 63, type: !100400)
+!100866 = !DILocation(line: 63, column: 17, scope: !100841)
+!100867 = !DILocation(line: 63, column: 31, scope: !100841)
+!100868 = !DILocation(line: 63, column: 32, scope: !100841)
+!100869 = !DILocation(line: 63, column: 39, scope: !100841)
+!100870 = !DILocation(line: 63, column: 45, scope: !100841)
+!100871 = !DILocation(line: 64, column: 20, scope: !100841)
+!100872 = !DILocation(line: 64, column: 34, scope: !100841)
+!100873 = !DILocation(line: 64, column: 32, scope: !100841)
+!100874 = !DILocation(line: 65, column: 3, scope: !100810)
+!100875 = !DILocation(line: 66, column: 3, scope: !100337)
+!100876 = !DILocalVariable(name: "B_13_12", scope: !100337, file: !100005, line: 66, type: !100877)
 !100877 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<2>", file: !100348, line: 181, size: 8, flags: DIFlagTypePassByValue, elements: !100878, templateParams: !100923, identifier: "_ZTS7ap_uintILi2EE")
 !100878 = !{!100879, !100907, !100911, !100914, !100917}
 !100879 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100877, baseType: !100880)
@@ -5571,64 +5571,64 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !100921 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100922, size: 64)
 !100922 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100877)
 !100923 = !{!100906}
-!100924 = !DILocation(line: 65, column: 14, scope: !100337)
-!100925 = !DILocation(line: 65, column: 24, scope: !100337)
-!100926 = !DILocation(line: 65, column: 25, scope: !100337)
-!100927 = !DILocation(line: 65, column: 32, scope: !100337)
-!100928 = !DILocation(line: 65, column: 39, scope: !100337)
-!100929 = !DILocation(line: 66, column: 3, scope: !100337)
-!100930 = !DILocalVariable(name: "T_13_12", scope: !100337, file: !100005, line: 66, type: !100877)
-!100931 = !DILocation(line: 66, column: 14, scope: !100337)
-!100932 = !DILocation(line: 66, column: 24, scope: !100337)
-!100933 = !DILocation(line: 66, column: 35, scope: !100337)
-!100934 = !DILocation(line: 66, column: 32, scope: !100337)
-!100935 = !DILocation(line: 66, column: 59, scope: !100337)
-!100936 = !DILocation(line: 66, column: 56, scope: !100337)
-!100937 = !DILocation(line: 67, column: 3, scope: !100337)
-!100938 = !DILocation(line: 67, column: 11, scope: !100337)
-!100939 = !DILocation(line: 69, column: 3, scope: !100337)
-!100940 = !DILocation(line: 69, column: 10, scope: !100337)
-!100941 = !DILocation(line: 70, column: 12, scope: !100337)
-!100942 = !DILocation(line: 70, column: 13, scope: !100337)
-!100943 = !DILocation(line: 70, column: 22, scope: !100337)
-!100944 = !DILocation(line: 70, column: 29, scope: !100337)
-!100945 = !DILocation(line: 70, column: 20, scope: !100337)
-!100946 = !DILocation(line: 70, column: 10, scope: !100337)
-!100947 = !DILocation(line: 70, column: 3, scope: !100337)
-!100948 = !DILocation(line: 72, column: 3, scope: !100337)
-!100949 = !DILocalVariable(name: "A3", scope: !100337, file: !100005, line: 72, type: !100646)
-!100950 = !DILocation(line: 72, column: 14, scope: !100337)
-!100951 = !DILocation(line: 72, column: 19, scope: !100337)
-!100952 = !DILocation(line: 72, column: 20, scope: !100337)
-!100953 = !DILocation(line: 72, column: 21, scope: !100337)
-!100954 = !DILocation(line: 72, column: 29, scope: !100337)
-!100955 = !DILocation(line: 72, column: 30, scope: !100337)
-!100956 = !DILocation(line: 72, column: 32, scope: !100337)
-!100957 = !DILocation(line: 72, column: 26, scope: !100337)
-!100958 = !DILocation(line: 72, column: 39, scope: !100337)
-!100959 = !DILocation(line: 73, column: 3, scope: !100337)
-!100960 = !DILocalVariable(name: "T3", scope: !100337, file: !100005, line: 73, type: !100646)
-!100961 = !DILocation(line: 73, column: 14, scope: !100337)
-!100962 = !DILocation(line: 73, column: 19, scope: !100337)
-!100963 = !DILocation(line: 73, column: 20, scope: !100337)
-!100964 = !DILocation(line: 73, column: 21, scope: !100337)
-!100965 = !DILocation(line: 73, column: 28, scope: !100337)
-!100966 = !DILocation(line: 73, column: 35, scope: !100337)
-!100967 = !DILocation(line: 74, column: 3, scope: !100337)
-!100968 = !DILocalVariable(name: "B3", scope: !100337, file: !100005, line: 74, type: !100646)
-!100969 = !DILocation(line: 74, column: 14, scope: !100337)
-!100970 = !DILocation(line: 74, column: 19, scope: !100337)
-!100971 = !DILocation(line: 74, column: 20, scope: !100337)
-!100972 = !DILocation(line: 74, column: 21, scope: !100337)
-!100973 = !DILocation(line: 74, column: 28, scope: !100337)
-!100974 = !DILocation(line: 74, column: 35, scope: !100337)
-!100975 = !DILocation(line: 75, column: 3, scope: !100337)
-!100976 = !DILocalVariable(name: "R", scope: !100337, file: !100005, line: 75, type: !100646)
-!100977 = !DILocation(line: 75, column: 14, scope: !100337)
-!100978 = !DILocation(line: 75, column: 18, scope: !100337)
-!100979 = !DILocation(line: 75, column: 21, scope: !100337)
-!100980 = !DILocation(line: 77, column: 3, scope: !100337)
-!100981 = !DILocalVariable(name: "c_t", scope: !100337, file: !100005, line: 77, type: !100982)
+!100924 = !DILocation(line: 66, column: 14, scope: !100337)
+!100925 = !DILocation(line: 66, column: 24, scope: !100337)
+!100926 = !DILocation(line: 66, column: 25, scope: !100337)
+!100927 = !DILocation(line: 66, column: 32, scope: !100337)
+!100928 = !DILocation(line: 66, column: 39, scope: !100337)
+!100929 = !DILocation(line: 67, column: 3, scope: !100337)
+!100930 = !DILocalVariable(name: "T_13_12", scope: !100337, file: !100005, line: 67, type: !100877)
+!100931 = !DILocation(line: 67, column: 14, scope: !100337)
+!100932 = !DILocation(line: 67, column: 24, scope: !100337)
+!100933 = !DILocation(line: 67, column: 35, scope: !100337)
+!100934 = !DILocation(line: 67, column: 32, scope: !100337)
+!100935 = !DILocation(line: 67, column: 59, scope: !100337)
+!100936 = !DILocation(line: 67, column: 56, scope: !100337)
+!100937 = !DILocation(line: 68, column: 3, scope: !100337)
+!100938 = !DILocation(line: 68, column: 11, scope: !100337)
+!100939 = !DILocation(line: 70, column: 3, scope: !100337)
+!100940 = !DILocation(line: 70, column: 10, scope: !100337)
+!100941 = !DILocation(line: 71, column: 12, scope: !100337)
+!100942 = !DILocation(line: 71, column: 13, scope: !100337)
+!100943 = !DILocation(line: 71, column: 22, scope: !100337)
+!100944 = !DILocation(line: 71, column: 29, scope: !100337)
+!100945 = !DILocation(line: 71, column: 20, scope: !100337)
+!100946 = !DILocation(line: 71, column: 10, scope: !100337)
+!100947 = !DILocation(line: 71, column: 3, scope: !100337)
+!100948 = !DILocation(line: 73, column: 3, scope: !100337)
+!100949 = !DILocalVariable(name: "A3", scope: !100337, file: !100005, line: 73, type: !100646)
+!100950 = !DILocation(line: 73, column: 14, scope: !100337)
+!100951 = !DILocation(line: 73, column: 19, scope: !100337)
+!100952 = !DILocation(line: 73, column: 20, scope: !100337)
+!100953 = !DILocation(line: 73, column: 21, scope: !100337)
+!100954 = !DILocation(line: 73, column: 29, scope: !100337)
+!100955 = !DILocation(line: 73, column: 30, scope: !100337)
+!100956 = !DILocation(line: 73, column: 32, scope: !100337)
+!100957 = !DILocation(line: 73, column: 26, scope: !100337)
+!100958 = !DILocation(line: 73, column: 39, scope: !100337)
+!100959 = !DILocation(line: 74, column: 3, scope: !100337)
+!100960 = !DILocalVariable(name: "T3", scope: !100337, file: !100005, line: 74, type: !100646)
+!100961 = !DILocation(line: 74, column: 14, scope: !100337)
+!100962 = !DILocation(line: 74, column: 19, scope: !100337)
+!100963 = !DILocation(line: 74, column: 20, scope: !100337)
+!100964 = !DILocation(line: 74, column: 21, scope: !100337)
+!100965 = !DILocation(line: 74, column: 28, scope: !100337)
+!100966 = !DILocation(line: 74, column: 35, scope: !100337)
+!100967 = !DILocation(line: 75, column: 3, scope: !100337)
+!100968 = !DILocalVariable(name: "B3", scope: !100337, file: !100005, line: 75, type: !100646)
+!100969 = !DILocation(line: 75, column: 14, scope: !100337)
+!100970 = !DILocation(line: 75, column: 19, scope: !100337)
+!100971 = !DILocation(line: 75, column: 20, scope: !100337)
+!100972 = !DILocation(line: 75, column: 21, scope: !100337)
+!100973 = !DILocation(line: 75, column: 28, scope: !100337)
+!100974 = !DILocation(line: 75, column: 35, scope: !100337)
+!100975 = !DILocation(line: 76, column: 3, scope: !100337)
+!100976 = !DILocalVariable(name: "R", scope: !100337, file: !100005, line: 76, type: !100646)
+!100977 = !DILocation(line: 76, column: 14, scope: !100337)
+!100978 = !DILocation(line: 76, column: 18, scope: !100337)
+!100979 = !DILocation(line: 76, column: 21, scope: !100337)
+!100980 = !DILocation(line: 78, column: 3, scope: !100337)
+!100981 = !DILocalVariable(name: "c_t", scope: !100337, file: !100005, line: 78, type: !100982)
 !100982 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_int<2>", file: !100348, line: 18, size: 8, flags: DIFlagTypePassByValue, elements: !100983, templateParams: !100923, identifier: "_ZTS6ap_intILi2EE")
 !100983 = !{!100984, !101010, !101014, !101017, !101020}
 !100984 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100982, baseType: !100985)
@@ -5673,147 +5673,147 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !101023 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100982, size: 64)
 !101024 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !101025, size: 64)
 !101025 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100982)
-!101026 = !DILocation(line: 77, column: 13, scope: !100337)
-!101027 = !DILocation(line: 77, column: 19, scope: !100337)
-!101028 = !DILocation(line: 78, column: 3, scope: !100337)
-!101029 = !DILocalVariable(name: "c_b", scope: !100337, file: !100005, line: 78, type: !100982)
-!101030 = !DILocation(line: 78, column: 13, scope: !100337)
-!101031 = !DILocation(line: 78, column: 19, scope: !100337)
-!101032 = !DILocation(line: 80, column: 8, scope: !101033)
-!101033 = distinct !DILexicalBlock(scope: !100337, file: !100005, line: 80, column: 7)
-!101034 = !DILocation(line: 80, column: 13, scope: !101033)
-!101035 = !DILocation(line: 80, column: 11, scope: !101033)
-!101036 = !DILocation(line: 80, column: 16, scope: !101033)
-!101037 = !DILocation(line: 80, column: 21, scope: !101033)
-!101038 = !DILocation(line: 80, column: 26, scope: !101033)
-!101039 = !DILocation(line: 80, column: 24, scope: !101033)
-!101040 = !DILocation(line: 80, column: 7, scope: !100337)
-!101041 = !DILocation(line: 81, column: 11, scope: !101042)
-!101042 = distinct !DILexicalBlock(scope: !101033, file: !100005, line: 80, column: 30)
-!101043 = !DILocation(line: 81, column: 9, scope: !101042)
-!101044 = !DILocation(line: 81, column: 5, scope: !101042)
-!101045 = !DILocation(line: 82, column: 3, scope: !101042)
-!101046 = !DILocation(line: 82, column: 16, scope: !101047)
-!101047 = distinct !DILexicalBlock(scope: !101033, file: !100005, line: 82, column: 14)
-!101048 = !DILocation(line: 82, column: 21, scope: !101047)
-!101049 = !DILocation(line: 82, column: 19, scope: !101047)
-!101050 = !DILocation(line: 82, column: 24, scope: !101047)
-!101051 = !DILocation(line: 82, column: 28, scope: !101047)
-!101052 = !DILocation(line: 82, column: 33, scope: !101047)
-!101053 = !DILocation(line: 82, column: 31, scope: !101047)
-!101054 = !DILocation(line: 82, column: 14, scope: !101033)
-!101055 = !DILocation(line: 83, column: 11, scope: !101056)
-!101056 = distinct !DILexicalBlock(scope: !101047, file: !100005, line: 82, column: 37)
-!101057 = !DILocation(line: 83, column: 9, scope: !101056)
-!101058 = !DILocation(line: 83, column: 5, scope: !101056)
-!101059 = !DILocation(line: 84, column: 3, scope: !101056)
-!101060 = !DILocation(line: 85, column: 8, scope: !101061)
-!101061 = distinct !DILexicalBlock(scope: !100337, file: !100005, line: 85, column: 7)
-!101062 = !DILocation(line: 85, column: 13, scope: !101061)
-!101063 = !DILocation(line: 85, column: 11, scope: !101061)
-!101064 = !DILocation(line: 85, column: 16, scope: !101061)
-!101065 = !DILocation(line: 85, column: 21, scope: !101061)
-!101066 = !DILocation(line: 85, column: 26, scope: !101061)
-!101067 = !DILocation(line: 85, column: 24, scope: !101061)
-!101068 = !DILocation(line: 85, column: 7, scope: !100337)
-!101069 = !DILocation(line: 86, column: 11, scope: !101070)
-!101070 = distinct !DILexicalBlock(scope: !101061, file: !100005, line: 85, column: 30)
-!101071 = !DILocation(line: 86, column: 9, scope: !101070)
-!101072 = !DILocation(line: 86, column: 5, scope: !101070)
-!101073 = !DILocation(line: 87, column: 3, scope: !101070)
-!101074 = !DILocation(line: 87, column: 16, scope: !101075)
-!101075 = distinct !DILexicalBlock(scope: !101061, file: !100005, line: 87, column: 14)
-!101076 = !DILocation(line: 87, column: 21, scope: !101075)
-!101077 = !DILocation(line: 87, column: 19, scope: !101075)
-!101078 = !DILocation(line: 87, column: 24, scope: !101075)
-!101079 = !DILocation(line: 87, column: 28, scope: !101075)
-!101080 = !DILocation(line: 87, column: 33, scope: !101075)
-!101081 = !DILocation(line: 87, column: 31, scope: !101075)
-!101082 = !DILocation(line: 87, column: 14, scope: !101061)
-!101083 = !DILocation(line: 88, column: 11, scope: !101084)
-!101084 = distinct !DILexicalBlock(scope: !101075, file: !100005, line: 87, column: 37)
-!101085 = !DILocation(line: 88, column: 9, scope: !101084)
-!101086 = !DILocation(line: 88, column: 5, scope: !101084)
-!101087 = !DILocation(line: 89, column: 3, scope: !101084)
-!101088 = !DILocation(line: 90, column: 15, scope: !100337)
-!101089 = !DILocation(line: 90, column: 23, scope: !100337)
-!101090 = !DILocation(line: 90, column: 24, scope: !100337)
-!101091 = !DILocation(line: 90, column: 26, scope: !100337)
-!101092 = !DILocation(line: 90, column: 20, scope: !100337)
-!101093 = !DILocalVariable(name: "a_top", scope: !100337, file: !100005, line: 90, type: !100004)
-!101094 = !DILocation(line: 90, column: 7, scope: !100337)
-!101095 = !DILocation(line: 91, column: 13, scope: !100337)
-!101096 = !DILocation(line: 91, column: 23, scope: !100337)
-!101097 = !DILocation(line: 91, column: 21, scope: !100337)
-!101098 = !DILocation(line: 91, column: 14, scope: !100337)
-!101099 = !DILocation(line: 91, column: 31, scope: !100337)
-!101100 = !DILocation(line: 91, column: 32, scope: !100337)
-!101101 = !DILocation(line: 91, column: 34, scope: !100337)
-!101102 = !DILocation(line: 91, column: 28, scope: !100337)
-!101103 = !DILocation(line: 91, column: 50, scope: !100337)
-!101104 = !DILocation(line: 91, column: 57, scope: !100337)
-!101105 = !DILocation(line: 91, column: 49, scope: !100337)
-!101106 = !DILocation(line: 91, column: 70, scope: !100337)
-!101107 = !DILocation(line: 91, column: 67, scope: !100337)
-!101108 = !DILocation(line: 91, column: 41, scope: !100337)
-!101109 = !DILocalVariable(name: "top", scope: !100337, file: !100005, line: 91, type: !100004)
-!101110 = !DILocation(line: 91, column: 7, scope: !100337)
-!101111 = !DILocation(line: 92, column: 14, scope: !100337)
-!101112 = !DILocation(line: 92, column: 24, scope: !100337)
-!101113 = !DILocation(line: 92, column: 22, scope: !100337)
-!101114 = !DILocation(line: 92, column: 15, scope: !100337)
-!101115 = !DILocation(line: 92, column: 32, scope: !100337)
-!101116 = !DILocation(line: 92, column: 33, scope: !100337)
-!101117 = !DILocation(line: 92, column: 35, scope: !100337)
-!101118 = !DILocation(line: 92, column: 29, scope: !100337)
-!101119 = !DILocation(line: 92, column: 51, scope: !100337)
-!101120 = !DILocation(line: 92, column: 58, scope: !100337)
-!101121 = !DILocation(line: 92, column: 50, scope: !100337)
-!101122 = !DILocation(line: 92, column: 71, scope: !100337)
-!101123 = !DILocation(line: 92, column: 68, scope: !100337)
-!101124 = !DILocation(line: 92, column: 42, scope: !100337)
-!101125 = !DILocalVariable(name: "base", scope: !100337, file: !100005, line: 92, type: !100004)
-!101126 = !DILocation(line: 92, column: 7, scope: !100337)
-!101127 = !DILocalVariable(name: "c", scope: !100337, file: !100005, line: 94, type: !100340)
-!101128 = !DILocation(line: 94, column: 7, scope: !100337)
-!101129 = !DILocation(line: 95, column: 5, scope: !100337)
-!101130 = !DILocation(line: 95, column: 9, scope: !100337)
-!101131 = !DILocation(line: 96, column: 5, scope: !100337)
-!101132 = !DILocation(line: 96, column: 10, scope: !100337)
-!101133 = !DILocation(line: 97, column: 12, scope: !100337)
-!101134 = !DILocation(line: 97, column: 5, scope: !100337)
-!101135 = !DILocation(line: 97, column: 10, scope: !100337)
-!101136 = !DILocation(line: 98, column: 5, scope: !100337)
-!101137 = !DILocation(line: 98, column: 11, scope: !100337)
-!101138 = !DILocation(line: 99, column: 5, scope: !100337)
-!101139 = !DILocation(line: 99, column: 11, scope: !100337)
-!101140 = !DILocation(line: 100, column: 5, scope: !100337)
-!101141 = !DILocation(line: 100, column: 12, scope: !100337)
-!101142 = !DILocation(line: 102, column: 1, scope: !100337)
+!101026 = !DILocation(line: 78, column: 13, scope: !100337)
+!101027 = !DILocation(line: 78, column: 19, scope: !100337)
+!101028 = !DILocation(line: 79, column: 3, scope: !100337)
+!101029 = !DILocalVariable(name: "c_b", scope: !100337, file: !100005, line: 79, type: !100982)
+!101030 = !DILocation(line: 79, column: 13, scope: !100337)
+!101031 = !DILocation(line: 79, column: 19, scope: !100337)
+!101032 = !DILocation(line: 81, column: 8, scope: !101033)
+!101033 = distinct !DILexicalBlock(scope: !100337, file: !100005, line: 81, column: 7)
+!101034 = !DILocation(line: 81, column: 13, scope: !101033)
+!101035 = !DILocation(line: 81, column: 11, scope: !101033)
+!101036 = !DILocation(line: 81, column: 16, scope: !101033)
+!101037 = !DILocation(line: 81, column: 21, scope: !101033)
+!101038 = !DILocation(line: 81, column: 26, scope: !101033)
+!101039 = !DILocation(line: 81, column: 24, scope: !101033)
+!101040 = !DILocation(line: 81, column: 7, scope: !100337)
+!101041 = !DILocation(line: 82, column: 11, scope: !101042)
+!101042 = distinct !DILexicalBlock(scope: !101033, file: !100005, line: 81, column: 30)
+!101043 = !DILocation(line: 82, column: 9, scope: !101042)
+!101044 = !DILocation(line: 82, column: 5, scope: !101042)
+!101045 = !DILocation(line: 83, column: 3, scope: !101042)
+!101046 = !DILocation(line: 83, column: 16, scope: !101047)
+!101047 = distinct !DILexicalBlock(scope: !101033, file: !100005, line: 83, column: 14)
+!101048 = !DILocation(line: 83, column: 21, scope: !101047)
+!101049 = !DILocation(line: 83, column: 19, scope: !101047)
+!101050 = !DILocation(line: 83, column: 24, scope: !101047)
+!101051 = !DILocation(line: 83, column: 28, scope: !101047)
+!101052 = !DILocation(line: 83, column: 33, scope: !101047)
+!101053 = !DILocation(line: 83, column: 31, scope: !101047)
+!101054 = !DILocation(line: 83, column: 14, scope: !101033)
+!101055 = !DILocation(line: 84, column: 11, scope: !101056)
+!101056 = distinct !DILexicalBlock(scope: !101047, file: !100005, line: 83, column: 37)
+!101057 = !DILocation(line: 84, column: 9, scope: !101056)
+!101058 = !DILocation(line: 84, column: 5, scope: !101056)
+!101059 = !DILocation(line: 85, column: 3, scope: !101056)
+!101060 = !DILocation(line: 86, column: 8, scope: !101061)
+!101061 = distinct !DILexicalBlock(scope: !100337, file: !100005, line: 86, column: 7)
+!101062 = !DILocation(line: 86, column: 13, scope: !101061)
+!101063 = !DILocation(line: 86, column: 11, scope: !101061)
+!101064 = !DILocation(line: 86, column: 16, scope: !101061)
+!101065 = !DILocation(line: 86, column: 21, scope: !101061)
+!101066 = !DILocation(line: 86, column: 26, scope: !101061)
+!101067 = !DILocation(line: 86, column: 24, scope: !101061)
+!101068 = !DILocation(line: 86, column: 7, scope: !100337)
+!101069 = !DILocation(line: 87, column: 11, scope: !101070)
+!101070 = distinct !DILexicalBlock(scope: !101061, file: !100005, line: 86, column: 30)
+!101071 = !DILocation(line: 87, column: 9, scope: !101070)
+!101072 = !DILocation(line: 87, column: 5, scope: !101070)
+!101073 = !DILocation(line: 88, column: 3, scope: !101070)
+!101074 = !DILocation(line: 88, column: 16, scope: !101075)
+!101075 = distinct !DILexicalBlock(scope: !101061, file: !100005, line: 88, column: 14)
+!101076 = !DILocation(line: 88, column: 21, scope: !101075)
+!101077 = !DILocation(line: 88, column: 19, scope: !101075)
+!101078 = !DILocation(line: 88, column: 24, scope: !101075)
+!101079 = !DILocation(line: 88, column: 28, scope: !101075)
+!101080 = !DILocation(line: 88, column: 33, scope: !101075)
+!101081 = !DILocation(line: 88, column: 31, scope: !101075)
+!101082 = !DILocation(line: 88, column: 14, scope: !101061)
+!101083 = !DILocation(line: 89, column: 11, scope: !101084)
+!101084 = distinct !DILexicalBlock(scope: !101075, file: !100005, line: 88, column: 37)
+!101085 = !DILocation(line: 89, column: 9, scope: !101084)
+!101086 = !DILocation(line: 89, column: 5, scope: !101084)
+!101087 = !DILocation(line: 90, column: 3, scope: !101084)
+!101088 = !DILocation(line: 91, column: 15, scope: !100337)
+!101089 = !DILocation(line: 91, column: 23, scope: !100337)
+!101090 = !DILocation(line: 91, column: 24, scope: !100337)
+!101091 = !DILocation(line: 91, column: 26, scope: !100337)
+!101092 = !DILocation(line: 91, column: 20, scope: !100337)
+!101093 = !DILocalVariable(name: "a_top", scope: !100337, file: !100005, line: 91, type: !100004)
+!101094 = !DILocation(line: 91, column: 7, scope: !100337)
+!101095 = !DILocation(line: 92, column: 13, scope: !100337)
+!101096 = !DILocation(line: 92, column: 23, scope: !100337)
+!101097 = !DILocation(line: 92, column: 21, scope: !100337)
+!101098 = !DILocation(line: 92, column: 14, scope: !100337)
+!101099 = !DILocation(line: 92, column: 31, scope: !100337)
+!101100 = !DILocation(line: 92, column: 32, scope: !100337)
+!101101 = !DILocation(line: 92, column: 34, scope: !100337)
+!101102 = !DILocation(line: 92, column: 28, scope: !100337)
+!101103 = !DILocation(line: 92, column: 50, scope: !100337)
+!101104 = !DILocation(line: 92, column: 57, scope: !100337)
+!101105 = !DILocation(line: 92, column: 49, scope: !100337)
+!101106 = !DILocation(line: 92, column: 70, scope: !100337)
+!101107 = !DILocation(line: 92, column: 67, scope: !100337)
+!101108 = !DILocation(line: 92, column: 41, scope: !100337)
+!101109 = !DILocalVariable(name: "top", scope: !100337, file: !100005, line: 92, type: !100004)
+!101110 = !DILocation(line: 92, column: 7, scope: !100337)
+!101111 = !DILocation(line: 93, column: 14, scope: !100337)
+!101112 = !DILocation(line: 93, column: 24, scope: !100337)
+!101113 = !DILocation(line: 93, column: 22, scope: !100337)
+!101114 = !DILocation(line: 93, column: 15, scope: !100337)
+!101115 = !DILocation(line: 93, column: 32, scope: !100337)
+!101116 = !DILocation(line: 93, column: 33, scope: !100337)
+!101117 = !DILocation(line: 93, column: 35, scope: !100337)
+!101118 = !DILocation(line: 93, column: 29, scope: !100337)
+!101119 = !DILocation(line: 93, column: 51, scope: !100337)
+!101120 = !DILocation(line: 93, column: 58, scope: !100337)
+!101121 = !DILocation(line: 93, column: 50, scope: !100337)
+!101122 = !DILocation(line: 93, column: 71, scope: !100337)
+!101123 = !DILocation(line: 93, column: 68, scope: !100337)
+!101124 = !DILocation(line: 93, column: 42, scope: !100337)
+!101125 = !DILocalVariable(name: "base", scope: !100337, file: !100005, line: 93, type: !100004)
+!101126 = !DILocation(line: 93, column: 7, scope: !100337)
+!101127 = !DILocalVariable(name: "c", scope: !100337, file: !100005, line: 95, type: !100340)
+!101128 = !DILocation(line: 95, column: 7, scope: !100337)
+!101129 = !DILocation(line: 96, column: 5, scope: !100337)
+!101130 = !DILocation(line: 96, column: 9, scope: !100337)
+!101131 = !DILocation(line: 97, column: 5, scope: !100337)
+!101132 = !DILocation(line: 97, column: 10, scope: !100337)
+!101133 = !DILocation(line: 98, column: 12, scope: !100337)
+!101134 = !DILocation(line: 98, column: 5, scope: !100337)
+!101135 = !DILocation(line: 98, column: 10, scope: !100337)
+!101136 = !DILocation(line: 99, column: 5, scope: !100337)
+!101137 = !DILocation(line: 99, column: 11, scope: !100337)
+!101138 = !DILocation(line: 100, column: 5, scope: !100337)
+!101139 = !DILocation(line: 100, column: 11, scope: !100337)
+!101140 = !DILocation(line: 101, column: 5, scope: !100337)
+!101141 = !DILocation(line: 101, column: 12, scope: !100337)
+!101142 = !DILocation(line: 103, column: 1, scope: !100337)
 !101143 = !{!101144}
 !101144 = !{!"fpga.inline", !"user", null}
-!101145 = distinct !DISubprogram(name: "getField", linkageName: "_ZL8getFieldmjj", scope: !100005, file: !100005, line: 19, type: !101146, isLocal: true, isDefinition: true, scopeLine: 19, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101145 = distinct !DISubprogram(name: "getField", linkageName: "_ZL8getFieldmjj", scope: !100005, file: !100005, line: 20, type: !101146, isLocal: true, isDefinition: true, scopeLine: 20, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !101146 = !DISubroutineType(types: !101147)
 !101147 = !{!100006, !100004, !100213, !100213}
 !101148 = !{!101149}
 !101149 = !{!"fpga.inline", !"user", !101150}
-!101150 = !DILocation(line: 20, column: 9, scope: !101145)
-!101151 = !DILocalVariable(name: "val", arg: 1, scope: !101145, file: !100005, line: 19, type: !100004)
-!101152 = !DILocation(line: 19, column: 37, scope: !101145)
-!101153 = !DILocalVariable(name: "startBit", arg: 2, scope: !101145, file: !100005, line: 19, type: !100213)
-!101154 = !DILocation(line: 19, column: 51, scope: !101145)
-!101155 = !DILocalVariable(name: "length", arg: 3, scope: !101145, file: !100005, line: 19, type: !100213)
-!101156 = !DILocation(line: 19, column: 70, scope: !101145)
-!101157 = !DILocation(line: 21, column: 20, scope: !101145)
-!101158 = !DILocalVariable(name: "shifted", scope: !101145, file: !100005, line: 21, type: !100004)
-!101159 = !DILocation(line: 21, column: 6, scope: !101145)
-!101160 = !DILocation(line: 22, column: 20, scope: !101145)
-!101161 = !DILocation(line: 22, column: 31, scope: !101145)
-!101162 = !DILocalVariable(name: "mask", scope: !101145, file: !100005, line: 22, type: !100004)
-!101163 = !DILocation(line: 22, column: 7, scope: !101145)
-!101164 = !DILocation(line: 23, column: 18, scope: !101145)
-!101165 = !DILocation(line: 23, column: 3, scope: !101145)
-!101166 = distinct !DISubprogram(linkageName: "_ZN3CapC2Ev", scope: !100341, file: !100005, line: 10, type: !101167, isLocal: false, isDefinition: true, scopeLine: 10, flags: DIFlagArtificial | DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !101170, variables: !100002)
+!101150 = !DILocation(line: 21, column: 9, scope: !101145)
+!101151 = !DILocalVariable(name: "val", arg: 1, scope: !101145, file: !100005, line: 20, type: !100004)
+!101152 = !DILocation(line: 20, column: 37, scope: !101145)
+!101153 = !DILocalVariable(name: "startBit", arg: 2, scope: !101145, file: !100005, line: 20, type: !100213)
+!101154 = !DILocation(line: 20, column: 51, scope: !101145)
+!101155 = !DILocalVariable(name: "length", arg: 3, scope: !101145, file: !100005, line: 20, type: !100213)
+!101156 = !DILocation(line: 20, column: 70, scope: !101145)
+!101157 = !DILocation(line: 22, column: 20, scope: !101145)
+!101158 = !DILocalVariable(name: "shifted", scope: !101145, file: !100005, line: 22, type: !100004)
+!101159 = !DILocation(line: 22, column: 6, scope: !101145)
+!101160 = !DILocation(line: 23, column: 20, scope: !101145)
+!101161 = !DILocation(line: 23, column: 31, scope: !101145)
+!101162 = !DILocalVariable(name: "mask", scope: !101145, file: !100005, line: 23, type: !100004)
+!101163 = !DILocation(line: 23, column: 7, scope: !101145)
+!101164 = !DILocation(line: 24, column: 18, scope: !101145)
+!101165 = !DILocation(line: 24, column: 3, scope: !101145)
+!101166 = distinct !DISubprogram(linkageName: "_ZN3CapC2Ev", scope: !100341, file: !100005, line: 11, type: !101167, isLocal: false, isDefinition: true, scopeLine: 11, flags: DIFlagArtificial | DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !101170, variables: !100002)
 !101167 = !DISubroutineType(types: !101168)
 !101168 = !{null, !101169}
 !101169 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100341, size: 64, flags: DIFlagArtificial | DIFlagObjectPointer)
@@ -5821,7 +5821,7 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !101171 = !DILocalVariable(name: "this", arg: 1, scope: !101166, type: !101172, flags: DIFlagArtificial | DIFlagObjectPointer)
 !101172 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100341, size: 64)
 !101173 = !DILocation(line: 0, scope: !101166)
-!101174 = !DILocation(line: 10, column: 9, scope: !101166)
+!101174 = !DILocation(line: 11, column: 9, scope: !101166)
 !101175 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi4ELb0EEC2Ev", scope: !100454, file: !100017, line: 522, type: !100459, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100458, variables: !100002)
 !101176 = !{!101177}
 !101177 = !{!"fpga.inline", !"user", !101178}
@@ -6109,75 +6109,75 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !101459 = !DILocalVariable(name: "this", arg: 1, scope: !101455, type: !101215, flags: DIFlagArtificial | DIFlagObjectPointer)
 !101460 = !DILocation(line: 0, scope: !101455)
 !101461 = !DILocation(line: 522, column: 66, scope: !101455)
-!101462 = distinct !DISubprogram(name: "load_cap", linkageName: "_Z8load_capiPjS_P3Cap", scope: !100005, file: !100005, line: 104, type: !101463, isLocal: false, isDefinition: true, scopeLine: 104, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101462 = distinct !DISubprogram(name: "load_cap", linkageName: "_Z8load_capiPjS_P3Cap", scope: !100005, file: !100005, line: 105, type: !101463, isLocal: false, isDefinition: true, scopeLine: 105, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !101463 = !DISubroutineType(types: !101464)
 !101464 = !{null, !100030, !101465, !101465, !101469}
 !101465 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !101466, size: 64)
-!101466 = !DIDerivedType(tag: DW_TAG_typedef, name: "u32", file: !100005, line: 7, baseType: !101467)
+!101466 = !DIDerivedType(tag: DW_TAG_typedef, name: "u32", file: !100005, line: 8, baseType: !101467)
 !101467 = !DIDerivedType(tag: DW_TAG_typedef, name: "uint32_t", file: !100007, line: 26, baseType: !101468)
 !101468 = !DIDerivedType(tag: DW_TAG_typedef, name: "__uint32_t", file: !100009, line: 42, baseType: !100213)
 !101469 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100340, size: 64)
 !101470 = !{!101471}
 !101471 = !{!"fpga.inline", !"user", !101472}
-!101472 = !DILocation(line: 105, column: 9, scope: !101462)
-!101473 = !DILocalVariable(name: "num", arg: 1, scope: !101462, file: !100005, line: 104, type: !100030)
-!101474 = !DILocation(line: 104, column: 19, scope: !101462)
-!101475 = !DILocalVariable(name: "buffer", arg: 2, scope: !101462, file: !100005, line: 104, type: !101465)
-!101476 = !DILocation(line: 104, column: 29, scope: !101462)
-!101477 = !DILocalVariable(name: "cap", arg: 3, scope: !101462, file: !100005, line: 104, type: !101465)
-!101478 = !DILocation(line: 104, column: 42, scope: !101462)
-!101479 = !DILocalVariable(name: "caps", arg: 4, scope: !101462, file: !100005, line: 104, type: !101469)
-!101480 = !DILocation(line: 104, column: 52, scope: !101462)
-!101481 = !DILocation(line: 104, column: 58, scope: !101462)
-!101482 = !DILocalVariable(name: "i", scope: !101483, file: !100005, line: 107, type: !100030)
-!101483 = distinct !DILexicalBlock(scope: !101462, file: !100005, line: 107, column: 20)
-!101484 = !DILocation(line: 107, column: 29, scope: !101483)
-!101485 = !DILocation(line: 107, column: 25, scope: !101483)
-!101486 = !DILocation(line: 107, column: 44, scope: !101487)
-!101487 = distinct !DILexicalBlock(scope: !101483, file: !100005, line: 107, column: 20)
-!101488 = !DILocation(line: 107, column: 38, scope: !101487)
-!101489 = !DILocation(line: 107, column: 20, scope: !101483)
-!101490 = !DILocation(line: 109, column: 14, scope: !101491)
-!101491 = distinct !DILexicalBlock(scope: !101487, file: !100005, line: 108, column: 1)
-!101492 = !DILocation(line: 109, column: 2, scope: !101491)
-!101493 = !DILocation(line: 109, column: 12, scope: !101491)
-!101494 = !DILocation(line: 109, column: 19, scope: !101491)
-!101495 = !DILocation(line: 107, column: 50, scope: !101487)
-!101496 = !DILocation(line: 107, column: 20, scope: !101487)
+!101472 = !DILocation(line: 106, column: 9, scope: !101462)
+!101473 = !DILocalVariable(name: "num", arg: 1, scope: !101462, file: !100005, line: 105, type: !100030)
+!101474 = !DILocation(line: 105, column: 19, scope: !101462)
+!101475 = !DILocalVariable(name: "buffer", arg: 2, scope: !101462, file: !100005, line: 105, type: !101465)
+!101476 = !DILocation(line: 105, column: 29, scope: !101462)
+!101477 = !DILocalVariable(name: "cap", arg: 3, scope: !101462, file: !100005, line: 105, type: !101465)
+!101478 = !DILocation(line: 105, column: 42, scope: !101462)
+!101479 = !DILocalVariable(name: "caps", arg: 4, scope: !101462, file: !100005, line: 105, type: !101469)
+!101480 = !DILocation(line: 105, column: 52, scope: !101462)
+!101481 = !DILocation(line: 105, column: 58, scope: !101462)
+!101482 = !DILocalVariable(name: "i", scope: !101483, file: !100005, line: 108, type: !100030)
+!101483 = distinct !DILexicalBlock(scope: !101462, file: !100005, line: 108, column: 20)
+!101484 = !DILocation(line: 108, column: 29, scope: !101483)
+!101485 = !DILocation(line: 108, column: 25, scope: !101483)
+!101486 = !DILocation(line: 108, column: 44, scope: !101487)
+!101487 = distinct !DILexicalBlock(scope: !101483, file: !100005, line: 108, column: 20)
+!101488 = !DILocation(line: 108, column: 38, scope: !101487)
+!101489 = !DILocation(line: 108, column: 20, scope: !101483)
+!101490 = !DILocation(line: 110, column: 14, scope: !101491)
+!101491 = distinct !DILexicalBlock(scope: !101487, file: !100005, line: 109, column: 1)
+!101492 = !DILocation(line: 110, column: 2, scope: !101491)
+!101493 = !DILocation(line: 110, column: 12, scope: !101491)
+!101494 = !DILocation(line: 110, column: 19, scope: !101491)
+!101495 = !DILocation(line: 108, column: 50, scope: !101487)
+!101496 = !DILocation(line: 108, column: 20, scope: !101487)
 !101497 = distinct !{!101497, !101489, !101498, !101499, !101501}
-!101498 = !DILocation(line: 109, column: 19, scope: !101483)
+!101498 = !DILocation(line: 110, column: 19, scope: !101483)
 !101499 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101500}
-!101500 = !DILocation(line: 108, column: 9, scope: !101483)
-!101501 = !{!"llvm.loop.name", !"VITIS_LOOP_107_1"}
-!101502 = !DILocalVariable(name: "i", scope: !101462, file: !100005, line: 111, type: !100030)
-!101503 = !DILocation(line: 111, column: 7, scope: !101462)
-!101504 = !DILocation(line: 111, column: 3, scope: !101462)
-!101505 = !DILocalVariable(name: "j", scope: !101506, file: !100005, line: 112, type: !100030)
-!101506 = distinct !DILexicalBlock(scope: !101462, file: !100005, line: 112, column: 21)
-!101507 = !DILocation(line: 112, column: 30, scope: !101506)
-!101508 = !DILocation(line: 112, column: 26, scope: !101506)
-!101509 = !DILocation(line: 112, column: 39, scope: !101510)
-!101510 = distinct !DILexicalBlock(scope: !101506, file: !100005, line: 112, column: 21)
-!101511 = !DILocation(line: 112, column: 21, scope: !101506)
-!101512 = !DILocation(line: 113, column: 15, scope: !101513)
-!101513 = distinct !DILexicalBlock(scope: !101510, file: !100005, line: 112, column: 51)
-!101514 = !DILocation(line: 113, column: 22, scope: !101513)
-!101515 = !DILocation(line: 113, column: 42, scope: !101513)
-!101516 = !DILocation(line: 113, column: 33, scope: !101513)
-!101517 = !DILocation(line: 113, column: 57, scope: !101513)
-!101518 = !DILocation(line: 113, column: 48, scope: !101513)
-!101519 = !DILocation(line: 113, column: 72, scope: !101513)
-!101520 = !DILocation(line: 113, column: 63, scope: !101513)
-!101521 = !DILocation(line: 113, column: 5, scope: !101513)
-!101522 = !DILocation(line: 113, column: 13, scope: !101513)
-!101523 = !DILocation(line: 114, column: 7, scope: !101513)
-!101524 = !DILocation(line: 115, column: 3, scope: !101513)
-!101525 = !DILocation(line: 112, column: 47, scope: !101510)
-!101526 = !DILocation(line: 112, column: 21, scope: !101510)
+!101500 = !DILocation(line: 109, column: 9, scope: !101483)
+!101501 = !{!"llvm.loop.name", !"VITIS_LOOP_108_1"}
+!101502 = !DILocalVariable(name: "i", scope: !101462, file: !100005, line: 112, type: !100030)
+!101503 = !DILocation(line: 112, column: 7, scope: !101462)
+!101504 = !DILocation(line: 112, column: 3, scope: !101462)
+!101505 = !DILocalVariable(name: "j", scope: !101506, file: !100005, line: 113, type: !100030)
+!101506 = distinct !DILexicalBlock(scope: !101462, file: !100005, line: 113, column: 21)
+!101507 = !DILocation(line: 113, column: 30, scope: !101506)
+!101508 = !DILocation(line: 113, column: 26, scope: !101506)
+!101509 = !DILocation(line: 113, column: 39, scope: !101510)
+!101510 = distinct !DILexicalBlock(scope: !101506, file: !100005, line: 113, column: 21)
+!101511 = !DILocation(line: 113, column: 21, scope: !101506)
+!101512 = !DILocation(line: 114, column: 15, scope: !101513)
+!101513 = distinct !DILexicalBlock(scope: !101510, file: !100005, line: 113, column: 51)
+!101514 = !DILocation(line: 114, column: 22, scope: !101513)
+!101515 = !DILocation(line: 114, column: 42, scope: !101513)
+!101516 = !DILocation(line: 114, column: 33, scope: !101513)
+!101517 = !DILocation(line: 114, column: 57, scope: !101513)
+!101518 = !DILocation(line: 114, column: 48, scope: !101513)
+!101519 = !DILocation(line: 114, column: 72, scope: !101513)
+!101520 = !DILocation(line: 114, column: 63, scope: !101513)
+!101521 = !DILocation(line: 114, column: 5, scope: !101513)
+!101522 = !DILocation(line: 114, column: 13, scope: !101513)
+!101523 = !DILocation(line: 115, column: 7, scope: !101513)
+!101524 = !DILocation(line: 116, column: 3, scope: !101513)
+!101525 = !DILocation(line: 113, column: 47, scope: !101510)
+!101526 = !DILocation(line: 113, column: 21, scope: !101510)
 !101527 = distinct !{!101527, !101511, !101528, !101529}
-!101528 = !DILocation(line: 115, column: 3, scope: !101506)
-!101529 = !{!"llvm.loop.name", !"VITIS_LOOP_112_2"}
-!101530 = !DILocation(line: 116, column: 1, scope: !101462)
+!101528 = !DILocation(line: 116, column: 3, scope: !101506)
+!101529 = !{!"llvm.loop.name", !"VITIS_LOOP_113_2"}
+!101530 = !DILocation(line: 117, column: 1, scope: !101462)
 !101531 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi32ELb0EEC2Ej", scope: !100501, file: !100017, line: 523, type: !100509, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100508, variables: !100002)
 !101532 = !{!101533}
 !101533 = !{!"fpga.inline", !"user", !101534}
@@ -6189,209 +6189,213 @@ attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="768" "x
 !101539 = !DILocation(line: 523, column: 87, scope: !101531)
 !101540 = !DILocation(line: 523, column: 123, scope: !101531)
 !101541 = !DILocation(line: 523, column: 128, scope: !101531)
-!101542 = distinct !DISubprogram(name: "checkAccess", linkageName: "_Z11checkAccessPj3Capmmb", scope: !100005, file: !100005, line: 118, type: !101543, isLocal: false, isDefinition: true, scopeLine: 118, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101542 = distinct !DISubprogram(name: "checkAccess", linkageName: "_Z11checkAccessPj3Capmmb", scope: !100005, file: !100005, line: 119, type: !101543, isLocal: false, isDefinition: true, scopeLine: 119, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !101543 = !DISubroutineType(types: !101544)
 !101544 = !{null, !101465, !100340, !100004, !100004, !100032}
 !101545 = !{!101546}
 !101546 = !{!"fpga.inline", !"user", !101547}
-!101547 = !DILocation(line: 119, column: 9, scope: !101542)
-!101548 = !DILocalVariable(name: "flag_buf", arg: 1, scope: !101542, file: !100005, line: 118, type: !101465)
-!101549 = !DILocation(line: 118, column: 23, scope: !101542)
-!101550 = !DILocalVariable(name: "cap", arg: 2, scope: !101542, file: !100005, line: 118, type: !100340)
-!101551 = !DILocation(line: 118, column: 37, scope: !101542)
-!101552 = !DILocalVariable(name: "offset", arg: 3, scope: !101542, file: !100005, line: 118, type: !100004)
-!101553 = !DILocation(line: 118, column: 46, scope: !101542)
-!101554 = !DILocalVariable(name: "nBytes", arg: 4, scope: !101542, file: !100005, line: 118, type: !100004)
-!101555 = !DILocation(line: 118, column: 58, scope: !101542)
-!101556 = !DILocalVariable(name: "isWrite", arg: 5, scope: !101542, file: !100005, line: 118, type: !100032)
-!101557 = !DILocation(line: 118, column: 71, scope: !101542)
-!101558 = !DILocation(line: 120, column: 22, scope: !101542)
-!101559 = !DILocation(line: 120, column: 34, scope: !101542)
-!101560 = !DILocation(line: 120, column: 44, scope: !101542)
-!101561 = !DILocation(line: 120, column: 39, scope: !101542)
-!101562 = !DILocation(line: 120, column: 27, scope: !101542)
-!101563 = !DILocation(line: 120, column: 55, scope: !101542)
-!101564 = !DILocation(line: 121, column: 24, scope: !101542)
-!101565 = !DILocation(line: 121, column: 33, scope: !101542)
-!101566 = !DILocation(line: 121, column: 29, scope: !101542)
-!101567 = !DILocation(line: 121, column: 42, scope: !101542)
-!101568 = !DILocation(line: 121, column: 59, scope: !101542)
-!101569 = !DILocation(line: 121, column: 52, scope: !101542)
-!101570 = !DILocation(line: 121, column: 64, scope: !101542)
-!101571 = !DILocation(line: 122, column: 28, scope: !101542)
-!101572 = !DILocation(line: 122, column: 36, scope: !101542)
-!101573 = !DILocation(line: 122, column: 32, scope: !101542)
-!101574 = !DILocation(line: 122, column: 42, scope: !101542)
-!101575 = !DILocation(line: 122, column: 31, scope: !101542)
-!101576 = !DILocation(line: 122, column: 56, scope: !101542)
-!101577 = !DILocation(line: 123, column: 27, scope: !101542)
-!101578 = !DILocation(line: 123, column: 35, scope: !101542)
-!101579 = !DILocation(line: 123, column: 31, scope: !101542)
-!101580 = !DILocation(line: 123, column: 41, scope: !101542)
-!101581 = !DILocation(line: 123, column: 30, scope: !101542)
-!101582 = !DILocation(line: 120, column: 15, scope: !101542)
-!101583 = !DILocation(line: 120, column: 12, scope: !101542)
-!101584 = !DILocation(line: 124, column: 1, scope: !101542)
-!101585 = distinct !DISubprogram(name: "cheri_load", linkageName: "_Z10cheri_loadPiiPj3Cap", scope: !100005, file: !100005, line: 126, type: !101586, isLocal: false, isDefinition: true, scopeLine: 126, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101547 = !DILocation(line: 120, column: 9, scope: !101542)
+!101548 = !DILocalVariable(name: "flag_buf", arg: 1, scope: !101542, file: !100005, line: 119, type: !101465)
+!101549 = !DILocation(line: 119, column: 23, scope: !101542)
+!101550 = !DILocalVariable(name: "cap", arg: 2, scope: !101542, file: !100005, line: 119, type: !100340)
+!101551 = !DILocation(line: 119, column: 37, scope: !101542)
+!101552 = !DILocalVariable(name: "offset", arg: 3, scope: !101542, file: !100005, line: 119, type: !100004)
+!101553 = !DILocation(line: 119, column: 46, scope: !101542)
+!101554 = !DILocalVariable(name: "nBytes", arg: 4, scope: !101542, file: !100005, line: 119, type: !100004)
+!101555 = !DILocation(line: 119, column: 58, scope: !101542)
+!101556 = !DILocalVariable(name: "isWrite", arg: 5, scope: !101542, file: !100005, line: 119, type: !100032)
+!101557 = !DILocation(line: 119, column: 71, scope: !101542)
+!101558 = !DILocation(line: 121, column: 22, scope: !101542)
+!101559 = !DILocation(line: 121, column: 34, scope: !101542)
+!101560 = !DILocation(line: 121, column: 44, scope: !101542)
+!101561 = !DILocation(line: 121, column: 39, scope: !101542)
+!101562 = !DILocation(line: 121, column: 27, scope: !101542)
+!101563 = !DILocation(line: 121, column: 55, scope: !101542)
+!101564 = !DILocation(line: 122, column: 24, scope: !101542)
+!101565 = !DILocation(line: 122, column: 33, scope: !101542)
+!101566 = !DILocation(line: 122, column: 29, scope: !101542)
+!101567 = !DILocation(line: 122, column: 42, scope: !101542)
+!101568 = !DILocation(line: 122, column: 59, scope: !101542)
+!101569 = !DILocation(line: 122, column: 52, scope: !101542)
+!101570 = !DILocation(line: 122, column: 64, scope: !101542)
+!101571 = !DILocation(line: 123, column: 28, scope: !101542)
+!101572 = !DILocation(line: 123, column: 36, scope: !101542)
+!101573 = !DILocation(line: 123, column: 32, scope: !101542)
+!101574 = !DILocation(line: 123, column: 42, scope: !101542)
+!101575 = !DILocation(line: 123, column: 31, scope: !101542)
+!101576 = !DILocation(line: 123, column: 56, scope: !101542)
+!101577 = !DILocation(line: 124, column: 27, scope: !101542)
+!101578 = !DILocation(line: 124, column: 35, scope: !101542)
+!101579 = !DILocation(line: 124, column: 31, scope: !101542)
+!101580 = !DILocation(line: 124, column: 41, scope: !101542)
+!101581 = !DILocation(line: 124, column: 30, scope: !101542)
+!101582 = !DILocation(line: 121, column: 15, scope: !101542)
+!101583 = !DILocation(line: 121, column: 12, scope: !101542)
+!101584 = !DILocation(line: 125, column: 1, scope: !101542)
+!101585 = distinct !DISubprogram(name: "cheri_load", linkageName: "_Z10cheri_loadPiiPj3Cap", scope: !100005, file: !100005, line: 127, type: !101586, isLocal: false, isDefinition: true, scopeLine: 127, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !101586 = !DISubroutineType(types: !101587)
 !101587 = !{!100030, !101588, !100030, !101465, !100340}
 !101588 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100030, size: 64)
 !101589 = !{!101590}
 !101590 = !{!"fpga.inline", !"user", !101591}
-!101591 = !DILocation(line: 127, column: 9, scope: !101585)
-!101592 = !DILocalVariable(name: "buf", arg: 1, scope: !101585, file: !100005, line: 126, type: !101588)
-!101593 = !DILocation(line: 126, column: 21, scope: !101585)
-!101594 = !DILocalVariable(name: "i", arg: 2, scope: !101585, file: !100005, line: 126, type: !100030)
-!101595 = !DILocation(line: 126, column: 30, scope: !101585)
-!101596 = !DILocalVariable(name: "flag_buf", arg: 3, scope: !101585, file: !100005, line: 126, type: !101465)
-!101597 = !DILocation(line: 126, column: 38, scope: !101585)
-!101598 = !DILocalVariable(name: "cap", arg: 4, scope: !101585, file: !100005, line: 126, type: !100340)
-!101599 = !DILocation(line: 126, column: 52, scope: !101585)
-!101600 = !DILocation(line: 128, column: 24, scope: !101585)
-!101601 = !DILocation(line: 128, column: 29, scope: !101585)
-!101602 = !DILocation(line: 128, column: 2, scope: !101585)
-!101603 = !DILocation(line: 129, column: 11, scope: !101585)
-!101604 = !DILocation(line: 129, column: 10, scope: !101585)
-!101605 = !DILocation(line: 129, column: 24, scope: !101585)
-!101606 = !DILocation(line: 129, column: 3, scope: !101585)
-!101607 = distinct !DISubprogram(name: "cheri_store", linkageName: "_Z11cheri_storePiiiPj3Cap", scope: !100005, file: !100005, line: 132, type: !101608, isLocal: false, isDefinition: true, scopeLine: 132, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101591 = !DILocation(line: 128, column: 9, scope: !101585)
+!101592 = !DILocalVariable(name: "buf", arg: 1, scope: !101585, file: !100005, line: 127, type: !101588)
+!101593 = !DILocation(line: 127, column: 21, scope: !101585)
+!101594 = !DILocalVariable(name: "i", arg: 2, scope: !101585, file: !100005, line: 127, type: !100030)
+!101595 = !DILocation(line: 127, column: 30, scope: !101585)
+!101596 = !DILocalVariable(name: "flag_buf", arg: 3, scope: !101585, file: !100005, line: 127, type: !101465)
+!101597 = !DILocation(line: 127, column: 38, scope: !101585)
+!101598 = !DILocalVariable(name: "cap", arg: 4, scope: !101585, file: !100005, line: 127, type: !100340)
+!101599 = !DILocation(line: 127, column: 52, scope: !101585)
+!101600 = !DILocation(line: 129, column: 24, scope: !101585)
+!101601 = !DILocation(line: 129, column: 29, scope: !101585)
+!101602 = !DILocation(line: 129, column: 2, scope: !101585)
+!101603 = !DILocation(line: 130, column: 11, scope: !101585)
+!101604 = !DILocation(line: 130, column: 10, scope: !101585)
+!101605 = !DILocation(line: 130, column: 24, scope: !101585)
+!101606 = !DILocation(line: 130, column: 3, scope: !101585)
+!101607 = distinct !DISubprogram(name: "cheri_store", linkageName: "_Z11cheri_storePiiiPj3Cap", scope: !100005, file: !100005, line: 133, type: !101608, isLocal: false, isDefinition: true, scopeLine: 133, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !101608 = !DISubroutineType(types: !101609)
 !101609 = !{null, !101588, !100030, !100030, !101465, !100340}
 !101610 = !{!101611}
 !101611 = !{!"fpga.inline", !"user", !101612}
-!101612 = !DILocation(line: 133, column: 9, scope: !101607)
-!101613 = !DILocalVariable(name: "buf", arg: 1, scope: !101607, file: !100005, line: 132, type: !101588)
-!101614 = !DILocation(line: 132, column: 23, scope: !101607)
-!101615 = !DILocalVariable(name: "i", arg: 2, scope: !101607, file: !100005, line: 132, type: !100030)
-!101616 = !DILocation(line: 132, column: 32, scope: !101607)
-!101617 = !DILocalVariable(name: "val", arg: 3, scope: !101607, file: !100005, line: 132, type: !100030)
-!101618 = !DILocation(line: 132, column: 39, scope: !101607)
-!101619 = !DILocalVariable(name: "flag_buf", arg: 4, scope: !101607, file: !100005, line: 132, type: !101465)
-!101620 = !DILocation(line: 132, column: 49, scope: !101607)
-!101621 = !DILocalVariable(name: "cap", arg: 5, scope: !101607, file: !100005, line: 132, type: !100340)
-!101622 = !DILocation(line: 132, column: 63, scope: !101607)
-!101623 = !DILocation(line: 134, column: 24, scope: !101607)
-!101624 = !DILocation(line: 134, column: 29, scope: !101607)
-!101625 = !DILocation(line: 134, column: 2, scope: !101607)
-!101626 = !DILocation(line: 136, column: 8, scope: !101627)
-!101627 = distinct !DILexicalBlock(scope: !101607, file: !100005, line: 136, column: 7)
-!101628 = !DILocation(line: 136, column: 7, scope: !101627)
-!101629 = !DILocation(line: 136, column: 7, scope: !101607)
-!101630 = !DILocation(line: 137, column: 5, scope: !101631)
-!101631 = distinct !DILexicalBlock(scope: !101627, file: !100005, line: 136, column: 20)
-!101632 = !DILocation(line: 137, column: 12, scope: !101631)
-!101633 = !DILocation(line: 138, column: 3, scope: !101631)
-!101634 = !DILocation(line: 139, column: 3, scope: !101607)
-!101635 = distinct !DISubprogram(name: "create_cap", linkageName: "_Z10create_capiP3Capi", scope: !100005, file: !100005, line: 142, type: !101636, isLocal: false, isDefinition: true, scopeLine: 142, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101612 = !DILocation(line: 134, column: 9, scope: !101607)
+!101613 = !DILocalVariable(name: "buf", arg: 1, scope: !101607, file: !100005, line: 133, type: !101588)
+!101614 = !DILocation(line: 133, column: 23, scope: !101607)
+!101615 = !DILocalVariable(name: "i", arg: 2, scope: !101607, file: !100005, line: 133, type: !100030)
+!101616 = !DILocation(line: 133, column: 32, scope: !101607)
+!101617 = !DILocalVariable(name: "val", arg: 3, scope: !101607, file: !100005, line: 133, type: !100030)
+!101618 = !DILocation(line: 133, column: 39, scope: !101607)
+!101619 = !DILocalVariable(name: "flag_buf", arg: 4, scope: !101607, file: !100005, line: 133, type: !101465)
+!101620 = !DILocation(line: 133, column: 49, scope: !101607)
+!101621 = !DILocalVariable(name: "cap", arg: 5, scope: !101607, file: !100005, line: 133, type: !100340)
+!101622 = !DILocation(line: 133, column: 63, scope: !101607)
+!101623 = !DILocation(line: 135, column: 24, scope: !101607)
+!101624 = !DILocation(line: 135, column: 29, scope: !101607)
+!101625 = !DILocation(line: 135, column: 2, scope: !101607)
+!101626 = !DILocation(line: 137, column: 8, scope: !101627)
+!101627 = distinct !DILexicalBlock(scope: !101607, file: !100005, line: 137, column: 7)
+!101628 = !DILocation(line: 137, column: 7, scope: !101627)
+!101629 = !DILocation(line: 137, column: 7, scope: !101607)
+!101630 = !DILocation(line: 138, column: 5, scope: !101631)
+!101631 = distinct !DILexicalBlock(scope: !101627, file: !100005, line: 137, column: 20)
+!101632 = !DILocation(line: 138, column: 12, scope: !101631)
+!101633 = !DILocation(line: 139, column: 3, scope: !101631)
+!101634 = !DILocation(line: 140, column: 3, scope: !101607)
+!101635 = distinct !DISubprogram(name: "create_cap", linkageName: "_Z10create_capiP3Caph", scope: !100005, file: !100005, line: 143, type: !101636, isLocal: false, isDefinition: true, scopeLine: 143, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !101636 = !DISubroutineType(types: !101637)
-!101637 = !{null, !100030, !101469, !100030}
-!101638 = !{!101639}
-!101639 = !{!"fpga.inline", !"user", !101640}
-!101640 = !DILocation(line: 143, column: 9, scope: !101635)
-!101641 = !DILocalVariable(name: "size", arg: 1, scope: !101635, file: !100005, line: 142, type: !100030)
-!101642 = !DILocation(line: 142, column: 21, scope: !101635)
-!101643 = !DILocalVariable(name: "caps", arg: 2, scope: !101635, file: !100005, line: 142, type: !101469)
-!101644 = !DILocation(line: 142, column: 32, scope: !101635)
-!101645 = !DILocalVariable(name: "index", arg: 3, scope: !101635, file: !100005, line: 142, type: !100030)
-!101646 = !DILocation(line: 142, column: 42, scope: !101635)
-!101647 = !DILocation(line: 144, column: 2, scope: !101635)
-!101648 = !DILocalVariable(name: "new_cap", scope: !101635, file: !100005, line: 144, type: !100340)
-!101649 = !DILocation(line: 144, column: 6, scope: !101635)
-!101650 = !DILocation(line: 145, column: 11, scope: !101635)
-!101651 = !DILocation(line: 145, column: 16, scope: !101635)
-!101652 = !DILocation(line: 146, column: 11, scope: !101635)
-!101653 = !DILocation(line: 146, column: 16, scope: !101635)
-!101654 = !DILocation(line: 147, column: 22, scope: !101635)
-!101655 = !DILocation(line: 147, column: 17, scope: !101635)
+!101637 = !{null, !100030, !101469, !101638}
+!101638 = !DIDerivedType(tag: DW_TAG_typedef, name: "u8", file: !100005, line: 6, baseType: !101639)
+!101639 = !DIDerivedType(tag: DW_TAG_typedef, name: "uint8_t", file: !100007, line: 24, baseType: !101640)
+!101640 = !DIDerivedType(tag: DW_TAG_typedef, name: "__uint8_t", file: !100009, line: 38, baseType: !101641)
+!101641 = !DIBasicType(name: "unsigned char", size: 8, encoding: DW_ATE_unsigned_char)
+!101642 = !{!101643}
+!101643 = !{!"fpga.inline", !"user", !101644}
+!101644 = !DILocation(line: 144, column: 9, scope: !101635)
+!101645 = !DILocalVariable(name: "size", arg: 1, scope: !101635, file: !100005, line: 143, type: !100030)
+!101646 = !DILocation(line: 143, column: 21, scope: !101635)
+!101647 = !DILocalVariable(name: "caps", arg: 2, scope: !101635, file: !100005, line: 143, type: !101469)
+!101648 = !DILocation(line: 143, column: 32, scope: !101635)
+!101649 = !DILocalVariable(name: "index", arg: 3, scope: !101635, file: !100005, line: 143, type: !101638)
+!101650 = !DILocation(line: 143, column: 41, scope: !101635)
+!101651 = !DILocation(line: 145, column: 2, scope: !101635)
+!101652 = !DILocalVariable(name: "new_cap", scope: !101635, file: !100005, line: 145, type: !100340)
+!101653 = !DILocation(line: 145, column: 6, scope: !101635)
+!101654 = !DILocation(line: 146, column: 11, scope: !101635)
+!101655 = !DILocation(line: 146, column: 16, scope: !101635)
 !101656 = !DILocation(line: 147, column: 11, scope: !101635)
-!101657 = !DILocation(line: 147, column: 15, scope: !101635)
-!101658 = !DILocation(line: 148, column: 19, scope: !101635)
-!101659 = !DILocation(line: 148, column: 11, scope: !101635)
-!101660 = !DILocation(line: 148, column: 17, scope: !101635)
-!101661 = !DILocation(line: 148, column: 3, scope: !101635)
-!101662 = !DILocation(line: 149, column: 3, scope: !101635)
-!101663 = !DILocation(line: 149, column: 15, scope: !101635)
-!101664 = !DILocation(line: 151, column: 1, scope: !101635)
-!101665 = distinct !DISubprogram(name: "hls_top", linkageName: "_Z7hls_topiPiS_PjS0_", scope: !100005, file: !100005, line: 153, type: !101666, isLocal: false, isDefinition: true, scopeLine: 153, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
-!101666 = !DISubroutineType(types: !101667)
-!101667 = !{null, !100030, !101588, !101588, !101465, !101465}
-!101668 = !{!101669}
-!101669 = !{!"fpga.top", !"user", !101670}
-!101670 = !DILocation(line: 153, column: 16, scope: !101665)
-!101671 = !DILocalVariable(name: "size", arg: 1, scope: !101665, file: !100005, line: 153, type: !100030)
-!101672 = !DILocation(line: 153, column: 60, scope: !101665)
-!101673 = !DILocalVariable(name: "a", arg: 2, scope: !101665, file: !100005, line: 153, type: !101588)
-!101674 = !DILocation(line: 153, column: 70, scope: !101665)
-!101675 = !DILocalVariable(name: "c", arg: 3, scope: !101665, file: !100005, line: 153, type: !101588)
-!101676 = !DILocation(line: 153, column: 81, scope: !101665)
-!101677 = !DILocalVariable(name: "flag", arg: 4, scope: !101665, file: !100005, line: 153, type: !101465)
-!101678 = !DILocation(line: 153, column: 93, scope: !101665)
-!101679 = !DILocalVariable(name: "cap", arg: 5, scope: !101665, file: !100005, line: 153, type: !101465)
-!101680 = !DILocation(line: 153, column: 103, scope: !101665)
-!101681 = !DILocation(line: 154, column: 9, scope: !101665)
-!101682 = !DILocation(line: 155, column: 9, scope: !101665)
-!101683 = !DILocation(line: 156, column: 9, scope: !101665)
-!101684 = !DILocation(line: 157, column: 9, scope: !101665)
-!101685 = !DILocation(line: 158, column: 9, scope: !101665)
-!101686 = !DILocation(line: 159, column: 9, scope: !101665)
-!101687 = !DILocation(line: 160, column: 2, scope: !101665)
-!101688 = !DILocalVariable(name: "b", scope: !101665, file: !100005, line: 160, type: !101689)
-!101689 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100030, size: 320, elements: !101690)
-!101690 = !{!101691}
-!101691 = !DISubrange(count: 10)
-!101692 = !DILocation(line: 160, column: 6, scope: !101665)
-!101693 = !DILocation(line: 162, column: 3, scope: !101665)
-!101694 = !DILocalVariable(name: "flag_buf", scope: !101665, file: !100005, line: 162, type: !101466)
-!101695 = !DILocation(line: 162, column: 7, scope: !101665)
-!101696 = !DILocation(line: 164, column: 3, scope: !101665)
-!101697 = !DILocalVariable(name: "caps", scope: !101665, file: !100005, line: 164, type: !101698)
-!101698 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100340, size: 768, elements: !101699)
-!101699 = !{!101700}
-!101700 = !DISubrange(count: 3)
-!101701 = !DILocation(line: 164, column: 7, scope: !101665)
-!101702 = !DILocation(line: 165, column: 3, scope: !101665)
-!101703 = !DILocalVariable(name: "buffer", scope: !101665, file: !100005, line: 165, type: !101704)
-!101704 = !DICompositeType(tag: DW_TAG_array_type, baseType: !101466, size: 384, elements: !101705)
-!101705 = !{!101706}
-!101706 = !DISubrange(count: 12)
-!101707 = !DILocation(line: 165, column: 7, scope: !101665)
-!101708 = !DILocation(line: 166, column: 9, scope: !101665)
-!101709 = !DILocation(line: 167, column: 9, scope: !101665)
-!101710 = !DILocation(line: 169, column: 14, scope: !101665)
-!101711 = !DILocation(line: 169, column: 27, scope: !101665)
-!101712 = !DILocation(line: 169, column: 2, scope: !101665)
-!101713 = !DILocation(line: 170, column: 18, scope: !101665)
-!101714 = !DILocation(line: 170, column: 3, scope: !101665)
-!101715 = !DILocalVariable(name: "i", scope: !101716, file: !100005, line: 172, type: !100030)
-!101716 = distinct !DILexicalBlock(scope: !101665, file: !100005, line: 172, column: 21)
-!101717 = !DILocation(line: 172, column: 30, scope: !101716)
-!101718 = !DILocation(line: 172, column: 26, scope: !101716)
-!101719 = !DILocation(line: 172, column: 39, scope: !101720)
-!101720 = distinct !DILexicalBlock(scope: !101716, file: !100005, line: 172, column: 21)
-!101721 = !DILocation(line: 172, column: 21, scope: !101716)
-!101722 = !DILocation(line: 175, column: 43, scope: !101723)
-!101723 = distinct !DILexicalBlock(scope: !101720, file: !100005, line: 172, column: 52)
-!101724 = !DILocation(line: 175, column: 15, scope: !101723)
-!101725 = !DILocalVariable(name: "a_elem", scope: !101723, file: !100005, line: 175, type: !100030)
-!101726 = !DILocation(line: 175, column: 6, scope: !101723)
-!101727 = !DILocation(line: 176, column: 29, scope: !101723)
-!101728 = !DILocation(line: 176, column: 46, scope: !101723)
-!101729 = !DILocation(line: 176, column: 18, scope: !101723)
-!101730 = !DILocalVariable(name: "b_elem", scope: !101723, file: !100005, line: 176, type: !100030)
-!101731 = !DILocation(line: 176, column: 9, scope: !101723)
-!101732 = !DILocation(line: 178, column: 25, scope: !101723)
-!101733 = !DILocalVariable(name: "c_elem", scope: !101723, file: !100005, line: 178, type: !100030)
-!101734 = !DILocation(line: 178, column: 9, scope: !101723)
-!101735 = !DILocation(line: 180, column: 42, scope: !101723)
-!101736 = !DILocation(line: 180, column: 5, scope: !101723)
-!101737 = !DILocation(line: 181, column: 3, scope: !101723)
-!101738 = !DILocation(line: 172, column: 48, scope: !101720)
-!101739 = !DILocation(line: 172, column: 21, scope: !101720)
-!101740 = distinct !{!101740, !101721, !101741, !101742, !101744}
-!101741 = !DILocation(line: 181, column: 3, scope: !101716)
-!101742 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101743}
-!101743 = !DILocation(line: 173, column: 9, scope: !101716)
-!101744 = !{!"llvm.loop.name", !"VITIS_LOOP_172_1"}
-!101745 = !DILocation(line: 183, column: 11, scope: !101665)
-!101746 = !DILocation(line: 183, column: 9, scope: !101665)
-!101747 = !DILocation(line: 185, column: 1, scope: !101665)
+!101657 = !DILocation(line: 147, column: 16, scope: !101635)
+!101658 = !DILocation(line: 148, column: 22, scope: !101635)
+!101659 = !DILocation(line: 148, column: 17, scope: !101635)
+!101660 = !DILocation(line: 148, column: 11, scope: !101635)
+!101661 = !DILocation(line: 148, column: 15, scope: !101635)
+!101662 = !DILocation(line: 149, column: 19, scope: !101635)
+!101663 = !DILocation(line: 149, column: 11, scope: !101635)
+!101664 = !DILocation(line: 149, column: 17, scope: !101635)
+!101665 = !DILocation(line: 149, column: 3, scope: !101635)
+!101666 = !DILocation(line: 150, column: 3, scope: !101635)
+!101667 = !DILocation(line: 150, column: 15, scope: !101635)
+!101668 = !DILocation(line: 152, column: 1, scope: !101635)
+!101669 = distinct !DISubprogram(name: "hls_top", linkageName: "_Z7hls_topiPiS_PjS0_", scope: !100005, file: !100005, line: 154, type: !101670, isLocal: false, isDefinition: true, scopeLine: 154, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101670 = !DISubroutineType(types: !101671)
+!101671 = !{null, !100030, !101588, !101588, !101465, !101465}
+!101672 = !{!101673}
+!101673 = !{!"fpga.top", !"user", !101674}
+!101674 = !DILocation(line: 154, column: 16, scope: !101669)
+!101675 = !DILocalVariable(name: "size", arg: 1, scope: !101669, file: !100005, line: 154, type: !100030)
+!101676 = !DILocation(line: 154, column: 60, scope: !101669)
+!101677 = !DILocalVariable(name: "a", arg: 2, scope: !101669, file: !100005, line: 154, type: !101588)
+!101678 = !DILocation(line: 154, column: 70, scope: !101669)
+!101679 = !DILocalVariable(name: "c", arg: 3, scope: !101669, file: !100005, line: 154, type: !101588)
+!101680 = !DILocation(line: 154, column: 81, scope: !101669)
+!101681 = !DILocalVariable(name: "flag", arg: 4, scope: !101669, file: !100005, line: 154, type: !101465)
+!101682 = !DILocation(line: 154, column: 93, scope: !101669)
+!101683 = !DILocalVariable(name: "cap", arg: 5, scope: !101669, file: !100005, line: 154, type: !101465)
+!101684 = !DILocation(line: 154, column: 103, scope: !101669)
+!101685 = !DILocation(line: 155, column: 9, scope: !101669)
+!101686 = !DILocation(line: 156, column: 9, scope: !101669)
+!101687 = !DILocation(line: 157, column: 9, scope: !101669)
+!101688 = !DILocation(line: 158, column: 9, scope: !101669)
+!101689 = !DILocation(line: 159, column: 9, scope: !101669)
+!101690 = !DILocation(line: 160, column: 9, scope: !101669)
+!101691 = !DILocation(line: 161, column: 2, scope: !101669)
+!101692 = !DILocalVariable(name: "b", scope: !101669, file: !100005, line: 161, type: !101693)
+!101693 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100030, size: 320, elements: !101694)
+!101694 = !{!101695}
+!101695 = !DISubrange(count: 10)
+!101696 = !DILocation(line: 161, column: 6, scope: !101669)
+!101697 = !DILocation(line: 163, column: 3, scope: !101669)
+!101698 = !DILocalVariable(name: "flag_buf", scope: !101669, file: !100005, line: 163, type: !101466)
+!101699 = !DILocation(line: 163, column: 7, scope: !101669)
+!101700 = !DILocation(line: 165, column: 3, scope: !101669)
+!101701 = !DILocalVariable(name: "caps", scope: !101669, file: !100005, line: 165, type: !101702)
+!101702 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100340, size: 768, elements: !101703)
+!101703 = !{!101704}
+!101704 = !DISubrange(count: 3)
+!101705 = !DILocation(line: 165, column: 7, scope: !101669)
+!101706 = !DILocation(line: 166, column: 3, scope: !101669)
+!101707 = !DILocalVariable(name: "buffer", scope: !101669, file: !100005, line: 166, type: !101708)
+!101708 = !DICompositeType(tag: DW_TAG_array_type, baseType: !101466, size: 384, elements: !101709)
+!101709 = !{!101710}
+!101710 = !DISubrange(count: 12)
+!101711 = !DILocation(line: 166, column: 7, scope: !101669)
+!101712 = !DILocation(line: 167, column: 9, scope: !101669)
+!101713 = !DILocation(line: 168, column: 9, scope: !101669)
+!101714 = !DILocation(line: 170, column: 14, scope: !101669)
+!101715 = !DILocation(line: 170, column: 27, scope: !101669)
+!101716 = !DILocation(line: 170, column: 2, scope: !101669)
+!101717 = !DILocation(line: 171, column: 18, scope: !101669)
+!101718 = !DILocation(line: 171, column: 3, scope: !101669)
+!101719 = !DILocalVariable(name: "i", scope: !101720, file: !100005, line: 173, type: !100030)
+!101720 = distinct !DILexicalBlock(scope: !101669, file: !100005, line: 173, column: 21)
+!101721 = !DILocation(line: 173, column: 30, scope: !101720)
+!101722 = !DILocation(line: 173, column: 26, scope: !101720)
+!101723 = !DILocation(line: 173, column: 39, scope: !101724)
+!101724 = distinct !DILexicalBlock(scope: !101720, file: !100005, line: 173, column: 21)
+!101725 = !DILocation(line: 173, column: 21, scope: !101720)
+!101726 = !DILocation(line: 176, column: 43, scope: !101727)
+!101727 = distinct !DILexicalBlock(scope: !101724, file: !100005, line: 173, column: 52)
+!101728 = !DILocation(line: 176, column: 15, scope: !101727)
+!101729 = !DILocalVariable(name: "a_elem", scope: !101727, file: !100005, line: 176, type: !100030)
+!101730 = !DILocation(line: 176, column: 6, scope: !101727)
+!101731 = !DILocation(line: 177, column: 29, scope: !101727)
+!101732 = !DILocation(line: 177, column: 46, scope: !101727)
+!101733 = !DILocation(line: 177, column: 18, scope: !101727)
+!101734 = !DILocalVariable(name: "b_elem", scope: !101727, file: !100005, line: 177, type: !100030)
+!101735 = !DILocation(line: 177, column: 9, scope: !101727)
+!101736 = !DILocation(line: 179, column: 25, scope: !101727)
+!101737 = !DILocalVariable(name: "c_elem", scope: !101727, file: !100005, line: 179, type: !100030)
+!101738 = !DILocation(line: 179, column: 9, scope: !101727)
+!101739 = !DILocation(line: 181, column: 42, scope: !101727)
+!101740 = !DILocation(line: 181, column: 5, scope: !101727)
+!101741 = !DILocation(line: 182, column: 3, scope: !101727)
+!101742 = !DILocation(line: 173, column: 48, scope: !101724)
+!101743 = !DILocation(line: 173, column: 21, scope: !101724)
+!101744 = distinct !{!101744, !101725, !101745, !101746, !101748}
+!101745 = !DILocation(line: 182, column: 3, scope: !101720)
+!101746 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101747}
+!101747 = !DILocation(line: 174, column: 9, scope: !101720)
+!101748 = !{!"llvm.loop.name", !"VITIS_LOOP_173_1"}
+!101749 = !DILocation(line: 184, column: 11, scope: !101669)
+!101750 = !DILocation(line: 184, column: 9, scope: !101669)
+!101751 = !DILocation(line: 186, column: 1, scope: !101669)

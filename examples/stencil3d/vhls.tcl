@@ -3,7 +3,7 @@ set_top hls_top
 add_files { stencil3d.c }
 add_files -tb { stencil3d.c }
 open_solution -reset "solution"
-set_part {xcu250-figd2104-2L-e}
+set_part {xcvu9p-flga2104-2L-e}
 create_clock -period 4 -name default
 config_bind -effort high
 config_compile -pipeline_loops 1

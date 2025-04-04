@@ -12,7 +12,7 @@ config_compile -pipeline_loops 1
 csim_design 
 # Comment the following two if I want to verify in software 
 # Generate  Verilog for HLS code
-set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -S -mem2reg /workspace/examples/spmv_ellpack/temp/output.ll -o $LLVM_CUSTOM_OUTPUT}
+set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -S -mem2reg /workspace/examples/spmv_ellpack/temp/local_output.ll -o $LLVM_CUSTOM_OUTPUT}
 
 # set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -mem2reg $LLVM_CUSTOM_INPUT -o /home/jhyc3/test.bc; $LLVM_CUSTOM_OPT -no-warn /home/jhyc3/test.bc -o $LLVM_CUSTOM_OUTPUT}
 
@@ -21,4 +21,4 @@ csynth_design
 # Run h/w simulation and compare with the software (gcc) results
 cosim_design
 
-export_design -flow syn -format ip_catalog
+#export_design -flow syn -format ip_catalog

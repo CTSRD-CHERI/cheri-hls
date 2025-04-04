@@ -22,4 +22,4 @@
 "cap" = 3
 "device" = "host"
 "size" = 9
-"omit_array" = true
+#"omit_array" = true

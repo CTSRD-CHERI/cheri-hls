@@ -35,7 +35,15 @@ BENCHMARKS = {
 }
 
 
-MODES = ["cpu", "ccpu", "cpu+hls", "ccpu+hls", "ccpu+chls", "ccpu+hls_fg"]
+MODES = [
+    "cpu",
+    "ccpu",
+    "cpu+hls",
+    "ccpu+hls",
+    "ccpu+chls",
+    "ccpu+hls_fg",
+    "ccpu+hls_fg_nl",
+]
 RV_ABI = "l64pc128"
 RV_ARCH = "rv64imaxcheri"
 
@@ -246,7 +254,7 @@ class CheriHLS:
                 if "ccpu+chls" in ms:
                     if self.run_single_evaluation(b, "ccpu+chls"):
                         self.exit(1)
-                if "ccpu+hls_fg" in ms:
+                if "ccpu+hls_fg" in ms or "ccpu+hls_fg_nl":
                     if self.run_single_evaluation(b, "ccpu+hls_fg"):
                         self.exit(1)
         return 0
@@ -265,6 +273,9 @@ class CheriHLS:
                 if "ccpu+hls_fg" in ms:
                     if self.run_single_synthesis(b, "ccpu+hls_fg"):
                         self.exit(1)
+                if "ccpu+hls_fg_nl" in ms:
+                    if self.run_single_synthesis(b, "ccpu+hls_fg_nl"):
+                        self.exit(1)
         return 0
 
     def run_single_test(self, test, mode, inst):
@@ -279,6 +290,8 @@ class CheriHLS:
             return self.simulate_ccpu_hls(test, inst=inst, cheri_hls=True)
         elif mode == "ccpu+hls_fg":
             return self.simulate_ccpu_hls_fg(test, inst=inst)
+        elif mode == "ccpu+hls_fg_nl":
+            return self.simulate_ccpu_hls_fg(test, inst=inst, no_local=True)
         else:  # mode == "cpu+hls":
             return self.simulate_cpu_hls(test, inst=inst)
 
@@ -603,8 +616,8 @@ class CheriHLS:
 
         return 0
 
-    def simulate_ccpu_hls_fg(self, test, inst):
-        mode = "hls_fg"
+    def simulate_ccpu_hls_fg(self, test, inst, no_local=False):
+        mode = "hls_fg_nl" if no_local else "hls_fg"
 
         self.logger.info(
             f"Running hardware simulation for test {test} (inst = {inst}) with mode (ccpu+{mode})..."
@@ -813,6 +826,8 @@ class CheriHLS:
                 "-c",
                 os.path.join(test_dir, "config.toml"),
             ]
+            if "hls_fg_nl" in mode:
+                cmd.append("-nl")
             result, _ = self.execute(cmd, cwd=test_dir)
             if result:
                 self.logger.error(f"Running Vitis HLS for {test} failed.")
@@ -1033,6 +1048,7 @@ ccpu (fullcap),
 cpu+hls (cpu+hls),
 ccpu+hls (fullcap cpu + hls),
 ccpu+hls_fg (fullcap cpu + fine-grained fullcap hls),
+ccpu+hls_fg_nl (fullcap cpu + fine-grained fullcap hls + no local),
 ccpu+chls (fullcap cpu + fullcap hls)""",
     )
 

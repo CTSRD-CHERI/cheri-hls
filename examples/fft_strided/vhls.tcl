@@ -1,4 +1,4 @@
-open_project -reset fft_baseline_prj
+open_project -reset fft_MANUAL_prj
 set_top hls_top 
 add_files { fft.cpp }
 add_files -tb { fft.cpp }

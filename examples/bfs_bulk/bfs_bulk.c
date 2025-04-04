@@ -69,7 +69,6 @@ void hls_top(node_index_t starting_node, int levels, int node,
 
   level[starting_node] = 0;
   level_counts[0] = 1;
-
 loop_horizons:
   for (horizon = 0; horizon < levels; horizon++) {
     cnt = 0;
@@ -94,7 +93,6 @@ loop_horizons:
     if ((level_counts[horizon + 1] = cnt) == 0)
       break;
   }
-
   for (int i = 0; i < node; i++)
     xlevel[i] = level[i];
 

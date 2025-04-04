@@ -1,5 +1,4 @@
 #define FFT_SIZE 1024
-// #define twoPI 6.28318530717959
 
 void hls_top(int size, int xreal[FFT_SIZE], int ximg[FFT_SIZE],
              int xreal_twid[FFT_SIZE / 2], int ximg_twid[FFT_SIZE / 2],
