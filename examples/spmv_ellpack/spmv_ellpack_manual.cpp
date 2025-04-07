@@ -154,7 +154,7 @@ void checkAccess(u32 *flag_buf, Cap cap, u16 offset, ap_uint<3> nBytes,
 int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, false);
-  return (*flag_buf) ? buf[i] : 0;
+  return buf[i]; // (*flag_buf) ? buf[i] : 0;
 }
 
 void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
@@ -166,6 +166,19 @@ void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
   }
   return;
 }
+// int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {
+//#pragma HLS INLINE
+//   checkAccess(flag_buf, cap, i, 4, false);
+//   return buf[i];
+// }
+//
+// void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
+//#pragma HLS INLINE
+//   checkAccess(flag_buf, cap, i, 4, true);
+//
+//   buf[i] = val;
+//   return;
+// }
 
 void hls_top(int n, int l, TYPE xnzval[N * L], int xcols[N * L], TYPE xvec[N],
              TYPE xout[N], u32 *flag, u32 cap[16]) {
@@ -180,7 +193,10 @@ void hls_top(int n, int l, TYPE xnzval[N * L], int xcols[N * L], TYPE xvec[N],
 #pragma HLS INTERFACE s_axilite port = return
   int i, j;
   TYPE Si;
-  u32 flag_buf = 0;
+  u32 flag_buf0 = 1;
+  u32 flag_buf1 = 1;
+  u32 flag_buf2 = 1;
+  u32 flag_buf3 = 1;
   Cap caps[4];
   u32 buffer[16];
 #pragma HLS array_partition variable = buffer type = complete
@@ -193,15 +209,15 @@ void hls_top(int n, int l, TYPE xnzval[N * L], int xcols[N * L], TYPE xvec[N],
   TYPE out[N];
 
   for (i = 0; i < n * l; i++) {
-    int nzvalelem = cheri_load(xnzval, i, &flag_buf, caps[0]);
+    int nzvalelem = cheri_load(xnzval, i, &flag_buf0, caps[0]);
     nzval[i] = nzvalelem;
   }
   for (i = 0; i < n * l; i++) {
-    int colselem = cheri_load(xcols, i, &flag_buf, caps[1]);
+    int colselem = cheri_load(xcols, i, &flag_buf1, caps[1]);
     cols[i] = colselem;
   }
   for (i = 0; i < n; i++) {
-    int vecelem = cheri_load(xvec, i, &flag_buf, caps[2]);
+    int vecelem = cheri_load(xvec, i, &flag_buf2, caps[2]);
     vec[i] = vecelem;
   }
 
@@ -217,9 +233,9 @@ ellpack_1:
   }
   for (i = 0; i < n; i++) {
     int xoutelem = out[i];
-    cheri_store(xout, i, xoutelem, &flag_buf, caps[3]);
+    cheri_store(xout, i, xoutelem, &flag_buf3, caps[3]);
   }
-  *flag = flag_buf;
+  *flag = flag_buf0 | flag_buf1 | flag_buf2 | flag_buf3;
   return;
 }
 

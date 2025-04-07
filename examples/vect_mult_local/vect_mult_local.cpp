@@ -1,4 +1,4 @@
-#define flag
+#define N 1000
 #include "ap_int.h"
 #include <stdint.h>
 #include <stdio.h>
@@ -139,16 +139,17 @@ void checkAccess(u32 *flag_buf, Cap cap, u16 offset, ap_uint<3> nBytes,
 int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, false);
-  return (*flag_buf) ? buf[i] : 0;
+  // return (*flag_buf) ? buf[i] : 0;
+  return buf[i];
 }
 
 void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, true);
 
-  if ((*flag_buf)) {
-    buf[i] = val;
-  }
+  // if ((*flag_buf)) {
+  buf[i] = val;
+  //}
   return;
 }
 
