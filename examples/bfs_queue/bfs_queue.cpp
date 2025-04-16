@@ -133,7 +133,7 @@ int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {
 void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, true);
-  buf[i] = flag_buf ? val : buf[i];
+  buf[i] = *flag_buf ? val : buf[i];
   // buf[i] = val;
   return;
 }
@@ -215,8 +215,8 @@ void hls_top(node_index_t starting_node, int levels, int node,
   u32 flag_buf = 1;
   Cap caps[5];
   u32 buffer[20];
-  //#pragma HLS array_partition variable = buffer type = complete
-  //#pragma HLS array_partition variable = caps type = complete
+#pragma HLS array_partition variable = buffer type = complete
+#pragma HLS array_partition variable = caps type = complete
   load_cap(5, buffer, cap, caps);
 
   for (int i = 0; i < node; i++) {
