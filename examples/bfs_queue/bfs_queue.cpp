@@ -134,6 +134,7 @@ void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, true);
   buf[i] = flag_buf ? val : buf[i];
+  // buf[i] = val;
   return;
 }
 /*
@@ -214,8 +215,8 @@ void hls_top(node_index_t starting_node, int levels, int node,
   u32 flag_buf = 1;
   Cap caps[5];
   u32 buffer[20];
-#pragma HLS array_partition variable = buffer type = complete
-#pragma HLS array_partition variable = caps type = complete
+  //#pragma HLS array_partition variable = buffer type = complete
+  //#pragma HLS array_partition variable = caps type = complete
   load_cap(5, buffer, cap, caps);
 
   for (int i = 0; i < node; i++) {
@@ -262,13 +263,14 @@ loop_queue:
 
   for (int i = 0; i < node; i++) {
     int level_elem = level[i];
-    cheri_store(xlevel, i, level_elem, &flag_buf, caps[4]);
+    cheri_store(xlevel, i, level_elem, &flag_buf, caps[3]);
   }
 
   for (int i = 0; i < levels; i++) {
     int xlevel_counts_elem = level_counts[i];
-    cheri_store(xlevel_counts, i, xlevel_counts_elem, &flag_buf, caps[5]);
+    cheri_store(xlevel_counts, i, xlevel_counts_elem, &flag_buf, caps[4]);
   }
+  *flag = flag_buf;
 }
 
 int main() {
@@ -278,8 +280,10 @@ int main() {
   int starting_node = 0;
   int level[N_NODES] = {0};
   int level_counts[N_LEVELS] = {1};
+  u32 cap[20];
+  u32 flag[1] = {0};
 
   hls_top(starting_node, N_LEVELS, N_NODES, nodes_b, nodes_e, edges, level,
-          level_counts);
+          level_counts, flag, cap);
   return 0;
 }
