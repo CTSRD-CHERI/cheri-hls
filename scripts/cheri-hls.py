@@ -800,7 +800,7 @@ class CheriHLS:
 
     def run_single_synthesis(self, test, mode):
         self.logger.info(
-            f"Running hardware synthesis for test {test} (inst = inst) with mode {mode}..."
+            f"Running hardware synthesis for test {test} with mode {mode}..."
         )
         # Generate HLS hardware
         test_dir = os.path.join(self.root, "examples", test)

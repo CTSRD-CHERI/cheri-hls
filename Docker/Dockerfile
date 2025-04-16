@@ -57,7 +57,7 @@ RUN mkdir -p /srcPkgs \
     && cd /srcPkgs \
     && git clone https://github.com/B-Lang-org/bsc.git \
     && cd bsc \
-    && git checkout f00d205 \
+    && git checkout 65e3a87a17f6b9cf38cbb7b6ad7a4473f025c098 \
     && git submodule update --init --recursive \
     && make install-src
 
