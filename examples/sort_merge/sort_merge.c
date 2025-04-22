@@ -1,6 +1,8 @@
 #define SIZE 2048
 #define TYPE int
 
+#include <stdint.h>
+typedef uint32_t u32;
 void merge(TYPE a[SIZE], int start, int m, int stop) {
   TYPE temp[SIZE];
   int i, j, k;
@@ -32,6 +34,11 @@ merge_label3:
   }
 }
 
+void stream_write(u32 size, int *array1, int *array2) {
+  for (int i = 0; i < size; i++) {
+    array1[i] = array2[i];
+  }
+}
 void hls_top(int size, TYPE xa[SIZE], TYPE xb[SIZE]) {
 #pragma HLS INTERFACE m_axi port = xa
 #pragma HLS INTERFACE m_axi port = xb
@@ -62,9 +69,7 @@ mergesort_label1:
       }
     }
   }
-
-  for (i = 0; i < size; i++)
-    xb[i] = a[i];
+  stream_write(size, xb, a);
 }
 
 int main() {

@@ -5,6 +5,11 @@
 "cap" = 0
 "device" = "host"
 "size" = 1024
+["%agg"]
+"cap" = 0
+"device" = "host"
+"size" = 1024
+
 
 ["%ximg"]
 "cap" = 1

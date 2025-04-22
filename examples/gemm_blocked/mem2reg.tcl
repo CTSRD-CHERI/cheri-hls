@@ -1,7 +1,7 @@
-open_project -reset gemm_prj
+open_project -reset gemm_blocked_prj
 set_top hls_top 
-add_files { gemm.c }
-add_files -tb { gemm.c }
+add_files { gemm_blocked.cpp }
+add_files -tb { gemm_blocked.cpp }
 open_solution -reset "solution"
 set_part {xcu250-figd2104-2L-e}
 create_clock -period 4 -name default

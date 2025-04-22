@@ -12,7 +12,7 @@ config_compile -pipeline_loops 1
 csim_design 
 # Comment the following two if I want to verify in software 
 # Generate  Verilog for HLS code
-set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -S -mem2reg /workspace/output.ll -o $LLVM_CUSTOM_OUTPUT}
+set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -S -mem2reg /workspace/examples/vect_mult_local/temp/output.ll -o $LLVM_CUSTOM_OUTPUT}
 
 # set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -mem2reg $LLVM_CUSTOM_INPUT -o /home/jhyc3/test.bc; $LLVM_CUSTOM_OPT -no-warn /home/jhyc3/test.bc -o $LLVM_CUSTOM_OUTPUT}
 

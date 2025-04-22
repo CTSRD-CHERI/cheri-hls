@@ -4,7 +4,7 @@
 ["%xnodes_b"]
 "cap" = 0
 "device" = "host"
-"size" = 256
+"size" = 1
 
 ["%xnodes_e"]
 "cap" = 1

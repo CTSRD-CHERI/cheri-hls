@@ -21,4 +21,4 @@ csynth_design
 # Run h/w simulation and compare with the software (gcc) results
 cosim_design
 
-export_design -flow syn -format ip_catalog 
+#export_design -flow syn -format ip_catalog 

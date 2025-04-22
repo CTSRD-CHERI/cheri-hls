@@ -123,14 +123,14 @@ pad_b:
     alignedB[b_str_idx] = '_';
   }
 
-  for (int i = 0; i < ALEN + BLEN; i++)
+  for (int i = 0; i < ALEN + BLEN; i++) {
     xalignedA[i] = alignedA[i];
-  for (int i = 0; i < ALEN + BLEN; i++)
     xalignedB[i] = alignedB[i];
-  for (int i = 0; i < (ALEN + 1) * (BLEN + 1); i++)
+  }
+  for (int i = 0; i < (ALEN + 1) * (BLEN + 1); i++) {
     xM[i] = M[i];
-  for (int i = 0; i < (ALEN + 1) * (BLEN + 1); i++)
     xptr[i] = ptr[i];
+  }
 }
 
 int main() {

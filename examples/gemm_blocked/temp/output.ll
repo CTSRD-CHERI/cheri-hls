@@ -107,10 +107,6 @@ $"_ZplILi33ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i" 
 
 $_ZN7ap_uintILi2EEC2ILi34EEERK6ap_intIXT_EE = comdat any
 
-$_ZaNILi2ELb0EER11ap_int_baseIXT_EXT0_EES2_i = comdat any
-
-$_ZaNILi14ELb0EER11ap_int_baseIXT_EXT0_EES2_i = comdat any
-
 $_ZNK11ap_int_baseILi2ELb0EEcmILi14ELb0EEE13ap_concat_refILi2ES0_XT_E12ap_range_refIXT_EXT0_EEERKS4_ = comdat any
 
 $_ZN7ap_uintILi14EEC2ILi2E11ap_int_baseILi2ELb0EELi14E12ap_range_refILi14ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E = comdat any
@@ -289,10 +285,6 @@ $_ZN8ssdm_intILi16ELb0EEC2Et = comdat any
 
 $_ZN13ap_concat_refILi2E11ap_int_baseILi2ELb0EELi14E12ap_range_refILi14ELb0EEEC2ERS1_RS3_ = comdat any
 
-$_ZN11ap_int_baseILi14ELb0EEaNILi32ELb1EEERS0_RKS_IXT_EXT0_EE = comdat any
-
-$_ZN11ap_int_baseILi2ELb0EEaNILi32ELb1EEERS0_RKS_IXT_EXT0_EE = comdat any
-
 $_ZN11ap_int_baseILi2ELb0EEC2ILi34ELb1EEERKS_IXT_EXT0_EE = comdat any
 
 $_ZNK11ap_int_baseILi34ELb1EE17checkOverflowCsimEibb = comdat any
@@ -436,7 +428,7 @@ $_ZN11ap_int_baseILi3ELb0EEC2Ei = comdat any
 $_ZN11ap_int_baseILi3ELb0EE18checkOverflowBaseCIiEEvT_ = comdat any
 
 @llvm.global_ctors = appending global [0 x { i32, void ()*, i8* }] zeroinitializer
-@_ZZ7hls_topiPiS_PjS0_E1b = private unnamed_addr constant [10 x i32] [i32 0, i32 1, i32 2, i32 3, i32 4, i32 5, i32 6, i32 7, i32 8, i32 9], align 4
+@_ZZ7hls_topiPiS_PjS0_E1b = private unnamed_addr constant [1000 x i32] [i32 0, i32 1, i32 2, i32 3, i32 4, i32 5, i32 6, i32 7, i32 8, i32 9, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0], align 4
 
 ; Function Attrs: alwaysinline nounwind
 define void @_Z6decode7ap_uintILi32EES0_S0_S0_(%struct.Cap* noalias sret %agg.result, %"struct.ap_uint<32>"* byval align 4 %buffer_0, %"struct.ap_uint<32>"* byval align 4 %buffer_1, %"struct.ap_uint<32>"* byval align 4 %buffer_2, %"struct.ap_uint<32>"* byval align 4 %buffer_3) #100000 !dbg !100335 !fpga.function.pragma !100370 {
@@ -484,65 +476,65 @@ entry:
   %T_13_12 = alloca %"struct.ap_uint<2>", align 1
   %ref.tmp32 = alloca %"struct.ap_int<34>", align 8
   %ref.tmp33 = alloca %"struct.ap_int<33>", align 8
-  %ref.tmp37 = alloca %"struct.ap_uint<14>", align 2
-  %ref.tmp38 = alloca %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >", align 8
-  %ref.tmp39 = alloca %"struct.ap_range_ref<14, false>", align 8
+  %ref.tmp35 = alloca %"struct.ap_uint<14>", align 2
+  %ref.tmp36 = alloca %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >", align 8
+  %ref.tmp37 = alloca %"struct.ap_range_ref<14, false>", align 8
   %A3 = alloca %"struct.ap_uint<3>", align 1
-  %ref.tmp40 = alloca %"struct.ap_int<65>", align 16
-  %ref.tmp41 = alloca %"struct.ap_uint<64>", align 8
-  %ref.tmp42 = alloca %"struct.ap_int<33>", align 8
+  %ref.tmp38 = alloca %"struct.ap_int<65>", align 16
+  %ref.tmp39 = alloca %"struct.ap_uint<64>", align 8
+  %ref.tmp40 = alloca %"struct.ap_int<33>", align 8
   %T3 = alloca %"struct.ap_uint<3>", align 1
-  %ref.tmp43 = alloca %"struct.ap_range_ref<14, false>", align 8
+  %ref.tmp41 = alloca %"struct.ap_range_ref<14, false>", align 8
   %B3 = alloca %"struct.ap_uint<3>", align 1
-  %ref.tmp44 = alloca %"struct.ap_range_ref<14, false>", align 8
+  %ref.tmp42 = alloca %"struct.ap_range_ref<14, false>", align 8
   %R = alloca %"struct.ap_uint<3>", align 1
-  %ref.tmp45 = alloca %"struct.ap_int<33>", align 8
+  %ref.tmp43 = alloca %"struct.ap_int<33>", align 8
   %c_t = alloca %"struct.ap_uint<2>", align 1
   %c_b = alloca %"struct.ap_uint<2>", align 1
-  %ref.tmp49 = alloca %"struct.ap_uint<2>", align 1
-  %ref.tmp55 = alloca %"struct.ap_uint<2>", align 1
-  %ref.tmp62 = alloca %"struct.ap_uint<2>", align 1
-  %ref.tmp68 = alloca %"struct.ap_uint<2>", align 1
-  %ref.tmp71 = alloca %"struct.ap_int<33>", align 8
-  %tmp72 = alloca %"struct.ap_uint<64>", align 8
-  %ref.tmp74 = alloca %"struct.ap_int<34>", align 8
-  %tmp75 = alloca %"struct.ap_int<34>", align 8
-  %ref.tmp76 = alloca %"struct.ap_int<33>", align 8
-  %tmp77 = alloca %"struct.ap_uint<32>", align 4
-  %tmp81 = alloca %"struct.ap_int<34>", align 8
-  %ref.tmp84 = alloca %"struct.ap_int<34>", align 8
-  %tmp85 = alloca %"struct.ap_int<34>", align 8
-  %ref.tmp86 = alloca %"struct.ap_int<33>", align 8
-  %tmp87 = alloca %"struct.ap_uint<32>", align 4
-  %tmp93 = alloca %"struct.ap_int<34>", align 8
-  %tmp96 = alloca %"struct.ap_int<65>", align 16
-  %tmp100 = alloca %"struct.ap_int<65>", align 16
+  %ref.tmp47 = alloca %"struct.ap_uint<2>", align 1
+  %ref.tmp53 = alloca %"struct.ap_uint<2>", align 1
+  %ref.tmp60 = alloca %"struct.ap_uint<2>", align 1
+  %ref.tmp66 = alloca %"struct.ap_uint<2>", align 1
+  %ref.tmp69 = alloca %"struct.ap_int<33>", align 8
+  %tmp70 = alloca %"struct.ap_uint<64>", align 8
+  %ref.tmp72 = alloca %"struct.ap_int<34>", align 8
+  %tmp73 = alloca %"struct.ap_int<34>", align 8
+  %ref.tmp74 = alloca %"struct.ap_int<33>", align 8
+  %tmp75 = alloca %"struct.ap_uint<32>", align 4
+  %tmp79 = alloca %"struct.ap_int<34>", align 8
+  %ref.tmp82 = alloca %"struct.ap_int<34>", align 8
+  %tmp83 = alloca %"struct.ap_int<34>", align 8
+  %ref.tmp84 = alloca %"struct.ap_int<33>", align 8
+  %tmp85 = alloca %"struct.ap_uint<32>", align 4
+  %tmp91 = alloca %"struct.ap_int<34>", align 8
+  %tmp94 = alloca %"struct.ap_int<65>", align 16
+  %tmp98 = alloca %"struct.ap_int<65>", align 16
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<32>"* %buffer_0, metadata !100373, metadata !DIExpression()), !dbg !100374
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<32>"* %buffer_1, metadata !100375, metadata !DIExpression()), !dbg !100376
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<32>"* %buffer_2, metadata !100377, metadata !DIExpression()), !dbg !100378
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<32>"* %buffer_3, metadata !100379, metadata !DIExpression()), !dbg !100380
   %0 = bitcast %"struct.ap_uint<64>"* %cap to i8*, !dbg !100381
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019, !dbg !100381
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020, !dbg !100381
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<64>"* %cap, metadata !100382, metadata !DIExpression()), !dbg !100403
   %1 = bitcast %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %ref.tmp to i8*, !dbg !100404
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100019, !dbg !100404
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100020, !dbg !100404
   %2 = bitcast %"struct.ap_uint<32>"* %buffer_3 to %"struct.ap_int_base<32, false>"*, !dbg !100405
   %3 = bitcast %"struct.ap_uint<32>"* %buffer_2 to %"struct.ap_int_base<32, false>"*, !dbg !100406
   call void @_ZN11ap_int_baseILi32ELb0EEcmILi32ELb0EEE13ap_concat_refILi32ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* sret %ref.tmp, %"struct.ap_int_base<32, false>"* %2, %"struct.ap_int_base<32, false>"* dereferenceable(4) %3), !dbg !100407
   call void @_ZN7ap_uintILi64EEC2ILi32E11ap_int_baseILi32ELb0EELi32ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<64>"* %cap, %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* dereferenceable(16) %ref.tmp), !dbg !100404
   %4 = bitcast %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %ref.tmp to i8*, !dbg !100403
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %4) #100019, !dbg !100403
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %4) #100020, !dbg !100403
   %5 = bitcast %"struct.ap_uint<64>"* %addr to i8*, !dbg !100408
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %5) #100019, !dbg !100408
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %5) #100020, !dbg !100408
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<64>"* %addr, metadata !100409, metadata !DIExpression()), !dbg !100410
   %6 = bitcast %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %ref.tmp1 to i8*, !dbg !100411
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %6) #100019, !dbg !100411
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %6) #100020, !dbg !100411
   %7 = bitcast %"struct.ap_uint<32>"* %buffer_1 to %"struct.ap_int_base<32, false>"*, !dbg !100412
   %8 = bitcast %"struct.ap_uint<32>"* %buffer_0 to %"struct.ap_int_base<32, false>"*, !dbg !100413
   call void @_ZN11ap_int_baseILi32ELb0EEcmILi32ELb0EEE13ap_concat_refILi32ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* sret %ref.tmp1, %"struct.ap_int_base<32, false>"* %7, %"struct.ap_int_base<32, false>"* dereferenceable(4) %8), !dbg !100414
   call void @_ZN7ap_uintILi64EEC2ILi32E11ap_int_baseILi32ELb0EELi32ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<64>"* %addr, %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* dereferenceable(16) %ref.tmp1), !dbg !100411
   %9 = bitcast %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %ref.tmp1 to i8*, !dbg !100410
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %9) #100019, !dbg !100410
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %9) #100020, !dbg !100410
   %10 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100415
   %call = call dereferenceable(8) %"struct.ap_int_base<64, false>"* @_ZeOILi64ELb0EER11ap_int_baseIXT_EXT0_EES2_l(%"struct.ap_int_base<64, false>"* dereferenceable(8) %10, i64 35184305078276), !dbg !100416
   %11 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100417
@@ -556,71 +548,71 @@ entry:
   %tobool5 = icmp ne i64 %call4, 0, !dbg !100421
   call void @llvm.dbg.value(metadata i1 %tobool5, metadata !100423, metadata !DIExpression()), !dbg !100424
   %13 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp6 to i8*, !dbg !100425
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %13) #100019, !dbg !100425
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %13) #100020, !dbg !100425
   %14 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100425
   call void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* sret %ref.tmp6, %"struct.ap_int_base<64, false>"* %14, i32 47, i32 47), !dbg !100426
   %call7 = call zeroext i1 @_ZneILi64ELb0EEbRK12ap_range_refIXT_EXT0_EEi(%"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref.tmp6, i32 0), !dbg !100427
   %15 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp6 to i8*, !dbg !100428
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %15) #100019, !dbg !100428
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %15) #100020, !dbg !100428
   call void @llvm.dbg.value(metadata i1 %call7, metadata !100429, metadata !DIExpression()), !dbg !100430
   %16 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp8 to i8*, !dbg !100431
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %16) #100019, !dbg !100431
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %16) #100020, !dbg !100431
   %17 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100431
   call void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* sret %ref.tmp8, %"struct.ap_int_base<64, false>"* %17, i32 26, i32 26), !dbg !100432
   %call9 = call zeroext i1 @_ZneILi64ELb0EEbRK12ap_range_refIXT_EXT0_EEi(%"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref.tmp8, i32 0), !dbg !100433
   %18 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp8 to i8*, !dbg !100434
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %18) #100019, !dbg !100434
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %18) #100020, !dbg !100434
   call void @llvm.dbg.value(metadata i1 %call9, metadata !100435, metadata !DIExpression()), !dbg !100436
   %19 = bitcast %"struct.ap_uint<9>"* %T_11_3 to i8*, !dbg !100437
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %19) #100019, !dbg !100437
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %19) #100020, !dbg !100437
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<9>"* %T_11_3, metadata !100438, metadata !DIExpression()), !dbg !100459
   %20 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp10 to i8*, !dbg !100460
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %20) #100019, !dbg !100460
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %20) #100020, !dbg !100460
   %21 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100460
   call void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* sret %ref.tmp10, %"struct.ap_int_base<64, false>"* %21, i32 25, i32 17), !dbg !100461
   call void @_ZN7ap_uintILi9EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<9>"* %T_11_3, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref.tmp10), !dbg !100460
   %22 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp10 to i8*, !dbg !100459
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %22) #100019, !dbg !100459
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %22) #100020, !dbg !100459
   %23 = bitcast %"struct.ap_uint<3>"* %T_E to i8*, !dbg !100462
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %23) #100019, !dbg !100462
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %23) #100020, !dbg !100462
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %T_E, metadata !100463, metadata !DIExpression()), !dbg !100511
   %24 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp11 to i8*, !dbg !100512
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %24) #100019, !dbg !100512
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %24) #100020, !dbg !100512
   %25 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100512
   call void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* sret %ref.tmp11, %"struct.ap_int_base<64, false>"* %25, i32 16, i32 14), !dbg !100513
   call void @_ZN7ap_uintILi3EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %T_E, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref.tmp11), !dbg !100512
   %26 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp11 to i8*, !dbg !100511
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %26) #100019, !dbg !100511
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %26) #100020, !dbg !100511
   %27 = bitcast %"struct.ap_uint<11>"* %B_13_3 to i8*, !dbg !100514
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %27) #100019, !dbg !100514
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %27) #100020, !dbg !100514
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<11>"* %B_13_3, metadata !100515, metadata !DIExpression()), !dbg !100536
   %28 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp12 to i8*, !dbg !100537
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %28) #100019, !dbg !100537
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %28) #100020, !dbg !100537
   %29 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100537
   call void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* sret %ref.tmp12, %"struct.ap_int_base<64, false>"* %29, i32 13, i32 3), !dbg !100538
   call void @_ZN7ap_uintILi11EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<11>"* %B_13_3, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref.tmp12), !dbg !100537
   %30 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp12 to i8*, !dbg !100536
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %30) #100019, !dbg !100536
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %30) #100020, !dbg !100536
   %31 = bitcast %"struct.ap_uint<3>"* %B_E to i8*, !dbg !100539
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %31) #100019, !dbg !100539
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %31) #100020, !dbg !100539
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %B_E, metadata !100540, metadata !DIExpression()), !dbg !100541
   %32 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp13 to i8*, !dbg !100542
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %32) #100019, !dbg !100542
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %32) #100020, !dbg !100542
   %33 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100542
   call void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* sret %ref.tmp13, %"struct.ap_int_base<64, false>"* %33, i32 2, i32 0), !dbg !100543
   call void @_ZN7ap_uintILi3EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %B_E, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref.tmp13), !dbg !100542
   %34 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp13 to i8*, !dbg !100541
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %34) #100019, !dbg !100541
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %34) #100020, !dbg !100541
   %35 = bitcast %"struct.ap_uint<6>"* %E to i8*, !dbg !100544
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %35) #100019, !dbg !100544
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %35) #100020, !dbg !100544
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<6>"* %E, metadata !100545, metadata !DIExpression()), !dbg !100566
   call void @_ZN7ap_uintILi6EEC2Ei(%"struct.ap_uint<6>"* %E, i32 0), !dbg !100567
   %36 = bitcast %"struct.ap_uint<14>"* %T_13_0 to i8*, !dbg !100568
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %36) #100019, !dbg !100568
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %36) #100020, !dbg !100568
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<14>"* %T_13_0, metadata !100569, metadata !DIExpression()), !dbg !100617
   call void @_ZN7ap_uintILi14EEC2Ei(%"struct.ap_uint<14>"* %T_13_0, i32 0), !dbg !100618
   %37 = bitcast %"struct.ap_uint<14>"* %B_13_0 to i8*, !dbg !100619
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %37) #100019, !dbg !100619
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %37) #100020, !dbg !100619
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<14>"* %B_13_0, metadata !100620, metadata !DIExpression()), !dbg !100621
   call void @_ZN7ap_uintILi14EEC2Ei(%"struct.ap_uint<14>"* %B_13_0, i32 0), !dbg !100622
   call void @llvm.dbg.value(metadata i1 false, metadata !100623, metadata !DIExpression()), !dbg !100624
@@ -628,16 +620,16 @@ entry:
 
 if.then:                                          ; preds = %entry
   %38 = bitcast %"struct.ap_uint<6>"* %ref.tmp14 to i8*, !dbg !100626
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %38) #100019, !dbg !100626
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %38) #100020, !dbg !100626
   call void @_ZN7ap_uintILi6EEC2Ei(%"struct.ap_uint<6>"* %ref.tmp14, i32 0), !dbg !100626
   %39 = load %"struct.ap_uint<6>", %"struct.ap_uint<6>"* %ref.tmp14, align 1, !dbg !100629
   store %"struct.ap_uint<6>" %39, %"struct.ap_uint<6>"* %E, align 1, !dbg !100629
   %40 = bitcast %"struct.ap_uint<6>"* %ref.tmp14 to i8*, !dbg !100630
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %40) #100019, !dbg !100630
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %40) #100020, !dbg !100630
   %41 = bitcast %"struct.ap_uint<14>"* %ref.tmp15 to i8*, !dbg !100631
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %41) #100019, !dbg !100631
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %41) #100020, !dbg !100631
   %42 = bitcast %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %ref.tmp16 to i8*, !dbg !100631
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %42) #100019, !dbg !100631
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %42) #100020, !dbg !100631
   %43 = bitcast %"struct.ap_uint<9>"* %T_11_3 to %"struct.ap_int_base<9, false>"*, !dbg !100632
   %44 = bitcast %"struct.ap_uint<3>"* %T_E to %"struct.ap_int_base<3, false>"*, !dbg !100633
   call void @_ZN11ap_int_baseILi9ELb0EEcmILi3ELb0EEE13ap_concat_refILi9ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* sret %ref.tmp16, %"struct.ap_int_base<9, false>"* %43, %"struct.ap_int_base<3, false>"* dereferenceable(1) %44), !dbg !100634
@@ -645,13 +637,13 @@ if.then:                                          ; preds = %entry
   %45 = load %"struct.ap_uint<14>", %"struct.ap_uint<14>"* %ref.tmp15, align 2, !dbg !100635
   store %"struct.ap_uint<14>" %45, %"struct.ap_uint<14>"* %T_13_0, align 2, !dbg !100635
   %46 = bitcast %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %ref.tmp16 to i8*, !dbg !100636
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %46) #100019, !dbg !100636
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %46) #100020, !dbg !100636
   %47 = bitcast %"struct.ap_uint<14>"* %ref.tmp15 to i8*, !dbg !100636
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %47) #100019, !dbg !100636
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %47) #100020, !dbg !100636
   %48 = bitcast %"struct.ap_uint<14>"* %ref.tmp17 to i8*, !dbg !100637
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %48) #100019, !dbg !100637
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %48) #100020, !dbg !100637
   %49 = bitcast %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %ref.tmp18 to i8*, !dbg !100637
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %49) #100019, !dbg !100637
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %49) #100020, !dbg !100637
   %50 = bitcast %"struct.ap_uint<11>"* %B_13_3 to %"struct.ap_int_base<11, false>"*, !dbg !100638
   %51 = bitcast %"struct.ap_uint<3>"* %B_E to %"struct.ap_int_base<3, false>"*, !dbg !100639
   call void @_ZN11ap_int_baseILi11ELb0EEcmILi3ELb0EEE13ap_concat_refILi11ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* sret %ref.tmp18, %"struct.ap_int_base<11, false>"* %50, %"struct.ap_int_base<3, false>"* dereferenceable(1) %51), !dbg !100640
@@ -659,44 +651,44 @@ if.then:                                          ; preds = %entry
   %52 = load %"struct.ap_uint<14>", %"struct.ap_uint<14>"* %ref.tmp17, align 2, !dbg !100641
   store %"struct.ap_uint<14>" %52, %"struct.ap_uint<14>"* %B_13_0, align 2, !dbg !100641
   %53 = bitcast %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %ref.tmp18 to i8*, !dbg !100642
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %53) #100019, !dbg !100642
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %53) #100020, !dbg !100642
   %54 = bitcast %"struct.ap_uint<14>"* %ref.tmp17 to i8*, !dbg !100642
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %54) #100019, !dbg !100642
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %54) #100020, !dbg !100642
   %55 = bitcast %"struct.ap_uint<12>"* %T_11_0 to i8*, !dbg !100643
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %55) #100019, !dbg !100643
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %55) #100020, !dbg !100643
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<12>"* %T_11_0, metadata !100644, metadata !DIExpression()), !dbg !100692
   %56 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp19 to i8*, !dbg !100693
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %56) #100019, !dbg !100693
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %56) #100020, !dbg !100693
   %57 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100693
   call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp19, %"struct.ap_int_base<14, false>"* %57, i32 11, i32 0), !dbg !100694
   call void @_ZN7ap_uintILi12EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<12>"* %T_11_0, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp19), !dbg !100693
   %58 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp19 to i8*, !dbg !100692
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %58) #100019, !dbg !100692
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %58) #100020, !dbg !100692
   %59 = bitcast %"struct.ap_uint<12>"* %B_11_0 to i8*, !dbg !100695
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %59) #100019, !dbg !100695
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %59) #100020, !dbg !100695
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<12>"* %B_11_0, metadata !100696, metadata !DIExpression()), !dbg !100697
   %60 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp20 to i8*, !dbg !100698
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %60) #100019, !dbg !100698
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %60) #100020, !dbg !100698
   %61 = bitcast %"struct.ap_uint<14>"* %B_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100698
   call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp20, %"struct.ap_int_base<14, false>"* %61, i32 11, i32 0), !dbg !100699
   call void @_ZN7ap_uintILi12EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<12>"* %B_11_0, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp20), !dbg !100698
   %62 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp20 to i8*, !dbg !100697
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %62) #100019, !dbg !100697
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %62) #100020, !dbg !100697
   %63 = bitcast %"struct.ap_uint<12>"* %T_11_0 to %"struct.ap_int_base<12, false>"*, !dbg !100700
   %64 = bitcast %"struct.ap_uint<12>"* %B_11_0 to %"struct.ap_int_base<12, false>"*, !dbg !100701
   %call21 = call zeroext i1 @_ZNK11ap_int_baseILi12ELb0EEltILi12ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<12, false>"* %63, %"struct.ap_int_base<12, false>"* dereferenceable(2) %64), !dbg !100702
   call void @llvm.dbg.value(metadata i1 %call21, metadata !100623, metadata !DIExpression()), !dbg !100624
   %65 = bitcast %"struct.ap_uint<12>"* %B_11_0 to i8*, !dbg !100703
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %65) #100019, !dbg !100703
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %65) #100020, !dbg !100703
   %66 = bitcast %"struct.ap_uint<12>"* %T_11_0 to i8*, !dbg !100703
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %66) #100019, !dbg !100703
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %66) #100020, !dbg !100703
   br label %if.end, !dbg !100704
 
 if.else:                                          ; preds = %entry
   %67 = bitcast %"struct.ap_uint<6>"* %ref.tmp22 to i8*, !dbg !100705
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %67) #100019, !dbg !100705
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %67) #100020, !dbg !100705
   %68 = bitcast %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %ref.tmp23 to i8*, !dbg !100705
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %68) #100019, !dbg !100705
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %68) #100020, !dbg !100705
   %69 = bitcast %"struct.ap_uint<3>"* %T_E to %"struct.ap_int_base<3, false>"*, !dbg !100707
   %70 = bitcast %"struct.ap_uint<3>"* %B_E to %"struct.ap_int_base<3, false>"*, !dbg !100708
   call void @_ZN11ap_int_baseILi3ELb0EEcmILi3ELb0EEE13ap_concat_refILi3ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* sret %ref.tmp23, %"struct.ap_int_base<3, false>"* %69, %"struct.ap_int_base<3, false>"* dereferenceable(1) %70), !dbg !100709
@@ -704,85 +696,85 @@ if.else:                                          ; preds = %entry
   %71 = load %"struct.ap_uint<6>", %"struct.ap_uint<6>"* %ref.tmp22, align 1, !dbg !100710
   store %"struct.ap_uint<6>" %71, %"struct.ap_uint<6>"* %E, align 1, !dbg !100710
   %72 = bitcast %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %ref.tmp23 to i8*, !dbg !100711
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %72) #100019, !dbg !100711
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %72) #100020, !dbg !100711
   %73 = bitcast %"struct.ap_uint<6>"* %ref.tmp22 to i8*, !dbg !100711
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %73) #100019, !dbg !100711
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %73) #100020, !dbg !100711
   %74 = bitcast %"struct.ap_uint<14>"* %ref.tmp24 to i8*, !dbg !100712
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %74) #100019, !dbg !100712
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %74) #100020, !dbg !100712
   %75 = bitcast %"struct.ap_uint<9>"* %ref.tmp25 to i8*, !dbg !100712
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %75) #100019, !dbg !100712
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %75) #100020, !dbg !100712
   %76 = bitcast %"struct.ap_uint<9>"* %T_11_3 to %"struct.ap_int_base<9, false>"*, !dbg !100713
   call void @_ZlsILi9ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%"struct.ap_uint<9>"* sret %ref.tmp25, %"struct.ap_int_base<9, false>"* dereferenceable(2) %76, i32 3), !dbg !100714
   call void @_ZN7ap_uintILi14EEC2ILi9EEERKS_IXT_EE(%"struct.ap_uint<14>"* %ref.tmp24, %"struct.ap_uint<9>"* dereferenceable(2) %ref.tmp25), !dbg !100712
   %77 = load %"struct.ap_uint<14>", %"struct.ap_uint<14>"* %ref.tmp24, align 2, !dbg !100715
   store %"struct.ap_uint<14>" %77, %"struct.ap_uint<14>"* %T_13_0, align 2, !dbg !100715
   %78 = bitcast %"struct.ap_uint<9>"* %ref.tmp25 to i8*, !dbg !100716
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %78) #100019, !dbg !100716
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %78) #100020, !dbg !100716
   %79 = bitcast %"struct.ap_uint<14>"* %ref.tmp24 to i8*, !dbg !100716
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %79) #100019, !dbg !100716
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %79) #100020, !dbg !100716
   %80 = bitcast %"struct.ap_uint<14>"* %ref.tmp26 to i8*, !dbg !100717
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %80) #100019, !dbg !100717
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %80) #100020, !dbg !100717
   %81 = bitcast %"struct.ap_uint<11>"* %ref.tmp27 to i8*, !dbg !100717
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %81) #100019, !dbg !100717
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %81) #100020, !dbg !100717
   %82 = bitcast %"struct.ap_uint<11>"* %B_13_3 to %"struct.ap_int_base<11, false>"*, !dbg !100718
   call void @_ZlsILi11ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%"struct.ap_uint<11>"* sret %ref.tmp27, %"struct.ap_int_base<11, false>"* dereferenceable(2) %82, i32 3), !dbg !100719
   call void @_ZN7ap_uintILi14EEC2ILi11EEERKS_IXT_EE(%"struct.ap_uint<14>"* %ref.tmp26, %"struct.ap_uint<11>"* dereferenceable(2) %ref.tmp27), !dbg !100717
   %83 = load %"struct.ap_uint<14>", %"struct.ap_uint<14>"* %ref.tmp26, align 2, !dbg !100720
   store %"struct.ap_uint<14>" %83, %"struct.ap_uint<14>"* %B_13_0, align 2, !dbg !100720
   %84 = bitcast %"struct.ap_uint<11>"* %ref.tmp27 to i8*, !dbg !100721
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %84) #100019, !dbg !100721
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %84) #100020, !dbg !100721
   %85 = bitcast %"struct.ap_uint<14>"* %ref.tmp26 to i8*, !dbg !100721
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %85) #100019, !dbg !100721
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %85) #100020, !dbg !100721
   %86 = bitcast %"struct.ap_uint<12>"* %T_11_3_only to i8*, !dbg !100722
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %86) #100019, !dbg !100722
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %86) #100020, !dbg !100722
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<12>"* %T_11_3_only, metadata !100723, metadata !DIExpression()), !dbg !100724
   %87 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp28 to i8*, !dbg !100725
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %87) #100019, !dbg !100725
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %87) #100020, !dbg !100725
   %88 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100725
   call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp28, %"struct.ap_int_base<14, false>"* %88, i32 11, i32 3), !dbg !100726
   call void @_ZN7ap_uintILi12EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<12>"* %T_11_3_only, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp28), !dbg !100725
   %89 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp28 to i8*, !dbg !100724
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %89) #100019, !dbg !100724
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %89) #100020, !dbg !100724
   %90 = bitcast %"struct.ap_uint<12>"* %B_11_3_only to i8*, !dbg !100727
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %90) #100019, !dbg !100727
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %90) #100020, !dbg !100727
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<12>"* %B_11_3_only, metadata !100728, metadata !DIExpression()), !dbg !100729
   %91 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp29 to i8*, !dbg !100730
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %91) #100019, !dbg !100730
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %91) #100020, !dbg !100730
   %92 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100730
   call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp29, %"struct.ap_int_base<14, false>"* %92, i32 11, i32 3), !dbg !100731
   call void @_ZN7ap_uintILi12EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<12>"* %B_11_3_only, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp29), !dbg !100730
   %93 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp29 to i8*, !dbg !100729
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %93) #100019, !dbg !100729
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %93) #100020, !dbg !100729
   %94 = bitcast %"struct.ap_uint<12>"* %T_11_3_only to %"struct.ap_int_base<12, false>"*, !dbg !100732
   %95 = bitcast %"struct.ap_uint<12>"* %B_11_3_only to %"struct.ap_int_base<12, false>"*, !dbg !100733
   %call30 = call zeroext i1 @_ZNK11ap_int_baseILi12ELb0EEltILi12ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<12, false>"* %94, %"struct.ap_int_base<12, false>"* dereferenceable(2) %95), !dbg !100734
   call void @llvm.dbg.value(metadata i1 %call30, metadata !100623, metadata !DIExpression()), !dbg !100624
   %96 = bitcast %"struct.ap_uint<12>"* %B_11_3_only to i8*, !dbg !100735
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %96) #100019, !dbg !100735
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %96) #100020, !dbg !100735
   %97 = bitcast %"struct.ap_uint<12>"* %T_11_3_only to i8*, !dbg !100735
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %97) #100019, !dbg !100735
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %97) #100020, !dbg !100735
   br label %if.end
 
 if.end:                                           ; preds = %if.else, %if.then
   %L_carry_out.0 = phi i1 [ %call30, %if.else ], [ %call21, %if.then ]
   call void @llvm.dbg.value(metadata i1 %L_carry_out.0, metadata !100623, metadata !DIExpression()), !dbg !100624
   %98 = bitcast %"struct.ap_uint<2>"* %B_13_12 to i8*, !dbg !100736
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %98) #100019, !dbg !100736
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %98) #100020, !dbg !100736
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<2>"* %B_13_12, metadata !100737, metadata !DIExpression()), !dbg !100785
   %99 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp31 to i8*, !dbg !100786
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %99) #100019, !dbg !100786
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %99) #100020, !dbg !100786
   %100 = bitcast %"struct.ap_uint<14>"* %B_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100786
   call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp31, %"struct.ap_int_base<14, false>"* %100, i32 13, i32 12), !dbg !100787
   call void @_ZN7ap_uintILi2EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<2>"* %B_13_12, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp31), !dbg !100786
   %101 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp31 to i8*, !dbg !100785
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %101) #100019, !dbg !100785
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %101) #100020, !dbg !100785
   %102 = bitcast %"struct.ap_uint<2>"* %T_13_12 to i8*, !dbg !100788
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %102) #100019, !dbg !100788
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %102) #100020, !dbg !100788
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<2>"* %T_13_12, metadata !100789, metadata !DIExpression()), !dbg !100790
   %103 = bitcast %"struct.ap_int<34>"* %ref.tmp32 to i8*, !dbg !100791
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %103) #100019, !dbg !100791
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %103) #100020, !dbg !100791
   %104 = bitcast %"struct.ap_int<33>"* %ref.tmp33 to i8*, !dbg !100791
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %104) #100019, !dbg !100791
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %104) #100020, !dbg !100791
   %105 = bitcast %"struct.ap_uint<2>"* %B_13_12 to %"struct.ap_int_base<2, false>"*, !dbg !100791
   %106 = zext i1 %L_carry_out.0 to i64, !dbg !100792
   %cond = select i1 %L_carry_out.0, i32 1, i32 0, !dbg !100792
@@ -793,314 +785,310 @@ if.end:                                           ; preds = %if.else, %if.then
   call void @"_ZplILi33ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<34>"* sret %ref.tmp32, %"struct.ap_int_base<33, true>"* dereferenceable(8) %107, i32 %cond34), !dbg !100795
   call void @_ZN7ap_uintILi2EEC2ILi34EEERK6ap_intIXT_EE(%"struct.ap_uint<2>"* %T_13_12, %"struct.ap_int<34>"* dereferenceable(8) %ref.tmp32), !dbg !100791
   %109 = bitcast %"struct.ap_int<33>"* %ref.tmp33 to i8*, !dbg !100790
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %109) #100019, !dbg !100790
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %109) #100020, !dbg !100790
   %110 = bitcast %"struct.ap_int<34>"* %ref.tmp32 to i8*, !dbg !100790
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %110) #100019, !dbg !100790
-  %111 = bitcast %"struct.ap_uint<2>"* %T_13_12 to %"struct.ap_int_base<2, false>"*, !dbg !100796
-  %call35 = call dereferenceable(1) %"struct.ap_int_base<2, false>"* @_ZaNILi2ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%"struct.ap_int_base<2, false>"* dereferenceable(1) %111, i32 3), !dbg !100797
-  %112 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100798
-  %call36 = call dereferenceable(2) %"struct.ap_int_base<14, false>"* @_ZaNILi14ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%"struct.ap_int_base<14, false>"* dereferenceable(2) %112, i32 4095), !dbg !100799
-  %113 = bitcast %"struct.ap_uint<14>"* %ref.tmp37 to i8*, !dbg !100800
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %113) #100019, !dbg !100800
-  %114 = bitcast %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %ref.tmp38 to i8*, !dbg !100800
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %114) #100019, !dbg !100800
-  %115 = bitcast %"struct.ap_uint<2>"* %T_13_12 to %"struct.ap_int_base<2, false>"*, !dbg !100801
-  %116 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp39 to i8*, !dbg !100802
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %116) #100019, !dbg !100802
-  %117 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100802
-  call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp39, %"struct.ap_int_base<14, false>"* %117, i32 11, i32 0), !dbg !100803
-  call void @_ZNK11ap_int_baseILi2ELb0EEcmILi14ELb0EEE13ap_concat_refILi2ES0_XT_E12ap_range_refIXT_EXT0_EEERKS4_(%"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* sret %ref.tmp38, %"struct.ap_int_base<2, false>"* %115, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp39), !dbg !100804
-  call void @_ZN7ap_uintILi14EEC2ILi2E11ap_int_baseILi2ELb0EELi14E12ap_range_refILi14ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<14>"* %ref.tmp37, %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* dereferenceable(16) %ref.tmp38), !dbg !100800
-  %118 = load %"struct.ap_uint<14>", %"struct.ap_uint<14>"* %ref.tmp37, align 2, !dbg !100805
-  store %"struct.ap_uint<14>" %118, %"struct.ap_uint<14>"* %T_13_0, align 2, !dbg !100805
-  %119 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp39 to i8*, !dbg !100806
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %119) #100019, !dbg !100806
-  %120 = bitcast %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %ref.tmp38 to i8*, !dbg !100806
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %120) #100019, !dbg !100806
-  %121 = bitcast %"struct.ap_uint<14>"* %ref.tmp37 to i8*, !dbg !100806
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %121) #100019, !dbg !100806
-  %122 = bitcast %"struct.ap_uint<3>"* %A3 to i8*, !dbg !100807
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %122) #100019, !dbg !100807
-  call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %A3, metadata !100808, metadata !DIExpression()), !dbg !100809
-  %123 = bitcast %"struct.ap_int<65>"* %ref.tmp40 to i8*, !dbg !100810
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %123) #100019, !dbg !100810
-  %124 = bitcast %"struct.ap_uint<64>"* %ref.tmp41 to i8*, !dbg !100811
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %124) #100019, !dbg !100811
-  %125 = bitcast %"struct.ap_uint<64>"* %addr to %"struct.ap_int_base<64, false>"*, !dbg !100812
-  %126 = bitcast %"struct.ap_int<33>"* %ref.tmp42 to i8*, !dbg !100813
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %126) #100019, !dbg !100813
-  %127 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100814
-  call void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp42, %"struct.ap_int_base<6, false>"* dereferenceable(1) %127, i32 11), !dbg !100815
-  %128 = bitcast %"struct.ap_int<33>"* %ref.tmp42 to %"struct.ap_int_base<33, true>"*, !dbg !100813
-  call void @_ZNK11ap_int_baseILi64ELb0EErsILi33EEE7ap_uintILi64EERKS_IXT_ELb1EE(%"struct.ap_uint<64>"* sret %ref.tmp41, %"struct.ap_int_base<64, false>"* %125, %"struct.ap_int_base<33, true>"* dereferenceable(8) %128), !dbg !100816
-  %129 = bitcast %"struct.ap_uint<64>"* %ref.tmp41 to %"struct.ap_int_base<64, false>"*, !dbg !100811
-  call void @"_ZanILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5logicERKS1_i"(%"struct.ap_int<65>"* sret %ref.tmp40, %"struct.ap_int_base<64, false>"* dereferenceable(8) %129, i32 7), !dbg !100817
-  call void @_ZN7ap_uintILi3EEC2ILi65EEERK6ap_intIXT_EE(%"struct.ap_uint<3>"* %A3, %"struct.ap_int<65>"* dereferenceable(16) %ref.tmp40), !dbg !100810
-  %130 = bitcast %"struct.ap_int<33>"* %ref.tmp42 to i8*, !dbg !100809
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %130) #100019, !dbg !100809
-  %131 = bitcast %"struct.ap_uint<64>"* %ref.tmp41 to i8*, !dbg !100809
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %131) #100019, !dbg !100809
-  %132 = bitcast %"struct.ap_int<65>"* %ref.tmp40 to i8*, !dbg !100809
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %132) #100019, !dbg !100809
-  %133 = bitcast %"struct.ap_uint<3>"* %T3 to i8*, !dbg !100818
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %133) #100019, !dbg !100818
-  call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %T3, metadata !100819, metadata !DIExpression()), !dbg !100820
-  %134 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp43 to i8*, !dbg !100821
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %134) #100019, !dbg !100821
-  %135 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100821
-  call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp43, %"struct.ap_int_base<14, false>"* %135, i32 13, i32 11), !dbg !100822
-  call void @_ZN7ap_uintILi3EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %T3, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp43), !dbg !100821
-  %136 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp43 to i8*, !dbg !100820
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %136) #100019, !dbg !100820
-  %137 = bitcast %"struct.ap_uint<3>"* %B3 to i8*, !dbg !100823
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %137) #100019, !dbg !100823
-  call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %B3, metadata !100824, metadata !DIExpression()), !dbg !100825
-  %138 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp44 to i8*, !dbg !100826
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %138) #100019, !dbg !100826
-  %139 = bitcast %"struct.ap_uint<14>"* %B_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100826
-  call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp44, %"struct.ap_int_base<14, false>"* %139, i32 13, i32 11), !dbg !100827
-  call void @_ZN7ap_uintILi3EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %B3, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp44), !dbg !100826
-  %140 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp44 to i8*, !dbg !100825
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %140) #100019, !dbg !100825
-  %141 = bitcast %"struct.ap_uint<3>"* %R to i8*, !dbg !100828
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %141) #100019, !dbg !100828
-  call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %R, metadata !100829, metadata !DIExpression()), !dbg !100830
-  %142 = bitcast %"struct.ap_int<33>"* %ref.tmp45 to i8*, !dbg !100831
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %142) #100019, !dbg !100831
-  %143 = bitcast %"struct.ap_uint<3>"* %B3 to %"struct.ap_int_base<3, false>"*, !dbg !100831
-  call void @"_ZmiILi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5minusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp45, %"struct.ap_int_base<3, false>"* dereferenceable(1) %143, i32 1), !dbg !100832
-  call void @_ZN7ap_uintILi3EEC2ILi33EEERK6ap_intIXT_EE(%"struct.ap_uint<3>"* %R, %"struct.ap_int<33>"* dereferenceable(8) %ref.tmp45), !dbg !100831
-  %144 = bitcast %"struct.ap_int<33>"* %ref.tmp45 to i8*, !dbg !100830
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %144) #100019, !dbg !100830
-  %145 = bitcast %"struct.ap_uint<2>"* %c_t to i8*, !dbg !100833
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %145) #100019, !dbg !100833
-  call void @llvm.dbg.declare(metadata %"struct.ap_uint<2>"* %c_t, metadata !100834, metadata !DIExpression()), !dbg !100879
-  call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %c_t, i32 0), !dbg !100880
-  %146 = bitcast %"struct.ap_uint<2>"* %c_b to i8*, !dbg !100881
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %146) #100019, !dbg !100881
-  call void @llvm.dbg.declare(metadata %"struct.ap_uint<2>"* %c_b, metadata !100882, metadata !DIExpression()), !dbg !100883
-  call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %c_b, i32 0), !dbg !100884
-  %147 = bitcast %"struct.ap_uint<3>"* %A3 to %"struct.ap_int_base<3, false>"*, !dbg !100885
-  %148 = bitcast %"struct.ap_uint<3>"* %R to %"struct.ap_int_base<3, false>"*, !dbg !100887
-  %call46 = call zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %147, %"struct.ap_int_base<3, false>"* dereferenceable(1) %148), !dbg !100888
-  br i1 %call46, label %land.lhs.true, label %if.else50, !dbg !100889
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %110) #100020, !dbg !100790
+  %111 = bitcast %"struct.ap_uint<14>"* %ref.tmp35 to i8*, !dbg !100796
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %111) #100020, !dbg !100796
+  %112 = bitcast %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %ref.tmp36 to i8*, !dbg !100796
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %112) #100020, !dbg !100796
+  %113 = bitcast %"struct.ap_uint<2>"* %T_13_12 to %"struct.ap_int_base<2, false>"*, !dbg !100797
+  %114 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp37 to i8*, !dbg !100798
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %114) #100020, !dbg !100798
+  %115 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100798
+  call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp37, %"struct.ap_int_base<14, false>"* %115, i32 11, i32 0), !dbg !100799
+  call void @_ZNK11ap_int_baseILi2ELb0EEcmILi14ELb0EEE13ap_concat_refILi2ES0_XT_E12ap_range_refIXT_EXT0_EEERKS4_(%"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* sret %ref.tmp36, %"struct.ap_int_base<2, false>"* %113, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp37), !dbg !100800
+  call void @_ZN7ap_uintILi14EEC2ILi2E11ap_int_baseILi2ELb0EELi14E12ap_range_refILi14ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<14>"* %ref.tmp35, %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* dereferenceable(16) %ref.tmp36), !dbg !100796
+  %116 = load %"struct.ap_uint<14>", %"struct.ap_uint<14>"* %ref.tmp35, align 2, !dbg !100801
+  store %"struct.ap_uint<14>" %116, %"struct.ap_uint<14>"* %T_13_0, align 2, !dbg !100801
+  %117 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp37 to i8*, !dbg !100802
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %117) #100020, !dbg !100802
+  %118 = bitcast %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %ref.tmp36 to i8*, !dbg !100802
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %118) #100020, !dbg !100802
+  %119 = bitcast %"struct.ap_uint<14>"* %ref.tmp35 to i8*, !dbg !100802
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %119) #100020, !dbg !100802
+  %120 = bitcast %"struct.ap_uint<3>"* %A3 to i8*, !dbg !100803
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %120) #100020, !dbg !100803
+  call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %A3, metadata !100804, metadata !DIExpression()), !dbg !100805
+  %121 = bitcast %"struct.ap_int<65>"* %ref.tmp38 to i8*, !dbg !100806
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %121) #100020, !dbg !100806
+  %122 = bitcast %"struct.ap_uint<64>"* %ref.tmp39 to i8*, !dbg !100807
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %122) #100020, !dbg !100807
+  %123 = bitcast %"struct.ap_uint<64>"* %addr to %"struct.ap_int_base<64, false>"*, !dbg !100808
+  %124 = bitcast %"struct.ap_int<33>"* %ref.tmp40 to i8*, !dbg !100809
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %124) #100020, !dbg !100809
+  %125 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100810
+  call void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp40, %"struct.ap_int_base<6, false>"* dereferenceable(1) %125, i32 11), !dbg !100811
+  %126 = bitcast %"struct.ap_int<33>"* %ref.tmp40 to %"struct.ap_int_base<33, true>"*, !dbg !100809
+  call void @_ZNK11ap_int_baseILi64ELb0EErsILi33EEE7ap_uintILi64EERKS_IXT_ELb1EE(%"struct.ap_uint<64>"* sret %ref.tmp39, %"struct.ap_int_base<64, false>"* %123, %"struct.ap_int_base<33, true>"* dereferenceable(8) %126), !dbg !100812
+  %127 = bitcast %"struct.ap_uint<64>"* %ref.tmp39 to %"struct.ap_int_base<64, false>"*, !dbg !100807
+  call void @"_ZanILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5logicERKS1_i"(%"struct.ap_int<65>"* sret %ref.tmp38, %"struct.ap_int_base<64, false>"* dereferenceable(8) %127, i32 7), !dbg !100813
+  call void @_ZN7ap_uintILi3EEC2ILi65EEERK6ap_intIXT_EE(%"struct.ap_uint<3>"* %A3, %"struct.ap_int<65>"* dereferenceable(16) %ref.tmp38), !dbg !100806
+  %128 = bitcast %"struct.ap_int<33>"* %ref.tmp40 to i8*, !dbg !100805
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %128) #100020, !dbg !100805
+  %129 = bitcast %"struct.ap_uint<64>"* %ref.tmp39 to i8*, !dbg !100805
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %129) #100020, !dbg !100805
+  %130 = bitcast %"struct.ap_int<65>"* %ref.tmp38 to i8*, !dbg !100805
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %130) #100020, !dbg !100805
+  %131 = bitcast %"struct.ap_uint<3>"* %T3 to i8*, !dbg !100814
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %131) #100020, !dbg !100814
+  call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %T3, metadata !100815, metadata !DIExpression()), !dbg !100816
+  %132 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp41 to i8*, !dbg !100817
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %132) #100020, !dbg !100817
+  %133 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100817
+  call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp41, %"struct.ap_int_base<14, false>"* %133, i32 13, i32 11), !dbg !100818
+  call void @_ZN7ap_uintILi3EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %T3, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp41), !dbg !100817
+  %134 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp41 to i8*, !dbg !100816
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %134) #100020, !dbg !100816
+  %135 = bitcast %"struct.ap_uint<3>"* %B3 to i8*, !dbg !100819
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %135) #100020, !dbg !100819
+  call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %B3, metadata !100820, metadata !DIExpression()), !dbg !100821
+  %136 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp42 to i8*, !dbg !100822
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %136) #100020, !dbg !100822
+  %137 = bitcast %"struct.ap_uint<14>"* %B_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100822
+  call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp42, %"struct.ap_int_base<14, false>"* %137, i32 13, i32 11), !dbg !100823
+  call void @_ZN7ap_uintILi3EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %B3, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp42), !dbg !100822
+  %138 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp42 to i8*, !dbg !100821
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %138) #100020, !dbg !100821
+  %139 = bitcast %"struct.ap_uint<3>"* %R to i8*, !dbg !100824
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %139) #100020, !dbg !100824
+  call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %R, metadata !100825, metadata !DIExpression()), !dbg !100826
+  %140 = bitcast %"struct.ap_int<33>"* %ref.tmp43 to i8*, !dbg !100827
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %140) #100020, !dbg !100827
+  %141 = bitcast %"struct.ap_uint<3>"* %B3 to %"struct.ap_int_base<3, false>"*, !dbg !100827
+  call void @"_ZmiILi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5minusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp43, %"struct.ap_int_base<3, false>"* dereferenceable(1) %141, i32 1), !dbg !100828
+  call void @_ZN7ap_uintILi3EEC2ILi33EEERK6ap_intIXT_EE(%"struct.ap_uint<3>"* %R, %"struct.ap_int<33>"* dereferenceable(8) %ref.tmp43), !dbg !100827
+  %142 = bitcast %"struct.ap_int<33>"* %ref.tmp43 to i8*, !dbg !100826
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %142) #100020, !dbg !100826
+  %143 = bitcast %"struct.ap_uint<2>"* %c_t to i8*, !dbg !100829
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %143) #100020, !dbg !100829
+  call void @llvm.dbg.declare(metadata %"struct.ap_uint<2>"* %c_t, metadata !100830, metadata !DIExpression()), !dbg !100875
+  call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %c_t, i32 0), !dbg !100876
+  %144 = bitcast %"struct.ap_uint<2>"* %c_b to i8*, !dbg !100877
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %144) #100020, !dbg !100877
+  call void @llvm.dbg.declare(metadata %"struct.ap_uint<2>"* %c_b, metadata !100878, metadata !DIExpression()), !dbg !100879
+  call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %c_b, i32 0), !dbg !100880
+  %145 = bitcast %"struct.ap_uint<3>"* %A3 to %"struct.ap_int_base<3, false>"*, !dbg !100881
+  %146 = bitcast %"struct.ap_uint<3>"* %R to %"struct.ap_int_base<3, false>"*, !dbg !100883
+  %call44 = call zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %145, %"struct.ap_int_base<3, false>"* dereferenceable(1) %146), !dbg !100884
+  br i1 %call44, label %land.lhs.true, label %if.else48, !dbg !100885
 
 land.lhs.true:                                    ; preds = %if.end
-  %149 = bitcast %"struct.ap_uint<3>"* %T3 to %"struct.ap_int_base<3, false>"*, !dbg !100890
-  %150 = bitcast %"struct.ap_uint<3>"* %R to %"struct.ap_int_base<3, false>"*, !dbg !100891
-  %call47 = call zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %149, %"struct.ap_int_base<3, false>"* dereferenceable(1) %150), !dbg !100892
-  br i1 %call47, label %if.else50, label %if.then48, !dbg !100893
+  %147 = bitcast %"struct.ap_uint<3>"* %T3 to %"struct.ap_int_base<3, false>"*, !dbg !100886
+  %148 = bitcast %"struct.ap_uint<3>"* %R to %"struct.ap_int_base<3, false>"*, !dbg !100887
+  %call45 = call zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %147, %"struct.ap_int_base<3, false>"* dereferenceable(1) %148), !dbg !100888
+  br i1 %call45, label %if.else48, label %if.then46, !dbg !100889
 
-if.then48:                                        ; preds = %land.lhs.true
-  %151 = bitcast %"struct.ap_uint<2>"* %ref.tmp49 to i8*, !dbg !100894
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %151) #100019, !dbg !100894
-  call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %ref.tmp49, i32 -1), !dbg !100894
-  %152 = load %"struct.ap_uint<2>", %"struct.ap_uint<2>"* %ref.tmp49, align 1, !dbg !100896
-  store %"struct.ap_uint<2>" %152, %"struct.ap_uint<2>"* %c_t, align 1, !dbg !100896
-  %153 = bitcast %"struct.ap_uint<2>"* %ref.tmp49 to i8*, !dbg !100897
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %153) #100019, !dbg !100897
-  br label %if.end57, !dbg !100898
+if.then46:                                        ; preds = %land.lhs.true
+  %149 = bitcast %"struct.ap_uint<2>"* %ref.tmp47 to i8*, !dbg !100890
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %149) #100020, !dbg !100890
+  call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %ref.tmp47, i32 -1), !dbg !100890
+  %150 = load %"struct.ap_uint<2>", %"struct.ap_uint<2>"* %ref.tmp47, align 1, !dbg !100892
+  store %"struct.ap_uint<2>" %150, %"struct.ap_uint<2>"* %c_t, align 1, !dbg !100892
+  %151 = bitcast %"struct.ap_uint<2>"* %ref.tmp47 to i8*, !dbg !100893
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %151) #100020, !dbg !100893
+  br label %if.end55, !dbg !100894
 
-if.else50:                                        ; preds = %land.lhs.true, %if.end
-  %154 = bitcast %"struct.ap_uint<3>"* %A3 to %"struct.ap_int_base<3, false>"*, !dbg !100899
+if.else48:                                        ; preds = %land.lhs.true, %if.end
+  %152 = bitcast %"struct.ap_uint<3>"* %A3 to %"struct.ap_int_base<3, false>"*, !dbg !100895
+  %153 = bitcast %"struct.ap_uint<3>"* %R to %"struct.ap_int_base<3, false>"*, !dbg !100897
+  %call49 = call zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %152, %"struct.ap_int_base<3, false>"* dereferenceable(1) %153), !dbg !100898
+  br i1 %call49, label %if.end54, label %land.lhs.true50, !dbg !100899
+
+land.lhs.true50:                                  ; preds = %if.else48
+  %154 = bitcast %"struct.ap_uint<3>"* %T3 to %"struct.ap_int_base<3, false>"*, !dbg !100900
   %155 = bitcast %"struct.ap_uint<3>"* %R to %"struct.ap_int_base<3, false>"*, !dbg !100901
   %call51 = call zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %154, %"struct.ap_int_base<3, false>"* dereferenceable(1) %155), !dbg !100902
-  br i1 %call51, label %if.end56, label %land.lhs.true52, !dbg !100903
+  br i1 %call51, label %if.then52, label %if.end54, !dbg !100903
 
-land.lhs.true52:                                  ; preds = %if.else50
-  %156 = bitcast %"struct.ap_uint<3>"* %T3 to %"struct.ap_int_base<3, false>"*, !dbg !100904
-  %157 = bitcast %"struct.ap_uint<3>"* %R to %"struct.ap_int_base<3, false>"*, !dbg !100905
-  %call53 = call zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %156, %"struct.ap_int_base<3, false>"* dereferenceable(1) %157), !dbg !100906
-  br i1 %call53, label %if.then54, label %if.end56, !dbg !100907
+if.then52:                                        ; preds = %land.lhs.true50
+  %156 = bitcast %"struct.ap_uint<2>"* %ref.tmp53 to i8*, !dbg !100904
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %156) #100020, !dbg !100904
+  call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %ref.tmp53, i32 1), !dbg !100904
+  %157 = load %"struct.ap_uint<2>", %"struct.ap_uint<2>"* %ref.tmp53, align 1, !dbg !100906
+  store %"struct.ap_uint<2>" %157, %"struct.ap_uint<2>"* %c_t, align 1, !dbg !100906
+  %158 = bitcast %"struct.ap_uint<2>"* %ref.tmp53 to i8*, !dbg !100907
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %158) #100020, !dbg !100907
+  br label %if.end54, !dbg !100908
 
-if.then54:                                        ; preds = %land.lhs.true52
-  %158 = bitcast %"struct.ap_uint<2>"* %ref.tmp55 to i8*, !dbg !100908
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %158) #100019, !dbg !100908
-  call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %ref.tmp55, i32 1), !dbg !100908
-  %159 = load %"struct.ap_uint<2>", %"struct.ap_uint<2>"* %ref.tmp55, align 1, !dbg !100910
-  store %"struct.ap_uint<2>" %159, %"struct.ap_uint<2>"* %c_t, align 1, !dbg !100910
-  %160 = bitcast %"struct.ap_uint<2>"* %ref.tmp55 to i8*, !dbg !100911
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %160) #100019, !dbg !100911
-  br label %if.end56, !dbg !100912
+if.end54:                                         ; preds = %if.then52, %land.lhs.true50, %if.else48
+  br label %if.end55
 
-if.end56:                                         ; preds = %if.then54, %land.lhs.true52, %if.else50
-  br label %if.end57
+if.end55:                                         ; preds = %if.end54, %if.then46
+  %159 = bitcast %"struct.ap_uint<3>"* %A3 to %"struct.ap_int_base<3, false>"*, !dbg !100909
+  %160 = bitcast %"struct.ap_uint<3>"* %R to %"struct.ap_int_base<3, false>"*, !dbg !100911
+  %call56 = call zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %159, %"struct.ap_int_base<3, false>"* dereferenceable(1) %160), !dbg !100912
+  br i1 %call56, label %land.lhs.true57, label %if.else61, !dbg !100913
 
-if.end57:                                         ; preds = %if.end56, %if.then48
-  %161 = bitcast %"struct.ap_uint<3>"* %A3 to %"struct.ap_int_base<3, false>"*, !dbg !100913
+land.lhs.true57:                                  ; preds = %if.end55
+  %161 = bitcast %"struct.ap_uint<3>"* %B3 to %"struct.ap_int_base<3, false>"*, !dbg !100914
   %162 = bitcast %"struct.ap_uint<3>"* %R to %"struct.ap_int_base<3, false>"*, !dbg !100915
   %call58 = call zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %161, %"struct.ap_int_base<3, false>"* dereferenceable(1) %162), !dbg !100916
-  br i1 %call58, label %land.lhs.true59, label %if.else63, !dbg !100917
+  br i1 %call58, label %if.else61, label %if.then59, !dbg !100917
 
-land.lhs.true59:                                  ; preds = %if.end57
-  %163 = bitcast %"struct.ap_uint<3>"* %B3 to %"struct.ap_int_base<3, false>"*, !dbg !100918
-  %164 = bitcast %"struct.ap_uint<3>"* %R to %"struct.ap_int_base<3, false>"*, !dbg !100919
-  %call60 = call zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %163, %"struct.ap_int_base<3, false>"* dereferenceable(1) %164), !dbg !100920
-  br i1 %call60, label %if.else63, label %if.then61, !dbg !100921
+if.then59:                                        ; preds = %land.lhs.true57
+  %163 = bitcast %"struct.ap_uint<2>"* %ref.tmp60 to i8*, !dbg !100918
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %163) #100020, !dbg !100918
+  call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %ref.tmp60, i32 -1), !dbg !100918
+  %164 = load %"struct.ap_uint<2>", %"struct.ap_uint<2>"* %ref.tmp60, align 1, !dbg !100920
+  store %"struct.ap_uint<2>" %164, %"struct.ap_uint<2>"* %c_b, align 1, !dbg !100920
+  %165 = bitcast %"struct.ap_uint<2>"* %ref.tmp60 to i8*, !dbg !100921
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %165) #100020, !dbg !100921
+  br label %if.end68, !dbg !100922
 
-if.then61:                                        ; preds = %land.lhs.true59
-  %165 = bitcast %"struct.ap_uint<2>"* %ref.tmp62 to i8*, !dbg !100922
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %165) #100019, !dbg !100922
-  call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %ref.tmp62, i32 -1), !dbg !100922
-  %166 = load %"struct.ap_uint<2>", %"struct.ap_uint<2>"* %ref.tmp62, align 1, !dbg !100924
-  store %"struct.ap_uint<2>" %166, %"struct.ap_uint<2>"* %c_b, align 1, !dbg !100924
-  %167 = bitcast %"struct.ap_uint<2>"* %ref.tmp62 to i8*, !dbg !100925
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %167) #100019, !dbg !100925
-  br label %if.end70, !dbg !100926
+if.else61:                                        ; preds = %land.lhs.true57, %if.end55
+  %166 = bitcast %"struct.ap_uint<3>"* %A3 to %"struct.ap_int_base<3, false>"*, !dbg !100923
+  %167 = bitcast %"struct.ap_uint<3>"* %R to %"struct.ap_int_base<3, false>"*, !dbg !100925
+  %call62 = call zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %166, %"struct.ap_int_base<3, false>"* dereferenceable(1) %167), !dbg !100926
+  br i1 %call62, label %if.end67, label %land.lhs.true63, !dbg !100927
 
-if.else63:                                        ; preds = %land.lhs.true59, %if.end57
-  %168 = bitcast %"struct.ap_uint<3>"* %A3 to %"struct.ap_int_base<3, false>"*, !dbg !100927
+land.lhs.true63:                                  ; preds = %if.else61
+  %168 = bitcast %"struct.ap_uint<3>"* %T3 to %"struct.ap_int_base<3, false>"*, !dbg !100928
   %169 = bitcast %"struct.ap_uint<3>"* %R to %"struct.ap_int_base<3, false>"*, !dbg !100929
   %call64 = call zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %168, %"struct.ap_int_base<3, false>"* dereferenceable(1) %169), !dbg !100930
-  br i1 %call64, label %if.end69, label %land.lhs.true65, !dbg !100931
+  br i1 %call64, label %if.then65, label %if.end67, !dbg !100931
 
-land.lhs.true65:                                  ; preds = %if.else63
-  %170 = bitcast %"struct.ap_uint<3>"* %T3 to %"struct.ap_int_base<3, false>"*, !dbg !100932
-  %171 = bitcast %"struct.ap_uint<3>"* %R to %"struct.ap_int_base<3, false>"*, !dbg !100933
-  %call66 = call zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %170, %"struct.ap_int_base<3, false>"* dereferenceable(1) %171), !dbg !100934
-  br i1 %call66, label %if.then67, label %if.end69, !dbg !100935
+if.then65:                                        ; preds = %land.lhs.true63
+  %170 = bitcast %"struct.ap_uint<2>"* %ref.tmp66 to i8*, !dbg !100932
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %170) #100020, !dbg !100932
+  call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %ref.tmp66, i32 1), !dbg !100932
+  %171 = load %"struct.ap_uint<2>", %"struct.ap_uint<2>"* %ref.tmp66, align 1, !dbg !100934
+  store %"struct.ap_uint<2>" %171, %"struct.ap_uint<2>"* %c_b, align 1, !dbg !100934
+  %172 = bitcast %"struct.ap_uint<2>"* %ref.tmp66 to i8*, !dbg !100935
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %172) #100020, !dbg !100935
+  br label %if.end67, !dbg !100936
 
-if.then67:                                        ; preds = %land.lhs.true65
-  %172 = bitcast %"struct.ap_uint<2>"* %ref.tmp68 to i8*, !dbg !100936
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %172) #100019, !dbg !100936
-  call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %ref.tmp68, i32 1), !dbg !100936
-  %173 = load %"struct.ap_uint<2>", %"struct.ap_uint<2>"* %ref.tmp68, align 1, !dbg !100938
-  store %"struct.ap_uint<2>" %173, %"struct.ap_uint<2>"* %c_b, align 1, !dbg !100938
-  %174 = bitcast %"struct.ap_uint<2>"* %ref.tmp68 to i8*, !dbg !100939
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %174) #100019, !dbg !100939
-  br label %if.end69, !dbg !100940
+if.end67:                                         ; preds = %if.then65, %land.lhs.true63, %if.else61
+  br label %if.end68
 
-if.end69:                                         ; preds = %if.then67, %land.lhs.true65, %if.else63
-  br label %if.end70
-
-if.end70:                                         ; preds = %if.end69, %if.then61
-  %175 = bitcast %"struct.ap_uint<64>"* %addr to %"struct.ap_int_base<64, false>"*, !dbg !100941
-  %176 = bitcast %"struct.ap_int<33>"* %ref.tmp71 to i8*, !dbg !100942
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %176) #100019, !dbg !100942
-  %177 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100943
-  call void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp71, %"struct.ap_int_base<6, false>"* dereferenceable(1) %177, i32 14), !dbg !100944
-  %178 = bitcast %"struct.ap_int<33>"* %ref.tmp71 to %"struct.ap_int_base<33, true>"*, !dbg !100942
-  call void @_ZNK11ap_int_baseILi64ELb0EErsILi33EEE7ap_uintILi64EERKS_IXT_ELb1EE(%"struct.ap_uint<64>"* sret %tmp72, %"struct.ap_int_base<64, false>"* %175, %"struct.ap_int_base<33, true>"* dereferenceable(8) %178), !dbg !100945
-  %179 = bitcast %"struct.ap_uint<64>"* %tmp72 to %"struct.ap_int_base<64, false>"*, !dbg !100941
-  %call73 = call i64 @_ZNK11ap_int_baseILi64ELb0EEcvyEv(%"struct.ap_int_base<64, false>"* %179), !dbg !100941
-  %conv = trunc i64 %call73 to i32, !dbg !100941
-  %180 = bitcast %"struct.ap_int<33>"* %ref.tmp71 to i8*, !dbg !100941
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %180) #100019, !dbg !100941
-  call void @llvm.dbg.value(metadata i32 %conv, metadata !100946, metadata !DIExpression()), !dbg !100947
-  %181 = bitcast %"struct.ap_int<34>"* %ref.tmp74 to i8*, !dbg !100948
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %181) #100019, !dbg !100948
-  %182 = bitcast %"struct.ap_uint<2>"* %c_t to %"struct.ap_int_base<2, false>"*, !dbg !100949
-  call void @"_ZplILi2ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE4plusEjRKS1_"(%"struct.ap_int<34>"* sret %tmp75, i32 %conv, %"struct.ap_int_base<2, false>"* dereferenceable(1) %182), !dbg !100950
-  %183 = bitcast %"struct.ap_int<34>"* %tmp75 to %"struct.ap_int_base<34, true>"*, !dbg !100951
-  %184 = bitcast %"struct.ap_int<33>"* %ref.tmp76 to i8*, !dbg !100952
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %184) #100019, !dbg !100952
-  %185 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100953
-  call void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp76, %"struct.ap_int_base<6, false>"* dereferenceable(1) %185, i32 14), !dbg !100954
-  %186 = bitcast %"struct.ap_int<33>"* %ref.tmp76 to %"struct.ap_int_base<33, true>"*, !dbg !100952
-  call void @_ZNK11ap_int_baseILi34ELb1EElsILi33EEE6ap_intILi34EERKS_IXT_ELb1EE(%"struct.ap_int<34>"* sret %ref.tmp74, %"struct.ap_int_base<34, true>"* %183, %"struct.ap_int_base<33, true>"* dereferenceable(8) %186), !dbg !100955
-  %187 = bitcast %"struct.ap_int<34>"* %ref.tmp74 to %"struct.ap_int_base<34, true>"*, !dbg !100948
-  %188 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100956
-  call void @"_ZanILi14ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5logicERKS1_i"(%"struct.ap_uint<32>"* sret %tmp77, %"struct.ap_int_base<14, false>"* dereferenceable(2) %188, i32 16383), !dbg !100957
-  %189 = bitcast %"struct.ap_uint<32>"* %tmp77 to %"struct.ap_int_base<32, false>"*, !dbg !100958
-  %call78 = call i64 @_ZNK11ap_int_baseILi32ELb1EEcvxEv(%"struct.ap_int_base<32, false>"* %189), !dbg !100958
-  %conv79 = trunc i64 %call78 to i32, !dbg !100958
-  %190 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100959
-  %call80 = call i64 @_ZNK11ap_int_baseILi6ELb0EEcvyEv(%"struct.ap_int_base<6, false>"* %190), !dbg !100959
-  %sh_prom = trunc i64 %call80 to i32, !dbg !100960
-  %shl = shl i32 %conv79, %sh_prom, !dbg !100960
-  call void @"_ZorILi34ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE5logicERKS1_j"(%"struct.ap_int<34>"* sret %tmp81, %"struct.ap_int_base<34, true>"* dereferenceable(8) %187, i32 %shl), !dbg !100961
-  %191 = bitcast %"struct.ap_int<34>"* %tmp81 to %"struct.ap_int_base<34, true>"*, !dbg !100948
-  %call82 = call i64 @_ZNK11ap_int_baseILi34ELb1EEcvxEv(%"struct.ap_int_base<34, true>"* %191), !dbg !100948
-  %conv83 = trunc i64 %call82 to i32, !dbg !100948
-  %192 = bitcast %"struct.ap_int<33>"* %ref.tmp76 to i8*, !dbg !100948
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %192) #100019, !dbg !100948
-  %193 = bitcast %"struct.ap_int<34>"* %ref.tmp74 to i8*, !dbg !100948
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %193) #100019, !dbg !100948
-  call void @llvm.dbg.value(metadata i32 %conv83, metadata !100962, metadata !DIExpression()), !dbg !100963
-  %194 = bitcast %"struct.ap_int<34>"* %ref.tmp84 to i8*, !dbg !100964
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %194) #100019, !dbg !100964
-  %195 = bitcast %"struct.ap_uint<2>"* %c_b to %"struct.ap_int_base<2, false>"*, !dbg !100965
-  call void @"_ZplILi2ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE4plusEjRKS1_"(%"struct.ap_int<34>"* sret %tmp85, i32 %conv, %"struct.ap_int_base<2, false>"* dereferenceable(1) %195), !dbg !100966
-  %196 = bitcast %"struct.ap_int<34>"* %tmp85 to %"struct.ap_int_base<34, true>"*, !dbg !100967
-  %197 = bitcast %"struct.ap_int<33>"* %ref.tmp86 to i8*, !dbg !100968
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %197) #100019, !dbg !100968
-  %198 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100969
-  call void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp86, %"struct.ap_int_base<6, false>"* dereferenceable(1) %198, i32 14), !dbg !100970
-  %199 = bitcast %"struct.ap_int<33>"* %ref.tmp86 to %"struct.ap_int_base<33, true>"*, !dbg !100968
-  call void @_ZNK11ap_int_baseILi34ELb1EElsILi33EEE6ap_intILi34EERKS_IXT_ELb1EE(%"struct.ap_int<34>"* sret %ref.tmp84, %"struct.ap_int_base<34, true>"* %196, %"struct.ap_int_base<33, true>"* dereferenceable(8) %199), !dbg !100971
-  %200 = bitcast %"struct.ap_int<34>"* %ref.tmp84 to %"struct.ap_int_base<34, true>"*, !dbg !100964
-  %201 = bitcast %"struct.ap_uint<14>"* %B_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100972
-  call void @"_ZanILi14ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5logicERKS1_i"(%"struct.ap_uint<32>"* sret %tmp87, %"struct.ap_int_base<14, false>"* dereferenceable(2) %201, i32 16383), !dbg !100973
-  %202 = bitcast %"struct.ap_uint<32>"* %tmp87 to %"struct.ap_int_base<32, false>"*, !dbg !100974
-  %call88 = call i64 @_ZNK11ap_int_baseILi32ELb1EEcvxEv(%"struct.ap_int_base<32, false>"* %202), !dbg !100974
-  %conv89 = trunc i64 %call88 to i32, !dbg !100974
-  %203 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100975
-  %call90 = call i64 @_ZNK11ap_int_baseILi6ELb0EEcvyEv(%"struct.ap_int_base<6, false>"* %203), !dbg !100975
-  %sh_prom91 = trunc i64 %call90 to i32, !dbg !100976
-  %shl92 = shl i32 %conv89, %sh_prom91, !dbg !100976
-  call void @"_ZorILi34ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE5logicERKS1_j"(%"struct.ap_int<34>"* sret %tmp93, %"struct.ap_int_base<34, true>"* dereferenceable(8) %200, i32 %shl92), !dbg !100977
-  %204 = bitcast %"struct.ap_int<34>"* %tmp93 to %"struct.ap_int_base<34, true>"*, !dbg !100964
-  %call94 = call i64 @_ZNK11ap_int_baseILi34ELb1EEcvxEv(%"struct.ap_int_base<34, true>"* %204), !dbg !100964
-  %conv95 = trunc i64 %call94 to i32, !dbg !100964
-  %205 = bitcast %"struct.ap_int<33>"* %ref.tmp86 to i8*, !dbg !100964
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %205) #100019, !dbg !100964
-  %206 = bitcast %"struct.ap_int<34>"* %ref.tmp84 to i8*, !dbg !100964
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %206) #100019, !dbg !100964
-  call void @llvm.dbg.value(metadata i32 %conv95, metadata !100978, metadata !DIExpression()), !dbg !100979
-  call void @llvm.dbg.declare(metadata %struct.Cap* %agg.result, metadata !100980, metadata !DIExpression()), !dbg !100981
-  %207 = bitcast %"struct.ap_uint<64>"* %addr to %"struct.ap_int_base<64, false>"*, !dbg !100982
-  call void @"_ZmiILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE5minusEjRKS1_"(%"struct.ap_int<65>"* sret %tmp96, i32 %conv95, %"struct.ap_int_base<64, false>"* dereferenceable(8) %207), !dbg !100983
-  %208 = bitcast %"struct.ap_int<65>"* %tmp96 to %"struct.ap_int_base<65, true>"*, !dbg !100984
-  %call97 = call i64 @_ZNK11ap_int_baseILi65ELb1EEcvxEv(%"struct.ap_int_base<65, true>"* %208), !dbg !100984
-  %conv98 = trunc i64 %call97 to i32, !dbg !100984
-  %base99 = getelementptr inbounds %struct.Cap, %struct.Cap* %agg.result, i32 0, i32 0, !dbg !100985
-  store i32 %conv98, i32* %base99, align 4, !dbg !100986
-  %209 = bitcast %"struct.ap_uint<64>"* %addr to %"struct.ap_int_base<64, false>"*, !dbg !100987
-  call void @"_ZmiILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE5minusEjRKS1_"(%"struct.ap_int<65>"* sret %tmp100, i32 %conv83, %"struct.ap_int_base<64, false>"* dereferenceable(8) %209), !dbg !100988
-  %210 = bitcast %"struct.ap_int<65>"* %tmp100 to %"struct.ap_int_base<65, true>"*, !dbg !100989
-  %call101 = call i64 @_ZNK11ap_int_baseILi65ELb1EEcvxEv(%"struct.ap_int_base<65, true>"* %210), !dbg !100989
-  %conv102 = trunc i64 %call101 to i32, !dbg !100989
-  %top103 = getelementptr inbounds %struct.Cap, %struct.Cap* %agg.result, i32 0, i32 1, !dbg !100990
-  store i32 %conv102, i32* %top103, align 4, !dbg !100991
-  %read104 = getelementptr inbounds %struct.Cap, %struct.Cap* %agg.result, i32 0, i32 2, !dbg !100992
-  store i1 %tobool, i1* %read104, align 4, !dbg !100993
-  %write105 = getelementptr inbounds %struct.Cap, %struct.Cap* %agg.result, i32 0, i32 3, !dbg !100994
-  store i1 %tobool5, i1* %write105, align 1, !dbg !100995
-  %211 = bitcast %"struct.ap_uint<2>"* %c_b to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %211) #100019, !dbg !100996
-  %212 = bitcast %"struct.ap_uint<2>"* %c_t to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %212) #100019, !dbg !100996
-  %213 = bitcast %"struct.ap_uint<3>"* %R to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %213) #100019, !dbg !100996
-  %214 = bitcast %"struct.ap_uint<3>"* %B3 to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %214) #100019, !dbg !100996
-  %215 = bitcast %"struct.ap_uint<3>"* %T3 to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %215) #100019, !dbg !100996
-  %216 = bitcast %"struct.ap_uint<3>"* %A3 to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %216) #100019, !dbg !100996
-  %217 = bitcast %"struct.ap_uint<2>"* %T_13_12 to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %217) #100019, !dbg !100996
-  %218 = bitcast %"struct.ap_uint<2>"* %B_13_12 to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %218) #100019, !dbg !100996
-  %219 = bitcast %"struct.ap_uint<14>"* %B_13_0 to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %219) #100019, !dbg !100996
-  %220 = bitcast %"struct.ap_uint<14>"* %T_13_0 to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %220) #100019, !dbg !100996
-  %221 = bitcast %"struct.ap_uint<6>"* %E to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %221) #100019, !dbg !100996
-  %222 = bitcast %"struct.ap_uint<3>"* %B_E to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %222) #100019, !dbg !100996
-  %223 = bitcast %"struct.ap_uint<11>"* %B_13_3 to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %223) #100019, !dbg !100996
-  %224 = bitcast %"struct.ap_uint<3>"* %T_E to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %224) #100019, !dbg !100996
-  %225 = bitcast %"struct.ap_uint<9>"* %T_11_3 to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %225) #100019, !dbg !100996
-  %226 = bitcast %"struct.ap_uint<64>"* %addr to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %226) #100019, !dbg !100996
-  %227 = bitcast %"struct.ap_uint<64>"* %cap to i8*, !dbg !100996
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %227) #100019, !dbg !100996
-  ret void, !dbg !100996
+if.end68:                                         ; preds = %if.end67, %if.then59
+  %173 = bitcast %"struct.ap_uint<64>"* %addr to %"struct.ap_int_base<64, false>"*, !dbg !100937
+  %174 = bitcast %"struct.ap_int<33>"* %ref.tmp69 to i8*, !dbg !100938
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %174) #100020, !dbg !100938
+  %175 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100939
+  call void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp69, %"struct.ap_int_base<6, false>"* dereferenceable(1) %175, i32 14), !dbg !100940
+  %176 = bitcast %"struct.ap_int<33>"* %ref.tmp69 to %"struct.ap_int_base<33, true>"*, !dbg !100938
+  call void @_ZNK11ap_int_baseILi64ELb0EErsILi33EEE7ap_uintILi64EERKS_IXT_ELb1EE(%"struct.ap_uint<64>"* sret %tmp70, %"struct.ap_int_base<64, false>"* %173, %"struct.ap_int_base<33, true>"* dereferenceable(8) %176), !dbg !100941
+  %177 = bitcast %"struct.ap_uint<64>"* %tmp70 to %"struct.ap_int_base<64, false>"*, !dbg !100937
+  %call71 = call i64 @_ZNK11ap_int_baseILi64ELb0EEcvyEv(%"struct.ap_int_base<64, false>"* %177), !dbg !100937
+  %conv = trunc i64 %call71 to i32, !dbg !100937
+  %178 = bitcast %"struct.ap_int<33>"* %ref.tmp69 to i8*, !dbg !100937
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %178) #100020, !dbg !100937
+  call void @llvm.dbg.value(metadata i32 %conv, metadata !100942, metadata !DIExpression()), !dbg !100943
+  %179 = bitcast %"struct.ap_int<34>"* %ref.tmp72 to i8*, !dbg !100944
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %179) #100020, !dbg !100944
+  %180 = bitcast %"struct.ap_uint<2>"* %c_t to %"struct.ap_int_base<2, false>"*, !dbg !100945
+  call void @"_ZplILi2ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE4plusEjRKS1_"(%"struct.ap_int<34>"* sret %tmp73, i32 %conv, %"struct.ap_int_base<2, false>"* dereferenceable(1) %180), !dbg !100946
+  %181 = bitcast %"struct.ap_int<34>"* %tmp73 to %"struct.ap_int_base<34, true>"*, !dbg !100947
+  %182 = bitcast %"struct.ap_int<33>"* %ref.tmp74 to i8*, !dbg !100948
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %182) #100020, !dbg !100948
+  %183 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100949
+  call void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp74, %"struct.ap_int_base<6, false>"* dereferenceable(1) %183, i32 14), !dbg !100950
+  %184 = bitcast %"struct.ap_int<33>"* %ref.tmp74 to %"struct.ap_int_base<33, true>"*, !dbg !100948
+  call void @_ZNK11ap_int_baseILi34ELb1EElsILi33EEE6ap_intILi34EERKS_IXT_ELb1EE(%"struct.ap_int<34>"* sret %ref.tmp72, %"struct.ap_int_base<34, true>"* %181, %"struct.ap_int_base<33, true>"* dereferenceable(8) %184), !dbg !100951
+  %185 = bitcast %"struct.ap_int<34>"* %ref.tmp72 to %"struct.ap_int_base<34, true>"*, !dbg !100944
+  %186 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100952
+  call void @"_ZanILi14ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5logicERKS1_i"(%"struct.ap_uint<32>"* sret %tmp75, %"struct.ap_int_base<14, false>"* dereferenceable(2) %186, i32 16383), !dbg !100953
+  %187 = bitcast %"struct.ap_uint<32>"* %tmp75 to %"struct.ap_int_base<32, false>"*, !dbg !100954
+  %call76 = call i64 @_ZNK11ap_int_baseILi32ELb1EEcvxEv(%"struct.ap_int_base<32, false>"* %187), !dbg !100954
+  %conv77 = trunc i64 %call76 to i32, !dbg !100954
+  %188 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100955
+  %call78 = call i64 @_ZNK11ap_int_baseILi6ELb0EEcvyEv(%"struct.ap_int_base<6, false>"* %188), !dbg !100955
+  %sh_prom = trunc i64 %call78 to i32, !dbg !100956
+  %shl = shl i32 %conv77, %sh_prom, !dbg !100956
+  call void @"_ZorILi34ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE5logicERKS1_j"(%"struct.ap_int<34>"* sret %tmp79, %"struct.ap_int_base<34, true>"* dereferenceable(8) %185, i32 %shl), !dbg !100957
+  %189 = bitcast %"struct.ap_int<34>"* %tmp79 to %"struct.ap_int_base<34, true>"*, !dbg !100944
+  %call80 = call i64 @_ZNK11ap_int_baseILi34ELb1EEcvxEv(%"struct.ap_int_base<34, true>"* %189), !dbg !100944
+  %conv81 = trunc i64 %call80 to i32, !dbg !100944
+  %190 = bitcast %"struct.ap_int<33>"* %ref.tmp74 to i8*, !dbg !100944
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %190) #100020, !dbg !100944
+  %191 = bitcast %"struct.ap_int<34>"* %ref.tmp72 to i8*, !dbg !100944
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %191) #100020, !dbg !100944
+  call void @llvm.dbg.value(metadata i32 %conv81, metadata !100958, metadata !DIExpression()), !dbg !100959
+  %192 = bitcast %"struct.ap_int<34>"* %ref.tmp82 to i8*, !dbg !100960
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %192) #100020, !dbg !100960
+  %193 = bitcast %"struct.ap_uint<2>"* %c_b to %"struct.ap_int_base<2, false>"*, !dbg !100961
+  call void @"_ZplILi2ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE4plusEjRKS1_"(%"struct.ap_int<34>"* sret %tmp83, i32 %conv, %"struct.ap_int_base<2, false>"* dereferenceable(1) %193), !dbg !100962
+  %194 = bitcast %"struct.ap_int<34>"* %tmp83 to %"struct.ap_int_base<34, true>"*, !dbg !100963
+  %195 = bitcast %"struct.ap_int<33>"* %ref.tmp84 to i8*, !dbg !100964
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %195) #100020, !dbg !100964
+  %196 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100965
+  call void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp84, %"struct.ap_int_base<6, false>"* dereferenceable(1) %196, i32 14), !dbg !100966
+  %197 = bitcast %"struct.ap_int<33>"* %ref.tmp84 to %"struct.ap_int_base<33, true>"*, !dbg !100964
+  call void @_ZNK11ap_int_baseILi34ELb1EElsILi33EEE6ap_intILi34EERKS_IXT_ELb1EE(%"struct.ap_int<34>"* sret %ref.tmp82, %"struct.ap_int_base<34, true>"* %194, %"struct.ap_int_base<33, true>"* dereferenceable(8) %197), !dbg !100967
+  %198 = bitcast %"struct.ap_int<34>"* %ref.tmp82 to %"struct.ap_int_base<34, true>"*, !dbg !100960
+  %199 = bitcast %"struct.ap_uint<14>"* %B_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100968
+  call void @"_ZanILi14ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5logicERKS1_i"(%"struct.ap_uint<32>"* sret %tmp85, %"struct.ap_int_base<14, false>"* dereferenceable(2) %199, i32 16383), !dbg !100969
+  %200 = bitcast %"struct.ap_uint<32>"* %tmp85 to %"struct.ap_int_base<32, false>"*, !dbg !100970
+  %call86 = call i64 @_ZNK11ap_int_baseILi32ELb1EEcvxEv(%"struct.ap_int_base<32, false>"* %200), !dbg !100970
+  %conv87 = trunc i64 %call86 to i32, !dbg !100970
+  %201 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100971
+  %call88 = call i64 @_ZNK11ap_int_baseILi6ELb0EEcvyEv(%"struct.ap_int_base<6, false>"* %201), !dbg !100971
+  %sh_prom89 = trunc i64 %call88 to i32, !dbg !100972
+  %shl90 = shl i32 %conv87, %sh_prom89, !dbg !100972
+  call void @"_ZorILi34ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE5logicERKS1_j"(%"struct.ap_int<34>"* sret %tmp91, %"struct.ap_int_base<34, true>"* dereferenceable(8) %198, i32 %shl90), !dbg !100973
+  %202 = bitcast %"struct.ap_int<34>"* %tmp91 to %"struct.ap_int_base<34, true>"*, !dbg !100960
+  %call92 = call i64 @_ZNK11ap_int_baseILi34ELb1EEcvxEv(%"struct.ap_int_base<34, true>"* %202), !dbg !100960
+  %conv93 = trunc i64 %call92 to i32, !dbg !100960
+  %203 = bitcast %"struct.ap_int<33>"* %ref.tmp84 to i8*, !dbg !100960
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %203) #100020, !dbg !100960
+  %204 = bitcast %"struct.ap_int<34>"* %ref.tmp82 to i8*, !dbg !100960
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %204) #100020, !dbg !100960
+  call void @llvm.dbg.value(metadata i32 %conv93, metadata !100974, metadata !DIExpression()), !dbg !100975
+  call void @llvm.dbg.declare(metadata %struct.Cap* %agg.result, metadata !100976, metadata !DIExpression()), !dbg !100977
+  %205 = bitcast %"struct.ap_uint<64>"* %addr to %"struct.ap_int_base<64, false>"*, !dbg !100978
+  call void @"_ZmiILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE5minusEjRKS1_"(%"struct.ap_int<65>"* sret %tmp94, i32 %conv93, %"struct.ap_int_base<64, false>"* dereferenceable(8) %205), !dbg !100979
+  %206 = bitcast %"struct.ap_int<65>"* %tmp94 to %"struct.ap_int_base<65, true>"*, !dbg !100980
+  %call95 = call i64 @_ZNK11ap_int_baseILi65ELb1EEcvxEv(%"struct.ap_int_base<65, true>"* %206), !dbg !100980
+  %conv96 = trunc i64 %call95 to i32, !dbg !100980
+  %base97 = getelementptr inbounds %struct.Cap, %struct.Cap* %agg.result, i32 0, i32 0, !dbg !100981
+  store i32 %conv96, i32* %base97, align 4, !dbg !100982
+  %207 = bitcast %"struct.ap_uint<64>"* %addr to %"struct.ap_int_base<64, false>"*, !dbg !100983
+  call void @"_ZmiILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE5minusEjRKS1_"(%"struct.ap_int<65>"* sret %tmp98, i32 %conv81, %"struct.ap_int_base<64, false>"* dereferenceable(8) %207), !dbg !100984
+  %208 = bitcast %"struct.ap_int<65>"* %tmp98 to %"struct.ap_int_base<65, true>"*, !dbg !100985
+  %call99 = call i64 @_ZNK11ap_int_baseILi65ELb1EEcvxEv(%"struct.ap_int_base<65, true>"* %208), !dbg !100985
+  %conv100 = trunc i64 %call99 to i32, !dbg !100985
+  %top101 = getelementptr inbounds %struct.Cap, %struct.Cap* %agg.result, i32 0, i32 1, !dbg !100986
+  store i32 %conv100, i32* %top101, align 4, !dbg !100987
+  %read102 = getelementptr inbounds %struct.Cap, %struct.Cap* %agg.result, i32 0, i32 2, !dbg !100988
+  store i1 %tobool, i1* %read102, align 4, !dbg !100989
+  %write103 = getelementptr inbounds %struct.Cap, %struct.Cap* %agg.result, i32 0, i32 3, !dbg !100990
+  store i1 %tobool5, i1* %write103, align 1, !dbg !100991
+  %209 = bitcast %"struct.ap_uint<2>"* %c_b to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %209) #100020, !dbg !100992
+  %210 = bitcast %"struct.ap_uint<2>"* %c_t to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %210) #100020, !dbg !100992
+  %211 = bitcast %"struct.ap_uint<3>"* %R to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %211) #100020, !dbg !100992
+  %212 = bitcast %"struct.ap_uint<3>"* %B3 to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %212) #100020, !dbg !100992
+  %213 = bitcast %"struct.ap_uint<3>"* %T3 to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %213) #100020, !dbg !100992
+  %214 = bitcast %"struct.ap_uint<3>"* %A3 to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %214) #100020, !dbg !100992
+  %215 = bitcast %"struct.ap_uint<2>"* %T_13_12 to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %215) #100020, !dbg !100992
+  %216 = bitcast %"struct.ap_uint<2>"* %B_13_12 to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %216) #100020, !dbg !100992
+  %217 = bitcast %"struct.ap_uint<14>"* %B_13_0 to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %217) #100020, !dbg !100992
+  %218 = bitcast %"struct.ap_uint<14>"* %T_13_0 to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %218) #100020, !dbg !100992
+  %219 = bitcast %"struct.ap_uint<6>"* %E to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %219) #100020, !dbg !100992
+  %220 = bitcast %"struct.ap_uint<3>"* %B_E to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %220) #100020, !dbg !100992
+  %221 = bitcast %"struct.ap_uint<11>"* %B_13_3 to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %221) #100020, !dbg !100992
+  %222 = bitcast %"struct.ap_uint<3>"* %T_E to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %222) #100020, !dbg !100992
+  %223 = bitcast %"struct.ap_uint<9>"* %T_11_3 to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %223) #100020, !dbg !100992
+  %224 = bitcast %"struct.ap_uint<64>"* %addr to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %224) #100020, !dbg !100992
+  %225 = bitcast %"struct.ap_uint<64>"* %cap to i8*, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %225) #100020, !dbg !100992
+  ret void, !dbg !100992
 }
 
 ; Function Attrs: nounwind readnone speculatable
@@ -1110,14 +1098,14 @@ declare void @llvm.dbg.declare(metadata, metadata, metadata) #100001
 declare void @llvm.lifetime.start.p0i8(i64, i8* nocapture) #100002
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi32ELb0EEcmILi32ELb0EEE13ap_concat_refILi32ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* noalias sret %agg.result, %"struct.ap_int_base<32, false>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %a2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi32ELb0EEcmILi32ELb0EEE13ap_concat_refILi32ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* noalias sret %agg.result, %"struct.ap_int_base<32, false>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %a2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   call void @_ZN13ap_concat_refILi32E11ap_int_baseILi32ELb0EELi32ES1_EC2ERS1_S3_(%"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %a2)
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi64EEC2ILi32E11ap_int_baseILi32ELb0EELi32ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<64>"* %this, %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi64EEC2ILi32E11ap_int_baseILi32ELb0EELi32ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<64>"* %this, %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<64>"* %this to %"struct.ap_int_base<64, false>"*
   call void @_ZN11ap_int_baseILi64ELb0EEC2ILi32ES_ILi32ELb0EELi32ES2_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<64, false>"* %0, %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* dereferenceable(16) %ref)
@@ -1128,49 +1116,49 @@ entry:
 declare void @llvm.lifetime.end.p0i8(i64, i8* nocapture) #100002
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr dereferenceable(8) %"struct.ap_int_base<64, false>"* @_ZeOILi64ELb0EER11ap_int_baseIXT_EXT0_EES2_l(%"struct.ap_int_base<64, false>"* dereferenceable(8) %op, i64 %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr dereferenceable(8) %"struct.ap_int_base<64, false>"* @_ZeOILi64ELb0EER11ap_int_baseIXT_EXT0_EES2_l(%"struct.ap_int_base<64, false>"* dereferenceable(8) %op, i64 %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<64, false>", align 8
   %0 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   call void @_ZN11ap_int_baseILi64ELb1EEC2El(%"struct.ap_int_base<64, false>"* %ref.tmp, i64 %op2)
   %call = call dereferenceable(8) %"struct.ap_int_base<64, false>"* @_ZN11ap_int_baseILi64ELb0EEeOILi64ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<64, false>"* %op, %"struct.ap_int_base<64, false>"* dereferenceable(8) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %1) #100020
   ret %"struct.ap_int_base<64, false>"* %call
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* noalias sret %agg.result, %"struct.ap_int_base<64, false>"* %this, i32 %Hi, i32 %Lo) #100004 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* noalias sret %agg.result, %"struct.ap_int_base<64, false>"* %this, i32 %Hi, i32 %Lo) #100004 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   call void @_ZN12ap_range_refILi64ELb0EEC2EP11ap_int_baseILi64ELb0EEii(%"struct.ap_range_ref<64, false>"* %agg.result, %"struct.ap_int_base<64, false>"* %this, i32 %Hi, i32 %Lo)
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i64 @_ZNK12ap_range_refILi64ELb0EEcvyEv(%"struct.ap_range_ref<64, false>"* %this) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i64 @_ZNK12ap_range_refILi64ELb0EEcvyEv(%"struct.ap_range_ref<64, false>"* %this) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %call = call i64 @_ZNK12ap_range_refILi64ELb0EE9to_uint64Ev(%"struct.ap_range_ref<64, false>"* %this)
   ret i64 %call
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr zeroext i1 @_ZneILi64ELb0EEbRK12ap_range_refIXT_EXT0_EEi(%"struct.ap_range_ref<64, false>"* dereferenceable(16) %op, i32 %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr zeroext i1 @_ZneILi64ELb0EEbRK12ap_range_refIXT_EXT0_EEi(%"struct.ap_range_ref<64, false>"* dereferenceable(16) %op, i32 %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %tmp = alloca %"struct.ap_int_base<64, false>", align 8
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   call void @_ZN11ap_int_baseILi64ELb0EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<64, false>"* %tmp, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %op)
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100020
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %op2)
   %call = call zeroext i1 @_ZNK11ap_int_baseILi64ELb0EEneILi32ELb1EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<64, false>"* %tmp, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100020
   ret i1 %call
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi9EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<9>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi9EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<9>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<9>"* %this to %"struct.ap_int_base<9, false>"*
   call void @_ZN11ap_int_baseILi9ELb0EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<9, false>"* %0, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref)
@@ -1178,7 +1166,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi3EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi3EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<3>"* %this to %"struct.ap_int_base<3, false>"*
   call void @_ZN11ap_int_baseILi3ELb0EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %0, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref)
@@ -1186,7 +1174,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi11EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<11>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi11EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<11>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<11>"* %this to %"struct.ap_int_base<11, false>"*
   call void @_ZN11ap_int_baseILi11ELb0EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<11, false>"* %0, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref)
@@ -1194,7 +1182,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi6EEC2Ei(%"struct.ap_uint<6>"* %this, i32 %val) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi6EEC2Ei(%"struct.ap_uint<6>"* %this, i32 %val) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<6>"* %this to %"struct.ap_int_base<6, false>"*
   call void @_ZN11ap_int_baseILi6ELb0EEC2Ei(%"struct.ap_int_base<6, false>"* %0, i32 %val)
@@ -1204,7 +1192,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi14EEC2Ei(%"struct.ap_uint<14>"* %this, i32 %val) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi14EEC2Ei(%"struct.ap_uint<14>"* %this, i32 %val) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<14>"* %this to %"struct.ap_int_base<14, false>"*
   call void @_ZN11ap_int_baseILi14ELb0EEC2Ei(%"struct.ap_int_base<14, false>"* %0, i32 %val)
@@ -1214,14 +1202,14 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi9ELb0EEcmILi3ELb0EEE13ap_concat_refILi9ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* noalias sret %agg.result, %"struct.ap_int_base<9, false>"* %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %a2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi9ELb0EEcmILi3ELb0EEE13ap_concat_refILi9ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* noalias sret %agg.result, %"struct.ap_int_base<9, false>"* %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %a2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   call void @_ZN13ap_concat_refILi9E11ap_int_baseILi9ELb0EELi3ES0_ILi3ELb0EEEC2ERS1_RS2_(%"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %agg.result, %"struct.ap_int_base<9, false>"* dereferenceable(2) %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %a2)
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi14EEC2ILi9E11ap_int_baseILi9ELb0EELi3ES2_ILi3ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<14>"* %this, %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi14EEC2ILi9E11ap_int_baseILi9ELb0EELi3ES2_ILi3ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<14>"* %this, %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<14>"* %this to %"struct.ap_int_base<14, false>"*
   call void @_ZN11ap_int_baseILi14ELb0EEC2ILi9ES_ILi9ELb0EELi3ES_ILi3ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<14, false>"* %0, %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref)
@@ -1229,14 +1217,14 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi11ELb0EEcmILi3ELb0EEE13ap_concat_refILi11ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* noalias sret %agg.result, %"struct.ap_int_base<11, false>"* %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %a2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi11ELb0EEcmILi3ELb0EEE13ap_concat_refILi11ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* noalias sret %agg.result, %"struct.ap_int_base<11, false>"* %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %a2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   call void @_ZN13ap_concat_refILi11E11ap_int_baseILi11ELb0EELi3ES0_ILi3ELb0EEEC2ERS1_RS2_(%"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %agg.result, %"struct.ap_int_base<11, false>"* dereferenceable(2) %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %a2)
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi14EEC2ILi11E11ap_int_baseILi11ELb0EELi3ES2_ILi3ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<14>"* %this, %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi14EEC2ILi11E11ap_int_baseILi11ELb0EELi3ES2_ILi3ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<14>"* %this, %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<14>"* %this to %"struct.ap_int_base<14, false>"*
   call void @_ZN11ap_int_baseILi14ELb0EEC2ILi11ES_ILi11ELb0EELi3ES_ILi3ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<14, false>"* %0, %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref)
@@ -1244,14 +1232,14 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* noalias sret %agg.result, %"struct.ap_int_base<14, false>"* %this, i32 %Hi, i32 %Lo) #100004 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* noalias sret %agg.result, %"struct.ap_int_base<14, false>"* %this, i32 %Hi, i32 %Lo) #100004 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   call void @_ZN12ap_range_refILi14ELb0EEC2EP11ap_int_baseILi14ELb0EEii(%"struct.ap_range_ref<14, false>"* %agg.result, %"struct.ap_int_base<14, false>"* %this, i32 %Hi, i32 %Lo)
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi12EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<12>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi12EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<12>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<12>"* %this to %"struct.ap_int_base<12, false>"*
   call void @_ZN11ap_int_baseILi12ELb0EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<12, false>"* %0, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref)
@@ -1259,7 +1247,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi12ELb0EEltILi12ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<12, false>"* %this, %"struct.ap_int_base<12, false>"* dereferenceable(2) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi12ELb0EEltILi12ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<12, false>"* %this, %"struct.ap_int_base<12, false>"* dereferenceable(2) %op2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<12, false>"* %this to %"struct.ssdm_int<12, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<12, false>", %"struct.ssdm_int<12, false>"* %0, i32 0, i32 0
@@ -1274,14 +1262,14 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EEcmILi3ELb0EEE13ap_concat_refILi3ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* noalias sret %agg.result, %"struct.ap_int_base<3, false>"* %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %a2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EEcmILi3ELb0EEE13ap_concat_refILi3ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* noalias sret %agg.result, %"struct.ap_int_base<3, false>"* %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %a2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   call void @_ZN13ap_concat_refILi3E11ap_int_baseILi3ELb0EELi3ES1_EC2ERS1_S3_(%"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %agg.result, %"struct.ap_int_base<3, false>"* dereferenceable(1) %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %a2)
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi6EEC2ILi3E11ap_int_baseILi3ELb0EELi3ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<6>"* %this, %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi6EEC2ILi3E11ap_int_baseILi3ELb0EELi3ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<6>"* %this, %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<6>"* %this to %"struct.ap_int_base<6, false>"*
   call void @_ZN11ap_int_baseILi6ELb0EEC2ILi3ES_ILi3ELb0EELi3ES2_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<6, false>"* %0, %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref)
@@ -1289,11 +1277,11 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZlsILi9ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%"struct.ap_uint<9>"* noalias sret %agg.result, %"struct.ap_int_base<9, false>"* dereferenceable(2) %op, i32 %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZlsILi9ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%"struct.ap_uint<9>"* noalias sret %agg.result, %"struct.ap_int_base<9, false>"* dereferenceable(2) %op, i32 %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %r = alloca %"struct.ap_int_base<9, false>", align 2
   %0 = bitcast %"struct.ap_int_base<9, false>"* %r to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %0) #100020
   call void @_ZN11ap_int_baseILi9ELb0EEC2Ei(%"struct.ap_int_base<9, false>"* %r, i32 0)
   %cmp = icmp sge i32 %op2, 0
   br i1 %cmp, label %cond.true, label %cond.false
@@ -1323,34 +1311,34 @@ cond.end:                                         ; preds = %cond.false, %cond.t
   store i9 %conv3, i9* %V4, align 2
   call void @_ZN7ap_uintILi9EEC2ILi9ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<9>"* %agg.result, %"struct.ap_int_base<9, false>"* dereferenceable(2) %r)
   %6 = bitcast %"struct.ap_int_base<9, false>"* %r to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %6) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %6) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi14EEC2ILi9EEERKS_IXT_EE(%"struct.ap_uint<14>"* %this, %"struct.ap_uint<9>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi14EEC2ILi9EEERKS_IXT_EE(%"struct.ap_uint<14>"* %this, %"struct.ap_uint<9>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<9, false>", align 2
   %0 = bitcast %"struct.ap_uint<14>"* %this to %"struct.ap_int_base<14, false>"*
   %1 = bitcast %"struct.ap_int_base<9, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100020
   %2 = bitcast %"struct.ap_uint<9>"* %op to %"struct.ap_int_base<9, false>"*
   %3 = load %"struct.ap_int_base<9, false>", %"struct.ap_int_base<9, false>"* %2, align 2
   store %"struct.ap_int_base<9, false>" %3, %"struct.ap_int_base<9, false>"* %ref.tmp, align 2
   call void @_ZN11ap_int_baseILi14ELb0EEC2ILi9ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %0, %"struct.ap_int_base<9, false>"* dereferenceable(2) %ref.tmp)
   %4 = bitcast %"struct.ap_int_base<9, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %4) #100020
   %5 = bitcast %"struct.ap_uint<9>"* %op to %"struct.ap_int_base<9, false>"*
   %call = call zeroext i1 @_ZNK11ap_int_baseILi9ELb0EE17checkOverflowCsimEibb(%"struct.ap_int_base<9, false>"* %5, i32 14, i1 zeroext false, i1 zeroext true)
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZlsILi11ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%"struct.ap_uint<11>"* noalias sret %agg.result, %"struct.ap_int_base<11, false>"* dereferenceable(2) %op, i32 %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZlsILi11ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%"struct.ap_uint<11>"* noalias sret %agg.result, %"struct.ap_int_base<11, false>"* dereferenceable(2) %op, i32 %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %r = alloca %"struct.ap_int_base<11, false>", align 2
   %0 = bitcast %"struct.ap_int_base<11, false>"* %r to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %0) #100020
   call void @_ZN11ap_int_baseILi11ELb0EEC2Ei(%"struct.ap_int_base<11, false>"* %r, i32 0)
   %cmp = icmp sge i32 %op2, 0
   br i1 %cmp, label %cond.true, label %cond.false
@@ -1380,30 +1368,30 @@ cond.end:                                         ; preds = %cond.false, %cond.t
   store i11 %conv3, i11* %V4, align 2
   call void @_ZN7ap_uintILi11EEC2ILi11ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<11>"* %agg.result, %"struct.ap_int_base<11, false>"* dereferenceable(2) %r)
   %6 = bitcast %"struct.ap_int_base<11, false>"* %r to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %6) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %6) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi14EEC2ILi11EEERKS_IXT_EE(%"struct.ap_uint<14>"* %this, %"struct.ap_uint<11>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi14EEC2ILi11EEERKS_IXT_EE(%"struct.ap_uint<14>"* %this, %"struct.ap_uint<11>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<11, false>", align 2
   %0 = bitcast %"struct.ap_uint<14>"* %this to %"struct.ap_int_base<14, false>"*
   %1 = bitcast %"struct.ap_int_base<11, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100020
   %2 = bitcast %"struct.ap_uint<11>"* %op to %"struct.ap_int_base<11, false>"*
   %3 = load %"struct.ap_int_base<11, false>", %"struct.ap_int_base<11, false>"* %2, align 2
   store %"struct.ap_int_base<11, false>" %3, %"struct.ap_int_base<11, false>"* %ref.tmp, align 2
   call void @_ZN11ap_int_baseILi14ELb0EEC2ILi11ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %0, %"struct.ap_int_base<11, false>"* dereferenceable(2) %ref.tmp)
   %4 = bitcast %"struct.ap_int_base<11, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %4) #100020
   %5 = bitcast %"struct.ap_uint<11>"* %op to %"struct.ap_int_base<11, false>"*
   %call = call zeroext i1 @_ZNK11ap_int_baseILi11ELb0EE17checkOverflowCsimEibb(%"struct.ap_int_base<11, false>"* %5, i32 14, i1 zeroext false, i1 zeroext true)
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi2EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<2>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi2EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<2>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<2>"* %this to %"struct.ap_int_base<2, false>"*
   call void @_ZN11ap_int_baseILi2ELb0EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<2, false>"* %0, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref)
@@ -1411,84 +1399,58 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @"_ZplILi2ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @"_ZplILi2ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100020
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZplILi2ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* sret %agg.result, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @"_ZplILi33ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @"_ZplILi33ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100020
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZplILi33ELb1ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* sret %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi2EEC2ILi34EEERK6ap_intIXT_EE(%"struct.ap_uint<2>"* %this, %"struct.ap_int<34>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi2EEC2ILi34EEERK6ap_intIXT_EE(%"struct.ap_uint<2>"* %this, %"struct.ap_int<34>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_uint<2>"* %this to %"struct.ap_int_base<2, false>"*
   %1 = bitcast %"struct.ap_int_base<34, true>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   %2 = bitcast %"struct.ap_int<34>"* %op to %"struct.ap_int_base<34, true>"*
   %3 = load %"struct.ap_int_base<34, true>", %"struct.ap_int_base<34, true>"* %2, align 8
   store %"struct.ap_int_base<34, true>" %3, %"struct.ap_int_base<34, true>"* %ref.tmp, align 8
   call void @_ZN11ap_int_baseILi2ELb0EEC2ILi34ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<2, false>"* %0, %"struct.ap_int_base<34, true>"* dereferenceable(8) %ref.tmp)
   %4 = bitcast %"struct.ap_int_base<34, true>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100020
   %5 = bitcast %"struct.ap_int<34>"* %op to %"struct.ap_int_base<34, true>"*
   %call = call zeroext i1 @_ZNK11ap_int_baseILi34ELb1EE17checkOverflowCsimEibb(%"struct.ap_int_base<34, true>"* %5, i32 2, i1 zeroext false, i1 zeroext true)
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr dereferenceable(1) %"struct.ap_int_base<2, false>"* @_ZaNILi2ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%"struct.ap_int_base<2, false>"* dereferenceable(1) %op, i32 %op2) #100003 comdat !fpga.function.pragma !100997 {
-entry:
-  %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
-  %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
-  call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %op2)
-  %call = call dereferenceable(1) %"struct.ap_int_base<2, false>"* @_ZN11ap_int_baseILi2ELb0EEaNILi32ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<2, false>"* %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
-  %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
-  ret %"struct.ap_int_base<2, false>"* %call
-}
-
-; Function Attrs: alwaysinline nounwind
-define linkonce_odr dereferenceable(2) %"struct.ap_int_base<14, false>"* @_ZaNILi14ELb0EER11ap_int_baseIXT_EXT0_EES2_i(%"struct.ap_int_base<14, false>"* dereferenceable(2) %op, i32 %op2) #100003 comdat !fpga.function.pragma !100997 {
-entry:
-  %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
-  %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
-  call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %op2)
-  %call = call dereferenceable(2) %"struct.ap_int_base<14, false>"* @_ZN11ap_int_baseILi14ELb0EEaNILi32ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
-  %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
-  ret %"struct.ap_int_base<14, false>"* %call
-}
-
-; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK11ap_int_baseILi2ELb0EEcmILi14ELb0EEE13ap_concat_refILi2ES0_XT_E12ap_range_refIXT_EXT0_EEERKS4_(%"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* noalias sret %agg.result, %"struct.ap_int_base<2, false>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %a2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK11ap_int_baseILi2ELb0EEcmILi14ELb0EEE13ap_concat_refILi2ES0_XT_E12ap_range_refIXT_EXT0_EEERKS4_(%"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* noalias sret %agg.result, %"struct.ap_int_base<2, false>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %a2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   call void @_ZN13ap_concat_refILi2E11ap_int_baseILi2ELb0EELi14E12ap_range_refILi14ELb0EEEC2ERS1_RS3_(%"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %agg.result, %"struct.ap_int_base<2, false>"* dereferenceable(1) %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %a2)
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi14EEC2ILi2E11ap_int_baseILi2ELb0EELi14E12ap_range_refILi14ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<14>"* %this, %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi14EEC2ILi2E11ap_int_baseILi2ELb0EELi14E12ap_range_refILi14ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<14>"* %this, %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<14>"* %this to %"struct.ap_int_base<14, false>"*
   call void @_ZN11ap_int_baseILi14ELb0EEC2ILi2ES_ILi2ELb0EELi14E12ap_range_refILi14ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<14, false>"* %0, %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* dereferenceable(16) %ref)
@@ -1496,20 +1458,20 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<6, false>"* dereferenceable(1) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<6, false>"* dereferenceable(1) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100020
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZplILi6ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* sret %agg.result, %"struct.ap_int_base<6, false>"* dereferenceable(1) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK11ap_int_baseILi64ELb0EErsILi33EEE7ap_uintILi64EERKS_IXT_ELb1EE(%"struct.ap_uint<64>"* noalias sret %agg.result, %"struct.ap_int_base<64, false>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK11ap_int_baseILi64ELb0EErsILi33EEE7ap_uintILi64EERKS_IXT_ELb1EE(%"struct.ap_uint<64>"* noalias sret %agg.result, %"struct.ap_int_base<64, false>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %sh = alloca %"struct.ap_int_base<33, true>", align 8
   %ref.tmp = alloca %"struct.ap_int<34>", align 8
@@ -1519,18 +1481,18 @@ entry:
   %2 = and i33 %1, -4294967296
   %bit_select = icmp ne i33 %2, 0
   %3 = bitcast %"struct.ap_int_base<33, true>"* %sh to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %3) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %3) #100020
   call void @_ZN11ap_int_baseILi33ELb0EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %sh, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2)
   br i1 %bit_select, label %if.then, label %if.end
 
 if.then:                                          ; preds = %entry
   %4 = bitcast %"struct.ap_int<34>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %4) #100020
   call void @_ZNK11ap_int_baseILi33ELb1EEngEv(%"struct.ap_int<34>"* sret %ref.tmp, %"struct.ap_int_base<33, true>"* %op2)
   %5 = bitcast %"struct.ap_int<34>"* %ref.tmp to %"struct.ap_int_base<34, true>"*
   %call = call dereferenceable(8) %"struct.ap_int_base<33, true>"* @_ZN11ap_int_baseILi33ELb0EEaSILi34ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %sh, %"struct.ap_int_base<34, true>"* dereferenceable(8) %5)
   %6 = bitcast %"struct.ap_int<34>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %6) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %6) #100020
   call void @_ZNK11ap_int_baseILi64ELb0EElsILi33EEE7ap_uintILi64EERKS_IXT_ELb0EE(%"struct.ap_uint<64>"* sret %agg.result, %"struct.ap_int_base<64, false>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %sh)
   br label %cleanup
 
@@ -1540,43 +1502,43 @@ if.end:                                           ; preds = %entry
 
 cleanup:                                          ; preds = %if.end, %if.then
   %7 = bitcast %"struct.ap_int_base<33, true>"* %sh to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %7) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %7) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @"_ZanILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5logicERKS1_i"(%"struct.ap_int<65>"* noalias sret %agg.result, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @"_ZanILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5logicERKS1_i"(%"struct.ap_int<65>"* noalias sret %agg.result, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100020
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZanILi64ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5logicERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<65>"* sret %agg.result, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi3EEC2ILi65EEERK6ap_intIXT_EE(%"struct.ap_uint<3>"* %this, %"struct.ap_int<65>"* dereferenceable(16) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi3EEC2ILi65EEERK6ap_intIXT_EE(%"struct.ap_uint<3>"* %this, %"struct.ap_int<65>"* dereferenceable(16) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<65, true>", align 16
   %0 = bitcast %"struct.ap_uint<3>"* %this to %"struct.ap_int_base<3, false>"*
   %1 = bitcast %"struct.ap_int_base<65, true>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100020
   %2 = bitcast %"struct.ap_int<65>"* %op to %"struct.ap_int_base<65, true>"*
   %3 = load %"struct.ap_int_base<65, true>", %"struct.ap_int_base<65, true>"* %2, align 16
   store %"struct.ap_int_base<65, true>" %3, %"struct.ap_int_base<65, true>"* %ref.tmp, align 16
   call void @_ZN11ap_int_baseILi3ELb0EEC2ILi65ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %0, %"struct.ap_int_base<65, true>"* dereferenceable(16) %ref.tmp)
   %4 = bitcast %"struct.ap_int_base<65, true>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %4) #100020
   %5 = bitcast %"struct.ap_int<65>"* %op to %"struct.ap_int_base<65, true>"*
   %call = call zeroext i1 @_ZNK11ap_int_baseILi65ELb1EE17checkOverflowCsimEibb(%"struct.ap_int_base<65, true>"* %5, i32 3, i1 zeroext false, i1 zeroext true)
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi3EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi3EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<3>"* %this to %"struct.ap_int_base<3, false>"*
   call void @_ZN11ap_int_baseILi3ELb0EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %0, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref)
@@ -1584,38 +1546,38 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @"_ZmiILi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5minusERKS1_i"(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @"_ZmiILi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5minusERKS1_i"(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100020
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZmiILi3ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5minusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* sret %agg.result, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi3EEC2ILi33EEERK6ap_intIXT_EE(%"struct.ap_uint<3>"* %this, %"struct.ap_int<33>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi3EEC2ILi33EEERK6ap_intIXT_EE(%"struct.ap_uint<3>"* %this, %"struct.ap_int<33>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<33, true>", align 8
   %0 = bitcast %"struct.ap_uint<3>"* %this to %"struct.ap_int_base<3, false>"*
   %1 = bitcast %"struct.ap_int_base<33, true>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   %2 = bitcast %"struct.ap_int<33>"* %op to %"struct.ap_int_base<33, true>"*
   %3 = load %"struct.ap_int_base<33, true>", %"struct.ap_int_base<33, true>"* %2, align 8
   store %"struct.ap_int_base<33, true>" %3, %"struct.ap_int_base<33, true>"* %ref.tmp, align 8
   call void @_ZN11ap_int_baseILi3ELb0EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %0, %"struct.ap_int_base<33, true>"* dereferenceable(8) %ref.tmp)
   %4 = bitcast %"struct.ap_int_base<33, true>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100020
   %5 = bitcast %"struct.ap_int<33>"* %op to %"struct.ap_int_base<33, true>"*
   %call = call zeroext i1 @_ZNK11ap_int_baseILi33ELb1EE17checkOverflowCsimEibb(%"struct.ap_int_base<33, true>"* %5, i32 3, i1 zeroext false, i1 zeroext true)
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %this, i32 %val) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %this, i32 %val) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<2>"* %this to %"struct.ap_int_base<2, false>"*
   call void @_ZN11ap_int_baseILi2ELb1EEC2Ei(%"struct.ap_int_base<2, false>"* %0, i32 %val)
@@ -1625,7 +1587,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi3ELb0EEltILi3ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<3, false>"* %this to %"struct.ssdm_int<3, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<3, false>", %"struct.ssdm_int<3, false>"* %0, i32 0, i32 0
@@ -1640,7 +1602,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i64 @_ZNK11ap_int_baseILi64ELb0EEcvyEv(%"struct.ap_int_base<64, false>"* %this) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i64 @_ZNK11ap_int_baseILi64ELb0EEcvyEv(%"struct.ap_int_base<64, false>"* %this) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<64, false>"* %this to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %0, i32 0, i32 0
@@ -1649,20 +1611,20 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @"_ZplILi2ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE4plusEjRKS1_"(%"struct.ap_int<34>"* noalias sret %agg.result, i32 %i_op, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @"_ZplILi2ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE4plusEjRKS1_"(%"struct.ap_int<34>"* noalias sret %agg.result, i32 %i_op, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100020
   call void @_ZN11ap_int_baseILi32ELb0EEC2Ej(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZplILi32ELb0ELi2ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* sret %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK11ap_int_baseILi34ELb1EElsILi33EEE6ap_intILi34EERKS_IXT_ELb1EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK11ap_int_baseILi34ELb1EElsILi33EEE6ap_intILi34EERKS_IXT_ELb1EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %sh = alloca %"struct.ap_int_base<33, true>", align 8
   %ref.tmp = alloca %"struct.ap_int<34>", align 8
@@ -1672,18 +1634,18 @@ entry:
   %2 = and i33 %1, -4294967296
   %bit_select = icmp ne i33 %2, 0
   %3 = bitcast %"struct.ap_int_base<33, true>"* %sh to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %3) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %3) #100020
   call void @_ZN11ap_int_baseILi33ELb0EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %sh, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2)
   br i1 %bit_select, label %if.then, label %if.else
 
 if.then:                                          ; preds = %entry
   %4 = bitcast %"struct.ap_int<34>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %4) #100020
   call void @_ZNK11ap_int_baseILi33ELb1EEngEv(%"struct.ap_int<34>"* sret %ref.tmp, %"struct.ap_int_base<33, true>"* %op2)
   %5 = bitcast %"struct.ap_int<34>"* %ref.tmp to %"struct.ap_int_base<34, true>"*
   %call = call dereferenceable(8) %"struct.ap_int_base<33, true>"* @_ZN11ap_int_baseILi33ELb0EEaSILi34ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %sh, %"struct.ap_int_base<34, true>"* dereferenceable(8) %5)
   %6 = bitcast %"struct.ap_int<34>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %6) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %6) #100020
   call void @_ZNK11ap_int_baseILi34ELb1EErsILi33EEE6ap_intILi34EERKS_IXT_ELb0EE(%"struct.ap_int<34>"* sret %agg.result, %"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %sh)
   br label %cleanup
 
@@ -1693,25 +1655,25 @@ if.else:                                          ; preds = %entry
 
 cleanup:                                          ; preds = %if.else, %if.then
   %7 = bitcast %"struct.ap_int_base<33, true>"* %sh to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %7) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %7) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @"_ZanILi14ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5logicERKS1_i"(%"struct.ap_uint<32>"* noalias sret %agg.result, %"struct.ap_int_base<14, false>"* dereferenceable(2) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @"_ZanILi14ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5logicERKS1_i"(%"struct.ap_uint<32>"* noalias sret %agg.result, %"struct.ap_int_base<14, false>"* dereferenceable(2) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100020
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZanILi14ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5logicERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_uint<32>"* sret %agg.result, %"struct.ap_int_base<14, false>"* dereferenceable(2) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i64 @_ZNK11ap_int_baseILi32ELb1EEcvxEv(%"struct.ap_int_base<32, false>"* %this) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i64 @_ZNK11ap_int_baseILi32ELb1EEcvxEv(%"struct.ap_int_base<32, false>"* %this) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<32, false>"* %this to %"struct.ssdm_int<32, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<32, false>", %"struct.ssdm_int<32, false>"* %0, i32 0, i32 0
@@ -1721,7 +1683,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i64 @_ZNK11ap_int_baseILi6ELb0EEcvyEv(%"struct.ap_int_base<6, false>"* %this) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i64 @_ZNK11ap_int_baseILi6ELb0EEcvyEv(%"struct.ap_int_base<6, false>"* %this) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<6, false>"* %this to %"struct.ssdm_int<6, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<6, false>", %"struct.ssdm_int<6, false>"* %0, i32 0, i32 0
@@ -1731,20 +1693,20 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @"_ZorILi34ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE5logicERKS1_j"(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @"_ZorILi34ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE5logicERKS1_j"(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %op, i32 %i_op) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100020
   call void @_ZN11ap_int_baseILi32ELb0EEC2Ej(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZorILi34ELb1ELi32ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5logicERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* sret %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i64 @_ZNK11ap_int_baseILi34ELb1EEcvxEv(%"struct.ap_int_base<34, true>"* %this) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i64 @_ZNK11ap_int_baseILi34ELb1EEcvxEv(%"struct.ap_int_base<34, true>"* %this) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<34, true>"* %this to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %0, i32 0, i32 0
@@ -1754,20 +1716,20 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @"_ZmiILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE5minusEjRKS1_"(%"struct.ap_int<65>"* noalias sret %agg.result, i32 %i_op, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @"_ZmiILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE5minusEjRKS1_"(%"struct.ap_int<65>"* noalias sret %agg.result, i32 %i_op, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100020
   call void @_ZN11ap_int_baseILi32ELb0EEC2Ej(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZmiILi32ELb0ELi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5minusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<65>"* sret %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i64 @_ZNK11ap_int_baseILi65ELb1EEcvxEv(%"struct.ap_int_base<65, true>"* %this) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i64 @_ZNK11ap_int_baseILi65ELb1EEcvxEv(%"struct.ap_int_base<65, true>"* %this) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<65, true>"* %this to %"struct.ssdm_int<65, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<65, true>", %"struct.ssdm_int<65, true>"* %0, i32 0, i32 0
@@ -1777,7 +1739,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi32ELb0EEC2Ej(%"struct.ap_int_base<32, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi32ELb0EEC2Ej(%"struct.ap_int_base<32, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<32, false>"* %this to %"struct.ssdm_int<32, false>"*
   call void @_ZN8ssdm_intILi32ELb0EEC2Ej(%"struct.ssdm_int<32, false>"* %0, i32 %op)
@@ -1788,19 +1750,19 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZmiILi32ELb0ELi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5minusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<65>"* noalias sret %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZmiILi32ELb0ELi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5minusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<65>"* noalias sret %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %lhs = alloca %"struct.ap_int_base<65, true>", align 16
   %rhs = alloca %"struct.ap_int_base<65, true>", align 16
   %ret = alloca %"struct.ap_int_base<65, true>", align 16
   %0 = bitcast %"struct.ap_int_base<65, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %0) #100020
   call void @_ZN11ap_int_baseILi65ELb1EEC2ILi32ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %lhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op)
   %1 = bitcast %"struct.ap_int_base<65, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100020
   call void @_ZN11ap_int_baseILi65ELb1EEC2ILi64ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %rhs, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op2)
   %2 = bitcast %"struct.ap_int_base<65, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %2) #100020
   call void @_ZN11ap_int_baseILi65ELb1EEC2Ei(%"struct.ap_int_base<65, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<65, true>"* %lhs to %"struct.ssdm_int<65, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<65, true>", %"struct.ssdm_int<65, true>"* %3, i32 0, i32 0
@@ -1814,16 +1776,16 @@ entry:
   store i65 %sub, i65* %V2, align 16
   call void @_ZN6ap_intILi65EEC2ILi65ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<65>"* %agg.result, %"struct.ap_int_base<65, true>"* dereferenceable(16) %ret)
   %8 = bitcast %"struct.ap_int_base<65, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %8) #100020
   %9 = bitcast %"struct.ap_int_base<65, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %9) #100020
   %10 = bitcast %"struct.ap_int_base<65, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %10) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi65ELb1EEC2ILi32ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi65ELb1EEC2ILi32ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<65, true>"* %this to %"struct.ssdm_int<65, true>"*
   %1 = bitcast %"struct.ap_int_base<32, false>"* %op to %"struct.ssdm_int<32, false>"*
@@ -1842,7 +1804,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi65ELb1EEC2ILi64ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %this, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi65ELb1EEC2ILi64ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %this, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<65, true>"* %this to %"struct.ssdm_int<65, true>"*
   %1 = bitcast %"struct.ap_int_base<64, false>"* %op to %"struct.ssdm_int<64, false>"*
@@ -1861,7 +1823,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi65ELb1EEC2Ei(%"struct.ap_int_base<65, true>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi65ELb1EEC2Ei(%"struct.ap_int_base<65, true>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<65, true>"* %this to %"struct.ssdm_int<65, true>"*
   %conv = sext i32 %op to i65
@@ -1874,7 +1836,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN6ap_intILi65EEC2ILi65ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<65>"* %this, %"struct.ap_int_base<65, true>"* dereferenceable(16) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN6ap_intILi65EEC2ILi65ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<65>"* %this, %"struct.ap_int_base<65, true>"* dereferenceable(16) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int<65>"* %this to %"struct.ap_int_base<65, true>"*
   %1 = load %"struct.ap_int_base<65, true>", %"struct.ap_int_base<65, true>"* %op, align 16
@@ -1883,40 +1845,40 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi65ELb1EEC2EDq65_i(%"struct.ssdm_int<65, true>"* %this, i65 %o) unnamed_addr #100003 comdat align 2 !dbg !100999 !fpga.function.pragma !101000 {
+define linkonce_odr void @_ZN8ssdm_intILi65ELb1EEC2EDq65_i(%"struct.ssdm_int<65, true>"* %this, i65 %o) unnamed_addr #100003 comdat align 2 !dbg !100995 !fpga.function.pragma !100996 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<65, true>"* %this, metadata !101003, metadata !DIExpression()), !dbg !101005
-  call void @llvm.dbg.value(metadata i65 %o, metadata !101006, metadata !DIExpression()), !dbg !101007
-  %V = getelementptr inbounds %"struct.ssdm_int<65, true>", %"struct.ssdm_int<65, true>"* %this, i32 0, i32 0, !dbg !101008
-  store i65 %o, i65* %V, align 16, !dbg !101008
-  ret void, !dbg !101009
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<65, true>"* %this, metadata !100999, metadata !DIExpression()), !dbg !101001
+  call void @llvm.dbg.value(metadata i65 %o, metadata !101002, metadata !DIExpression()), !dbg !101003
+  %V = getelementptr inbounds %"struct.ssdm_int<65, true>", %"struct.ssdm_int<65, true>"* %this, i32 0, i32 0, !dbg !101004
+  store i65 %o, i65* %V, align 16, !dbg !101004
+  ret void, !dbg !101005
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi32ELb0EEC2Ej(%"struct.ssdm_int<32, false>"* %this, i32 %o) unnamed_addr #100003 comdat align 2 !dbg !101010 !fpga.function.pragma !101011 {
+define linkonce_odr void @_ZN8ssdm_intILi32ELb0EEC2Ej(%"struct.ssdm_int<32, false>"* %this, i32 %o) unnamed_addr #100003 comdat align 2 !dbg !101006 !fpga.function.pragma !101007 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<32, false>"* %this, metadata !101014, metadata !DIExpression()), !dbg !101016
-  call void @llvm.dbg.value(metadata i32 %o, metadata !101017, metadata !DIExpression()), !dbg !101018
-  %V = getelementptr inbounds %"struct.ssdm_int<32, false>", %"struct.ssdm_int<32, false>"* %this, i32 0, i32 0, !dbg !101019
-  store i32 %o, i32* %V, align 4, !dbg !101019
-  ret void, !dbg !101020
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<32, false>"* %this, metadata !101010, metadata !DIExpression()), !dbg !101012
+  call void @llvm.dbg.value(metadata i32 %o, metadata !101013, metadata !DIExpression()), !dbg !101014
+  %V = getelementptr inbounds %"struct.ssdm_int<32, false>", %"struct.ssdm_int<32, false>"* %this, i32 0, i32 0, !dbg !101015
+  store i32 %o, i32* %V, align 4, !dbg !101015
+  ret void, !dbg !101016
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZorILi34ELb1ELi32ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5logicERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZorILi34ELb1ELi32ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5logicERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %lhs = alloca %"struct.ap_int_base<34, true>", align 8
   %rhs = alloca %"struct.ap_int_base<34, true>", align 8
   %ret = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   %1 = load %"struct.ap_int_base<34, true>", %"struct.ap_int_base<34, true>"* %op, align 8
   store %"struct.ap_int_base<34, true>" %1, %"struct.ap_int_base<34, true>"* %lhs, align 8
   %2 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100020
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi32ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %rhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2)
   %3 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %3) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %3) #100020
   call void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %ret, i32 0)
   %4 = bitcast %"struct.ap_int_base<34, true>"* %lhs to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %4, i32 0, i32 0
@@ -1930,16 +1892,16 @@ entry:
   store i34 %or, i34* %V2, align 8
   call void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %ret)
   %9 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100020
   %10 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100020
   %11 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %11) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %11) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi34ELb1EEC2ILi32ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi34ELb1EEC2ILi32ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<34, true>"* %this to %"struct.ssdm_int<34, true>"*
   %1 = bitcast %"struct.ap_int_base<32, false>"* %op to %"struct.ssdm_int<32, false>"*
@@ -1958,7 +1920,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<34, true>"* %this to %"struct.ssdm_int<34, true>"*
   %conv = sext i32 %op to i34
@@ -1971,7 +1933,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %this, %"struct.ap_int_base<34, true>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %this, %"struct.ap_int_base<34, true>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int<34>"* %this to %"struct.ap_int_base<34, true>"*
   %1 = load %"struct.ap_int_base<34, true>", %"struct.ap_int_base<34, true>"* %op, align 8
@@ -1980,17 +1942,17 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi34ELb1EEC2EDq34_i(%"struct.ssdm_int<34, true>"* %this, i34 %o) unnamed_addr #100003 comdat align 2 !dbg !101021 !fpga.function.pragma !101022 {
+define linkonce_odr void @_ZN8ssdm_intILi34ELb1EEC2EDq34_i(%"struct.ssdm_int<34, true>"* %this, i34 %o) unnamed_addr #100003 comdat align 2 !dbg !101017 !fpga.function.pragma !101018 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<34, true>"* %this, metadata !101025, metadata !DIExpression()), !dbg !101027
-  call void @llvm.dbg.value(metadata i34 %o, metadata !101028, metadata !DIExpression()), !dbg !101029
-  %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %this, i32 0, i32 0, !dbg !101030
-  store i34 %o, i34* %V, align 8, !dbg !101030
-  ret void, !dbg !101031
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<34, true>"* %this, metadata !101021, metadata !DIExpression()), !dbg !101023
+  call void @llvm.dbg.value(metadata i34 %o, metadata !101024, metadata !DIExpression()), !dbg !101025
+  %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %this, i32 0, i32 0, !dbg !101026
+  store i34 %o, i34* %V, align 8, !dbg !101026
+  ret void, !dbg !101027
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<32, false>"* %this to %"struct.ssdm_int<32, false>"*
   call void @_ZN8ssdm_intILi32ELb1EEC2Ei(%"struct.ssdm_int<32, false>"* %0, i32 %op)
@@ -2001,20 +1963,20 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZanILi14ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5logicERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_uint<32>"* noalias sret %agg.result, %"struct.ap_int_base<14, false>"* dereferenceable(2) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZanILi14ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5logicERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_uint<32>"* noalias sret %agg.result, %"struct.ap_int_base<14, false>"* dereferenceable(2) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %lhs = alloca %"struct.ap_int_base<32, false>", align 4
   %rhs = alloca %"struct.ap_int_base<32, false>", align 4
   %ret = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100020
   call void @_ZN11ap_int_baseILi32ELb1EEC2ILi14ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<32, false>"* %lhs, %"struct.ap_int_base<14, false>"* dereferenceable(2) %op)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %1) #100020
   %2 = load %"struct.ap_int_base<32, false>", %"struct.ap_int_base<32, false>"* %op2, align 4
   store %"struct.ap_int_base<32, false>" %2, %"struct.ap_int_base<32, false>"* %rhs, align 4
   %3 = bitcast %"struct.ap_int_base<32, false>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %3) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %3) #100020
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ret, i32 0)
   %4 = bitcast %"struct.ap_int_base<32, false>"* %lhs to %"struct.ssdm_int<32, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<32, false>", %"struct.ssdm_int<32, false>"* %4, i32 0, i32 0
@@ -2028,16 +1990,16 @@ entry:
   store i32 %and, i32* %V2, align 4
   call void @_ZN6ap_intILi32EEC2ILi32ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<32>"* %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ret)
   %9 = bitcast %"struct.ap_int_base<32, false>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %9) #100020
   %10 = bitcast %"struct.ap_int_base<32, false>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %10) #100020
   %11 = bitcast %"struct.ap_int_base<32, false>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %11) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %11) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi32ELb1EEC2ILi14ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<32, false>"* %this, %"struct.ap_int_base<14, false>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi32ELb1EEC2ILi14ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<32, false>"* %this, %"struct.ap_int_base<14, false>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<32, false>"* %this to %"struct.ssdm_int<32, false>"*
   %1 = bitcast %"struct.ap_int_base<14, false>"* %op to %"struct.ssdm_int<14, false>"*
@@ -2056,7 +2018,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN6ap_intILi32EEC2ILi32ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<32>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN6ap_intILi32EEC2ILi32ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<32>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<32>"* %this to %"struct.ap_int_base<32, false>"*
   %1 = load %"struct.ap_int_base<32, false>", %"struct.ap_int_base<32, false>"* %op, align 4
@@ -2065,17 +2027,17 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi32ELb1EEC2Ei(%"struct.ssdm_int<32, false>"* %this, i32 %o) unnamed_addr #100003 comdat align 2 !dbg !101032 !fpga.function.pragma !101033 {
+define linkonce_odr void @_ZN8ssdm_intILi32ELb1EEC2Ei(%"struct.ssdm_int<32, false>"* %this, i32 %o) unnamed_addr #100003 comdat align 2 !dbg !101028 !fpga.function.pragma !101029 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<32, false>"* %this, metadata !101036, metadata !DIExpression()), !dbg !101038
-  call void @llvm.dbg.value(metadata i32 %o, metadata !101039, metadata !DIExpression()), !dbg !101040
-  %V = getelementptr inbounds %"struct.ssdm_int<32, false>", %"struct.ssdm_int<32, false>"* %this, i32 0, i32 0, !dbg !101041
-  store i32 %o, i32* %V, align 4, !dbg !101041
-  ret void, !dbg !101042
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<32, false>"* %this, metadata !101032, metadata !DIExpression()), !dbg !101034
+  call void @llvm.dbg.value(metadata i32 %o, metadata !101035, metadata !DIExpression()), !dbg !101036
+  %V = getelementptr inbounds %"struct.ssdm_int<32, false>", %"struct.ssdm_int<32, false>"* %this, i32 0, i32 0, !dbg !101037
+  store i32 %o, i32* %V, align 4, !dbg !101037
+  ret void, !dbg !101038
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi33ELb0EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi33ELb0EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<33, true>"* %this to %"struct.ssdm_int<33, true>"*
   %1 = bitcast %"struct.ap_int_base<33, true>"* %op to %"struct.ssdm_int<33, true>"*
@@ -2092,20 +2054,20 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK11ap_int_baseILi33ELb1EEngEv(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<33, true>"* %this) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK11ap_int_baseILi33ELb1EEngEv(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<33, true>"* %this) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<1, false>", align 1
   %0 = bitcast %"struct.ap_int_base<1, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %0) #100020
   call void @_ZN11ap_int_baseILi1ELb0EEC2Ei(%"struct.ap_int_base<1, false>"* %ref.tmp, i32 0)
   call void @_ZmiILi1ELb0ELi33ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5minusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* sret %agg.result, %"struct.ap_int_base<1, false>"* dereferenceable(1) %ref.tmp, %"struct.ap_int_base<33, true>"* dereferenceable(8) %this)
   %1 = bitcast %"struct.ap_int_base<1, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %1) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr dereferenceable(8) %"struct.ap_int_base<33, true>"* @_ZN11ap_int_baseILi33ELb0EEaSILi34ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<34, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr dereferenceable(8) %"struct.ap_int_base<33, true>"* @_ZN11ap_int_baseILi33ELb0EEaSILi34ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<34, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<34, true>"* %op2 to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %0, i32 0, i32 0
@@ -2118,11 +2080,11 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK11ap_int_baseILi34ELb1EErsILi33EEE6ap_intILi34EERKS_IXT_ELb0EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK11ap_int_baseILi34ELb1EErsILi33EEE6ap_intILi34EERKS_IXT_ELb0EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %r = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_int_base<34, true>"* %r to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   call void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %r, i32 0)
   %1 = bitcast %"struct.ap_int_base<34, true>"* %this to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %1, i32 0, i32 0
@@ -2135,16 +2097,16 @@ entry:
   store i34 %shr, i34* %V2, align 8
   call void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %r)
   %4 = bitcast %"struct.ap_int_base<34, true>"* %r to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK11ap_int_baseILi34ELb1EElsILi33EEE6ap_intILi34EERKS_IXT_ELb0EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK11ap_int_baseILi34ELb1EElsILi33EEE6ap_intILi34EERKS_IXT_ELb0EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %r = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_int_base<34, true>"* %r to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   call void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %r, i32 0)
   %1 = bitcast %"struct.ap_int_base<34, true>"* %this to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %1, i32 0, i32 0
@@ -2157,12 +2119,12 @@ entry:
   store i34 %shl, i34* %V2, align 8
   call void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %r)
   %4 = bitcast %"struct.ap_int_base<34, true>"* %r to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i32 @_ZNK11ap_int_baseILi33ELb0EE7to_uintEv(%"struct.ap_int_base<33, true>"* %this) #100005 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i32 @_ZNK11ap_int_baseILi33ELb0EE7to_uintEv(%"struct.ap_int_base<33, true>"* %this) #100005 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<33, true>"* %this to %"struct.ssdm_int<33, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %0, i32 0, i32 0
@@ -2172,7 +2134,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi1ELb0EEC2Ei(%"struct.ap_int_base<1, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi1ELb0EEC2Ei(%"struct.ap_int_base<1, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<1, false>"* %this to %"struct.ssdm_int<1, false>"*
   %conv = trunc i32 %op to i1
@@ -2185,19 +2147,19 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZmiILi1ELb0ELi33ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5minusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<1, false>"* dereferenceable(1) %op, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZmiILi1ELb0ELi33ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5minusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<1, false>"* dereferenceable(1) %op, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %lhs = alloca %"struct.ap_int_base<34, true>", align 8
   %rhs = alloca %"struct.ap_int_base<34, true>", align 8
   %ret = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi1ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %lhs, %"struct.ap_int_base<1, false>"* dereferenceable(1) %op)
   %1 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %rhs, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2)
   %2 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100020
   call void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<34, true>"* %lhs to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %3, i32 0, i32 0
@@ -2211,16 +2173,16 @@ entry:
   store i34 %sub, i34* %V2, align 8
   call void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100020
   %9 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100020
   %10 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi34ELb1EEC2ILi1ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<1, false>"* dereferenceable(1) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi34ELb1EEC2ILi1ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<1, false>"* dereferenceable(1) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<34, true>"* %this to %"struct.ssdm_int<34, true>"*
   %1 = bitcast %"struct.ap_int_base<1, false>"* %op to %"struct.ssdm_int<1, false>"*
@@ -2239,7 +2201,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi34ELb1EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi34ELb1EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<34, true>"* %this to %"struct.ssdm_int<34, true>"*
   %1 = bitcast %"struct.ap_int_base<33, true>"* %op to %"struct.ssdm_int<33, true>"*
@@ -2258,39 +2220,39 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi1ELb0EEC2EDq1_j(%"struct.ssdm_int<1, false>"* %this, i1 %o) unnamed_addr #100003 comdat align 2 !dbg !101043 !fpga.function.pragma !101044 {
+define linkonce_odr void @_ZN8ssdm_intILi1ELb0EEC2EDq1_j(%"struct.ssdm_int<1, false>"* %this, i1 %o) unnamed_addr #100003 comdat align 2 !dbg !101039 !fpga.function.pragma !101040 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<1, false>"* %this, metadata !101047, metadata !DIExpression()), !dbg !101049
-  call void @llvm.dbg.value(metadata i1 %o, metadata !101050, metadata !DIExpression()), !dbg !101051
-  %V = getelementptr inbounds %"struct.ssdm_int<1, false>", %"struct.ssdm_int<1, false>"* %this, i32 0, i32 0, !dbg !101052
-  store i1 %o, i1* %V, align 1, !dbg !101052
-  ret void, !dbg !101053
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<1, false>"* %this, metadata !101043, metadata !DIExpression()), !dbg !101045
+  call void @llvm.dbg.value(metadata i1 %o, metadata !101046, metadata !DIExpression()), !dbg !101047
+  %V = getelementptr inbounds %"struct.ssdm_int<1, false>", %"struct.ssdm_int<1, false>"* %this, i32 0, i32 0, !dbg !101048
+  store i1 %o, i1* %V, align 1, !dbg !101048
+  ret void, !dbg !101049
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi33ELb0EEC2EDq33_j(%"struct.ssdm_int<33, true>"* %this, i33 %o) unnamed_addr #100003 comdat align 2 !dbg !101054 !fpga.function.pragma !101067 {
+define linkonce_odr void @_ZN8ssdm_intILi33ELb0EEC2EDq33_j(%"struct.ssdm_int<33, true>"* %this, i33 %o) unnamed_addr #100003 comdat align 2 !dbg !101050 !fpga.function.pragma !101063 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<33, true>"* %this, metadata !101070, metadata !DIExpression()), !dbg !101072
-  call void @llvm.dbg.value(metadata i33 %o, metadata !101073, metadata !DIExpression()), !dbg !101074
-  %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %this, i32 0, i32 0, !dbg !101075
-  store i33 %o, i33* %V, align 8, !dbg !101075
-  ret void, !dbg !101076
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<33, true>"* %this, metadata !101066, metadata !DIExpression()), !dbg !101068
+  call void @llvm.dbg.value(metadata i33 %o, metadata !101069, metadata !DIExpression()), !dbg !101070
+  %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %this, i32 0, i32 0, !dbg !101071
+  store i33 %o, i33* %V, align 8, !dbg !101071
+  ret void, !dbg !101072
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZplILi32ELb0ELi2ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZplILi32ELb0ELi2ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %lhs = alloca %"struct.ap_int_base<34, true>", align 8
   %rhs = alloca %"struct.ap_int_base<34, true>", align 8
   %ret = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi32ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %lhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op)
   %1 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi2ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %rhs, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op2)
   %2 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100020
   call void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<34, true>"* %lhs to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %3, i32 0, i32 0
@@ -2304,16 +2266,16 @@ entry:
   store i34 %add, i34* %V2, align 8
   call void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100020
   %9 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100020
   %10 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi34ELb1EEC2ILi2ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi34ELb1EEC2ILi2ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<34, true>"* %this to %"struct.ssdm_int<34, true>"*
   %1 = bitcast %"struct.ap_int_base<2, false>"* %op to %"struct.ssdm_int<2, false>"*
@@ -2332,7 +2294,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi2ELb1EEC2Ei(%"struct.ap_int_base<2, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi2ELb1EEC2Ei(%"struct.ap_int_base<2, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<2, false>"* %this to %"struct.ssdm_int<2, false>"*
   %conv = trunc i32 %op to i2
@@ -2345,23 +2307,23 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi2ELb1EE18checkOverflowBaseCIiEEvT_(%"struct.ap_int_base<2, false>"* %this, i32 %val) #100006 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi2ELb1EE18checkOverflowBaseCIiEEvT_(%"struct.ap_int_base<2, false>"* %this, i32 %val) #100006 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi2ELb1EEC2EDq2_i(%"struct.ssdm_int<2, false>"* %this, i2 %o) unnamed_addr #100003 comdat align 2 !dbg !101077 !fpga.function.pragma !101078 {
+define linkonce_odr void @_ZN8ssdm_intILi2ELb1EEC2EDq2_i(%"struct.ssdm_int<2, false>"* %this, i2 %o) unnamed_addr #100003 comdat align 2 !dbg !101073 !fpga.function.pragma !101074 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<2, false>"* %this, metadata !101081, metadata !DIExpression()), !dbg !101083
-  call void @llvm.dbg.value(metadata i2 %o, metadata !101084, metadata !DIExpression()), !dbg !101085
-  %V = getelementptr inbounds %"struct.ssdm_int<2, false>", %"struct.ssdm_int<2, false>"* %this, i32 0, i32 0, !dbg !101086
-  store i2 %o, i2* %V, align 1, !dbg !101086
-  ret void, !dbg !101087
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<2, false>"* %this, metadata !101077, metadata !DIExpression()), !dbg !101079
+  call void @llvm.dbg.value(metadata i2 %o, metadata !101080, metadata !DIExpression()), !dbg !101081
+  %V = getelementptr inbounds %"struct.ssdm_int<2, false>", %"struct.ssdm_int<2, false>"* %this, i32 0, i32 0, !dbg !101082
+  store i2 %o, i2* %V, align 1, !dbg !101082
+  ret void, !dbg !101083
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<3, false>"* %this to %"struct.ssdm_int<3, false>"*
   %1 = bitcast %"struct.ap_int_base<33, true>"* %op to %"struct.ssdm_int<33, true>"*
@@ -2380,35 +2342,35 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi33ELb1EE17checkOverflowCsimEibb(%"struct.ap_int_base<33, true>"* %this, i32 %_ap_w2, i1 zeroext %_ap_s2, i1 zeroext %print) #100007 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi33ELb1EE17checkOverflowCsimEibb(%"struct.ap_int_base<33, true>"* %this, i32 %_ap_w2, i1 zeroext %_ap_s2, i1 zeroext %print) #100007 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret i1 false
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi3ELb0EEC2EDq3_j(%"struct.ssdm_int<3, false>"* %this, i3 %o) unnamed_addr #100003 comdat align 2 !dbg !101088 !fpga.function.pragma !101089 {
+define linkonce_odr void @_ZN8ssdm_intILi3ELb0EEC2EDq3_j(%"struct.ssdm_int<3, false>"* %this, i3 %o) unnamed_addr #100003 comdat align 2 !dbg !101084 !fpga.function.pragma !101085 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<3, false>"* %this, metadata !101092, metadata !DIExpression()), !dbg !101094
-  call void @llvm.dbg.value(metadata i3 %o, metadata !101095, metadata !DIExpression()), !dbg !101096
-  %V = getelementptr inbounds %"struct.ssdm_int<3, false>", %"struct.ssdm_int<3, false>"* %this, i32 0, i32 0, !dbg !101097
-  store i3 %o, i3* %V, align 1, !dbg !101097
-  ret void, !dbg !101098
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<3, false>"* %this, metadata !101088, metadata !DIExpression()), !dbg !101090
+  call void @llvm.dbg.value(metadata i3 %o, metadata !101091, metadata !DIExpression()), !dbg !101092
+  %V = getelementptr inbounds %"struct.ssdm_int<3, false>", %"struct.ssdm_int<3, false>"* %this, i32 0, i32 0, !dbg !101093
+  store i3 %o, i3* %V, align 1, !dbg !101093
+  ret void, !dbg !101094
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZmiILi3ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5minusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZmiILi3ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5minusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %lhs = alloca %"struct.ap_int_base<33, true>", align 8
   %rhs = alloca %"struct.ap_int_base<33, true>", align 8
   %ret = alloca %"struct.ap_int_base<33, true>", align 8
   %0 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi3ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %lhs, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op)
   %1 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %rhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2)
   %2 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100020
   call void @_ZN11ap_int_baseILi33ELb1EEC2Ei(%"struct.ap_int_base<33, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<33, true>"* %lhs to %"struct.ssdm_int<33, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %3, i32 0, i32 0
@@ -2422,16 +2384,16 @@ entry:
   store i33 %sub, i33* %V2, align 8
   call void @_ZN6ap_intILi33EEC2ILi33ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<33>"* %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100020
   %9 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100020
   %10 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi33ELb1EEC2ILi3ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi33ELb1EEC2ILi3ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<33, true>"* %this to %"struct.ssdm_int<33, true>"*
   %1 = bitcast %"struct.ap_int_base<3, false>"* %op to %"struct.ssdm_int<3, false>"*
@@ -2450,7 +2412,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi33ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi33ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<33, true>"* %this to %"struct.ssdm_int<33, true>"*
   %1 = bitcast %"struct.ap_int_base<32, false>"* %op to %"struct.ssdm_int<32, false>"*
@@ -2469,7 +2431,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi33ELb1EEC2Ei(%"struct.ap_int_base<33, true>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi33ELb1EEC2Ei(%"struct.ap_int_base<33, true>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<33, true>"* %this to %"struct.ssdm_int<33, true>"*
   %conv = sext i32 %op to i33
@@ -2482,7 +2444,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN6ap_intILi33EEC2ILi33ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<33>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN6ap_intILi33EEC2ILi33ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<33>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int<33>"* %this to %"struct.ap_int_base<33, true>"*
   %1 = load %"struct.ap_int_base<33, true>", %"struct.ap_int_base<33, true>"* %op, align 8
@@ -2491,23 +2453,23 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi33ELb1EEC2EDq33_i(%"struct.ssdm_int<33, true>"* %this, i33 %o) unnamed_addr #100003 comdat align 2 !dbg !101099 !fpga.function.pragma !101100 {
+define linkonce_odr void @_ZN8ssdm_intILi33ELb1EEC2EDq33_i(%"struct.ssdm_int<33, true>"* %this, i33 %o) unnamed_addr #100003 comdat align 2 !dbg !101095 !fpga.function.pragma !101096 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<33, true>"* %this, metadata !101103, metadata !DIExpression()), !dbg !101105
-  call void @llvm.dbg.value(metadata i33 %o, metadata !101106, metadata !DIExpression()), !dbg !101107
-  %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %this, i32 0, i32 0, !dbg !101108
-  store i33 %o, i33* %V, align 8, !dbg !101108
-  ret void, !dbg !101109
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<33, true>"* %this, metadata !101099, metadata !DIExpression()), !dbg !101101
+  call void @llvm.dbg.value(metadata i33 %o, metadata !101102, metadata !DIExpression()), !dbg !101103
+  %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %this, i32 0, i32 0, !dbg !101104
+  store i33 %o, i33* %V, align 8, !dbg !101104
+  ret void, !dbg !101105
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<14, false>", align 2
   %0 = bitcast %"struct.ap_int_base<3, false>"* %this to %"struct.ssdm_int<3, false>"*
   call void @_ZN8ssdm_intILi3ELb0EEC2Ev(%"struct.ssdm_int<3, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100020
   call void @_ZNK12ap_range_refILi14ELb0EE3getEv(%"struct.ap_int_base<14, false>"* sret %ref.tmp, %"struct.ap_range_ref<14, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to %"struct.ssdm_int<14, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %2, i32 0, i32 0
@@ -2517,19 +2479,19 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<3, false>", %"struct.ssdm_int<3, false>"* %4, i32 0, i32 0
   store i3 %conv, i3* %V2, align 1
   %5 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi3ELb0EEC2Ev(%"struct.ssdm_int<3, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101110 !fpga.function.pragma !101111 {
+define linkonce_odr void @_ZN8ssdm_intILi3ELb0EEC2Ev(%"struct.ssdm_int<3, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101106 !fpga.function.pragma !101107 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<3, false>"* %this, metadata !101114, metadata !DIExpression()), !dbg !101115
-  ret void, !dbg !101116
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<3, false>"* %this, metadata !101110, metadata !DIExpression()), !dbg !101111
+  ret void, !dbg !101112
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK12ap_range_refILi14ELb0EE3getEv(%"struct.ap_int_base<14, false>"* noalias sret %agg.result, %"struct.ap_range_ref<14, false>"* %this) #100008 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK12ap_range_refILi14ELb0EE3getEv(%"struct.ap_int_base<14, false>"* noalias sret %agg.result, %"struct.ap_range_ref<14, false>"* %this) #100008 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   call void @_ZN11ap_int_baseILi14ELb0EEC2Ev(%"struct.ap_int_base<14, false>"* %agg.result)
   %d_bv = getelementptr inbounds %"struct.ap_range_ref<14, false>", %"struct.ap_range_ref<14, false>"* %this, i32 0, i32 0
@@ -2549,7 +2511,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2Ev(%"struct.ap_int_base<14, false>"* %this) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2Ev(%"struct.ap_int_base<14, false>"* %this) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<14, false>"* %this to %"struct.ssdm_int<14, false>"*
   call void @_ZN8ssdm_intILi14ELb0EEC2Ev(%"struct.ssdm_int<14, false>"* %0)
@@ -2560,14 +2522,14 @@ entry:
 declare i14 @llvm.fpga.legacy.part.select.i14(i14, i32, i32) #100009
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi14ELb0EEC2Ev(%"struct.ssdm_int<14, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101117 !fpga.function.pragma !101118 {
+define linkonce_odr void @_ZN8ssdm_intILi14ELb0EEC2Ev(%"struct.ssdm_int<14, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101113 !fpga.function.pragma !101114 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<14, false>"* %this, metadata !101121, metadata !DIExpression()), !dbg !101123
-  ret void, !dbg !101124
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<14, false>"* %this, metadata !101117, metadata !DIExpression()), !dbg !101119
+  ret void, !dbg !101120
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EEC2ILi65ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %this, %"struct.ap_int_base<65, true>"* dereferenceable(16) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EEC2ILi65ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %this, %"struct.ap_int_base<65, true>"* dereferenceable(16) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<3, false>"* %this to %"struct.ssdm_int<3, false>"*
   %1 = bitcast %"struct.ap_int_base<65, true>"* %op to %"struct.ssdm_int<65, true>"*
@@ -2586,25 +2548,25 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi65ELb1EE17checkOverflowCsimEibb(%"struct.ap_int_base<65, true>"* %this, i32 %_ap_w2, i1 zeroext %_ap_s2, i1 zeroext %print) #100007 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi65ELb1EE17checkOverflowCsimEibb(%"struct.ap_int_base<65, true>"* %this, i32 %_ap_w2, i1 zeroext %_ap_s2, i1 zeroext %print) #100007 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret i1 false
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZanILi64ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5logicERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<65>"* noalias sret %agg.result, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZanILi64ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5logicERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<65>"* noalias sret %agg.result, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %lhs = alloca %"struct.ap_int_base<65, true>", align 16
   %rhs = alloca %"struct.ap_int_base<65, true>", align 16
   %ret = alloca %"struct.ap_int_base<65, true>", align 16
   %0 = bitcast %"struct.ap_int_base<65, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %0) #100020
   call void @_ZN11ap_int_baseILi65ELb1EEC2ILi64ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %lhs, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op)
   %1 = bitcast %"struct.ap_int_base<65, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100020
   call void @_ZN11ap_int_baseILi65ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %rhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2)
   %2 = bitcast %"struct.ap_int_base<65, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %2) #100020
   call void @_ZN11ap_int_baseILi65ELb1EEC2Ei(%"struct.ap_int_base<65, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<65, true>"* %lhs to %"struct.ssdm_int<65, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<65, true>", %"struct.ssdm_int<65, true>"* %3, i32 0, i32 0
@@ -2618,16 +2580,16 @@ entry:
   store i65 %and, i65* %V2, align 16
   call void @_ZN6ap_intILi65EEC2ILi65ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<65>"* %agg.result, %"struct.ap_int_base<65, true>"* dereferenceable(16) %ret)
   %8 = bitcast %"struct.ap_int_base<65, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %8) #100020
   %9 = bitcast %"struct.ap_int_base<65, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %9) #100020
   %10 = bitcast %"struct.ap_int_base<65, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %10) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi65ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi65ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<65, true>"* %this to %"struct.ssdm_int<65, true>"*
   %1 = bitcast %"struct.ap_int_base<32, false>"* %op to %"struct.ssdm_int<32, false>"*
@@ -2646,11 +2608,11 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK11ap_int_baseILi64ELb0EElsILi33EEE7ap_uintILi64EERKS_IXT_ELb0EE(%"struct.ap_uint<64>"* noalias sret %agg.result, %"struct.ap_int_base<64, false>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK11ap_int_baseILi64ELb0EElsILi33EEE7ap_uintILi64EERKS_IXT_ELb0EE(%"struct.ap_uint<64>"* noalias sret %agg.result, %"struct.ap_int_base<64, false>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %r = alloca %"struct.ap_int_base<64, false>", align 8
   %0 = bitcast %"struct.ap_int_base<64, false>"* %r to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   call void @_ZN11ap_int_baseILi64ELb0EEC2Ei(%"struct.ap_int_base<64, false>"* %r, i32 0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %this to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %1, i32 0, i32 0
@@ -2663,16 +2625,16 @@ entry:
   store i64 %shl, i64* %V2, align 8
   call void @_ZN7ap_uintILi64EEC2ILi64ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<64>"* %agg.result, %"struct.ap_int_base<64, false>"* dereferenceable(8) %r)
   %4 = bitcast %"struct.ap_int_base<64, false>"* %r to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK11ap_int_baseILi64ELb0EErsILi33EEE7ap_uintILi64EERKS_IXT_ELb0EE(%"struct.ap_uint<64>"* noalias sret %agg.result, %"struct.ap_int_base<64, false>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK11ap_int_baseILi64ELb0EErsILi33EEE7ap_uintILi64EERKS_IXT_ELb0EE(%"struct.ap_uint<64>"* noalias sret %agg.result, %"struct.ap_int_base<64, false>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %r = alloca %"struct.ap_int_base<64, false>", align 8
   %0 = bitcast %"struct.ap_int_base<64, false>"* %r to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   call void @_ZN11ap_int_baseILi64ELb0EEC2Ei(%"struct.ap_int_base<64, false>"* %r, i32 0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %this to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %1, i32 0, i32 0
@@ -2685,12 +2647,12 @@ entry:
   store i64 %shr, i64* %V2, align 8
   call void @_ZN7ap_uintILi64EEC2ILi64ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<64>"* %agg.result, %"struct.ap_int_base<64, false>"* dereferenceable(8) %r)
   %4 = bitcast %"struct.ap_int_base<64, false>"* %r to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi64ELb0EEC2Ei(%"struct.ap_int_base<64, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi64ELb0EEC2Ei(%"struct.ap_int_base<64, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<64, false>"* %this to %"struct.ssdm_int<64, false>"*
   %conv = sext i32 %op to i64
@@ -2703,7 +2665,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi64EEC2ILi64ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<64>"* %this, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi64EEC2ILi64ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<64>"* %this, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<64>"* %this to %"struct.ap_int_base<64, false>"*
   %1 = load %"struct.ap_int_base<64, false>", %"struct.ap_int_base<64, false>"* %op, align 8
@@ -2712,29 +2674,29 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi64ELb0EEC2Em(%"struct.ssdm_int<64, false>"* %this, i64 %o) unnamed_addr #100003 comdat align 2 !dbg !101125 !fpga.function.pragma !101126 {
+define linkonce_odr void @_ZN8ssdm_intILi64ELb0EEC2Em(%"struct.ssdm_int<64, false>"* %this, i64 %o) unnamed_addr #100003 comdat align 2 !dbg !101121 !fpga.function.pragma !101122 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<64, false>"* %this, metadata !101129, metadata !DIExpression()), !dbg !101131
-  call void @llvm.dbg.value(metadata i64 %o, metadata !101132, metadata !DIExpression()), !dbg !101133
-  %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %this, i32 0, i32 0, !dbg !101134
-  store i64 %o, i64* %V, align 8, !dbg !101134
-  ret void, !dbg !101135
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<64, false>"* %this, metadata !101125, metadata !DIExpression()), !dbg !101127
+  call void @llvm.dbg.value(metadata i64 %o, metadata !101128, metadata !DIExpression()), !dbg !101129
+  %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %this, i32 0, i32 0, !dbg !101130
+  store i64 %o, i64* %V, align 8, !dbg !101130
+  ret void, !dbg !101131
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZplILi6ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<6, false>"* dereferenceable(1) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZplILi6ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<6, false>"* dereferenceable(1) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %lhs = alloca %"struct.ap_int_base<33, true>", align 8
   %rhs = alloca %"struct.ap_int_base<33, true>", align 8
   %ret = alloca %"struct.ap_int_base<33, true>", align 8
   %0 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi6ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %lhs, %"struct.ap_int_base<6, false>"* dereferenceable(1) %op)
   %1 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %rhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2)
   %2 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100020
   call void @_ZN11ap_int_baseILi33ELb1EEC2Ei(%"struct.ap_int_base<33, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<33, true>"* %lhs to %"struct.ssdm_int<33, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %3, i32 0, i32 0
@@ -2748,16 +2710,16 @@ entry:
   store i33 %add, i33* %V2, align 8
   call void @_ZN6ap_intILi33EEC2ILi33ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<33>"* %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100020
   %9 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100020
   %10 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi33ELb1EEC2ILi6ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<6, false>"* dereferenceable(1) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi33ELb1EEC2ILi6ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<6, false>"* dereferenceable(1) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<33, true>"* %this to %"struct.ssdm_int<33, true>"*
   %1 = bitcast %"struct.ap_int_base<6, false>"* %op to %"struct.ssdm_int<6, false>"*
@@ -2776,13 +2738,13 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2ILi2ES_ILi2ELb0EELi14E12ap_range_refILi14ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<14, false>"* %this, %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2ILi2ES_ILi2ELb0EELi14E12ap_range_refILi14ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<14, false>"* %this, %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %tmp = alloca %"struct.ap_int_base<16, false>", align 2
   %0 = bitcast %"struct.ap_int_base<14, false>"* %this to %"struct.ssdm_int<14, false>"*
   call void @_ZN8ssdm_intILi14ELb0EEC2Ev(%"struct.ssdm_int<14, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<16, false>"* %tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100020
   call void @_ZNK13ap_concat_refILi2E11ap_int_baseILi2ELb0EELi14E12ap_range_refILi14ELb0EEE3getEv(%"struct.ap_int_base<16, false>"* sret %tmp, %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %ref)
   %2 = bitcast %"struct.ap_int_base<16, false>"* %tmp to %"struct.ssdm_int<16, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<16, false>", %"struct.ssdm_int<16, false>"* %2, i32 0, i32 0
@@ -2792,12 +2754,12 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %4, i32 0, i32 0
   store i14 %conv, i14* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<16, false>"* %tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK13ap_concat_refILi2E11ap_int_baseILi2ELb0EELi14E12ap_range_refILi14ELb0EEE3getEv(%"struct.ap_int_base<16, false>"* noalias sret %agg.result, %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %this) #100008 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK13ap_concat_refILi2E11ap_int_baseILi2ELb0EELi14E12ap_range_refILi14ELb0EEE3getEv(%"struct.ap_int_base<16, false>"* noalias sret %agg.result, %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %this) #100008 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %v2 = alloca %"struct.ap_int_base<14, false>", align 2
   %v1 = alloca %"struct.ap_int_base<2, false>", align 1
@@ -2809,12 +2771,12 @@ entry:
   %1 = load %"struct.ap_range_ref<14, false>"*, %"struct.ap_range_ref<14, false>"** %mbv2, align 8
   %call2 = call i32 @_ZNK12ap_range_refILi14ELb0EE6lengthEv(%"struct.ap_range_ref<14, false>"* %1)
   %2 = bitcast %"struct.ap_int_base<14, false>"* %v2 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %2) #100020
   %mbv23 = getelementptr inbounds %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >", %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %this, i32 0, i32 1
   %3 = load %"struct.ap_range_ref<14, false>"*, %"struct.ap_range_ref<14, false>"** %mbv23, align 8
   call void @_ZN11ap_int_baseILi14ELb0EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %v2, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %3)
   %4 = bitcast %"struct.ap_int_base<2, false>"* %v1 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %4) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %4) #100020
   %mbv14 = getelementptr inbounds %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >", %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %this, i32 0, i32 0
   %5 = load %"struct.ap_int_base<2, false>"*, %"struct.ap_int_base<2, false>"** %mbv14, align 8
   %6 = load %"struct.ap_int_base<2, false>", %"struct.ap_int_base<2, false>"* %5, align 1
@@ -2843,14 +2805,14 @@ entry:
   %V15 = getelementptr inbounds %"struct.ssdm_int<16, false>", %"struct.ssdm_int<16, false>"* %16, i32 0, i32 0
   store i16 %part_set13, i16* %V15, align 2
   %17 = bitcast %"struct.ap_int_base<2, false>"* %v1 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %17) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %17) #100020
   %18 = bitcast %"struct.ap_int_base<14, false>"* %v2 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %18) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %18) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi16ELb0EEC2Ei(%"struct.ap_int_base<16, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi16ELb0EEC2Ei(%"struct.ap_int_base<16, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<16, false>"* %this to %"struct.ssdm_int<16, false>"*
   %conv = trunc i32 %op to i16
@@ -2863,13 +2825,13 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i32 @_ZNK11ap_int_baseILi2ELb0EE6lengthEv(%"struct.ap_int_base<2, false>"* %this) #100010 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i32 @_ZNK11ap_int_baseILi2ELb0EE6lengthEv(%"struct.ap_int_base<2, false>"* %this) #100010 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret i32 2
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i32 @_ZNK12ap_range_refILi14ELb0EE6lengthEv(%"struct.ap_range_ref<14, false>"* %this) #100010 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i32 @_ZNK12ap_range_refILi14ELb0EE6lengthEv(%"struct.ap_range_ref<14, false>"* %this) #100010 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %h_index = getelementptr inbounds %"struct.ap_range_ref<14, false>", %"struct.ap_range_ref<14, false>"* %this, i32 0, i32 2
   %0 = load i32, i32* %h_index, align 4
@@ -2902,13 +2864,13 @@ cond.end:                                         ; preds = %cond.false, %cond.t
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<14, false>", align 2
   %0 = bitcast %"struct.ap_int_base<14, false>"* %this to %"struct.ssdm_int<14, false>"*
   call void @_ZN8ssdm_intILi14ELb0EEC2Ev(%"struct.ssdm_int<14, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100020
   call void @_ZNK12ap_range_refILi14ELb0EE3getEv(%"struct.ap_int_base<14, false>"* sret %ref.tmp, %"struct.ap_range_ref<14, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to %"struct.ssdm_int<14, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %2, i32 0, i32 0
@@ -2917,7 +2879,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %4, i32 0, i32 0
   store i14 %3, i14* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100020
   ret void
 }
 
@@ -2928,17 +2890,17 @@ declare i16 @llvm.fpga.legacy.part.set.i16.i14(i16, i14, i32, i32) #100009
 declare i16 @llvm.fpga.legacy.part.set.i16.i2(i16, i2, i32, i32) #100009
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi16ELb0EEC2Et(%"struct.ssdm_int<16, false>"* %this, i16 zeroext %o) unnamed_addr #100003 comdat align 2 !dbg !101136 !fpga.function.pragma !101150 {
+define linkonce_odr void @_ZN8ssdm_intILi16ELb0EEC2Et(%"struct.ssdm_int<16, false>"* %this, i16 zeroext %o) unnamed_addr #100003 comdat align 2 !dbg !101132 !fpga.function.pragma !101146 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<16, false>"* %this, metadata !101153, metadata !DIExpression()), !dbg !101155
-  call void @llvm.dbg.value(metadata i16 %o, metadata !101156, metadata !DIExpression()), !dbg !101157
-  %V = getelementptr inbounds %"struct.ssdm_int<16, false>", %"struct.ssdm_int<16, false>"* %this, i32 0, i32 0, !dbg !101158
-  store i16 %o, i16* %V, align 2, !dbg !101158
-  ret void, !dbg !101159
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<16, false>"* %this, metadata !101149, metadata !DIExpression()), !dbg !101151
+  call void @llvm.dbg.value(metadata i16 %o, metadata !101152, metadata !DIExpression()), !dbg !101153
+  %V = getelementptr inbounds %"struct.ssdm_int<16, false>", %"struct.ssdm_int<16, false>"* %this, i32 0, i32 0, !dbg !101154
+  store i16 %o, i16* %V, align 2, !dbg !101154
+  ret void, !dbg !101155
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN13ap_concat_refILi2E11ap_int_baseILi2ELb0EELi14E12ap_range_refILi14ELb0EEEC2ERS1_RS3_(%"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %this, %"struct.ap_int_base<2, false>"* dereferenceable(1) %bv1, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %bv2) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN13ap_concat_refILi2E11ap_int_baseILi2ELb0EELi14E12ap_range_refILi14ELb0EEEC2ERS1_RS3_(%"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %this, %"struct.ap_int_base<2, false>"* dereferenceable(1) %bv1, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %bv2) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %mbv1 = getelementptr inbounds %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >", %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %this, i32 0, i32 0
   store %"struct.ap_int_base<2, false>"* %bv1, %"struct.ap_int_base<2, false>"** %mbv1, align 8
@@ -2948,39 +2910,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr dereferenceable(2) %"struct.ap_int_base<14, false>"* @_ZN11ap_int_baseILi14ELb0EEaNILi32ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
-entry:
-  %0 = bitcast %"struct.ap_int_base<32, false>"* %op2 to %"struct.ssdm_int<32, false>"*
-  %V = getelementptr inbounds %"struct.ssdm_int<32, false>", %"struct.ssdm_int<32, false>"* %0, i32 0, i32 0
-  %1 = load i32, i32* %V, align 4
-  %2 = bitcast %"struct.ap_int_base<14, false>"* %this to %"struct.ssdm_int<14, false>"*
-  %V2 = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %2, i32 0, i32 0
-  %3 = load i14, i14* %V2, align 2
-  %conv = zext i14 %3 to i32
-  %and = and i32 %conv, %1
-  %conv3 = trunc i32 %and to i14
-  store i14 %conv3, i14* %V2, align 2
-  ret %"struct.ap_int_base<14, false>"* %this
-}
-
-; Function Attrs: alwaysinline nounwind
-define linkonce_odr dereferenceable(1) %"struct.ap_int_base<2, false>"* @_ZN11ap_int_baseILi2ELb0EEaNILi32ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<2, false>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
-entry:
-  %0 = bitcast %"struct.ap_int_base<32, false>"* %op2 to %"struct.ssdm_int<32, false>"*
-  %V = getelementptr inbounds %"struct.ssdm_int<32, false>", %"struct.ssdm_int<32, false>"* %0, i32 0, i32 0
-  %1 = load i32, i32* %V, align 4
-  %2 = bitcast %"struct.ap_int_base<2, false>"* %this to %"struct.ssdm_int<2, false>"*
-  %V2 = getelementptr inbounds %"struct.ssdm_int<2, false>", %"struct.ssdm_int<2, false>"* %2, i32 0, i32 0
-  %3 = load i2, i2* %V2, align 1
-  %conv = zext i2 %3 to i32
-  %and = and i32 %conv, %1
-  %conv3 = trunc i32 %and to i2
-  store i2 %conv3, i2* %V2, align 1
-  ret %"struct.ap_int_base<2, false>"* %this
-}
-
-; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi2ELb0EEC2ILi34ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<2, false>"* %this, %"struct.ap_int_base<34, true>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi2ELb0EEC2ILi34ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<2, false>"* %this, %"struct.ap_int_base<34, true>"* dereferenceable(8) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<2, false>"* %this to %"struct.ssdm_int<2, false>"*
   %1 = bitcast %"struct.ap_int_base<34, true>"* %op to %"struct.ssdm_int<34, true>"*
@@ -2999,35 +2929,35 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi34ELb1EE17checkOverflowCsimEibb(%"struct.ap_int_base<34, true>"* %this, i32 %_ap_w2, i1 zeroext %_ap_s2, i1 zeroext %print) #100007 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi34ELb1EE17checkOverflowCsimEibb(%"struct.ap_int_base<34, true>"* %this, i32 %_ap_w2, i1 zeroext %_ap_s2, i1 zeroext %print) #100007 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret i1 false
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi2ELb0EEC2EDq2_j(%"struct.ssdm_int<2, false>"* %this, i2 %o) unnamed_addr #100003 comdat align 2 !dbg !101160 !fpga.function.pragma !101161 {
+define linkonce_odr void @_ZN8ssdm_intILi2ELb0EEC2EDq2_j(%"struct.ssdm_int<2, false>"* %this, i2 %o) unnamed_addr #100003 comdat align 2 !dbg !101156 !fpga.function.pragma !101157 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<2, false>"* %this, metadata !101164, metadata !DIExpression()), !dbg !101166
-  call void @llvm.dbg.value(metadata i2 %o, metadata !101167, metadata !DIExpression()), !dbg !101168
-  %V = getelementptr inbounds %"struct.ssdm_int<2, false>", %"struct.ssdm_int<2, false>"* %this, i32 0, i32 0, !dbg !101169
-  store i2 %o, i2* %V, align 1, !dbg !101169
-  ret void, !dbg !101170
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<2, false>"* %this, metadata !101160, metadata !DIExpression()), !dbg !101162
+  call void @llvm.dbg.value(metadata i2 %o, metadata !101163, metadata !DIExpression()), !dbg !101164
+  %V = getelementptr inbounds %"struct.ssdm_int<2, false>", %"struct.ssdm_int<2, false>"* %this, i32 0, i32 0, !dbg !101165
+  store i2 %o, i2* %V, align 1, !dbg !101165
+  ret void, !dbg !101166
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZplILi33ELb1ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZplILi33ELb1ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* noalias sret %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %lhs = alloca %"struct.ap_int_base<34, true>", align 8
   %rhs = alloca %"struct.ap_int_base<34, true>", align 8
   %ret = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %lhs, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op)
   %1 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %rhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2)
   %2 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100020
   call void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<34, true>"* %lhs to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %3, i32 0, i32 0
@@ -3041,16 +2971,16 @@ entry:
   store i34 %add, i34* %V2, align 8
   call void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100020
   %9 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100020
   %10 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi34ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi34ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<34, true>"* %this to %"struct.ssdm_int<34, true>"*
   %1 = bitcast %"struct.ap_int_base<32, false>"* %op to %"struct.ssdm_int<32, false>"*
@@ -3069,19 +2999,19 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZplILi2ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZplILi2ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %lhs = alloca %"struct.ap_int_base<33, true>", align 8
   %rhs = alloca %"struct.ap_int_base<33, true>", align 8
   %ret = alloca %"struct.ap_int_base<33, true>", align 8
   %0 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi2ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %lhs, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op)
   %1 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %rhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2)
   %2 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100020
   call void @_ZN11ap_int_baseILi33ELb1EEC2Ei(%"struct.ap_int_base<33, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<33, true>"* %lhs to %"struct.ssdm_int<33, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %3, i32 0, i32 0
@@ -3095,16 +3025,16 @@ entry:
   store i33 %add, i33* %V2, align 8
   call void @_ZN6ap_intILi33EEC2ILi33ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<33>"* %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100020
   %9 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100020
   %10 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi33ELb1EEC2ILi2ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi33ELb1EEC2ILi2ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<33, true>"* %this to %"struct.ssdm_int<33, true>"*
   %1 = bitcast %"struct.ap_int_base<2, false>"* %op to %"struct.ssdm_int<2, false>"*
@@ -3123,13 +3053,13 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi2ELb0EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<2, false>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi2ELb0EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<2, false>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<14, false>", align 2
   %0 = bitcast %"struct.ap_int_base<2, false>"* %this to %"struct.ssdm_int<2, false>"*
   call void @_ZN8ssdm_intILi2ELb0EEC2Ev(%"struct.ssdm_int<2, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100020
   call void @_ZNK12ap_range_refILi14ELb0EE3getEv(%"struct.ap_int_base<14, false>"* sret %ref.tmp, %"struct.ap_range_ref<14, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to %"struct.ssdm_int<14, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %2, i32 0, i32 0
@@ -3139,19 +3069,19 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<2, false>", %"struct.ssdm_int<2, false>"* %4, i32 0, i32 0
   store i2 %conv, i2* %V2, align 1
   %5 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi2ELb0EEC2Ev(%"struct.ssdm_int<2, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101171 !fpga.function.pragma !101172 {
+define linkonce_odr void @_ZN8ssdm_intILi2ELb0EEC2Ev(%"struct.ssdm_int<2, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101167 !fpga.function.pragma !101168 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<2, false>"* %this, metadata !101175, metadata !DIExpression()), !dbg !101176
-  ret void, !dbg !101177
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<2, false>"* %this, metadata !101171, metadata !DIExpression()), !dbg !101172
+  ret void, !dbg !101173
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2ILi11ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %this, %"struct.ap_int_base<11, false>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2ILi11ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %this, %"struct.ap_int_base<11, false>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<14, false>"* %this to %"struct.ssdm_int<14, false>"*
   %1 = bitcast %"struct.ap_int_base<11, false>"* %op to %"struct.ssdm_int<11, false>"*
@@ -3170,23 +3100,23 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi11ELb0EE17checkOverflowCsimEibb(%"struct.ap_int_base<11, false>"* %this, i32 %_ap_w2, i1 zeroext %_ap_s2, i1 zeroext %print) #100007 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi11ELb0EE17checkOverflowCsimEibb(%"struct.ap_int_base<11, false>"* %this, i32 %_ap_w2, i1 zeroext %_ap_s2, i1 zeroext %print) #100007 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret i1 false
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi14ELb0EEC2EDq14_j(%"struct.ssdm_int<14, false>"* %this, i14 %o) unnamed_addr #100003 comdat align 2 !dbg !101178 !fpga.function.pragma !101179 {
+define linkonce_odr void @_ZN8ssdm_intILi14ELb0EEC2EDq14_j(%"struct.ssdm_int<14, false>"* %this, i14 %o) unnamed_addr #100003 comdat align 2 !dbg !101174 !fpga.function.pragma !101175 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<14, false>"* %this, metadata !101182, metadata !DIExpression()), !dbg !101183
-  call void @llvm.dbg.value(metadata i14 %o, metadata !101184, metadata !DIExpression()), !dbg !101185
-  %V = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %this, i32 0, i32 0, !dbg !101186
-  store i14 %o, i14* %V, align 2, !dbg !101186
-  ret void, !dbg !101187
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<14, false>"* %this, metadata !101178, metadata !DIExpression()), !dbg !101179
+  call void @llvm.dbg.value(metadata i14 %o, metadata !101180, metadata !DIExpression()), !dbg !101181
+  %V = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %this, i32 0, i32 0, !dbg !101182
+  store i14 %o, i14* %V, align 2, !dbg !101182
+  ret void, !dbg !101183
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi11ELb0EEC2Ei(%"struct.ap_int_base<11, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi11ELb0EEC2Ei(%"struct.ap_int_base<11, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<11, false>"* %this to %"struct.ssdm_int<11, false>"*
   %conv = trunc i32 %op to i11
@@ -3199,7 +3129,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi11EEC2ILi11ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<11>"* %this, %"struct.ap_int_base<11, false>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi11EEC2ILi11ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<11>"* %this, %"struct.ap_int_base<11, false>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<11>"* %this to %"struct.ap_int_base<11, false>"*
   %1 = load %"struct.ap_int_base<11, false>", %"struct.ap_int_base<11, false>"* %op, align 2
@@ -3208,17 +3138,17 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi11ELb0EEC2EDq11_j(%"struct.ssdm_int<11, false>"* %this, i11 %o) unnamed_addr #100003 comdat align 2 !dbg !101188 !fpga.function.pragma !101189 {
+define linkonce_odr void @_ZN8ssdm_intILi11ELb0EEC2EDq11_j(%"struct.ssdm_int<11, false>"* %this, i11 %o) unnamed_addr #100003 comdat align 2 !dbg !101184 !fpga.function.pragma !101185 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<11, false>"* %this, metadata !101192, metadata !DIExpression()), !dbg !101194
-  call void @llvm.dbg.value(metadata i11 %o, metadata !101195, metadata !DIExpression()), !dbg !101196
-  %V = getelementptr inbounds %"struct.ssdm_int<11, false>", %"struct.ssdm_int<11, false>"* %this, i32 0, i32 0, !dbg !101197
-  store i11 %o, i11* %V, align 2, !dbg !101197
-  ret void, !dbg !101198
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<11, false>"* %this, metadata !101188, metadata !DIExpression()), !dbg !101190
+  call void @llvm.dbg.value(metadata i11 %o, metadata !101191, metadata !DIExpression()), !dbg !101192
+  %V = getelementptr inbounds %"struct.ssdm_int<11, false>", %"struct.ssdm_int<11, false>"* %this, i32 0, i32 0, !dbg !101193
+  store i11 %o, i11* %V, align 2, !dbg !101193
+  ret void, !dbg !101194
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2ILi9ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %this, %"struct.ap_int_base<9, false>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2ILi9ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %this, %"struct.ap_int_base<9, false>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<14, false>"* %this to %"struct.ssdm_int<14, false>"*
   %1 = bitcast %"struct.ap_int_base<9, false>"* %op to %"struct.ssdm_int<9, false>"*
@@ -3237,13 +3167,13 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi9ELb0EE17checkOverflowCsimEibb(%"struct.ap_int_base<9, false>"* %this, i32 %_ap_w2, i1 zeroext %_ap_s2, i1 zeroext %print) #100007 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi9ELb0EE17checkOverflowCsimEibb(%"struct.ap_int_base<9, false>"* %this, i32 %_ap_w2, i1 zeroext %_ap_s2, i1 zeroext %print) #100007 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret i1 false
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi9ELb0EEC2Ei(%"struct.ap_int_base<9, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi9ELb0EEC2Ei(%"struct.ap_int_base<9, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<9, false>"* %this to %"struct.ssdm_int<9, false>"*
   %conv = trunc i32 %op to i9
@@ -3256,7 +3186,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi9EEC2ILi9ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<9>"* %this, %"struct.ap_int_base<9, false>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi9EEC2ILi9ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<9>"* %this, %"struct.ap_int_base<9, false>"* dereferenceable(2) %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<9>"* %this to %"struct.ap_int_base<9, false>"*
   %1 = load %"struct.ap_int_base<9, false>", %"struct.ap_int_base<9, false>"* %op, align 2
@@ -3265,23 +3195,23 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi9ELb0EEC2EDq9_j(%"struct.ssdm_int<9, false>"* %this, i9 %o) unnamed_addr #100003 comdat align 2 !dbg !101199 !fpga.function.pragma !101200 {
+define linkonce_odr void @_ZN8ssdm_intILi9ELb0EEC2EDq9_j(%"struct.ssdm_int<9, false>"* %this, i9 %o) unnamed_addr #100003 comdat align 2 !dbg !101195 !fpga.function.pragma !101196 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<9, false>"* %this, metadata !101203, metadata !DIExpression()), !dbg !101205
-  call void @llvm.dbg.value(metadata i9 %o, metadata !101206, metadata !DIExpression()), !dbg !101207
-  %V = getelementptr inbounds %"struct.ssdm_int<9, false>", %"struct.ssdm_int<9, false>"* %this, i32 0, i32 0, !dbg !101208
-  store i9 %o, i9* %V, align 2, !dbg !101208
-  ret void, !dbg !101209
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<9, false>"* %this, metadata !101199, metadata !DIExpression()), !dbg !101201
+  call void @llvm.dbg.value(metadata i9 %o, metadata !101202, metadata !DIExpression()), !dbg !101203
+  %V = getelementptr inbounds %"struct.ssdm_int<9, false>", %"struct.ssdm_int<9, false>"* %this, i32 0, i32 0, !dbg !101204
+  store i9 %o, i9* %V, align 2, !dbg !101204
+  ret void, !dbg !101205
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi6ELb0EEC2ILi3ES_ILi3ELb0EELi3ES2_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<6, false>"* %this, %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi6ELb0EEC2ILi3ES_ILi3ELb0EELi3ES2_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<6, false>"* %this, %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %tmp = alloca %"struct.ap_int_base<6, false>", align 1
   %0 = bitcast %"struct.ap_int_base<6, false>"* %this to %"struct.ssdm_int<6, false>"*
   call void @_ZN8ssdm_intILi6ELb0EEC2Ev(%"struct.ssdm_int<6, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<6, false>"* %tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %1) #100020
   call void @_ZNK13ap_concat_refILi3E11ap_int_baseILi3ELb0EELi3ES1_E3getEv(%"struct.ap_int_base<6, false>"* sret %tmp, %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %ref)
   %2 = bitcast %"struct.ap_int_base<6, false>"* %tmp to %"struct.ssdm_int<6, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<6, false>", %"struct.ssdm_int<6, false>"* %2, i32 0, i32 0
@@ -3290,19 +3220,19 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<6, false>", %"struct.ssdm_int<6, false>"* %4, i32 0, i32 0
   store i6 %3, i6* %V2, align 1
   %5 = bitcast %"struct.ap_int_base<6, false>"* %tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %5) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi6ELb0EEC2Ev(%"struct.ssdm_int<6, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101210 !fpga.function.pragma !101211 {
+define linkonce_odr void @_ZN8ssdm_intILi6ELb0EEC2Ev(%"struct.ssdm_int<6, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101206 !fpga.function.pragma !101207 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<6, false>"* %this, metadata !101214, metadata !DIExpression()), !dbg !101216
-  ret void, !dbg !101217
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<6, false>"* %this, metadata !101210, metadata !DIExpression()), !dbg !101212
+  ret void, !dbg !101213
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK13ap_concat_refILi3E11ap_int_baseILi3ELb0EELi3ES1_E3getEv(%"struct.ap_int_base<6, false>"* noalias sret %agg.result, %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %this) #100008 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK13ap_concat_refILi3E11ap_int_baseILi3ELb0EELi3ES1_E3getEv(%"struct.ap_int_base<6, false>"* noalias sret %agg.result, %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %this) #100008 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %v2 = alloca %"struct.ap_int_base<3, false>", align 1
   %v1 = alloca %"struct.ap_int_base<3, false>", align 1
@@ -3314,13 +3244,13 @@ entry:
   %1 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv2, align 8
   %call2 = call i32 @_ZNK11ap_int_baseILi3ELb0EE6lengthEv(%"struct.ap_int_base<3, false>"* %1)
   %2 = bitcast %"struct.ap_int_base<3, false>"* %v2 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %2) #100020
   %mbv23 = getelementptr inbounds %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 1
   %3 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv23, align 8
   %4 = load %"struct.ap_int_base<3, false>", %"struct.ap_int_base<3, false>"* %3, align 1
   store %"struct.ap_int_base<3, false>" %4, %"struct.ap_int_base<3, false>"* %v2, align 1
   %5 = bitcast %"struct.ap_int_base<3, false>"* %v1 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %5) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %5) #100020
   %mbv14 = getelementptr inbounds %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 0
   %6 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv14, align 8
   %7 = load %"struct.ap_int_base<3, false>", %"struct.ap_int_base<3, false>"* %6, align 1
@@ -3349,14 +3279,14 @@ entry:
   %V15 = getelementptr inbounds %"struct.ssdm_int<6, false>", %"struct.ssdm_int<6, false>"* %17, i32 0, i32 0
   store i6 %part_set13, i6* %V15, align 1
   %18 = bitcast %"struct.ap_int_base<3, false>"* %v1 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %18) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %18) #100020
   %19 = bitcast %"struct.ap_int_base<3, false>"* %v2 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %19) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %19) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi6ELb0EEC2Ei(%"struct.ap_int_base<6, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi6ELb0EEC2Ei(%"struct.ap_int_base<6, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<6, false>"* %this to %"struct.ssdm_int<6, false>"*
   %conv = trunc i32 %op to i6
@@ -3369,7 +3299,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i32 @_ZNK11ap_int_baseILi3ELb0EE6lengthEv(%"struct.ap_int_base<3, false>"* %this) #100010 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i32 @_ZNK11ap_int_baseILi3ELb0EE6lengthEv(%"struct.ap_int_base<3, false>"* %this) #100010 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret i32 3
 }
@@ -3378,17 +3308,17 @@ entry:
 declare i6 @llvm.fpga.legacy.part.set.i6.i3(i6, i3, i32, i32) #100009
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi6ELb0EEC2EDq6_j(%"struct.ssdm_int<6, false>"* %this, i6 %o) unnamed_addr #100003 comdat align 2 !dbg !101218 !fpga.function.pragma !101219 {
+define linkonce_odr void @_ZN8ssdm_intILi6ELb0EEC2EDq6_j(%"struct.ssdm_int<6, false>"* %this, i6 %o) unnamed_addr #100003 comdat align 2 !dbg !101214 !fpga.function.pragma !101215 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<6, false>"* %this, metadata !101222, metadata !DIExpression()), !dbg !101223
-  call void @llvm.dbg.value(metadata i6 %o, metadata !101224, metadata !DIExpression()), !dbg !101225
-  %V = getelementptr inbounds %"struct.ssdm_int<6, false>", %"struct.ssdm_int<6, false>"* %this, i32 0, i32 0, !dbg !101226
-  store i6 %o, i6* %V, align 1, !dbg !101226
-  ret void, !dbg !101227
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<6, false>"* %this, metadata !101218, metadata !DIExpression()), !dbg !101219
+  call void @llvm.dbg.value(metadata i6 %o, metadata !101220, metadata !DIExpression()), !dbg !101221
+  %V = getelementptr inbounds %"struct.ssdm_int<6, false>", %"struct.ssdm_int<6, false>"* %this, i32 0, i32 0, !dbg !101222
+  store i6 %o, i6* %V, align 1, !dbg !101222
+  ret void, !dbg !101223
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN13ap_concat_refILi3E11ap_int_baseILi3ELb0EELi3ES1_EC2ERS1_S3_(%"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %bv1, %"struct.ap_int_base<3, false>"* dereferenceable(1) %bv2) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN13ap_concat_refILi3E11ap_int_baseILi3ELb0EELi3ES1_EC2ERS1_S3_(%"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %this, %"struct.ap_int_base<3, false>"* dereferenceable(1) %bv1, %"struct.ap_int_base<3, false>"* dereferenceable(1) %bv2) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %mbv1 = getelementptr inbounds %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 0
   store %"struct.ap_int_base<3, false>"* %bv1, %"struct.ap_int_base<3, false>"** %mbv1, align 8
@@ -3398,13 +3328,13 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi12ELb0EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<12, false>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi12ELb0EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<12, false>"* %this, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<14, false>", align 2
   %0 = bitcast %"struct.ap_int_base<12, false>"* %this to %"struct.ssdm_int<12, false>"*
   call void @_ZN8ssdm_intILi12ELb0EEC2Ev(%"struct.ssdm_int<12, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100020
   call void @_ZNK12ap_range_refILi14ELb0EE3getEv(%"struct.ap_int_base<14, false>"* sret %ref.tmp, %"struct.ap_range_ref<14, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to %"struct.ssdm_int<14, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %2, i32 0, i32 0
@@ -3414,19 +3344,19 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<12, false>", %"struct.ssdm_int<12, false>"* %4, i32 0, i32 0
   store i12 %conv, i12* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi12ELb0EEC2Ev(%"struct.ssdm_int<12, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101228 !fpga.function.pragma !101229 {
+define linkonce_odr void @_ZN8ssdm_intILi12ELb0EEC2Ev(%"struct.ssdm_int<12, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101224 !fpga.function.pragma !101225 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<12, false>"* %this, metadata !101232, metadata !DIExpression()), !dbg !101234
-  ret void, !dbg !101235
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<12, false>"* %this, metadata !101228, metadata !DIExpression()), !dbg !101230
+  ret void, !dbg !101231
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN12ap_range_refILi14ELb0EEC2EP11ap_int_baseILi14ELb0EEii(%"struct.ap_range_ref<14, false>"* %this, %"struct.ap_int_base<14, false>"* %bv, i32 %h, i32 %l) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN12ap_range_refILi14ELb0EEC2EP11ap_int_baseILi14ELb0EEii(%"struct.ap_range_ref<14, false>"* %this, %"struct.ap_int_base<14, false>"* %bv, i32 %h, i32 %l) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %d_bv = getelementptr inbounds %"struct.ap_range_ref<14, false>", %"struct.ap_range_ref<14, false>"* %this, i32 0, i32 0
   store %"struct.ap_int_base<14, false>"* %bv, %"struct.ap_int_base<14, false>"** %d_bv, align 8
@@ -3438,13 +3368,13 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2ILi11ES_ILi11ELb0EELi3ES_ILi3ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<14, false>"* %this, %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2ILi11ES_ILi11ELb0EELi3ES_ILi3ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<14, false>"* %this, %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %tmp = alloca %"struct.ap_int_base<14, false>", align 2
   %0 = bitcast %"struct.ap_int_base<14, false>"* %this to %"struct.ssdm_int<14, false>"*
   call void @_ZN8ssdm_intILi14ELb0EEC2Ev(%"struct.ssdm_int<14, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<14, false>"* %tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100020
   call void @_ZNK13ap_concat_refILi11E11ap_int_baseILi11ELb0EELi3ES0_ILi3ELb0EEE3getEv(%"struct.ap_int_base<14, false>"* sret %tmp, %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %ref)
   %2 = bitcast %"struct.ap_int_base<14, false>"* %tmp to %"struct.ssdm_int<14, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %2, i32 0, i32 0
@@ -3453,12 +3383,12 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %4, i32 0, i32 0
   store i14 %3, i14* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<14, false>"* %tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK13ap_concat_refILi11E11ap_int_baseILi11ELb0EELi3ES0_ILi3ELb0EEE3getEv(%"struct.ap_int_base<14, false>"* noalias sret %agg.result, %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %this) #100008 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK13ap_concat_refILi11E11ap_int_baseILi11ELb0EELi3ES0_ILi3ELb0EEE3getEv(%"struct.ap_int_base<14, false>"* noalias sret %agg.result, %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %this) #100008 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %v2 = alloca %"struct.ap_int_base<3, false>", align 1
   %v1 = alloca %"struct.ap_int_base<11, false>", align 2
@@ -3470,13 +3400,13 @@ entry:
   %1 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv2, align 8
   %call2 = call i32 @_ZNK11ap_int_baseILi3ELb0EE6lengthEv(%"struct.ap_int_base<3, false>"* %1)
   %2 = bitcast %"struct.ap_int_base<3, false>"* %v2 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %2) #100020
   %mbv23 = getelementptr inbounds %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 1
   %3 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv23, align 8
   %4 = load %"struct.ap_int_base<3, false>", %"struct.ap_int_base<3, false>"* %3, align 1
   store %"struct.ap_int_base<3, false>" %4, %"struct.ap_int_base<3, false>"* %v2, align 1
   %5 = bitcast %"struct.ap_int_base<11, false>"* %v1 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %5) #100020
   %mbv14 = getelementptr inbounds %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 0
   %6 = load %"struct.ap_int_base<11, false>"*, %"struct.ap_int_base<11, false>"** %mbv14, align 8
   %7 = load %"struct.ap_int_base<11, false>", %"struct.ap_int_base<11, false>"* %6, align 2
@@ -3505,14 +3435,14 @@ entry:
   %V15 = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %17, i32 0, i32 0
   store i14 %part_set13, i14* %V15, align 2
   %18 = bitcast %"struct.ap_int_base<11, false>"* %v1 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %18) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %18) #100020
   %19 = bitcast %"struct.ap_int_base<3, false>"* %v2 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %19) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %19) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2Ei(%"struct.ap_int_base<14, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2Ei(%"struct.ap_int_base<14, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<14, false>"* %this to %"struct.ssdm_int<14, false>"*
   %conv = trunc i32 %op to i14
@@ -3525,7 +3455,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i32 @_ZNK11ap_int_baseILi11ELb0EE6lengthEv(%"struct.ap_int_base<11, false>"* %this) #100010 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i32 @_ZNK11ap_int_baseILi11ELb0EE6lengthEv(%"struct.ap_int_base<11, false>"* %this) #100010 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret i32 11
 }
@@ -3537,7 +3467,7 @@ declare i14 @llvm.fpga.legacy.part.set.i14.i3(i14, i3, i32, i32) #100009
 declare i14 @llvm.fpga.legacy.part.set.i14.i11(i14, i11, i32, i32) #100009
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN13ap_concat_refILi11E11ap_int_baseILi11ELb0EELi3ES0_ILi3ELb0EEEC2ERS1_RS2_(%"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %this, %"struct.ap_int_base<11, false>"* dereferenceable(2) %bv1, %"struct.ap_int_base<3, false>"* dereferenceable(1) %bv2) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN13ap_concat_refILi11E11ap_int_baseILi11ELb0EELi3ES0_ILi3ELb0EEEC2ERS1_RS2_(%"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %this, %"struct.ap_int_base<11, false>"* dereferenceable(2) %bv1, %"struct.ap_int_base<3, false>"* dereferenceable(1) %bv2) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %mbv1 = getelementptr inbounds %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 0
   store %"struct.ap_int_base<11, false>"* %bv1, %"struct.ap_int_base<11, false>"** %mbv1, align 8
@@ -3547,13 +3477,13 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2ILi9ES_ILi9ELb0EELi3ES_ILi3ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<14, false>"* %this, %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EEC2ILi9ES_ILi9ELb0EELi3ES_ILi3ELb0EEEERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<14, false>"* %this, %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %tmp = alloca %"struct.ap_int_base<12, false>", align 2
   %0 = bitcast %"struct.ap_int_base<14, false>"* %this to %"struct.ssdm_int<14, false>"*
   call void @_ZN8ssdm_intILi14ELb0EEC2Ev(%"struct.ssdm_int<14, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<12, false>"* %tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100020
   call void @_ZNK13ap_concat_refILi9E11ap_int_baseILi9ELb0EELi3ES0_ILi3ELb0EEE3getEv(%"struct.ap_int_base<12, false>"* sret %tmp, %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %ref)
   %2 = bitcast %"struct.ap_int_base<12, false>"* %tmp to %"struct.ssdm_int<12, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<12, false>", %"struct.ssdm_int<12, false>"* %2, i32 0, i32 0
@@ -3563,12 +3493,12 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %4, i32 0, i32 0
   store i14 %conv, i14* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<12, false>"* %tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK13ap_concat_refILi9E11ap_int_baseILi9ELb0EELi3ES0_ILi3ELb0EEE3getEv(%"struct.ap_int_base<12, false>"* noalias sret %agg.result, %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %this) #100008 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK13ap_concat_refILi9E11ap_int_baseILi9ELb0EELi3ES0_ILi3ELb0EEE3getEv(%"struct.ap_int_base<12, false>"* noalias sret %agg.result, %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %this) #100008 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %v2 = alloca %"struct.ap_int_base<3, false>", align 1
   %v1 = alloca %"struct.ap_int_base<9, false>", align 2
@@ -3580,13 +3510,13 @@ entry:
   %1 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv2, align 8
   %call2 = call i32 @_ZNK11ap_int_baseILi3ELb0EE6lengthEv(%"struct.ap_int_base<3, false>"* %1)
   %2 = bitcast %"struct.ap_int_base<3, false>"* %v2 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %2) #100020
   %mbv23 = getelementptr inbounds %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 1
   %3 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv23, align 8
   %4 = load %"struct.ap_int_base<3, false>", %"struct.ap_int_base<3, false>"* %3, align 1
   store %"struct.ap_int_base<3, false>" %4, %"struct.ap_int_base<3, false>"* %v2, align 1
   %5 = bitcast %"struct.ap_int_base<9, false>"* %v1 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %5) #100020
   %mbv14 = getelementptr inbounds %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 0
   %6 = load %"struct.ap_int_base<9, false>"*, %"struct.ap_int_base<9, false>"** %mbv14, align 8
   %7 = load %"struct.ap_int_base<9, false>", %"struct.ap_int_base<9, false>"* %6, align 2
@@ -3615,14 +3545,14 @@ entry:
   %V15 = getelementptr inbounds %"struct.ssdm_int<12, false>", %"struct.ssdm_int<12, false>"* %17, i32 0, i32 0
   store i12 %part_set13, i12* %V15, align 2
   %18 = bitcast %"struct.ap_int_base<9, false>"* %v1 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %18) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %18) #100020
   %19 = bitcast %"struct.ap_int_base<3, false>"* %v2 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %19) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %19) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi12ELb0EEC2Ei(%"struct.ap_int_base<12, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi12ELb0EEC2Ei(%"struct.ap_int_base<12, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<12, false>"* %this to %"struct.ssdm_int<12, false>"*
   %conv = trunc i32 %op to i12
@@ -3635,7 +3565,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i32 @_ZNK11ap_int_baseILi9ELb0EE6lengthEv(%"struct.ap_int_base<9, false>"* %this) #100010 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i32 @_ZNK11ap_int_baseILi9ELb0EE6lengthEv(%"struct.ap_int_base<9, false>"* %this) #100010 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret i32 9
 }
@@ -3647,17 +3577,17 @@ declare i12 @llvm.fpga.legacy.part.set.i12.i3(i12, i3, i32, i32) #100009
 declare i12 @llvm.fpga.legacy.part.set.i12.i9(i12, i9, i32, i32) #100009
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi12ELb0EEC2EDq12_j(%"struct.ssdm_int<12, false>"* %this, i12 %o) unnamed_addr #100003 comdat align 2 !dbg !101236 !fpga.function.pragma !101237 {
+define linkonce_odr void @_ZN8ssdm_intILi12ELb0EEC2EDq12_j(%"struct.ssdm_int<12, false>"* %this, i12 %o) unnamed_addr #100003 comdat align 2 !dbg !101232 !fpga.function.pragma !101233 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<12, false>"* %this, metadata !101240, metadata !DIExpression()), !dbg !101241
-  call void @llvm.dbg.value(metadata i12 %o, metadata !101242, metadata !DIExpression()), !dbg !101243
-  %V = getelementptr inbounds %"struct.ssdm_int<12, false>", %"struct.ssdm_int<12, false>"* %this, i32 0, i32 0, !dbg !101244
-  store i12 %o, i12* %V, align 2, !dbg !101244
-  ret void, !dbg !101245
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<12, false>"* %this, metadata !101236, metadata !DIExpression()), !dbg !101237
+  call void @llvm.dbg.value(metadata i12 %o, metadata !101238, metadata !DIExpression()), !dbg !101239
+  %V = getelementptr inbounds %"struct.ssdm_int<12, false>", %"struct.ssdm_int<12, false>"* %this, i32 0, i32 0, !dbg !101240
+  store i12 %o, i12* %V, align 2, !dbg !101240
+  ret void, !dbg !101241
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN13ap_concat_refILi9E11ap_int_baseILi9ELb0EELi3ES0_ILi3ELb0EEEC2ERS1_RS2_(%"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %this, %"struct.ap_int_base<9, false>"* dereferenceable(2) %bv1, %"struct.ap_int_base<3, false>"* dereferenceable(1) %bv2) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN13ap_concat_refILi9E11ap_int_baseILi9ELb0EELi3ES0_ILi3ELb0EEEC2ERS1_RS2_(%"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %this, %"struct.ap_int_base<9, false>"* dereferenceable(2) %bv1, %"struct.ap_int_base<3, false>"* dereferenceable(1) %bv2) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %mbv1 = getelementptr inbounds %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 0
   store %"struct.ap_int_base<9, false>"* %bv1, %"struct.ap_int_base<9, false>"** %mbv1, align 8
@@ -3667,25 +3597,25 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EE18checkOverflowBaseCIiEEvT_(%"struct.ap_int_base<14, false>"* %this, i32 %val) #100006 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi14ELb0EE18checkOverflowBaseCIiEEvT_(%"struct.ap_int_base<14, false>"* %this, i32 %val) #100006 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi6ELb0EE18checkOverflowBaseCIiEEvT_(%"struct.ap_int_base<6, false>"* %this, i32 %val) #100006 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi6ELb0EE18checkOverflowBaseCIiEEvT_(%"struct.ap_int_base<6, false>"* %this, i32 %val) #100006 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi11ELb0EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<11, false>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi11ELb0EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<11, false>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<64, false>", align 8
   %0 = bitcast %"struct.ap_int_base<11, false>"* %this to %"struct.ssdm_int<11, false>"*
   call void @_ZN8ssdm_intILi11ELb0EEC2Ev(%"struct.ssdm_int<11, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   call void @_ZNK12ap_range_refILi64ELb0EE3getEv(%"struct.ap_int_base<64, false>"* sret %ref.tmp, %"struct.ap_range_ref<64, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %2, i32 0, i32 0
@@ -3695,19 +3625,19 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<11, false>", %"struct.ssdm_int<11, false>"* %4, i32 0, i32 0
   store i11 %conv, i11* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi11ELb0EEC2Ev(%"struct.ssdm_int<11, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101246 !fpga.function.pragma !101247 {
+define linkonce_odr void @_ZN8ssdm_intILi11ELb0EEC2Ev(%"struct.ssdm_int<11, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101242 !fpga.function.pragma !101243 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<11, false>"* %this, metadata !101250, metadata !DIExpression()), !dbg !101251
-  ret void, !dbg !101252
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<11, false>"* %this, metadata !101246, metadata !DIExpression()), !dbg !101247
+  ret void, !dbg !101248
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK12ap_range_refILi64ELb0EE3getEv(%"struct.ap_int_base<64, false>"* noalias sret %agg.result, %"struct.ap_range_ref<64, false>"* %this) #100008 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK12ap_range_refILi64ELb0EE3getEv(%"struct.ap_int_base<64, false>"* noalias sret %agg.result, %"struct.ap_range_ref<64, false>"* %this) #100008 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   call void @_ZN11ap_int_baseILi64ELb0EEC2Ev(%"struct.ap_int_base<64, false>"* %agg.result)
   %d_bv = getelementptr inbounds %"struct.ap_range_ref<64, false>", %"struct.ap_range_ref<64, false>"* %this, i32 0, i32 0
@@ -3727,7 +3657,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi64ELb0EEC2Ev(%"struct.ap_int_base<64, false>"* %this) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi64ELb0EEC2Ev(%"struct.ap_int_base<64, false>"* %this) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<64, false>"* %this to %"struct.ssdm_int<64, false>"*
   call void @_ZN8ssdm_intILi64ELb0EEC2Ev(%"struct.ssdm_int<64, false>"* %0)
@@ -3738,20 +3668,20 @@ entry:
 declare i64 @llvm.fpga.legacy.part.select.i64(i64, i32, i32) #100009
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi64ELb0EEC2Ev(%"struct.ssdm_int<64, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101253 !fpga.function.pragma !101254 {
+define linkonce_odr void @_ZN8ssdm_intILi64ELb0EEC2Ev(%"struct.ssdm_int<64, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101249 !fpga.function.pragma !101250 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<64, false>"* %this, metadata !101257, metadata !DIExpression()), !dbg !101258
-  ret void, !dbg !101259
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<64, false>"* %this, metadata !101253, metadata !DIExpression()), !dbg !101254
+  ret void, !dbg !101255
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<64, false>", align 8
   %0 = bitcast %"struct.ap_int_base<3, false>"* %this to %"struct.ssdm_int<3, false>"*
   call void @_ZN8ssdm_intILi3ELb0EEC2Ev(%"struct.ssdm_int<3, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   call void @_ZNK12ap_range_refILi64ELb0EE3getEv(%"struct.ap_int_base<64, false>"* sret %ref.tmp, %"struct.ap_range_ref<64, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %2, i32 0, i32 0
@@ -3761,18 +3691,18 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<3, false>", %"struct.ssdm_int<3, false>"* %4, i32 0, i32 0
   store i3 %conv, i3* %V2, align 1
   %5 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi9ELb0EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<9, false>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi9ELb0EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<9, false>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<64, false>", align 8
   %0 = bitcast %"struct.ap_int_base<9, false>"* %this to %"struct.ssdm_int<9, false>"*
   call void @_ZN8ssdm_intILi9ELb0EEC2Ev(%"struct.ssdm_int<9, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   call void @_ZNK12ap_range_refILi64ELb0EE3getEv(%"struct.ap_int_base<64, false>"* sret %ref.tmp, %"struct.ap_range_ref<64, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %2, i32 0, i32 0
@@ -3782,25 +3712,25 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<9, false>", %"struct.ssdm_int<9, false>"* %4, i32 0, i32 0
   store i9 %conv, i9* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi9ELb0EEC2Ev(%"struct.ssdm_int<9, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101260 !fpga.function.pragma !101261 {
+define linkonce_odr void @_ZN8ssdm_intILi9ELb0EEC2Ev(%"struct.ssdm_int<9, false>"* %this) unnamed_addr #100003 comdat align 2 !dbg !101256 !fpga.function.pragma !101257 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<9, false>"* %this, metadata !101264, metadata !DIExpression()), !dbg !101265
-  ret void, !dbg !101266
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<9, false>"* %this, metadata !101260, metadata !DIExpression()), !dbg !101261
+  ret void, !dbg !101262
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi64ELb0EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<64, false>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi64ELb0EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<64, false>"* %this, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<64, false>", align 8
   %0 = bitcast %"struct.ap_int_base<64, false>"* %this to %"struct.ssdm_int<64, false>"*
   call void @_ZN8ssdm_intILi64ELb0EEC2Ev(%"struct.ssdm_int<64, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   call void @_ZNK12ap_range_refILi64ELb0EE3getEv(%"struct.ap_int_base<64, false>"* sret %ref.tmp, %"struct.ap_range_ref<64, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %2, i32 0, i32 0
@@ -3809,12 +3739,12 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %4, i32 0, i32 0
   store i64 %3, i64* %V2, align 8
   %5 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi64ELb0EEneILi32ELb1EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<64, false>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi64ELb0EEneILi32ELb1EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<64, false>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<64, false>"* %this to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %0, i32 0, i32 0
@@ -3829,11 +3759,11 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i64 @_ZNK12ap_range_refILi64ELb0EE9to_uint64Ev(%"struct.ap_range_ref<64, false>"* %this) #100011 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i64 @_ZNK12ap_range_refILi64ELb0EE9to_uint64Ev(%"struct.ap_range_ref<64, false>"* %this) #100011 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %t = alloca %"struct.ap_int_base<64, false>", align 8
   %0 = bitcast %"struct.ap_int_base<64, false>"* %t to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   call void @_ZN11ap_int_baseILi64ELb0EEC2Ev(%"struct.ap_int_base<64, false>"* %t)
   %d_bv = getelementptr inbounds %"struct.ap_range_ref<64, false>", %"struct.ap_range_ref<64, false>"* %this, i32 0, i32 0
   %1 = load %"struct.ap_int_base<64, false>"*, %"struct.ap_int_base<64, false>"** %d_bv, align 8
@@ -3852,12 +3782,12 @@ entry:
   %8 = load i32, i32* %h_index, align 4
   %part_select = call i64 @llvm.fpga.legacy.part.select.i64(i64 %6, i32 %7, i32 %8)
   %9 = bitcast %"struct.ap_int_base<64, false>"* %t to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100020
   ret i64 %part_select
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN12ap_range_refILi64ELb0EEC2EP11ap_int_baseILi64ELb0EEii(%"struct.ap_range_ref<64, false>"* %this, %"struct.ap_int_base<64, false>"* %bv, i32 %h, i32 %l) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN12ap_range_refILi64ELb0EEC2EP11ap_int_baseILi64ELb0EEii(%"struct.ap_range_ref<64, false>"* %this, %"struct.ap_int_base<64, false>"* %bv, i32 %h, i32 %l) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %d_bv = getelementptr inbounds %"struct.ap_range_ref<64, false>", %"struct.ap_range_ref<64, false>"* %this, i32 0, i32 0
   store %"struct.ap_int_base<64, false>"* %bv, %"struct.ap_int_base<64, false>"** %d_bv, align 8
@@ -3869,7 +3799,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi64ELb1EEC2El(%"struct.ap_int_base<64, false>"* %this, i64 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi64ELb1EEC2El(%"struct.ap_int_base<64, false>"* %this, i64 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<64, false>"* %this to %"struct.ssdm_int<64, false>"*
   call void @_ZN8ssdm_intILi64ELb1EEC2El(%"struct.ssdm_int<64, false>"* %0, i64 %op)
@@ -3880,7 +3810,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr dereferenceable(8) %"struct.ap_int_base<64, false>"* @_ZN11ap_int_baseILi64ELb0EEeOILi64ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<64, false>"* %this, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr dereferenceable(8) %"struct.ap_int_base<64, false>"* @_ZN11ap_int_baseILi64ELb0EEeOILi64ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<64, false>"* %this, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<64, false>"* %op2 to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %0, i32 0, i32 0
@@ -3894,23 +3824,23 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN8ssdm_intILi64ELb1EEC2El(%"struct.ssdm_int<64, false>"* %this, i64 %o) unnamed_addr #100003 comdat align 2 !dbg !101267 !fpga.function.pragma !101268 {
+define linkonce_odr void @_ZN8ssdm_intILi64ELb1EEC2El(%"struct.ssdm_int<64, false>"* %this, i64 %o) unnamed_addr #100003 comdat align 2 !dbg !101263 !fpga.function.pragma !101264 {
 entry:
-  call void @llvm.dbg.value(metadata %"struct.ssdm_int<64, false>"* %this, metadata !101271, metadata !DIExpression()), !dbg !101273
-  call void @llvm.dbg.value(metadata i64 %o, metadata !101274, metadata !DIExpression()), !dbg !101275
-  %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %this, i32 0, i32 0, !dbg !101276
-  store i64 %o, i64* %V, align 8, !dbg !101276
-  ret void, !dbg !101277
+  call void @llvm.dbg.value(metadata %"struct.ssdm_int<64, false>"* %this, metadata !101267, metadata !DIExpression()), !dbg !101269
+  call void @llvm.dbg.value(metadata i64 %o, metadata !101270, metadata !DIExpression()), !dbg !101271
+  %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %this, i32 0, i32 0, !dbg !101272
+  store i64 %o, i64* %V, align 8, !dbg !101272
+  ret void, !dbg !101273
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi64ELb0EEC2ILi32ES_ILi32ELb0EELi32ES2_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<64, false>"* %this, %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi64ELb0EEC2ILi32ES_ILi32ELb0EELi32ES2_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_int_base<64, false>"* %this, %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* dereferenceable(16) %ref) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %tmp = alloca %"struct.ap_int_base<64, false>", align 8
   %0 = bitcast %"struct.ap_int_base<64, false>"* %this to %"struct.ssdm_int<64, false>"*
   call void @_ZN8ssdm_intILi64ELb0EEC2Ev(%"struct.ssdm_int<64, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   call void @_ZNK13ap_concat_refILi32E11ap_int_baseILi32ELb0EELi32ES1_E3getEv(%"struct.ap_int_base<64, false>"* sret %tmp, %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %ref)
   %2 = bitcast %"struct.ap_int_base<64, false>"* %tmp to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %2, i32 0, i32 0
@@ -3919,12 +3849,12 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %4, i32 0, i32 0
   store i64 %3, i64* %V2, align 8
   %5 = bitcast %"struct.ap_int_base<64, false>"* %tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZNK13ap_concat_refILi32E11ap_int_baseILi32ELb0EELi32ES1_E3getEv(%"struct.ap_int_base<64, false>"* noalias sret %agg.result, %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %this) #100008 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZNK13ap_concat_refILi32E11ap_int_baseILi32ELb0EELi32ES1_E3getEv(%"struct.ap_int_base<64, false>"* noalias sret %agg.result, %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %this) #100008 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %v2 = alloca %"struct.ap_int_base<32, false>", align 4
   %v1 = alloca %"struct.ap_int_base<32, false>", align 4
@@ -3936,13 +3866,13 @@ entry:
   %1 = load %"struct.ap_int_base<32, false>"*, %"struct.ap_int_base<32, false>"** %mbv2, align 8
   %call2 = call i32 @_ZNK11ap_int_baseILi32ELb0EE6lengthEv(%"struct.ap_int_base<32, false>"* %1)
   %2 = bitcast %"struct.ap_int_base<32, false>"* %v2 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %2) #100020
   %mbv23 = getelementptr inbounds %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %this, i32 0, i32 1
   %3 = load %"struct.ap_int_base<32, false>"*, %"struct.ap_int_base<32, false>"** %mbv23, align 8
   %4 = load %"struct.ap_int_base<32, false>", %"struct.ap_int_base<32, false>"* %3, align 4
   store %"struct.ap_int_base<32, false>" %4, %"struct.ap_int_base<32, false>"* %v2, align 4
   %5 = bitcast %"struct.ap_int_base<32, false>"* %v1 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %5) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %5) #100020
   %mbv14 = getelementptr inbounds %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %this, i32 0, i32 0
   %6 = load %"struct.ap_int_base<32, false>"*, %"struct.ap_int_base<32, false>"** %mbv14, align 8
   %7 = load %"struct.ap_int_base<32, false>", %"struct.ap_int_base<32, false>"* %6, align 4
@@ -3971,14 +3901,14 @@ entry:
   %V15 = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %17, i32 0, i32 0
   store i64 %part_set13, i64* %V15, align 8
   %18 = bitcast %"struct.ap_int_base<32, false>"* %v1 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %18) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %18) #100020
   %19 = bitcast %"struct.ap_int_base<32, false>"* %v2 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %19) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %19) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr i32 @_ZNK11ap_int_baseILi32ELb0EE6lengthEv(%"struct.ap_int_base<32, false>"* %this) #100010 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr i32 @_ZNK11ap_int_baseILi32ELb0EE6lengthEv(%"struct.ap_int_base<32, false>"* %this) #100010 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret i32 32
 }
@@ -3987,7 +3917,7 @@ entry:
 declare i64 @llvm.fpga.legacy.part.set.i64.i32(i64, i32, i32, i32) #100009
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN13ap_concat_refILi32E11ap_int_baseILi32ELb0EELi32ES1_EC2ERS1_S3_(%"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %bv1, %"struct.ap_int_base<32, false>"* dereferenceable(4) %bv2) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN13ap_concat_refILi32E11ap_int_baseILi32ELb0EELi32ES1_EC2ERS1_S3_(%"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %bv1, %"struct.ap_int_base<32, false>"* dereferenceable(4) %bv2) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %mbv1 = getelementptr inbounds %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %this, i32 0, i32 0
   store %"struct.ap_int_base<32, false>"* %bv1, %"struct.ap_int_base<32, false>"** %mbv1, align 8
@@ -3997,110 +3927,110 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define void @_Z8load_capiPjS_P3Cap(i32 %num, i32* %buffer, i32* %cap, %struct.Cap* %caps) #100012 !dbg !101278 !fpga.function.pragma !101283 {
+define void @_Z8load_capiPjS_P3Cap(i32 %num, i32* %buffer, i32* %cap, %struct.Cap* %caps) #100012 !dbg !101274 !fpga.function.pragma !101279 {
 entry:
   %ref.tmp = alloca %struct.Cap, align 4
   %agg.tmp = alloca %"struct.ap_uint<32>", align 4
   %agg.tmp10 = alloca %"struct.ap_uint<32>", align 4
   %agg.tmp13 = alloca %"struct.ap_uint<32>", align 4
   %agg.tmp17 = alloca %"struct.ap_uint<32>", align 4
-  call void @llvm.dbg.value(metadata i32 %num, metadata !101286, metadata !DIExpression()), !dbg !101287
-  call void @llvm.dbg.value(metadata i32* %buffer, metadata !101288, metadata !DIExpression()), !dbg !101289
-  call void @llvm.dbg.value(metadata i32* %cap, metadata !101290, metadata !DIExpression()), !dbg !101291
-  call void @llvm.dbg.value(metadata %struct.Cap* %caps, metadata !101292, metadata !DIExpression()), !dbg !101293
-  br label %VITIS_LOOP_109_1, !dbg !101294
+  call void @llvm.dbg.value(metadata i32 %num, metadata !101282, metadata !DIExpression()), !dbg !101283
+  call void @llvm.dbg.value(metadata i32* %buffer, metadata !101284, metadata !DIExpression()), !dbg !101285
+  call void @llvm.dbg.value(metadata i32* %cap, metadata !101286, metadata !DIExpression()), !dbg !101287
+  call void @llvm.dbg.value(metadata %struct.Cap* %caps, metadata !101288, metadata !DIExpression()), !dbg !101289
+  br label %VITIS_LOOP_97_1, !dbg !101290
 
-VITIS_LOOP_109_1:                                 ; preds = %entry
-  call void @llvm.dbg.value(metadata i32 0, metadata !101295, metadata !DIExpression()), !dbg !101297
-  br label %for.cond, !dbg !101298
+VITIS_LOOP_97_1:                                  ; preds = %entry
+  call void @llvm.dbg.value(metadata i32 0, metadata !101291, metadata !DIExpression()), !dbg !101293
+  br label %for.cond, !dbg !101294
 
-for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_109_1
-  %i.0 = phi i32 [ 0, %VITIS_LOOP_109_1 ], [ %inc, %for.inc ]
-  call void @llvm.dbg.value(metadata i32 %i.0, metadata !101295, metadata !DIExpression()), !dbg !101297
-  %mul = mul nsw i32 %num, 4, !dbg !101299
-  %cmp = icmp slt i32 %i.0, %mul, !dbg !101301
-  br i1 %cmp, label %for.body, label %for.cond.cleanup, !dbg !101302
+for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_97_1
+  %i.0 = phi i32 [ 0, %VITIS_LOOP_97_1 ], [ %inc, %for.inc ]
+  call void @llvm.dbg.value(metadata i32 %i.0, metadata !101291, metadata !DIExpression()), !dbg !101293
+  %mul = mul nsw i32 %num, 4, !dbg !101295
+  %cmp = icmp slt i32 %i.0, %mul, !dbg !101297
+  br i1 %cmp, label %for.body, label %for.cond.cleanup, !dbg !101298
 
 for.cond.cleanup:                                 ; preds = %for.cond
   br label %for.end
 
 for.body:                                         ; preds = %for.cond
-  %idxprom = sext i32 %i.0 to i64, !dbg !101303
-  %arrayidx = getelementptr inbounds i32, i32* %cap, i64 %idxprom, !dbg !101303
-  %0 = load i32, i32* %arrayidx, align 4, !dbg !101303
-  %idxprom1 = sext i32 %i.0 to i64, !dbg !101305
-  %arrayidx2 = getelementptr inbounds i32, i32* %buffer, i64 %idxprom1, !dbg !101305
-  store i32 %0, i32* %arrayidx2, align 4, !dbg !101306
-  br label %for.inc, !dbg !101307
+  %idxprom = sext i32 %i.0 to i64, !dbg !101299
+  %arrayidx = getelementptr inbounds i32, i32* %cap, i64 %idxprom, !dbg !101299
+  %0 = load i32, i32* %arrayidx, align 4, !dbg !101299
+  %idxprom1 = sext i32 %i.0 to i64, !dbg !101301
+  %arrayidx2 = getelementptr inbounds i32, i32* %buffer, i64 %idxprom1, !dbg !101301
+  store i32 %0, i32* %arrayidx2, align 4, !dbg !101302
+  br label %for.inc, !dbg !101303
 
 for.inc:                                          ; preds = %for.body
-  %inc = add nsw i32 %i.0, 1, !dbg !101308
-  call void @llvm.dbg.value(metadata i32 %inc, metadata !101295, metadata !DIExpression()), !dbg !101297
-  br label %for.cond, !dbg !101309, !llvm.loop !101310
+  %inc = add nsw i32 %i.0, 1, !dbg !101304
+  call void @llvm.dbg.value(metadata i32 %inc, metadata !101291, metadata !DIExpression()), !dbg !101293
+  br label %for.cond, !dbg !101305, !llvm.loop !101306
 
 for.end:                                          ; preds = %for.cond.cleanup
-  call void @llvm.dbg.value(metadata i32 0, metadata !101315, metadata !DIExpression()), !dbg !101316
-  br label %VITIS_LOOP_114_2, !dbg !101317
+  call void @llvm.dbg.value(metadata i32 0, metadata !101311, metadata !DIExpression()), !dbg !101312
+  br label %VITIS_LOOP_102_2, !dbg !101313
 
-VITIS_LOOP_114_2:                                 ; preds = %for.end
-  call void @llvm.dbg.value(metadata i32 0, metadata !101318, metadata !DIExpression()), !dbg !101320
-  br label %for.cond4, !dbg !101321
+VITIS_LOOP_102_2:                                 ; preds = %for.end
+  call void @llvm.dbg.value(metadata i32 0, metadata !101314, metadata !DIExpression()), !dbg !101316
+  br label %for.cond4, !dbg !101317
 
-for.cond4:                                        ; preds = %for.inc24, %VITIS_LOOP_114_2
-  %i3.0 = phi i32 [ 0, %VITIS_LOOP_114_2 ], [ %add23, %for.inc24 ]
-  %j.0 = phi i32 [ 0, %VITIS_LOOP_114_2 ], [ %inc25, %for.inc24 ]
-  call void @llvm.dbg.value(metadata i32 %j.0, metadata !101318, metadata !DIExpression()), !dbg !101320
-  call void @llvm.dbg.value(metadata i32 %i3.0, metadata !101315, metadata !DIExpression()), !dbg !101316
-  %cmp5 = icmp slt i32 %j.0, %num, !dbg !101322
-  br i1 %cmp5, label %for.body7, label %for.cond.cleanup6, !dbg !101324
+for.cond4:                                        ; preds = %for.inc24, %VITIS_LOOP_102_2
+  %i3.0 = phi i32 [ 0, %VITIS_LOOP_102_2 ], [ %add23, %for.inc24 ]
+  %j.0 = phi i32 [ 0, %VITIS_LOOP_102_2 ], [ %inc25, %for.inc24 ]
+  call void @llvm.dbg.value(metadata i32 %j.0, metadata !101314, metadata !DIExpression()), !dbg !101316
+  call void @llvm.dbg.value(metadata i32 %i3.0, metadata !101311, metadata !DIExpression()), !dbg !101312
+  %cmp5 = icmp slt i32 %j.0, %num, !dbg !101318
+  br i1 %cmp5, label %for.body7, label %for.cond.cleanup6, !dbg !101320
 
 for.cond.cleanup6:                                ; preds = %for.cond4
   br label %for.end26
 
 for.body7:                                        ; preds = %for.cond4
-  %1 = bitcast %struct.Cap* %ref.tmp to i8*, !dbg !101325
-  call void @llvm.lifetime.start.p0i8(i64 12, i8* %1) #100019, !dbg !101325
-  %idxprom8 = sext i32 %i3.0 to i64, !dbg !101327
-  %arrayidx9 = getelementptr inbounds i32, i32* %buffer, i64 %idxprom8, !dbg !101327
-  %2 = load i32, i32* %arrayidx9, align 4, !dbg !101327
-  call void @_ZN7ap_uintILi32EEC2Ej(%"struct.ap_uint<32>"* %agg.tmp, i32 %2), !dbg !101327
-  %add = add nsw i32 %i3.0, 1, !dbg !101328
-  %idxprom11 = sext i32 %add to i64, !dbg !101329
-  %arrayidx12 = getelementptr inbounds i32, i32* %buffer, i64 %idxprom11, !dbg !101329
-  %3 = load i32, i32* %arrayidx12, align 4, !dbg !101329
-  call void @_ZN7ap_uintILi32EEC2Ej(%"struct.ap_uint<32>"* %agg.tmp10, i32 %3), !dbg !101329
-  %add14 = add nsw i32 %i3.0, 2, !dbg !101330
-  %idxprom15 = sext i32 %add14 to i64, !dbg !101331
-  %arrayidx16 = getelementptr inbounds i32, i32* %buffer, i64 %idxprom15, !dbg !101331
-  %4 = load i32, i32* %arrayidx16, align 4, !dbg !101331
-  call void @_ZN7ap_uintILi32EEC2Ej(%"struct.ap_uint<32>"* %agg.tmp13, i32 %4), !dbg !101331
-  %add18 = add nsw i32 %i3.0, 3, !dbg !101332
-  %idxprom19 = sext i32 %add18 to i64, !dbg !101333
-  %arrayidx20 = getelementptr inbounds i32, i32* %buffer, i64 %idxprom19, !dbg !101333
-  %5 = load i32, i32* %arrayidx20, align 4, !dbg !101333
-  call void @_ZN7ap_uintILi32EEC2Ej(%"struct.ap_uint<32>"* %agg.tmp17, i32 %5), !dbg !101333
-  call void @_Z6decode7ap_uintILi32EES0_S0_S0_(%struct.Cap* sret %ref.tmp, %"struct.ap_uint<32>"* byval align 4 %agg.tmp, %"struct.ap_uint<32>"* byval align 4 %agg.tmp10, %"struct.ap_uint<32>"* byval align 4 %agg.tmp13, %"struct.ap_uint<32>"* byval align 4 %agg.tmp17), !dbg !101325
-  %idxprom21 = sext i32 %j.0 to i64, !dbg !101334
-  %arrayidx22 = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 %idxprom21, !dbg !101334
-  %6 = load %struct.Cap, %struct.Cap* %ref.tmp, align 4, !dbg !101335
-  store %struct.Cap %6, %struct.Cap* %arrayidx22, align 4, !dbg !101335
-  %7 = bitcast %struct.Cap* %ref.tmp to i8*, !dbg !101334
-  call void @llvm.lifetime.end.p0i8(i64 12, i8* %7) #100019, !dbg !101334
-  %add23 = add nsw i32 %i3.0, 4, !dbg !101336
-  call void @llvm.dbg.value(metadata i32 %add23, metadata !101315, metadata !DIExpression()), !dbg !101316
-  br label %for.inc24, !dbg !101337
+  %1 = bitcast %struct.Cap* %ref.tmp to i8*, !dbg !101321
+  call void @llvm.lifetime.start.p0i8(i64 12, i8* %1) #100020, !dbg !101321
+  %idxprom8 = sext i32 %i3.0 to i64, !dbg !101323
+  %arrayidx9 = getelementptr inbounds i32, i32* %buffer, i64 %idxprom8, !dbg !101323
+  %2 = load i32, i32* %arrayidx9, align 4, !dbg !101323
+  call void @_ZN7ap_uintILi32EEC2Ej(%"struct.ap_uint<32>"* %agg.tmp, i32 %2), !dbg !101323
+  %add = add nsw i32 %i3.0, 1, !dbg !101324
+  %idxprom11 = sext i32 %add to i64, !dbg !101325
+  %arrayidx12 = getelementptr inbounds i32, i32* %buffer, i64 %idxprom11, !dbg !101325
+  %3 = load i32, i32* %arrayidx12, align 4, !dbg !101325
+  call void @_ZN7ap_uintILi32EEC2Ej(%"struct.ap_uint<32>"* %agg.tmp10, i32 %3), !dbg !101325
+  %add14 = add nsw i32 %i3.0, 2, !dbg !101326
+  %idxprom15 = sext i32 %add14 to i64, !dbg !101327
+  %arrayidx16 = getelementptr inbounds i32, i32* %buffer, i64 %idxprom15, !dbg !101327
+  %4 = load i32, i32* %arrayidx16, align 4, !dbg !101327
+  call void @_ZN7ap_uintILi32EEC2Ej(%"struct.ap_uint<32>"* %agg.tmp13, i32 %4), !dbg !101327
+  %add18 = add nsw i32 %i3.0, 3, !dbg !101328
+  %idxprom19 = sext i32 %add18 to i64, !dbg !101329
+  %arrayidx20 = getelementptr inbounds i32, i32* %buffer, i64 %idxprom19, !dbg !101329
+  %5 = load i32, i32* %arrayidx20, align 4, !dbg !101329
+  call void @_ZN7ap_uintILi32EEC2Ej(%"struct.ap_uint<32>"* %agg.tmp17, i32 %5), !dbg !101329
+  call void @_Z6decode7ap_uintILi32EES0_S0_S0_(%struct.Cap* sret %ref.tmp, %"struct.ap_uint<32>"* byval align 4 %agg.tmp, %"struct.ap_uint<32>"* byval align 4 %agg.tmp10, %"struct.ap_uint<32>"* byval align 4 %agg.tmp13, %"struct.ap_uint<32>"* byval align 4 %agg.tmp17), !dbg !101321
+  %idxprom21 = sext i32 %j.0 to i64, !dbg !101330
+  %arrayidx22 = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 %idxprom21, !dbg !101330
+  %6 = load %struct.Cap, %struct.Cap* %ref.tmp, align 4, !dbg !101331
+  store %struct.Cap %6, %struct.Cap* %arrayidx22, align 4, !dbg !101331
+  %7 = bitcast %struct.Cap* %ref.tmp to i8*, !dbg !101330
+  call void @llvm.lifetime.end.p0i8(i64 12, i8* %7) #100020, !dbg !101330
+  %add23 = add nsw i32 %i3.0, 4, !dbg !101332
+  call void @llvm.dbg.value(metadata i32 %add23, metadata !101311, metadata !DIExpression()), !dbg !101312
+  br label %for.inc24, !dbg !101333
 
 for.inc24:                                        ; preds = %for.body7
-  %inc25 = add nsw i32 %j.0, 1, !dbg !101338
-  call void @llvm.dbg.value(metadata i32 %inc25, metadata !101318, metadata !DIExpression()), !dbg !101320
-  br label %for.cond4, !dbg !101339, !llvm.loop !101340
+  %inc25 = add nsw i32 %j.0, 1, !dbg !101334
+  call void @llvm.dbg.value(metadata i32 %inc25, metadata !101314, metadata !DIExpression()), !dbg !101316
+  br label %for.cond4, !dbg !101335, !llvm.loop !101336
 
 for.end26:                                        ; preds = %for.cond.cleanup6
-  ret void, !dbg !101343
+  ret void, !dbg !101339
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi32EEC2Ej(%"struct.ap_uint<32>"* %this, i32 %val) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi32EEC2Ej(%"struct.ap_uint<32>"* %this, i32 %val) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<32>"* %this to %"struct.ap_int_base<32, false>"*
   call void @_ZN11ap_int_baseILi32ELb0EEC2Ej(%"struct.ap_int_base<32, false>"* %0, i32 %val)
@@ -4110,83 +4040,83 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi32ELb0EE18checkOverflowBaseCIjEEvT_(%"struct.ap_int_base<32, false>"* %this, i32 %val) #100006 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi32ELb0EE18checkOverflowBaseCIjEEvT_(%"struct.ap_int_base<32, false>"* %this, i32 %val) #100006 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define void @_Z10create_capiP3Caph(i32 %size, %struct.Cap* %caps, i8 zeroext %index) #100013 !dbg !101344 !fpga.function.pragma !101351 {
+define void @_Z10create_capiP3Caph(i32 %size, %struct.Cap* %caps, i8 zeroext %index) #100013 !dbg !101340 !fpga.function.pragma !101347 {
 entry:
   %new_cap = alloca %struct.Cap, align 4
-  call void @llvm.dbg.value(metadata i32 %size, metadata !101354, metadata !DIExpression()), !dbg !101355
-  call void @llvm.dbg.value(metadata %struct.Cap* %caps, metadata !101356, metadata !DIExpression()), !dbg !101357
-  call void @llvm.dbg.value(metadata i8 %index, metadata !101358, metadata !DIExpression()), !dbg !101359
-  %0 = bitcast %struct.Cap* %new_cap to i8*, !dbg !101360
-  call void @llvm.lifetime.start.p0i8(i64 12, i8* %0) #100019, !dbg !101360
-  call void @llvm.dbg.declare(metadata %struct.Cap* %new_cap, metadata !101361, metadata !DIExpression()), !dbg !101362
-  %base = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 0, !dbg !101363
-  store i32 0, i32* %base, align 4, !dbg !101364
-  %mul = mul nsw i32 %size, 4, !dbg !101365
-  %top = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 1, !dbg !101366
-  store i32 %mul, i32* %top, align 4, !dbg !101367
-  %write = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 3, !dbg !101368
-  store i1 true, i1* %write, align 1, !dbg !101369
-  %read = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 2, !dbg !101370
-  store i1 true, i1* %read, align 4, !dbg !101371
-  %idxprom = zext i8 %index to i64, !dbg !101372
-  %arrayidx = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 %idxprom, !dbg !101372
-  %1 = load %struct.Cap, %struct.Cap* %new_cap, align 4, !dbg !101373
-  store %struct.Cap %1, %struct.Cap* %arrayidx, align 4, !dbg !101373
-  %2 = bitcast %struct.Cap* %new_cap to i8*, !dbg !101374
-  call void @llvm.lifetime.end.p0i8(i64 12, i8* %2) #100019, !dbg !101374
-  ret void, !dbg !101374
+  call void @llvm.dbg.value(metadata i32 %size, metadata !101350, metadata !DIExpression()), !dbg !101351
+  call void @llvm.dbg.value(metadata %struct.Cap* %caps, metadata !101352, metadata !DIExpression()), !dbg !101353
+  call void @llvm.dbg.value(metadata i8 %index, metadata !101354, metadata !DIExpression()), !dbg !101355
+  %0 = bitcast %struct.Cap* %new_cap to i8*, !dbg !101356
+  call void @llvm.lifetime.start.p0i8(i64 12, i8* %0) #100020, !dbg !101356
+  call void @llvm.dbg.declare(metadata %struct.Cap* %new_cap, metadata !101357, metadata !DIExpression()), !dbg !101358
+  %base = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 0, !dbg !101359
+  store i32 0, i32* %base, align 4, !dbg !101360
+  %mul = mul nsw i32 %size, 4, !dbg !101361
+  %top = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 1, !dbg !101362
+  store i32 %mul, i32* %top, align 4, !dbg !101363
+  %write = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 3, !dbg !101364
+  store i1 true, i1* %write, align 1, !dbg !101365
+  %read = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 2, !dbg !101366
+  store i1 true, i1* %read, align 4, !dbg !101367
+  %idxprom = zext i8 %index to i64, !dbg !101368
+  %arrayidx = getelementptr inbounds %struct.Cap, %struct.Cap* %caps, i64 %idxprom, !dbg !101368
+  %1 = load %struct.Cap, %struct.Cap* %new_cap, align 4, !dbg !101369
+  store %struct.Cap %1, %struct.Cap* %arrayidx, align 4, !dbg !101369
+  %2 = bitcast %struct.Cap* %new_cap to i8*, !dbg !101370
+  call void @llvm.lifetime.end.p0i8(i64 12, i8* %2) #100020, !dbg !101370
+  ret void, !dbg !101370
 }
 
 ; Function Attrs: alwaysinline nounwind
-define void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %cap, i16 zeroext %offset, %"struct.ap_uint<3>"* byval align 1 %nBytes, i1 zeroext %isWrite) #100014 !dbg !101375 !fpga.function.pragma !101381 {
+define void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %cap, i16 zeroext %offset, %"struct.ap_uint<3>"* byval align 1 %nBytes, i1 zeroext %isWrite) #100014 !dbg !101371 !fpga.function.pragma !101377 {
 entry:
   %ref.tmp = alloca %"struct.ap_int<33>", align 8
-  call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101384, metadata !DIExpression()), !dbg !101385
-  call void @llvm.dbg.declare(metadata %struct.Cap* %cap, metadata !101386, metadata !DIExpression()), !dbg !101387
-  call void @llvm.dbg.value(metadata i16 %offset, metadata !101388, metadata !DIExpression()), !dbg !101389
-  call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %nBytes, metadata !101390, metadata !DIExpression()), !dbg !101391
-  call void @llvm.dbg.value(metadata i1 %isWrite, metadata !101392, metadata !DIExpression()), !dbg !101393
-  %base = getelementptr inbounds %struct.Cap, %struct.Cap* %cap, i32 0, i32 0, !dbg !101394
-  %0 = load i32, i32* %base, align 4, !dbg !101394
-  %conv = zext i16 %offset to i32, !dbg !101395
-  %mul = mul nsw i32 4, %conv, !dbg !101396
-  %cmp = icmp sle i32 %0, %mul, !dbg !101397
-  br i1 %cmp, label %land.lhs.true, label %land.end, !dbg !101398
+  call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101380, metadata !DIExpression()), !dbg !101381
+  call void @llvm.dbg.declare(metadata %struct.Cap* %cap, metadata !101382, metadata !DIExpression()), !dbg !101383
+  call void @llvm.dbg.value(metadata i16 %offset, metadata !101384, metadata !DIExpression()), !dbg !101385
+  call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %nBytes, metadata !101386, metadata !DIExpression()), !dbg !101387
+  call void @llvm.dbg.value(metadata i1 %isWrite, metadata !101388, metadata !DIExpression()), !dbg !101389
+  %base = getelementptr inbounds %struct.Cap, %struct.Cap* %cap, i32 0, i32 0, !dbg !101390
+  %0 = load i32, i32* %base, align 4, !dbg !101390
+  %conv = zext i16 %offset to i32, !dbg !101391
+  %mul = mul nsw i32 4, %conv, !dbg !101392
+  %cmp = icmp sle i32 %0, %mul, !dbg !101393
+  br i1 %cmp, label %land.lhs.true, label %land.end, !dbg !101394
 
 land.lhs.true:                                    ; preds = %entry
-  %1 = bitcast %"struct.ap_int<33>"* %ref.tmp to i8*, !dbg !101399
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019, !dbg !101399
-  %conv1 = zext i16 %offset to i32, !dbg !101400
-  %mul2 = mul nsw i32 4, %conv1, !dbg !101401
-  %2 = bitcast %"struct.ap_uint<3>"* %nBytes to %"struct.ap_int_base<3, false>"*, !dbg !101402
-  call void @"_ZplILi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusEiRKS1_"(%"struct.ap_int<33>"* sret %ref.tmp, i32 %mul2, %"struct.ap_int_base<3, false>"* dereferenceable(1) %2), !dbg !101403
-  %3 = bitcast %"struct.ap_int<33>"* %ref.tmp to %"struct.ap_int_base<33, true>"*, !dbg !101399
-  %top = getelementptr inbounds %struct.Cap, %struct.Cap* %cap, i32 0, i32 1, !dbg !101404
-  %4 = load i32, i32* %top, align 4, !dbg !101404
-  %call = call zeroext i1 @_ZleILi33ELb1EEbRK11ap_int_baseIXT_EXT0_EEi(%"struct.ap_int_base<33, true>"* dereferenceable(8) %3, i32 %4), !dbg !101405
-  br i1 %call, label %land.lhs.true3, label %land.end, !dbg !101406
+  %1 = bitcast %"struct.ap_int<33>"* %ref.tmp to i8*, !dbg !101395
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020, !dbg !101395
+  %conv1 = zext i16 %offset to i32, !dbg !101396
+  %mul2 = mul nsw i32 4, %conv1, !dbg !101397
+  %2 = bitcast %"struct.ap_uint<3>"* %nBytes to %"struct.ap_int_base<3, false>"*, !dbg !101398
+  call void @"_ZplILi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusEiRKS1_"(%"struct.ap_int<33>"* sret %ref.tmp, i32 %mul2, %"struct.ap_int_base<3, false>"* dereferenceable(1) %2), !dbg !101399
+  %3 = bitcast %"struct.ap_int<33>"* %ref.tmp to %"struct.ap_int_base<33, true>"*, !dbg !101395
+  %top = getelementptr inbounds %struct.Cap, %struct.Cap* %cap, i32 0, i32 1, !dbg !101400
+  %4 = load i32, i32* %top, align 4, !dbg !101400
+  %call = call zeroext i1 @_ZleILi33ELb1EEbRK11ap_int_baseIXT_EXT0_EEi(%"struct.ap_int_base<33, true>"* dereferenceable(8) %3, i32 %4), !dbg !101401
+  br i1 %call, label %land.lhs.true3, label %land.end, !dbg !101402
 
 land.lhs.true3:                                   ; preds = %land.lhs.true
-  br i1 %isWrite, label %lor.lhs.false, label %land.rhs, !dbg !101407
+  br i1 %isWrite, label %lor.lhs.false, label %land.rhs, !dbg !101403
 
 lor.lhs.false:                                    ; preds = %land.lhs.true3
-  %write = getelementptr inbounds %struct.Cap, %struct.Cap* %cap, i32 0, i32 3, !dbg !101408
-  %5 = load i1, i1* %write, align 1, !dbg !101408
-  br i1 %5, label %land.rhs, label %land.end, !dbg !101409
+  %write = getelementptr inbounds %struct.Cap, %struct.Cap* %cap, i32 0, i32 3, !dbg !101404
+  %5 = load i1, i1* %write, align 1, !dbg !101404
+  br i1 %5, label %land.rhs, label %land.end, !dbg !101405
 
 land.rhs:                                         ; preds = %lor.lhs.false, %land.lhs.true3
-  br i1 %isWrite, label %lor.end, label %lor.rhs, !dbg !101410
+  br i1 %isWrite, label %lor.end, label %lor.rhs, !dbg !101406
 
 lor.rhs:                                          ; preds = %land.rhs
-  %read = getelementptr inbounds %struct.Cap, %struct.Cap* %cap, i32 0, i32 2, !dbg !101411
-  %6 = load i1, i1* %read, align 4, !dbg !101411
-  br label %lor.end, !dbg !101410
+  %read = getelementptr inbounds %struct.Cap, %struct.Cap* %cap, i32 0, i32 2, !dbg !101407
+  %6 = load i1, i1* %read, align 4, !dbg !101407
+  br label %lor.end, !dbg !101406
 
 lor.end:                                          ; preds = %lor.rhs, %land.rhs
   %7 = phi i1 [ true, %land.rhs ], [ %6, %lor.rhs ]
@@ -4195,50 +4125,50 @@ lor.end:                                          ; preds = %lor.rhs, %land.rhs
 land.end:                                         ; preds = %lor.end, %lor.lhs.false, %land.lhs.true, %entry
   %cleanup.cond.0 = phi i1 [ true, %lor.end ], [ true, %lor.lhs.false ], [ true, %land.lhs.true ], [ false, %entry ]
   %8 = phi i1 [ false, %lor.lhs.false ], [ false, %land.lhs.true ], [ false, %entry ], [ %7, %lor.end ]
-  %lnot = xor i1 %8, true, !dbg !101412
-  %conv4 = zext i1 %lnot to i32, !dbg !101412
-  %9 = load i32, i32* %flag_buf, align 4, !dbg !101413
-  %or = or i32 %9, %conv4, !dbg !101413
-  store i32 %or, i32* %flag_buf, align 4, !dbg !101413
-  br i1 %cleanup.cond.0, label %cleanup.action, label %cleanup.done, !dbg !101414
+  %lnot = xor i1 %8, true, !dbg !101408
+  %conv4 = zext i1 %lnot to i32, !dbg !101408
+  %9 = load i32, i32* %flag_buf, align 4, !dbg !101409
+  %or = or i32 %9, %conv4, !dbg !101409
+  store i32 %or, i32* %flag_buf, align 4, !dbg !101409
+  br i1 %cleanup.cond.0, label %cleanup.action, label %cleanup.done, !dbg !101410
 
 cleanup.action:                                   ; preds = %land.end
-  %10 = bitcast %"struct.ap_int<33>"* %ref.tmp to i8*, !dbg !101414
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019, !dbg !101414
-  br label %cleanup.done, !dbg !101414
+  %10 = bitcast %"struct.ap_int<33>"* %ref.tmp to i8*, !dbg !101410
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100020, !dbg !101410
+  br label %cleanup.done, !dbg !101410
 
 cleanup.done:                                     ; preds = %cleanup.action, %land.end
-  ret void, !dbg !101415
+  ret void, !dbg !101411
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @"_ZplILi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusEiRKS1_"(%"struct.ap_int<33>"* noalias sret %agg.result, i32 %i_op, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @"_ZplILi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusEiRKS1_"(%"struct.ap_int<33>"* noalias sret %agg.result, i32 %i_op, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100020
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZplILi32ELb1ELi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* sret %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr zeroext i1 @_ZleILi33ELb1EEbRK11ap_int_baseIXT_EXT0_EEi(%"struct.ap_int_base<33, true>"* dereferenceable(8) %op, i32 %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr zeroext i1 @_ZleILi33ELb1EEbRK11ap_int_baseIXT_EXT0_EEi(%"struct.ap_int_base<33, true>"* dereferenceable(8) %op, i32 %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100020
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %op2)
   %call = call zeroext i1 @_ZNK11ap_int_baseILi33ELb1EEleILi32ELb1EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100020
   ret i1 %call
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi33ELb1EEleILi32ELb1EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr zeroext i1 @_ZNK11ap_int_baseILi33ELb1EEleILi32ELb1EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %this, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2) #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<33, true>"* %this to %"struct.ssdm_int<33, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %0, i32 0, i32 0
@@ -4252,19 +4182,19 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZplILi32ELb1ELi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op2) #100003 comdat !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZplILi32ELb1ELi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* noalias sret %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op2) #100003 comdat !fpga.function.pragma !100993 {
 entry:
   %lhs = alloca %"struct.ap_int_base<33, true>", align 8
   %rhs = alloca %"struct.ap_int_base<33, true>", align 8
   %ret = alloca %"struct.ap_int_base<33, true>", align 8
   %0 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100020
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %lhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op)
   %1 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100020
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi3ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %rhs, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op2)
   %2 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100020
   call void @_ZN11ap_int_baseILi33ELb1EEC2Ei(%"struct.ap_int_base<33, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<33, true>"* %lhs to %"struct.ssdm_int<33, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %3, i32 0, i32 0
@@ -4278,48 +4208,49 @@ entry:
   store i33 %add, i33* %V2, align 8
   call void @_ZN6ap_intILi33EEC2ILi33ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<33>"* %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100020
   %9 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100020
   %10 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100020
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define i32 @_Z10cheri_loadPiiPj3Cap(i32* %buf, i32 %i, i32* %flag_buf, %struct.Cap* byval align 4 %cap) #100015 !dbg !101416 !fpga.function.pragma !101420 {
+define i32 @_Z10cheri_loadPiiPj3Cap(i32* %buf, i32 %i, i32* %flag_buf, %struct.Cap* byval align 4 %cap) #100015 !dbg !101412 !fpga.function.pragma !101416 {
 entry:
   %agg.tmp = alloca %struct.Cap, align 4
   %agg.tmp1 = alloca %"struct.ap_uint<3>", align 1
-  call void @llvm.dbg.value(metadata i32* %buf, metadata !101423, metadata !DIExpression()), !dbg !101424
-  call void @llvm.dbg.value(metadata i32 %i, metadata !101425, metadata !DIExpression()), !dbg !101426
-  call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101427, metadata !DIExpression()), !dbg !101428
-  call void @llvm.dbg.declare(metadata %struct.Cap* %cap, metadata !101429, metadata !DIExpression()), !dbg !101430
-  %0 = load %struct.Cap, %struct.Cap* %cap, align 4, !dbg !101431
-  store %struct.Cap %0, %struct.Cap* %agg.tmp, align 4, !dbg !101431
-  %conv = trunc i32 %i to i16, !dbg !101432
-  call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp1, i32 4), !dbg !101433
-  call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp, i16 zeroext %conv, %"struct.ap_uint<3>"* byval align 1 %agg.tmp1, i1 zeroext false), !dbg !101434
-  %1 = load i32, i32* %flag_buf, align 4, !dbg !101435
-  %tobool = icmp ne i32 %1, 0, !dbg !101436
-  br i1 %tobool, label %cond.true, label %cond.false, !dbg !101436
+  call void @llvm.dbg.value(metadata i32* %buf, metadata !101419, metadata !DIExpression()), !dbg !101420
+  call void @llvm.dbg.value(metadata i32 %i, metadata !101421, metadata !DIExpression()), !dbg !101422
+  call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101423, metadata !DIExpression()), !dbg !101424
+  call void @llvm.dbg.declare(metadata %struct.Cap* %cap, metadata !101425, metadata !DIExpression()), !dbg !101426
+  %0 = load %struct.Cap, %struct.Cap* %cap, align 4, !dbg !101427
+  store %struct.Cap %0, %struct.Cap* %agg.tmp, align 4, !dbg !101427
+  %conv = trunc i32 %i to i16, !dbg !101428
+  call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp1, i32 4), !dbg !101429
+  call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp, i16 zeroext %conv, %"struct.ap_uint<3>"* byval align 1 %agg.tmp1, i1 zeroext false), !dbg !101430
+  %idxprom = sext i32 %i to i64, !dbg !101431
+  %arrayidx = getelementptr inbounds i32, i32* %buf, i64 %idxprom, !dbg !101431
+  %1 = load i32, i32* %arrayidx, align 4, !dbg !101431
+  call void @llvm.dbg.value(metadata i32 %1, metadata !101432, metadata !DIExpression()), !dbg !101433
+  %2 = load i32, i32* %flag_buf, align 4, !dbg !101434
+  %tobool = icmp ne i32 %2, 0, !dbg !101435
+  br i1 %tobool, label %cond.true, label %cond.false, !dbg !101435
 
 cond.true:                                        ; preds = %entry
-  %idxprom = sext i32 %i to i64, !dbg !101437
-  %arrayidx = getelementptr inbounds i32, i32* %buf, i64 %idxprom, !dbg !101437
-  %2 = load i32, i32* %arrayidx, align 4, !dbg !101437
-  br label %cond.end, !dbg !101436
+  br label %cond.end, !dbg !101435
 
 cond.false:                                       ; preds = %entry
-  br label %cond.end, !dbg !101436
+  br label %cond.end, !dbg !101435
 
 cond.end:                                         ; preds = %cond.false, %cond.true
-  %cond = phi i32 [ %2, %cond.true ], [ 0, %cond.false ], !dbg !101436
-  ret i32 %cond, !dbg !101438
+  %cond = phi i32 [ %1, %cond.true ], [ 0, %cond.false ], !dbg !101435
+  ret i32 %cond, !dbg !101436
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %this, i32 %val) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %this, i32 %val) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_uint<3>"* %this to %"struct.ap_int_base<3, false>"*
   call void @_ZN11ap_int_baseILi3ELb0EEC2Ei(%"struct.ap_int_base<3, false>"* %0, i32 %val)
@@ -4329,7 +4260,7 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EEC2Ei(%"struct.ap_int_base<3, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EEC2Ei(%"struct.ap_int_base<3, false>"* %this, i32 %op) unnamed_addr #100003 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   %0 = bitcast %"struct.ap_int_base<3, false>"* %this to %"struct.ssdm_int<3, false>"*
   %conv = trunc i32 %op to i3
@@ -4342,44 +4273,177 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EE18checkOverflowBaseCIiEEvT_(%"struct.ap_int_base<3, false>"* %this, i32 %val) #100006 comdat align 2 !fpga.function.pragma !100997 {
+define linkonce_odr void @_ZN11ap_int_baseILi3ELb0EE18checkOverflowBaseCIiEEvT_(%"struct.ap_int_base<3, false>"* %this, i32 %val) #100006 comdat align 2 !fpga.function.pragma !100993 {
 entry:
   ret void
 }
 
 ; Function Attrs: alwaysinline nounwind
-define void @_Z11cheri_storePiiiPj3Cap(i32* %buf, i32 %i, i32 %val, i32* %flag_buf, %struct.Cap* byval align 4 %cap) #100016 !dbg !101439 !fpga.function.pragma !101442 {
+define void @_Z11cheri_storePiiiPj3Cap(i32* %buf, i32 %i, i32 %val, i32* %flag_buf, %struct.Cap* byval align 4 %cap) #100016 !dbg !101437 !fpga.function.pragma !101440 {
 entry:
   %agg.tmp = alloca %struct.Cap, align 4
   %agg.tmp1 = alloca %"struct.ap_uint<3>", align 1
-  call void @llvm.dbg.value(metadata i32* %buf, metadata !101445, metadata !DIExpression()), !dbg !101446
-  call void @llvm.dbg.value(metadata i32 %i, metadata !101447, metadata !DIExpression()), !dbg !101448
-  call void @llvm.dbg.value(metadata i32 %val, metadata !101449, metadata !DIExpression()), !dbg !101450
-  call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101451, metadata !DIExpression()), !dbg !101452
-  call void @llvm.dbg.declare(metadata %struct.Cap* %cap, metadata !101453, metadata !DIExpression()), !dbg !101454
-  %0 = load %struct.Cap, %struct.Cap* %cap, align 4, !dbg !101455
-  store %struct.Cap %0, %struct.Cap* %agg.tmp, align 4, !dbg !101455
-  %conv = trunc i32 %i to i16, !dbg !101456
-  call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp1, i32 4), !dbg !101457
-  call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp, i16 zeroext %conv, %"struct.ap_uint<3>"* byval align 1 %agg.tmp1, i1 zeroext true), !dbg !101458
-  %1 = load i32, i32* %flag_buf, align 4, !dbg !101459
-  %tobool = icmp ne i32 %1, 0, !dbg !101461
-  br i1 %tobool, label %if.then, label %if.end, !dbg !101462
+  call void @llvm.dbg.value(metadata i32* %buf, metadata !101443, metadata !DIExpression()), !dbg !101444
+  call void @llvm.dbg.value(metadata i32 %i, metadata !101445, metadata !DIExpression()), !dbg !101446
+  call void @llvm.dbg.value(metadata i32 %val, metadata !101447, metadata !DIExpression()), !dbg !101448
+  call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101449, metadata !DIExpression()), !dbg !101450
+  call void @llvm.dbg.declare(metadata %struct.Cap* %cap, metadata !101451, metadata !DIExpression()), !dbg !101452
+  %0 = load %struct.Cap, %struct.Cap* %cap, align 4, !dbg !101453
+  store %struct.Cap %0, %struct.Cap* %agg.tmp, align 4, !dbg !101453
+  %conv = trunc i32 %i to i16, !dbg !101454
+  call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp1, i32 4), !dbg !101455
+  call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp, i16 zeroext %conv, %"struct.ap_uint<3>"* byval align 1 %agg.tmp1, i1 zeroext true), !dbg !101456
+  %1 = load i32, i32* %flag_buf, align 4, !dbg !101457
+  %tobool = icmp ne i32 %1, 0, !dbg !101458
+  br i1 %tobool, label %cond.true, label %cond.false, !dbg !101458
 
-if.then:                                          ; preds = %entry
-  %idxprom = sext i32 %i to i64, !dbg !101463
-  %arrayidx = getelementptr inbounds i32, i32* %buf, i64 %idxprom, !dbg !101463
-  store i32 %val, i32* %arrayidx, align 4, !dbg !101465
-  br label %if.end, !dbg !101466
+cond.true:                                        ; preds = %entry
+  br label %cond.end, !dbg !101458
 
-if.end:                                           ; preds = %if.then, %entry
-  ret void, !dbg !101467
+cond.false:                                       ; preds = %entry
+  %idxprom = sext i32 %i to i64, !dbg !101459
+  %arrayidx = getelementptr inbounds i32, i32* %buf, i64 %idxprom, !dbg !101459
+  %2 = load i32, i32* %arrayidx, align 4, !dbg !101459
+  br label %cond.end, !dbg !101458
+
+cond.end:                                         ; preds = %cond.false, %cond.true
+  %cond = phi i32 [ %val, %cond.true ], [ %2, %cond.false ], !dbg !101458
+  %idxprom2 = sext i32 %i to i64, !dbg !101460
+  %arrayidx3 = getelementptr inbounds i32, i32* %buf, i64 %idxprom2, !dbg !101460
+  store i32 %cond, i32* %arrayidx3, align 4, !dbg !101461
+  ret void, !dbg !101462
 }
 
+; Function Attrs: alwaysinline nounwind
+define void @_Z18cheri_stream_writejPiS_Pj3Cap(i32 %size, i32* %array1, i32* %array2, i32* %flag_buf, %struct.Cap* byval align 4 %cap) #100017 !dbg !101463 !fpga.function.pragma !101466 {
+entry:
+  %agg.tmp = alloca %struct.Cap, align 4
+  %agg.tmp1 = alloca %"struct.ap_uint<3>", align 1
+  call void @llvm.dbg.value(metadata i32 %size, metadata !101469, metadata !DIExpression()), !dbg !101470
+  call void @llvm.dbg.value(metadata i32* %array1, metadata !101471, metadata !DIExpression()), !dbg !101472
+  call void @llvm.dbg.value(metadata i32* %array2, metadata !101473, metadata !DIExpression()), !dbg !101474
+  call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101475, metadata !DIExpression()), !dbg !101476
+  call void @llvm.dbg.declare(metadata %struct.Cap* %cap, metadata !101477, metadata !DIExpression()), !dbg !101478
+  br label %VITIS_LOOP_144_1, !dbg !101479
+
+VITIS_LOOP_144_1:                                 ; preds = %entry
+  call void @llvm.dbg.value(metadata i32 0, metadata !101480, metadata !DIExpression()), !dbg !101482
+  br label %for.cond, !dbg !101483
+
+for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_144_1
+  %i.0 = phi i32 [ 0, %VITIS_LOOP_144_1 ], [ %inc, %for.inc ]
+  call void @llvm.dbg.value(metadata i32 %i.0, metadata !101480, metadata !DIExpression()), !dbg !101482
+  %cmp = icmp ult i32 %i.0, %size, !dbg !101484
+  br i1 %cmp, label %for.body, label %for.cond.cleanup, !dbg !101486
+
+for.cond.cleanup:                                 ; preds = %for.cond
+  br label %for.end
+
+for.body:                                         ; preds = %for.cond
+  %0 = load %struct.Cap, %struct.Cap* %cap, align 4, !dbg !101487
+  store %struct.Cap %0, %struct.Cap* %agg.tmp, align 4, !dbg !101487
+  %conv = trunc i32 %i.0 to i16, !dbg !101489
+  call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp1, i32 4), !dbg !101490
+  call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp, i16 zeroext %conv, %"struct.ap_uint<3>"* byval align 1 %agg.tmp1, i1 zeroext true), !dbg !101491
+  br label %for.inc, !dbg !101492
+
+for.inc:                                          ; preds = %for.body
+  %inc = add nsw i32 %i.0, 1, !dbg !101493
+  call void @llvm.dbg.value(metadata i32 %inc, metadata !101480, metadata !DIExpression()), !dbg !101482
+  br label %for.cond, !dbg !101494, !llvm.loop !101495
+
+for.end:                                          ; preds = %for.cond.cleanup
+  %1 = load i32, i32* %flag_buf, align 4, !dbg !101498
+  %tobool = icmp ne i32 %1, 0, !dbg !101498
+  br i1 %tobool, label %if.then, label %if.end, !dbg !101500
+
+if.then:                                          ; preds = %for.end
+  br label %VITIS_LOOP_148_2, !dbg !101501
+
+VITIS_LOOP_148_2:                                 ; preds = %if.then
+  call void @llvm.dbg.value(metadata i32 0, metadata !101502, metadata !DIExpression()), !dbg !101505
+  br label %for.cond3, !dbg !101506
+
+for.cond3:                                        ; preds = %for.inc9, %VITIS_LOOP_148_2
+  %i2.0 = phi i32 [ 0, %VITIS_LOOP_148_2 ], [ %inc10, %for.inc9 ]
+  call void @llvm.dbg.value(metadata i32 %i2.0, metadata !101502, metadata !DIExpression()), !dbg !101505
+  %cmp4 = icmp ult i32 %i2.0, %size, !dbg !101507
+  br i1 %cmp4, label %for.body6, label %for.cond.cleanup5, !dbg !101509
+
+for.cond.cleanup5:                                ; preds = %for.cond3
+  br label %for.end11
+
+for.body6:                                        ; preds = %for.cond3
+  %idxprom = sext i32 %i2.0 to i64, !dbg !101510
+  %arrayidx = getelementptr inbounds i32, i32* %array2, i64 %idxprom, !dbg !101510
+  %2 = load i32, i32* %arrayidx, align 4, !dbg !101510
+  %idxprom7 = sext i32 %i2.0 to i64, !dbg !101512
+  %arrayidx8 = getelementptr inbounds i32, i32* %array1, i64 %idxprom7, !dbg !101512
+  store i32 %2, i32* %arrayidx8, align 4, !dbg !101513
+  br label %for.inc9, !dbg !101514
+
+for.inc9:                                         ; preds = %for.body6
+  %inc10 = add nsw i32 %i2.0, 1, !dbg !101515
+  call void @llvm.dbg.value(metadata i32 %inc10, metadata !101502, metadata !DIExpression()), !dbg !101505
+  br label %for.cond3, !dbg !101516, !llvm.loop !101517
+
+for.end11:                                        ; preds = %for.cond.cleanup5
+  br label %if.end, !dbg !101520
+
+if.end:                                           ; preds = %for.end11, %for.end
+  ret void, !dbg !101521
+}
+
+; Function Attrs: nounwind
 
 
 ; Function Attrs: nounwind
-define void @hls_top(i32 %size, i32* "fpga.decayed.dim.hint"="4096" %xm1, i32* "fpga.decayed.dim.hint"="4096" %xm2, i32* "fpga.decayed.dim.hint"="4096" %xprod, i32* %flag, i32* "fpga.decayed.dim.hint"="12" %cap) #0 !dbg !101468 !fpga.function.pragma !101471 {
+define void @_Z12stream_writejPiS_(i32 %size, i32* %array1, i32* %array2) #0 !dbg !7 {
+entry:
+  call void @llvm.dbg.value(metadata i32 %size, metadata !19, metadata !DIExpression()), !dbg !20
+  call void @llvm.dbg.value(metadata i32* %array1, metadata !21, metadata !DIExpression()), !dbg !22
+  call void @llvm.dbg.value(metadata i32* %array2, metadata !23, metadata !DIExpression()), !dbg !24
+  br label %VITIS_LOOP_21_1, !dbg !25
+
+VITIS_LOOP_21_1:                                  ; preds = %entry
+  call void @llvm.dbg.value(metadata i32 0, metadata !26, metadata !DIExpression()), !dbg !28
+  br label %for.cond, !dbg !29
+
+for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_21_1
+  %i.0 = phi i32 [ 0, %VITIS_LOOP_21_1 ], [ %inc, %for.inc ]
+  call void @llvm.dbg.value(metadata i32 %i.0, metadata !26, metadata !DIExpression()), !dbg !28
+  %cmp = icmp ult i32 %i.0, %size, !dbg !30
+  br i1 %cmp, label %for.body, label %for.cond.cleanup, !dbg !32
+
+for.cond.cleanup:                                 ; preds = %for.cond
+  br label %for.end
+
+for.body:                                         ; preds = %for.cond
+  %idxprom = sext i32 %i.0 to i64, !dbg !33
+  %arrayidx = getelementptr inbounds i32, i32* %array2, i64 %idxprom, !dbg !33
+  %0 = load i32, i32* %arrayidx, align 4, !dbg !33
+  %idxprom1 = sext i32 %i.0 to i64, !dbg !35
+  %arrayidx2 = getelementptr inbounds i32, i32* %array1, i64 %idxprom1, !dbg !35
+  store i32 %0, i32* %arrayidx2, align 4, !dbg !36
+  br label %for.inc, !dbg !37
+
+for.inc:                                          ; preds = %for.body
+  %inc = add nsw i32 %i.0, 1, !dbg !38
+  call void @llvm.dbg.value(metadata i32 %inc, metadata !26, metadata !DIExpression()), !dbg !28
+  br label %for.cond, !dbg !39, !llvm.loop !40
+
+for.end:                                          ; preds = %for.cond.cleanup
+  ret void, !dbg !43
+}
+
+; Function Attrs: nounwind readnone speculatable
+
+; Function Attrs: argmemonly nounwind
+
+; Function Attrs: argmemonly nounwind
+
+; Function Attrs: nounwind
+define void @_Z7hls_topiPiS_S_(i32 %size, i32* "fpga.decayed.dim.hint"="4096" %xm1, i32* "fpga.decayed.dim.hint"="4096" %xm2, i32* "fpga.decayed.dim.hint"="4096" %xprod, i32* %flag, i32* "fpga.decayed.dim.hint"="12" %cap) #3 !dbg !101522 !fpga.function.pragma !101525 {
 entry:
   %flag_buf = alloca i32, align 4
   %caps = alloca [6 x %struct.Cap], align 4
@@ -4415,36 +4479,36 @@ entry:
   %m1 = alloca [4096 x i32], align 4
   %m2 = alloca [4096 x i32], align 4
   %prod = alloca [4096 x i32], align 4
-  call void @llvm.dbg.value(metadata i32 %size, metadata !16, metadata !DIExpression()), !dbg !17
-  call void @llvm.dbg.value(metadata i32* %xm1, metadata !18, metadata !DIExpression()), !dbg !19
-  call void @llvm.dbg.value(metadata i32* %xm2, metadata !20, metadata !DIExpression()), !dbg !21
-  call void @llvm.dbg.value(metadata i32* %xprod, metadata !22, metadata !DIExpression()), !dbg !23
-  call void @llvm.sideeffect() #4 [ "xlx_m_axi"(i32* %xm1, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ], !dbg !24
-  call void @llvm.sideeffect() #4 [ "xlx_m_axi"(i32* %xm2, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ], !dbg !25
-  call void @llvm.sideeffect() #4 [ "xlx_m_axi"(i32* %xprod, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ], !dbg !26
-  call void @llvm.sideeffect() #5 [ "xlx_s_axilite"(i32 %size, [0 x i8] zeroinitializer, i64 -1, i1 false, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer) ], !dbg !27
-  call void @llvm.sideeffect() #6 [ "xlx_s_axilite"(i8* null, [0 x i8] zeroinitializer, i64 -1, i1 false, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer) ], !dbg !28
-  %0 = bitcast [4096 x i32]* %m1 to i8*, !dbg !29
-  call void @llvm.lifetime.start.p0i8(i64 16384, i8* %0) #7, !dbg !29
-  call void @llvm.dbg.declare(metadata [4096 x i32]* %m1, metadata !30, metadata !DIExpression()), !dbg !34
-  %1 = bitcast [4096 x i32]* %m2 to i8*, !dbg !29
-  call void @llvm.lifetime.start.p0i8(i64 16384, i8* %1) #7, !dbg !29
-  call void @llvm.dbg.declare(metadata [4096 x i32]* %m2, metadata !35, metadata !DIExpression()), !dbg !36
-  %2 = bitcast [4096 x i32]* %prod to i8*, !dbg !29
-  call void @llvm.lifetime.start.p0i8(i64 16384, i8* %2) #7, !dbg !29
-  call void @llvm.dbg.declare(metadata [4096 x i32]* %prod, metadata !37, metadata !DIExpression()), !dbg !38
-  br label %VITIS_LOOP_30_1, !dbg !29
+  call void @llvm.dbg.value(metadata i32 %size, metadata !50, metadata !DIExpression()), !dbg !51
+  call void @llvm.dbg.value(metadata i32* %xm1, metadata !52, metadata !DIExpression()), !dbg !53
+  call void @llvm.dbg.value(metadata i32* %xm2, metadata !54, metadata !DIExpression()), !dbg !55
+  call void @llvm.dbg.value(metadata i32* %xprod, metadata !56, metadata !DIExpression()), !dbg !57
+  call void @llvm.sideeffect() #5 [ "xlx_m_axi"(i32* %xm1, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ], !dbg !58
+  call void @llvm.sideeffect() #5 [ "xlx_m_axi"(i32* %xm2, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ], !dbg !59
+  call void @llvm.sideeffect() #5 [ "xlx_m_axi"(i32* %xprod, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ], !dbg !60
+  call void @llvm.sideeffect() #6 [ "xlx_s_axilite"(i32 %size, [0 x i8] zeroinitializer, i64 -1, i1 false, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer) ], !dbg !61
+  call void @llvm.sideeffect() #7 [ "xlx_s_axilite"(i8* null, [0 x i8] zeroinitializer, i64 -1, i1 false, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer) ], !dbg !62
+  %0 = bitcast [4096 x i32]* %m1 to i8*, !dbg !63
+  call void @llvm.lifetime.start.p0i8(i64 16384, i8* %0) #8, !dbg !63
+  call void @llvm.dbg.declare(metadata [4096 x i32]* %m1, metadata !64, metadata !DIExpression()), !dbg !68
+  %1 = bitcast [4096 x i32]* %m2 to i8*, !dbg !63
+  call void @llvm.lifetime.start.p0i8(i64 16384, i8* %1) #8, !dbg !63
+  call void @llvm.dbg.declare(metadata [4096 x i32]* %m2, metadata !69, metadata !DIExpression()), !dbg !70
+  %2 = bitcast [4096 x i32]* %prod to i8*, !dbg !63
+  call void @llvm.lifetime.start.p0i8(i64 16384, i8* %2) #8, !dbg !63
+  call void @llvm.dbg.declare(metadata [4096 x i32]* %prod, metadata !71, metadata !DIExpression()), !dbg !72
+  br label %VITIS_LOOP_37_1, !dbg !63
 
-VITIS_LOOP_30_1:                                  ; preds = %entry
-  call void @llvm.dbg.value(metadata i32 0, metadata !39, metadata !DIExpression()), !dbg !40
-  br label %for.cond, !dbg !41
+VITIS_LOOP_37_1:                                  ; preds = %entry
+  call void @llvm.dbg.value(metadata i32 0, metadata !73, metadata !DIExpression()), !dbg !74
+  br label %for.cond, !dbg !75
 
-for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_30_1
-  %i.0 = phi i32 [ 0, %VITIS_LOOP_30_1 ], [ %inc, %for.inc ]
-  call void @llvm.dbg.value(metadata i32 %i.0, metadata !39, metadata !DIExpression()), !dbg !40
-  %mul1 = mul nsw i32 %size, %size, !dbg !43
-  %cmp = icmp slt i32 %i.0, %mul1, !dbg !45
-  br i1 %cmp, label %for.body, label %for.end, !dbg !46
+for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_37_1
+  %i.0 = phi i32 [ 0, %VITIS_LOOP_37_1 ], [ %inc, %for.inc ]
+  call void @llvm.dbg.value(metadata i32 %i.0, metadata !73, metadata !DIExpression()), !dbg !74
+  %mul1 = mul nsw i32 %size, %size, !dbg !77
+  %cmp = icmp slt i32 %i.0, %mul1, !dbg !79
+  br i1 %cmp, label %for.body, label %for.end, !dbg !80
 
 for.body:                                         ; preds = %for.cond
   %cap.arrayidx0 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 0, !dbg !101550
@@ -4458,26 +4522,26 @@ for.body:                                         ; preds = %for.cond
   %store.1 = load %struct.Cap, %struct.Cap* %cap.arrayidx1, align 4, !dbg !101539
   store %struct.Cap %store.1, %struct.Cap* %agg.tmp3, align 4, !dbg !101539
   call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer1, i32 %i.0, i32 %3, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp3), !dbg !101539
-  br label %for.inc, !dbg !48
+  br label %for.inc, !dbg !82
 
 for.inc:                                          ; preds = %for.body
-  %inc = add nsw i32 %i.0, 1, !dbg !50
-  call void @llvm.dbg.value(metadata i32 %inc, metadata !39, metadata !DIExpression()), !dbg !40
-  br label %for.cond, !dbg !51, !llvm.loop !52
+  %inc = add nsw i32 %i.0, 1, !dbg !84
+  call void @llvm.dbg.value(metadata i32 %inc, metadata !73, metadata !DIExpression()), !dbg !74
+  br label %for.cond, !dbg !85, !llvm.loop !86
 
 for.end:                                          ; preds = %for.cond
-  br label %VITIS_LOOP_32_2, !dbg !53
+  br label %VITIS_LOOP_39_2, !dbg !87
 
-VITIS_LOOP_32_2:                                  ; preds = %for.end
-  call void @llvm.dbg.value(metadata i32 0, metadata !39, metadata !DIExpression()), !dbg !40
-  br label %for.cond4, !dbg !55
+VITIS_LOOP_39_2:                                  ; preds = %for.end
+  call void @llvm.dbg.value(metadata i32 0, metadata !73, metadata !DIExpression()), !dbg !74
+  br label %for.cond4, !dbg !89
 
-for.cond4:                                        ; preds = %for.inc12, %VITIS_LOOP_32_2
-  %i.1 = phi i32 [ 0, %VITIS_LOOP_32_2 ], [ %inc13, %for.inc12 ]
-  call void @llvm.dbg.value(metadata i32 %i.1, metadata !39, metadata !DIExpression()), !dbg !40
-  %mul5 = mul nsw i32 %size, %size, !dbg !57
-  %cmp6 = icmp slt i32 %i.1, %mul5, !dbg !59
-  br i1 %cmp6, label %for.body7, label %for.end14, !dbg !60
+for.cond4:                                        ; preds = %for.inc12, %VITIS_LOOP_39_2
+  %i.1 = phi i32 [ 0, %VITIS_LOOP_39_2 ], [ %inc13, %for.inc12 ]
+  call void @llvm.dbg.value(metadata i32 %i.1, metadata !73, metadata !DIExpression()), !dbg !74
+  %mul5 = mul nsw i32 %size, %size, !dbg !91
+  %cmp6 = icmp slt i32 %i.1, %mul5, !dbg !93
+  br i1 %cmp6, label %for.body7, label %for.end14, !dbg !94
 
 for.body7:                                        ; preds = %for.cond4
   %cap.arrayidx2 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 1, !dbg !101550
@@ -4491,199 +4555,173 @@ for.body7:                                        ; preds = %for.cond4
   %store.3 = load %struct.Cap, %struct.Cap* %cap.arrayidx3, align 4, !dbg !101539
   store %struct.Cap %store.3, %struct.Cap* %agg.tmp4, align 4, !dbg !101539
   call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer3, i32 %i.1, i32 %4, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp4), !dbg !101539
-  br label %for.inc12, !dbg !62
+  br label %for.inc12, !dbg !96
 
 for.inc12:                                        ; preds = %for.body7
-  %inc13 = add nsw i32 %i.1, 1, !dbg !64
-  call void @llvm.dbg.value(metadata i32 %inc13, metadata !39, metadata !DIExpression()), !dbg !40
-  br label %for.cond4, !dbg !65, !llvm.loop !66
+  %inc13 = add nsw i32 %i.1, 1, !dbg !98
+  call void @llvm.dbg.value(metadata i32 %inc13, metadata !73, metadata !DIExpression()), !dbg !74
+  br label %for.cond4, !dbg !99, !llvm.loop !100
 
 for.end14:                                        ; preds = %for.cond4
-  br label %loopjj, !dbg !67
+  br label %loopjj, !dbg !101
 
 loopjj:                                           ; preds = %for.end14
-  call void @llvm.dbg.value(metadata i32 0, metadata !69, metadata !DIExpression()), !dbg !70
-  br label %for.cond15, !dbg !71
+  call void @llvm.dbg.value(metadata i32 0, metadata !103, metadata !DIExpression()), !dbg !104
+  br label %for.cond15, !dbg !105
 
 for.cond15:                                       ; preds = %for.inc62, %loopjj
   %jj.0 = phi i32 [ 0, %loopjj ], [ %add63, %for.inc62 ]
-  call void @llvm.dbg.value(metadata i32 %jj.0, metadata !69, metadata !DIExpression()), !dbg !70
-  %cmp16 = icmp slt i32 %jj.0, %size, !dbg !73
-  br i1 %cmp16, label %for.body17, label %for.end64, !dbg !75
+  call void @llvm.dbg.value(metadata i32 %jj.0, metadata !103, metadata !DIExpression()), !dbg !104
+  %cmp16 = icmp slt i32 %jj.0, %size, !dbg !107
+  br i1 %cmp16, label %for.body17, label %for.end64, !dbg !109
 
 for.body17:                                       ; preds = %for.cond15
-  br label %loopkk, !dbg !76
+  br label %loopkk, !dbg !110
 
 loopkk:                                           ; preds = %for.body17
-  call void @llvm.dbg.value(metadata i32 0, metadata !77, metadata !DIExpression()), !dbg !78
-  br label %for.cond18, !dbg !79
+  call void @llvm.dbg.value(metadata i32 0, metadata !111, metadata !DIExpression()), !dbg !112
+  br label %for.cond18, !dbg !113
 
 for.cond18:                                       ; preds = %for.inc59, %loopkk
   %kk.0 = phi i32 [ 0, %loopkk ], [ %add60, %for.inc59 ]
-  call void @llvm.dbg.value(metadata i32 %kk.0, metadata !77, metadata !DIExpression()), !dbg !78
-  %cmp19 = icmp slt i32 %kk.0, %size, !dbg !82
-  br i1 %cmp19, label %for.body20, label %for.end61, !dbg !84
+  call void @llvm.dbg.value(metadata i32 %kk.0, metadata !111, metadata !DIExpression()), !dbg !112
+  %cmp19 = icmp slt i32 %kk.0, %size, !dbg !116
+  br i1 %cmp19, label %for.body20, label %for.end61, !dbg !118
 
 for.body20:                                       ; preds = %for.cond18
-  br label %loopi, !dbg !85
+  br label %loopi, !dbg !119
 
 loopi:                                            ; preds = %for.body20
-  call void @llvm.dbg.value(metadata i32 0, metadata !39, metadata !DIExpression()), !dbg !40
-  br label %for.cond21, !dbg !86
+  call void @llvm.dbg.value(metadata i32 0, metadata !73, metadata !DIExpression()), !dbg !74
+  br label %for.cond21, !dbg !120
 
 for.cond21:                                       ; preds = %for.inc56, %loopi
   %i.2 = phi i32 [ 0, %loopi ], [ %inc57, %for.inc56 ]
-  call void @llvm.dbg.value(metadata i32 %i.2, metadata !39, metadata !DIExpression()), !dbg !40
-  %cmp22 = icmp slt i32 %i.2, %size, !dbg !89
-  br i1 %cmp22, label %for.body23, label %for.end58, !dbg !91
+  call void @llvm.dbg.value(metadata i32 %i.2, metadata !73, metadata !DIExpression()), !dbg !74
+  %cmp22 = icmp slt i32 %i.2, %size, !dbg !123
+  br i1 %cmp22, label %for.body23, label %for.end58, !dbg !125
 
 for.body23:                                       ; preds = %for.cond21
-  br label %loopk, !dbg !92
+  br label %loopk, !dbg !126
 
 loopk:                                            ; preds = %for.body23
-  call void @llvm.dbg.value(metadata i32 0, metadata !93, metadata !DIExpression()), !dbg !94
-  br label %for.cond24, !dbg !95
+  call void @llvm.dbg.value(metadata i32 0, metadata !127, metadata !DIExpression()), !dbg !128
+  br label %for.cond24, !dbg !129
 
 for.cond24:                                       ; preds = %for.inc53, %loopk
   %k.0 = phi i32 [ 0, %loopk ], [ %inc54, %for.inc53 ]
-  call void @llvm.dbg.value(metadata i32 %k.0, metadata !93, metadata !DIExpression()), !dbg !94
-  %cmp25 = icmp slt i32 %k.0, 8, !dbg !98
-  br i1 %cmp25, label %for.body26, label %for.end55, !dbg !100
+  call void @llvm.dbg.value(metadata i32 %k.0, metadata !127, metadata !DIExpression()), !dbg !128
+  %cmp25 = icmp slt i32 %k.0, 8, !dbg !132
+  br i1 %cmp25, label %for.body26, label %for.end55, !dbg !134
 
 for.body26:                                       ; preds = %for.cond24
-  %mul27 = mul nsw i32 %i.2, %size, !dbg !101
-  call void @llvm.dbg.value(metadata i32 %mul27, metadata !103, metadata !DIExpression()), !dbg !104
-  %add = add nsw i32 %k.0, %kk.0, !dbg !105
-  %mul28 = mul nsw i32 %add, %size, !dbg !106
-  call void @llvm.dbg.value(metadata i32 %mul28, metadata !107, metadata !DIExpression()), !dbg !108
-  %add29 = add nsw i32 %mul27, %k.0, !dbg !109
-  %add30 = add nsw i32 %add29, %kk.0, !dbg !110
+  %mul27 = mul nsw i32 %i.2, %size, !dbg !135
+  call void @llvm.dbg.value(metadata i32 %mul27, metadata !137, metadata !DIExpression()), !dbg !138
+  %add = add nsw i32 %k.0, %kk.0, !dbg !139
+  %mul28 = mul nsw i32 %add, %size, !dbg !140
+  call void @llvm.dbg.value(metadata i32 %mul28, metadata !141, metadata !DIExpression()), !dbg !142
+  %add29 = add nsw i32 %mul27, %k.0, !dbg !143
+  %add30 = add nsw i32 %add29, %kk.0, !dbg !144
   %arraypointer4 = getelementptr inbounds [4096 x i32], [4096 x i32]* %m1, i32 0, i32 0, !dbg !101530
   %cap.arrayidx4 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 3, !dbg !101550
   %load.4 = load %struct.Cap, %struct.Cap* %cap.arrayidx4, align 4, !dbg !101550
   store %struct.Cap %load.4, %struct.Cap* %agg.tmp3, align 4, !dbg !101550
   %5 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer4, i32 %add30, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp3), !dbg !101527
   call void @llvm.dbg.value(metadata i32 %5, metadata !101521, metadata !DIExpression()), !dbg !101529
-  call void @llvm.dbg.value(metadata i32 %5, metadata !112, metadata !DIExpression()), !dbg !113
-  br label %loopj, !dbg !114
+  call void @llvm.dbg.value(metadata i32 %5, metadata !146, metadata !DIExpression()), !dbg !147
+  br label %loopj, !dbg !148
 
 loopj:                                            ; preds = %for.body26
-  call void @llvm.dbg.value(metadata i32 0, metadata !115, metadata !DIExpression()), !dbg !116
-  br label %for.cond33, !dbg !117
+  call void @llvm.dbg.value(metadata i32 0, metadata !149, metadata !DIExpression()), !dbg !150
+  br label %for.cond33, !dbg !151
 
 for.cond33:                                       ; preds = %for.inc50, %loopj
   %j.0 = phi i32 [ 0, %loopj ], [ %inc51, %for.inc50 ]
-  call void @llvm.dbg.value(metadata i32 %j.0, metadata !115, metadata !DIExpression()), !dbg !116
-  %cmp34 = icmp slt i32 %j.0, 8, !dbg !119
-  br i1 %cmp34, label %for.body35, label %for.end52, !dbg !121
+  call void @llvm.dbg.value(metadata i32 %j.0, metadata !149, metadata !DIExpression()), !dbg !150
+  %cmp34 = icmp slt i32 %j.0, 8, !dbg !153
+  br i1 %cmp34, label %for.body35, label %for.end52, !dbg !155
 
 for.body35:                                       ; preds = %for.cond33
-  %add36 = add nsw i32 %mul28, %j.0, !dbg !122
-  %add37 = add nsw i32 %add36, %jj.0, !dbg !124
+  %add36 = add nsw i32 %mul28, %j.0, !dbg !156
+  %add37 = add nsw i32 %add36, %jj.0, !dbg !158
   %arraypointer5 = getelementptr inbounds [4096 x i32], [4096 x i32]* %m2, i32 0, i32 0, !dbg !101530
   %cap.arrayidx5 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 4, !dbg !101550
   %load.5 = load %struct.Cap, %struct.Cap* %cap.arrayidx5, align 4, !dbg !101550
   store %struct.Cap %load.5, %struct.Cap* %agg.tmp4, align 4, !dbg !101550
   %6 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer5, i32 %add37, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp4), !dbg !101527
   call void @llvm.dbg.value(metadata i32 %6, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %mul40 = mul nsw i32 %5, %6, !dbg !126
-  call void @llvm.dbg.value(metadata i32 %mul40, metadata !127, metadata !DIExpression()), !dbg !128
-  %add41 = add nsw i32 %mul27, %j.0, !dbg !129
-  %add42 = add nsw i32 %add41, %jj.0, !dbg !130
+  %mul40 = mul nsw i32 %5, %6, !dbg !160
+  call void @llvm.dbg.value(metadata i32 %mul40, metadata !161, metadata !DIExpression()), !dbg !162
+  %add41 = add nsw i32 %mul27, %j.0, !dbg !163
+  %add42 = add nsw i32 %add41, %jj.0, !dbg !164
   %arraypointer6 = getelementptr inbounds [4096 x i32], [4096 x i32]* %prod, i32 0, i32 0, !dbg !101530
   %cap.arrayidx6 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 5, !dbg !101550
   %load.6 = load %struct.Cap, %struct.Cap* %cap.arrayidx6, align 4, !dbg !101550
   store %struct.Cap %load.6, %struct.Cap* %agg.tmp5, align 4, !dbg !101550
   %7 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer6, i32 %add42, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp5), !dbg !101527
   call void @llvm.dbg.value(metadata i32 %7, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %add45 = add nsw i32 %7, %mul40, !dbg !132
-  %add46 = add nsw i32 %mul27, %j.0, !dbg !133
-  %add47 = add nsw i32 %add46, %jj.0, !dbg !134
+  %add45 = add nsw i32 %7, %mul40, !dbg !166
+  %add46 = add nsw i32 %mul27, %j.0, !dbg !167
+  %add47 = add nsw i32 %add46, %jj.0, !dbg !168
   %arraypointer7 = getelementptr inbounds [4096 x i32], [4096 x i32]* %prod, i32 0, i32 0, !dbg !101530
   %cap.arrayidx7 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 5, !dbg !101550
   call void @llvm.dbg.value(metadata i32 %add45, metadata !101528, metadata !DIExpression()), !dbg !101539
   %store.7 = load %struct.Cap, %struct.Cap* %cap.arrayidx7, align 4, !dbg !101539
   store %struct.Cap %store.7, %struct.Cap* %agg.tmp5, align 4, !dbg !101539
   call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer7, i32 %add47, i32 %add45, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp5), !dbg !101539
-  br label %for.inc50, !dbg !137
+  br label %for.inc50, !dbg !171
 
 for.inc50:                                        ; preds = %for.body35
-  %inc51 = add nsw i32 %j.0, 1, !dbg !138
-  call void @llvm.dbg.value(metadata i32 %inc51, metadata !115, metadata !DIExpression()), !dbg !116
-  br label %for.cond33, !dbg !139, !llvm.loop !140
+  %inc51 = add nsw i32 %j.0, 1, !dbg !172
+  call void @llvm.dbg.value(metadata i32 %inc51, metadata !149, metadata !DIExpression()), !dbg !150
+  br label %for.cond33, !dbg !173, !llvm.loop !174
 
 for.end52:                                        ; preds = %for.cond33
-  br label %for.inc53, !dbg !143
+  br label %for.inc53, !dbg !177
 
 for.inc53:                                        ; preds = %for.end52
-  %inc54 = add nsw i32 %k.0, 1, !dbg !144
-  call void @llvm.dbg.value(metadata i32 %inc54, metadata !93, metadata !DIExpression()), !dbg !94
-  br label %for.cond24, !dbg !145, !llvm.loop !146
+  %inc54 = add nsw i32 %k.0, 1, !dbg !178
+  call void @llvm.dbg.value(metadata i32 %inc54, metadata !127, metadata !DIExpression()), !dbg !128
+  br label %for.cond24, !dbg !179, !llvm.loop !180
 
 for.end55:                                        ; preds = %for.cond24
-  br label %for.inc56, !dbg !149
+  br label %for.inc56, !dbg !183
 
 for.inc56:                                        ; preds = %for.end55
-  %inc57 = add nsw i32 %i.2, 1, !dbg !150
-  call void @llvm.dbg.value(metadata i32 %inc57, metadata !39, metadata !DIExpression()), !dbg !40
-  br label %for.cond21, !dbg !151, !llvm.loop !152
+  %inc57 = add nsw i32 %i.2, 1, !dbg !184
+  call void @llvm.dbg.value(metadata i32 %inc57, metadata !73, metadata !DIExpression()), !dbg !74
+  br label %for.cond21, !dbg !185, !llvm.loop !186
 
 for.end58:                                        ; preds = %for.cond21
-  br label %for.inc59, !dbg !155
+  br label %for.inc59, !dbg !189
 
 for.inc59:                                        ; preds = %for.end58
-  %add60 = add nsw i32 %kk.0, 8, !dbg !156
-  call void @llvm.dbg.value(metadata i32 %add60, metadata !77, metadata !DIExpression()), !dbg !78
-  br label %for.cond18, !dbg !157, !llvm.loop !158
+  %add60 = add nsw i32 %kk.0, 8, !dbg !190
+  call void @llvm.dbg.value(metadata i32 %add60, metadata !111, metadata !DIExpression()), !dbg !112
+  br label %for.cond18, !dbg !191, !llvm.loop !192
 
 for.end61:                                        ; preds = %for.cond18
-  br label %for.inc62, !dbg !161
+  br label %for.inc62, !dbg !195
 
 for.inc62:                                        ; preds = %for.end61
-  %add63 = add nsw i32 %jj.0, 8, !dbg !162
-  call void @llvm.dbg.value(metadata i32 %add63, metadata !69, metadata !DIExpression()), !dbg !70
-  br label %for.cond15, !dbg !163, !llvm.loop !164
+  %add63 = add nsw i32 %jj.0, 8, !dbg !196
+  call void @llvm.dbg.value(metadata i32 %add63, metadata !103, metadata !DIExpression()), !dbg !104
+  br label %for.cond15, !dbg !197, !llvm.loop !198
 
 for.end64:                                        ; preds = %for.cond15
-  br label %VITIS_LOOP_55_3, !dbg !165
+  %mul65 = mul nsw i32 %size, %size, !dbg !201
 
-VITIS_LOOP_55_3:                                  ; preds = %for.end64
-  call void @llvm.dbg.value(metadata i32 0, metadata !39, metadata !DIExpression()), !dbg !40
-  br label %for.cond65, !dbg !167
-
-for.cond65:                                       ; preds = %for.inc73, %VITIS_LOOP_55_3
-  %i.3 = phi i32 [ 0, %VITIS_LOOP_55_3 ], [ %inc74, %for.inc73 ]
-  call void @llvm.dbg.value(metadata i32 %i.3, metadata !39, metadata !DIExpression()), !dbg !40
-  %mul66 = mul nsw i32 %size, %size, !dbg !169
-  %cmp67 = icmp slt i32 %i.3, %mul66, !dbg !171
-  br i1 %cmp67, label %for.body68, label %for.end75, !dbg !172
-
-for.body68:                                       ; preds = %for.cond65
-  %arraypointer8 = getelementptr inbounds [4096 x i32], [4096 x i32]* %prod, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx8 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 5, !dbg !101550
-  %load.8 = load %struct.Cap, %struct.Cap* %cap.arrayidx8, align 4, !dbg !101550
-  store %struct.Cap %load.8, %struct.Cap* %agg.tmp5, align 4, !dbg !101550
-  %8 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer8, i32 %i.3, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp5), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %8, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %cap.arrayidx9 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 2, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %8, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.9 = load %struct.Cap, %struct.Cap* %cap.arrayidx9, align 4, !dbg !101539
-  store %struct.Cap %store.9, %struct.Cap* %agg.tmp2, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %xprod, i32 %i.3, i32 %8, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101539
-  br label %for.inc73, !dbg !174
-
-for.inc73:                                        ; preds = %for.body68
-  %inc74 = add nsw i32 %i.3, 1, !dbg !176
-  call void @llvm.dbg.value(metadata i32 %inc74, metadata !39, metadata !DIExpression()), !dbg !40
-  br label %for.cond65, !dbg !177, !llvm.loop !178
-
-for.end75:                                        ; preds = %for.cond65
-  %9 = bitcast [4096 x i32]* %prod to i8*, !dbg !181
-  call void @llvm.lifetime.end.p0i8(i64 16384, i8* %9) #7, !dbg !181
-  %10 = bitcast [4096 x i32]* %m2 to i8*, !dbg !181
-  call void @llvm.lifetime.end.p0i8(i64 16384, i8* %10) #7, !dbg !181
-  %11 = bitcast [4096 x i32]* %m1 to i8*, !dbg !181
-  call void @llvm.lifetime.end.p0i8(i64 16384, i8* %11) #7, !dbg !181
+  %decay.8 = getelementptr inbounds [4096 x i32], [4096 x i32]* %prod, i32 0, i32 0, !dbg !101539
+  %cap.arrayidx8 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 2, !dbg !101539
+  %store.8 = load %struct.Cap, %struct.Cap* %cap.arrayidx8, align 4, !dbg !101539
+  store %struct.Cap %store.8, %struct.Cap* %agg.tmp2, align 4, !dbg !101539
+  call void @_Z18cheri_stream_writejPiS_Pj3Cap(i32 %mul65, i32* %xprod, i32* %decay.8, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101539
+  %8 = bitcast [4096 x i32]* %prod to i8*, !dbg !204
+  call void @llvm.lifetime.end.p0i8(i64 16384, i8* %8) #8, !dbg !204
+  %9 = bitcast [4096 x i32]* %m2 to i8*, !dbg !204
+  call void @llvm.lifetime.end.p0i8(i64 16384, i8* %9) #8, !dbg !204
+  %10 = bitcast [4096 x i32]* %m1 to i8*, !dbg !204
+  call void @llvm.lifetime.end.p0i8(i64 16384, i8* %10) #8, !dbg !204
   %end.1 = load i32, i32* %flag_buf, align 4, !dbg !101540
   store i32 %end.1, i32* %flag, align 4, !dbg !101541
   %end.2 = bitcast [12 x i32]* %buffer to i8*, !dbg !101542
@@ -4692,20 +4730,14 @@ for.end75:                                        ; preds = %for.cond65
   call void @llvm.lifetime.end.p0i8(i64 72, i8* %end.3) #9003, !dbg !101542
   %end.4 = bitcast i32* %flag_buf to i8*, !dbg !101542
   call void @llvm.lifetime.end.p0i8(i64 4, i8* %end.4) #9003, !dbg !101542
-  ret void, !dbg !181
+  ret void, !dbg !204
 }
-
-; Function Attrs: nounwind readnone speculatable
 
 ; Function Attrs: inaccessiblememonly nounwind
 
-; Function Attrs: argmemonly nounwind
-
-; Function Attrs: argmemonly nounwind
-
 ; Function Attrs: nounwind readnone speculatable
 
-attributes #0 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.top.func"="hls_top" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #0 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="stream_write" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
 ; Function Attrs: argmemonly nounwind
 declare void @llvm.memset.p0i8.i64(i8* nocapture writeonly, i8, i64, i1) #100002
 
@@ -4722,7 +4754,6 @@ attributes #9000 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="384" "xlx
 attributes #9001 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }
 attributes #9002 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "xlx.source"="user" }
 attributes #9003 = { nounwind }
-
 attributes #100000 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="decode" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #100001 = { nounwind readnone speculatable }
 attributes #100002 = { argmemonly nounwind }
@@ -4740,15 +4771,16 @@ attributes #100013 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-m
 attributes #100014 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="checkAccess" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #100015 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="cheri_load" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #100016 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="cheri_store" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #100017 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="hls_top" "fpga.top.func"="hls_top" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #100018 = { inaccessiblememonly nounwind }
-attributes #100019 = { nounwind }
-attributes #100020 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="320" "xlx.source"="user" }
-attributes #100021 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="256" "xlx.source"="user" }
-attributes #100022 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32" "xlx.source"="user" }
-attributes #100023 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }
-attributes #100024 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="384" "xlx.source"="user" }
-attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "xlx.source"="user" }
+attributes #100017 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="cheri_stream_write" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #100018 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="hls_top" "fpga.top.func"="hls_top" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #100019 = { inaccessiblememonly nounwind }
+attributes #100020 = { nounwind }
+attributes #100021 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32000" "xlx.source"="user" }
+attributes #100022 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="256" "xlx.source"="user" }
+attributes #100023 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32" "xlx.source"="user" }
+attributes #100024 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }
+attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="384" "xlx.source"="user" }
+attributes #100026 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "xlx.source"="user" }
 
 !llvm.dbg.cu = !{!100000}
 !llvm.ident = !{!100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331}
@@ -5089,7 +5121,7 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100332 = !{i32 2, !"Dwarf Version", i32 4}
 !100333 = !{i32 2, !"Debug Info Version", i32 3}
 !100334 = !{i32 1, !"wchar_size", i32 4}
-!100335 = distinct !DISubprogram(name: "decode", linkageName: "_Z6decode7ap_uintILi32EES0_S0_S0_", scope: !100005, file: !100005, line: 25, type: !100336, isLocal: false, isDefinition: true, scopeLine: 26, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!100335 = distinct !DISubprogram(name: "decode", linkageName: "_Z6decode7ap_uintILi32EES0_S0_S0_", scope: !100005, file: !100005, line: 18, type: !100336, isLocal: false, isDefinition: true, scopeLine: 19, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !100336 = !DISubroutineType(types: !100337)
 !100337 = !{!100338, !100345, !100345, !100345, !100345}
 !100338 = !DIDerivedType(tag: DW_TAG_typedef, name: "Cap", file: !100005, line: 16, baseType: !100339)
@@ -5126,17 +5158,17 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100369 = !{!100074}
 !100370 = !{!100371}
 !100371 = !{!"fpga.inline", !"user", !100372}
-!100372 = !DILocation(line: 27, column: 9, scope: !100335)
-!100373 = !DILocalVariable(name: "buffer_0", arg: 1, scope: !100335, file: !100005, line: 25, type: !100345)
-!100374 = !DILocation(line: 25, column: 24, scope: !100335)
-!100375 = !DILocalVariable(name: "buffer_1", arg: 2, scope: !100335, file: !100005, line: 25, type: !100345)
-!100376 = !DILocation(line: 25, column: 46, scope: !100335)
-!100377 = !DILocalVariable(name: "buffer_2", arg: 3, scope: !100335, file: !100005, line: 25, type: !100345)
-!100378 = !DILocation(line: 25, column: 68, scope: !100335)
-!100379 = !DILocalVariable(name: "buffer_3", arg: 4, scope: !100335, file: !100005, line: 26, type: !100345)
-!100380 = !DILocation(line: 26, column: 24, scope: !100335)
-!100381 = !DILocation(line: 29, column: 2, scope: !100335)
-!100382 = !DILocalVariable(name: "cap", scope: !100335, file: !100005, line: 29, type: !100383)
+!100372 = !DILocation(line: 20, column: 9, scope: !100335)
+!100373 = !DILocalVariable(name: "buffer_0", arg: 1, scope: !100335, file: !100005, line: 18, type: !100345)
+!100374 = !DILocation(line: 18, column: 24, scope: !100335)
+!100375 = !DILocalVariable(name: "buffer_1", arg: 2, scope: !100335, file: !100005, line: 18, type: !100345)
+!100376 = !DILocation(line: 18, column: 46, scope: !100335)
+!100377 = !DILocalVariable(name: "buffer_2", arg: 3, scope: !100335, file: !100005, line: 18, type: !100345)
+!100378 = !DILocation(line: 18, column: 68, scope: !100335)
+!100379 = !DILocalVariable(name: "buffer_3", arg: 4, scope: !100335, file: !100005, line: 19, type: !100345)
+!100380 = !DILocation(line: 19, column: 24, scope: !100335)
+!100381 = !DILocation(line: 22, column: 2, scope: !100335)
+!100382 = !DILocalVariable(name: "cap", scope: !100335, file: !100005, line: 22, type: !100383)
 !100383 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<64>", file: !100346, line: 181, size: 64, flags: DIFlagTypePassByValue, elements: !100384, templateParams: !100402, identifier: "_ZTS7ap_uintILi64EE")
 !100384 = !{!100385, !100386, !100390, !100393, !100396}
 !100385 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100383, baseType: !100239)
@@ -5157,42 +5189,42 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100400 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100401, size: 64)
 !100401 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100383)
 !100402 = !{!100045}
-!100403 = !DILocation(line: 29, column: 14, scope: !100335)
-!100404 = !DILocation(line: 29, column: 20, scope: !100335)
-!100405 = !DILocation(line: 29, column: 21, scope: !100335)
-!100406 = !DILocation(line: 29, column: 31, scope: !100335)
-!100407 = !DILocation(line: 29, column: 29, scope: !100335)
-!100408 = !DILocation(line: 30, column: 3, scope: !100335)
-!100409 = !DILocalVariable(name: "addr", scope: !100335, file: !100005, line: 30, type: !100383)
-!100410 = !DILocation(line: 30, column: 15, scope: !100335)
-!100411 = !DILocation(line: 30, column: 22, scope: !100335)
-!100412 = !DILocation(line: 30, column: 23, scope: !100335)
-!100413 = !DILocation(line: 30, column: 33, scope: !100335)
-!100414 = !DILocation(line: 30, column: 31, scope: !100335)
-!100415 = !DILocation(line: 32, column: 3, scope: !100335)
-!100416 = !DILocation(line: 32, column: 7, scope: !100335)
-!100417 = !DILocation(line: 33, column: 15, scope: !100335)
-!100418 = !DILocation(line: 33, column: 19, scope: !100335)
-!100419 = !DILocalVariable(name: "read", scope: !100335, file: !100005, line: 33, type: !100032)
-!100420 = !DILocation(line: 33, column: 8, scope: !100335)
-!100421 = !DILocation(line: 34, column: 16, scope: !100335)
-!100422 = !DILocation(line: 34, column: 20, scope: !100335)
-!100423 = !DILocalVariable(name: "write", scope: !100335, file: !100005, line: 34, type: !100032)
-!100424 = !DILocation(line: 34, column: 8, scope: !100335)
-!100425 = !DILocation(line: 37, column: 13, scope: !100335)
-!100426 = !DILocation(line: 37, column: 17, scope: !100335)
-!100427 = !DILocation(line: 37, column: 31, scope: !100335)
-!100428 = !DILocation(line: 37, column: 12, scope: !100335)
-!100429 = !DILocalVariable(name: "f", scope: !100335, file: !100005, line: 37, type: !100032)
-!100430 = !DILocation(line: 37, column: 8, scope: !100335)
-!100431 = !DILocation(line: 40, column: 8, scope: !100335)
-!100432 = !DILocation(line: 40, column: 12, scope: !100335)
-!100433 = !DILocation(line: 40, column: 26, scope: !100335)
-!100434 = !DILocation(line: 40, column: 7, scope: !100335)
-!100435 = !DILocalVariable(name: "I_E", scope: !100335, file: !100005, line: 39, type: !100032)
-!100436 = !DILocation(line: 39, column: 8, scope: !100335)
-!100437 = !DILocation(line: 41, column: 3, scope: !100335)
-!100438 = !DILocalVariable(name: "T_11_3", scope: !100335, file: !100005, line: 41, type: !100439)
+!100403 = !DILocation(line: 22, column: 14, scope: !100335)
+!100404 = !DILocation(line: 22, column: 20, scope: !100335)
+!100405 = !DILocation(line: 22, column: 21, scope: !100335)
+!100406 = !DILocation(line: 22, column: 31, scope: !100335)
+!100407 = !DILocation(line: 22, column: 29, scope: !100335)
+!100408 = !DILocation(line: 23, column: 3, scope: !100335)
+!100409 = !DILocalVariable(name: "addr", scope: !100335, file: !100005, line: 23, type: !100383)
+!100410 = !DILocation(line: 23, column: 15, scope: !100335)
+!100411 = !DILocation(line: 23, column: 22, scope: !100335)
+!100412 = !DILocation(line: 23, column: 23, scope: !100335)
+!100413 = !DILocation(line: 23, column: 33, scope: !100335)
+!100414 = !DILocation(line: 23, column: 31, scope: !100335)
+!100415 = !DILocation(line: 25, column: 3, scope: !100335)
+!100416 = !DILocation(line: 25, column: 7, scope: !100335)
+!100417 = !DILocation(line: 26, column: 15, scope: !100335)
+!100418 = !DILocation(line: 26, column: 19, scope: !100335)
+!100419 = !DILocalVariable(name: "read", scope: !100335, file: !100005, line: 26, type: !100032)
+!100420 = !DILocation(line: 26, column: 8, scope: !100335)
+!100421 = !DILocation(line: 27, column: 16, scope: !100335)
+!100422 = !DILocation(line: 27, column: 20, scope: !100335)
+!100423 = !DILocalVariable(name: "write", scope: !100335, file: !100005, line: 27, type: !100032)
+!100424 = !DILocation(line: 27, column: 8, scope: !100335)
+!100425 = !DILocation(line: 28, column: 13, scope: !100335)
+!100426 = !DILocation(line: 28, column: 17, scope: !100335)
+!100427 = !DILocation(line: 28, column: 31, scope: !100335)
+!100428 = !DILocation(line: 28, column: 12, scope: !100335)
+!100429 = !DILocalVariable(name: "f", scope: !100335, file: !100005, line: 28, type: !100032)
+!100430 = !DILocation(line: 28, column: 8, scope: !100335)
+!100431 = !DILocation(line: 30, column: 8, scope: !100335)
+!100432 = !DILocation(line: 30, column: 12, scope: !100335)
+!100433 = !DILocation(line: 30, column: 26, scope: !100335)
+!100434 = !DILocation(line: 30, column: 7, scope: !100335)
+!100435 = !DILocalVariable(name: "I_E", scope: !100335, file: !100005, line: 29, type: !100032)
+!100436 = !DILocation(line: 29, column: 8, scope: !100335)
+!100437 = !DILocation(line: 31, column: 3, scope: !100335)
+!100438 = !DILocalVariable(name: "T_11_3", scope: !100335, file: !100005, line: 31, type: !100439)
 !100439 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<9>", file: !100346, line: 181, size: 16, flags: DIFlagTypePassByValue, elements: !100440, templateParams: !100458, identifier: "_ZTS7ap_uintILi9EE")
 !100440 = !{!100441, !100442, !100446, !100449, !100452}
 !100441 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100439, baseType: !100075)
@@ -5213,11 +5245,11 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100456 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100457, size: 64)
 !100457 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100439)
 !100458 = !{!100102}
-!100459 = !DILocation(line: 41, column: 14, scope: !100335)
-!100460 = !DILocation(line: 42, column: 7, scope: !100335)
-!100461 = !DILocation(line: 42, column: 11, scope: !100335)
-!100462 = !DILocation(line: 43, column: 3, scope: !100335)
-!100463 = !DILocalVariable(name: "T_E", scope: !100335, file: !100005, line: 43, type: !100464)
+!100459 = !DILocation(line: 31, column: 14, scope: !100335)
+!100460 = !DILocation(line: 32, column: 7, scope: !100335)
+!100461 = !DILocation(line: 32, column: 11, scope: !100335)
+!100462 = !DILocation(line: 33, column: 3, scope: !100335)
+!100463 = !DILocalVariable(name: "T_E", scope: !100335, file: !100005, line: 33, type: !100464)
 !100464 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<3>", file: !100346, line: 181, size: 8, flags: DIFlagTypePassByValue, elements: !100465, templateParams: !100510, identifier: "_ZTS7ap_uintILi3EE")
 !100465 = !{!100466, !100494, !100498, !100501, !100504}
 !100466 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100464, baseType: !100467)
@@ -5265,11 +5297,11 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100508 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100509, size: 64)
 !100509 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100464)
 !100510 = !{!100493}
-!100511 = !DILocation(line: 43, column: 14, scope: !100335)
-!100512 = !DILocation(line: 44, column: 7, scope: !100335)
-!100513 = !DILocation(line: 44, column: 11, scope: !100335)
-!100514 = !DILocation(line: 45, column: 3, scope: !100335)
-!100515 = !DILocalVariable(name: "B_13_3", scope: !100335, file: !100005, line: 45, type: !100516)
+!100511 = !DILocation(line: 33, column: 14, scope: !100335)
+!100512 = !DILocation(line: 34, column: 7, scope: !100335)
+!100513 = !DILocation(line: 34, column: 11, scope: !100335)
+!100514 = !DILocation(line: 35, column: 3, scope: !100335)
+!100515 = !DILocalVariable(name: "B_13_3", scope: !100335, file: !100005, line: 35, type: !100516)
 !100516 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<11>", file: !100346, line: 181, size: 16, flags: DIFlagTypePassByValue, elements: !100517, templateParams: !100535, identifier: "_ZTS7ap_uintILi11EE")
 !100517 = !{!100518, !100519, !100523, !100526, !100529}
 !100518 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100516, baseType: !100103)
@@ -5290,16 +5322,16 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100533 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100534, size: 64)
 !100534 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100516)
 !100535 = !{!100129}
-!100536 = !DILocation(line: 45, column: 15, scope: !100335)
-!100537 = !DILocation(line: 45, column: 24, scope: !100335)
-!100538 = !DILocation(line: 45, column: 28, scope: !100335)
-!100539 = !DILocation(line: 47, column: 3, scope: !100335)
-!100540 = !DILocalVariable(name: "B_E", scope: !100335, file: !100005, line: 47, type: !100464)
-!100541 = !DILocation(line: 47, column: 14, scope: !100335)
-!100542 = !DILocation(line: 47, column: 20, scope: !100335)
-!100543 = !DILocation(line: 47, column: 24, scope: !100335)
-!100544 = !DILocation(line: 48, column: 3, scope: !100335)
-!100545 = !DILocalVariable(name: "E", scope: !100335, file: !100005, line: 48, type: !100546)
+!100536 = !DILocation(line: 35, column: 15, scope: !100335)
+!100537 = !DILocation(line: 35, column: 24, scope: !100335)
+!100538 = !DILocation(line: 35, column: 28, scope: !100335)
+!100539 = !DILocation(line: 37, column: 3, scope: !100335)
+!100540 = !DILocalVariable(name: "B_E", scope: !100335, file: !100005, line: 37, type: !100464)
+!100541 = !DILocation(line: 37, column: 14, scope: !100335)
+!100542 = !DILocation(line: 37, column: 20, scope: !100335)
+!100543 = !DILocation(line: 37, column: 24, scope: !100335)
+!100544 = !DILocation(line: 38, column: 3, scope: !100335)
+!100545 = !DILocalVariable(name: "E", scope: !100335, file: !100005, line: 38, type: !100546)
 !100546 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<6>", file: !100346, line: 181, size: 8, flags: DIFlagTypePassByValue, elements: !100547, templateParams: !100565, identifier: "_ZTS7ap_uintILi6EE")
 !100547 = !{!100548, !100549, !100553, !100556, !100559}
 !100548 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100546, baseType: !100299)
@@ -5320,10 +5352,10 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100563 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100564, size: 64)
 !100564 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100546)
 !100565 = !{!100325}
-!100566 = !DILocation(line: 48, column: 14, scope: !100335)
-!100567 = !DILocation(line: 48, column: 18, scope: !100335)
-!100568 = !DILocation(line: 49, column: 3, scope: !100335)
-!100569 = !DILocalVariable(name: "T_13_0", scope: !100335, file: !100005, line: 49, type: !100570)
+!100566 = !DILocation(line: 38, column: 14, scope: !100335)
+!100567 = !DILocation(line: 38, column: 18, scope: !100335)
+!100568 = !DILocation(line: 39, column: 3, scope: !100335)
+!100569 = !DILocalVariable(name: "T_13_0", scope: !100335, file: !100005, line: 39, type: !100570)
 !100570 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<14>", file: !100346, line: 181, size: 16, flags: DIFlagTypePassByValue, elements: !100571, templateParams: !100616, identifier: "_ZTS7ap_uintILi14EE")
 !100571 = !{!100572, !100600, !100604, !100607, !100610}
 !100572 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100570, baseType: !100573)
@@ -5371,34 +5403,34 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100614 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100615, size: 64)
 !100615 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100570)
 !100616 = !{!100599}
-!100617 = !DILocation(line: 49, column: 15, scope: !100335)
-!100618 = !DILocation(line: 49, column: 24, scope: !100335)
-!100619 = !DILocation(line: 50, column: 3, scope: !100335)
-!100620 = !DILocalVariable(name: "B_13_0", scope: !100335, file: !100005, line: 50, type: !100570)
-!100621 = !DILocation(line: 50, column: 15, scope: !100335)
-!100622 = !DILocation(line: 50, column: 24, scope: !100335)
-!100623 = !DILocalVariable(name: "L_carry_out", scope: !100335, file: !100005, line: 51, type: !100032)
-!100624 = !DILocation(line: 51, column: 8, scope: !100335)
-!100625 = !DILocation(line: 53, column: 7, scope: !100335)
-!100626 = !DILocation(line: 54, column: 9, scope: !100627)
-!100627 = distinct !DILexicalBlock(scope: !100628, file: !100005, line: 53, column: 13)
-!100628 = distinct !DILexicalBlock(scope: !100335, file: !100005, line: 53, column: 7)
-!100629 = !DILocation(line: 54, column: 7, scope: !100627)
-!100630 = !DILocation(line: 54, column: 5, scope: !100627)
-!100631 = !DILocation(line: 55, column: 14, scope: !100627)
-!100632 = !DILocation(line: 55, column: 15, scope: !100627)
-!100633 = !DILocation(line: 55, column: 23, scope: !100627)
-!100634 = !DILocation(line: 55, column: 21, scope: !100627)
-!100635 = !DILocation(line: 55, column: 12, scope: !100627)
-!100636 = !DILocation(line: 55, column: 5, scope: !100627)
-!100637 = !DILocation(line: 56, column: 14, scope: !100627)
-!100638 = !DILocation(line: 56, column: 15, scope: !100627)
-!100639 = !DILocation(line: 56, column: 23, scope: !100627)
-!100640 = !DILocation(line: 56, column: 21, scope: !100627)
-!100641 = !DILocation(line: 56, column: 12, scope: !100627)
-!100642 = !DILocation(line: 56, column: 5, scope: !100627)
-!100643 = !DILocation(line: 57, column: 5, scope: !100627)
-!100644 = !DILocalVariable(name: "T_11_0", scope: !100627, file: !100005, line: 57, type: !100645)
+!100617 = !DILocation(line: 39, column: 15, scope: !100335)
+!100618 = !DILocation(line: 39, column: 24, scope: !100335)
+!100619 = !DILocation(line: 40, column: 3, scope: !100335)
+!100620 = !DILocalVariable(name: "B_13_0", scope: !100335, file: !100005, line: 40, type: !100570)
+!100621 = !DILocation(line: 40, column: 15, scope: !100335)
+!100622 = !DILocation(line: 40, column: 24, scope: !100335)
+!100623 = !DILocalVariable(name: "L_carry_out", scope: !100335, file: !100005, line: 41, type: !100032)
+!100624 = !DILocation(line: 41, column: 8, scope: !100335)
+!100625 = !DILocation(line: 43, column: 7, scope: !100335)
+!100626 = !DILocation(line: 44, column: 9, scope: !100627)
+!100627 = distinct !DILexicalBlock(scope: !100628, file: !100005, line: 43, column: 13)
+!100628 = distinct !DILexicalBlock(scope: !100335, file: !100005, line: 43, column: 7)
+!100629 = !DILocation(line: 44, column: 7, scope: !100627)
+!100630 = !DILocation(line: 44, column: 5, scope: !100627)
+!100631 = !DILocation(line: 45, column: 14, scope: !100627)
+!100632 = !DILocation(line: 45, column: 15, scope: !100627)
+!100633 = !DILocation(line: 45, column: 23, scope: !100627)
+!100634 = !DILocation(line: 45, column: 21, scope: !100627)
+!100635 = !DILocation(line: 45, column: 12, scope: !100627)
+!100636 = !DILocation(line: 45, column: 5, scope: !100627)
+!100637 = !DILocation(line: 46, column: 14, scope: !100627)
+!100638 = !DILocation(line: 46, column: 15, scope: !100627)
+!100639 = !DILocation(line: 46, column: 23, scope: !100627)
+!100640 = !DILocation(line: 46, column: 21, scope: !100627)
+!100641 = !DILocation(line: 46, column: 12, scope: !100627)
+!100642 = !DILocation(line: 46, column: 5, scope: !100627)
+!100643 = !DILocation(line: 47, column: 5, scope: !100627)
+!100644 = !DILocalVariable(name: "T_11_0", scope: !100627, file: !100005, line: 47, type: !100645)
 !100645 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<12>", file: !100346, line: 181, size: 16, flags: DIFlagTypePassByValue, elements: !100646, templateParams: !100691, identifier: "_ZTS7ap_uintILi12EE")
 !100646 = !{!100647, !100675, !100679, !100682, !100685}
 !100647 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100645, baseType: !100648)
@@ -5446,52 +5478,52 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100689 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100690, size: 64)
 !100690 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100645)
 !100691 = !{!100674}
-!100692 = !DILocation(line: 57, column: 17, scope: !100627)
-!100693 = !DILocation(line: 57, column: 26, scope: !100627)
-!100694 = !DILocation(line: 57, column: 33, scope: !100627)
-!100695 = !DILocation(line: 58, column: 5, scope: !100627)
-!100696 = !DILocalVariable(name: "B_11_0", scope: !100627, file: !100005, line: 58, type: !100645)
-!100697 = !DILocation(line: 58, column: 17, scope: !100627)
-!100698 = !DILocation(line: 58, column: 26, scope: !100627)
-!100699 = !DILocation(line: 58, column: 33, scope: !100627)
-!100700 = !DILocation(line: 59, column: 20, scope: !100627)
-!100701 = !DILocation(line: 59, column: 29, scope: !100627)
-!100702 = !DILocation(line: 59, column: 27, scope: !100627)
-!100703 = !DILocation(line: 60, column: 3, scope: !100628)
-!100704 = !DILocation(line: 60, column: 3, scope: !100627)
-!100705 = !DILocation(line: 61, column: 9, scope: !100706)
-!100706 = distinct !DILexicalBlock(scope: !100628, file: !100005, line: 60, column: 10)
-!100707 = !DILocation(line: 61, column: 10, scope: !100706)
-!100708 = !DILocation(line: 61, column: 15, scope: !100706)
-!100709 = !DILocation(line: 61, column: 13, scope: !100706)
-!100710 = !DILocation(line: 61, column: 7, scope: !100706)
-!100711 = !DILocation(line: 61, column: 5, scope: !100706)
-!100712 = !DILocation(line: 62, column: 14, scope: !100706)
-!100713 = !DILocation(line: 62, column: 15, scope: !100706)
-!100714 = !DILocation(line: 62, column: 22, scope: !100706)
-!100715 = !DILocation(line: 62, column: 12, scope: !100706)
-!100716 = !DILocation(line: 62, column: 5, scope: !100706)
-!100717 = !DILocation(line: 63, column: 14, scope: !100706)
-!100718 = !DILocation(line: 63, column: 15, scope: !100706)
-!100719 = !DILocation(line: 63, column: 22, scope: !100706)
-!100720 = !DILocation(line: 63, column: 12, scope: !100706)
-!100721 = !DILocation(line: 63, column: 5, scope: !100706)
-!100722 = !DILocation(line: 64, column: 5, scope: !100706)
-!100723 = !DILocalVariable(name: "T_11_3_only", scope: !100706, file: !100005, line: 64, type: !100645)
-!100724 = !DILocation(line: 64, column: 17, scope: !100706)
-!100725 = !DILocation(line: 64, column: 31, scope: !100706)
-!100726 = !DILocation(line: 64, column: 38, scope: !100706)
-!100727 = !DILocation(line: 65, column: 5, scope: !100706)
-!100728 = !DILocalVariable(name: "B_11_3_only", scope: !100706, file: !100005, line: 65, type: !100645)
-!100729 = !DILocation(line: 65, column: 17, scope: !100706)
-!100730 = !DILocation(line: 65, column: 31, scope: !100706)
-!100731 = !DILocation(line: 65, column: 38, scope: !100706)
-!100732 = !DILocation(line: 66, column: 20, scope: !100706)
-!100733 = !DILocation(line: 66, column: 34, scope: !100706)
-!100734 = !DILocation(line: 66, column: 32, scope: !100706)
-!100735 = !DILocation(line: 67, column: 3, scope: !100628)
-!100736 = !DILocation(line: 68, column: 3, scope: !100335)
-!100737 = !DILocalVariable(name: "B_13_12", scope: !100335, file: !100005, line: 68, type: !100738)
+!100692 = !DILocation(line: 47, column: 17, scope: !100627)
+!100693 = !DILocation(line: 47, column: 26, scope: !100627)
+!100694 = !DILocation(line: 47, column: 33, scope: !100627)
+!100695 = !DILocation(line: 48, column: 5, scope: !100627)
+!100696 = !DILocalVariable(name: "B_11_0", scope: !100627, file: !100005, line: 48, type: !100645)
+!100697 = !DILocation(line: 48, column: 17, scope: !100627)
+!100698 = !DILocation(line: 48, column: 26, scope: !100627)
+!100699 = !DILocation(line: 48, column: 33, scope: !100627)
+!100700 = !DILocation(line: 49, column: 20, scope: !100627)
+!100701 = !DILocation(line: 49, column: 29, scope: !100627)
+!100702 = !DILocation(line: 49, column: 27, scope: !100627)
+!100703 = !DILocation(line: 50, column: 3, scope: !100628)
+!100704 = !DILocation(line: 50, column: 3, scope: !100627)
+!100705 = !DILocation(line: 51, column: 9, scope: !100706)
+!100706 = distinct !DILexicalBlock(scope: !100628, file: !100005, line: 50, column: 10)
+!100707 = !DILocation(line: 51, column: 10, scope: !100706)
+!100708 = !DILocation(line: 51, column: 15, scope: !100706)
+!100709 = !DILocation(line: 51, column: 13, scope: !100706)
+!100710 = !DILocation(line: 51, column: 7, scope: !100706)
+!100711 = !DILocation(line: 51, column: 5, scope: !100706)
+!100712 = !DILocation(line: 52, column: 14, scope: !100706)
+!100713 = !DILocation(line: 52, column: 15, scope: !100706)
+!100714 = !DILocation(line: 52, column: 22, scope: !100706)
+!100715 = !DILocation(line: 52, column: 12, scope: !100706)
+!100716 = !DILocation(line: 52, column: 5, scope: !100706)
+!100717 = !DILocation(line: 53, column: 14, scope: !100706)
+!100718 = !DILocation(line: 53, column: 15, scope: !100706)
+!100719 = !DILocation(line: 53, column: 22, scope: !100706)
+!100720 = !DILocation(line: 53, column: 12, scope: !100706)
+!100721 = !DILocation(line: 53, column: 5, scope: !100706)
+!100722 = !DILocation(line: 54, column: 5, scope: !100706)
+!100723 = !DILocalVariable(name: "T_11_3_only", scope: !100706, file: !100005, line: 54, type: !100645)
+!100724 = !DILocation(line: 54, column: 17, scope: !100706)
+!100725 = !DILocation(line: 54, column: 31, scope: !100706)
+!100726 = !DILocation(line: 54, column: 38, scope: !100706)
+!100727 = !DILocation(line: 55, column: 5, scope: !100706)
+!100728 = !DILocalVariable(name: "B_11_3_only", scope: !100706, file: !100005, line: 55, type: !100645)
+!100729 = !DILocation(line: 55, column: 17, scope: !100706)
+!100730 = !DILocation(line: 55, column: 31, scope: !100706)
+!100731 = !DILocation(line: 55, column: 38, scope: !100706)
+!100732 = !DILocation(line: 56, column: 20, scope: !100706)
+!100733 = !DILocation(line: 56, column: 34, scope: !100706)
+!100734 = !DILocation(line: 56, column: 32, scope: !100706)
+!100735 = !DILocation(line: 57, column: 3, scope: !100628)
+!100736 = !DILocation(line: 58, column: 3, scope: !100335)
+!100737 = !DILocalVariable(name: "B_13_12", scope: !100335, file: !100005, line: 58, type: !100738)
 !100738 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<2>", file: !100346, line: 181, size: 8, flags: DIFlagTypePassByValue, elements: !100739, templateParams: !100784, identifier: "_ZTS7ap_uintILi2EE")
 !100739 = !{!100740, !100768, !100772, !100775, !100778}
 !100740 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100738, baseType: !100741)
@@ -5539,959 +5571,1040 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100782 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100783, size: 64)
 !100783 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100738)
 !100784 = !{!100767}
-!100785 = !DILocation(line: 68, column: 14, scope: !100335)
-!100786 = !DILocation(line: 68, column: 24, scope: !100335)
-!100787 = !DILocation(line: 68, column: 31, scope: !100335)
-!100788 = !DILocation(line: 69, column: 3, scope: !100335)
-!100789 = !DILocalVariable(name: "T_13_12", scope: !100335, file: !100005, line: 69, type: !100738)
-!100790 = !DILocation(line: 69, column: 14, scope: !100335)
-!100791 = !DILocation(line: 69, column: 24, scope: !100335)
-!100792 = !DILocation(line: 69, column: 35, scope: !100335)
-!100793 = !DILocation(line: 69, column: 32, scope: !100335)
-!100794 = !DILocation(line: 69, column: 59, scope: !100335)
-!100795 = !DILocation(line: 69, column: 56, scope: !100335)
-!100796 = !DILocation(line: 70, column: 3, scope: !100335)
-!100797 = !DILocation(line: 70, column: 11, scope: !100335)
-!100798 = !DILocation(line: 72, column: 3, scope: !100335)
-!100799 = !DILocation(line: 72, column: 10, scope: !100335)
-!100800 = !DILocation(line: 73, column: 12, scope: !100335)
-!100801 = !DILocation(line: 73, column: 13, scope: !100335)
-!100802 = !DILocation(line: 73, column: 22, scope: !100335)
-!100803 = !DILocation(line: 73, column: 29, scope: !100335)
-!100804 = !DILocation(line: 73, column: 20, scope: !100335)
-!100805 = !DILocation(line: 73, column: 10, scope: !100335)
-!100806 = !DILocation(line: 73, column: 3, scope: !100335)
-!100807 = !DILocation(line: 75, column: 3, scope: !100335)
-!100808 = !DILocalVariable(name: "A3", scope: !100335, file: !100005, line: 75, type: !100464)
-!100809 = !DILocation(line: 75, column: 14, scope: !100335)
-!100810 = !DILocation(line: 75, column: 19, scope: !100335)
-!100811 = !DILocation(line: 75, column: 20, scope: !100335)
-!100812 = !DILocation(line: 75, column: 21, scope: !100335)
-!100813 = !DILocation(line: 75, column: 29, scope: !100335)
-!100814 = !DILocation(line: 75, column: 30, scope: !100335)
-!100815 = !DILocation(line: 75, column: 32, scope: !100335)
-!100816 = !DILocation(line: 75, column: 26, scope: !100335)
-!100817 = !DILocation(line: 75, column: 39, scope: !100335)
-!100818 = !DILocation(line: 76, column: 3, scope: !100335)
-!100819 = !DILocalVariable(name: "T3", scope: !100335, file: !100005, line: 76, type: !100464)
-!100820 = !DILocation(line: 76, column: 14, scope: !100335)
-!100821 = !DILocation(line: 76, column: 19, scope: !100335)
-!100822 = !DILocation(line: 76, column: 26, scope: !100335)
-!100823 = !DILocation(line: 77, column: 3, scope: !100335)
-!100824 = !DILocalVariable(name: "B3", scope: !100335, file: !100005, line: 77, type: !100464)
-!100825 = !DILocation(line: 77, column: 14, scope: !100335)
-!100826 = !DILocation(line: 77, column: 19, scope: !100335)
-!100827 = !DILocation(line: 77, column: 26, scope: !100335)
-!100828 = !DILocation(line: 78, column: 3, scope: !100335)
-!100829 = !DILocalVariable(name: "R", scope: !100335, file: !100005, line: 78, type: !100464)
-!100830 = !DILocation(line: 78, column: 14, scope: !100335)
-!100831 = !DILocation(line: 78, column: 18, scope: !100335)
-!100832 = !DILocation(line: 78, column: 21, scope: !100335)
-!100833 = !DILocation(line: 80, column: 3, scope: !100335)
-!100834 = !DILocalVariable(name: "c_t", scope: !100335, file: !100005, line: 80, type: !100835)
-!100835 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_int<2>", file: !100346, line: 18, size: 8, flags: DIFlagTypePassByValue, elements: !100836, templateParams: !100784, identifier: "_ZTS6ap_intILi2EE")
-!100836 = !{!100837, !100863, !100867, !100870, !100873}
-!100837 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100835, baseType: !100838)
-!100838 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_int_base<2, true>", file: !100013, line: 108, size: 8, flags: DIFlagTypePassByValue, elements: !100839, templateParams: !100862, identifier: "_ZTS11ap_int_baseILi2ELb1EE")
-!100839 = !{!100840, !100853, !100854, !100855}
-!100840 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100838, baseType: !100841)
-!100841 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ssdm_int<2, true>", file: !100017, line: 511, size: 8, flags: DIFlagTypePassByValue, elements: !100842, templateParams: !100852, identifier: "_ZTS8ssdm_intILi2ELb1EE")
-!100842 = !{!100843, !100845, !100849}
-!100843 = !DIDerivedType(tag: DW_TAG_member, name: "V", scope: !100841, file: !100017, line: 513, baseType: !100844, size: 2, align: 8)
-!100844 = !DIBasicType(name: "int2", size: 2, encoding: DW_ATE_signed)
-!100845 = !DISubprogram(name: "ssdm_int", scope: !100841, file: !100017, line: 514, type: !100846, isLocal: false, isDefinition: false, scopeLine: 514, flags: DIFlagPrototyped, isOptimized: false)
+!100785 = !DILocation(line: 58, column: 14, scope: !100335)
+!100786 = !DILocation(line: 58, column: 24, scope: !100335)
+!100787 = !DILocation(line: 58, column: 31, scope: !100335)
+!100788 = !DILocation(line: 59, column: 3, scope: !100335)
+!100789 = !DILocalVariable(name: "T_13_12", scope: !100335, file: !100005, line: 59, type: !100738)
+!100790 = !DILocation(line: 59, column: 14, scope: !100335)
+!100791 = !DILocation(line: 59, column: 24, scope: !100335)
+!100792 = !DILocation(line: 59, column: 35, scope: !100335)
+!100793 = !DILocation(line: 59, column: 32, scope: !100335)
+!100794 = !DILocation(line: 59, column: 59, scope: !100335)
+!100795 = !DILocation(line: 59, column: 56, scope: !100335)
+!100796 = !DILocation(line: 61, column: 12, scope: !100335)
+!100797 = !DILocation(line: 61, column: 13, scope: !100335)
+!100798 = !DILocation(line: 61, column: 22, scope: !100335)
+!100799 = !DILocation(line: 61, column: 29, scope: !100335)
+!100800 = !DILocation(line: 61, column: 20, scope: !100335)
+!100801 = !DILocation(line: 61, column: 10, scope: !100335)
+!100802 = !DILocation(line: 61, column: 3, scope: !100335)
+!100803 = !DILocation(line: 63, column: 3, scope: !100335)
+!100804 = !DILocalVariable(name: "A3", scope: !100335, file: !100005, line: 63, type: !100464)
+!100805 = !DILocation(line: 63, column: 14, scope: !100335)
+!100806 = !DILocation(line: 63, column: 19, scope: !100335)
+!100807 = !DILocation(line: 63, column: 20, scope: !100335)
+!100808 = !DILocation(line: 63, column: 21, scope: !100335)
+!100809 = !DILocation(line: 63, column: 29, scope: !100335)
+!100810 = !DILocation(line: 63, column: 30, scope: !100335)
+!100811 = !DILocation(line: 63, column: 32, scope: !100335)
+!100812 = !DILocation(line: 63, column: 26, scope: !100335)
+!100813 = !DILocation(line: 63, column: 39, scope: !100335)
+!100814 = !DILocation(line: 64, column: 3, scope: !100335)
+!100815 = !DILocalVariable(name: "T3", scope: !100335, file: !100005, line: 64, type: !100464)
+!100816 = !DILocation(line: 64, column: 14, scope: !100335)
+!100817 = !DILocation(line: 64, column: 19, scope: !100335)
+!100818 = !DILocation(line: 64, column: 26, scope: !100335)
+!100819 = !DILocation(line: 65, column: 3, scope: !100335)
+!100820 = !DILocalVariable(name: "B3", scope: !100335, file: !100005, line: 65, type: !100464)
+!100821 = !DILocation(line: 65, column: 14, scope: !100335)
+!100822 = !DILocation(line: 65, column: 19, scope: !100335)
+!100823 = !DILocation(line: 65, column: 26, scope: !100335)
+!100824 = !DILocation(line: 66, column: 3, scope: !100335)
+!100825 = !DILocalVariable(name: "R", scope: !100335, file: !100005, line: 66, type: !100464)
+!100826 = !DILocation(line: 66, column: 14, scope: !100335)
+!100827 = !DILocation(line: 66, column: 18, scope: !100335)
+!100828 = !DILocation(line: 66, column: 21, scope: !100335)
+!100829 = !DILocation(line: 68, column: 3, scope: !100335)
+!100830 = !DILocalVariable(name: "c_t", scope: !100335, file: !100005, line: 68, type: !100831)
+!100831 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_int<2>", file: !100346, line: 18, size: 8, flags: DIFlagTypePassByValue, elements: !100832, templateParams: !100784, identifier: "_ZTS6ap_intILi2EE")
+!100832 = !{!100833, !100859, !100863, !100866, !100869}
+!100833 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100831, baseType: !100834)
+!100834 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_int_base<2, true>", file: !100013, line: 108, size: 8, flags: DIFlagTypePassByValue, elements: !100835, templateParams: !100858, identifier: "_ZTS11ap_int_baseILi2ELb1EE")
+!100835 = !{!100836, !100849, !100850, !100851}
+!100836 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100834, baseType: !100837)
+!100837 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ssdm_int<2, true>", file: !100017, line: 511, size: 8, flags: DIFlagTypePassByValue, elements: !100838, templateParams: !100848, identifier: "_ZTS8ssdm_intILi2ELb1EE")
+!100838 = !{!100839, !100841, !100845}
+!100839 = !DIDerivedType(tag: DW_TAG_member, name: "V", scope: !100837, file: !100017, line: 513, baseType: !100840, size: 2, align: 8)
+!100840 = !DIBasicType(name: "int2", size: 2, encoding: DW_ATE_signed)
+!100841 = !DISubprogram(name: "ssdm_int", scope: !100837, file: !100017, line: 514, type: !100842, isLocal: false, isDefinition: false, scopeLine: 514, flags: DIFlagPrototyped, isOptimized: false)
+!100842 = !DISubroutineType(types: !100843)
+!100843 = !{null, !100844}
+!100844 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100837, size: 64, flags: DIFlagArtificial | DIFlagObjectPointer)
+!100845 = !DISubprogram(name: "ssdm_int", scope: !100837, file: !100017, line: 515, type: !100846, isLocal: false, isDefinition: false, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false)
 !100846 = !DISubroutineType(types: !100847)
-!100847 = !{null, !100848}
-!100848 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100841, size: 64, flags: DIFlagArtificial | DIFlagObjectPointer)
-!100849 = !DISubprogram(name: "ssdm_int", scope: !100841, file: !100017, line: 515, type: !100850, isLocal: false, isDefinition: false, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false)
-!100850 = !DISubroutineType(types: !100851)
-!100851 = !{null, !100848, !100844}
-!100852 = !{!100756, !100031}
-!100853 = !DIDerivedType(tag: DW_TAG_member, name: "width", scope: !100838, file: !100013, line: 130, baseType: !100034, flags: DIFlagStaticMember, extraData: i32 2)
-!100854 = !DIDerivedType(tag: DW_TAG_member, name: "sign_flag", scope: !100838, file: !100013, line: 131, baseType: !100036, flags: DIFlagStaticMember, extraData: i1 true)
-!100855 = !DISubprogram(name: "operator=", linkageName: "_ZN11ap_int_baseILi2ELb1EEaSERKS0_", scope: !100838, file: !100013, line: 467, type: !100856, isLocal: false, isDefinition: false, scopeLine: 467, flags: DIFlagPrototyped, isOptimized: false)
-!100856 = !DISubroutineType(types: !100857)
-!100857 = !{!100858, !100859, !100860}
-!100858 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100838, size: 64)
-!100859 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100838, size: 64, flags: DIFlagArtificial | DIFlagObjectPointer)
-!100860 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100861, size: 64)
-!100861 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100838)
-!100862 = !{!100767, !100031}
-!100863 = !DISubprogram(name: "ap_int", scope: !100835, file: !100346, line: 140, type: !100864, isLocal: false, isDefinition: false, scopeLine: 140, flags: DIFlagPrototyped, isOptimized: false)
+!100847 = !{null, !100844, !100840}
+!100848 = !{!100756, !100031}
+!100849 = !DIDerivedType(tag: DW_TAG_member, name: "width", scope: !100834, file: !100013, line: 130, baseType: !100034, flags: DIFlagStaticMember, extraData: i32 2)
+!100850 = !DIDerivedType(tag: DW_TAG_member, name: "sign_flag", scope: !100834, file: !100013, line: 131, baseType: !100036, flags: DIFlagStaticMember, extraData: i1 true)
+!100851 = !DISubprogram(name: "operator=", linkageName: "_ZN11ap_int_baseILi2ELb1EEaSERKS0_", scope: !100834, file: !100013, line: 467, type: !100852, isLocal: false, isDefinition: false, scopeLine: 467, flags: DIFlagPrototyped, isOptimized: false)
+!100852 = !DISubroutineType(types: !100853)
+!100853 = !{!100854, !100855, !100856}
+!100854 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100834, size: 64)
+!100855 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100834, size: 64, flags: DIFlagArtificial | DIFlagObjectPointer)
+!100856 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100857, size: 64)
+!100857 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100834)
+!100858 = !{!100767, !100031}
+!100859 = !DISubprogram(name: "ap_int", scope: !100831, file: !100346, line: 140, type: !100860, isLocal: false, isDefinition: false, scopeLine: 140, flags: DIFlagPrototyped, isOptimized: false)
+!100860 = !DISubroutineType(types: !100861)
+!100861 = !{null, !100862, !100353}
+!100862 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100831, size: 64, flags: DIFlagArtificial | DIFlagObjectPointer)
+!100863 = !DISubprogram(name: "ap_int", scope: !100831, file: !100346, line: 141, type: !100864, isLocal: false, isDefinition: false, scopeLine: 141, flags: DIFlagPrototyped, isOptimized: false)
 !100864 = !DISubroutineType(types: !100865)
-!100865 = !{null, !100866, !100353}
-!100866 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100835, size: 64, flags: DIFlagArtificial | DIFlagObjectPointer)
-!100867 = !DISubprogram(name: "ap_int", scope: !100835, file: !100346, line: 141, type: !100868, isLocal: false, isDefinition: false, scopeLine: 141, flags: DIFlagPrototyped, isOptimized: false)
-!100868 = !DISubroutineType(types: !100869)
-!100869 = !{null, !100866, !100357}
-!100870 = !DISubprogram(name: "ap_int", scope: !100835, file: !100346, line: 142, type: !100871, isLocal: false, isDefinition: false, scopeLine: 142, flags: DIFlagPrototyped, isOptimized: false)
-!100871 = !DISubroutineType(types: !100872)
-!100872 = !{null, !100866, !100361}
-!100873 = !DISubprogram(name: "operator=", linkageName: "_ZN6ap_intILi2EEaSERKS0_", scope: !100835, file: !100346, line: 152, type: !100874, isLocal: false, isDefinition: false, scopeLine: 152, flags: DIFlagPrototyped, isOptimized: false)
-!100874 = !DISubroutineType(types: !100875)
-!100875 = !{!100876, !100866, !100877}
-!100876 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100835, size: 64)
-!100877 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100878, size: 64)
-!100878 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100835)
-!100879 = !DILocation(line: 80, column: 13, scope: !100335)
-!100880 = !DILocation(line: 80, column: 19, scope: !100335)
-!100881 = !DILocation(line: 81, column: 3, scope: !100335)
-!100882 = !DILocalVariable(name: "c_b", scope: !100335, file: !100005, line: 81, type: !100835)
-!100883 = !DILocation(line: 81, column: 13, scope: !100335)
-!100884 = !DILocation(line: 81, column: 19, scope: !100335)
-!100885 = !DILocation(line: 83, column: 8, scope: !100886)
-!100886 = distinct !DILexicalBlock(scope: !100335, file: !100005, line: 83, column: 7)
-!100887 = !DILocation(line: 83, column: 13, scope: !100886)
-!100888 = !DILocation(line: 83, column: 11, scope: !100886)
-!100889 = !DILocation(line: 83, column: 16, scope: !100886)
-!100890 = !DILocation(line: 83, column: 21, scope: !100886)
-!100891 = !DILocation(line: 83, column: 26, scope: !100886)
-!100892 = !DILocation(line: 83, column: 24, scope: !100886)
-!100893 = !DILocation(line: 83, column: 7, scope: !100335)
-!100894 = !DILocation(line: 84, column: 11, scope: !100895)
-!100895 = distinct !DILexicalBlock(scope: !100886, file: !100005, line: 83, column: 30)
-!100896 = !DILocation(line: 84, column: 9, scope: !100895)
-!100897 = !DILocation(line: 84, column: 5, scope: !100895)
-!100898 = !DILocation(line: 85, column: 3, scope: !100895)
-!100899 = !DILocation(line: 85, column: 16, scope: !100900)
-!100900 = distinct !DILexicalBlock(scope: !100886, file: !100005, line: 85, column: 14)
-!100901 = !DILocation(line: 85, column: 21, scope: !100900)
-!100902 = !DILocation(line: 85, column: 19, scope: !100900)
-!100903 = !DILocation(line: 85, column: 24, scope: !100900)
-!100904 = !DILocation(line: 85, column: 28, scope: !100900)
-!100905 = !DILocation(line: 85, column: 33, scope: !100900)
-!100906 = !DILocation(line: 85, column: 31, scope: !100900)
-!100907 = !DILocation(line: 85, column: 14, scope: !100886)
-!100908 = !DILocation(line: 86, column: 11, scope: !100909)
-!100909 = distinct !DILexicalBlock(scope: !100900, file: !100005, line: 85, column: 37)
-!100910 = !DILocation(line: 86, column: 9, scope: !100909)
-!100911 = !DILocation(line: 86, column: 5, scope: !100909)
-!100912 = !DILocation(line: 87, column: 3, scope: !100909)
-!100913 = !DILocation(line: 88, column: 8, scope: !100914)
-!100914 = distinct !DILexicalBlock(scope: !100335, file: !100005, line: 88, column: 7)
-!100915 = !DILocation(line: 88, column: 13, scope: !100914)
-!100916 = !DILocation(line: 88, column: 11, scope: !100914)
-!100917 = !DILocation(line: 88, column: 16, scope: !100914)
-!100918 = !DILocation(line: 88, column: 21, scope: !100914)
-!100919 = !DILocation(line: 88, column: 26, scope: !100914)
-!100920 = !DILocation(line: 88, column: 24, scope: !100914)
-!100921 = !DILocation(line: 88, column: 7, scope: !100335)
-!100922 = !DILocation(line: 89, column: 11, scope: !100923)
-!100923 = distinct !DILexicalBlock(scope: !100914, file: !100005, line: 88, column: 30)
-!100924 = !DILocation(line: 89, column: 9, scope: !100923)
-!100925 = !DILocation(line: 89, column: 5, scope: !100923)
-!100926 = !DILocation(line: 90, column: 3, scope: !100923)
-!100927 = !DILocation(line: 90, column: 16, scope: !100928)
-!100928 = distinct !DILexicalBlock(scope: !100914, file: !100005, line: 90, column: 14)
-!100929 = !DILocation(line: 90, column: 21, scope: !100928)
-!100930 = !DILocation(line: 90, column: 19, scope: !100928)
-!100931 = !DILocation(line: 90, column: 24, scope: !100928)
-!100932 = !DILocation(line: 90, column: 28, scope: !100928)
-!100933 = !DILocation(line: 90, column: 33, scope: !100928)
-!100934 = !DILocation(line: 90, column: 31, scope: !100928)
-!100935 = !DILocation(line: 90, column: 14, scope: !100914)
-!100936 = !DILocation(line: 91, column: 11, scope: !100937)
-!100937 = distinct !DILexicalBlock(scope: !100928, file: !100005, line: 90, column: 37)
-!100938 = !DILocation(line: 91, column: 9, scope: !100937)
-!100939 = !DILocation(line: 91, column: 5, scope: !100937)
-!100940 = !DILocation(line: 92, column: 3, scope: !100937)
-!100941 = !DILocation(line: 93, column: 15, scope: !100335)
-!100942 = !DILocation(line: 93, column: 23, scope: !100335)
-!100943 = !DILocation(line: 93, column: 24, scope: !100335)
-!100944 = !DILocation(line: 93, column: 26, scope: !100335)
-!100945 = !DILocation(line: 93, column: 20, scope: !100335)
-!100946 = !DILocalVariable(name: "a_top", scope: !100335, file: !100005, line: 93, type: !100004)
-!100947 = !DILocation(line: 93, column: 7, scope: !100335)
-!100948 = !DILocation(line: 94, column: 13, scope: !100335)
-!100949 = !DILocation(line: 94, column: 23, scope: !100335)
-!100950 = !DILocation(line: 94, column: 21, scope: !100335)
-!100951 = !DILocation(line: 94, column: 14, scope: !100335)
-!100952 = !DILocation(line: 94, column: 31, scope: !100335)
-!100953 = !DILocation(line: 94, column: 32, scope: !100335)
-!100954 = !DILocation(line: 94, column: 34, scope: !100335)
-!100955 = !DILocation(line: 94, column: 28, scope: !100335)
-!100956 = !DILocation(line: 94, column: 50, scope: !100335)
-!100957 = !DILocation(line: 94, column: 57, scope: !100335)
-!100958 = !DILocation(line: 94, column: 49, scope: !100335)
-!100959 = !DILocation(line: 94, column: 70, scope: !100335)
-!100960 = !DILocation(line: 94, column: 67, scope: !100335)
-!100961 = !DILocation(line: 94, column: 41, scope: !100335)
-!100962 = !DILocalVariable(name: "top", scope: !100335, file: !100005, line: 94, type: !100004)
-!100963 = !DILocation(line: 94, column: 7, scope: !100335)
-!100964 = !DILocation(line: 95, column: 14, scope: !100335)
-!100965 = !DILocation(line: 95, column: 24, scope: !100335)
-!100966 = !DILocation(line: 95, column: 22, scope: !100335)
-!100967 = !DILocation(line: 95, column: 15, scope: !100335)
-!100968 = !DILocation(line: 95, column: 32, scope: !100335)
-!100969 = !DILocation(line: 95, column: 33, scope: !100335)
-!100970 = !DILocation(line: 95, column: 35, scope: !100335)
-!100971 = !DILocation(line: 95, column: 29, scope: !100335)
-!100972 = !DILocation(line: 95, column: 51, scope: !100335)
-!100973 = !DILocation(line: 95, column: 58, scope: !100335)
-!100974 = !DILocation(line: 95, column: 50, scope: !100335)
-!100975 = !DILocation(line: 95, column: 71, scope: !100335)
-!100976 = !DILocation(line: 95, column: 68, scope: !100335)
-!100977 = !DILocation(line: 95, column: 42, scope: !100335)
-!100978 = !DILocalVariable(name: "base", scope: !100335, file: !100005, line: 95, type: !100004)
-!100979 = !DILocation(line: 95, column: 7, scope: !100335)
-!100980 = !DILocalVariable(name: "c", scope: !100335, file: !100005, line: 97, type: !100338)
-!100981 = !DILocation(line: 97, column: 7, scope: !100335)
-!100982 = !DILocation(line: 99, column: 19, scope: !100335)
-!100983 = !DILocation(line: 99, column: 17, scope: !100335)
-!100984 = !DILocation(line: 99, column: 12, scope: !100335)
-!100985 = !DILocation(line: 99, column: 5, scope: !100335)
-!100986 = !DILocation(line: 99, column: 10, scope: !100335)
-!100987 = !DILocation(line: 100, column: 17, scope: !100335)
-!100988 = !DILocation(line: 100, column: 15, scope: !100335)
-!100989 = !DILocation(line: 100, column: 11, scope: !100335)
-!100990 = !DILocation(line: 100, column: 5, scope: !100335)
-!100991 = !DILocation(line: 100, column: 9, scope: !100335)
-!100992 = !DILocation(line: 101, column: 5, scope: !100335)
-!100993 = !DILocation(line: 101, column: 10, scope: !100335)
-!100994 = !DILocation(line: 102, column: 5, scope: !100335)
-!100995 = !DILocation(line: 102, column: 11, scope: !100335)
-!100996 = !DILocation(line: 104, column: 1, scope: !100335)
-!100997 = !{!100998}
-!100998 = !{!"fpga.inline", !"user", null}
-!100999 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi65ELb1EEC2EDq65_i", scope: !100187, file: !100017, line: 515, type: !100196, isLocal: false, isDefinition: true, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100195, variables: !100002)
-!101000 = !{!101001}
-!101001 = !{!"fpga.inline", !"user", !101002}
-!101002 = !DILocation(line: 515, column: 39, scope: !100999)
-!101003 = !DILocalVariable(name: "this", arg: 1, scope: !100999, type: !101004, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101004 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100187, size: 64)
-!101005 = !DILocation(line: 0, scope: !100999)
-!101006 = !DILocalVariable(name: "o", arg: 2, scope: !100999, file: !100017, line: 515, type: !100190)
-!101007 = !DILocation(line: 515, column: 81, scope: !100999)
-!101008 = !DILocation(line: 515, column: 117, scope: !100999)
-!101009 = !DILocation(line: 515, column: 122, scope: !100999)
-!101010 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi32ELb0EEC2Ej", scope: !100271, file: !100017, line: 523, type: !100279, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100278, variables: !100002)
-!101011 = !{!101012}
-!101012 = !{!"fpga.inline", !"user", !101013}
-!101013 = !DILocation(line: 523, column: 39, scope: !101010)
-!101014 = !DILocalVariable(name: "this", arg: 1, scope: !101010, type: !101015, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101015 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100271, size: 64)
-!101016 = !DILocation(line: 0, scope: !101010)
-!101017 = !DILocalVariable(name: "o", arg: 2, scope: !101010, file: !100017, line: 523, type: !100010)
-!101018 = !DILocation(line: 523, column: 87, scope: !101010)
-!101019 = !DILocation(line: 523, column: 123, scope: !101010)
-!101020 = !DILocation(line: 523, column: 128, scope: !101010)
-!101021 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi34ELb1EEC2EDq34_i", scope: !100133, file: !100017, line: 515, type: !100142, isLocal: false, isDefinition: true, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100141, variables: !100002)
-!101022 = !{!101023}
-!101023 = !{!"fpga.inline", !"user", !101024}
-!101024 = !DILocation(line: 515, column: 39, scope: !101021)
-!101025 = !DILocalVariable(name: "this", arg: 1, scope: !101021, type: !101026, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101026 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100133, size: 64)
-!101027 = !DILocation(line: 0, scope: !101021)
-!101028 = !DILocalVariable(name: "o", arg: 2, scope: !101021, file: !100017, line: 515, type: !100136)
-!101029 = !DILocation(line: 515, column: 81, scope: !101021)
-!101030 = !DILocation(line: 515, column: 117, scope: !101021)
-!101031 = !DILocation(line: 515, column: 122, scope: !101021)
-!101032 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi32ELb1EEC2Ei", scope: !100052, file: !100017, line: 515, type: !100060, isLocal: false, isDefinition: true, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100059, variables: !100002)
-!101033 = !{!101034}
-!101034 = !{!"fpga.inline", !"user", !101035}
-!101035 = !DILocation(line: 515, column: 39, scope: !101032)
-!101036 = !DILocalVariable(name: "this", arg: 1, scope: !101032, type: !101037, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101037 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100052, size: 64)
-!101038 = !DILocation(line: 0, scope: !101032)
-!101039 = !DILocalVariable(name: "o", arg: 2, scope: !101032, file: !100017, line: 515, type: !100030)
-!101040 = !DILocation(line: 515, column: 81, scope: !101032)
-!101041 = !DILocation(line: 515, column: 117, scope: !101032)
-!101042 = !DILocation(line: 515, column: 122, scope: !101032)
-!101043 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi1ELb0EEC2EDq1_j", scope: !100160, file: !100017, line: 523, type: !100169, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100168, variables: !100002)
-!101044 = !{!101045}
-!101045 = !{!"fpga.inline", !"user", !101046}
-!101046 = !DILocation(line: 523, column: 39, scope: !101043)
-!101047 = !DILocalVariable(name: "this", arg: 1, scope: !101043, type: !101048, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101048 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100160, size: 64)
-!101049 = !DILocation(line: 0, scope: !101043)
-!101050 = !DILocalVariable(name: "o", arg: 2, scope: !101043, file: !100017, line: 523, type: !100163)
-!101051 = !DILocation(line: 523, column: 87, scope: !101043)
-!101052 = !DILocation(line: 523, column: 123, scope: !101043)
-!101053 = !DILocation(line: 523, column: 128, scope: !101043)
-!101054 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi33ELb0EEC2EDq33_j", scope: !101055, file: !100017, line: 523, type: !101064, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !101063, variables: !100002)
-!101055 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ssdm_int<33, false>", file: !100017, line: 519, size: 64, flags: DIFlagTypePassByValue, elements: !101056, templateParams: !101066, identifier: "_ZTS8ssdm_intILi33ELb0EE")
-!101056 = !{!101057, !101059, !101063}
-!101057 = !DIDerivedType(tag: DW_TAG_member, name: "V", scope: !101055, file: !100017, line: 521, baseType: !101058, size: 33, align: 64)
-!101058 = !DIBasicType(name: "uint33", size: 33, encoding: DW_ATE_unsigned)
-!101059 = !DISubprogram(name: "ssdm_int", scope: !101055, file: !100017, line: 522, type: !101060, isLocal: false, isDefinition: false, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false)
+!100865 = !{null, !100862, !100357}
+!100866 = !DISubprogram(name: "ap_int", scope: !100831, file: !100346, line: 142, type: !100867, isLocal: false, isDefinition: false, scopeLine: 142, flags: DIFlagPrototyped, isOptimized: false)
+!100867 = !DISubroutineType(types: !100868)
+!100868 = !{null, !100862, !100361}
+!100869 = !DISubprogram(name: "operator=", linkageName: "_ZN6ap_intILi2EEaSERKS0_", scope: !100831, file: !100346, line: 152, type: !100870, isLocal: false, isDefinition: false, scopeLine: 152, flags: DIFlagPrototyped, isOptimized: false)
+!100870 = !DISubroutineType(types: !100871)
+!100871 = !{!100872, !100862, !100873}
+!100872 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100831, size: 64)
+!100873 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100874, size: 64)
+!100874 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100831)
+!100875 = !DILocation(line: 68, column: 13, scope: !100335)
+!100876 = !DILocation(line: 68, column: 19, scope: !100335)
+!100877 = !DILocation(line: 69, column: 3, scope: !100335)
+!100878 = !DILocalVariable(name: "c_b", scope: !100335, file: !100005, line: 69, type: !100831)
+!100879 = !DILocation(line: 69, column: 13, scope: !100335)
+!100880 = !DILocation(line: 69, column: 19, scope: !100335)
+!100881 = !DILocation(line: 71, column: 8, scope: !100882)
+!100882 = distinct !DILexicalBlock(scope: !100335, file: !100005, line: 71, column: 7)
+!100883 = !DILocation(line: 71, column: 13, scope: !100882)
+!100884 = !DILocation(line: 71, column: 11, scope: !100882)
+!100885 = !DILocation(line: 71, column: 16, scope: !100882)
+!100886 = !DILocation(line: 71, column: 21, scope: !100882)
+!100887 = !DILocation(line: 71, column: 26, scope: !100882)
+!100888 = !DILocation(line: 71, column: 24, scope: !100882)
+!100889 = !DILocation(line: 71, column: 7, scope: !100335)
+!100890 = !DILocation(line: 72, column: 11, scope: !100891)
+!100891 = distinct !DILexicalBlock(scope: !100882, file: !100005, line: 71, column: 30)
+!100892 = !DILocation(line: 72, column: 9, scope: !100891)
+!100893 = !DILocation(line: 72, column: 5, scope: !100891)
+!100894 = !DILocation(line: 73, column: 3, scope: !100891)
+!100895 = !DILocation(line: 73, column: 16, scope: !100896)
+!100896 = distinct !DILexicalBlock(scope: !100882, file: !100005, line: 73, column: 14)
+!100897 = !DILocation(line: 73, column: 21, scope: !100896)
+!100898 = !DILocation(line: 73, column: 19, scope: !100896)
+!100899 = !DILocation(line: 73, column: 24, scope: !100896)
+!100900 = !DILocation(line: 73, column: 28, scope: !100896)
+!100901 = !DILocation(line: 73, column: 33, scope: !100896)
+!100902 = !DILocation(line: 73, column: 31, scope: !100896)
+!100903 = !DILocation(line: 73, column: 14, scope: !100882)
+!100904 = !DILocation(line: 74, column: 11, scope: !100905)
+!100905 = distinct !DILexicalBlock(scope: !100896, file: !100005, line: 73, column: 37)
+!100906 = !DILocation(line: 74, column: 9, scope: !100905)
+!100907 = !DILocation(line: 74, column: 5, scope: !100905)
+!100908 = !DILocation(line: 75, column: 3, scope: !100905)
+!100909 = !DILocation(line: 76, column: 8, scope: !100910)
+!100910 = distinct !DILexicalBlock(scope: !100335, file: !100005, line: 76, column: 7)
+!100911 = !DILocation(line: 76, column: 13, scope: !100910)
+!100912 = !DILocation(line: 76, column: 11, scope: !100910)
+!100913 = !DILocation(line: 76, column: 16, scope: !100910)
+!100914 = !DILocation(line: 76, column: 21, scope: !100910)
+!100915 = !DILocation(line: 76, column: 26, scope: !100910)
+!100916 = !DILocation(line: 76, column: 24, scope: !100910)
+!100917 = !DILocation(line: 76, column: 7, scope: !100335)
+!100918 = !DILocation(line: 77, column: 11, scope: !100919)
+!100919 = distinct !DILexicalBlock(scope: !100910, file: !100005, line: 76, column: 30)
+!100920 = !DILocation(line: 77, column: 9, scope: !100919)
+!100921 = !DILocation(line: 77, column: 5, scope: !100919)
+!100922 = !DILocation(line: 78, column: 3, scope: !100919)
+!100923 = !DILocation(line: 78, column: 16, scope: !100924)
+!100924 = distinct !DILexicalBlock(scope: !100910, file: !100005, line: 78, column: 14)
+!100925 = !DILocation(line: 78, column: 21, scope: !100924)
+!100926 = !DILocation(line: 78, column: 19, scope: !100924)
+!100927 = !DILocation(line: 78, column: 24, scope: !100924)
+!100928 = !DILocation(line: 78, column: 28, scope: !100924)
+!100929 = !DILocation(line: 78, column: 33, scope: !100924)
+!100930 = !DILocation(line: 78, column: 31, scope: !100924)
+!100931 = !DILocation(line: 78, column: 14, scope: !100910)
+!100932 = !DILocation(line: 79, column: 11, scope: !100933)
+!100933 = distinct !DILexicalBlock(scope: !100924, file: !100005, line: 78, column: 37)
+!100934 = !DILocation(line: 79, column: 9, scope: !100933)
+!100935 = !DILocation(line: 79, column: 5, scope: !100933)
+!100936 = !DILocation(line: 80, column: 3, scope: !100933)
+!100937 = !DILocation(line: 81, column: 15, scope: !100335)
+!100938 = !DILocation(line: 81, column: 23, scope: !100335)
+!100939 = !DILocation(line: 81, column: 24, scope: !100335)
+!100940 = !DILocation(line: 81, column: 26, scope: !100335)
+!100941 = !DILocation(line: 81, column: 20, scope: !100335)
+!100942 = !DILocalVariable(name: "a_top", scope: !100335, file: !100005, line: 81, type: !100004)
+!100943 = !DILocation(line: 81, column: 7, scope: !100335)
+!100944 = !DILocation(line: 82, column: 13, scope: !100335)
+!100945 = !DILocation(line: 82, column: 23, scope: !100335)
+!100946 = !DILocation(line: 82, column: 21, scope: !100335)
+!100947 = !DILocation(line: 82, column: 14, scope: !100335)
+!100948 = !DILocation(line: 82, column: 31, scope: !100335)
+!100949 = !DILocation(line: 82, column: 32, scope: !100335)
+!100950 = !DILocation(line: 82, column: 34, scope: !100335)
+!100951 = !DILocation(line: 82, column: 28, scope: !100335)
+!100952 = !DILocation(line: 82, column: 50, scope: !100335)
+!100953 = !DILocation(line: 82, column: 57, scope: !100335)
+!100954 = !DILocation(line: 82, column: 49, scope: !100335)
+!100955 = !DILocation(line: 82, column: 70, scope: !100335)
+!100956 = !DILocation(line: 82, column: 67, scope: !100335)
+!100957 = !DILocation(line: 82, column: 41, scope: !100335)
+!100958 = !DILocalVariable(name: "top", scope: !100335, file: !100005, line: 82, type: !100004)
+!100959 = !DILocation(line: 82, column: 7, scope: !100335)
+!100960 = !DILocation(line: 83, column: 14, scope: !100335)
+!100961 = !DILocation(line: 83, column: 24, scope: !100335)
+!100962 = !DILocation(line: 83, column: 22, scope: !100335)
+!100963 = !DILocation(line: 83, column: 15, scope: !100335)
+!100964 = !DILocation(line: 83, column: 32, scope: !100335)
+!100965 = !DILocation(line: 83, column: 33, scope: !100335)
+!100966 = !DILocation(line: 83, column: 35, scope: !100335)
+!100967 = !DILocation(line: 83, column: 29, scope: !100335)
+!100968 = !DILocation(line: 83, column: 51, scope: !100335)
+!100969 = !DILocation(line: 83, column: 58, scope: !100335)
+!100970 = !DILocation(line: 83, column: 50, scope: !100335)
+!100971 = !DILocation(line: 83, column: 71, scope: !100335)
+!100972 = !DILocation(line: 83, column: 68, scope: !100335)
+!100973 = !DILocation(line: 83, column: 42, scope: !100335)
+!100974 = !DILocalVariable(name: "base", scope: !100335, file: !100005, line: 83, type: !100004)
+!100975 = !DILocation(line: 83, column: 7, scope: !100335)
+!100976 = !DILocalVariable(name: "c", scope: !100335, file: !100005, line: 85, type: !100338)
+!100977 = !DILocation(line: 85, column: 7, scope: !100335)
+!100978 = !DILocation(line: 87, column: 19, scope: !100335)
+!100979 = !DILocation(line: 87, column: 17, scope: !100335)
+!100980 = !DILocation(line: 87, column: 12, scope: !100335)
+!100981 = !DILocation(line: 87, column: 5, scope: !100335)
+!100982 = !DILocation(line: 87, column: 10, scope: !100335)
+!100983 = !DILocation(line: 88, column: 17, scope: !100335)
+!100984 = !DILocation(line: 88, column: 15, scope: !100335)
+!100985 = !DILocation(line: 88, column: 11, scope: !100335)
+!100986 = !DILocation(line: 88, column: 5, scope: !100335)
+!100987 = !DILocation(line: 88, column: 9, scope: !100335)
+!100988 = !DILocation(line: 89, column: 5, scope: !100335)
+!100989 = !DILocation(line: 89, column: 10, scope: !100335)
+!100990 = !DILocation(line: 90, column: 5, scope: !100335)
+!100991 = !DILocation(line: 90, column: 11, scope: !100335)
+!100992 = !DILocation(line: 92, column: 1, scope: !100335)
+!100993 = !{!100994}
+!100994 = !{!"fpga.inline", !"user", null}
+!100995 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi65ELb1EEC2EDq65_i", scope: !100187, file: !100017, line: 515, type: !100196, isLocal: false, isDefinition: true, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100195, variables: !100002)
+!100996 = !{!100997}
+!100997 = !{!"fpga.inline", !"user", !100998}
+!100998 = !DILocation(line: 515, column: 39, scope: !100995)
+!100999 = !DILocalVariable(name: "this", arg: 1, scope: !100995, type: !101000, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101000 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100187, size: 64)
+!101001 = !DILocation(line: 0, scope: !100995)
+!101002 = !DILocalVariable(name: "o", arg: 2, scope: !100995, file: !100017, line: 515, type: !100190)
+!101003 = !DILocation(line: 515, column: 81, scope: !100995)
+!101004 = !DILocation(line: 515, column: 117, scope: !100995)
+!101005 = !DILocation(line: 515, column: 122, scope: !100995)
+!101006 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi32ELb0EEC2Ej", scope: !100271, file: !100017, line: 523, type: !100279, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100278, variables: !100002)
+!101007 = !{!101008}
+!101008 = !{!"fpga.inline", !"user", !101009}
+!101009 = !DILocation(line: 523, column: 39, scope: !101006)
+!101010 = !DILocalVariable(name: "this", arg: 1, scope: !101006, type: !101011, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101011 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100271, size: 64)
+!101012 = !DILocation(line: 0, scope: !101006)
+!101013 = !DILocalVariable(name: "o", arg: 2, scope: !101006, file: !100017, line: 523, type: !100010)
+!101014 = !DILocation(line: 523, column: 87, scope: !101006)
+!101015 = !DILocation(line: 523, column: 123, scope: !101006)
+!101016 = !DILocation(line: 523, column: 128, scope: !101006)
+!101017 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi34ELb1EEC2EDq34_i", scope: !100133, file: !100017, line: 515, type: !100142, isLocal: false, isDefinition: true, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100141, variables: !100002)
+!101018 = !{!101019}
+!101019 = !{!"fpga.inline", !"user", !101020}
+!101020 = !DILocation(line: 515, column: 39, scope: !101017)
+!101021 = !DILocalVariable(name: "this", arg: 1, scope: !101017, type: !101022, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101022 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100133, size: 64)
+!101023 = !DILocation(line: 0, scope: !101017)
+!101024 = !DILocalVariable(name: "o", arg: 2, scope: !101017, file: !100017, line: 515, type: !100136)
+!101025 = !DILocation(line: 515, column: 81, scope: !101017)
+!101026 = !DILocation(line: 515, column: 117, scope: !101017)
+!101027 = !DILocation(line: 515, column: 122, scope: !101017)
+!101028 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi32ELb1EEC2Ei", scope: !100052, file: !100017, line: 515, type: !100060, isLocal: false, isDefinition: true, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100059, variables: !100002)
+!101029 = !{!101030}
+!101030 = !{!"fpga.inline", !"user", !101031}
+!101031 = !DILocation(line: 515, column: 39, scope: !101028)
+!101032 = !DILocalVariable(name: "this", arg: 1, scope: !101028, type: !101033, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101033 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100052, size: 64)
+!101034 = !DILocation(line: 0, scope: !101028)
+!101035 = !DILocalVariable(name: "o", arg: 2, scope: !101028, file: !100017, line: 515, type: !100030)
+!101036 = !DILocation(line: 515, column: 81, scope: !101028)
+!101037 = !DILocation(line: 515, column: 117, scope: !101028)
+!101038 = !DILocation(line: 515, column: 122, scope: !101028)
+!101039 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi1ELb0EEC2EDq1_j", scope: !100160, file: !100017, line: 523, type: !100169, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100168, variables: !100002)
+!101040 = !{!101041}
+!101041 = !{!"fpga.inline", !"user", !101042}
+!101042 = !DILocation(line: 523, column: 39, scope: !101039)
+!101043 = !DILocalVariable(name: "this", arg: 1, scope: !101039, type: !101044, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101044 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100160, size: 64)
+!101045 = !DILocation(line: 0, scope: !101039)
+!101046 = !DILocalVariable(name: "o", arg: 2, scope: !101039, file: !100017, line: 523, type: !100163)
+!101047 = !DILocation(line: 523, column: 87, scope: !101039)
+!101048 = !DILocation(line: 523, column: 123, scope: !101039)
+!101049 = !DILocation(line: 523, column: 128, scope: !101039)
+!101050 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi33ELb0EEC2EDq33_j", scope: !101051, file: !100017, line: 523, type: !101060, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !101059, variables: !100002)
+!101051 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ssdm_int<33, false>", file: !100017, line: 519, size: 64, flags: DIFlagTypePassByValue, elements: !101052, templateParams: !101062, identifier: "_ZTS8ssdm_intILi33ELb0EE")
+!101052 = !{!101053, !101055, !101059}
+!101053 = !DIDerivedType(tag: DW_TAG_member, name: "V", scope: !101051, file: !100017, line: 521, baseType: !101054, size: 33, align: 64)
+!101054 = !DIBasicType(name: "uint33", size: 33, encoding: DW_ATE_unsigned)
+!101055 = !DISubprogram(name: "ssdm_int", scope: !101051, file: !100017, line: 522, type: !101056, isLocal: false, isDefinition: false, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false)
+!101056 = !DISubroutineType(types: !101057)
+!101057 = !{null, !101058}
+!101058 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !101051, size: 64, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101059 = !DISubprogram(name: "ssdm_int", scope: !101051, file: !100017, line: 523, type: !101060, isLocal: false, isDefinition: false, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false)
 !101060 = !DISubroutineType(types: !101061)
-!101061 = !{null, !101062}
-!101062 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !101055, size: 64, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101063 = !DISubprogram(name: "ssdm_int", scope: !101055, file: !100017, line: 523, type: !101064, isLocal: false, isDefinition: false, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false)
-!101064 = !DISubroutineType(types: !101065)
-!101065 = !{null, !101062, !101058}
-!101066 = !{!100226, !100091}
-!101067 = !{!101068}
-!101068 = !{!"fpga.inline", !"user", !101069}
-!101069 = !DILocation(line: 523, column: 39, scope: !101054)
-!101070 = !DILocalVariable(name: "this", arg: 1, scope: !101054, type: !101071, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101071 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !101055, size: 64)
-!101072 = !DILocation(line: 0, scope: !101054)
-!101073 = !DILocalVariable(name: "o", arg: 2, scope: !101054, file: !100017, line: 523, type: !101058)
-!101074 = !DILocation(line: 523, column: 87, scope: !101054)
-!101075 = !DILocation(line: 523, column: 123, scope: !101054)
-!101076 = !DILocation(line: 523, column: 128, scope: !101054)
-!101077 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi2ELb1EEC2EDq2_i", scope: !100841, file: !100017, line: 515, type: !100850, isLocal: false, isDefinition: true, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100849, variables: !100002)
-!101078 = !{!101079}
-!101079 = !{!"fpga.inline", !"user", !101080}
-!101080 = !DILocation(line: 515, column: 39, scope: !101077)
-!101081 = !DILocalVariable(name: "this", arg: 1, scope: !101077, type: !101082, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101082 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100841, size: 64)
-!101083 = !DILocation(line: 0, scope: !101077)
-!101084 = !DILocalVariable(name: "o", arg: 2, scope: !101077, file: !100017, line: 515, type: !100844)
-!101085 = !DILocation(line: 515, column: 81, scope: !101077)
-!101086 = !DILocation(line: 515, column: 117, scope: !101077)
-!101087 = !DILocation(line: 515, column: 122, scope: !101077)
-!101088 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi3ELb0EEC2EDq3_j", scope: !100470, file: !100017, line: 523, type: !100479, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100478, variables: !100002)
-!101089 = !{!101090}
-!101090 = !{!"fpga.inline", !"user", !101091}
-!101091 = !DILocation(line: 523, column: 39, scope: !101088)
-!101092 = !DILocalVariable(name: "this", arg: 1, scope: !101088, type: !101093, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101093 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100470, size: 64)
-!101094 = !DILocation(line: 0, scope: !101088)
-!101095 = !DILocalVariable(name: "o", arg: 2, scope: !101088, file: !100017, line: 523, type: !100473)
-!101096 = !DILocation(line: 523, column: 87, scope: !101088)
-!101097 = !DILocation(line: 523, column: 123, scope: !101088)
-!101098 = !DILocation(line: 523, column: 128, scope: !101088)
-!101099 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi33ELb1EEC2EDq33_i", scope: !100214, file: !100017, line: 515, type: !100223, isLocal: false, isDefinition: true, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100222, variables: !100002)
-!101100 = !{!101101}
-!101101 = !{!"fpga.inline", !"user", !101102}
-!101102 = !DILocation(line: 515, column: 39, scope: !101099)
-!101103 = !DILocalVariable(name: "this", arg: 1, scope: !101099, type: !101104, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101104 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100214, size: 64)
-!101105 = !DILocation(line: 0, scope: !101099)
-!101106 = !DILocalVariable(name: "o", arg: 2, scope: !101099, file: !100017, line: 515, type: !100217)
-!101107 = !DILocation(line: 515, column: 81, scope: !101099)
-!101108 = !DILocation(line: 515, column: 117, scope: !101099)
-!101109 = !DILocation(line: 515, column: 122, scope: !101099)
-!101110 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi3ELb0EEC2Ev", scope: !100470, file: !100017, line: 522, type: !100475, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100474, variables: !100002)
-!101111 = !{!101112}
-!101112 = !{!"fpga.inline", !"user", !101113}
-!101113 = !DILocation(line: 522, column: 25, scope: !101110)
-!101114 = !DILocalVariable(name: "this", arg: 1, scope: !101110, type: !101093, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101115 = !DILocation(line: 0, scope: !101110)
-!101116 = !DILocation(line: 522, column: 66, scope: !101110)
-!101117 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi14ELb0EEC2Ev", scope: !100576, file: !100017, line: 522, type: !100581, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100580, variables: !100002)
-!101118 = !{!101119}
-!101119 = !{!"fpga.inline", !"user", !101120}
-!101120 = !DILocation(line: 522, column: 25, scope: !101117)
-!101121 = !DILocalVariable(name: "this", arg: 1, scope: !101117, type: !101122, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101122 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100576, size: 64)
-!101123 = !DILocation(line: 0, scope: !101117)
-!101124 = !DILocation(line: 522, column: 66, scope: !101117)
-!101125 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi64ELb0EEC2Em", scope: !100242, file: !100017, line: 523, type: !100251, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100250, variables: !100002)
-!101126 = !{!101127}
-!101127 = !{!"fpga.inline", !"user", !101128}
-!101128 = !DILocation(line: 523, column: 39, scope: !101125)
-!101129 = !DILocalVariable(name: "this", arg: 1, scope: !101125, type: !101130, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101130 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100242, size: 64)
-!101131 = !DILocation(line: 0, scope: !101125)
-!101132 = !DILocalVariable(name: "o", arg: 2, scope: !101125, file: !100017, line: 523, type: !100245)
-!101133 = !DILocation(line: 523, column: 87, scope: !101125)
-!101134 = !DILocation(line: 523, column: 123, scope: !101125)
-!101135 = !DILocation(line: 523, column: 128, scope: !101125)
-!101136 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi16ELb0EEC2Et", scope: !101137, file: !100017, line: 523, type: !101146, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !101145, variables: !100002)
-!101137 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ssdm_int<16, false>", file: !100017, line: 519, size: 16, flags: DIFlagTypePassByValue, elements: !101138, templateParams: !101148, identifier: "_ZTS8ssdm_intILi16ELb0EE")
-!101138 = !{!101139, !101141, !101145}
-!101139 = !DIDerivedType(tag: DW_TAG_member, name: "V", scope: !101137, file: !100017, line: 521, baseType: !101140, size: 16)
-!101140 = !DIBasicType(name: "unsigned short", size: 16, encoding: DW_ATE_unsigned)
-!101141 = !DISubprogram(name: "ssdm_int", scope: !101137, file: !100017, line: 522, type: !101142, isLocal: false, isDefinition: false, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false)
+!101061 = !{null, !101058, !101054}
+!101062 = !{!100226, !100091}
+!101063 = !{!101064}
+!101064 = !{!"fpga.inline", !"user", !101065}
+!101065 = !DILocation(line: 523, column: 39, scope: !101050)
+!101066 = !DILocalVariable(name: "this", arg: 1, scope: !101050, type: !101067, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101067 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !101051, size: 64)
+!101068 = !DILocation(line: 0, scope: !101050)
+!101069 = !DILocalVariable(name: "o", arg: 2, scope: !101050, file: !100017, line: 523, type: !101054)
+!101070 = !DILocation(line: 523, column: 87, scope: !101050)
+!101071 = !DILocation(line: 523, column: 123, scope: !101050)
+!101072 = !DILocation(line: 523, column: 128, scope: !101050)
+!101073 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi2ELb1EEC2EDq2_i", scope: !100837, file: !100017, line: 515, type: !100846, isLocal: false, isDefinition: true, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100845, variables: !100002)
+!101074 = !{!101075}
+!101075 = !{!"fpga.inline", !"user", !101076}
+!101076 = !DILocation(line: 515, column: 39, scope: !101073)
+!101077 = !DILocalVariable(name: "this", arg: 1, scope: !101073, type: !101078, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101078 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100837, size: 64)
+!101079 = !DILocation(line: 0, scope: !101073)
+!101080 = !DILocalVariable(name: "o", arg: 2, scope: !101073, file: !100017, line: 515, type: !100840)
+!101081 = !DILocation(line: 515, column: 81, scope: !101073)
+!101082 = !DILocation(line: 515, column: 117, scope: !101073)
+!101083 = !DILocation(line: 515, column: 122, scope: !101073)
+!101084 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi3ELb0EEC2EDq3_j", scope: !100470, file: !100017, line: 523, type: !100479, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100478, variables: !100002)
+!101085 = !{!101086}
+!101086 = !{!"fpga.inline", !"user", !101087}
+!101087 = !DILocation(line: 523, column: 39, scope: !101084)
+!101088 = !DILocalVariable(name: "this", arg: 1, scope: !101084, type: !101089, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101089 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100470, size: 64)
+!101090 = !DILocation(line: 0, scope: !101084)
+!101091 = !DILocalVariable(name: "o", arg: 2, scope: !101084, file: !100017, line: 523, type: !100473)
+!101092 = !DILocation(line: 523, column: 87, scope: !101084)
+!101093 = !DILocation(line: 523, column: 123, scope: !101084)
+!101094 = !DILocation(line: 523, column: 128, scope: !101084)
+!101095 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi33ELb1EEC2EDq33_i", scope: !100214, file: !100017, line: 515, type: !100223, isLocal: false, isDefinition: true, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100222, variables: !100002)
+!101096 = !{!101097}
+!101097 = !{!"fpga.inline", !"user", !101098}
+!101098 = !DILocation(line: 515, column: 39, scope: !101095)
+!101099 = !DILocalVariable(name: "this", arg: 1, scope: !101095, type: !101100, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101100 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100214, size: 64)
+!101101 = !DILocation(line: 0, scope: !101095)
+!101102 = !DILocalVariable(name: "o", arg: 2, scope: !101095, file: !100017, line: 515, type: !100217)
+!101103 = !DILocation(line: 515, column: 81, scope: !101095)
+!101104 = !DILocation(line: 515, column: 117, scope: !101095)
+!101105 = !DILocation(line: 515, column: 122, scope: !101095)
+!101106 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi3ELb0EEC2Ev", scope: !100470, file: !100017, line: 522, type: !100475, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100474, variables: !100002)
+!101107 = !{!101108}
+!101108 = !{!"fpga.inline", !"user", !101109}
+!101109 = !DILocation(line: 522, column: 25, scope: !101106)
+!101110 = !DILocalVariable(name: "this", arg: 1, scope: !101106, type: !101089, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101111 = !DILocation(line: 0, scope: !101106)
+!101112 = !DILocation(line: 522, column: 66, scope: !101106)
+!101113 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi14ELb0EEC2Ev", scope: !100576, file: !100017, line: 522, type: !100581, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100580, variables: !100002)
+!101114 = !{!101115}
+!101115 = !{!"fpga.inline", !"user", !101116}
+!101116 = !DILocation(line: 522, column: 25, scope: !101113)
+!101117 = !DILocalVariable(name: "this", arg: 1, scope: !101113, type: !101118, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101118 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100576, size: 64)
+!101119 = !DILocation(line: 0, scope: !101113)
+!101120 = !DILocation(line: 522, column: 66, scope: !101113)
+!101121 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi64ELb0EEC2Em", scope: !100242, file: !100017, line: 523, type: !100251, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100250, variables: !100002)
+!101122 = !{!101123}
+!101123 = !{!"fpga.inline", !"user", !101124}
+!101124 = !DILocation(line: 523, column: 39, scope: !101121)
+!101125 = !DILocalVariable(name: "this", arg: 1, scope: !101121, type: !101126, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101126 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100242, size: 64)
+!101127 = !DILocation(line: 0, scope: !101121)
+!101128 = !DILocalVariable(name: "o", arg: 2, scope: !101121, file: !100017, line: 523, type: !100245)
+!101129 = !DILocation(line: 523, column: 87, scope: !101121)
+!101130 = !DILocation(line: 523, column: 123, scope: !101121)
+!101131 = !DILocation(line: 523, column: 128, scope: !101121)
+!101132 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi16ELb0EEC2Et", scope: !101133, file: !100017, line: 523, type: !101142, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !101141, variables: !100002)
+!101133 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ssdm_int<16, false>", file: !100017, line: 519, size: 16, flags: DIFlagTypePassByValue, elements: !101134, templateParams: !101144, identifier: "_ZTS8ssdm_intILi16ELb0EE")
+!101134 = !{!101135, !101137, !101141}
+!101135 = !DIDerivedType(tag: DW_TAG_member, name: "V", scope: !101133, file: !100017, line: 521, baseType: !101136, size: 16)
+!101136 = !DIBasicType(name: "unsigned short", size: 16, encoding: DW_ATE_unsigned)
+!101137 = !DISubprogram(name: "ssdm_int", scope: !101133, file: !100017, line: 522, type: !101138, isLocal: false, isDefinition: false, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false)
+!101138 = !DISubroutineType(types: !101139)
+!101139 = !{null, !101140}
+!101140 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !101133, size: 64, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101141 = !DISubprogram(name: "ssdm_int", scope: !101133, file: !100017, line: 523, type: !101142, isLocal: false, isDefinition: false, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false)
 !101142 = !DISubroutineType(types: !101143)
-!101143 = !{null, !101144}
-!101144 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !101137, size: 64, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101145 = !DISubprogram(name: "ssdm_int", scope: !101137, file: !100017, line: 523, type: !101146, isLocal: false, isDefinition: false, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false)
-!101146 = !DISubroutineType(types: !101147)
-!101147 = !{null, !101144, !101140}
-!101148 = !{!101149, !100091}
-!101149 = !DITemplateValueParameter(name: "_AP_N", type: !100030, value: i32 16)
-!101150 = !{!101151}
-!101151 = !{!"fpga.inline", !"user", !101152}
-!101152 = !DILocation(line: 523, column: 39, scope: !101136)
-!101153 = !DILocalVariable(name: "this", arg: 1, scope: !101136, type: !101154, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101154 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !101137, size: 64)
-!101155 = !DILocation(line: 0, scope: !101136)
-!101156 = !DILocalVariable(name: "o", arg: 2, scope: !101136, file: !100017, line: 523, type: !101140)
-!101157 = !DILocation(line: 523, column: 87, scope: !101136)
-!101158 = !DILocation(line: 523, column: 123, scope: !101136)
-!101159 = !DILocation(line: 523, column: 128, scope: !101136)
-!101160 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi2ELb0EEC2EDq2_j", scope: !100744, file: !100017, line: 523, type: !100753, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100752, variables: !100002)
-!101161 = !{!101162}
-!101162 = !{!"fpga.inline", !"user", !101163}
-!101163 = !DILocation(line: 523, column: 39, scope: !101160)
-!101164 = !DILocalVariable(name: "this", arg: 1, scope: !101160, type: !101165, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101165 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100744, size: 64)
-!101166 = !DILocation(line: 0, scope: !101160)
-!101167 = !DILocalVariable(name: "o", arg: 2, scope: !101160, file: !100017, line: 523, type: !100747)
-!101168 = !DILocation(line: 523, column: 87, scope: !101160)
-!101169 = !DILocation(line: 523, column: 123, scope: !101160)
-!101170 = !DILocation(line: 523, column: 128, scope: !101160)
-!101171 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi2ELb0EEC2Ev", scope: !100744, file: !100017, line: 522, type: !100749, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100748, variables: !100002)
-!101172 = !{!101173}
-!101173 = !{!"fpga.inline", !"user", !101174}
-!101174 = !DILocation(line: 522, column: 25, scope: !101171)
-!101175 = !DILocalVariable(name: "this", arg: 1, scope: !101171, type: !101165, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101176 = !DILocation(line: 0, scope: !101171)
-!101177 = !DILocation(line: 522, column: 66, scope: !101171)
-!101178 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi14ELb0EEC2EDq14_j", scope: !100576, file: !100017, line: 523, type: !100585, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100584, variables: !100002)
-!101179 = !{!101180}
-!101180 = !{!"fpga.inline", !"user", !101181}
-!101181 = !DILocation(line: 523, column: 39, scope: !101178)
-!101182 = !DILocalVariable(name: "this", arg: 1, scope: !101178, type: !101122, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101183 = !DILocation(line: 0, scope: !101178)
-!101184 = !DILocalVariable(name: "o", arg: 2, scope: !101178, file: !100017, line: 523, type: !100579)
-!101185 = !DILocation(line: 523, column: 87, scope: !101178)
-!101186 = !DILocation(line: 523, column: 123, scope: !101178)
-!101187 = !DILocation(line: 523, column: 128, scope: !101178)
-!101188 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi11ELb0EEC2EDq11_j", scope: !100106, file: !100017, line: 523, type: !100115, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100114, variables: !100002)
-!101189 = !{!101190}
-!101190 = !{!"fpga.inline", !"user", !101191}
-!101191 = !DILocation(line: 523, column: 39, scope: !101188)
-!101192 = !DILocalVariable(name: "this", arg: 1, scope: !101188, type: !101193, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101193 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100106, size: 64)
-!101194 = !DILocation(line: 0, scope: !101188)
-!101195 = !DILocalVariable(name: "o", arg: 2, scope: !101188, file: !100017, line: 523, type: !100109)
-!101196 = !DILocation(line: 523, column: 87, scope: !101188)
-!101197 = !DILocation(line: 523, column: 123, scope: !101188)
-!101198 = !DILocation(line: 523, column: 128, scope: !101188)
-!101199 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi9ELb0EEC2EDq9_j", scope: !100078, file: !100017, line: 523, type: !100087, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100086, variables: !100002)
-!101200 = !{!101201}
-!101201 = !{!"fpga.inline", !"user", !101202}
-!101202 = !DILocation(line: 523, column: 39, scope: !101199)
-!101203 = !DILocalVariable(name: "this", arg: 1, scope: !101199, type: !101204, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101204 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100078, size: 64)
-!101205 = !DILocation(line: 0, scope: !101199)
-!101206 = !DILocalVariable(name: "o", arg: 2, scope: !101199, file: !100017, line: 523, type: !100081)
-!101207 = !DILocation(line: 523, column: 87, scope: !101199)
-!101208 = !DILocation(line: 523, column: 123, scope: !101199)
-!101209 = !DILocation(line: 523, column: 128, scope: !101199)
-!101210 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi6ELb0EEC2Ev", scope: !100302, file: !100017, line: 522, type: !100307, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100306, variables: !100002)
-!101211 = !{!101212}
-!101212 = !{!"fpga.inline", !"user", !101213}
-!101213 = !DILocation(line: 522, column: 25, scope: !101210)
-!101214 = !DILocalVariable(name: "this", arg: 1, scope: !101210, type: !101215, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101215 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100302, size: 64)
-!101216 = !DILocation(line: 0, scope: !101210)
-!101217 = !DILocation(line: 522, column: 66, scope: !101210)
-!101218 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi6ELb0EEC2EDq6_j", scope: !100302, file: !100017, line: 523, type: !100311, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100310, variables: !100002)
-!101219 = !{!101220}
-!101220 = !{!"fpga.inline", !"user", !101221}
-!101221 = !DILocation(line: 523, column: 39, scope: !101218)
-!101222 = !DILocalVariable(name: "this", arg: 1, scope: !101218, type: !101215, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101223 = !DILocation(line: 0, scope: !101218)
-!101224 = !DILocalVariable(name: "o", arg: 2, scope: !101218, file: !100017, line: 523, type: !100305)
-!101225 = !DILocation(line: 523, column: 87, scope: !101218)
-!101226 = !DILocation(line: 523, column: 123, scope: !101218)
-!101227 = !DILocation(line: 523, column: 128, scope: !101218)
-!101228 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi12ELb0EEC2Ev", scope: !100651, file: !100017, line: 522, type: !100656, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100655, variables: !100002)
-!101229 = !{!101230}
-!101230 = !{!"fpga.inline", !"user", !101231}
-!101231 = !DILocation(line: 522, column: 25, scope: !101228)
-!101232 = !DILocalVariable(name: "this", arg: 1, scope: !101228, type: !101233, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101233 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100651, size: 64)
-!101234 = !DILocation(line: 0, scope: !101228)
-!101235 = !DILocation(line: 522, column: 66, scope: !101228)
-!101236 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi12ELb0EEC2EDq12_j", scope: !100651, file: !100017, line: 523, type: !100660, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100659, variables: !100002)
-!101237 = !{!101238}
-!101238 = !{!"fpga.inline", !"user", !101239}
-!101239 = !DILocation(line: 523, column: 39, scope: !101236)
-!101240 = !DILocalVariable(name: "this", arg: 1, scope: !101236, type: !101233, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101241 = !DILocation(line: 0, scope: !101236)
-!101242 = !DILocalVariable(name: "o", arg: 2, scope: !101236, file: !100017, line: 523, type: !100654)
-!101243 = !DILocation(line: 523, column: 87, scope: !101236)
-!101244 = !DILocation(line: 523, column: 123, scope: !101236)
-!101245 = !DILocation(line: 523, column: 128, scope: !101236)
-!101246 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi11ELb0EEC2Ev", scope: !100106, file: !100017, line: 522, type: !100111, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100110, variables: !100002)
-!101247 = !{!101248}
-!101248 = !{!"fpga.inline", !"user", !101249}
-!101249 = !DILocation(line: 522, column: 25, scope: !101246)
-!101250 = !DILocalVariable(name: "this", arg: 1, scope: !101246, type: !101193, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101251 = !DILocation(line: 0, scope: !101246)
-!101252 = !DILocation(line: 522, column: 66, scope: !101246)
-!101253 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi64ELb0EEC2Ev", scope: !100242, file: !100017, line: 522, type: !100247, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100246, variables: !100002)
-!101254 = !{!101255}
-!101255 = !{!"fpga.inline", !"user", !101256}
-!101256 = !DILocation(line: 522, column: 25, scope: !101253)
-!101257 = !DILocalVariable(name: "this", arg: 1, scope: !101253, type: !101130, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101258 = !DILocation(line: 0, scope: !101253)
-!101259 = !DILocation(line: 522, column: 66, scope: !101253)
-!101260 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi9ELb0EEC2Ev", scope: !100078, file: !100017, line: 522, type: !100083, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100082, variables: !100002)
-!101261 = !{!101262}
-!101262 = !{!"fpga.inline", !"user", !101263}
-!101263 = !DILocation(line: 522, column: 25, scope: !101260)
-!101264 = !DILocalVariable(name: "this", arg: 1, scope: !101260, type: !101204, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101265 = !DILocation(line: 0, scope: !101260)
-!101266 = !DILocation(line: 522, column: 66, scope: !101260)
-!101267 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi64ELb1EEC2El", scope: !100016, file: !100017, line: 515, type: !100026, isLocal: false, isDefinition: true, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100025, variables: !100002)
-!101268 = !{!101269}
-!101269 = !{!"fpga.inline", !"user", !101270}
-!101270 = !DILocation(line: 515, column: 39, scope: !101267)
-!101271 = !DILocalVariable(name: "this", arg: 1, scope: !101267, type: !101272, flags: DIFlagArtificial | DIFlagObjectPointer)
-!101272 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100016, size: 64)
-!101273 = !DILocation(line: 0, scope: !101267)
-!101274 = !DILocalVariable(name: "o", arg: 2, scope: !101267, file: !100017, line: 515, type: !100020)
-!101275 = !DILocation(line: 515, column: 81, scope: !101267)
-!101276 = !DILocation(line: 515, column: 117, scope: !101267)
-!101277 = !DILocation(line: 515, column: 122, scope: !101267)
-!101278 = distinct !DISubprogram(name: "load_cap", linkageName: "_Z8load_capiPjS_P3Cap", scope: !100005, file: !100005, line: 106, type: !101279, isLocal: false, isDefinition: true, scopeLine: 106, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
-!101279 = !DISubroutineType(types: !101280)
-!101280 = !{null, !100030, !101281, !101281, !101282}
-!101281 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100004, size: 64)
-!101282 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100338, size: 64)
-!101283 = !{!101284}
-!101284 = !{!"fpga.inline", !"user", !101285}
-!101285 = !DILocation(line: 107, column: 9, scope: !101278)
-!101286 = !DILocalVariable(name: "num", arg: 1, scope: !101278, file: !100005, line: 106, type: !100030)
-!101287 = !DILocation(line: 106, column: 19, scope: !101278)
-!101288 = !DILocalVariable(name: "buffer", arg: 2, scope: !101278, file: !100005, line: 106, type: !101281)
-!101289 = !DILocation(line: 106, column: 29, scope: !101278)
-!101290 = !DILocalVariable(name: "cap", arg: 3, scope: !101278, file: !100005, line: 106, type: !101281)
-!101291 = !DILocation(line: 106, column: 42, scope: !101278)
-!101292 = !DILocalVariable(name: "caps", arg: 4, scope: !101278, file: !100005, line: 106, type: !101282)
-!101293 = !DILocation(line: 106, column: 52, scope: !101278)
-!101294 = !DILocation(line: 106, column: 58, scope: !101278)
-!101295 = !DILocalVariable(name: "i", scope: !101296, file: !100005, line: 109, type: !100030)
-!101296 = distinct !DILexicalBlock(scope: !101278, file: !100005, line: 109, column: 20)
-!101297 = !DILocation(line: 109, column: 29, scope: !101296)
-!101298 = !DILocation(line: 109, column: 25, scope: !101296)
-!101299 = !DILocation(line: 109, column: 44, scope: !101300)
-!101300 = distinct !DILexicalBlock(scope: !101296, file: !100005, line: 109, column: 20)
-!101301 = !DILocation(line: 109, column: 38, scope: !101300)
-!101302 = !DILocation(line: 109, column: 20, scope: !101296)
-!101303 = !DILocation(line: 111, column: 14, scope: !101304)
-!101304 = distinct !DILexicalBlock(scope: !101300, file: !100005, line: 110, column: 1)
-!101305 = !DILocation(line: 111, column: 2, scope: !101304)
-!101306 = !DILocation(line: 111, column: 12, scope: !101304)
-!101307 = !DILocation(line: 111, column: 19, scope: !101304)
-!101308 = !DILocation(line: 109, column: 50, scope: !101300)
-!101309 = !DILocation(line: 109, column: 20, scope: !101300)
-!101310 = distinct !{!101310, !101302, !101311, !101312, !101314}
-!101311 = !DILocation(line: 111, column: 19, scope: !101296)
-!101312 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101313}
-!101313 = !DILocation(line: 110, column: 9, scope: !101296)
-!101314 = !{!"llvm.loop.name", !"VITIS_LOOP_109_1"}
-!101315 = !DILocalVariable(name: "i", scope: !101278, file: !100005, line: 113, type: !100030)
-!101316 = !DILocation(line: 113, column: 7, scope: !101278)
-!101317 = !DILocation(line: 113, column: 3, scope: !101278)
-!101318 = !DILocalVariable(name: "j", scope: !101319, file: !100005, line: 114, type: !100030)
-!101319 = distinct !DILexicalBlock(scope: !101278, file: !100005, line: 114, column: 21)
-!101320 = !DILocation(line: 114, column: 30, scope: !101319)
-!101321 = !DILocation(line: 114, column: 26, scope: !101319)
-!101322 = !DILocation(line: 114, column: 39, scope: !101323)
-!101323 = distinct !DILexicalBlock(scope: !101319, file: !100005, line: 114, column: 21)
-!101324 = !DILocation(line: 114, column: 21, scope: !101319)
-!101325 = !DILocation(line: 115, column: 15, scope: !101326)
-!101326 = distinct !DILexicalBlock(scope: !101323, file: !100005, line: 114, column: 51)
-!101327 = !DILocation(line: 115, column: 22, scope: !101326)
-!101328 = !DILocation(line: 115, column: 42, scope: !101326)
-!101329 = !DILocation(line: 115, column: 33, scope: !101326)
-!101330 = !DILocation(line: 115, column: 57, scope: !101326)
-!101331 = !DILocation(line: 115, column: 48, scope: !101326)
-!101332 = !DILocation(line: 115, column: 72, scope: !101326)
-!101333 = !DILocation(line: 115, column: 63, scope: !101326)
-!101334 = !DILocation(line: 115, column: 5, scope: !101326)
-!101335 = !DILocation(line: 115, column: 13, scope: !101326)
-!101336 = !DILocation(line: 116, column: 7, scope: !101326)
-!101337 = !DILocation(line: 117, column: 3, scope: !101326)
-!101338 = !DILocation(line: 114, column: 47, scope: !101323)
-!101339 = !DILocation(line: 114, column: 21, scope: !101323)
-!101340 = distinct !{!101340, !101324, !101341, !101342}
-!101341 = !DILocation(line: 117, column: 3, scope: !101319)
-!101342 = !{!"llvm.loop.name", !"VITIS_LOOP_114_2"}
-!101343 = !DILocation(line: 118, column: 1, scope: !101278)
-!101344 = distinct !DISubprogram(name: "create_cap", linkageName: "_Z10create_capiP3Caph", scope: !100005, file: !100005, line: 120, type: !101345, isLocal: false, isDefinition: true, scopeLine: 120, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
-!101345 = !DISubroutineType(types: !101346)
-!101346 = !{null, !100030, !101282, !101347}
-!101347 = !DIDerivedType(tag: DW_TAG_typedef, name: "u8", file: !100005, line: 6, baseType: !101348)
-!101348 = !DIDerivedType(tag: DW_TAG_typedef, name: "uint8_t", file: !100007, line: 24, baseType: !101349)
-!101349 = !DIDerivedType(tag: DW_TAG_typedef, name: "__uint8_t", file: !100009, line: 38, baseType: !101350)
-!101350 = !DIBasicType(name: "unsigned char", size: 8, encoding: DW_ATE_unsigned_char)
-!101351 = !{!101352}
-!101352 = !{!"fpga.inline", !"user", !101353}
-!101353 = !DILocation(line: 121, column: 9, scope: !101344)
-!101354 = !DILocalVariable(name: "size", arg: 1, scope: !101344, file: !100005, line: 120, type: !100030)
-!101355 = !DILocation(line: 120, column: 21, scope: !101344)
-!101356 = !DILocalVariable(name: "caps", arg: 2, scope: !101344, file: !100005, line: 120, type: !101282)
-!101357 = !DILocation(line: 120, column: 32, scope: !101344)
-!101358 = !DILocalVariable(name: "index", arg: 3, scope: !101344, file: !100005, line: 120, type: !101347)
-!101359 = !DILocation(line: 120, column: 41, scope: !101344)
-!101360 = !DILocation(line: 122, column: 2, scope: !101344)
-!101361 = !DILocalVariable(name: "new_cap", scope: !101344, file: !100005, line: 122, type: !100338)
-!101362 = !DILocation(line: 122, column: 6, scope: !101344)
-!101363 = !DILocation(line: 123, column: 11, scope: !101344)
-!101364 = !DILocation(line: 123, column: 16, scope: !101344)
-!101365 = !DILocation(line: 124, column: 22, scope: !101344)
-!101366 = !DILocation(line: 124, column: 11, scope: !101344)
-!101367 = !DILocation(line: 124, column: 15, scope: !101344)
-!101368 = !DILocation(line: 125, column: 11, scope: !101344)
-!101369 = !DILocation(line: 125, column: 17, scope: !101344)
-!101370 = !DILocation(line: 126, column: 11, scope: !101344)
-!101371 = !DILocation(line: 126, column: 16, scope: !101344)
-!101372 = !DILocation(line: 127, column: 3, scope: !101344)
-!101373 = !DILocation(line: 127, column: 15, scope: !101344)
-!101374 = !DILocation(line: 129, column: 1, scope: !101344)
-!101375 = distinct !DISubprogram(name: "checkAccess", linkageName: "_Z11checkAccessPj3Capt7ap_uintILi3EEb", scope: !100005, file: !100005, line: 131, type: !101376, isLocal: false, isDefinition: true, scopeLine: 132, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
-!101376 = !DISubroutineType(types: !101377)
-!101377 = !{null, !101281, !100338, !101378, !100464, !100032}
-!101378 = !DIDerivedType(tag: DW_TAG_typedef, name: "u16", file: !100005, line: 7, baseType: !101379)
-!101379 = !DIDerivedType(tag: DW_TAG_typedef, name: "uint16_t", file: !100007, line: 25, baseType: !101380)
-!101380 = !DIDerivedType(tag: DW_TAG_typedef, name: "__uint16_t", file: !100009, line: 40, baseType: !101140)
-!101381 = !{!101382}
-!101382 = !{!"fpga.inline", !"user", !101383}
-!101383 = !DILocation(line: 133, column: 9, scope: !101375)
-!101384 = !DILocalVariable(name: "flag_buf", arg: 1, scope: !101375, file: !100005, line: 131, type: !101281)
-!101385 = !DILocation(line: 131, column: 23, scope: !101375)
-!101386 = !DILocalVariable(name: "cap", arg: 2, scope: !101375, file: !100005, line: 131, type: !100338)
-!101387 = !DILocation(line: 131, column: 37, scope: !101375)
-!101388 = !DILocalVariable(name: "offset", arg: 3, scope: !101375, file: !100005, line: 131, type: !101378)
-!101389 = !DILocation(line: 131, column: 46, scope: !101375)
-!101390 = !DILocalVariable(name: "nBytes", arg: 4, scope: !101375, file: !100005, line: 131, type: !100464)
-!101391 = !DILocation(line: 131, column: 65, scope: !101375)
-!101392 = !DILocalVariable(name: "isWrite", arg: 5, scope: !101375, file: !100005, line: 132, type: !100032)
-!101393 = !DILocation(line: 132, column: 23, scope: !101375)
-!101394 = !DILocation(line: 135, column: 14, scope: !101375)
-!101395 = !DILocation(line: 135, column: 27, scope: !101375)
-!101396 = !DILocation(line: 135, column: 25, scope: !101375)
-!101397 = !DILocation(line: 135, column: 19, scope: !101375)
-!101398 = !DILocation(line: 135, column: 36, scope: !101375)
-!101399 = !DILocation(line: 135, column: 40, scope: !101375)
-!101400 = !DILocation(line: 135, column: 45, scope: !101375)
-!101401 = !DILocation(line: 135, column: 43, scope: !101375)
-!101402 = !DILocation(line: 135, column: 54, scope: !101375)
-!101403 = !DILocation(line: 135, column: 52, scope: !101375)
-!101404 = !DILocation(line: 135, column: 69, scope: !101375)
-!101405 = !DILocation(line: 135, column: 62, scope: !101375)
-!101406 = !DILocation(line: 135, column: 74, scope: !101375)
-!101407 = !DILocation(line: 136, column: 19, scope: !101375)
-!101408 = !DILocation(line: 136, column: 27, scope: !101375)
-!101409 = !DILocation(line: 136, column: 35, scope: !101375)
-!101410 = !DILocation(line: 136, column: 47, scope: !101375)
-!101411 = !DILocation(line: 136, column: 55, scope: !101375)
-!101412 = !DILocation(line: 135, column: 7, scope: !101375)
-!101413 = !DILocation(line: 134, column: 12, scope: !101375)
-!101414 = !DILocation(line: 134, column: 2, scope: !101375)
-!101415 = !DILocation(line: 137, column: 1, scope: !101375)
-!101416 = distinct !DISubprogram(name: "cheri_load", linkageName: "_Z10cheri_loadPiiPj3Cap", scope: !100005, file: !100005, line: 139, type: !101417, isLocal: false, isDefinition: true, scopeLine: 139, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
-!101417 = !DISubroutineType(types: !101418)
-!101418 = !{!100030, !101419, !100030, !101281, !100338}
-!101419 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100030, size: 64)
-!101420 = !{!101421}
-!101421 = !{!"fpga.inline", !"user", !101422}
-!101422 = !DILocation(line: 140, column: 9, scope: !101416)
-!101423 = !DILocalVariable(name: "buf", arg: 1, scope: !101416, file: !100005, line: 139, type: !101419)
-!101424 = !DILocation(line: 139, column: 21, scope: !101416)
-!101425 = !DILocalVariable(name: "i", arg: 2, scope: !101416, file: !100005, line: 139, type: !100030)
-!101426 = !DILocation(line: 139, column: 30, scope: !101416)
-!101427 = !DILocalVariable(name: "flag_buf", arg: 3, scope: !101416, file: !100005, line: 139, type: !101281)
-!101428 = !DILocation(line: 139, column: 38, scope: !101416)
-!101429 = !DILocalVariable(name: "cap", arg: 4, scope: !101416, file: !100005, line: 139, type: !100338)
-!101430 = !DILocation(line: 139, column: 52, scope: !101416)
-!101431 = !DILocation(line: 141, column: 24, scope: !101416)
-!101432 = !DILocation(line: 141, column: 29, scope: !101416)
-!101433 = !DILocation(line: 141, column: 32, scope: !101416)
-!101434 = !DILocation(line: 141, column: 2, scope: !101416)
-!101435 = !DILocation(line: 142, column: 11, scope: !101416)
-!101436 = !DILocation(line: 142, column: 10, scope: !101416)
-!101437 = !DILocation(line: 142, column: 24, scope: !101416)
-!101438 = !DILocation(line: 142, column: 3, scope: !101416)
-!101439 = distinct !DISubprogram(name: "cheri_store", linkageName: "_Z11cheri_storePiiiPj3Cap", scope: !100005, file: !100005, line: 145, type: !101440, isLocal: false, isDefinition: true, scopeLine: 145, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
-!101440 = !DISubroutineType(types: !101441)
-!101441 = !{null, !101419, !100030, !100030, !101281, !100338}
-!101442 = !{!101443}
-!101443 = !{!"fpga.inline", !"user", !101444}
-!101444 = !DILocation(line: 146, column: 9, scope: !101439)
-!101445 = !DILocalVariable(name: "buf", arg: 1, scope: !101439, file: !100005, line: 145, type: !101419)
-!101446 = !DILocation(line: 145, column: 23, scope: !101439)
-!101447 = !DILocalVariable(name: "i", arg: 2, scope: !101439, file: !100005, line: 145, type: !100030)
-!101448 = !DILocation(line: 145, column: 32, scope: !101439)
-!101449 = !DILocalVariable(name: "val", arg: 3, scope: !101439, file: !100005, line: 145, type: !100030)
-!101450 = !DILocation(line: 145, column: 39, scope: !101439)
-!101451 = !DILocalVariable(name: "flag_buf", arg: 4, scope: !101439, file: !100005, line: 145, type: !101281)
-!101452 = !DILocation(line: 145, column: 49, scope: !101439)
-!101453 = !DILocalVariable(name: "cap", arg: 5, scope: !101439, file: !100005, line: 145, type: !100338)
-!101454 = !DILocation(line: 145, column: 63, scope: !101439)
-!101455 = !DILocation(line: 147, column: 24, scope: !101439)
-!101456 = !DILocation(line: 147, column: 29, scope: !101439)
-!101457 = !DILocation(line: 147, column: 32, scope: !101439)
-!101458 = !DILocation(line: 147, column: 2, scope: !101439)
-!101459 = !DILocation(line: 149, column: 8, scope: !101460)
-!101460 = distinct !DILexicalBlock(scope: !101439, file: !100005, line: 149, column: 7)
-!101461 = !DILocation(line: 149, column: 7, scope: !101460)
-!101462 = !DILocation(line: 149, column: 7, scope: !101439)
-!101463 = !DILocation(line: 150, column: 5, scope: !101464)
-!101464 = distinct !DILexicalBlock(scope: !101460, file: !100005, line: 149, column: 20)
-!101465 = !DILocation(line: 150, column: 12, scope: !101464)
-!101466 = !DILocation(line: 151, column: 3, scope: !101464)
-!101467 = !DILocation(line: 152, column: 3, scope: !101439)
-!101468 = distinct !DISubprogram(name: "hls_top", linkageName: "_Z7hls_topiPiS_PjS0_", scope: !100005, file: !100005, line: 155, type: !101469, isLocal: false, isDefinition: true, scopeLine: 155, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
-!101469 = !DISubroutineType(types: !101470)
-!101470 = !{null, !100030, !101419, !101419, !101281, !101281}
-!101471 = !{!101472}
-!101472 = !{!"fpga.top", !"user", !101473}
-!101473 = !DILocation(line: 155, column: 16, scope: !101468)
-!101474 = !DILocalVariable(name: "size", arg: 1, scope: !101468, file: !100005, line: 155, type: !100030)
-!101475 = !DILocation(line: 155, column: 60, scope: !101468)
-!101476 = !DILocalVariable(name: "a", arg: 2, scope: !101468, file: !100005, line: 155, type: !101419)
-!101477 = !DILocation(line: 155, column: 70, scope: !101468)
-!101478 = !DILocalVariable(name: "c", arg: 3, scope: !101468, file: !100005, line: 155, type: !101419)
-!101479 = !DILocation(line: 155, column: 81, scope: !101468)
-!101480 = !DILocalVariable(name: "flag", arg: 4, scope: !101468, file: !100005, line: 155, type: !101281)
-!101481 = !DILocation(line: 155, column: 93, scope: !101468)
-!101482 = !DILocalVariable(name: "cap", arg: 5, scope: !101468, file: !100005, line: 155, type: !101281)
-!101483 = !DILocation(line: 155, column: 103, scope: !101468)
-!101484 = !DILocation(line: 156, column: 9, scope: !101468)
-!101485 = !DILocation(line: 157, column: 9, scope: !101468)
-!101486 = !DILocation(line: 158, column: 9, scope: !101468)
-!101487 = !DILocation(line: 159, column: 9, scope: !101468)
-!101488 = !DILocation(line: 160, column: 9, scope: !101468)
-!101489 = !DILocation(line: 161, column: 9, scope: !101468)
-!101490 = !DILocation(line: 162, column: 2, scope: !101468)
-!101491 = !DILocalVariable(name: "b", scope: !101468, file: !100005, line: 162, type: !101492)
-!101492 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100030, size: 320, elements: !101493)
-!101493 = !{!101494}
-!101494 = !DISubrange(count: 10)
-!101495 = !DILocation(line: 162, column: 6, scope: !101468)
-!101496 = !DILocation(line: 164, column: 3, scope: !101468)
-!101497 = !DILocalVariable(name: "flag_buf", scope: !101468, file: !100005, line: 164, type: !100004)
-!101498 = !DILocation(line: 164, column: 7, scope: !101468)
-!101499 = !DILocation(line: 166, column: 3, scope: !101468)
-!101500 = !DILocalVariable(name: "caps", scope: !101468, file: !100005, line: 166, type: !101501)
-!101501 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100338, size: 288, elements: !101502)
-!101502 = !{!101503}
-!101503 = !DISubrange(count: 3)
-!101504 = !DILocation(line: 166, column: 7, scope: !101468)
-!101505 = !DILocation(line: 167, column: 3, scope: !101468)
-!101506 = !DILocalVariable(name: "buffer", scope: !101468, file: !100005, line: 167, type: !101507)
-!101507 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100004, size: 384, elements: !101508)
-!101508 = !{!101509}
-!101509 = !DISubrange(count: 12)
-!101510 = !DILocation(line: 167, column: 7, scope: !101468)
-!101511 = !DILocation(line: 168, column: 9, scope: !101468)
-!101512 = !DILocation(line: 169, column: 9, scope: !101468)
-!101513 = !DILocation(line: 171, column: 14, scope: !101468)
-!101514 = !DILocation(line: 171, column: 27, scope: !101468)
-!101515 = !DILocation(line: 171, column: 2, scope: !101468)
-!101516 = !DILocation(line: 172, column: 18, scope: !101468)
-!101517 = !DILocation(line: 172, column: 3, scope: !101468)
-!101518 = !DILocalVariable(name: "i", scope: !101519, file: !100005, line: 174, type: !100030)
-!101519 = distinct !DILexicalBlock(scope: !101468, file: !100005, line: 174, column: 21)
-!101520 = !DILocation(line: 174, column: 30, scope: !101519)
-!101521 = !DILocation(line: 174, column: 26, scope: !101519)
-!101522 = !DILocation(line: 174, column: 39, scope: !101523)
-!101523 = distinct !DILexicalBlock(scope: !101519, file: !100005, line: 174, column: 21)
-!101524 = !DILocation(line: 174, column: 21, scope: !101519)
-!101525 = !DILocation(line: 177, column: 43, scope: !101526)
-!101526 = distinct !DILexicalBlock(scope: !101523, file: !100005, line: 174, column: 52)
-!101527 = !DILocation(line: 177, column: 15, scope: !101526)
-!101528 = !DILocalVariable(name: "a_elem", scope: !101526, file: !100005, line: 177, type: !100030)
-!101529 = !DILocation(line: 177, column: 6, scope: !101526)
-!101530 = !DILocation(line: 178, column: 29, scope: !101526)
-!101531 = !DILocation(line: 178, column: 46, scope: !101526)
-!101532 = !DILocation(line: 178, column: 18, scope: !101526)
-!101533 = !DILocalVariable(name: "b_elem", scope: !101526, file: !100005, line: 178, type: !100030)
-!101534 = !DILocation(line: 178, column: 9, scope: !101526)
-!101535 = !DILocation(line: 180, column: 25, scope: !101526)
-!101536 = !DILocalVariable(name: "c_elem", scope: !101526, file: !100005, line: 180, type: !100030)
-!101537 = !DILocation(line: 180, column: 9, scope: !101526)
-!101538 = !DILocation(line: 182, column: 42, scope: !101526)
-!101539 = !DILocation(line: 182, column: 5, scope: !101526)
-!101540 = !DILocation(line: 183, column: 3, scope: !101526)
-!101541 = !DILocation(line: 174, column: 48, scope: !101523)
-!101542 = !DILocation(line: 174, column: 21, scope: !101523)
-!101543 = distinct !{!101543, !101524, !101544, !101545, !101547}
-!101544 = !DILocation(line: 183, column: 3, scope: !101519)
-!101545 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101546}
-!101546 = !DILocation(line: 175, column: 9, scope: !101519)
-!101547 = !{!"llvm.loop.name", !"VITIS_LOOP_174_1"}
-!101548 = !DILocation(line: 185, column: 11, scope: !101468)
-!101549 = !DILocation(line: 185, column: 9, scope: !101468)
-!101550 = !DILocation(line: 187, column: 1, scope: !101468)
+!101143 = !{null, !101140, !101136}
+!101144 = !{!101145, !100091}
+!101145 = !DITemplateValueParameter(name: "_AP_N", type: !100030, value: i32 16)
+!101146 = !{!101147}
+!101147 = !{!"fpga.inline", !"user", !101148}
+!101148 = !DILocation(line: 523, column: 39, scope: !101132)
+!101149 = !DILocalVariable(name: "this", arg: 1, scope: !101132, type: !101150, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101150 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !101133, size: 64)
+!101151 = !DILocation(line: 0, scope: !101132)
+!101152 = !DILocalVariable(name: "o", arg: 2, scope: !101132, file: !100017, line: 523, type: !101136)
+!101153 = !DILocation(line: 523, column: 87, scope: !101132)
+!101154 = !DILocation(line: 523, column: 123, scope: !101132)
+!101155 = !DILocation(line: 523, column: 128, scope: !101132)
+!101156 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi2ELb0EEC2EDq2_j", scope: !100744, file: !100017, line: 523, type: !100753, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100752, variables: !100002)
+!101157 = !{!101158}
+!101158 = !{!"fpga.inline", !"user", !101159}
+!101159 = !DILocation(line: 523, column: 39, scope: !101156)
+!101160 = !DILocalVariable(name: "this", arg: 1, scope: !101156, type: !101161, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101161 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100744, size: 64)
+!101162 = !DILocation(line: 0, scope: !101156)
+!101163 = !DILocalVariable(name: "o", arg: 2, scope: !101156, file: !100017, line: 523, type: !100747)
+!101164 = !DILocation(line: 523, column: 87, scope: !101156)
+!101165 = !DILocation(line: 523, column: 123, scope: !101156)
+!101166 = !DILocation(line: 523, column: 128, scope: !101156)
+!101167 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi2ELb0EEC2Ev", scope: !100744, file: !100017, line: 522, type: !100749, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100748, variables: !100002)
+!101168 = !{!101169}
+!101169 = !{!"fpga.inline", !"user", !101170}
+!101170 = !DILocation(line: 522, column: 25, scope: !101167)
+!101171 = !DILocalVariable(name: "this", arg: 1, scope: !101167, type: !101161, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101172 = !DILocation(line: 0, scope: !101167)
+!101173 = !DILocation(line: 522, column: 66, scope: !101167)
+!101174 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi14ELb0EEC2EDq14_j", scope: !100576, file: !100017, line: 523, type: !100585, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100584, variables: !100002)
+!101175 = !{!101176}
+!101176 = !{!"fpga.inline", !"user", !101177}
+!101177 = !DILocation(line: 523, column: 39, scope: !101174)
+!101178 = !DILocalVariable(name: "this", arg: 1, scope: !101174, type: !101118, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101179 = !DILocation(line: 0, scope: !101174)
+!101180 = !DILocalVariable(name: "o", arg: 2, scope: !101174, file: !100017, line: 523, type: !100579)
+!101181 = !DILocation(line: 523, column: 87, scope: !101174)
+!101182 = !DILocation(line: 523, column: 123, scope: !101174)
+!101183 = !DILocation(line: 523, column: 128, scope: !101174)
+!101184 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi11ELb0EEC2EDq11_j", scope: !100106, file: !100017, line: 523, type: !100115, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100114, variables: !100002)
+!101185 = !{!101186}
+!101186 = !{!"fpga.inline", !"user", !101187}
+!101187 = !DILocation(line: 523, column: 39, scope: !101184)
+!101188 = !DILocalVariable(name: "this", arg: 1, scope: !101184, type: !101189, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101189 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100106, size: 64)
+!101190 = !DILocation(line: 0, scope: !101184)
+!101191 = !DILocalVariable(name: "o", arg: 2, scope: !101184, file: !100017, line: 523, type: !100109)
+!101192 = !DILocation(line: 523, column: 87, scope: !101184)
+!101193 = !DILocation(line: 523, column: 123, scope: !101184)
+!101194 = !DILocation(line: 523, column: 128, scope: !101184)
+!101195 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi9ELb0EEC2EDq9_j", scope: !100078, file: !100017, line: 523, type: !100087, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100086, variables: !100002)
+!101196 = !{!101197}
+!101197 = !{!"fpga.inline", !"user", !101198}
+!101198 = !DILocation(line: 523, column: 39, scope: !101195)
+!101199 = !DILocalVariable(name: "this", arg: 1, scope: !101195, type: !101200, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101200 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100078, size: 64)
+!101201 = !DILocation(line: 0, scope: !101195)
+!101202 = !DILocalVariable(name: "o", arg: 2, scope: !101195, file: !100017, line: 523, type: !100081)
+!101203 = !DILocation(line: 523, column: 87, scope: !101195)
+!101204 = !DILocation(line: 523, column: 123, scope: !101195)
+!101205 = !DILocation(line: 523, column: 128, scope: !101195)
+!101206 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi6ELb0EEC2Ev", scope: !100302, file: !100017, line: 522, type: !100307, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100306, variables: !100002)
+!101207 = !{!101208}
+!101208 = !{!"fpga.inline", !"user", !101209}
+!101209 = !DILocation(line: 522, column: 25, scope: !101206)
+!101210 = !DILocalVariable(name: "this", arg: 1, scope: !101206, type: !101211, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101211 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100302, size: 64)
+!101212 = !DILocation(line: 0, scope: !101206)
+!101213 = !DILocation(line: 522, column: 66, scope: !101206)
+!101214 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi6ELb0EEC2EDq6_j", scope: !100302, file: !100017, line: 523, type: !100311, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100310, variables: !100002)
+!101215 = !{!101216}
+!101216 = !{!"fpga.inline", !"user", !101217}
+!101217 = !DILocation(line: 523, column: 39, scope: !101214)
+!101218 = !DILocalVariable(name: "this", arg: 1, scope: !101214, type: !101211, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101219 = !DILocation(line: 0, scope: !101214)
+!101220 = !DILocalVariable(name: "o", arg: 2, scope: !101214, file: !100017, line: 523, type: !100305)
+!101221 = !DILocation(line: 523, column: 87, scope: !101214)
+!101222 = !DILocation(line: 523, column: 123, scope: !101214)
+!101223 = !DILocation(line: 523, column: 128, scope: !101214)
+!101224 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi12ELb0EEC2Ev", scope: !100651, file: !100017, line: 522, type: !100656, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100655, variables: !100002)
+!101225 = !{!101226}
+!101226 = !{!"fpga.inline", !"user", !101227}
+!101227 = !DILocation(line: 522, column: 25, scope: !101224)
+!101228 = !DILocalVariable(name: "this", arg: 1, scope: !101224, type: !101229, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101229 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100651, size: 64)
+!101230 = !DILocation(line: 0, scope: !101224)
+!101231 = !DILocation(line: 522, column: 66, scope: !101224)
+!101232 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi12ELb0EEC2EDq12_j", scope: !100651, file: !100017, line: 523, type: !100660, isLocal: false, isDefinition: true, scopeLine: 523, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100659, variables: !100002)
+!101233 = !{!101234}
+!101234 = !{!"fpga.inline", !"user", !101235}
+!101235 = !DILocation(line: 523, column: 39, scope: !101232)
+!101236 = !DILocalVariable(name: "this", arg: 1, scope: !101232, type: !101229, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101237 = !DILocation(line: 0, scope: !101232)
+!101238 = !DILocalVariable(name: "o", arg: 2, scope: !101232, file: !100017, line: 523, type: !100654)
+!101239 = !DILocation(line: 523, column: 87, scope: !101232)
+!101240 = !DILocation(line: 523, column: 123, scope: !101232)
+!101241 = !DILocation(line: 523, column: 128, scope: !101232)
+!101242 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi11ELb0EEC2Ev", scope: !100106, file: !100017, line: 522, type: !100111, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100110, variables: !100002)
+!101243 = !{!101244}
+!101244 = !{!"fpga.inline", !"user", !101245}
+!101245 = !DILocation(line: 522, column: 25, scope: !101242)
+!101246 = !DILocalVariable(name: "this", arg: 1, scope: !101242, type: !101189, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101247 = !DILocation(line: 0, scope: !101242)
+!101248 = !DILocation(line: 522, column: 66, scope: !101242)
+!101249 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi64ELb0EEC2Ev", scope: !100242, file: !100017, line: 522, type: !100247, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100246, variables: !100002)
+!101250 = !{!101251}
+!101251 = !{!"fpga.inline", !"user", !101252}
+!101252 = !DILocation(line: 522, column: 25, scope: !101249)
+!101253 = !DILocalVariable(name: "this", arg: 1, scope: !101249, type: !101126, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101254 = !DILocation(line: 0, scope: !101249)
+!101255 = !DILocation(line: 522, column: 66, scope: !101249)
+!101256 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi9ELb0EEC2Ev", scope: !100078, file: !100017, line: 522, type: !100083, isLocal: false, isDefinition: true, scopeLine: 522, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100082, variables: !100002)
+!101257 = !{!101258}
+!101258 = !{!"fpga.inline", !"user", !101259}
+!101259 = !DILocation(line: 522, column: 25, scope: !101256)
+!101260 = !DILocalVariable(name: "this", arg: 1, scope: !101256, type: !101200, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101261 = !DILocation(line: 0, scope: !101256)
+!101262 = !DILocation(line: 522, column: 66, scope: !101256)
+!101263 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi64ELb1EEC2El", scope: !100016, file: !100017, line: 515, type: !100026, isLocal: false, isDefinition: true, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100025, variables: !100002)
+!101264 = !{!101265}
+!101265 = !{!"fpga.inline", !"user", !101266}
+!101266 = !DILocation(line: 515, column: 39, scope: !101263)
+!101267 = !DILocalVariable(name: "this", arg: 1, scope: !101263, type: !101268, flags: DIFlagArtificial | DIFlagObjectPointer)
+!101268 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100016, size: 64)
+!101269 = !DILocation(line: 0, scope: !101263)
+!101270 = !DILocalVariable(name: "o", arg: 2, scope: !101263, file: !100017, line: 515, type: !100020)
+!101271 = !DILocation(line: 515, column: 81, scope: !101263)
+!101272 = !DILocation(line: 515, column: 117, scope: !101263)
+!101273 = !DILocation(line: 515, column: 122, scope: !101263)
+!101274 = distinct !DISubprogram(name: "load_cap", linkageName: "_Z8load_capiPjS_P3Cap", scope: !100005, file: !100005, line: 94, type: !101275, isLocal: false, isDefinition: true, scopeLine: 94, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101275 = !DISubroutineType(types: !101276)
+!101276 = !{null, !100030, !101277, !101277, !101278}
+!101277 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100004, size: 64)
+!101278 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100338, size: 64)
+!101279 = !{!101280}
+!101280 = !{!"fpga.inline", !"user", !101281}
+!101281 = !DILocation(line: 95, column: 9, scope: !101274)
+!101282 = !DILocalVariable(name: "num", arg: 1, scope: !101274, file: !100005, line: 94, type: !100030)
+!101283 = !DILocation(line: 94, column: 19, scope: !101274)
+!101284 = !DILocalVariable(name: "buffer", arg: 2, scope: !101274, file: !100005, line: 94, type: !101277)
+!101285 = !DILocation(line: 94, column: 29, scope: !101274)
+!101286 = !DILocalVariable(name: "cap", arg: 3, scope: !101274, file: !100005, line: 94, type: !101277)
+!101287 = !DILocation(line: 94, column: 42, scope: !101274)
+!101288 = !DILocalVariable(name: "caps", arg: 4, scope: !101274, file: !100005, line: 94, type: !101278)
+!101289 = !DILocation(line: 94, column: 52, scope: !101274)
+!101290 = !DILocation(line: 94, column: 58, scope: !101274)
+!101291 = !DILocalVariable(name: "i", scope: !101292, file: !100005, line: 97, type: !100030)
+!101292 = distinct !DILexicalBlock(scope: !101274, file: !100005, line: 97, column: 19)
+!101293 = !DILocation(line: 97, column: 28, scope: !101292)
+!101294 = !DILocation(line: 97, column: 24, scope: !101292)
+!101295 = !DILocation(line: 97, column: 43, scope: !101296)
+!101296 = distinct !DILexicalBlock(scope: !101292, file: !100005, line: 97, column: 19)
+!101297 = !DILocation(line: 97, column: 37, scope: !101296)
+!101298 = !DILocation(line: 97, column: 19, scope: !101292)
+!101299 = !DILocation(line: 99, column: 14, scope: !101300)
+!101300 = distinct !DILexicalBlock(scope: !101296, file: !100005, line: 98, column: 1)
+!101301 = !DILocation(line: 99, column: 2, scope: !101300)
+!101302 = !DILocation(line: 99, column: 12, scope: !101300)
+!101303 = !DILocation(line: 99, column: 19, scope: !101300)
+!101304 = !DILocation(line: 97, column: 49, scope: !101296)
+!101305 = !DILocation(line: 97, column: 19, scope: !101296)
+!101306 = distinct !{!101306, !101298, !101307, !101308, !101310}
+!101307 = !DILocation(line: 99, column: 19, scope: !101292)
+!101308 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101309}
+!101309 = !DILocation(line: 98, column: 9, scope: !101292)
+!101310 = !{!"llvm.loop.name", !"VITIS_LOOP_97_1"}
+!101311 = !DILocalVariable(name: "i", scope: !101274, file: !100005, line: 101, type: !100030)
+!101312 = !DILocation(line: 101, column: 7, scope: !101274)
+!101313 = !DILocation(line: 101, column: 3, scope: !101274)
+!101314 = !DILocalVariable(name: "j", scope: !101315, file: !100005, line: 102, type: !100030)
+!101315 = distinct !DILexicalBlock(scope: !101274, file: !100005, line: 102, column: 21)
+!101316 = !DILocation(line: 102, column: 30, scope: !101315)
+!101317 = !DILocation(line: 102, column: 26, scope: !101315)
+!101318 = !DILocation(line: 102, column: 39, scope: !101319)
+!101319 = distinct !DILexicalBlock(scope: !101315, file: !100005, line: 102, column: 21)
+!101320 = !DILocation(line: 102, column: 21, scope: !101315)
+!101321 = !DILocation(line: 103, column: 15, scope: !101322)
+!101322 = distinct !DILexicalBlock(scope: !101319, file: !100005, line: 102, column: 51)
+!101323 = !DILocation(line: 103, column: 22, scope: !101322)
+!101324 = !DILocation(line: 103, column: 42, scope: !101322)
+!101325 = !DILocation(line: 103, column: 33, scope: !101322)
+!101326 = !DILocation(line: 103, column: 57, scope: !101322)
+!101327 = !DILocation(line: 103, column: 48, scope: !101322)
+!101328 = !DILocation(line: 103, column: 72, scope: !101322)
+!101329 = !DILocation(line: 103, column: 63, scope: !101322)
+!101330 = !DILocation(line: 103, column: 5, scope: !101322)
+!101331 = !DILocation(line: 103, column: 13, scope: !101322)
+!101332 = !DILocation(line: 104, column: 7, scope: !101322)
+!101333 = !DILocation(line: 105, column: 3, scope: !101322)
+!101334 = !DILocation(line: 102, column: 47, scope: !101319)
+!101335 = !DILocation(line: 102, column: 21, scope: !101319)
+!101336 = distinct !{!101336, !101320, !101337, !101338}
+!101337 = !DILocation(line: 105, column: 3, scope: !101315)
+!101338 = !{!"llvm.loop.name", !"VITIS_LOOP_102_2"}
+!101339 = !DILocation(line: 106, column: 1, scope: !101274)
+!101340 = distinct !DISubprogram(name: "create_cap", linkageName: "_Z10create_capiP3Caph", scope: !100005, file: !100005, line: 108, type: !101341, isLocal: false, isDefinition: true, scopeLine: 108, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101341 = !DISubroutineType(types: !101342)
+!101342 = !{null, !100030, !101278, !101343}
+!101343 = !DIDerivedType(tag: DW_TAG_typedef, name: "u8", file: !100005, line: 6, baseType: !101344)
+!101344 = !DIDerivedType(tag: DW_TAG_typedef, name: "uint8_t", file: !100007, line: 24, baseType: !101345)
+!101345 = !DIDerivedType(tag: DW_TAG_typedef, name: "__uint8_t", file: !100009, line: 38, baseType: !101346)
+!101346 = !DIBasicType(name: "unsigned char", size: 8, encoding: DW_ATE_unsigned_char)
+!101347 = !{!101348}
+!101348 = !{!"fpga.inline", !"user", !101349}
+!101349 = !DILocation(line: 109, column: 9, scope: !101340)
+!101350 = !DILocalVariable(name: "size", arg: 1, scope: !101340, file: !100005, line: 108, type: !100030)
+!101351 = !DILocation(line: 108, column: 21, scope: !101340)
+!101352 = !DILocalVariable(name: "caps", arg: 2, scope: !101340, file: !100005, line: 108, type: !101278)
+!101353 = !DILocation(line: 108, column: 32, scope: !101340)
+!101354 = !DILocalVariable(name: "index", arg: 3, scope: !101340, file: !100005, line: 108, type: !101343)
+!101355 = !DILocation(line: 108, column: 41, scope: !101340)
+!101356 = !DILocation(line: 110, column: 2, scope: !101340)
+!101357 = !DILocalVariable(name: "new_cap", scope: !101340, file: !100005, line: 110, type: !100338)
+!101358 = !DILocation(line: 110, column: 6, scope: !101340)
+!101359 = !DILocation(line: 111, column: 11, scope: !101340)
+!101360 = !DILocation(line: 111, column: 16, scope: !101340)
+!101361 = !DILocation(line: 112, column: 22, scope: !101340)
+!101362 = !DILocation(line: 112, column: 11, scope: !101340)
+!101363 = !DILocation(line: 112, column: 15, scope: !101340)
+!101364 = !DILocation(line: 113, column: 11, scope: !101340)
+!101365 = !DILocation(line: 113, column: 17, scope: !101340)
+!101366 = !DILocation(line: 114, column: 11, scope: !101340)
+!101367 = !DILocation(line: 114, column: 16, scope: !101340)
+!101368 = !DILocation(line: 115, column: 3, scope: !101340)
+!101369 = !DILocation(line: 115, column: 15, scope: !101340)
+!101370 = !DILocation(line: 117, column: 1, scope: !101340)
+!101371 = distinct !DISubprogram(name: "checkAccess", linkageName: "_Z11checkAccessPj3Capt7ap_uintILi3EEb", scope: !100005, file: !100005, line: 119, type: !101372, isLocal: false, isDefinition: true, scopeLine: 120, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101372 = !DISubroutineType(types: !101373)
+!101373 = !{null, !101277, !100338, !101374, !100464, !100032}
+!101374 = !DIDerivedType(tag: DW_TAG_typedef, name: "u16", file: !100005, line: 7, baseType: !101375)
+!101375 = !DIDerivedType(tag: DW_TAG_typedef, name: "uint16_t", file: !100007, line: 25, baseType: !101376)
+!101376 = !DIDerivedType(tag: DW_TAG_typedef, name: "__uint16_t", file: !100009, line: 40, baseType: !101136)
+!101377 = !{!101378}
+!101378 = !{!"fpga.inline", !"user", !101379}
+!101379 = !DILocation(line: 121, column: 9, scope: !101371)
+!101380 = !DILocalVariable(name: "flag_buf", arg: 1, scope: !101371, file: !100005, line: 119, type: !101277)
+!101381 = !DILocation(line: 119, column: 23, scope: !101371)
+!101382 = !DILocalVariable(name: "cap", arg: 2, scope: !101371, file: !100005, line: 119, type: !100338)
+!101383 = !DILocation(line: 119, column: 37, scope: !101371)
+!101384 = !DILocalVariable(name: "offset", arg: 3, scope: !101371, file: !100005, line: 119, type: !101374)
+!101385 = !DILocation(line: 119, column: 46, scope: !101371)
+!101386 = !DILocalVariable(name: "nBytes", arg: 4, scope: !101371, file: !100005, line: 119, type: !100464)
+!101387 = !DILocation(line: 119, column: 65, scope: !101371)
+!101388 = !DILocalVariable(name: "isWrite", arg: 5, scope: !101371, file: !100005, line: 120, type: !100032)
+!101389 = !DILocation(line: 120, column: 23, scope: !101371)
+!101390 = !DILocation(line: 123, column: 14, scope: !101371)
+!101391 = !DILocation(line: 123, column: 27, scope: !101371)
+!101392 = !DILocation(line: 123, column: 25, scope: !101371)
+!101393 = !DILocation(line: 123, column: 19, scope: !101371)
+!101394 = !DILocation(line: 123, column: 36, scope: !101371)
+!101395 = !DILocation(line: 123, column: 40, scope: !101371)
+!101396 = !DILocation(line: 123, column: 45, scope: !101371)
+!101397 = !DILocation(line: 123, column: 43, scope: !101371)
+!101398 = !DILocation(line: 123, column: 54, scope: !101371)
+!101399 = !DILocation(line: 123, column: 52, scope: !101371)
+!101400 = !DILocation(line: 123, column: 69, scope: !101371)
+!101401 = !DILocation(line: 123, column: 62, scope: !101371)
+!101402 = !DILocation(line: 123, column: 74, scope: !101371)
+!101403 = !DILocation(line: 124, column: 19, scope: !101371)
+!101404 = !DILocation(line: 124, column: 27, scope: !101371)
+!101405 = !DILocation(line: 124, column: 35, scope: !101371)
+!101406 = !DILocation(line: 124, column: 47, scope: !101371)
+!101407 = !DILocation(line: 124, column: 55, scope: !101371)
+!101408 = !DILocation(line: 123, column: 7, scope: !101371)
+!101409 = !DILocation(line: 122, column: 12, scope: !101371)
+!101410 = !DILocation(line: 122, column: 2, scope: !101371)
+!101411 = !DILocation(line: 125, column: 1, scope: !101371)
+!101412 = distinct !DISubprogram(name: "cheri_load", linkageName: "_Z10cheri_loadPiiPj3Cap", scope: !100005, file: !100005, line: 127, type: !101413, isLocal: false, isDefinition: true, scopeLine: 127, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101413 = !DISubroutineType(types: !101414)
+!101414 = !{!100030, !101415, !100030, !101277, !100338}
+!101415 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100030, size: 64)
+!101416 = !{!101417}
+!101417 = !{!"fpga.inline", !"user", !101418}
+!101418 = !DILocation(line: 128, column: 9, scope: !101412)
+!101419 = !DILocalVariable(name: "buf", arg: 1, scope: !101412, file: !100005, line: 127, type: !101415)
+!101420 = !DILocation(line: 127, column: 21, scope: !101412)
+!101421 = !DILocalVariable(name: "i", arg: 2, scope: !101412, file: !100005, line: 127, type: !100030)
+!101422 = !DILocation(line: 127, column: 30, scope: !101412)
+!101423 = !DILocalVariable(name: "flag_buf", arg: 3, scope: !101412, file: !100005, line: 127, type: !101277)
+!101424 = !DILocation(line: 127, column: 38, scope: !101412)
+!101425 = !DILocalVariable(name: "cap", arg: 4, scope: !101412, file: !100005, line: 127, type: !100338)
+!101426 = !DILocation(line: 127, column: 52, scope: !101412)
+!101427 = !DILocation(line: 129, column: 24, scope: !101412)
+!101428 = !DILocation(line: 129, column: 29, scope: !101412)
+!101429 = !DILocation(line: 129, column: 32, scope: !101412)
+!101430 = !DILocation(line: 129, column: 2, scope: !101412)
+!101431 = !DILocation(line: 130, column: 11, scope: !101412)
+!101432 = !DILocalVariable(name: "b", scope: !101412, file: !100005, line: 130, type: !100030)
+!101433 = !DILocation(line: 130, column: 7, scope: !101412)
+!101434 = !DILocation(line: 131, column: 11, scope: !101412)
+!101435 = !DILocation(line: 131, column: 10, scope: !101412)
+!101436 = !DILocation(line: 131, column: 3, scope: !101412)
+!101437 = distinct !DISubprogram(name: "cheri_store", linkageName: "_Z11cheri_storePiiiPj3Cap", scope: !100005, file: !100005, line: 134, type: !101438, isLocal: false, isDefinition: true, scopeLine: 134, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101438 = !DISubroutineType(types: !101439)
+!101439 = !{null, !101415, !100030, !100030, !101277, !100338}
+!101440 = !{!101441}
+!101441 = !{!"fpga.inline", !"user", !101442}
+!101442 = !DILocation(line: 135, column: 9, scope: !101437)
+!101443 = !DILocalVariable(name: "buf", arg: 1, scope: !101437, file: !100005, line: 134, type: !101415)
+!101444 = !DILocation(line: 134, column: 23, scope: !101437)
+!101445 = !DILocalVariable(name: "i", arg: 2, scope: !101437, file: !100005, line: 134, type: !100030)
+!101446 = !DILocation(line: 134, column: 32, scope: !101437)
+!101447 = !DILocalVariable(name: "val", arg: 3, scope: !101437, file: !100005, line: 134, type: !100030)
+!101448 = !DILocation(line: 134, column: 39, scope: !101437)
+!101449 = !DILocalVariable(name: "flag_buf", arg: 4, scope: !101437, file: !100005, line: 134, type: !101277)
+!101450 = !DILocation(line: 134, column: 49, scope: !101437)
+!101451 = !DILocalVariable(name: "cap", arg: 5, scope: !101437, file: !100005, line: 134, type: !100338)
+!101452 = !DILocation(line: 134, column: 63, scope: !101437)
+!101453 = !DILocation(line: 136, column: 24, scope: !101437)
+!101454 = !DILocation(line: 136, column: 29, scope: !101437)
+!101455 = !DILocation(line: 136, column: 32, scope: !101437)
+!101456 = !DILocation(line: 136, column: 2, scope: !101437)
+!101457 = !DILocation(line: 137, column: 13, scope: !101437)
+!101458 = !DILocation(line: 137, column: 12, scope: !101437)
+!101459 = !DILocation(line: 137, column: 32, scope: !101437)
+!101460 = !DILocation(line: 137, column: 3, scope: !101437)
+!101461 = !DILocation(line: 137, column: 10, scope: !101437)
+!101462 = !DILocation(line: 138, column: 3, scope: !101437)
+!101463 = distinct !DISubprogram(name: "cheri_stream_write", linkageName: "_Z18cheri_stream_writejPiS_Pj3Cap", scope: !100005, file: !100005, line: 141, type: !101464, isLocal: false, isDefinition: true, scopeLine: 142, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101464 = !DISubroutineType(types: !101465)
+!101465 = !{null, !100004, !101415, !101415, !101277, !100338}
+!101466 = !{!101467}
+!101467 = !{!"fpga.inline", !"user", !101468}
+!101468 = !DILocation(line: 143, column: 9, scope: !101463)
+!101469 = !DILocalVariable(name: "size", arg: 1, scope: !101463, file: !100005, line: 141, type: !100004)
+!101470 = !DILocation(line: 141, column: 29, scope: !101463)
+!101471 = !DILocalVariable(name: "array1", arg: 2, scope: !101463, file: !100005, line: 141, type: !101415)
+!101472 = !DILocation(line: 141, column: 40, scope: !101463)
+!101473 = !DILocalVariable(name: "array2", arg: 3, scope: !101463, file: !100005, line: 141, type: !101415)
+!101474 = !DILocation(line: 141, column: 53, scope: !101463)
+!101475 = !DILocalVariable(name: "flag_buf", arg: 4, scope: !101463, file: !100005, line: 141, type: !101277)
+!101476 = !DILocation(line: 141, column: 66, scope: !101463)
+!101477 = !DILocalVariable(name: "cap", arg: 5, scope: !101463, file: !100005, line: 142, type: !100338)
+!101478 = !DILocation(line: 142, column: 29, scope: !101463)
+!101479 = !DILocation(line: 142, column: 34, scope: !101463)
+!101480 = !DILocalVariable(name: "i", scope: !101481, file: !100005, line: 144, type: !100030)
+!101481 = distinct !DILexicalBlock(scope: !101463, file: !100005, line: 144, column: 20)
+!101482 = !DILocation(line: 144, column: 29, scope: !101481)
+!101483 = !DILocation(line: 144, column: 25, scope: !101481)
+!101484 = !DILocation(line: 144, column: 38, scope: !101485)
+!101485 = distinct !DILexicalBlock(scope: !101481, file: !100005, line: 144, column: 20)
+!101486 = !DILocation(line: 144, column: 20, scope: !101481)
+!101487 = !DILocation(line: 145, column: 27, scope: !101488)
+!101488 = distinct !DILexicalBlock(scope: !101485, file: !100005, line: 144, column: 51)
+!101489 = !DILocation(line: 145, column: 32, scope: !101488)
+!101490 = !DILocation(line: 145, column: 35, scope: !101488)
+!101491 = !DILocation(line: 145, column: 5, scope: !101488)
+!101492 = !DILocation(line: 146, column: 3, scope: !101488)
+!101493 = !DILocation(line: 144, column: 47, scope: !101485)
+!101494 = !DILocation(line: 144, column: 20, scope: !101485)
+!101495 = distinct !{!101495, !101486, !101496, !101497}
+!101496 = !DILocation(line: 146, column: 3, scope: !101481)
+!101497 = !{!"llvm.loop.name", !"VITIS_LOOP_144_1"}
+!101498 = !DILocation(line: 147, column: 7, scope: !101499)
+!101499 = distinct !DILexicalBlock(scope: !101463, file: !100005, line: 147, column: 7)
+!101500 = !DILocation(line: 147, column: 7, scope: !101463)
+!101501 = !DILocation(line: 147, column: 18, scope: !101499)
+!101502 = !DILocalVariable(name: "i", scope: !101503, file: !100005, line: 148, type: !100030)
+!101503 = distinct !DILexicalBlock(scope: !101504, file: !100005, line: 148, column: 23)
+!101504 = distinct !DILexicalBlock(scope: !101499, file: !100005, line: 147, column: 18)
+!101505 = !DILocation(line: 148, column: 32, scope: !101503)
+!101506 = !DILocation(line: 148, column: 28, scope: !101503)
+!101507 = !DILocation(line: 148, column: 41, scope: !101508)
+!101508 = distinct !DILexicalBlock(scope: !101503, file: !100005, line: 148, column: 23)
+!101509 = !DILocation(line: 148, column: 23, scope: !101503)
+!101510 = !DILocation(line: 149, column: 19, scope: !101511)
+!101511 = distinct !DILexicalBlock(scope: !101508, file: !100005, line: 148, column: 54)
+!101512 = !DILocation(line: 149, column: 7, scope: !101511)
+!101513 = !DILocation(line: 149, column: 17, scope: !101511)
+!101514 = !DILocation(line: 150, column: 5, scope: !101511)
+!101515 = !DILocation(line: 148, column: 50, scope: !101508)
+!101516 = !DILocation(line: 148, column: 23, scope: !101508)
+!101517 = distinct !{!101517, !101509, !101518, !101519}
+!101518 = !DILocation(line: 150, column: 5, scope: !101503)
+!101519 = !{!"llvm.loop.name", !"VITIS_LOOP_148_2"}
+!101520 = !DILocation(line: 151, column: 3, scope: !101504)
+!101521 = !DILocation(line: 152, column: 1, scope: !101463)
+!101522 = distinct !DISubprogram(name: "hls_top", linkageName: "_Z7hls_topiPiS_PjS0_", scope: !100005, file: !100005, line: 154, type: !101523, isLocal: false, isDefinition: true, scopeLine: 154, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101523 = !DISubroutineType(types: !101524)
+!101524 = !{null, !100030, !101415, !101415, !101277, !101277}
+!101525 = !{!101526}
+!101526 = !{!"fpga.top", !"user", !101527}
+!101527 = !DILocation(line: 154, column: 16, scope: !101522)
+!101528 = !DILocalVariable(name: "size", arg: 1, scope: !101522, file: !100005, line: 154, type: !100030)
+!101529 = !DILocation(line: 154, column: 60, scope: !101522)
+!101530 = !DILocalVariable(name: "a", arg: 2, scope: !101522, file: !100005, line: 154, type: !101415)
+!101531 = !DILocation(line: 154, column: 70, scope: !101522)
+!101532 = !DILocalVariable(name: "c", arg: 3, scope: !101522, file: !100005, line: 154, type: !101415)
+!101533 = !DILocation(line: 154, column: 83, scope: !101522)
+!101534 = !DILocalVariable(name: "flag", arg: 4, scope: !101522, file: !100005, line: 154, type: !101277)
+!101535 = !DILocation(line: 154, column: 97, scope: !101522)
+!101536 = !DILocalVariable(name: "cap", arg: 5, scope: !101522, file: !100005, line: 154, type: !101277)
+!101537 = !DILocation(line: 154, column: 107, scope: !101522)
+!101538 = !DILocation(line: 155, column: 9, scope: !101522)
+!101539 = !DILocation(line: 156, column: 9, scope: !101522)
+!101540 = !DILocation(line: 157, column: 9, scope: !101522)
+!101541 = !DILocation(line: 158, column: 9, scope: !101522)
+!101542 = !DILocation(line: 159, column: 9, scope: !101522)
+!101543 = !DILocation(line: 160, column: 9, scope: !101522)
+!101544 = !DILocation(line: 161, column: 2, scope: !101522)
+!101545 = !DILocalVariable(name: "b", scope: !101522, file: !100005, line: 161, type: !101546)
+!101546 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100030, size: 32000, elements: !101547)
+!101547 = !{!101548}
+!101548 = !DISubrange(count: 1000)
+!101549 = !DILocation(line: 161, column: 6, scope: !101522)
+!101550 = !DILocation(line: 163, column: 3, scope: !101522)
+!101551 = !DILocalVariable(name: "flag_buf", scope: !101522, file: !100005, line: 163, type: !100004)
+!101552 = !DILocation(line: 163, column: 7, scope: !101522)
+!101553 = !DILocation(line: 164, column: 3, scope: !101522)
+!101554 = !DILocalVariable(name: "caps", scope: !101522, file: !100005, line: 164, type: !101555)
+!101555 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100338, size: 288, elements: !101556)
+!101556 = !{!101557}
+!101557 = !DISubrange(count: 3)
+!101558 = !DILocation(line: 164, column: 7, scope: !101522)
+!101559 = !DILocation(line: 165, column: 3, scope: !101522)
+!101560 = !DILocalVariable(name: "buffer", scope: !101522, file: !100005, line: 165, type: !101561)
+!101561 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100004, size: 384, elements: !101562)
+!101562 = !{!101563}
+!101563 = !DISubrange(count: 12)
+!101564 = !DILocation(line: 165, column: 7, scope: !101522)
+!101565 = !DILocation(line: 166, column: 9, scope: !101522)
+!101566 = !DILocation(line: 167, column: 9, scope: !101522)
+!101567 = !DILocation(line: 169, column: 14, scope: !101522)
+!101568 = !DILocation(line: 169, column: 27, scope: !101522)
+!101569 = !DILocation(line: 169, column: 2, scope: !101522)
+!101570 = !DILocation(line: 170, column: 20, scope: !101522)
+!101571 = !DILocation(line: 170, column: 3, scope: !101522)
+!101572 = !DILocalVariable(name: "i", scope: !101573, file: !100005, line: 172, type: !100030)
+!101573 = distinct !DILexicalBlock(scope: !101522, file: !100005, line: 172, column: 21)
+!101574 = !DILocation(line: 172, column: 30, scope: !101573)
+!101575 = !DILocation(line: 172, column: 26, scope: !101573)
+!101576 = !DILocation(line: 172, column: 39, scope: !101577)
+!101577 = distinct !DILexicalBlock(scope: !101573, file: !100005, line: 172, column: 21)
+!101578 = !DILocation(line: 172, column: 21, scope: !101573)
+!101579 = !DILocation(line: 175, column: 43, scope: !101580)
+!101580 = distinct !DILexicalBlock(scope: !101577, file: !100005, line: 172, column: 52)
+!101581 = !DILocation(line: 175, column: 15, scope: !101580)
+!101582 = !DILocalVariable(name: "a_elem", scope: !101580, file: !100005, line: 175, type: !100030)
+!101583 = !DILocation(line: 175, column: 6, scope: !101580)
+!101584 = !DILocation(line: 176, column: 29, scope: !101580)
+!101585 = !DILocation(line: 176, column: 46, scope: !101580)
+!101586 = !DILocation(line: 176, column: 18, scope: !101580)
+!101587 = !DILocalVariable(name: "b_elem", scope: !101580, file: !100005, line: 176, type: !100030)
+!101588 = !DILocation(line: 176, column: 9, scope: !101580)
+!101589 = !DILocation(line: 178, column: 25, scope: !101580)
+!101590 = !DILocalVariable(name: "c_elem", scope: !101580, file: !100005, line: 178, type: !100030)
+!101591 = !DILocation(line: 178, column: 9, scope: !101580)
+!101592 = !DILocation(line: 180, column: 42, scope: !101580)
+!101593 = !DILocation(line: 180, column: 5, scope: !101580)
+!101594 = !DILocation(line: 181, column: 3, scope: !101580)
+!101595 = !DILocation(line: 172, column: 48, scope: !101577)
+!101596 = !DILocation(line: 172, column: 21, scope: !101577)
+!101597 = distinct !{!101597, !101578, !101598, !101599, !101601}
+!101598 = !DILocation(line: 181, column: 3, scope: !101573)
+!101599 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101600}
+!101600 = !DILocation(line: 173, column: 9, scope: !101573)
+!101601 = !{!"llvm.loop.name", !"VITIS_LOOP_172_1"}
+!101602 = !DILocation(line: 182, column: 31, scope: !101522)
+!101603 = !DILocation(line: 182, column: 45, scope: !101522)
+!101604 = !DILocation(line: 182, column: 3, scope: !101522)
+!101605 = !DILocation(line: 184, column: 11, scope: !101522)
+!101606 = !DILocation(line: 184, column: 9, scope: !101522)
+!101607 = !DILocation(line: 186, column: 1, scope: !101522)
 attributes #1 = { nounwind readnone speculatable }
-attributes #2 = { inaccessiblememonly nounwind }
-attributes #3 = { argmemonly nounwind }
-attributes #4 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="131072" "xlx.source"="user" }
-attributes #5 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32" "xlx.source"="user" }
-attributes #6 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }
-attributes #7 = { nounwind }
+attributes #2 = { argmemonly nounwind }
+attributes #3 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="hls_top" "fpga.top.func"="hls_top" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #4 = { inaccessiblememonly nounwind }
+attributes #5 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="131072" "xlx.source"="user" }
+attributes #6 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32" "xlx.source"="user" }
+attributes #7 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }
+attributes #8 = { nounwind }
 
 !llvm.dbg.cu = !{!0}
 !llvm.ident = !{!3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3, !3}
 
-!0 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1, producer: "clang version 7.0.0 ", isOptimized: true, runtimeVersion: 0, emissionKind: FullDebug, enums: !2)
-!1 = !DIFile(filename: "/workspace/examples/gemm_blocked/gemm_prj/solution/.autopilot/db/gemm.pp.0.c", directory: "/workspace/examples/gemm_blocked")
+!0 = distinct !DICompileUnit(language: DW_LANG_C_plus_plus, file: !1, producer: "clang version 7.0.0 ", isOptimized: true, runtimeVersion: 0, emissionKind: FullDebug, enums: !2)
+!1 = !DIFile(filename: "/workspace/examples/gemm_blocked/gemm_blocked_prj/solution/.autopilot/db/gemm_blocked.pp.0.cpp", directory: "/workspace/examples/gemm_blocked")
 !2 = !{}
 !3 = !{!"clang version 7.0.0 "}
-!7 = distinct !DISubprogram(name: "hls_top", scope: !8, file: !8, line: 18, type: !9, isLocal: false, isDefinition: true, scopeLine: 18, flags: DIFlagPrototyped, isOptimized: false, unit: !0, variables: !2)
-!8 = !DIFile(filename: "gemm.c", directory: "/workspace/examples/gemm_blocked")
+!7 = distinct !DISubprogram(name: "stream_write", linkageName: "_Z12stream_writejPiS_", scope: !8, file: !8, line: 20, type: !9, isLocal: false, isDefinition: true, scopeLine: 20, flags: DIFlagPrototyped, isOptimized: false, unit: !0, variables: !2)
+!8 = !DIFile(filename: "gemm_blocked.cpp", directory: "/workspace/examples/gemm_blocked")
 !9 = !DISubroutineType(types: !10)
-!10 = !{null, !11, !12, !12, !12}
-!11 = !DIBasicType(name: "int", size: 32, encoding: DW_ATE_signed)
-!12 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !11, size: 64)
-!13 = !{!14}
-!14 = !{!"fpga.top", !"user", !15}
-!15 = !DILocation(line: 18, column: 16, scope: !7)
-!16 = !DILocalVariable(name: "size", arg: 1, scope: !7, file: !8, line: 18, type: !11)
-!17 = !DILocation(line: 18, column: 60, scope: !7)
-!18 = !DILocalVariable(name: "xm1", arg: 2, scope: !7, file: !8, line: 18, type: !12)
-!19 = !DILocation(line: 18, column: 70, scope: !7)
-!20 = !DILocalVariable(name: "xm2", arg: 3, scope: !7, file: !8, line: 18, type: !12)
-!21 = !DILocation(line: 18, column: 87, scope: !7)
-!22 = !DILocalVariable(name: "xprod", arg: 4, scope: !7, file: !8, line: 18, type: !12)
-!23 = !DILocation(line: 18, column: 104, scope: !7)
-!24 = !DILocation(line: 19, column: 9, scope: !7)
-!25 = !DILocation(line: 20, column: 9, scope: !7)
-!26 = !DILocation(line: 21, column: 9, scope: !7)
-!27 = !DILocation(line: 22, column: 9, scope: !7)
-!28 = !DILocation(line: 23, column: 9, scope: !7)
-!29 = !DILocation(line: 28, column: 3, scope: !7)
-!30 = !DILocalVariable(name: "m1", scope: !7, file: !8, line: 28, type: !31)
-!31 = !DICompositeType(tag: DW_TAG_array_type, baseType: !11, size: 131072, elements: !32)
-!32 = !{!33}
-!33 = !DISubrange(count: 4096)
-!34 = !DILocation(line: 28, column: 7, scope: !7)
-!35 = !DILocalVariable(name: "m2", scope: !7, file: !8, line: 28, type: !31)
-!36 = !DILocation(line: 28, column: 19, scope: !7)
-!37 = !DILocalVariable(name: "prod", scope: !7, file: !8, line: 28, type: !31)
-!38 = !DILocation(line: 28, column: 31, scope: !7)
-!39 = !DILocalVariable(name: "i", scope: !7, file: !8, line: 24, type: !11)
-!40 = !DILocation(line: 24, column: 6, scope: !7)
-!41 = !DILocation(line: 30, column: 25, scope: !42)
-!42 = distinct !DILexicalBlock(scope: !7, file: !8, line: 30, column: 20)
-!43 = !DILocation(line: 30, column: 41, scope: !44)
-!44 = distinct !DILexicalBlock(scope: !42, file: !8, line: 30, column: 20)
-!45 = !DILocation(line: 30, column: 34, scope: !44)
-!46 = !DILocation(line: 30, column: 20, scope: !42)
-!47 = !DILocation(line: 31, column: 13, scope: !44)
-!48 = !DILocation(line: 31, column: 5, scope: !44)
-!49 = !DILocation(line: 31, column: 11, scope: !44)
-!50 = !DILocation(line: 30, column: 50, scope: !44)
-!51 = !DILocation(line: 30, column: 20, scope: !44)
-!52 = distinct !{!52, !46, !53, !54}
-!53 = !DILocation(line: 31, column: 18, scope: !42)
-!54 = !{!"llvm.loop.name", !"VITIS_LOOP_30_1"}
-!55 = !DILocation(line: 32, column: 25, scope: !56)
-!56 = distinct !DILexicalBlock(scope: !7, file: !8, line: 32, column: 20)
-!57 = !DILocation(line: 32, column: 41, scope: !58)
-!58 = distinct !DILexicalBlock(scope: !56, file: !8, line: 32, column: 20)
-!59 = !DILocation(line: 32, column: 34, scope: !58)
-!60 = !DILocation(line: 32, column: 20, scope: !56)
-!61 = !DILocation(line: 33, column: 13, scope: !58)
-!62 = !DILocation(line: 33, column: 5, scope: !58)
-!63 = !DILocation(line: 33, column: 11, scope: !58)
-!64 = !DILocation(line: 32, column: 50, scope: !58)
-!65 = !DILocation(line: 32, column: 20, scope: !58)
-!66 = distinct !{!66, !60, !67, !68}
-!67 = !DILocation(line: 33, column: 18, scope: !56)
-!68 = !{!"llvm.loop.name", !"VITIS_LOOP_32_2"}
-!69 = !DILocalVariable(name: "jj", scope: !7, file: !8, line: 24, type: !11)
-!70 = !DILocation(line: 24, column: 15, scope: !7)
-!71 = !DILocation(line: 36, column: 8, scope: !72)
-!72 = distinct !DILexicalBlock(scope: !7, file: !8, line: 36, column: 3)
-!73 = !DILocation(line: 36, column: 19, scope: !74)
-!74 = distinct !DILexicalBlock(scope: !72, file: !8, line: 36, column: 3)
-!75 = !DILocation(line: 36, column: 3, scope: !72)
-!76 = !DILocation(line: 36, column: 36, scope: !74)
-!77 = !DILocalVariable(name: "kk", scope: !7, file: !8, line: 24, type: !11)
-!78 = !DILocation(line: 24, column: 19, scope: !7)
-!79 = !DILocation(line: 38, column: 10, scope: !80)
-!80 = distinct !DILexicalBlock(scope: !81, file: !8, line: 38, column: 5)
-!81 = distinct !DILexicalBlock(scope: !74, file: !8, line: 36, column: 36)
-!82 = !DILocation(line: 38, column: 21, scope: !83)
-!83 = distinct !DILexicalBlock(scope: !80, file: !8, line: 38, column: 5)
-!84 = !DILocation(line: 38, column: 5, scope: !80)
-!85 = !DILocation(line: 38, column: 38, scope: !83)
-!86 = !DILocation(line: 40, column: 12, scope: !87)
-!87 = distinct !DILexicalBlock(scope: !88, file: !8, line: 40, column: 7)
-!88 = distinct !DILexicalBlock(scope: !83, file: !8, line: 38, column: 38)
-!89 = !DILocation(line: 40, column: 21, scope: !90)
-!90 = distinct !DILexicalBlock(scope: !87, file: !8, line: 40, column: 7)
-!91 = !DILocation(line: 40, column: 7, scope: !87)
-!92 = !DILocation(line: 40, column: 34, scope: !90)
-!93 = !DILocalVariable(name: "k", scope: !7, file: !8, line: 24, type: !11)
-!94 = !DILocation(line: 24, column: 9, scope: !7)
-!95 = !DILocation(line: 42, column: 14, scope: !96)
-!96 = distinct !DILexicalBlock(scope: !97, file: !8, line: 42, column: 9)
-!97 = distinct !DILexicalBlock(scope: !90, file: !8, line: 40, column: 34)
-!98 = !DILocation(line: 42, column: 23, scope: !99)
-!99 = distinct !DILexicalBlock(scope: !96, file: !8, line: 42, column: 9)
-!100 = !DILocation(line: 42, column: 9, scope: !96)
-!101 = !DILocation(line: 43, column: 21, scope: !102)
-!102 = distinct !DILexicalBlock(scope: !99, file: !8, line: 42, column: 33)
-!103 = !DILocalVariable(name: "i_row", scope: !7, file: !8, line: 25, type: !11)
-!104 = !DILocation(line: 25, column: 7, scope: !7)
-!105 = !DILocation(line: 44, column: 22, scope: !102)
-!106 = !DILocation(line: 44, column: 28, scope: !102)
-!107 = !DILocalVariable(name: "k_row", scope: !7, file: !8, line: 25, type: !11)
-!108 = !DILocation(line: 25, column: 14, scope: !7)
-!109 = !DILocation(line: 45, column: 29, scope: !102)
-!110 = !DILocation(line: 45, column: 33, scope: !102)
-!111 = !DILocation(line: 45, column: 20, scope: !102)
-!112 = !DILocalVariable(name: "temp_x", scope: !7, file: !8, line: 26, type: !11)
-!113 = !DILocation(line: 26, column: 7, scope: !7)
-!114 = !DILocation(line: 45, column: 11, scope: !102)
-!115 = !DILocalVariable(name: "j", scope: !7, file: !8, line: 24, type: !11)
-!116 = !DILocation(line: 24, column: 12, scope: !7)
-!117 = !DILocation(line: 47, column: 16, scope: !118)
-!118 = distinct !DILexicalBlock(scope: !102, file: !8, line: 47, column: 11)
-!119 = !DILocation(line: 47, column: 25, scope: !120)
-!120 = distinct !DILexicalBlock(scope: !118, file: !8, line: 47, column: 11)
-!121 = !DILocation(line: 47, column: 11, scope: !118)
-!122 = !DILocation(line: 48, column: 37, scope: !123)
-!123 = distinct !DILexicalBlock(scope: !120, file: !8, line: 47, column: 35)
-!124 = !DILocation(line: 48, column: 41, scope: !123)
-!125 = !DILocation(line: 48, column: 28, scope: !123)
-!126 = !DILocation(line: 48, column: 26, scope: !123)
-!127 = !DILocalVariable(name: "mul", scope: !7, file: !8, line: 26, type: !11)
-!128 = !DILocation(line: 26, column: 15, scope: !7)
-!129 = !DILocation(line: 49, column: 47, scope: !123)
-!130 = !DILocation(line: 49, column: 51, scope: !123)
-!131 = !DILocation(line: 49, column: 36, scope: !123)
-!132 = !DILocation(line: 49, column: 57, scope: !123)
-!133 = !DILocation(line: 49, column: 24, scope: !123)
-!134 = !DILocation(line: 49, column: 28, scope: !123)
-!135 = !DILocation(line: 49, column: 13, scope: !123)
-!136 = !DILocation(line: 49, column: 34, scope: !123)
-!137 = !DILocation(line: 50, column: 11, scope: !123)
-!138 = !DILocation(line: 47, column: 30, scope: !120)
-!139 = !DILocation(line: 47, column: 11, scope: !120)
-!140 = distinct !{!140, !121, !141, !142}
-!141 = !DILocation(line: 50, column: 11, scope: !118)
-!142 = !{!"llvm.loop.name", !"loopj"}
-!143 = !DILocation(line: 51, column: 9, scope: !102)
-!144 = !DILocation(line: 42, column: 28, scope: !99)
-!145 = !DILocation(line: 42, column: 9, scope: !99)
-!146 = distinct !{!146, !100, !147, !148}
-!147 = !DILocation(line: 51, column: 9, scope: !96)
-!148 = !{!"llvm.loop.name", !"loopk"}
-!149 = !DILocation(line: 52, column: 7, scope: !97)
-!150 = !DILocation(line: 40, column: 29, scope: !90)
-!151 = !DILocation(line: 40, column: 7, scope: !90)
-!152 = distinct !{!152, !91, !153, !154}
-!153 = !DILocation(line: 52, column: 7, scope: !87)
-!154 = !{!"llvm.loop.name", !"loopi"}
-!155 = !DILocation(line: 53, column: 5, scope: !88)
-!156 = !DILocation(line: 38, column: 32, scope: !83)
-!157 = !DILocation(line: 38, column: 5, scope: !83)
-!158 = distinct !{!158, !84, !159, !160}
-!159 = !DILocation(line: 53, column: 5, scope: !80)
-!160 = !{!"llvm.loop.name", !"loopkk"}
-!161 = !DILocation(line: 54, column: 3, scope: !81)
-!162 = !DILocation(line: 36, column: 30, scope: !74)
-!163 = !DILocation(line: 36, column: 3, scope: !74)
-!164 = distinct !{!164, !75, !165, !166}
-!165 = !DILocation(line: 54, column: 3, scope: !72)
-!166 = !{!"llvm.loop.name", !"loopjj"}
-!167 = !DILocation(line: 55, column: 25, scope: !168)
-!168 = distinct !DILexicalBlock(scope: !7, file: !8, line: 55, column: 20)
-!169 = !DILocation(line: 55, column: 41, scope: !170)
-!170 = distinct !DILexicalBlock(scope: !168, file: !8, line: 55, column: 20)
-!171 = !DILocation(line: 55, column: 34, scope: !170)
-!172 = !DILocation(line: 55, column: 20, scope: !168)
-!173 = !DILocation(line: 56, column: 16, scope: !170)
-!174 = !DILocation(line: 56, column: 5, scope: !170)
-!175 = !DILocation(line: 56, column: 14, scope: !170)
-!176 = !DILocation(line: 55, column: 50, scope: !170)
-!177 = !DILocation(line: 55, column: 20, scope: !170)
-!178 = distinct !{!178, !172, !179, !180}
-!179 = !DILocation(line: 56, column: 22, scope: !168)
-!180 = !{!"llvm.loop.name", !"VITIS_LOOP_55_3"}
-!181 = !DILocation(line: 57, column: 1, scope: !7)
+!10 = !{null, !11, !17, !17}
+!11 = !DIDerivedType(tag: DW_TAG_typedef, name: "u32", file: !8, line: 19, baseType: !12)
+!12 = !DIDerivedType(tag: DW_TAG_typedef, name: "uint32_t", file: !13, line: 26, baseType: !14)
+!13 = !DIFile(filename: "/usr/include/x86_64-linux-gnu/bits/stdint-uintn.h", directory: "/workspace/examples/gemm_blocked")
+!14 = !DIDerivedType(tag: DW_TAG_typedef, name: "__uint32_t", file: !15, line: 42, baseType: !16)
+!15 = !DIFile(filename: "/usr/include/x86_64-linux-gnu/bits/types.h", directory: "/workspace/examples/gemm_blocked")
+!16 = !DIBasicType(name: "unsigned int", size: 32, encoding: DW_ATE_unsigned)
+!17 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !18, size: 64)
+!18 = !DIBasicType(name: "int", size: 32, encoding: DW_ATE_signed)
+!19 = !DILocalVariable(name: "size", arg: 1, scope: !7, file: !8, line: 20, type: !11)
+!20 = !DILocation(line: 20, column: 23, scope: !7)
+!21 = !DILocalVariable(name: "array1", arg: 2, scope: !7, file: !8, line: 20, type: !17)
+!22 = !DILocation(line: 20, column: 34, scope: !7)
+!23 = !DILocalVariable(name: "array2", arg: 3, scope: !7, file: !8, line: 20, type: !17)
+!24 = !DILocation(line: 20, column: 47, scope: !7)
+!25 = !DILocation(line: 20, column: 55, scope: !7)
+!26 = !DILocalVariable(name: "i", scope: !27, file: !8, line: 21, type: !18)
+!27 = distinct !DILexicalBlock(scope: !7, file: !8, line: 21, column: 20)
+!28 = !DILocation(line: 21, column: 29, scope: !27)
+!29 = !DILocation(line: 21, column: 25, scope: !27)
+!30 = !DILocation(line: 21, column: 38, scope: !31)
+!31 = distinct !DILexicalBlock(scope: !27, file: !8, line: 21, column: 20)
+!32 = !DILocation(line: 21, column: 20, scope: !27)
+!33 = !DILocation(line: 22, column: 17, scope: !34)
+!34 = distinct !DILexicalBlock(scope: !31, file: !8, line: 21, column: 51)
+!35 = !DILocation(line: 22, column: 5, scope: !34)
+!36 = !DILocation(line: 22, column: 15, scope: !34)
+!37 = !DILocation(line: 23, column: 3, scope: !34)
+!38 = !DILocation(line: 21, column: 47, scope: !31)
+!39 = !DILocation(line: 21, column: 20, scope: !31)
+!40 = distinct !{!40, !32, !41, !42}
+!41 = !DILocation(line: 23, column: 3, scope: !27)
+!42 = !{!"llvm.loop.name", !"VITIS_LOOP_21_1"}
+!43 = !DILocation(line: 24, column: 1, scope: !7)
+!44 = distinct !DISubprogram(name: "hls_top", linkageName: "_Z7hls_topiPiS_S_", scope: !8, file: !8, line: 25, type: !45, isLocal: false, isDefinition: true, scopeLine: 25, flags: DIFlagPrototyped, isOptimized: false, unit: !0, variables: !2)
+!45 = !DISubroutineType(types: !46)
+!46 = !{null, !18, !17, !17, !17}
+!47 = !{!48}
+!48 = !{!"fpga.top", !"user", !49}
+!49 = !DILocation(line: 25, column: 16, scope: !44)
+!50 = !DILocalVariable(name: "size", arg: 1, scope: !44, file: !8, line: 25, type: !18)
+!51 = !DILocation(line: 25, column: 60, scope: !44)
+!52 = !DILocalVariable(name: "xm1", arg: 2, scope: !44, file: !8, line: 25, type: !17)
+!53 = !DILocation(line: 25, column: 70, scope: !44)
+!54 = !DILocalVariable(name: "xm2", arg: 3, scope: !44, file: !8, line: 25, type: !17)
+!55 = !DILocation(line: 25, column: 87, scope: !44)
+!56 = !DILocalVariable(name: "xprod", arg: 4, scope: !44, file: !8, line: 25, type: !17)
+!57 = !DILocation(line: 25, column: 104, scope: !44)
+!58 = !DILocation(line: 26, column: 9, scope: !44)
+!59 = !DILocation(line: 27, column: 9, scope: !44)
+!60 = !DILocation(line: 28, column: 9, scope: !44)
+!61 = !DILocation(line: 29, column: 9, scope: !44)
+!62 = !DILocation(line: 30, column: 9, scope: !44)
+!63 = !DILocation(line: 35, column: 3, scope: !44)
+!64 = !DILocalVariable(name: "m1", scope: !44, file: !8, line: 35, type: !65)
+!65 = !DICompositeType(tag: DW_TAG_array_type, baseType: !18, size: 131072, elements: !66)
+!66 = !{!67}
+!67 = !DISubrange(count: 4096)
+!68 = !DILocation(line: 35, column: 7, scope: !44)
+!69 = !DILocalVariable(name: "m2", scope: !44, file: !8, line: 35, type: !65)
+!70 = !DILocation(line: 35, column: 19, scope: !44)
+!71 = !DILocalVariable(name: "prod", scope: !44, file: !8, line: 35, type: !65)
+!72 = !DILocation(line: 35, column: 31, scope: !44)
+!73 = !DILocalVariable(name: "i", scope: !44, file: !8, line: 31, type: !18)
+!74 = !DILocation(line: 31, column: 6, scope: !44)
+!75 = !DILocation(line: 37, column: 25, scope: !76)
+!76 = distinct !DILexicalBlock(scope: !44, file: !8, line: 37, column: 20)
+!77 = !DILocation(line: 37, column: 41, scope: !78)
+!78 = distinct !DILexicalBlock(scope: !76, file: !8, line: 37, column: 20)
+!79 = !DILocation(line: 37, column: 34, scope: !78)
+!80 = !DILocation(line: 37, column: 20, scope: !76)
+!81 = !DILocation(line: 38, column: 13, scope: !78)
+!82 = !DILocation(line: 38, column: 5, scope: !78)
+!83 = !DILocation(line: 38, column: 11, scope: !78)
+!84 = !DILocation(line: 37, column: 50, scope: !78)
+!85 = !DILocation(line: 37, column: 20, scope: !78)
+!86 = distinct !{!86, !80, !87, !88}
+!87 = !DILocation(line: 38, column: 18, scope: !76)
+!88 = !{!"llvm.loop.name", !"VITIS_LOOP_37_1"}
+!89 = !DILocation(line: 39, column: 25, scope: !90)
+!90 = distinct !DILexicalBlock(scope: !44, file: !8, line: 39, column: 20)
+!91 = !DILocation(line: 39, column: 41, scope: !92)
+!92 = distinct !DILexicalBlock(scope: !90, file: !8, line: 39, column: 20)
+!93 = !DILocation(line: 39, column: 34, scope: !92)
+!94 = !DILocation(line: 39, column: 20, scope: !90)
+!95 = !DILocation(line: 40, column: 13, scope: !92)
+!96 = !DILocation(line: 40, column: 5, scope: !92)
+!97 = !DILocation(line: 40, column: 11, scope: !92)
+!98 = !DILocation(line: 39, column: 50, scope: !92)
+!99 = !DILocation(line: 39, column: 20, scope: !92)
+!100 = distinct !{!100, !94, !101, !102}
+!101 = !DILocation(line: 40, column: 18, scope: !90)
+!102 = !{!"llvm.loop.name", !"VITIS_LOOP_39_2"}
+!103 = !DILocalVariable(name: "jj", scope: !44, file: !8, line: 31, type: !18)
+!104 = !DILocation(line: 31, column: 15, scope: !44)
+!105 = !DILocation(line: 43, column: 8, scope: !106)
+!106 = distinct !DILexicalBlock(scope: !44, file: !8, line: 43, column: 3)
+!107 = !DILocation(line: 43, column: 19, scope: !108)
+!108 = distinct !DILexicalBlock(scope: !106, file: !8, line: 43, column: 3)
+!109 = !DILocation(line: 43, column: 3, scope: !106)
+!110 = !DILocation(line: 43, column: 36, scope: !108)
+!111 = !DILocalVariable(name: "kk", scope: !44, file: !8, line: 31, type: !18)
+!112 = !DILocation(line: 31, column: 19, scope: !44)
+!113 = !DILocation(line: 45, column: 10, scope: !114)
+!114 = distinct !DILexicalBlock(scope: !115, file: !8, line: 45, column: 5)
+!115 = distinct !DILexicalBlock(scope: !108, file: !8, line: 43, column: 36)
+!116 = !DILocation(line: 45, column: 21, scope: !117)
+!117 = distinct !DILexicalBlock(scope: !114, file: !8, line: 45, column: 5)
+!118 = !DILocation(line: 45, column: 5, scope: !114)
+!119 = !DILocation(line: 45, column: 38, scope: !117)
+!120 = !DILocation(line: 47, column: 12, scope: !121)
+!121 = distinct !DILexicalBlock(scope: !122, file: !8, line: 47, column: 7)
+!122 = distinct !DILexicalBlock(scope: !117, file: !8, line: 45, column: 38)
+!123 = !DILocation(line: 47, column: 21, scope: !124)
+!124 = distinct !DILexicalBlock(scope: !121, file: !8, line: 47, column: 7)
+!125 = !DILocation(line: 47, column: 7, scope: !121)
+!126 = !DILocation(line: 47, column: 34, scope: !124)
+!127 = !DILocalVariable(name: "k", scope: !44, file: !8, line: 31, type: !18)
+!128 = !DILocation(line: 31, column: 9, scope: !44)
+!129 = !DILocation(line: 49, column: 14, scope: !130)
+!130 = distinct !DILexicalBlock(scope: !131, file: !8, line: 49, column: 9)
+!131 = distinct !DILexicalBlock(scope: !124, file: !8, line: 47, column: 34)
+!132 = !DILocation(line: 49, column: 23, scope: !133)
+!133 = distinct !DILexicalBlock(scope: !130, file: !8, line: 49, column: 9)
+!134 = !DILocation(line: 49, column: 9, scope: !130)
+!135 = !DILocation(line: 50, column: 21, scope: !136)
+!136 = distinct !DILexicalBlock(scope: !133, file: !8, line: 49, column: 33)
+!137 = !DILocalVariable(name: "i_row", scope: !44, file: !8, line: 32, type: !18)
+!138 = !DILocation(line: 32, column: 7, scope: !44)
+!139 = !DILocation(line: 51, column: 22, scope: !136)
+!140 = !DILocation(line: 51, column: 28, scope: !136)
+!141 = !DILocalVariable(name: "k_row", scope: !44, file: !8, line: 32, type: !18)
+!142 = !DILocation(line: 32, column: 14, scope: !44)
+!143 = !DILocation(line: 52, column: 29, scope: !136)
+!144 = !DILocation(line: 52, column: 33, scope: !136)
+!145 = !DILocation(line: 52, column: 20, scope: !136)
+!146 = !DILocalVariable(name: "temp_x", scope: !44, file: !8, line: 33, type: !18)
+!147 = !DILocation(line: 33, column: 7, scope: !44)
+!148 = !DILocation(line: 52, column: 11, scope: !136)
+!149 = !DILocalVariable(name: "j", scope: !44, file: !8, line: 31, type: !18)
+!150 = !DILocation(line: 31, column: 12, scope: !44)
+!151 = !DILocation(line: 54, column: 16, scope: !152)
+!152 = distinct !DILexicalBlock(scope: !136, file: !8, line: 54, column: 11)
+!153 = !DILocation(line: 54, column: 25, scope: !154)
+!154 = distinct !DILexicalBlock(scope: !152, file: !8, line: 54, column: 11)
+!155 = !DILocation(line: 54, column: 11, scope: !152)
+!156 = !DILocation(line: 55, column: 37, scope: !157)
+!157 = distinct !DILexicalBlock(scope: !154, file: !8, line: 54, column: 35)
+!158 = !DILocation(line: 55, column: 41, scope: !157)
+!159 = !DILocation(line: 55, column: 28, scope: !157)
+!160 = !DILocation(line: 55, column: 26, scope: !157)
+!161 = !DILocalVariable(name: "mul", scope: !44, file: !8, line: 33, type: !18)
+!162 = !DILocation(line: 33, column: 15, scope: !44)
+!163 = !DILocation(line: 56, column: 47, scope: !157)
+!164 = !DILocation(line: 56, column: 51, scope: !157)
+!165 = !DILocation(line: 56, column: 36, scope: !157)
+!166 = !DILocation(line: 56, column: 57, scope: !157)
+!167 = !DILocation(line: 56, column: 24, scope: !157)
+!168 = !DILocation(line: 56, column: 28, scope: !157)
+!169 = !DILocation(line: 56, column: 13, scope: !157)
+!170 = !DILocation(line: 56, column: 34, scope: !157)
+!171 = !DILocation(line: 57, column: 11, scope: !157)
+!172 = !DILocation(line: 54, column: 30, scope: !154)
+!173 = !DILocation(line: 54, column: 11, scope: !154)
+!174 = distinct !{!174, !155, !175, !176}
+!175 = !DILocation(line: 57, column: 11, scope: !152)
+!176 = !{!"llvm.loop.name", !"loopj"}
+!177 = !DILocation(line: 58, column: 9, scope: !136)
+!178 = !DILocation(line: 49, column: 28, scope: !133)
+!179 = !DILocation(line: 49, column: 9, scope: !133)
+!180 = distinct !{!180, !134, !181, !182}
+!181 = !DILocation(line: 58, column: 9, scope: !130)
+!182 = !{!"llvm.loop.name", !"loopk"}
+!183 = !DILocation(line: 59, column: 7, scope: !131)
+!184 = !DILocation(line: 47, column: 29, scope: !124)
+!185 = !DILocation(line: 47, column: 7, scope: !124)
+!186 = distinct !{!186, !125, !187, !188}
+!187 = !DILocation(line: 59, column: 7, scope: !121)
+!188 = !{!"llvm.loop.name", !"loopi"}
+!189 = !DILocation(line: 60, column: 5, scope: !122)
+!190 = !DILocation(line: 45, column: 32, scope: !117)
+!191 = !DILocation(line: 45, column: 5, scope: !117)
+!192 = distinct !{!192, !118, !193, !194}
+!193 = !DILocation(line: 60, column: 5, scope: !114)
+!194 = !{!"llvm.loop.name", !"loopkk"}
+!195 = !DILocation(line: 61, column: 3, scope: !115)
+!196 = !DILocation(line: 43, column: 30, scope: !108)
+!197 = !DILocation(line: 43, column: 3, scope: !108)
+!198 = distinct !{!198, !109, !199, !200}
+!199 = !DILocation(line: 61, column: 3, scope: !106)
+!200 = !{!"llvm.loop.name", !"loopjj"}
+!201 = !DILocation(line: 62, column: 21, scope: !44)
+!202 = !DILocation(line: 62, column: 36, scope: !44)
+!203 = !DILocation(line: 62, column: 3, scope: !44)
+!204 = !DILocation(line: 63, column: 1, scope: !44)

@@ -1,7 +1,7 @@
 open_project -reset bfs_queue_prj
 set_top hls_top 
-add_files { bfs_queue.cpp }
-add_files -tb { bfs_queue.cpp }
+add_files { bfs_queue_baseline.cpp }
+add_files -tb { bfs_queue_baseline.cpp }
 open_solution -reset "solution"
 set_part {xcu250-figd2104-2L-e}
 create_clock -period 4 -name default
@@ -19,4 +19,4 @@ csynth_design
 # Run h/w simulation and compare with the software (gcc) results
 cosim_design
 
-#export_design -flow syn -format ip_catalog
+export_design -flow syn -format ip_catalog

@@ -5,6 +5,7 @@ Tipparaju, and J. S. Vetter. The scalable heterogeneous computing (shoc)
 benchmark suite. In Proceedings of the 3rd Workshop on General-Purpose
 Computation on Graphics Processing Units, 2010
 */
+#include <stdint.h>
 
 #define TYPE int
 
@@ -18,6 +19,8 @@ Computation on Graphics Processing Units, 2010
 
 #define SCAN_BLOCK 16
 #define SCAN_RADIX BUCKETSIZE / SCAN_BLOCK
+
+typedef uint32_t u32;
 
 void local_scan(int bucket[BUCKETSIZE]) {
   int radixID, i, bucket_indx;
@@ -100,6 +103,12 @@ update_1:
   }
 }
 
+void stream_write(u32 size, int *array1, int *array2) {
+  for (int i = 0; i < size; i++) {
+    array1[i] = array2[i];
+  }
+}
+
 void hls_top(int xa[SIZE], int xb[SIZE], int xbucket[BUCKETSIZE],
              int xsum[SCAN_RADIX]) {
 #pragma HLS INTERFACE m_axi port = xa
@@ -142,9 +151,7 @@ sort_1:
       valid_buffer = BUFFER_A;
     }
   }
-
-  for (int i = 0; i < SIZE; i++)
-    xb[i] = b[i];
+  stream_write(SIZE, xb, b);
 }
 
 int main() {

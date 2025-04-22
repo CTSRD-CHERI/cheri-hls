@@ -88,12 +88,11 @@ loop_i:
     // printf("dF=%lf,%lf,%lf\n", fx, fy, fz);
   }
 
-  for (i = 0; i < size; i++)
-    force_x[i] = xforce_x[i];
-  for (i = 0; i < size; i++)
-    force_y[i] = xforce_y[i];
-  for (i = 0; i < size; i++)
-    force_z[i] = xforce_z[i];
+  for (i = 0; i < size; i++) {
+    xforce_x[i] = force_x[i];
+    xforce_y[i] = force_y[i];
+    xforce_z[i] = force_z[i];
+  }
 }
 
 int main() {

@@ -21,6 +21,6 @@ set ::LLVM_CUSTOM_CMD {/local/ecad/xilinx/new/Vitis_HLS/2023.1/lnx64/tools/clang
 #set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT ... -mem2reg /home/jhyc3/test.ll -o 
 csynth_design
 # Run h/w simulation and compare with the software (gcc) results
-#cosim_design
+cosim_design
 
 #export_design -flow syn -format ip_catalog

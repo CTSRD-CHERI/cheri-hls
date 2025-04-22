@@ -1,4 +1,4 @@
-open_project -reset gemm_prj
+open_project -reset gemm_blocked_prj
 set_top hls_top 
 add_files { gemm_blocked.cpp }
 add_files -tb { gemm_blocked.cpp }

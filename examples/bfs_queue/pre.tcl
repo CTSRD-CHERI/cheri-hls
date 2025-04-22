@@ -1,7 +1,7 @@
 open_project -reset bfs_queue_prj
 set_top hls_top 
-add_files { bfs_queue.c }
-add_files -tb { bfs_queue.c }
+add_files { bfs_queue_baseline.cpp }
+add_files -tb { bfs_queue_baseline.cpp }
 open_solution -reset "solution"
 set_part {xcu250-figd2104-2L-e}
 create_clock -period 4 -name default

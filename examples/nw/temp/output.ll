@@ -436,7 +436,6 @@ $_ZN11ap_int_baseILi3ELb0EEC2Ei = comdat any
 $_ZN11ap_int_baseILi3ELb0EE18checkOverflowBaseCIiEEvT_ = comdat any
 
 @llvm.global_ctors = appending global [0 x { i32, void ()*, i8* }] zeroinitializer
-@_ZZ7hls_topiPiS_PjS0_E1b = private unnamed_addr constant [10 x i32] [i32 0, i32 1, i32 2, i32 3, i32 4, i32 5, i32 6, i32 7, i32 8, i32 9], align 4
 
 ; Function Attrs: alwaysinline nounwind
 define void @_Z6decode7ap_uintILi32EES0_S0_S0_(%struct.Cap* noalias sret %agg.result, %"struct.ap_uint<32>"* byval align 4 %buffer_0, %"struct.ap_uint<32>"* byval align 4 %buffer_1, %"struct.ap_uint<32>"* byval align 4 %buffer_2, %"struct.ap_uint<32>"* byval align 4 %buffer_3) #100000 !dbg !100335 !fpga.function.pragma !100370 {
@@ -4300,22 +4299,23 @@ entry:
   %conv = trunc i32 %i to i16, !dbg !101432
   call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp1, i32 4), !dbg !101433
   call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp, i16 zeroext %conv, %"struct.ap_uint<3>"* byval align 1 %agg.tmp1, i1 zeroext false), !dbg !101434
-  %1 = load i32, i32* %flag_buf, align 4, !dbg !101435
-  %tobool = icmp ne i32 %1, 0, !dbg !101436
-  br i1 %tobool, label %cond.true, label %cond.false, !dbg !101436
+  %idxprom = sext i32 %i to i64, !dbg !101435
+  %arrayidx = getelementptr inbounds i32, i32* %buf, i64 %idxprom, !dbg !101435
+  %1 = load i32, i32* %arrayidx, align 4, !dbg !101435
+  call void @llvm.dbg.value(metadata i32 %1, metadata !101436, metadata !DIExpression()), !dbg !101437
+  %2 = load i32, i32* %flag_buf, align 4, !dbg !101438
+  %tobool = icmp ne i32 %2, 0, !dbg !101439
+  br i1 %tobool, label %cond.true, label %cond.false, !dbg !101439
 
 cond.true:                                        ; preds = %entry
-  %idxprom = sext i32 %i to i64, !dbg !101437
-  %arrayidx = getelementptr inbounds i32, i32* %buf, i64 %idxprom, !dbg !101437
-  %2 = load i32, i32* %arrayidx, align 4, !dbg !101437
-  br label %cond.end, !dbg !101436
+  br label %cond.end, !dbg !101439
 
 cond.false:                                       ; preds = %entry
-  br label %cond.end, !dbg !101436
+  br label %cond.end, !dbg !101439
 
 cond.end:                                         ; preds = %cond.false, %cond.true
-  %cond = phi i32 [ %2, %cond.true ], [ 0, %cond.false ], !dbg !101436
-  ret i32 %cond, !dbg !101438
+  %cond = phi i32 [ %1, %cond.true ], [ 0, %cond.false ], !dbg !101439
+  ret i32 %cond, !dbg !101440
 }
 
 ; Function Attrs: alwaysinline nounwind
@@ -4348,41 +4348,48 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define void @_Z11cheri_storePiiiPj3Cap(i32* %buf, i32 %i, i32 %val, i32* %flag_buf, %struct.Cap* byval align 4 %cap) #100016 !dbg !101439 !fpga.function.pragma !101442 {
+define void @_Z11cheri_storePiiiPj3Cap(i32* %buf, i32 %i, i32 %val, i32* %flag_buf, %struct.Cap* byval align 4 %cap) #100016 !dbg !101441 !fpga.function.pragma !101444 {
 entry:
   %agg.tmp = alloca %struct.Cap, align 4
   %agg.tmp1 = alloca %"struct.ap_uint<3>", align 1
-  call void @llvm.dbg.value(metadata i32* %buf, metadata !101445, metadata !DIExpression()), !dbg !101446
-  call void @llvm.dbg.value(metadata i32 %i, metadata !101447, metadata !DIExpression()), !dbg !101448
-  call void @llvm.dbg.value(metadata i32 %val, metadata !101449, metadata !DIExpression()), !dbg !101450
-  call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101451, metadata !DIExpression()), !dbg !101452
-  call void @llvm.dbg.declare(metadata %struct.Cap* %cap, metadata !101453, metadata !DIExpression()), !dbg !101454
-  %0 = load %struct.Cap, %struct.Cap* %cap, align 4, !dbg !101455
-  store %struct.Cap %0, %struct.Cap* %agg.tmp, align 4, !dbg !101455
-  %conv = trunc i32 %i to i16, !dbg !101456
-  call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp1, i32 4), !dbg !101457
-  call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp, i16 zeroext %conv, %"struct.ap_uint<3>"* byval align 1 %agg.tmp1, i1 zeroext true), !dbg !101458
-  %1 = load i32, i32* %flag_buf, align 4, !dbg !101459
-  %tobool = icmp ne i32 %1, 0, !dbg !101461
-  br i1 %tobool, label %if.then, label %if.end, !dbg !101462
+  call void @llvm.dbg.value(metadata i32* %buf, metadata !101447, metadata !DIExpression()), !dbg !101448
+  call void @llvm.dbg.value(metadata i32 %i, metadata !101449, metadata !DIExpression()), !dbg !101450
+  call void @llvm.dbg.value(metadata i32 %val, metadata !101451, metadata !DIExpression()), !dbg !101452
+  call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101453, metadata !DIExpression()), !dbg !101454
+  call void @llvm.dbg.declare(metadata %struct.Cap* %cap, metadata !101455, metadata !DIExpression()), !dbg !101456
+  %0 = load %struct.Cap, %struct.Cap* %cap, align 4, !dbg !101457
+  store %struct.Cap %0, %struct.Cap* %agg.tmp, align 4, !dbg !101457
+  %conv = trunc i32 %i to i16, !dbg !101458
+  call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp1, i32 4), !dbg !101459
+  call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp, i16 zeroext %conv, %"struct.ap_uint<3>"* byval align 1 %agg.tmp1, i1 zeroext true), !dbg !101460
+  %1 = load i32, i32* %flag_buf, align 4, !dbg !101461
+  %tobool = icmp ne i32 %1, 0, !dbg !101462
+  br i1 %tobool, label %cond.true, label %cond.false, !dbg !101462
 
-if.then:                                          ; preds = %entry
+cond.true:                                        ; preds = %entry
+  br label %cond.end, !dbg !101462
+
+cond.false:                                       ; preds = %entry
   %idxprom = sext i32 %i to i64, !dbg !101463
   %arrayidx = getelementptr inbounds i32, i32* %buf, i64 %idxprom, !dbg !101463
-  store i32 %val, i32* %arrayidx, align 4, !dbg !101465
-  br label %if.end, !dbg !101466
+  %2 = load i32, i32* %arrayidx, align 4, !dbg !101463
+  br label %cond.end, !dbg !101462
 
-if.end:                                           ; preds = %if.then, %entry
-  ret void, !dbg !101467
+cond.end:                                         ; preds = %cond.false, %cond.true
+  %cond = phi i32 [ %val, %cond.true ], [ %2, %cond.false ], !dbg !101462
+  %idxprom2 = sext i32 %i to i64, !dbg !101464
+  %arrayidx3 = getelementptr inbounds i32, i32* %buf, i64 %idxprom2, !dbg !101464
+  store i32 %cond, i32* %arrayidx3, align 4, !dbg !101465
+  ret void, !dbg !101466
 }
 
 
 
 ; Function Attrs: nounwind
-define void @hls_top(i32 %alen, i32 %blen, i32* "fpga.decayed.dim.hint"="128" %xSEQA, i32* "fpga.decayed.dim.hint"="128" %xSEQB, i32* "fpga.decayed.dim.hint"="256" %xalignedA, i32* "fpga.decayed.dim.hint"="256" %xalignedB, i32* "fpga.decayed.dim.hint"="16641" %xM, i32* "fpga.decayed.dim.hint"="16641" %xptr, i32* %flag, i32* "fpga.decayed.dim.hint"="24" %cap) #0 !dbg !101468 !fpga.function.pragma !101471 {
+define void @hls_top(i32 %alen, i32 %blen, i32* "fpga.decayed.dim.hint"="128" %xSEQA, i32* "fpga.decayed.dim.hint"="128" %xSEQB, i32* "fpga.decayed.dim.hint"="256" %xalignedA, i32* "fpga.decayed.dim.hint"="256" %xalignedB, i32* "fpga.decayed.dim.hint"="16641" %xM, i32* "fpga.decayed.dim.hint"="16641" %xptr, i32* %flag, i32* "fpga.decayed.dim.hint"="24" %cap) #0 !dbg !101467 !fpga.function.pragma !101470 {
 entry:
   %flag_buf = alloca i32, align 4
-  %caps = alloca [12 x %struct.Cap], align 4
+  %caps = alloca [6 x %struct.Cap], align 4
   %buffer = alloca [24 x i32], align 4
   %agg.tmp0 = alloca %struct.Cap, align 4
   %agg.tmp1 = alloca %struct.Cap, align 4
@@ -4390,12 +4397,6 @@ entry:
   %agg.tmp3 = alloca %struct.Cap, align 4
   %agg.tmp4 = alloca %struct.Cap, align 4
   %agg.tmp5 = alloca %struct.Cap, align 4
-  %agg.tmp6 = alloca %struct.Cap, align 4
-  %agg.tmp7 = alloca %struct.Cap, align 4
-  %agg.tmp8 = alloca %struct.Cap, align 4
-  %agg.tmp9 = alloca %struct.Cap, align 4
-  %agg.tmp10 = alloca %struct.Cap, align 4
-  %agg.tmp11 = alloca %struct.Cap, align 4
   call void @llvm.dbg.value(metadata i32* %flag, metadata !101505, metadata !DIExpression()), !dbg !101506
   call void @llvm.dbg.value(metadata i32* %cap, metadata !101507, metadata !DIExpression()), !dbg !101508
   call void @llvm.sideeffect() #9000 [ "xlx_m_axi"(i32* %cap, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ]
@@ -4404,23 +4405,17 @@ entry:
   call void @llvm.lifetime.start.p0i8(i64 4, i8* %init.0) #9003, !dbg !101491
   call void @llvm.dbg.declare(metadata i32* %flag_buf, metadata !101492, metadata !DIExpression()), !dbg !101493
   store i32 0, i32* %flag_buf, align 4, !dbg !101493
-  %init.1 = bitcast [12 x %struct.Cap]* %caps to i8*, !dbg !101494
-  call void @llvm.lifetime.start.p0i8(i64 144, i8* %init.1) #9003, !dbg !101494
-  call void @llvm.dbg.declare(metadata [12 x %struct.Cap]* %caps, metadata !101495, metadata !DIExpression()), !dbg !101499
+  %init.1 = bitcast [6 x %struct.Cap]* %caps to i8*, !dbg !101494
+  call void @llvm.lifetime.start.p0i8(i64 72, i8* %init.1) #9003, !dbg !101494
+  call void @llvm.dbg.declare(metadata [6 x %struct.Cap]* %caps, metadata !101495, metadata !DIExpression()), !dbg !101499
   %init.2 = bitcast [24 x i32]* %buffer to i8*, !dbg !101500
   call void @llvm.lifetime.start.p0i8(i64 96, i8* %init.2) #9003, !dbg !101500
   call void @llvm.dbg.declare(metadata [24 x i32]* %buffer, metadata !101501, metadata !DIExpression()), !dbg !101505
   call void @llvm.sideeffect() #9000 [ "xlx_array_partition"([24 x i32]* %buffer, i32 2, i32 0, i32 1, i1 false) ], !dbg !101506
-  call void @llvm.sideeffect() #9002 [ "xlx_array_partition"([12 x %struct.Cap]* %caps, i32 2, i32 0, i32 1, i1 false) ], !dbg !101507
+  call void @llvm.sideeffect() #9002 [ "xlx_array_partition"([6 x %struct.Cap]* %caps, i32 2, i32 0, i32 1, i1 false) ], !dbg !101507
   %cap.arraydecay = getelementptr inbounds [24 x i32], [24 x i32]* %buffer, i32 0, i32 0, !dbg !101508
-  %cap.arraydecay1 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101509
+  %cap.arraydecay1 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101509
   call void @_Z8load_capiPjS_P3Cap(i32 6, i32* %cap.arraydecay, i32* %cap, %struct.Cap* %cap.arraydecay1), !dbg !101510
-  call void @_Z10create_capiP3Caph(i32 128, %struct.Cap* %cap.arraydecay1, i8 6), !dbg !101542
-  call void @_Z10create_capiP3Caph(i32 128, %struct.Cap* %cap.arraydecay1, i8 7), !dbg !101542
-  call void @_Z10create_capiP3Caph(i32 256, %struct.Cap* %cap.arraydecay1, i8 8), !dbg !101542
-  call void @_Z10create_capiP3Caph(i32 256, %struct.Cap* %cap.arraydecay1, i8 9), !dbg !101542
-  call void @_Z10create_capiP3Caph(i32 16641, %struct.Cap* %cap.arraydecay1, i8 10), !dbg !101542
-  call void @_Z10create_capiP3Caph(i32 16641, %struct.Cap* %cap.arraydecay1, i8 11), !dbg !101542
   %SEQA = alloca [128 x i32], align 4
   %SEQB = alloca [128 x i32], align 4
   %alignedA = alloca [256 x i32], align 4
@@ -4478,17 +4473,14 @@ for.cond.cleanup:                                 ; preds = %for.cond
   br label %for.end
 
 for.body:                                         ; preds = %for.cond
-  %cap.arrayidx0 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 0, !dbg !101550
+  %cap.arrayidx0 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 0, !dbg !101550
   %load.0 = load %struct.Cap, %struct.Cap* %cap.arrayidx0, align 4, !dbg !101550
   store %struct.Cap %load.0, %struct.Cap* %agg.tmp0, align 4, !dbg !101550
   %6 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %xSEQA, i32 %i.0, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp0), !dbg !101527
   call void @llvm.dbg.value(metadata i32 %6, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %arraypointer1 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQA, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx1 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 6, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %6, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.1 = load %struct.Cap, %struct.Cap* %cap.arrayidx1, align 4, !dbg !101539
-  store %struct.Cap %store.1, %struct.Cap* %agg.tmp6, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer1, i32 %i.0, i32 %6, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp6), !dbg !101539
+  %idxprom1 = sext i32 %i.0 to i64, !dbg !76
+  %arrayidx2 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQA, i64 0, i64 %idxprom1, !dbg !76
+  store i32 %6, i32* %arrayidx2, align 4, !dbg !77
   br label %for.inc, !dbg !76
 
 for.inc:                                          ; preds = %for.body
@@ -4513,17 +4505,14 @@ for.cond.cleanup6:                                ; preds = %for.cond4
   br label %for.end14
 
 for.body7:                                        ; preds = %for.cond4
-  %cap.arrayidx2 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 1, !dbg !101550
-  %load.2 = load %struct.Cap, %struct.Cap* %cap.arrayidx2, align 4, !dbg !101550
-  store %struct.Cap %load.2, %struct.Cap* %agg.tmp1, align 4, !dbg !101550
+  %cap.arrayidx1 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 1, !dbg !101550
+  %load.1 = load %struct.Cap, %struct.Cap* %cap.arrayidx1, align 4, !dbg !101550
+  store %struct.Cap %load.1, %struct.Cap* %agg.tmp1, align 4, !dbg !101550
   %7 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %xSEQB, i32 %i3.0, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp1), !dbg !101527
   call void @llvm.dbg.value(metadata i32 %7, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %arraypointer3 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQB, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx3 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 7, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %7, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.3 = load %struct.Cap, %struct.Cap* %cap.arrayidx3, align 4, !dbg !101539
-  store %struct.Cap %store.3, %struct.Cap* %agg.tmp7, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer3, i32 %i3.0, i32 %7, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp7), !dbg !101539
+  %idxprom10 = sext i32 %i3.0 to i64, !dbg !91
+  %arrayidx11 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQB, i64 0, i64 %idxprom10, !dbg !91
+  store i32 %7, i32* %arrayidx11, align 4, !dbg !92
   br label %for.inc12, !dbg !91
 
 for.inc12:                                        ; preds = %for.body7
@@ -4546,12 +4535,9 @@ for.cond15:                                       ; preds = %for.inc20, %init_ro
 
 for.body17:                                       ; preds = %for.cond15
   %mul = mul nsw i32 %a_idx.0, -1, !dbg !106
-  %arraypointer4 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx4 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 10, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %mul, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.4 = load %struct.Cap, %struct.Cap* %cap.arrayidx4, align 4, !dbg !101539
-  store %struct.Cap %store.4, %struct.Cap* %agg.tmp10, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer4, i32 %a_idx.0, i32 %mul, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp10), !dbg !101539
+  %idxprom18 = sext i32 %a_idx.0 to i64, !dbg !108
+  %arrayidx19 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i64 0, i64 %idxprom18, !dbg !108
+  store i32 %mul, i32* %arrayidx19, align 4, !dbg !109
   br label %for.inc20, !dbg !110
 
 for.inc20:                                        ; preds = %for.body17
@@ -4575,12 +4561,9 @@ for.cond23:                                       ; preds = %for.inc30, %init_co
 for.body25:                                       ; preds = %for.cond23
   %mul26 = mul nsw i32 %b_idx.0, -1, !dbg !123
   %mul27 = mul nsw i32 %b_idx.0, 129, !dbg !125
-  %arraypointer5 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx5 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 10, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %mul26, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.5 = load %struct.Cap, %struct.Cap* %cap.arrayidx5, align 4, !dbg !101539
-  store %struct.Cap %store.5, %struct.Cap* %agg.tmp10, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer5, i32 %mul27, i32 %mul26, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp10), !dbg !101539
+  %idxprom28 = sext i32 %mul27 to i64, !dbg !126
+  %arrayidx29 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i64 0, i64 %idxprom28, !dbg !126
+  store i32 %mul26, i32* %arrayidx29, align 4, !dbg !127
   br label %for.inc30, !dbg !128
 
 for.inc30:                                        ; preds = %for.body25
@@ -4616,19 +4599,13 @@ for.cond36:                                       ; preds = %for.inc92, %fill_in
 
 for.body38:                                       ; preds = %for.cond36
   %sub = sub nsw i32 %a_idx.1, 1, !dbg !146
-  %arraypointer6 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQA, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx6 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 6, !dbg !101550
-  %load.6 = load %struct.Cap, %struct.Cap* %cap.arrayidx6, align 4, !dbg !101550
-  store %struct.Cap %load.6, %struct.Cap* %agg.tmp6, align 4, !dbg !101550
-  %8 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer6, i32 %sub, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp6), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %8, metadata !101521, metadata !DIExpression()), !dbg !101529
+  %idxprom39 = sext i32 %sub to i64, !dbg !149
+  %arrayidx40 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQA, i64 0, i64 %idxprom39, !dbg !149
+  %8 = load i32, i32* %arrayidx40, align 4, !dbg !149
   %sub41 = sub nsw i32 %b_idx.1, 1, !dbg !150
-  %arraypointer7 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQB, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx7 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 7, !dbg !101550
-  %load.7 = load %struct.Cap, %struct.Cap* %cap.arrayidx7, align 4, !dbg !101550
-  store %struct.Cap %load.7, %struct.Cap* %agg.tmp7, align 4, !dbg !101550
-  %9 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer7, i32 %sub41, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp7), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %9, metadata !101521, metadata !DIExpression()), !dbg !101529
+  %idxprom42 = sext i32 %sub41 to i64, !dbg !151
+  %arrayidx43 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQB, i64 0, i64 %idxprom42, !dbg !151
+  %9 = load i32, i32* %arrayidx43, align 4, !dbg !151
   %cmp44 = icmp eq i32 %8, %9, !dbg !152
   br i1 %cmp44, label %if.then, label %if.else, !dbg !153
 
@@ -4650,31 +4627,22 @@ if.end:                                           ; preds = %if.else, %if.then
   call void @llvm.dbg.value(metadata i32 %mul47, metadata !163, metadata !DIExpression()), !dbg !164
   %sub48 = sub nsw i32 %a_idx.1, 1, !dbg !165
   %add = add nsw i32 %mul46, %sub48, !dbg !166
-  %arraypointer8 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx8 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 10, !dbg !101550
-  %load.8 = load %struct.Cap, %struct.Cap* %cap.arrayidx8, align 4, !dbg !101550
-  store %struct.Cap %load.8, %struct.Cap* %agg.tmp10, align 4, !dbg !101550
-  %10 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer8, i32 %add, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp10), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %10, metadata !101521, metadata !DIExpression()), !dbg !101529
+  %idxprom49 = sext i32 %add to i64, !dbg !167
+  %arrayidx50 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i64 0, i64 %idxprom49, !dbg !167
+  %10 = load i32, i32* %arrayidx50, align 4, !dbg !167
   %add51 = add nsw i32 %10, %score.0, !dbg !168
   call void @llvm.dbg.value(metadata i32 %add51, metadata !169, metadata !DIExpression()), !dbg !170
   %add52 = add nsw i32 %mul46, %a_idx.1, !dbg !171
-  %arraypointer9 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx9 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 10, !dbg !101550
-  %load.9 = load %struct.Cap, %struct.Cap* %cap.arrayidx9, align 4, !dbg !101550
-  store %struct.Cap %load.9, %struct.Cap* %agg.tmp10, align 4, !dbg !101550
-  %11 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer9, i32 %add52, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp10), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %11, metadata !101521, metadata !DIExpression()), !dbg !101529
+  %idxprom53 = sext i32 %add52 to i64, !dbg !172
+  %arrayidx54 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i64 0, i64 %idxprom53, !dbg !172
+  %11 = load i32, i32* %arrayidx54, align 4, !dbg !172
   %add55 = add nsw i32 %11, -1, !dbg !173
   call void @llvm.dbg.value(metadata i32 %add55, metadata !174, metadata !DIExpression()), !dbg !175
   %sub56 = sub nsw i32 %a_idx.1, 1, !dbg !176
   %add57 = add nsw i32 %mul47, %sub56, !dbg !177
-  %arraypointer10 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx10 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 10, !dbg !101550
-  %load.10 = load %struct.Cap, %struct.Cap* %cap.arrayidx10, align 4, !dbg !101550
-  store %struct.Cap %load.10, %struct.Cap* %agg.tmp10, align 4, !dbg !101550
-  %12 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer10, i32 %add57, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp10), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %12, metadata !101521, metadata !DIExpression()), !dbg !101529
+  %idxprom58 = sext i32 %add57 to i64, !dbg !178
+  %arrayidx59 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i64 0, i64 %idxprom58, !dbg !178
+  %12 = load i32, i32* %arrayidx59, align 4, !dbg !178
   %add60 = add nsw i32 %12, -1, !dbg !179
   call void @llvm.dbg.value(metadata i32 %add60, metadata !180, metadata !DIExpression()), !dbg !181
   %cmp61 = icmp sgt i32 %add55, %add60, !dbg !182
@@ -4712,23 +4680,17 @@ cond.end70:                                       ; preds = %cond.end68, %cond.t
   %cond71 = phi i32 [ %add51, %cond.true63 ], [ %cond69, %cond.end68 ], !dbg !185
   call void @llvm.dbg.value(metadata i32 %cond71, metadata !188, metadata !DIExpression()), !dbg !189
   %add72 = add nsw i32 %mul47, %a_idx.1, !dbg !190
-  %arraypointer11 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx11 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 10, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %cond71, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.11 = load %struct.Cap, %struct.Cap* %cap.arrayidx11, align 4, !dbg !101539
-  store %struct.Cap %store.11, %struct.Cap* %agg.tmp10, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer11, i32 %add72, i32 %cond71, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp10), !dbg !101539
+  %idxprom73 = sext i32 %add72 to i64, !dbg !191
+  %arrayidx74 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i64 0, i64 %idxprom73, !dbg !191
+  store i32 %cond71, i32* %arrayidx74, align 4, !dbg !192
   %cmp75 = icmp eq i32 %cond71, %add60, !dbg !193
   br i1 %cmp75, label %if.then76, label %if.else80, !dbg !195
 
 if.then76:                                        ; preds = %cond.end70
   %add77 = add nsw i32 %mul47, %a_idx.1, !dbg !196
-  %arraypointer12 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx12 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 11, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 60, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.12 = load %struct.Cap, %struct.Cap* %cap.arrayidx12, align 4, !dbg !101539
-  store %struct.Cap %store.12, %struct.Cap* %agg.tmp11, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer12, i32 %add77, i32 60, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp11), !dbg !101539
+  %idxprom78 = sext i32 %add77 to i64, !dbg !198
+  %arrayidx79 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i64 0, i64 %idxprom78, !dbg !198
+  store i32 60, i32* %arrayidx79, align 4, !dbg !199
   br label %if.end91, !dbg !200
 
 if.else80:                                        ; preds = %cond.end70
@@ -4737,22 +4699,16 @@ if.else80:                                        ; preds = %cond.end70
 
 if.then82:                                        ; preds = %if.else80
   %add83 = add nsw i32 %mul47, %a_idx.1, !dbg !204
-  %arraypointer13 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx13 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 11, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 94, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.13 = load %struct.Cap, %struct.Cap* %cap.arrayidx13, align 4, !dbg !101539
-  store %struct.Cap %store.13, %struct.Cap* %agg.tmp11, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer13, i32 %add83, i32 94, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp11), !dbg !101539
+  %idxprom84 = sext i32 %add83 to i64, !dbg !206
+  %arrayidx85 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i64 0, i64 %idxprom84, !dbg !206
+  store i32 94, i32* %arrayidx85, align 4, !dbg !207
   br label %if.end90, !dbg !208
 
 if.else86:                                        ; preds = %if.else80
   %add87 = add nsw i32 %mul47, %a_idx.1, !dbg !209
-  %arraypointer14 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx14 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 11, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 92, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.14 = load %struct.Cap, %struct.Cap* %cap.arrayidx14, align 4, !dbg !101539
-  store %struct.Cap %store.14, %struct.Cap* %agg.tmp11, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer14, i32 %add87, i32 92, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp11), !dbg !101539
+  %idxprom88 = sext i32 %add87 to i64, !dbg !211
+  %arrayidx89 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i64 0, i64 %idxprom88, !dbg !211
+  store i32 92, i32* %arrayidx89, align 4, !dbg !212
   br label %if.end90
 
 if.end90:                                         ; preds = %if.else86, %if.then82
@@ -4808,12 +4764,9 @@ while.body:                                       ; preds = %lor.end
   %mul100 = mul nsw i32 %b_idx.2, 129, !dbg !234
   call void @llvm.dbg.value(metadata i32 %mul100, metadata !236, metadata !DIExpression()), !dbg !237
   %add101 = add nsw i32 %mul100, %a_idx.2, !dbg !238
-  %arraypointer15 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx15 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 11, !dbg !101550
-  %load.15 = load %struct.Cap, %struct.Cap* %cap.arrayidx15, align 4, !dbg !101550
-  store %struct.Cap %load.15, %struct.Cap* %agg.tmp11, align 4, !dbg !101550
-  %14 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer15, i32 %add101, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp11), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %14, metadata !101521, metadata !DIExpression()), !dbg !101529
+  %idxprom102 = sext i32 %add101 to i64, !dbg !240
+  %arrayidx103 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i64 0, i64 %idxprom102, !dbg !240
+  %14 = load i32, i32* %arrayidx103, align 4, !dbg !240
   %cmp104 = icmp eq i32 %14, 92, !dbg !241
   br i1 %cmp104, label %if.then105, label %if.else119, !dbg !242
 
@@ -4823,31 +4776,19 @@ if.then105:                                       ; preds = %while.body
   %inc107 = add nsw i32 %b_str_idx.0, 1, !dbg !245
   call void @llvm.dbg.value(metadata i32 %inc107, metadata !227, metadata !DIExpression()), !dbg !228
   %sub108 = sub nsw i32 %a_idx.2, 1, !dbg !246
-  %arraypointer16 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQA, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx16 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 6, !dbg !101550
-  %load.16 = load %struct.Cap, %struct.Cap* %cap.arrayidx16, align 4, !dbg !101550
-  store %struct.Cap %load.16, %struct.Cap* %agg.tmp6, align 4, !dbg !101550
-  %15 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer16, i32 %sub108, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp6), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %15, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %arraypointer17 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedA, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx17 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 8, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %15, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.17 = load %struct.Cap, %struct.Cap* %cap.arrayidx17, align 4, !dbg !101539
-  store %struct.Cap %store.17, %struct.Cap* %agg.tmp8, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer17, i32 %inc106, i32 %15, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp8), !dbg !101539
+  %idxprom109 = sext i32 %sub108 to i64, !dbg !247
+  %arrayidx110 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQA, i64 0, i64 %idxprom109, !dbg !247
+  %15 = load i32, i32* %arrayidx110, align 4, !dbg !247
+  %idxprom111 = sext i32 %inc106 to i64, !dbg !248
+  %arrayidx112 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedA, i64 0, i64 %idxprom111, !dbg !248
+  store i32 %15, i32* %arrayidx112, align 4, !dbg !249
   %sub113 = sub nsw i32 %b_idx.2, 1, !dbg !250
-  %arraypointer18 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQB, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx18 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 7, !dbg !101550
-  %load.18 = load %struct.Cap, %struct.Cap* %cap.arrayidx18, align 4, !dbg !101550
-  store %struct.Cap %load.18, %struct.Cap* %agg.tmp7, align 4, !dbg !101550
-  %16 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer18, i32 %sub113, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp7), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %16, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %arraypointer19 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedB, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx19 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 9, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %16, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.19 = load %struct.Cap, %struct.Cap* %cap.arrayidx19, align 4, !dbg !101539
-  store %struct.Cap %store.19, %struct.Cap* %agg.tmp9, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer19, i32 %inc107, i32 %16, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp9), !dbg !101539
+  %idxprom114 = sext i32 %sub113 to i64, !dbg !251
+  %arrayidx115 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQB, i64 0, i64 %idxprom114, !dbg !251
+  %16 = load i32, i32* %arrayidx115, align 4, !dbg !251
+  %idxprom116 = sext i32 %inc107 to i64, !dbg !252
+  %arrayidx117 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedB, i64 0, i64 %idxprom116, !dbg !252
+  store i32 %16, i32* %arrayidx117, align 4, !dbg !253
   %dec = add nsw i32 %a_idx.2, -1, !dbg !254
   call void @llvm.dbg.value(metadata i32 %dec, metadata !99, metadata !DIExpression()), !dbg !100
   %dec118 = add nsw i32 %b_idx.2, -1, !dbg !255
@@ -4856,12 +4797,9 @@ if.then105:                                       ; preds = %while.body
 
 if.else119:                                       ; preds = %while.body
   %add120 = add nsw i32 %mul100, %a_idx.2, !dbg !257
-  %arraypointer20 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx20 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 11, !dbg !101550
-  %load.20 = load %struct.Cap, %struct.Cap* %cap.arrayidx20, align 4, !dbg !101550
-  store %struct.Cap %load.20, %struct.Cap* %agg.tmp11, align 4, !dbg !101550
-  %17 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer20, i32 %add120, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp11), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %17, metadata !101521, metadata !DIExpression()), !dbg !101529
+  %idxprom121 = sext i32 %add120 to i64, !dbg !259
+  %arrayidx122 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i64 0, i64 %idxprom121, !dbg !259
+  %17 = load i32, i32* %arrayidx122, align 4, !dbg !259
   %cmp123 = icmp eq i32 %17, 60, !dbg !260
   br i1 %cmp123, label %if.then124, label %if.else135, !dbg !261
 
@@ -4871,24 +4809,15 @@ if.then124:                                       ; preds = %if.else119
   %inc126 = add nsw i32 %b_str_idx.0, 1, !dbg !264
   call void @llvm.dbg.value(metadata i32 %inc126, metadata !227, metadata !DIExpression()), !dbg !228
   %sub127 = sub nsw i32 %a_idx.2, 1, !dbg !265
-  %arraypointer21 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQA, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx21 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 6, !dbg !101550
-  %load.21 = load %struct.Cap, %struct.Cap* %cap.arrayidx21, align 4, !dbg !101550
-  store %struct.Cap %load.21, %struct.Cap* %agg.tmp6, align 4, !dbg !101550
-  %18 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer21, i32 %sub127, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp6), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %18, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %arraypointer22 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedA, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx22 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 8, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %18, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.22 = load %struct.Cap, %struct.Cap* %cap.arrayidx22, align 4, !dbg !101539
-  store %struct.Cap %store.22, %struct.Cap* %agg.tmp8, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer22, i32 %inc125, i32 %18, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp8), !dbg !101539
-  %arraypointer23 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedB, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx23 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 9, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 45, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.23 = load %struct.Cap, %struct.Cap* %cap.arrayidx23, align 4, !dbg !101539
-  store %struct.Cap %store.23, %struct.Cap* %agg.tmp9, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer23, i32 %inc126, i32 45, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp9), !dbg !101539
+  %idxprom128 = sext i32 %sub127 to i64, !dbg !266
+  %arrayidx129 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQA, i64 0, i64 %idxprom128, !dbg !266
+  %18 = load i32, i32* %arrayidx129, align 4, !dbg !266
+  %idxprom130 = sext i32 %inc125 to i64, !dbg !267
+  %arrayidx131 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedA, i64 0, i64 %idxprom130, !dbg !267
+  store i32 %18, i32* %arrayidx131, align 4, !dbg !268
+  %idxprom132 = sext i32 %inc126 to i64, !dbg !269
+  %arrayidx133 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedB, i64 0, i64 %idxprom132, !dbg !269
+  store i32 45, i32* %arrayidx133, align 4, !dbg !270
   %dec134 = add nsw i32 %a_idx.2, -1, !dbg !271
   call void @llvm.dbg.value(metadata i32 %dec134, metadata !99, metadata !DIExpression()), !dbg !100
   br label %if.end146, !dbg !272
@@ -4898,25 +4827,16 @@ if.else135:                                       ; preds = %if.else119
   call void @llvm.dbg.value(metadata i32 %inc136, metadata !225, metadata !DIExpression()), !dbg !226
   %inc137 = add nsw i32 %b_str_idx.0, 1, !dbg !275
   call void @llvm.dbg.value(metadata i32 %inc137, metadata !227, metadata !DIExpression()), !dbg !228
-  %arraypointer24 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedA, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx24 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 8, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 45, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.24 = load %struct.Cap, %struct.Cap* %cap.arrayidx24, align 4, !dbg !101539
-  store %struct.Cap %store.24, %struct.Cap* %agg.tmp8, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer24, i32 %inc136, i32 45, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp8), !dbg !101539
+  %idxprom138 = sext i32 %inc136 to i64, !dbg !276
+  %arrayidx139 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedA, i64 0, i64 %idxprom138, !dbg !276
+  store i32 45, i32* %arrayidx139, align 4, !dbg !277
   %sub140 = sub nsw i32 %b_idx.2, 1, !dbg !278
-  %arraypointer25 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQB, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx25 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 7, !dbg !101550
-  %load.25 = load %struct.Cap, %struct.Cap* %cap.arrayidx25, align 4, !dbg !101550
-  store %struct.Cap %load.25, %struct.Cap* %agg.tmp7, align 4, !dbg !101550
-  %19 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer25, i32 %sub140, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp7), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %19, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %arraypointer26 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedB, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx26 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 9, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %19, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.26 = load %struct.Cap, %struct.Cap* %cap.arrayidx26, align 4, !dbg !101539
-  store %struct.Cap %store.26, %struct.Cap* %agg.tmp9, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer26, i32 %inc137, i32 %19, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp9), !dbg !101539
+  %idxprom141 = sext i32 %sub140 to i64, !dbg !279
+  %arrayidx142 = getelementptr inbounds [128 x i32], [128 x i32]* %SEQB, i64 0, i64 %idxprom141, !dbg !279
+  %19 = load i32, i32* %arrayidx142, align 4, !dbg !279
+  %idxprom143 = sext i32 %inc137 to i64, !dbg !280
+  %arrayidx144 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedB, i64 0, i64 %idxprom143, !dbg !280
+  store i32 %19, i32* %arrayidx144, align 4, !dbg !281
   %dec145 = add nsw i32 %b_idx.2, -1, !dbg !282
   call void @llvm.dbg.value(metadata i32 %dec145, metadata !116, metadata !DIExpression()), !dbg !117
   br label %if.end146
@@ -4956,12 +4876,9 @@ for.cond148:                                      ; preds = %for.inc153, %pad_a
   br i1 %cmp149, label %for.body150, label %for.end155, !dbg !290
 
 for.body150:                                      ; preds = %for.cond148
-  %arraypointer27 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedA, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx27 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 8, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 95, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.27 = load %struct.Cap, %struct.Cap* %cap.arrayidx27, align 4, !dbg !101539
-  store %struct.Cap %store.27, %struct.Cap* %agg.tmp8, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer27, i32 %a_str_idx.3, i32 95, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp8), !dbg !101539
+  %idxprom151 = sext i32 %a_str_idx.3 to i64, !dbg !291
+  %arrayidx152 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedA, i64 0, i64 %idxprom151, !dbg !291
+  store i32 95, i32* %arrayidx152, align 4, !dbg !293
   br label %for.inc153, !dbg !294
 
 for.inc153:                                       ; preds = %for.body150
@@ -4982,12 +4899,9 @@ for.cond156:                                      ; preds = %for.inc161, %pad_b
   br i1 %cmp157, label %for.body158, label %for.end163, !dbg !304
 
 for.body158:                                      ; preds = %for.cond156
-  %arraypointer28 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedB, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx28 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 9, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 95, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.28 = load %struct.Cap, %struct.Cap* %cap.arrayidx28, align 4, !dbg !101539
-  store %struct.Cap %store.28, %struct.Cap* %agg.tmp9, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer28, i32 %b_str_idx.3, i32 95, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp9), !dbg !101539
+  %idxprom159 = sext i32 %b_str_idx.3 to i64, !dbg !305
+  %arrayidx160 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedB, i64 0, i64 %idxprom159, !dbg !305
+  store i32 95, i32* %arrayidx160, align 4, !dbg !307
   br label %for.inc161, !dbg !308
 
 for.inc161:                                       ; preds = %for.body158
@@ -5002,161 +4916,101 @@ VITIS_LOOP_126_3:                                 ; preds = %for.end163
   call void @llvm.dbg.value(metadata i32 0, metadata !314, metadata !DIExpression()), !dbg !316
   br label %for.cond165, !dbg !317
 
-for.cond165:                                      ; preds = %for.inc173, %VITIS_LOOP_126_3
-  %i164.0 = phi i32 [ 0, %VITIS_LOOP_126_3 ], [ %inc174, %for.inc173 ]
+for.cond165:                                      ; preds = %for.inc177, %VITIS_LOOP_126_3
+  %i164.0 = phi i32 [ 0, %VITIS_LOOP_126_3 ], [ %inc178, %for.inc177 ]
   call void @llvm.dbg.value(metadata i32 %i164.0, metadata !314, metadata !DIExpression()), !dbg !316
   %cmp166 = icmp slt i32 %i164.0, 256, !dbg !318
   br i1 %cmp166, label %for.body168, label %for.cond.cleanup167, !dbg !320
 
 for.cond.cleanup167:                              ; preds = %for.cond165
-  br label %for.end175
+  br label %for.end179
 
 for.body168:                                      ; preds = %for.cond165
-  %arraypointer29 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedA, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx29 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 8, !dbg !101550
-  %load.29 = load %struct.Cap, %struct.Cap* %cap.arrayidx29, align 4, !dbg !101550
-  store %struct.Cap %load.29, %struct.Cap* %agg.tmp8, align 4, !dbg !101550
-  %20 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer29, i32 %i164.0, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp8), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %20, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %cap.arrayidx30 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 2, !dbg !101550
+  %idxprom169 = sext i32 %i164.0 to i64, !dbg !321
+  %arrayidx170 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedA, i64 0, i64 %idxprom169, !dbg !321
+  %20 = load i32, i32* %arrayidx170, align 4, !dbg !321
+  %cap.arrayidx2 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 2, !dbg !101550
   call void @llvm.dbg.value(metadata i32 %20, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.30 = load %struct.Cap, %struct.Cap* %cap.arrayidx30, align 4, !dbg !101539
-  store %struct.Cap %store.30, %struct.Cap* %agg.tmp2, align 4, !dbg !101539
+  %store.2 = load %struct.Cap, %struct.Cap* %cap.arrayidx2, align 4, !dbg !101539
+  store %struct.Cap %store.2, %struct.Cap* %agg.tmp2, align 4, !dbg !101539
   call void @_Z11cheri_storePiiiPj3Cap(i32* %xalignedA, i32 %i164.0, i32 %20, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101539
-  br label %for.inc173, !dbg !322
-
-for.inc173:                                       ; preds = %for.body168
-  %inc174 = add nsw i32 %i164.0, 1, !dbg !324
-  call void @llvm.dbg.value(metadata i32 %inc174, metadata !314, metadata !DIExpression()), !dbg !316
-  br label %for.cond165, !dbg !325, !llvm.loop !326
-
-for.end175:                                       ; preds = %for.cond.cleanup167
-  br label %VITIS_LOOP_128_4, !dbg !327
-
-VITIS_LOOP_128_4:                                 ; preds = %for.end175
-  call void @llvm.dbg.value(metadata i32 0, metadata !329, metadata !DIExpression()), !dbg !331
-  br label %for.cond177, !dbg !332
-
-for.cond177:                                      ; preds = %for.inc185, %VITIS_LOOP_128_4
-  %i176.0 = phi i32 [ 0, %VITIS_LOOP_128_4 ], [ %inc186, %for.inc185 ]
-  call void @llvm.dbg.value(metadata i32 %i176.0, metadata !329, metadata !DIExpression()), !dbg !331
-  %cmp178 = icmp slt i32 %i176.0, 256, !dbg !333
-  br i1 %cmp178, label %for.body180, label %for.cond.cleanup179, !dbg !335
-
-for.cond.cleanup179:                              ; preds = %for.cond177
-  br label %for.end187
-
-for.body180:                                      ; preds = %for.cond177
-  %arraypointer31 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedB, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx31 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 9, !dbg !101550
-  %load.31 = load %struct.Cap, %struct.Cap* %cap.arrayidx31, align 4, !dbg !101550
-  store %struct.Cap %load.31, %struct.Cap* %agg.tmp9, align 4, !dbg !101550
-  %21 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer31, i32 %i176.0, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp9), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %21, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %cap.arrayidx32 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 3, !dbg !101550
+  %idxprom173 = sext i32 %i164.0 to i64, !dbg !325
+  %arrayidx174 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedB, i64 0, i64 %idxprom173, !dbg !325
+  %21 = load i32, i32* %arrayidx174, align 4, !dbg !325
+  %cap.arrayidx3 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 3, !dbg !101550
   call void @llvm.dbg.value(metadata i32 %21, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.32 = load %struct.Cap, %struct.Cap* %cap.arrayidx32, align 4, !dbg !101539
-  store %struct.Cap %store.32, %struct.Cap* %agg.tmp3, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %xalignedB, i32 %i176.0, i32 %21, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp3), !dbg !101539
-  br label %for.inc185, !dbg !337
+  %store.3 = load %struct.Cap, %struct.Cap* %cap.arrayidx3, align 4, !dbg !101539
+  store %struct.Cap %store.3, %struct.Cap* %agg.tmp3, align 4, !dbg !101539
+  call void @_Z11cheri_storePiiiPj3Cap(i32* %xalignedB, i32 %i164.0, i32 %21, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp3), !dbg !101539
+  br label %for.inc177, !dbg !328
 
-for.inc185:                                       ; preds = %for.body180
-  %inc186 = add nsw i32 %i176.0, 1, !dbg !339
-  call void @llvm.dbg.value(metadata i32 %inc186, metadata !329, metadata !DIExpression()), !dbg !331
-  br label %for.cond177, !dbg !340, !llvm.loop !341
+for.inc177:                                       ; preds = %for.body168
+  %inc178 = add nsw i32 %i164.0, 1, !dbg !329
+  call void @llvm.dbg.value(metadata i32 %inc178, metadata !314, metadata !DIExpression()), !dbg !316
+  br label %for.cond165, !dbg !330, !llvm.loop !331
 
-for.end187:                                       ; preds = %for.cond.cleanup179
-  br label %VITIS_LOOP_130_5, !dbg !342
+for.end179:                                       ; preds = %for.cond.cleanup167
+  br label %VITIS_LOOP_130_4, !dbg !332
 
-VITIS_LOOP_130_5:                                 ; preds = %for.end187
-  call void @llvm.dbg.value(metadata i32 0, metadata !344, metadata !DIExpression()), !dbg !346
-  br label %for.cond189, !dbg !347
+VITIS_LOOP_130_4:                                 ; preds = %for.end179
+  call void @llvm.dbg.value(metadata i32 0, metadata !334, metadata !DIExpression()), !dbg !336
+  br label %for.cond181, !dbg !337
 
-for.cond189:                                      ; preds = %for.inc197, %VITIS_LOOP_130_5
-  %i188.0 = phi i32 [ 0, %VITIS_LOOP_130_5 ], [ %inc198, %for.inc197 ]
-  call void @llvm.dbg.value(metadata i32 %i188.0, metadata !344, metadata !DIExpression()), !dbg !346
-  %cmp190 = icmp slt i32 %i188.0, 16641, !dbg !348
-  br i1 %cmp190, label %for.body192, label %for.cond.cleanup191, !dbg !350
+for.cond181:                                      ; preds = %for.inc193, %VITIS_LOOP_130_4
+  %i180.0 = phi i32 [ 0, %VITIS_LOOP_130_4 ], [ %inc194, %for.inc193 ]
+  call void @llvm.dbg.value(metadata i32 %i180.0, metadata !334, metadata !DIExpression()), !dbg !336
+  %cmp182 = icmp slt i32 %i180.0, 16641, !dbg !338
+  br i1 %cmp182, label %for.body184, label %for.cond.cleanup183, !dbg !340
 
-for.cond.cleanup191:                              ; preds = %for.cond189
-  br label %for.end199
+for.cond.cleanup183:                              ; preds = %for.cond181
+  br label %for.end195
 
-for.body192:                                      ; preds = %for.cond189
-  %arraypointer33 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx33 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 10, !dbg !101550
-  %load.33 = load %struct.Cap, %struct.Cap* %cap.arrayidx33, align 4, !dbg !101550
-  store %struct.Cap %load.33, %struct.Cap* %agg.tmp10, align 4, !dbg !101550
-  %22 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer33, i32 %i188.0, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp10), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %22, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %cap.arrayidx34 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 4, !dbg !101550
+for.body184:                                      ; preds = %for.cond181
+  %idxprom185 = sext i32 %i180.0 to i64, !dbg !341
+  %arrayidx186 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i64 0, i64 %idxprom185, !dbg !341
+  %22 = load i32, i32* %arrayidx186, align 4, !dbg !341
+  %cap.arrayidx4 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 4, !dbg !101550
   call void @llvm.dbg.value(metadata i32 %22, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.34 = load %struct.Cap, %struct.Cap* %cap.arrayidx34, align 4, !dbg !101539
-  store %struct.Cap %store.34, %struct.Cap* %agg.tmp4, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %xM, i32 %i188.0, i32 %22, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp4), !dbg !101539
-  br label %for.inc197, !dbg !352
-
-for.inc197:                                       ; preds = %for.body192
-  %inc198 = add nsw i32 %i188.0, 1, !dbg !354
-  call void @llvm.dbg.value(metadata i32 %inc198, metadata !344, metadata !DIExpression()), !dbg !346
-  br label %for.cond189, !dbg !355, !llvm.loop !356
-
-for.end199:                                       ; preds = %for.cond.cleanup191
-  br label %VITIS_LOOP_132_6, !dbg !357
-
-VITIS_LOOP_132_6:                                 ; preds = %for.end199
-  call void @llvm.dbg.value(metadata i32 0, metadata !359, metadata !DIExpression()), !dbg !361
-  br label %for.cond201, !dbg !362
-
-for.cond201:                                      ; preds = %for.inc209, %VITIS_LOOP_132_6
-  %i200.0 = phi i32 [ 0, %VITIS_LOOP_132_6 ], [ %inc210, %for.inc209 ]
-  call void @llvm.dbg.value(metadata i32 %i200.0, metadata !359, metadata !DIExpression()), !dbg !361
-  %cmp202 = icmp slt i32 %i200.0, 16641, !dbg !363
-  br i1 %cmp202, label %for.body204, label %for.cond.cleanup203, !dbg !365
-
-for.cond.cleanup203:                              ; preds = %for.cond201
-  br label %for.end211
-
-for.body204:                                      ; preds = %for.cond201
-  %arraypointer35 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i32 0, i32 0, !dbg !101530
-  %cap.arrayidx35 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 11, !dbg !101550
-  %load.35 = load %struct.Cap, %struct.Cap* %cap.arrayidx35, align 4, !dbg !101550
-  store %struct.Cap %load.35, %struct.Cap* %agg.tmp11, align 4, !dbg !101550
-  %23 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer35, i32 %i200.0, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp11), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %23, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %cap.arrayidx36 = getelementptr inbounds [12 x %struct.Cap], [12 x %struct.Cap]* %caps, i64 0, i64 5, !dbg !101550
+  %store.4 = load %struct.Cap, %struct.Cap* %cap.arrayidx4, align 4, !dbg !101539
+  store %struct.Cap %store.4, %struct.Cap* %agg.tmp4, align 4, !dbg !101539
+  call void @_Z11cheri_storePiiiPj3Cap(i32* %xM, i32 %i180.0, i32 %22, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp4), !dbg !101539
+  %idxprom189 = sext i32 %i180.0 to i64, !dbg !345
+  %arrayidx190 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i64 0, i64 %idxprom189, !dbg !345
+  %23 = load i32, i32* %arrayidx190, align 4, !dbg !345
+  %cap.arrayidx5 = getelementptr inbounds [6 x %struct.Cap], [6 x %struct.Cap]* %caps, i64 0, i64 5, !dbg !101550
   call void @llvm.dbg.value(metadata i32 %23, metadata !101528, metadata !DIExpression()), !dbg !101539
-  %store.36 = load %struct.Cap, %struct.Cap* %cap.arrayidx36, align 4, !dbg !101539
-  store %struct.Cap %store.36, %struct.Cap* %agg.tmp5, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %xptr, i32 %i200.0, i32 %23, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp5), !dbg !101539
-  br label %for.inc209, !dbg !367
+  %store.5 = load %struct.Cap, %struct.Cap* %cap.arrayidx5, align 4, !dbg !101539
+  store %struct.Cap %store.5, %struct.Cap* %agg.tmp5, align 4, !dbg !101539
+  call void @_Z11cheri_storePiiiPj3Cap(i32* %xptr, i32 %i180.0, i32 %23, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp5), !dbg !101539
+  br label %for.inc193, !dbg !348
 
-for.inc209:                                       ; preds = %for.body204
-  %inc210 = add nsw i32 %i200.0, 1, !dbg !369
-  call void @llvm.dbg.value(metadata i32 %inc210, metadata !359, metadata !DIExpression()), !dbg !361
-  br label %for.cond201, !dbg !370, !llvm.loop !371
+for.inc193:                                       ; preds = %for.body184
+  %inc194 = add nsw i32 %i180.0, 1, !dbg !349
+  call void @llvm.dbg.value(metadata i32 %inc194, metadata !334, metadata !DIExpression()), !dbg !336
+  br label %for.cond181, !dbg !350, !llvm.loop !351
 
-for.end211:                                       ; preds = %for.cond.cleanup203
-  %24 = bitcast [16641 x i32]* %ptr to i8*, !dbg !374
-  call void @llvm.lifetime.end.p0i8(i64 66564, i8* %24) #9, !dbg !374
-  %25 = bitcast [16641 x i32]* %M to i8*, !dbg !374
-  call void @llvm.lifetime.end.p0i8(i64 66564, i8* %25) #9, !dbg !374
-  %26 = bitcast [256 x i32]* %alignedB to i8*, !dbg !374
-  call void @llvm.lifetime.end.p0i8(i64 1024, i8* %26) #9, !dbg !374
-  %27 = bitcast [256 x i32]* %alignedA to i8*, !dbg !374
-  call void @llvm.lifetime.end.p0i8(i64 1024, i8* %27) #9, !dbg !374
-  %28 = bitcast [128 x i32]* %SEQB to i8*, !dbg !374
-  call void @llvm.lifetime.end.p0i8(i64 512, i8* %28) #9, !dbg !374
-  %29 = bitcast [128 x i32]* %SEQA to i8*, !dbg !374
-  call void @llvm.lifetime.end.p0i8(i64 512, i8* %29) #9, !dbg !374
+for.end195:                                       ; preds = %for.cond.cleanup183
+  %24 = bitcast [16641 x i32]* %ptr to i8*, !dbg !354
+  call void @llvm.lifetime.end.p0i8(i64 66564, i8* %24) #9, !dbg !354
+  %25 = bitcast [16641 x i32]* %M to i8*, !dbg !354
+  call void @llvm.lifetime.end.p0i8(i64 66564, i8* %25) #9, !dbg !354
+  %26 = bitcast [256 x i32]* %alignedB to i8*, !dbg !354
+  call void @llvm.lifetime.end.p0i8(i64 1024, i8* %26) #9, !dbg !354
+  %27 = bitcast [256 x i32]* %alignedA to i8*, !dbg !354
+  call void @llvm.lifetime.end.p0i8(i64 1024, i8* %27) #9, !dbg !354
+  %28 = bitcast [128 x i32]* %SEQB to i8*, !dbg !354
+  call void @llvm.lifetime.end.p0i8(i64 512, i8* %28) #9, !dbg !354
+  %29 = bitcast [128 x i32]* %SEQA to i8*, !dbg !354
+  call void @llvm.lifetime.end.p0i8(i64 512, i8* %29) #9, !dbg !354
   %end.1 = load i32, i32* %flag_buf, align 4, !dbg !101540
   store i32 %end.1, i32* %flag, align 4, !dbg !101541
   %end.2 = bitcast [24 x i32]* %buffer to i8*, !dbg !101542
   call void @llvm.lifetime.end.p0i8(i64 96, i8* %end.2) #9003, !dbg !101542
-  %end.3 = bitcast [12 x %struct.Cap]* %caps to i8*, !dbg !101542
-  call void @llvm.lifetime.end.p0i8(i64 144, i8* %end.3) #9003, !dbg !101542
+  %end.3 = bitcast [6 x %struct.Cap]* %caps to i8*, !dbg !101542
+  call void @llvm.lifetime.end.p0i8(i64 72, i8* %end.3) #9003, !dbg !101542
   %end.4 = bitcast i32* %flag_buf to i8*, !dbg !101542
   call void @llvm.lifetime.end.p0i8(i64 4, i8* %end.4) #9003, !dbg !101542
-  ret void, !dbg !374
+  ret void, !dbg !354
 }
 
 ; Function Attrs: nounwind readnone speculatable
@@ -5186,7 +5040,6 @@ attributes #9000 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="384" "xlx
 attributes #9001 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }
 attributes #9002 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "xlx.source"="user" }
 attributes #9003 = { nounwind }
-
 attributes #100000 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="decode" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #100001 = { nounwind readnone speculatable }
 attributes #100002 = { argmemonly nounwind }
@@ -5207,7 +5060,7 @@ attributes #100016 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-m
 attributes #100017 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="hls_top" "fpga.top.func"="hls_top" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #100018 = { inaccessiblememonly nounwind }
 attributes #100019 = { nounwind }
-attributes #100020 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="320" "xlx.source"="user" }
+attributes #100020 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32000" "xlx.source"="user" }
 attributes #100021 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="256" "xlx.source"="user" }
 attributes #100022 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32" "xlx.source"="user" }
 attributes #100023 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }
@@ -6654,121 +6507,146 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !101433 = !DILocation(line: 141, column: 32, scope: !101416)
 !101434 = !DILocation(line: 141, column: 2, scope: !101416)
 !101435 = !DILocation(line: 142, column: 11, scope: !101416)
-!101436 = !DILocation(line: 142, column: 10, scope: !101416)
-!101437 = !DILocation(line: 142, column: 24, scope: !101416)
-!101438 = !DILocation(line: 142, column: 3, scope: !101416)
-!101439 = distinct !DISubprogram(name: "cheri_store", linkageName: "_Z11cheri_storePiiiPj3Cap", scope: !100005, file: !100005, line: 145, type: !101440, isLocal: false, isDefinition: true, scopeLine: 145, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
-!101440 = !DISubroutineType(types: !101441)
-!101441 = !{null, !101419, !100030, !100030, !101281, !100338}
-!101442 = !{!101443}
-!101443 = !{!"fpga.inline", !"user", !101444}
-!101444 = !DILocation(line: 146, column: 9, scope: !101439)
-!101445 = !DILocalVariable(name: "buf", arg: 1, scope: !101439, file: !100005, line: 145, type: !101419)
-!101446 = !DILocation(line: 145, column: 23, scope: !101439)
-!101447 = !DILocalVariable(name: "i", arg: 2, scope: !101439, file: !100005, line: 145, type: !100030)
-!101448 = !DILocation(line: 145, column: 32, scope: !101439)
-!101449 = !DILocalVariable(name: "val", arg: 3, scope: !101439, file: !100005, line: 145, type: !100030)
-!101450 = !DILocation(line: 145, column: 39, scope: !101439)
-!101451 = !DILocalVariable(name: "flag_buf", arg: 4, scope: !101439, file: !100005, line: 145, type: !101281)
-!101452 = !DILocation(line: 145, column: 49, scope: !101439)
-!101453 = !DILocalVariable(name: "cap", arg: 5, scope: !101439, file: !100005, line: 145, type: !100338)
-!101454 = !DILocation(line: 145, column: 63, scope: !101439)
-!101455 = !DILocation(line: 147, column: 24, scope: !101439)
-!101456 = !DILocation(line: 147, column: 29, scope: !101439)
-!101457 = !DILocation(line: 147, column: 32, scope: !101439)
-!101458 = !DILocation(line: 147, column: 2, scope: !101439)
-!101459 = !DILocation(line: 149, column: 8, scope: !101460)
-!101460 = distinct !DILexicalBlock(scope: !101439, file: !100005, line: 149, column: 7)
-!101461 = !DILocation(line: 149, column: 7, scope: !101460)
-!101462 = !DILocation(line: 149, column: 7, scope: !101439)
-!101463 = !DILocation(line: 150, column: 5, scope: !101464)
-!101464 = distinct !DILexicalBlock(scope: !101460, file: !100005, line: 149, column: 20)
-!101465 = !DILocation(line: 150, column: 12, scope: !101464)
-!101466 = !DILocation(line: 151, column: 3, scope: !101464)
-!101467 = !DILocation(line: 152, column: 3, scope: !101439)
-!101468 = distinct !DISubprogram(name: "hls_top", linkageName: "_Z7hls_topiPiS_PjS0_", scope: !100005, file: !100005, line: 155, type: !101469, isLocal: false, isDefinition: true, scopeLine: 155, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
-!101469 = !DISubroutineType(types: !101470)
-!101470 = !{null, !100030, !101419, !101419, !101281, !101281}
-!101471 = !{!101472}
-!101472 = !{!"fpga.top", !"user", !101473}
-!101473 = !DILocation(line: 155, column: 16, scope: !101468)
-!101474 = !DILocalVariable(name: "size", arg: 1, scope: !101468, file: !100005, line: 155, type: !100030)
-!101475 = !DILocation(line: 155, column: 60, scope: !101468)
-!101476 = !DILocalVariable(name: "a", arg: 2, scope: !101468, file: !100005, line: 155, type: !101419)
-!101477 = !DILocation(line: 155, column: 70, scope: !101468)
-!101478 = !DILocalVariable(name: "c", arg: 3, scope: !101468, file: !100005, line: 155, type: !101419)
-!101479 = !DILocation(line: 155, column: 81, scope: !101468)
-!101480 = !DILocalVariable(name: "flag", arg: 4, scope: !101468, file: !100005, line: 155, type: !101281)
-!101481 = !DILocation(line: 155, column: 93, scope: !101468)
-!101482 = !DILocalVariable(name: "cap", arg: 5, scope: !101468, file: !100005, line: 155, type: !101281)
-!101483 = !DILocation(line: 155, column: 103, scope: !101468)
-!101484 = !DILocation(line: 156, column: 9, scope: !101468)
-!101485 = !DILocation(line: 157, column: 9, scope: !101468)
-!101486 = !DILocation(line: 158, column: 9, scope: !101468)
-!101487 = !DILocation(line: 159, column: 9, scope: !101468)
-!101488 = !DILocation(line: 160, column: 9, scope: !101468)
-!101489 = !DILocation(line: 161, column: 9, scope: !101468)
-!101490 = !DILocation(line: 162, column: 2, scope: !101468)
-!101491 = !DILocalVariable(name: "b", scope: !101468, file: !100005, line: 162, type: !101492)
-!101492 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100030, size: 320, elements: !101493)
-!101493 = !{!101494}
-!101494 = !DISubrange(count: 10)
-!101495 = !DILocation(line: 162, column: 6, scope: !101468)
-!101496 = !DILocation(line: 164, column: 3, scope: !101468)
-!101497 = !DILocalVariable(name: "flag_buf", scope: !101468, file: !100005, line: 164, type: !100004)
-!101498 = !DILocation(line: 164, column: 7, scope: !101468)
-!101499 = !DILocation(line: 166, column: 3, scope: !101468)
-!101500 = !DILocalVariable(name: "caps", scope: !101468, file: !100005, line: 166, type: !101501)
-!101501 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100338, size: 288, elements: !101502)
-!101502 = !{!101503}
-!101503 = !DISubrange(count: 3)
-!101504 = !DILocation(line: 166, column: 7, scope: !101468)
-!101505 = !DILocation(line: 167, column: 3, scope: !101468)
-!101506 = !DILocalVariable(name: "buffer", scope: !101468, file: !100005, line: 167, type: !101507)
-!101507 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100004, size: 384, elements: !101508)
-!101508 = !{!101509}
-!101509 = !DISubrange(count: 12)
-!101510 = !DILocation(line: 167, column: 7, scope: !101468)
-!101511 = !DILocation(line: 168, column: 9, scope: !101468)
-!101512 = !DILocation(line: 169, column: 9, scope: !101468)
-!101513 = !DILocation(line: 171, column: 14, scope: !101468)
-!101514 = !DILocation(line: 171, column: 27, scope: !101468)
-!101515 = !DILocation(line: 171, column: 2, scope: !101468)
-!101516 = !DILocation(line: 172, column: 18, scope: !101468)
-!101517 = !DILocation(line: 172, column: 3, scope: !101468)
-!101518 = !DILocalVariable(name: "i", scope: !101519, file: !100005, line: 174, type: !100030)
-!101519 = distinct !DILexicalBlock(scope: !101468, file: !100005, line: 174, column: 21)
-!101520 = !DILocation(line: 174, column: 30, scope: !101519)
-!101521 = !DILocation(line: 174, column: 26, scope: !101519)
-!101522 = !DILocation(line: 174, column: 39, scope: !101523)
-!101523 = distinct !DILexicalBlock(scope: !101519, file: !100005, line: 174, column: 21)
-!101524 = !DILocation(line: 174, column: 21, scope: !101519)
-!101525 = !DILocation(line: 177, column: 43, scope: !101526)
-!101526 = distinct !DILexicalBlock(scope: !101523, file: !100005, line: 174, column: 52)
-!101527 = !DILocation(line: 177, column: 15, scope: !101526)
-!101528 = !DILocalVariable(name: "a_elem", scope: !101526, file: !100005, line: 177, type: !100030)
-!101529 = !DILocation(line: 177, column: 6, scope: !101526)
-!101530 = !DILocation(line: 178, column: 29, scope: !101526)
-!101531 = !DILocation(line: 178, column: 46, scope: !101526)
-!101532 = !DILocation(line: 178, column: 18, scope: !101526)
-!101533 = !DILocalVariable(name: "b_elem", scope: !101526, file: !100005, line: 178, type: !100030)
-!101534 = !DILocation(line: 178, column: 9, scope: !101526)
-!101535 = !DILocation(line: 180, column: 25, scope: !101526)
-!101536 = !DILocalVariable(name: "c_elem", scope: !101526, file: !100005, line: 180, type: !100030)
-!101537 = !DILocation(line: 180, column: 9, scope: !101526)
-!101538 = !DILocation(line: 182, column: 42, scope: !101526)
-!101539 = !DILocation(line: 182, column: 5, scope: !101526)
-!101540 = !DILocation(line: 183, column: 3, scope: !101526)
-!101541 = !DILocation(line: 174, column: 48, scope: !101523)
-!101542 = !DILocation(line: 174, column: 21, scope: !101523)
-!101543 = distinct !{!101543, !101524, !101544, !101545, !101547}
-!101544 = !DILocation(line: 183, column: 3, scope: !101519)
-!101545 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101546}
-!101546 = !DILocation(line: 175, column: 9, scope: !101519)
-!101547 = !{!"llvm.loop.name", !"VITIS_LOOP_174_1"}
-!101548 = !DILocation(line: 185, column: 11, scope: !101468)
-!101549 = !DILocation(line: 185, column: 9, scope: !101468)
-!101550 = !DILocation(line: 187, column: 1, scope: !101468)
+!101436 = !DILocalVariable(name: "b", scope: !101416, file: !100005, line: 142, type: !100030)
+!101437 = !DILocation(line: 142, column: 7, scope: !101416)
+!101438 = !DILocation(line: 143, column: 11, scope: !101416)
+!101439 = !DILocation(line: 143, column: 10, scope: !101416)
+!101440 = !DILocation(line: 143, column: 3, scope: !101416)
+!101441 = distinct !DISubprogram(name: "cheri_store", linkageName: "_Z11cheri_storePiiiPj3Cap", scope: !100005, file: !100005, line: 146, type: !101442, isLocal: false, isDefinition: true, scopeLine: 146, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101442 = !DISubroutineType(types: !101443)
+!101443 = !{null, !101419, !100030, !100030, !101281, !100338}
+!101444 = !{!101445}
+!101445 = !{!"fpga.inline", !"user", !101446}
+!101446 = !DILocation(line: 147, column: 9, scope: !101441)
+!101447 = !DILocalVariable(name: "buf", arg: 1, scope: !101441, file: !100005, line: 146, type: !101419)
+!101448 = !DILocation(line: 146, column: 23, scope: !101441)
+!101449 = !DILocalVariable(name: "i", arg: 2, scope: !101441, file: !100005, line: 146, type: !100030)
+!101450 = !DILocation(line: 146, column: 32, scope: !101441)
+!101451 = !DILocalVariable(name: "val", arg: 3, scope: !101441, file: !100005, line: 146, type: !100030)
+!101452 = !DILocation(line: 146, column: 39, scope: !101441)
+!101453 = !DILocalVariable(name: "flag_buf", arg: 4, scope: !101441, file: !100005, line: 146, type: !101281)
+!101454 = !DILocation(line: 146, column: 49, scope: !101441)
+!101455 = !DILocalVariable(name: "cap", arg: 5, scope: !101441, file: !100005, line: 146, type: !100338)
+!101456 = !DILocation(line: 146, column: 63, scope: !101441)
+!101457 = !DILocation(line: 148, column: 24, scope: !101441)
+!101458 = !DILocation(line: 148, column: 29, scope: !101441)
+!101459 = !DILocation(line: 148, column: 32, scope: !101441)
+!101460 = !DILocation(line: 148, column: 2, scope: !101441)
+!101461 = !DILocation(line: 150, column: 13, scope: !101441)
+!101462 = !DILocation(line: 150, column: 12, scope: !101441)
+!101463 = !DILocation(line: 150, column: 32, scope: !101441)
+!101464 = !DILocation(line: 150, column: 3, scope: !101441)
+!101465 = !DILocation(line: 150, column: 10, scope: !101441)
+!101466 = !DILocation(line: 151, column: 3, scope: !101441)
+!101467 = distinct !DISubprogram(name: "hls_top", linkageName: "_Z7hls_topiPiS_PjS0_", scope: !100005, file: !100005, line: 154, type: !101468, isLocal: false, isDefinition: true, scopeLine: 154, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101468 = !DISubroutineType(types: !101469)
+!101469 = !{null, !100030, !101419, !101419, !101281, !101281}
+!101470 = !{!101471}
+!101471 = !{!"fpga.top", !"user", !101472}
+!101472 = !DILocation(line: 154, column: 16, scope: !101467)
+!101473 = !DILocalVariable(name: "size", arg: 1, scope: !101467, file: !100005, line: 154, type: !100030)
+!101474 = !DILocation(line: 154, column: 60, scope: !101467)
+!101475 = !DILocalVariable(name: "a", arg: 2, scope: !101467, file: !100005, line: 154, type: !101419)
+!101476 = !DILocation(line: 154, column: 70, scope: !101467)
+!101477 = !DILocalVariable(name: "c", arg: 3, scope: !101467, file: !100005, line: 154, type: !101419)
+!101478 = !DILocation(line: 154, column: 83, scope: !101467)
+!101479 = !DILocalVariable(name: "flag", arg: 4, scope: !101467, file: !100005, line: 154, type: !101281)
+!101480 = !DILocation(line: 154, column: 97, scope: !101467)
+!101481 = !DILocalVariable(name: "cap", arg: 5, scope: !101467, file: !100005, line: 154, type: !101281)
+!101482 = !DILocation(line: 154, column: 107, scope: !101467)
+!101483 = !DILocation(line: 155, column: 9, scope: !101467)
+!101484 = !DILocation(line: 156, column: 9, scope: !101467)
+!101485 = !DILocation(line: 157, column: 9, scope: !101467)
+!101486 = !DILocation(line: 158, column: 9, scope: !101467)
+!101487 = !DILocation(line: 159, column: 9, scope: !101467)
+!101488 = !DILocation(line: 160, column: 9, scope: !101467)
+!101489 = !DILocation(line: 161, column: 2, scope: !101467)
+!101490 = !DILocalVariable(name: "b", scope: !101467, file: !100005, line: 161, type: !101491)
+!101491 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100030, size: 32000, elements: !101492)
+!101492 = !{!101493}
+!101493 = !DISubrange(count: 1000)
+!101494 = !DILocation(line: 161, column: 6, scope: !101467)
+!101495 = !DILocation(line: 163, column: 3, scope: !101467)
+!101496 = !DILocalVariable(name: "flag_buf", scope: !101467, file: !100005, line: 163, type: !100004)
+!101497 = !DILocation(line: 163, column: 7, scope: !101467)
+!101498 = !DILocation(line: 165, column: 3, scope: !101467)
+!101499 = !DILocalVariable(name: "caps", scope: !101467, file: !100005, line: 165, type: !101500)
+!101500 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100338, size: 288, elements: !101501)
+!101501 = !{!101502}
+!101502 = !DISubrange(count: 3)
+!101503 = !DILocation(line: 165, column: 7, scope: !101467)
+!101504 = !DILocation(line: 166, column: 3, scope: !101467)
+!101505 = !DILocalVariable(name: "buffer", scope: !101467, file: !100005, line: 166, type: !101506)
+!101506 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100004, size: 384, elements: !101507)
+!101507 = !{!101508}
+!101508 = !DISubrange(count: 12)
+!101509 = !DILocation(line: 166, column: 7, scope: !101467)
+!101510 = !DILocation(line: 167, column: 9, scope: !101467)
+!101511 = !DILocation(line: 168, column: 9, scope: !101467)
+!101512 = !DILocation(line: 170, column: 14, scope: !101467)
+!101513 = !DILocation(line: 170, column: 27, scope: !101467)
+!101514 = !DILocation(line: 170, column: 2, scope: !101467)
+!101515 = !DILocation(line: 171, column: 20, scope: !101467)
+!101516 = !DILocation(line: 171, column: 3, scope: !101467)
+!101517 = !DILocalVariable(name: "i", scope: !101518, file: !100005, line: 173, type: !100030)
+!101518 = distinct !DILexicalBlock(scope: !101467, file: !100005, line: 173, column: 21)
+!101519 = !DILocation(line: 173, column: 30, scope: !101518)
+!101520 = !DILocation(line: 173, column: 26, scope: !101518)
+!101521 = !DILocation(line: 173, column: 39, scope: !101522)
+!101522 = distinct !DILexicalBlock(scope: !101518, file: !100005, line: 173, column: 21)
+!101523 = !DILocation(line: 173, column: 21, scope: !101518)
+!101524 = !DILocation(line: 176, column: 43, scope: !101525)
+!101525 = distinct !DILexicalBlock(scope: !101522, file: !100005, line: 173, column: 52)
+!101526 = !DILocation(line: 176, column: 15, scope: !101525)
+!101527 = !DILocalVariable(name: "a_elem", scope: !101525, file: !100005, line: 176, type: !100030)
+!101528 = !DILocation(line: 176, column: 6, scope: !101525)
+!101529 = !DILocation(line: 177, column: 29, scope: !101525)
+!101530 = !DILocation(line: 177, column: 46, scope: !101525)
+!101531 = !DILocation(line: 177, column: 18, scope: !101525)
+!101532 = !DILocalVariable(name: "b_elem", scope: !101525, file: !100005, line: 177, type: !100030)
+!101533 = !DILocation(line: 177, column: 9, scope: !101525)
+!101534 = !DILocation(line: 179, column: 25, scope: !101525)
+!101535 = !DILocalVariable(name: "c_elem", scope: !101525, file: !100005, line: 179, type: !100030)
+!101536 = !DILocation(line: 179, column: 9, scope: !101525)
+!101537 = !DILocation(line: 181, column: 42, scope: !101525)
+!101538 = !DILocation(line: 181, column: 5, scope: !101525)
+!101539 = !DILocation(line: 182, column: 3, scope: !101525)
+!101540 = !DILocation(line: 173, column: 48, scope: !101522)
+!101541 = !DILocation(line: 173, column: 21, scope: !101522)
+!101542 = distinct !{!101542, !101523, !101543, !101544, !101546}
+!101543 = !DILocation(line: 182, column: 3, scope: !101518)
+!101544 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101545}
+!101545 = !DILocation(line: 174, column: 9, scope: !101518)
+!101546 = !{!"llvm.loop.name", !"VITIS_LOOP_173_1"}
+!101547 = !DILocation(line: 184, column: 11, scope: !101467)
+!101548 = !DILocation(line: 184, column: 9, scope: !101467)
+!101549 = !DILocation(line: 186, column: 1, scope: !101467)
+!101550 = !DILocation(line: 172, column: 43, scope: !101551)
+!101551 = distinct !DILexicalBlock(scope: !101548, file: !100005, line: 169, column: 52)
+!101552 = !DILocation(line: 172, column: 15, scope: !101551)
+!101553 = !DILocalVariable(name: "a_elem", scope: !101551, file: !100005, line: 172, type: !100030)
+!101554 = !DILocation(line: 172, column: 6, scope: !101551)
+!101555 = !DILocation(line: 173, column: 29, scope: !101551)
+!101556 = !DILocation(line: 173, column: 46, scope: !101551)
+!101557 = !DILocation(line: 173, column: 18, scope: !101551)
+!101558 = !DILocalVariable(name: "b_elem", scope: !101551, file: !100005, line: 173, type: !100030)
+!101559 = !DILocation(line: 173, column: 9, scope: !101551)
+!101560 = !DILocation(line: 175, column: 25, scope: !101551)
+!101561 = !DILocalVariable(name: "c_elem", scope: !101551, file: !100005, line: 175, type: !100030)
+!101562 = !DILocation(line: 175, column: 9, scope: !101551)
+!101563 = !DILocation(line: 177, column: 42, scope: !101551)
+!101564 = !DILocation(line: 177, column: 5, scope: !101551)
+!101565 = !DILocation(line: 178, column: 3, scope: !101551)
+!101566 = !DILocation(line: 169, column: 48, scope: !101548)
+!101567 = !DILocation(line: 169, column: 21, scope: !101548)
+!101568 = distinct !{!101568, !101549, !101569, !101570, !101572}
+!101569 = !DILocation(line: 178, column: 3, scope: !101544)
+!101570 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101571}
+!101571 = !DILocation(line: 170, column: 9, scope: !101544)
+!101572 = !{!"llvm.loop.name", !"VITIS_LOOP_169_1"}
+!101573 = !DILocation(line: 180, column: 11, scope: !101493)
+!101574 = !DILocation(line: 180, column: 9, scope: !101493)
+!101575 = !DILocation(line: 182, column: 1, scope: !101493)
 attributes #1 = { nounwind readnone speculatable }
 attributes #2 = { inaccessiblememonly nounwind }
 attributes #3 = { argmemonly nounwind }
@@ -7100,57 +6978,37 @@ attributes #9 = { nounwind }
 !318 = !DILocation(line: 126, column: 39, scope: !319)
 !319 = distinct !DILexicalBlock(scope: !315, file: !8, line: 126, column: 21)
 !320 = !DILocation(line: 126, column: 21, scope: !315)
-!321 = !DILocation(line: 127, column: 20, scope: !319)
-!322 = !DILocation(line: 127, column: 5, scope: !319)
-!323 = !DILocation(line: 127, column: 18, scope: !319)
-!324 = !DILocation(line: 126, column: 53, scope: !319)
-!325 = !DILocation(line: 126, column: 21, scope: !319)
-!326 = distinct !{!326, !320, !327, !328}
-!327 = !DILocation(line: 127, column: 30, scope: !315)
-!328 = !{!"llvm.loop.name", !"VITIS_LOOP_126_3"}
-!329 = !DILocalVariable(name: "i", scope: !330, file: !8, line: 128, type: !11)
-!330 = distinct !DILexicalBlock(scope: !7, file: !8, line: 128, column: 21)
-!331 = !DILocation(line: 128, column: 30, scope: !330)
-!332 = !DILocation(line: 128, column: 26, scope: !330)
-!333 = !DILocation(line: 128, column: 39, scope: !334)
-!334 = distinct !DILexicalBlock(scope: !330, file: !8, line: 128, column: 21)
-!335 = !DILocation(line: 128, column: 21, scope: !330)
-!336 = !DILocation(line: 129, column: 20, scope: !334)
-!337 = !DILocation(line: 129, column: 5, scope: !334)
-!338 = !DILocation(line: 129, column: 18, scope: !334)
-!339 = !DILocation(line: 128, column: 53, scope: !334)
-!340 = !DILocation(line: 128, column: 21, scope: !334)
-!341 = distinct !{!341, !335, !342, !343}
-!342 = !DILocation(line: 129, column: 30, scope: !330)
-!343 = !{!"llvm.loop.name", !"VITIS_LOOP_128_4"}
-!344 = !DILocalVariable(name: "i", scope: !345, file: !8, line: 130, type: !11)
-!345 = distinct !DILexicalBlock(scope: !7, file: !8, line: 130, column: 21)
-!346 = !DILocation(line: 130, column: 30, scope: !345)
-!347 = !DILocation(line: 130, column: 26, scope: !345)
-!348 = !DILocation(line: 130, column: 39, scope: !349)
-!349 = distinct !DILexicalBlock(scope: !345, file: !8, line: 130, column: 21)
-!350 = !DILocation(line: 130, column: 21, scope: !345)
-!351 = !DILocation(line: 131, column: 13, scope: !349)
-!352 = !DILocation(line: 131, column: 5, scope: !349)
-!353 = !DILocation(line: 131, column: 11, scope: !349)
-!354 = !DILocation(line: 130, column: 65, scope: !349)
-!355 = !DILocation(line: 130, column: 21, scope: !349)
-!356 = distinct !{!356, !350, !357, !358}
-!357 = !DILocation(line: 131, column: 16, scope: !345)
-!358 = !{!"llvm.loop.name", !"VITIS_LOOP_130_5"}
-!359 = !DILocalVariable(name: "i", scope: !360, file: !8, line: 132, type: !11)
-!360 = distinct !DILexicalBlock(scope: !7, file: !8, line: 132, column: 21)
-!361 = !DILocation(line: 132, column: 30, scope: !360)
-!362 = !DILocation(line: 132, column: 26, scope: !360)
-!363 = !DILocation(line: 132, column: 39, scope: !364)
-!364 = distinct !DILexicalBlock(scope: !360, file: !8, line: 132, column: 21)
-!365 = !DILocation(line: 132, column: 21, scope: !360)
-!366 = !DILocation(line: 133, column: 15, scope: !364)
-!367 = !DILocation(line: 133, column: 5, scope: !364)
-!368 = !DILocation(line: 133, column: 13, scope: !364)
-!369 = !DILocation(line: 132, column: 65, scope: !364)
-!370 = !DILocation(line: 132, column: 21, scope: !364)
-!371 = distinct !{!371, !365, !372, !373}
-!372 = !DILocation(line: 133, column: 20, scope: !360)
-!373 = !{!"llvm.loop.name", !"VITIS_LOOP_132_6"}
-!374 = !DILocation(line: 134, column: 1, scope: !7)
+!321 = !DILocation(line: 127, column: 20, scope: !322)
+!322 = distinct !DILexicalBlock(scope: !319, file: !8, line: 126, column: 57)
+!323 = !DILocation(line: 127, column: 5, scope: !322)
+!324 = !DILocation(line: 127, column: 18, scope: !322)
+!325 = !DILocation(line: 128, column: 20, scope: !322)
+!326 = !DILocation(line: 128, column: 5, scope: !322)
+!327 = !DILocation(line: 128, column: 18, scope: !322)
+!328 = !DILocation(line: 129, column: 3, scope: !322)
+!329 = !DILocation(line: 126, column: 53, scope: !319)
+!330 = !DILocation(line: 126, column: 21, scope: !319)
+!331 = distinct !{!331, !320, !332, !333}
+!332 = !DILocation(line: 129, column: 3, scope: !315)
+!333 = !{!"llvm.loop.name", !"VITIS_LOOP_126_3"}
+!334 = !DILocalVariable(name: "i", scope: !335, file: !8, line: 130, type: !11)
+!335 = distinct !DILexicalBlock(scope: !7, file: !8, line: 130, column: 21)
+!336 = !DILocation(line: 130, column: 30, scope: !335)
+!337 = !DILocation(line: 130, column: 26, scope: !335)
+!338 = !DILocation(line: 130, column: 39, scope: !339)
+!339 = distinct !DILexicalBlock(scope: !335, file: !8, line: 130, column: 21)
+!340 = !DILocation(line: 130, column: 21, scope: !335)
+!341 = !DILocation(line: 131, column: 13, scope: !342)
+!342 = distinct !DILexicalBlock(scope: !339, file: !8, line: 130, column: 69)
+!343 = !DILocation(line: 131, column: 5, scope: !342)
+!344 = !DILocation(line: 131, column: 11, scope: !342)
+!345 = !DILocation(line: 132, column: 15, scope: !342)
+!346 = !DILocation(line: 132, column: 5, scope: !342)
+!347 = !DILocation(line: 132, column: 13, scope: !342)
+!348 = !DILocation(line: 133, column: 3, scope: !342)
+!349 = !DILocation(line: 130, column: 65, scope: !339)
+!350 = !DILocation(line: 130, column: 21, scope: !339)
+!351 = distinct !{!351, !340, !352, !353}
+!352 = !DILocation(line: 133, column: 3, scope: !335)
+!353 = !{!"llvm.loop.name", !"VITIS_LOOP_130_4"}
+!354 = !DILocation(line: 134, column: 1, scope: !7)

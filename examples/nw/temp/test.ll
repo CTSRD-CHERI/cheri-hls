@@ -504,133 +504,85 @@ VITIS_LOOP_126_3:                                 ; preds = %for.end163
   call void @llvm.dbg.value(metadata i32 0, metadata !314, metadata !DIExpression()), !dbg !316
   br label %for.cond165, !dbg !317
 
-for.cond165:                                      ; preds = %for.inc173, %VITIS_LOOP_126_3
-  %i164.0 = phi i32 [ 0, %VITIS_LOOP_126_3 ], [ %inc174, %for.inc173 ]
+for.cond165:                                      ; preds = %for.inc177, %VITIS_LOOP_126_3
+  %i164.0 = phi i32 [ 0, %VITIS_LOOP_126_3 ], [ %inc178, %for.inc177 ]
   call void @llvm.dbg.value(metadata i32 %i164.0, metadata !314, metadata !DIExpression()), !dbg !316
   %cmp166 = icmp slt i32 %i164.0, 256, !dbg !318
   br i1 %cmp166, label %for.body168, label %for.cond.cleanup167, !dbg !320
 
 for.cond.cleanup167:                              ; preds = %for.cond165
-  br label %for.end175
+  br label %for.end179
 
 for.body168:                                      ; preds = %for.cond165
   %idxprom169 = sext i32 %i164.0 to i64, !dbg !321
   %arrayidx170 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedA, i64 0, i64 %idxprom169, !dbg !321
   %20 = load i32, i32* %arrayidx170, align 4, !dbg !321
-  %idxprom171 = sext i32 %i164.0 to i64, !dbg !322
-  %arrayidx172 = getelementptr inbounds i32, i32* %xalignedA, i64 %idxprom171, !dbg !322
-  store i32 %20, i32* %arrayidx172, align 4, !dbg !323
-  br label %for.inc173, !dbg !322
+  %idxprom171 = sext i32 %i164.0 to i64, !dbg !323
+  %arrayidx172 = getelementptr inbounds i32, i32* %xalignedA, i64 %idxprom171, !dbg !323
+  store i32 %20, i32* %arrayidx172, align 4, !dbg !324
+  %idxprom173 = sext i32 %i164.0 to i64, !dbg !325
+  %arrayidx174 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedB, i64 0, i64 %idxprom173, !dbg !325
+  %21 = load i32, i32* %arrayidx174, align 4, !dbg !325
+  %idxprom175 = sext i32 %i164.0 to i64, !dbg !326
+  %arrayidx176 = getelementptr inbounds i32, i32* %xalignedB, i64 %idxprom175, !dbg !326
+  store i32 %21, i32* %arrayidx176, align 4, !dbg !327
+  br label %for.inc177, !dbg !328
 
-for.inc173:                                       ; preds = %for.body168
-  %inc174 = add nsw i32 %i164.0, 1, !dbg !324
-  call void @llvm.dbg.value(metadata i32 %inc174, metadata !314, metadata !DIExpression()), !dbg !316
-  br label %for.cond165, !dbg !325, !llvm.loop !326
+for.inc177:                                       ; preds = %for.body168
+  %inc178 = add nsw i32 %i164.0, 1, !dbg !329
+  call void @llvm.dbg.value(metadata i32 %inc178, metadata !314, metadata !DIExpression()), !dbg !316
+  br label %for.cond165, !dbg !330, !llvm.loop !331
 
-for.end175:                                       ; preds = %for.cond.cleanup167
-  br label %VITIS_LOOP_128_4, !dbg !327
+for.end179:                                       ; preds = %for.cond.cleanup167
+  br label %VITIS_LOOP_130_4, !dbg !332
 
-VITIS_LOOP_128_4:                                 ; preds = %for.end175
-  call void @llvm.dbg.value(metadata i32 0, metadata !329, metadata !DIExpression()), !dbg !331
-  br label %for.cond177, !dbg !332
+VITIS_LOOP_130_4:                                 ; preds = %for.end179
+  call void @llvm.dbg.value(metadata i32 0, metadata !334, metadata !DIExpression()), !dbg !336
+  br label %for.cond181, !dbg !337
 
-for.cond177:                                      ; preds = %for.inc185, %VITIS_LOOP_128_4
-  %i176.0 = phi i32 [ 0, %VITIS_LOOP_128_4 ], [ %inc186, %for.inc185 ]
-  call void @llvm.dbg.value(metadata i32 %i176.0, metadata !329, metadata !DIExpression()), !dbg !331
-  %cmp178 = icmp slt i32 %i176.0, 256, !dbg !333
-  br i1 %cmp178, label %for.body180, label %for.cond.cleanup179, !dbg !335
+for.cond181:                                      ; preds = %for.inc193, %VITIS_LOOP_130_4
+  %i180.0 = phi i32 [ 0, %VITIS_LOOP_130_4 ], [ %inc194, %for.inc193 ]
+  call void @llvm.dbg.value(metadata i32 %i180.0, metadata !334, metadata !DIExpression()), !dbg !336
+  %cmp182 = icmp slt i32 %i180.0, 16641, !dbg !338
+  br i1 %cmp182, label %for.body184, label %for.cond.cleanup183, !dbg !340
 
-for.cond.cleanup179:                              ; preds = %for.cond177
-  br label %for.end187
+for.cond.cleanup183:                              ; preds = %for.cond181
+  br label %for.end195
 
-for.body180:                                      ; preds = %for.cond177
-  %idxprom181 = sext i32 %i176.0 to i64, !dbg !336
-  %arrayidx182 = getelementptr inbounds [256 x i32], [256 x i32]* %alignedB, i64 0, i64 %idxprom181, !dbg !336
-  %21 = load i32, i32* %arrayidx182, align 4, !dbg !336
-  %idxprom183 = sext i32 %i176.0 to i64, !dbg !337
-  %arrayidx184 = getelementptr inbounds i32, i32* %xalignedB, i64 %idxprom183, !dbg !337
-  store i32 %21, i32* %arrayidx184, align 4, !dbg !338
-  br label %for.inc185, !dbg !337
+for.body184:                                      ; preds = %for.cond181
+  %idxprom185 = sext i32 %i180.0 to i64, !dbg !341
+  %arrayidx186 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i64 0, i64 %idxprom185, !dbg !341
+  %22 = load i32, i32* %arrayidx186, align 4, !dbg !341
+  %idxprom187 = sext i32 %i180.0 to i64, !dbg !343
+  %arrayidx188 = getelementptr inbounds i32, i32* %xM, i64 %idxprom187, !dbg !343
+  store i32 %22, i32* %arrayidx188, align 4, !dbg !344
+  %idxprom189 = sext i32 %i180.0 to i64, !dbg !345
+  %arrayidx190 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i64 0, i64 %idxprom189, !dbg !345
+  %23 = load i32, i32* %arrayidx190, align 4, !dbg !345
+  %idxprom191 = sext i32 %i180.0 to i64, !dbg !346
+  %arrayidx192 = getelementptr inbounds i32, i32* %xptr, i64 %idxprom191, !dbg !346
+  store i32 %23, i32* %arrayidx192, align 4, !dbg !347
+  br label %for.inc193, !dbg !348
 
-for.inc185:                                       ; preds = %for.body180
-  %inc186 = add nsw i32 %i176.0, 1, !dbg !339
-  call void @llvm.dbg.value(metadata i32 %inc186, metadata !329, metadata !DIExpression()), !dbg !331
-  br label %for.cond177, !dbg !340, !llvm.loop !341
+for.inc193:                                       ; preds = %for.body184
+  %inc194 = add nsw i32 %i180.0, 1, !dbg !349
+  call void @llvm.dbg.value(metadata i32 %inc194, metadata !334, metadata !DIExpression()), !dbg !336
+  br label %for.cond181, !dbg !350, !llvm.loop !351
 
-for.end187:                                       ; preds = %for.cond.cleanup179
-  br label %VITIS_LOOP_130_5, !dbg !342
-
-VITIS_LOOP_130_5:                                 ; preds = %for.end187
-  call void @llvm.dbg.value(metadata i32 0, metadata !344, metadata !DIExpression()), !dbg !346
-  br label %for.cond189, !dbg !347
-
-for.cond189:                                      ; preds = %for.inc197, %VITIS_LOOP_130_5
-  %i188.0 = phi i32 [ 0, %VITIS_LOOP_130_5 ], [ %inc198, %for.inc197 ]
-  call void @llvm.dbg.value(metadata i32 %i188.0, metadata !344, metadata !DIExpression()), !dbg !346
-  %cmp190 = icmp slt i32 %i188.0, 16641, !dbg !348
-  br i1 %cmp190, label %for.body192, label %for.cond.cleanup191, !dbg !350
-
-for.cond.cleanup191:                              ; preds = %for.cond189
-  br label %for.end199
-
-for.body192:                                      ; preds = %for.cond189
-  %idxprom193 = sext i32 %i188.0 to i64, !dbg !351
-  %arrayidx194 = getelementptr inbounds [16641 x i32], [16641 x i32]* %M, i64 0, i64 %idxprom193, !dbg !351
-  %22 = load i32, i32* %arrayidx194, align 4, !dbg !351
-  %idxprom195 = sext i32 %i188.0 to i64, !dbg !352
-  %arrayidx196 = getelementptr inbounds i32, i32* %xM, i64 %idxprom195, !dbg !352
-  store i32 %22, i32* %arrayidx196, align 4, !dbg !353
-  br label %for.inc197, !dbg !352
-
-for.inc197:                                       ; preds = %for.body192
-  %inc198 = add nsw i32 %i188.0, 1, !dbg !354
-  call void @llvm.dbg.value(metadata i32 %inc198, metadata !344, metadata !DIExpression()), !dbg !346
-  br label %for.cond189, !dbg !355, !llvm.loop !356
-
-for.end199:                                       ; preds = %for.cond.cleanup191
-  br label %VITIS_LOOP_132_6, !dbg !357
-
-VITIS_LOOP_132_6:                                 ; preds = %for.end199
-  call void @llvm.dbg.value(metadata i32 0, metadata !359, metadata !DIExpression()), !dbg !361
-  br label %for.cond201, !dbg !362
-
-for.cond201:                                      ; preds = %for.inc209, %VITIS_LOOP_132_6
-  %i200.0 = phi i32 [ 0, %VITIS_LOOP_132_6 ], [ %inc210, %for.inc209 ]
-  call void @llvm.dbg.value(metadata i32 %i200.0, metadata !359, metadata !DIExpression()), !dbg !361
-  %cmp202 = icmp slt i32 %i200.0, 16641, !dbg !363
-  br i1 %cmp202, label %for.body204, label %for.cond.cleanup203, !dbg !365
-
-for.cond.cleanup203:                              ; preds = %for.cond201
-  br label %for.end211
-
-for.body204:                                      ; preds = %for.cond201
-  %idxprom205 = sext i32 %i200.0 to i64, !dbg !366
-  %arrayidx206 = getelementptr inbounds [16641 x i32], [16641 x i32]* %ptr, i64 0, i64 %idxprom205, !dbg !366
-  %23 = load i32, i32* %arrayidx206, align 4, !dbg !366
-  %idxprom207 = sext i32 %i200.0 to i64, !dbg !367
-  %arrayidx208 = getelementptr inbounds i32, i32* %xptr, i64 %idxprom207, !dbg !367
-  store i32 %23, i32* %arrayidx208, align 4, !dbg !368
-  br label %for.inc209, !dbg !367
-
-for.inc209:                                       ; preds = %for.body204
-  %inc210 = add nsw i32 %i200.0, 1, !dbg !369
-  call void @llvm.dbg.value(metadata i32 %inc210, metadata !359, metadata !DIExpression()), !dbg !361
-  br label %for.cond201, !dbg !370, !llvm.loop !371
-
-for.end211:                                       ; preds = %for.cond.cleanup203
-  %24 = bitcast [16641 x i32]* %ptr to i8*, !dbg !374
-  call void @llvm.lifetime.end.p0i8(i64 66564, i8* %24) #9, !dbg !374
-  %25 = bitcast [16641 x i32]* %M to i8*, !dbg !374
-  call void @llvm.lifetime.end.p0i8(i64 66564, i8* %25) #9, !dbg !374
-  %26 = bitcast [256 x i32]* %alignedB to i8*, !dbg !374
-  call void @llvm.lifetime.end.p0i8(i64 1024, i8* %26) #9, !dbg !374
-  %27 = bitcast [256 x i32]* %alignedA to i8*, !dbg !374
-  call void @llvm.lifetime.end.p0i8(i64 1024, i8* %27) #9, !dbg !374
-  %28 = bitcast [128 x i32]* %SEQB to i8*, !dbg !374
-  call void @llvm.lifetime.end.p0i8(i64 512, i8* %28) #9, !dbg !374
-  %29 = bitcast [128 x i32]* %SEQA to i8*, !dbg !374
-  call void @llvm.lifetime.end.p0i8(i64 512, i8* %29) #9, !dbg !374
-  ret void, !dbg !374
+for.end195:                                       ; preds = %for.cond.cleanup183
+  %24 = bitcast [16641 x i32]* %ptr to i8*, !dbg !354
+  call void @llvm.lifetime.end.p0i8(i64 66564, i8* %24) #9, !dbg !354
+  %25 = bitcast [16641 x i32]* %M to i8*, !dbg !354
+  call void @llvm.lifetime.end.p0i8(i64 66564, i8* %25) #9, !dbg !354
+  %26 = bitcast [256 x i32]* %alignedB to i8*, !dbg !354
+  call void @llvm.lifetime.end.p0i8(i64 1024, i8* %26) #9, !dbg !354
+  %27 = bitcast [256 x i32]* %alignedA to i8*, !dbg !354
+  call void @llvm.lifetime.end.p0i8(i64 1024, i8* %27) #9, !dbg !354
+  %28 = bitcast [128 x i32]* %SEQB to i8*, !dbg !354
+  call void @llvm.lifetime.end.p0i8(i64 512, i8* %28) #9, !dbg !354
+  %29 = bitcast [128 x i32]* %SEQA to i8*, !dbg !354
+  call void @llvm.lifetime.end.p0i8(i64 512, i8* %29) #9, !dbg !354
+  ret void, !dbg !354
 }
 
 ; Function Attrs: nounwind readnone speculatable
@@ -984,57 +936,37 @@ attributes #9 = { nounwind }
 !318 = !DILocation(line: 126, column: 39, scope: !319)
 !319 = distinct !DILexicalBlock(scope: !315, file: !8, line: 126, column: 21)
 !320 = !DILocation(line: 126, column: 21, scope: !315)
-!321 = !DILocation(line: 127, column: 20, scope: !319)
-!322 = !DILocation(line: 127, column: 5, scope: !319)
-!323 = !DILocation(line: 127, column: 18, scope: !319)
-!324 = !DILocation(line: 126, column: 53, scope: !319)
-!325 = !DILocation(line: 126, column: 21, scope: !319)
-!326 = distinct !{!326, !320, !327, !328}
-!327 = !DILocation(line: 127, column: 30, scope: !315)
-!328 = !{!"llvm.loop.name", !"VITIS_LOOP_126_3"}
-!329 = !DILocalVariable(name: "i", scope: !330, file: !8, line: 128, type: !11)
-!330 = distinct !DILexicalBlock(scope: !7, file: !8, line: 128, column: 21)
-!331 = !DILocation(line: 128, column: 30, scope: !330)
-!332 = !DILocation(line: 128, column: 26, scope: !330)
-!333 = !DILocation(line: 128, column: 39, scope: !334)
-!334 = distinct !DILexicalBlock(scope: !330, file: !8, line: 128, column: 21)
-!335 = !DILocation(line: 128, column: 21, scope: !330)
-!336 = !DILocation(line: 129, column: 20, scope: !334)
-!337 = !DILocation(line: 129, column: 5, scope: !334)
-!338 = !DILocation(line: 129, column: 18, scope: !334)
-!339 = !DILocation(line: 128, column: 53, scope: !334)
-!340 = !DILocation(line: 128, column: 21, scope: !334)
-!341 = distinct !{!341, !335, !342, !343}
-!342 = !DILocation(line: 129, column: 30, scope: !330)
-!343 = !{!"llvm.loop.name", !"VITIS_LOOP_128_4"}
-!344 = !DILocalVariable(name: "i", scope: !345, file: !8, line: 130, type: !11)
-!345 = distinct !DILexicalBlock(scope: !7, file: !8, line: 130, column: 21)
-!346 = !DILocation(line: 130, column: 30, scope: !345)
-!347 = !DILocation(line: 130, column: 26, scope: !345)
-!348 = !DILocation(line: 130, column: 39, scope: !349)
-!349 = distinct !DILexicalBlock(scope: !345, file: !8, line: 130, column: 21)
-!350 = !DILocation(line: 130, column: 21, scope: !345)
-!351 = !DILocation(line: 131, column: 13, scope: !349)
-!352 = !DILocation(line: 131, column: 5, scope: !349)
-!353 = !DILocation(line: 131, column: 11, scope: !349)
-!354 = !DILocation(line: 130, column: 65, scope: !349)
-!355 = !DILocation(line: 130, column: 21, scope: !349)
-!356 = distinct !{!356, !350, !357, !358}
-!357 = !DILocation(line: 131, column: 16, scope: !345)
-!358 = !{!"llvm.loop.name", !"VITIS_LOOP_130_5"}
-!359 = !DILocalVariable(name: "i", scope: !360, file: !8, line: 132, type: !11)
-!360 = distinct !DILexicalBlock(scope: !7, file: !8, line: 132, column: 21)
-!361 = !DILocation(line: 132, column: 30, scope: !360)
-!362 = !DILocation(line: 132, column: 26, scope: !360)
-!363 = !DILocation(line: 132, column: 39, scope: !364)
-!364 = distinct !DILexicalBlock(scope: !360, file: !8, line: 132, column: 21)
-!365 = !DILocation(line: 132, column: 21, scope: !360)
-!366 = !DILocation(line: 133, column: 15, scope: !364)
-!367 = !DILocation(line: 133, column: 5, scope: !364)
-!368 = !DILocation(line: 133, column: 13, scope: !364)
-!369 = !DILocation(line: 132, column: 65, scope: !364)
-!370 = !DILocation(line: 132, column: 21, scope: !364)
-!371 = distinct !{!371, !365, !372, !373}
-!372 = !DILocation(line: 133, column: 20, scope: !360)
-!373 = !{!"llvm.loop.name", !"VITIS_LOOP_132_6"}
-!374 = !DILocation(line: 134, column: 1, scope: !7)
+!321 = !DILocation(line: 127, column: 20, scope: !322)
+!322 = distinct !DILexicalBlock(scope: !319, file: !8, line: 126, column: 57)
+!323 = !DILocation(line: 127, column: 5, scope: !322)
+!324 = !DILocation(line: 127, column: 18, scope: !322)
+!325 = !DILocation(line: 128, column: 20, scope: !322)
+!326 = !DILocation(line: 128, column: 5, scope: !322)
+!327 = !DILocation(line: 128, column: 18, scope: !322)
+!328 = !DILocation(line: 129, column: 3, scope: !322)
+!329 = !DILocation(line: 126, column: 53, scope: !319)
+!330 = !DILocation(line: 126, column: 21, scope: !319)
+!331 = distinct !{!331, !320, !332, !333}
+!332 = !DILocation(line: 129, column: 3, scope: !315)
+!333 = !{!"llvm.loop.name", !"VITIS_LOOP_126_3"}
+!334 = !DILocalVariable(name: "i", scope: !335, file: !8, line: 130, type: !11)
+!335 = distinct !DILexicalBlock(scope: !7, file: !8, line: 130, column: 21)
+!336 = !DILocation(line: 130, column: 30, scope: !335)
+!337 = !DILocation(line: 130, column: 26, scope: !335)
+!338 = !DILocation(line: 130, column: 39, scope: !339)
+!339 = distinct !DILexicalBlock(scope: !335, file: !8, line: 130, column: 21)
+!340 = !DILocation(line: 130, column: 21, scope: !335)
+!341 = !DILocation(line: 131, column: 13, scope: !342)
+!342 = distinct !DILexicalBlock(scope: !339, file: !8, line: 130, column: 69)
+!343 = !DILocation(line: 131, column: 5, scope: !342)
+!344 = !DILocation(line: 131, column: 11, scope: !342)
+!345 = !DILocation(line: 132, column: 15, scope: !342)
+!346 = !DILocation(line: 132, column: 5, scope: !342)
+!347 = !DILocation(line: 132, column: 13, scope: !342)
+!348 = !DILocation(line: 133, column: 3, scope: !342)
+!349 = !DILocation(line: 130, column: 65, scope: !339)
+!350 = !DILocation(line: 130, column: 21, scope: !339)
+!351 = distinct !{!351, !340, !352, !353}
+!352 = !DILocation(line: 133, column: 3, scope: !335)
+!353 = !{!"llvm.loop.name", !"VITIS_LOOP_130_4"}
+!354 = !DILocation(line: 134, column: 1, scope: !7)

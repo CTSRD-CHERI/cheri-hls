@@ -13,21 +13,21 @@ BENCHMARKS = {
     "aes": 8,
     "gemm_blocked": 8,
     "md_grid": 8,
-    "stencil3d": 8,
+    # "stencil3d": 8,
     "fft_transpose": 8,
     "gemm_ncubed": 8,
     "sort_merge": 8,
     "stencil2d": 8,
-    "vect_mult": 8,
-    "vect_mult_base": 8,
-    "vect_mult_local": 8,
+    # "vect_mult": 8,
+    # "vect_mult_base": 8,
+    # "vect_mult_local": 8,
     "bfs_bulk": 8,
     "fft_strided": 8,
     "nw": 8,
     "sort_radix": 8,
     "spmv_ellpack": 8,
     "viterbi": 8,
-    "backprop": 8,
+    # "backprop": 8,
     "bfs_queue": 8,
     "kmp": 8,
     "md_knn": 8,
@@ -866,7 +866,14 @@ class CheriHLS:
             self.logger.debug(f"Moved {flute_src} to {flute_build}")
 
         # Combine HLS and Flute
-        hls_src = os.path.join(test_dir, f"{test}_prj", "solution", "syn", "verilog")
+        if "hls_fg" in mode:
+            hls_src = os.path.join(
+                test_dir, f"{test}_prj", "solution", "syn", "verilog"
+            )
+        else:
+            hls_src = os.path.join(
+                test_dir, f"{test}_baseline_prj", "solution", "syn", "verilog"
+            )
         if os.path.exists(os.path.join(flute_build, "vect_mult")):
             shutil.rmtree(os.path.join(flute_build, "vect_mult"))
         shutil.copytree(hls_src, os.path.join(flute_build, "vect_mult"))

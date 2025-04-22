@@ -111,8 +111,8 @@ class LLVMTransformer:
         # Create new function signature
         # metadata = "!101670" if self.full_caps else "!101493"
         # metadata2 = "!101673" if self.full_caps else "!101496"
-        metadata = "!101669" if self.full_caps else "!101468"
-        metadata2 = "!101672" if self.full_caps else "!101471"
+        metadata = "!101669" if self.full_caps else "!101522"
+        metadata2 = "!101672" if self.full_caps else "!101525"
         # metadata = "!101493"
         if is_top:
             new_sig = f"define {return_type} @{func_name}({new_params}) #{attribute_num} !dbg {metadata} !fpga.function.pragma {metadata2} {{"
@@ -386,6 +386,7 @@ class LLVMTransformer:
                 break
 
         in_function = False
+        in_stream_write = False
         debug = False
         current_function = None
         current_block = None
@@ -426,6 +427,9 @@ class LLVMTransformer:
                 if block_match:
                     current_block = block_match.group(1)
                 transformed_lines.append(line)
+            elif line.startswith("define ") and ("stream_write" in line):
+                in_stream_write = True
+                transformed_lines.append(line)
             elif line.startswith("define ") and (not "hls_top" in line):
                 func_match = re.search(r"define [^@]+ @([^(]+)", line)
                 if func_match:
@@ -449,14 +453,50 @@ class LLVMTransformer:
 
                 i = j + 1
                 continue
+            elif (
+                "getelementptr" in lines[i]
+                and "stream_write" in lines[i + 1]
+                and "call void" in lines[i + 1]
+            ):
+                print(lines[i])
+                print(lines[i + 1])
+                match = re.search(
+                    r"getelementptr\s+inbounds\s+\[[^]]+\],\s+\[[^]]+\]\*\s+(%\w+)",
+                    lines[i],
+                )
+                arr_2 = match.group(1)
+                match = re.search(
+                    # r"stream_write\w+\s*\(\w+\s+(\d+|\w+|%\w+),\s*\w+\*?\s+(%\w+),\s*\w+\*?\s+(%\w+)\)",
+                    r"stream_write\w*\s*\(\s*(?:\w+\s+)?(\d+|%\w+),\s*(?:\w+\*?\s+)?(%\w+),\s*(?:\w+\*?\s+)?(%\w+)\)",
+                    lines[i + 1],
+                )
+                size = match.group(1)
+                arr_1 = match.group(2)
+                arr_info_1 = self.array_info[arr_1]
+                cap_idx = self.cap_indices.index(arr_info_1["cap"])
+                arr_info_2 = self.array_info[arr_2]
+
+                new_line = f"""
+  %decay.{self.arrayidx} = getelementptr inbounds [{arr_info_2["size"]} x i32], [{arr_info_2["size"]} x i32]* {arr_2}, i32 0, i32 0, !dbg !101539
+  %cap.arrayidx{self.arrayidx} = getelementptr inbounds [{self.numcaps} x %struct.Cap], [{self.numcaps} x %struct.Cap]* %caps, i64 0, i64 {cap_idx}, !dbg !101539
+  %store.{self.arrayidx} = load %struct.Cap, %struct.Cap* %cap.arrayidx{self.arrayidx}, align 4, !dbg !101539
+  store %struct.Cap %store.{self.arrayidx}, %struct.Cap* %agg.tmp{cap_idx}, align 4, !dbg !101539
+  call void @_Z18cheri_stream_writejPiS_Pj3Cap(i32 {size}, i32* {arr_1}, i32* %decay.{self.arrayidx}, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp{cap_idx}), !dbg !101539
+ """
+                transformed_lines.append(new_line)
+                self.arrayidx += 1
+                i += 1
+
             # Modify function call sites
             elif re.search(r"(?:(%\w+) = )?call\s+([^@]+)@([^(]+)\((.*?)\)", line):
                 new_line = self.transform_function_call(line, in_function)
                 transformed_lines.append(new_line)
 
             # Check if we need to transform loads and stores inside the loop
-            elif ("getelementptr" in lines[i]) and (
-                "load i32" in lines[i + 1] or "store i32" in lines[i + 1]
+            elif (
+                ("getelementptr" in lines[i])
+                and ("load i32" in lines[i + 1] or "store i32" in lines[i + 1])
+                and not in_stream_write
             ):
                 match = re.search(
                     r"getelementptr inbounds [^,]+, [^*]+\* (%\w+)", lines[i]
@@ -492,6 +532,7 @@ class LLVMTransformer:
                 ("idxprom" in lines[i])
                 and ("getelementptr" in lines[i + 1])
                 and ("load i32" in lines[i + 2] or "store i32" in lines[i + 2])
+                and not in_stream_write
             ):
                 match = re.search(
                     r"getelementptr inbounds [^,]+, [^*]+\* ([%@]\w+)", lines[i + 1]
@@ -519,6 +560,9 @@ class LLVMTransformer:
                     transformed_lines.append(line)
 
             # Check if we're at the return of the function
+            elif "ret void" in line and in_stream_write:
+                in_stream_write = False
+                transformed_lines.append(line)
             elif in_function and "ret void" in line:
                 # Add cleanup before return
                 for cleanup in self.add_capability_cleanup():
@@ -526,7 +570,6 @@ class LLVMTransformer:
 
                 transformed_lines.append(line)
                 in_function = False
-
             elif (not in_function) and "attributes" in line:
                 transformed_lines.append(line)
                 if self.attributes_added:

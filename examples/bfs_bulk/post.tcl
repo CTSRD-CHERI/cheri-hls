@@ -1,7 +1,7 @@
 open_project -reset bfs_bulk_prj
 set_top hls_top 
-add_files { bfs_bulk.c }
-add_files -tb { bfs_bulk.c }
+add_files { bfs_bulk.cpp }
+add_files -tb { bfs_bulk.cpp }
 open_solution -reset "solution"
 set_part {xcu250-figd2104-2L-e}
 create_clock -period 4 -name default 

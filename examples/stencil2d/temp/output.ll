@@ -436,7 +436,6 @@ $_ZN11ap_int_baseILi3ELb0EEC2Ei = comdat any
 $_ZN11ap_int_baseILi3ELb0EE18checkOverflowBaseCIiEEvT_ = comdat any
 
 @llvm.global_ctors = appending global [0 x { i32, void ()*, i8* }] zeroinitializer
-@_ZZ7hls_topiPiS_PjS0_E1b = private unnamed_addr constant [10 x i32] [i32 0, i32 1, i32 2, i32 3, i32 4, i32 5, i32 6, i32 7, i32 8, i32 9], align 4
 
 ; Function Attrs: alwaysinline nounwind
 define void @_Z6decode7ap_uintILi32EES0_S0_S0_(%struct.Cap* noalias sret %agg.result, %"struct.ap_uint<32>"* byval align 4 %buffer_0, %"struct.ap_uint<32>"* byval align 4 %buffer_1, %"struct.ap_uint<32>"* byval align 4 %buffer_2, %"struct.ap_uint<32>"* byval align 4 %buffer_3) #100000 !dbg !100335 !fpga.function.pragma !100370 {
@@ -4300,22 +4299,23 @@ entry:
   %conv = trunc i32 %i to i16, !dbg !101432
   call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp1, i32 4), !dbg !101433
   call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp, i16 zeroext %conv, %"struct.ap_uint<3>"* byval align 1 %agg.tmp1, i1 zeroext false), !dbg !101434
-  %1 = load i32, i32* %flag_buf, align 4, !dbg !101435
-  %tobool = icmp ne i32 %1, 0, !dbg !101436
-  br i1 %tobool, label %cond.true, label %cond.false, !dbg !101436
+  %idxprom = sext i32 %i to i64, !dbg !101435
+  %arrayidx = getelementptr inbounds i32, i32* %buf, i64 %idxprom, !dbg !101435
+  %1 = load i32, i32* %arrayidx, align 4, !dbg !101435
+  call void @llvm.dbg.value(metadata i32 %1, metadata !101436, metadata !DIExpression()), !dbg !101437
+  %2 = load i32, i32* %flag_buf, align 4, !dbg !101438
+  %tobool = icmp ne i32 %2, 0, !dbg !101439
+  br i1 %tobool, label %cond.true, label %cond.false, !dbg !101439
 
 cond.true:                                        ; preds = %entry
-  %idxprom = sext i32 %i to i64, !dbg !101437
-  %arrayidx = getelementptr inbounds i32, i32* %buf, i64 %idxprom, !dbg !101437
-  %2 = load i32, i32* %arrayidx, align 4, !dbg !101437
-  br label %cond.end, !dbg !101436
+  br label %cond.end, !dbg !101439
 
 cond.false:                                       ; preds = %entry
-  br label %cond.end, !dbg !101436
+  br label %cond.end, !dbg !101439
 
 cond.end:                                         ; preds = %cond.false, %cond.true
-  %cond = phi i32 [ %2, %cond.true ], [ 0, %cond.false ], !dbg !101436
-  ret i32 %cond, !dbg !101438
+  %cond = phi i32 [ %1, %cond.true ], [ 0, %cond.false ], !dbg !101439
+  ret i32 %cond, !dbg !101440
 }
 
 ; Function Attrs: alwaysinline nounwind
@@ -4348,45 +4348,53 @@ entry:
 }
 
 ; Function Attrs: alwaysinline nounwind
-define void @_Z11cheri_storePiiiPj3Cap(i32* %buf, i32 %i, i32 %val, i32* %flag_buf, %struct.Cap* byval align 4 %cap) #100016 !dbg !101439 !fpga.function.pragma !101442 {
+define void @_Z11cheri_storePiiiPj3Cap(i32* %buf, i32 %i, i32 %val, i32* %flag_buf, %struct.Cap* byval align 4 %cap) #100016 !dbg !101441 !fpga.function.pragma !101444 {
 entry:
   %agg.tmp = alloca %struct.Cap, align 4
   %agg.tmp1 = alloca %"struct.ap_uint<3>", align 1
-  call void @llvm.dbg.value(metadata i32* %buf, metadata !101445, metadata !DIExpression()), !dbg !101446
-  call void @llvm.dbg.value(metadata i32 %i, metadata !101447, metadata !DIExpression()), !dbg !101448
-  call void @llvm.dbg.value(metadata i32 %val, metadata !101449, metadata !DIExpression()), !dbg !101450
-  call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101451, metadata !DIExpression()), !dbg !101452
-  call void @llvm.dbg.declare(metadata %struct.Cap* %cap, metadata !101453, metadata !DIExpression()), !dbg !101454
-  %0 = load %struct.Cap, %struct.Cap* %cap, align 4, !dbg !101455
-  store %struct.Cap %0, %struct.Cap* %agg.tmp, align 4, !dbg !101455
-  %conv = trunc i32 %i to i16, !dbg !101456
-  call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp1, i32 4), !dbg !101457
-  call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp, i16 zeroext %conv, %"struct.ap_uint<3>"* byval align 1 %agg.tmp1, i1 zeroext true), !dbg !101458
-  %1 = load i32, i32* %flag_buf, align 4, !dbg !101459
-  %tobool = icmp ne i32 %1, 0, !dbg !101461
-  br i1 %tobool, label %if.then, label %if.end, !dbg !101462
+  call void @llvm.dbg.value(metadata i32* %buf, metadata !101447, metadata !DIExpression()), !dbg !101448
+  call void @llvm.dbg.value(metadata i32 %i, metadata !101449, metadata !DIExpression()), !dbg !101450
+  call void @llvm.dbg.value(metadata i32 %val, metadata !101451, metadata !DIExpression()), !dbg !101452
+  call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101453, metadata !DIExpression()), !dbg !101454
+  call void @llvm.dbg.declare(metadata %struct.Cap* %cap, metadata !101455, metadata !DIExpression()), !dbg !101456
+  %0 = load %struct.Cap, %struct.Cap* %cap, align 4, !dbg !101457
+  store %struct.Cap %0, %struct.Cap* %agg.tmp, align 4, !dbg !101457
+  %conv = trunc i32 %i to i16, !dbg !101458
+  call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp1, i32 4), !dbg !101459
+  call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp, i16 zeroext %conv, %"struct.ap_uint<3>"* byval align 1 %agg.tmp1, i1 zeroext true), !dbg !101460
+  %1 = load i32, i32* %flag_buf, align 4, !dbg !101461
+  %tobool = icmp ne i32 %1, 0, !dbg !101462
+  br i1 %tobool, label %cond.true, label %cond.false, !dbg !101462
 
-if.then:                                          ; preds = %entry
+cond.true:                                        ; preds = %entry
+  br label %cond.end, !dbg !101462
+
+cond.false:                                       ; preds = %entry
   %idxprom = sext i32 %i to i64, !dbg !101463
   %arrayidx = getelementptr inbounds i32, i32* %buf, i64 %idxprom, !dbg !101463
-  store i32 %val, i32* %arrayidx, align 4, !dbg !101465
-  br label %if.end, !dbg !101466
+  %2 = load i32, i32* %arrayidx, align 4, !dbg !101463
+  br label %cond.end, !dbg !101462
 
-if.end:                                           ; preds = %if.then, %entry
-  ret void, !dbg !101467
+cond.end:                                         ; preds = %cond.false, %cond.true
+  %cond = phi i32 [ %val, %cond.true ], [ %2, %cond.false ], !dbg !101462
+  %idxprom2 = sext i32 %i to i64, !dbg !101464
+  %arrayidx3 = getelementptr inbounds i32, i32* %buf, i64 %idxprom2, !dbg !101464
+  store i32 %cond, i32* %arrayidx3, align 4, !dbg !101465
+  ret void, !dbg !101466
 }
 
 
 
 ; Function Attrs: nounwind
-define void @hls_top(i32 %size, i32* "fpga.decayed.dim.hint"="8192" %xorig, i32* "fpga.decayed.dim.hint"="8192" %xsol, i32* "fpga.decayed.dim.hint"="9" %xfilter, i32* %flag, i32* "fpga.decayed.dim.hint"="12" %cap) #0 !dbg !101468 !fpga.function.pragma !101471 {
+define void @hls_top(i32 %size, i32* "fpga.decayed.dim.hint"="8192" %xorig, i32* "fpga.decayed.dim.hint"="8192" %xsol, i32* "fpga.decayed.dim.hint"="9" %xfilter, i32* %flag, i32* "fpga.decayed.dim.hint"="12" %cap) #0 !dbg !101467 !fpga.function.pragma !101470 {
 entry:
   %flag_buf = alloca i32, align 4
-  %caps = alloca [3 x %struct.Cap], align 4
+  %caps = alloca [4 x %struct.Cap], align 4
   %buffer = alloca [12 x i32], align 4
   %agg.tmp0 = alloca %struct.Cap, align 4
   %agg.tmp1 = alloca %struct.Cap, align 4
   %agg.tmp2 = alloca %struct.Cap, align 4
+  %agg.tmp3 = alloca %struct.Cap, align 4
   call void @llvm.dbg.value(metadata i32* %flag, metadata !101505, metadata !DIExpression()), !dbg !101506
   call void @llvm.dbg.value(metadata i32* %cap, metadata !101507, metadata !DIExpression()), !dbg !101508
   call void @llvm.sideeffect() #9000 [ "xlx_m_axi"(i32* %cap, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ]
@@ -4395,17 +4403,18 @@ entry:
   call void @llvm.lifetime.start.p0i8(i64 4, i8* %init.0) #9003, !dbg !101491
   call void @llvm.dbg.declare(metadata i32* %flag_buf, metadata !101492, metadata !DIExpression()), !dbg !101493
   store i32 0, i32* %flag_buf, align 4, !dbg !101493
-  %init.1 = bitcast [3 x %struct.Cap]* %caps to i8*, !dbg !101494
-  call void @llvm.lifetime.start.p0i8(i64 36, i8* %init.1) #9003, !dbg !101494
-  call void @llvm.dbg.declare(metadata [3 x %struct.Cap]* %caps, metadata !101495, metadata !DIExpression()), !dbg !101499
+  %init.1 = bitcast [4 x %struct.Cap]* %caps to i8*, !dbg !101494
+  call void @llvm.lifetime.start.p0i8(i64 48, i8* %init.1) #9003, !dbg !101494
+  call void @llvm.dbg.declare(metadata [4 x %struct.Cap]* %caps, metadata !101495, metadata !DIExpression()), !dbg !101499
   %init.2 = bitcast [12 x i32]* %buffer to i8*, !dbg !101500
   call void @llvm.lifetime.start.p0i8(i64 48, i8* %init.2) #9003, !dbg !101500
   call void @llvm.dbg.declare(metadata [12 x i32]* %buffer, metadata !101501, metadata !DIExpression()), !dbg !101505
   call void @llvm.sideeffect() #9000 [ "xlx_array_partition"([12 x i32]* %buffer, i32 2, i32 0, i32 1, i1 false) ], !dbg !101506
-  call void @llvm.sideeffect() #9002 [ "xlx_array_partition"([3 x %struct.Cap]* %caps, i32 2, i32 0, i32 1, i1 false) ], !dbg !101507
+  call void @llvm.sideeffect() #9002 [ "xlx_array_partition"([4 x %struct.Cap]* %caps, i32 2, i32 0, i32 1, i1 false) ], !dbg !101507
   %cap.arraydecay = getelementptr inbounds [12 x i32], [12 x i32]* %buffer, i32 0, i32 0, !dbg !101508
-  %cap.arraydecay1 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101509
+  %cap.arraydecay1 = getelementptr inbounds [4 x %struct.Cap], [4 x %struct.Cap]* %caps, i32 0, i32 0, !dbg !101509
   call void @_Z8load_capiPjS_P3Cap(i32 3, i32* %cap.arraydecay, i32* %cap, %struct.Cap* %cap.arraydecay1), !dbg !101510
+  call void @_Z10create_capiP3Caph(i32 8192, %struct.Cap* %cap.arraydecay1, i8 2), !dbg !101542
   %sol = alloca [8192 x i32], align 4
   call void @llvm.dbg.value(metadata i32 %size, metadata !16, metadata !DIExpression()), !dbg !17
   call void @llvm.dbg.value(metadata i32* %xorig, metadata !18, metadata !DIExpression()), !dbg !19
@@ -4416,174 +4425,175 @@ entry:
   call void @llvm.sideeffect() #5 [ "xlx_m_axi"(i32* %xfilter, [0 x i8] zeroinitializer, i64 -1, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, i64 -1, [0 x i8] zeroinitializer) ], !dbg !26
   call void @llvm.sideeffect() #6 [ "xlx_s_axilite"(i32 %size, [0 x i8] zeroinitializer, i64 -1, i1 false, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer) ], !dbg !27
   call void @llvm.sideeffect() #7 [ "xlx_s_axilite"(i8* null, [0 x i8] zeroinitializer, i64 -1, i1 false, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer, [0 x i8] zeroinitializer) ], !dbg !28
-  call void @llvm.dbg.declare(metadata !2, metadata !29, metadata !DIExpression()), !dbg !30
-  %0 = bitcast [8192 x i32]* %sol to i8*, !dbg !31
-  call void @llvm.lifetime.start.p0i8(i64 32768, i8* %0) #8, !dbg !31
-  call void @llvm.dbg.declare(metadata [8192 x i32]* %sol, metadata !32, metadata !DIExpression()), !dbg !36
-  %1 = bitcast [8192 x i32]* %sol to i8*, !dbg !36
-  call void @llvm.memset.p0i8.i64(i8* align 4 %1, i8 0, i64 32768, i1 false), !dbg !36
-  br label %stencil_label1, !dbg !31
+  %0 = bitcast [8192 x i32]* %sol to i8*, !dbg !29
+  call void @llvm.lifetime.start.p0i8(i64 32768, i8* %0) #8, !dbg !29
+  call void @llvm.dbg.declare(metadata [8192 x i32]* %sol, metadata !30, metadata !DIExpression()), !dbg !34
+  br label %stencil_label1, !dbg !29
 
 stencil_label1:                                   ; preds = %entry
-  call void @llvm.dbg.value(metadata i32 0, metadata !37, metadata !DIExpression()), !dbg !38
-  br label %for.cond, !dbg !39
+  call void @llvm.dbg.value(metadata i32 0, metadata !35, metadata !DIExpression()), !dbg !36
+  br label %for.cond, !dbg !37
 
-for.cond:                                         ; preds = %for.inc29, %stencil_label1
-  %r.0 = phi i32 [ 0, %stencil_label1 ], [ %inc30, %for.inc29 ]
-  call void @llvm.dbg.value(metadata i32 %r.0, metadata !37, metadata !DIExpression()), !dbg !38
-  %sub = sub nsw i32 %size, 2, !dbg !41
-  %cmp = icmp slt i32 %r.0, %sub, !dbg !43
-  br i1 %cmp, label %for.body, label %for.end31, !dbg !44
+for.cond:                                         ; preds = %for.inc28, %stencil_label1
+  %r.0 = phi i32 [ 0, %stencil_label1 ], [ %inc29, %for.inc28 ]
+  call void @llvm.dbg.value(metadata i32 %r.0, metadata !35, metadata !DIExpression()), !dbg !36
+  %sub = sub nsw i32 %size, 2, !dbg !39
+  %cmp = icmp slt i32 %r.0, %sub, !dbg !41
+  br i1 %cmp, label %for.body, label %for.end30, !dbg !42
 
 for.body:                                         ; preds = %for.cond
-  br label %stencil_label2, !dbg !45
+  br label %stencil_label2, !dbg !43
 
 stencil_label2:                                   ; preds = %for.body
-  call void @llvm.dbg.value(metadata i32 0, metadata !46, metadata !DIExpression()), !dbg !47
-  br label %for.cond1, !dbg !48
+  call void @llvm.dbg.value(metadata i32 0, metadata !44, metadata !DIExpression()), !dbg !45
+  br label %for.cond1, !dbg !46
 
-for.cond1:                                        ; preds = %for.inc26, %stencil_label2
-  %c.0 = phi i32 [ 0, %stencil_label2 ], [ %inc27, %for.inc26 ]
-  call void @llvm.dbg.value(metadata i32 %c.0, metadata !46, metadata !DIExpression()), !dbg !47
-  %cmp2 = icmp slt i32 %c.0, 62, !dbg !51
-  br i1 %cmp2, label %for.body3, label %for.end28, !dbg !53
+for.cond1:                                        ; preds = %for.inc25, %stencil_label2
+  %c.0 = phi i32 [ 0, %stencil_label2 ], [ %inc26, %for.inc25 ]
+  call void @llvm.dbg.value(metadata i32 %c.0, metadata !44, metadata !DIExpression()), !dbg !45
+  %cmp2 = icmp slt i32 %c.0, 62, !dbg !49
+  br i1 %cmp2, label %for.body3, label %for.end27, !dbg !51
 
 for.body3:                                        ; preds = %for.cond1
-  call void @llvm.dbg.value(metadata i32 0, metadata !54, metadata !DIExpression()), !dbg !55
-  br label %stencil_label3, !dbg !56
+  call void @llvm.dbg.value(metadata i32 0, metadata !52, metadata !DIExpression()), !dbg !53
+  br label %stencil_label3, !dbg !54
 
 stencil_label3:                                   ; preds = %for.body3
-  call void @llvm.dbg.value(metadata i32 0, metadata !58, metadata !DIExpression()), !dbg !59
-  br label %for.cond4, !dbg !60
+  call void @llvm.dbg.value(metadata i32 0, metadata !56, metadata !DIExpression()), !dbg !57
+  br label %for.cond4, !dbg !58
 
-for.cond4:                                        ; preds = %for.inc19, %stencil_label3
-  %k1.0 = phi i32 [ 0, %stencil_label3 ], [ %inc20, %for.inc19 ]
-  %temp.0 = phi i32 [ 0, %stencil_label3 ], [ %temp.1, %for.inc19 ]
-  call void @llvm.dbg.value(metadata i32 %temp.0, metadata !54, metadata !DIExpression()), !dbg !55
-  call void @llvm.dbg.value(metadata i32 %k1.0, metadata !58, metadata !DIExpression()), !dbg !59
-  %cmp5 = icmp slt i32 %k1.0, 3, !dbg !62
-  br i1 %cmp5, label %for.body6, label %for.end21, !dbg !64
+for.cond4:                                        ; preds = %for.inc18, %stencil_label3
+  %k1.0 = phi i32 [ 0, %stencil_label3 ], [ %inc19, %for.inc18 ]
+  %temp.0 = phi i32 [ 0, %stencil_label3 ], [ %temp.1, %for.inc18 ]
+  call void @llvm.dbg.value(metadata i32 %temp.0, metadata !52, metadata !DIExpression()), !dbg !53
+  call void @llvm.dbg.value(metadata i32 %k1.0, metadata !56, metadata !DIExpression()), !dbg !57
+  %cmp5 = icmp slt i32 %k1.0, 3, !dbg !60
+  br i1 %cmp5, label %for.body6, label %for.end20, !dbg !62
 
 for.body6:                                        ; preds = %for.cond4
-  br label %stencil_label4, !dbg !65
+  br label %stencil_label4, !dbg !63
 
 stencil_label4:                                   ; preds = %for.body6
-  call void @llvm.dbg.value(metadata i32 0, metadata !66, metadata !DIExpression()), !dbg !67
-  br label %for.cond7, !dbg !68
+  call void @llvm.dbg.value(metadata i32 0, metadata !64, metadata !DIExpression()), !dbg !65
+  br label %for.cond7, !dbg !66
 
 for.cond7:                                        ; preds = %for.inc, %stencil_label4
   %k2.0 = phi i32 [ 0, %stencil_label4 ], [ %inc, %for.inc ]
-  %temp.1 = phi i32 [ %temp.0, %stencil_label4 ], [ %add18, %for.inc ]
-  call void @llvm.dbg.value(metadata i32 %temp.1, metadata !54, metadata !DIExpression()), !dbg !55
-  call void @llvm.dbg.value(metadata i32 %k2.0, metadata !66, metadata !DIExpression()), !dbg !67
-  %cmp8 = icmp slt i32 %k2.0, 3, !dbg !71
-  br i1 %cmp8, label %for.body9, label %for.end, !dbg !73
+  %temp.1 = phi i32 [ %temp.0, %stencil_label4 ], [ %add17, %for.inc ]
+  call void @llvm.dbg.value(metadata i32 %temp.1, metadata !52, metadata !DIExpression()), !dbg !53
+  call void @llvm.dbg.value(metadata i32 %k2.0, metadata !64, metadata !DIExpression()), !dbg !65
+  %cmp8 = icmp slt i32 %k2.0, 3, !dbg !69
+  br i1 %cmp8, label %for.body9, label %for.end, !dbg !71
 
 for.body9:                                        ; preds = %for.cond7
-  %mul10 = mul nsw i32 %k1.0, 3, !dbg !74
-  %add = add nsw i32 %mul10, %k2.0, !dbg !76
-  %cap.arrayidx0 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i64 0, i64 2, !dbg !101550
+  %mul = mul nsw i32 %k1.0, 3, !dbg !72
+  %add = add nsw i32 %mul, %k2.0, !dbg !74
+  %cap.arrayidx0 = getelementptr inbounds [4 x %struct.Cap], [4 x %struct.Cap]* %caps, i64 0, i64 3, !dbg !101550
   %load.0 = load %struct.Cap, %struct.Cap* %cap.arrayidx0, align 4, !dbg !101550
-  store %struct.Cap %load.0, %struct.Cap* %agg.tmp2, align 4, !dbg !101550
-  %2 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %xfilter, i32 %add, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %2, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %add11 = add nsw i32 %r.0, %k1.0, !dbg !78
-  %mul12 = mul nsw i32 %add11, 64, !dbg !79
-  %add13 = add nsw i32 %mul12, %c.0, !dbg !80
-  %add14 = add nsw i32 %add13, %k2.0, !dbg !81
-  %cap.arrayidx1 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i64 0, i64 0, !dbg !101550
+  store %struct.Cap %load.0, %struct.Cap* %agg.tmp3, align 4, !dbg !101550
+  %1 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %xfilter, i32 %add, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp3), !dbg !101527
+  call void @llvm.dbg.value(metadata i32 %1, metadata !101521, metadata !DIExpression()), !dbg !101529
+  %add10 = add nsw i32 %r.0, %k1.0, !dbg !76
+  %mul11 = mul nsw i32 %add10, 64, !dbg !77
+  %add12 = add nsw i32 %mul11, %c.0, !dbg !78
+  %add13 = add nsw i32 %add12, %k2.0, !dbg !79
+  %cap.arrayidx1 = getelementptr inbounds [4 x %struct.Cap], [4 x %struct.Cap]* %caps, i64 0, i64 0, !dbg !101550
   %load.1 = load %struct.Cap, %struct.Cap* %cap.arrayidx1, align 4, !dbg !101550
   store %struct.Cap %load.1, %struct.Cap* %agg.tmp0, align 4, !dbg !101550
-  %3 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %xorig, i32 %add14, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp0), !dbg !101527
-  call void @llvm.dbg.value(metadata i32 %3, metadata !101521, metadata !DIExpression()), !dbg !101529
-  %mul17 = mul nsw i32 %2, %3, !dbg !83
-  %add18 = add nsw i32 %temp.1, %mul17, !dbg !84
-  call void @llvm.dbg.value(metadata i32 %add18, metadata !54, metadata !DIExpression()), !dbg !55
-  br label %for.inc, !dbg !85
+  %2 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %xorig, i32 %add13, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp0), !dbg !101527
+  call void @llvm.dbg.value(metadata i32 %2, metadata !101521, metadata !DIExpression()), !dbg !101529
+  %mul16 = mul nsw i32 %1, %2, !dbg !81
+  %add17 = add nsw i32 %temp.1, %mul16, !dbg !82
+  call void @llvm.dbg.value(metadata i32 %add17, metadata !52, metadata !DIExpression()), !dbg !53
+  br label %for.inc, !dbg !83
 
 for.inc:                                          ; preds = %for.body9
-  %inc = add nsw i32 %k2.0, 1, !dbg !86
-  call void @llvm.dbg.value(metadata i32 %inc, metadata !66, metadata !DIExpression()), !dbg !67
-  br label %for.cond7, !dbg !87, !llvm.loop !88
+  %inc = add nsw i32 %k2.0, 1, !dbg !84
+  call void @llvm.dbg.value(metadata i32 %inc, metadata !64, metadata !DIExpression()), !dbg !65
+  br label %for.cond7, !dbg !85, !llvm.loop !86
 
 for.end:                                          ; preds = %for.cond7
-  br label %for.inc19, !dbg !91
+  br label %for.inc18, !dbg !89
 
-for.inc19:                                        ; preds = %for.end
-  %inc20 = add nsw i32 %k1.0, 1, !dbg !92
-  call void @llvm.dbg.value(metadata i32 %inc20, metadata !58, metadata !DIExpression()), !dbg !59
-  br label %for.cond4, !dbg !93, !llvm.loop !94
+for.inc18:                                        ; preds = %for.end
+  %inc19 = add nsw i32 %k1.0, 1, !dbg !90
+  call void @llvm.dbg.value(metadata i32 %inc19, metadata !56, metadata !DIExpression()), !dbg !57
+  br label %for.cond4, !dbg !91, !llvm.loop !92
 
-for.end21:                                        ; preds = %for.cond4
-  %mul22 = mul nsw i32 %r.0, 64, !dbg !97
-  %add23 = add nsw i32 %mul22, %c.0, !dbg !98
-  %idxprom24 = sext i32 %add23 to i64, !dbg !99
-  %arrayidx25 = getelementptr inbounds [8192 x i32], [8192 x i32]* %sol, i64 0, i64 %idxprom24, !dbg !99
-  store i32 %temp.0, i32* %arrayidx25, align 4, !dbg !100
-  br label %for.inc26, !dbg !101
-
-for.inc26:                                        ; preds = %for.end21
-  %inc27 = add nsw i32 %c.0, 1, !dbg !102
-  call void @llvm.dbg.value(metadata i32 %inc27, metadata !46, metadata !DIExpression()), !dbg !47
-  br label %for.cond1, !dbg !103, !llvm.loop !104
-
-for.end28:                                        ; preds = %for.cond1
-  br label %for.inc29, !dbg !107
-
-for.inc29:                                        ; preds = %for.end28
-  %inc30 = add nsw i32 %r.0, 1, !dbg !108
-  call void @llvm.dbg.value(metadata i32 %inc30, metadata !37, metadata !DIExpression()), !dbg !38
-  br label %for.cond, !dbg !109, !llvm.loop !110
-
-for.end31:                                        ; preds = %for.cond
-  br label %VITIS_LOOP_37_1, !dbg !111
-
-VITIS_LOOP_37_1:                                  ; preds = %for.end31
-  call void @llvm.dbg.value(metadata i32 0, metadata !113, metadata !DIExpression()), !dbg !114
-  br label %for.cond32, !dbg !115
-
-for.cond32:                                       ; preds = %for.inc40, %VITIS_LOOP_37_1
-  %i.0 = phi i32 [ 0, %VITIS_LOOP_37_1 ], [ %inc41, %for.inc40 ]
-  call void @llvm.dbg.value(metadata i32 %i.0, metadata !113, metadata !DIExpression()), !dbg !114
-  %mul33 = mul nsw i32 %size, 64, !dbg !117
-  %cmp34 = icmp slt i32 %i.0, %mul33, !dbg !119
-  br i1 %cmp34, label %for.body35, label %for.end42, !dbg !120
-
-for.body35:                                       ; preds = %for.cond32
-  %idxprom36 = sext i32 %i.0 to i64, !dbg !121
-  %arrayidx37 = getelementptr inbounds [8192 x i32], [8192 x i32]* %sol, i64 0, i64 %idxprom36, !dbg !121
-  %4 = load i32, i32* %arrayidx37, align 4, !dbg !121
-  %cap.arrayidx2 = getelementptr inbounds [3 x %struct.Cap], [3 x %struct.Cap]* %caps, i64 0, i64 1, !dbg !101550
-  call void @llvm.dbg.value(metadata i32 %4, metadata !101528, metadata !DIExpression()), !dbg !101539
+for.end20:                                        ; preds = %for.cond4
+  %mul21 = mul nsw i32 %r.0, 64, !dbg !95
+  %add22 = add nsw i32 %mul21, %c.0, !dbg !96
+  %arraypointer2 = getelementptr inbounds [8192 x i32], [8192 x i32]* %sol, i32 0, i32 0, !dbg !101530
+  %cap.arrayidx2 = getelementptr inbounds [4 x %struct.Cap], [4 x %struct.Cap]* %caps, i64 0, i64 2, !dbg !101550
+  call void @llvm.dbg.value(metadata i32 %temp.0, metadata !101528, metadata !DIExpression()), !dbg !101539
   %store.2 = load %struct.Cap, %struct.Cap* %cap.arrayidx2, align 4, !dbg !101539
-  store %struct.Cap %store.2, %struct.Cap* %agg.tmp1, align 4, !dbg !101539
-  call void @_Z11cheri_storePiiiPj3Cap(i32* %xsol, i32 %i.0, i32 %4, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp1), !dbg !101539
-  br label %for.inc40, !dbg !122
+  store %struct.Cap %store.2, %struct.Cap* %agg.tmp2, align 4, !dbg !101539
+  call void @_Z11cheri_storePiiiPj3Cap(i32* %arraypointer2, i32 %add22, i32 %temp.0, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101539
+  br label %for.inc25, !dbg !99
 
-for.inc40:                                        ; preds = %for.body35
-  %inc41 = add nsw i32 %i.0, 1, !dbg !124
-  call void @llvm.dbg.value(metadata i32 %inc41, metadata !113, metadata !DIExpression()), !dbg !114
-  br label %for.cond32, !dbg !125, !llvm.loop !126
+for.inc25:                                        ; preds = %for.end20
+  %inc26 = add nsw i32 %c.0, 1, !dbg !100
+  call void @llvm.dbg.value(metadata i32 %inc26, metadata !44, metadata !DIExpression()), !dbg !45
+  br label %for.cond1, !dbg !101, !llvm.loop !102
 
-for.end42:                                        ; preds = %for.cond32
-  %5 = bitcast [8192 x i32]* %sol to i8*, !dbg !129
-  call void @llvm.lifetime.end.p0i8(i64 32768, i8* %5) #8, !dbg !129
+for.end27:                                        ; preds = %for.cond1
+  br label %for.inc28, !dbg !105
+
+for.inc28:                                        ; preds = %for.end27
+  %inc29 = add nsw i32 %r.0, 1, !dbg !106
+  call void @llvm.dbg.value(metadata i32 %inc29, metadata !35, metadata !DIExpression()), !dbg !36
+  br label %for.cond, !dbg !107, !llvm.loop !108
+
+for.end30:                                        ; preds = %for.cond
+  br label %VITIS_LOOP_37_1, !dbg !109
+
+VITIS_LOOP_37_1:                                  ; preds = %for.end30
+  call void @llvm.dbg.value(metadata i32 0, metadata !111, metadata !DIExpression()), !dbg !112
+  br label %for.cond31, !dbg !113
+
+for.cond31:                                       ; preds = %for.inc39, %VITIS_LOOP_37_1
+  %i.0 = phi i32 [ 0, %VITIS_LOOP_37_1 ], [ %inc40, %for.inc39 ]
+  call void @llvm.dbg.value(metadata i32 %i.0, metadata !111, metadata !DIExpression()), !dbg !112
+  %mul32 = mul nsw i32 %size, 64, !dbg !115
+  %cmp33 = icmp slt i32 %i.0, %mul32, !dbg !117
+  br i1 %cmp33, label %for.body34, label %for.end41, !dbg !118
+
+for.body34:                                       ; preds = %for.cond31
+  %arraypointer3 = getelementptr inbounds [8192 x i32], [8192 x i32]* %sol, i32 0, i32 0, !dbg !101530
+  %cap.arrayidx3 = getelementptr inbounds [4 x %struct.Cap], [4 x %struct.Cap]* %caps, i64 0, i64 2, !dbg !101550
+  %load.3 = load %struct.Cap, %struct.Cap* %cap.arrayidx3, align 4, !dbg !101550
+  store %struct.Cap %load.3, %struct.Cap* %agg.tmp2, align 4, !dbg !101550
+  %3 = call i32 @_Z10cheri_loadPiiPj3Cap(i32* %arraypointer3, i32 %i.0, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp2), !dbg !101527
+  call void @llvm.dbg.value(metadata i32 %3, metadata !101521, metadata !DIExpression()), !dbg !101529
+  %cap.arrayidx4 = getelementptr inbounds [4 x %struct.Cap], [4 x %struct.Cap]* %caps, i64 0, i64 1, !dbg !101550
+  call void @llvm.dbg.value(metadata i32 %3, metadata !101528, metadata !DIExpression()), !dbg !101539
+  %store.4 = load %struct.Cap, %struct.Cap* %cap.arrayidx4, align 4, !dbg !101539
+  store %struct.Cap %store.4, %struct.Cap* %agg.tmp1, align 4, !dbg !101539
+  call void @_Z11cheri_storePiiiPj3Cap(i32* %xsol, i32 %i.0, i32 %3, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp1), !dbg !101539
+  br label %for.inc39, !dbg !120
+
+for.inc39:                                        ; preds = %for.body34
+  %inc40 = add nsw i32 %i.0, 1, !dbg !122
+  call void @llvm.dbg.value(metadata i32 %inc40, metadata !111, metadata !DIExpression()), !dbg !112
+  br label %for.cond31, !dbg !123, !llvm.loop !124
+
+for.end41:                                        ; preds = %for.cond31
+  %4 = bitcast [8192 x i32]* %sol to i8*, !dbg !127
+  call void @llvm.lifetime.end.p0i8(i64 32768, i8* %4) #8, !dbg !127
   %end.1 = load i32, i32* %flag_buf, align 4, !dbg !101540
   store i32 %end.1, i32* %flag, align 4, !dbg !101541
   %end.2 = bitcast [12 x i32]* %buffer to i8*, !dbg !101542
   call void @llvm.lifetime.end.p0i8(i64 48, i8* %end.2) #9003, !dbg !101542
-  %end.3 = bitcast [3 x %struct.Cap]* %caps to i8*, !dbg !101542
-  call void @llvm.lifetime.end.p0i8(i64 36, i8* %end.3) #9003, !dbg !101542
+  %end.3 = bitcast [4 x %struct.Cap]* %caps to i8*, !dbg !101542
+  call void @llvm.lifetime.end.p0i8(i64 48, i8* %end.3) #9003, !dbg !101542
   %end.4 = bitcast i32* %flag_buf to i8*, !dbg !101542
   call void @llvm.lifetime.end.p0i8(i64 4, i8* %end.4) #9003, !dbg !101542
-  ret void, !dbg !129
+  ret void, !dbg !127
 }
 
 ; Function Attrs: nounwind readnone speculatable
 
 ; Function Attrs: inaccessiblememonly nounwind
-
-; Function Attrs: argmemonly nounwind
 
 ; Function Attrs: argmemonly nounwind
 
@@ -4608,7 +4618,6 @@ attributes #9000 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="384" "xlx
 attributes #9001 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }
 attributes #9002 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "xlx.source"="user" }
 attributes #9003 = { nounwind }
-
 attributes #100000 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="decode" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #100001 = { nounwind readnone speculatable }
 attributes #100002 = { argmemonly nounwind }
@@ -4629,7 +4638,7 @@ attributes #100016 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-m
 attributes #100017 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="hls_top" "fpga.top.func"="hls_top" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #100018 = { inaccessiblememonly nounwind }
 attributes #100019 = { nounwind }
-attributes #100020 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="320" "xlx.source"="user" }
+attributes #100020 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32000" "xlx.source"="user" }
 attributes #100021 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="256" "xlx.source"="user" }
 attributes #100022 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32" "xlx.source"="user" }
 attributes #100023 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }
@@ -6076,121 +6085,146 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !101433 = !DILocation(line: 141, column: 32, scope: !101416)
 !101434 = !DILocation(line: 141, column: 2, scope: !101416)
 !101435 = !DILocation(line: 142, column: 11, scope: !101416)
-!101436 = !DILocation(line: 142, column: 10, scope: !101416)
-!101437 = !DILocation(line: 142, column: 24, scope: !101416)
-!101438 = !DILocation(line: 142, column: 3, scope: !101416)
-!101439 = distinct !DISubprogram(name: "cheri_store", linkageName: "_Z11cheri_storePiiiPj3Cap", scope: !100005, file: !100005, line: 145, type: !101440, isLocal: false, isDefinition: true, scopeLine: 145, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
-!101440 = !DISubroutineType(types: !101441)
-!101441 = !{null, !101419, !100030, !100030, !101281, !100338}
-!101442 = !{!101443}
-!101443 = !{!"fpga.inline", !"user", !101444}
-!101444 = !DILocation(line: 146, column: 9, scope: !101439)
-!101445 = !DILocalVariable(name: "buf", arg: 1, scope: !101439, file: !100005, line: 145, type: !101419)
-!101446 = !DILocation(line: 145, column: 23, scope: !101439)
-!101447 = !DILocalVariable(name: "i", arg: 2, scope: !101439, file: !100005, line: 145, type: !100030)
-!101448 = !DILocation(line: 145, column: 32, scope: !101439)
-!101449 = !DILocalVariable(name: "val", arg: 3, scope: !101439, file: !100005, line: 145, type: !100030)
-!101450 = !DILocation(line: 145, column: 39, scope: !101439)
-!101451 = !DILocalVariable(name: "flag_buf", arg: 4, scope: !101439, file: !100005, line: 145, type: !101281)
-!101452 = !DILocation(line: 145, column: 49, scope: !101439)
-!101453 = !DILocalVariable(name: "cap", arg: 5, scope: !101439, file: !100005, line: 145, type: !100338)
-!101454 = !DILocation(line: 145, column: 63, scope: !101439)
-!101455 = !DILocation(line: 147, column: 24, scope: !101439)
-!101456 = !DILocation(line: 147, column: 29, scope: !101439)
-!101457 = !DILocation(line: 147, column: 32, scope: !101439)
-!101458 = !DILocation(line: 147, column: 2, scope: !101439)
-!101459 = !DILocation(line: 149, column: 8, scope: !101460)
-!101460 = distinct !DILexicalBlock(scope: !101439, file: !100005, line: 149, column: 7)
-!101461 = !DILocation(line: 149, column: 7, scope: !101460)
-!101462 = !DILocation(line: 149, column: 7, scope: !101439)
-!101463 = !DILocation(line: 150, column: 5, scope: !101464)
-!101464 = distinct !DILexicalBlock(scope: !101460, file: !100005, line: 149, column: 20)
-!101465 = !DILocation(line: 150, column: 12, scope: !101464)
-!101466 = !DILocation(line: 151, column: 3, scope: !101464)
-!101467 = !DILocation(line: 152, column: 3, scope: !101439)
-!101468 = distinct !DISubprogram(name: "hls_top", linkageName: "_Z7hls_topiPiS_PjS0_", scope: !100005, file: !100005, line: 155, type: !101469, isLocal: false, isDefinition: true, scopeLine: 155, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
-!101469 = !DISubroutineType(types: !101470)
-!101470 = !{null, !100030, !101419, !101419, !101281, !101281}
-!101471 = !{!101472}
-!101472 = !{!"fpga.top", !"user", !101473}
-!101473 = !DILocation(line: 155, column: 16, scope: !101468)
-!101474 = !DILocalVariable(name: "size", arg: 1, scope: !101468, file: !100005, line: 155, type: !100030)
-!101475 = !DILocation(line: 155, column: 60, scope: !101468)
-!101476 = !DILocalVariable(name: "a", arg: 2, scope: !101468, file: !100005, line: 155, type: !101419)
-!101477 = !DILocation(line: 155, column: 70, scope: !101468)
-!101478 = !DILocalVariable(name: "c", arg: 3, scope: !101468, file: !100005, line: 155, type: !101419)
-!101479 = !DILocation(line: 155, column: 81, scope: !101468)
-!101480 = !DILocalVariable(name: "flag", arg: 4, scope: !101468, file: !100005, line: 155, type: !101281)
-!101481 = !DILocation(line: 155, column: 93, scope: !101468)
-!101482 = !DILocalVariable(name: "cap", arg: 5, scope: !101468, file: !100005, line: 155, type: !101281)
-!101483 = !DILocation(line: 155, column: 103, scope: !101468)
-!101484 = !DILocation(line: 156, column: 9, scope: !101468)
-!101485 = !DILocation(line: 157, column: 9, scope: !101468)
-!101486 = !DILocation(line: 158, column: 9, scope: !101468)
-!101487 = !DILocation(line: 159, column: 9, scope: !101468)
-!101488 = !DILocation(line: 160, column: 9, scope: !101468)
-!101489 = !DILocation(line: 161, column: 9, scope: !101468)
-!101490 = !DILocation(line: 162, column: 2, scope: !101468)
-!101491 = !DILocalVariable(name: "b", scope: !101468, file: !100005, line: 162, type: !101492)
-!101492 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100030, size: 320, elements: !101493)
-!101493 = !{!101494}
-!101494 = !DISubrange(count: 10)
-!101495 = !DILocation(line: 162, column: 6, scope: !101468)
-!101496 = !DILocation(line: 164, column: 3, scope: !101468)
-!101497 = !DILocalVariable(name: "flag_buf", scope: !101468, file: !100005, line: 164, type: !100004)
-!101498 = !DILocation(line: 164, column: 7, scope: !101468)
-!101499 = !DILocation(line: 166, column: 3, scope: !101468)
-!101500 = !DILocalVariable(name: "caps", scope: !101468, file: !100005, line: 166, type: !101501)
-!101501 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100338, size: 288, elements: !101502)
-!101502 = !{!101503}
-!101503 = !DISubrange(count: 3)
-!101504 = !DILocation(line: 166, column: 7, scope: !101468)
-!101505 = !DILocation(line: 167, column: 3, scope: !101468)
-!101506 = !DILocalVariable(name: "buffer", scope: !101468, file: !100005, line: 167, type: !101507)
-!101507 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100004, size: 384, elements: !101508)
-!101508 = !{!101509}
-!101509 = !DISubrange(count: 12)
-!101510 = !DILocation(line: 167, column: 7, scope: !101468)
-!101511 = !DILocation(line: 168, column: 9, scope: !101468)
-!101512 = !DILocation(line: 169, column: 9, scope: !101468)
-!101513 = !DILocation(line: 171, column: 14, scope: !101468)
-!101514 = !DILocation(line: 171, column: 27, scope: !101468)
-!101515 = !DILocation(line: 171, column: 2, scope: !101468)
-!101516 = !DILocation(line: 172, column: 18, scope: !101468)
-!101517 = !DILocation(line: 172, column: 3, scope: !101468)
-!101518 = !DILocalVariable(name: "i", scope: !101519, file: !100005, line: 174, type: !100030)
-!101519 = distinct !DILexicalBlock(scope: !101468, file: !100005, line: 174, column: 21)
-!101520 = !DILocation(line: 174, column: 30, scope: !101519)
-!101521 = !DILocation(line: 174, column: 26, scope: !101519)
-!101522 = !DILocation(line: 174, column: 39, scope: !101523)
-!101523 = distinct !DILexicalBlock(scope: !101519, file: !100005, line: 174, column: 21)
-!101524 = !DILocation(line: 174, column: 21, scope: !101519)
-!101525 = !DILocation(line: 177, column: 43, scope: !101526)
-!101526 = distinct !DILexicalBlock(scope: !101523, file: !100005, line: 174, column: 52)
-!101527 = !DILocation(line: 177, column: 15, scope: !101526)
-!101528 = !DILocalVariable(name: "a_elem", scope: !101526, file: !100005, line: 177, type: !100030)
-!101529 = !DILocation(line: 177, column: 6, scope: !101526)
-!101530 = !DILocation(line: 178, column: 29, scope: !101526)
-!101531 = !DILocation(line: 178, column: 46, scope: !101526)
-!101532 = !DILocation(line: 178, column: 18, scope: !101526)
-!101533 = !DILocalVariable(name: "b_elem", scope: !101526, file: !100005, line: 178, type: !100030)
-!101534 = !DILocation(line: 178, column: 9, scope: !101526)
-!101535 = !DILocation(line: 180, column: 25, scope: !101526)
-!101536 = !DILocalVariable(name: "c_elem", scope: !101526, file: !100005, line: 180, type: !100030)
-!101537 = !DILocation(line: 180, column: 9, scope: !101526)
-!101538 = !DILocation(line: 182, column: 42, scope: !101526)
-!101539 = !DILocation(line: 182, column: 5, scope: !101526)
-!101540 = !DILocation(line: 183, column: 3, scope: !101526)
-!101541 = !DILocation(line: 174, column: 48, scope: !101523)
-!101542 = !DILocation(line: 174, column: 21, scope: !101523)
-!101543 = distinct !{!101543, !101524, !101544, !101545, !101547}
-!101544 = !DILocation(line: 183, column: 3, scope: !101519)
-!101545 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101546}
-!101546 = !DILocation(line: 175, column: 9, scope: !101519)
-!101547 = !{!"llvm.loop.name", !"VITIS_LOOP_174_1"}
-!101548 = !DILocation(line: 185, column: 11, scope: !101468)
-!101549 = !DILocation(line: 185, column: 9, scope: !101468)
-!101550 = !DILocation(line: 187, column: 1, scope: !101468)
+!101436 = !DILocalVariable(name: "b", scope: !101416, file: !100005, line: 142, type: !100030)
+!101437 = !DILocation(line: 142, column: 7, scope: !101416)
+!101438 = !DILocation(line: 143, column: 11, scope: !101416)
+!101439 = !DILocation(line: 143, column: 10, scope: !101416)
+!101440 = !DILocation(line: 143, column: 3, scope: !101416)
+!101441 = distinct !DISubprogram(name: "cheri_store", linkageName: "_Z11cheri_storePiiiPj3Cap", scope: !100005, file: !100005, line: 146, type: !101442, isLocal: false, isDefinition: true, scopeLine: 146, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101442 = !DISubroutineType(types: !101443)
+!101443 = !{null, !101419, !100030, !100030, !101281, !100338}
+!101444 = !{!101445}
+!101445 = !{!"fpga.inline", !"user", !101446}
+!101446 = !DILocation(line: 147, column: 9, scope: !101441)
+!101447 = !DILocalVariable(name: "buf", arg: 1, scope: !101441, file: !100005, line: 146, type: !101419)
+!101448 = !DILocation(line: 146, column: 23, scope: !101441)
+!101449 = !DILocalVariable(name: "i", arg: 2, scope: !101441, file: !100005, line: 146, type: !100030)
+!101450 = !DILocation(line: 146, column: 32, scope: !101441)
+!101451 = !DILocalVariable(name: "val", arg: 3, scope: !101441, file: !100005, line: 146, type: !100030)
+!101452 = !DILocation(line: 146, column: 39, scope: !101441)
+!101453 = !DILocalVariable(name: "flag_buf", arg: 4, scope: !101441, file: !100005, line: 146, type: !101281)
+!101454 = !DILocation(line: 146, column: 49, scope: !101441)
+!101455 = !DILocalVariable(name: "cap", arg: 5, scope: !101441, file: !100005, line: 146, type: !100338)
+!101456 = !DILocation(line: 146, column: 63, scope: !101441)
+!101457 = !DILocation(line: 148, column: 24, scope: !101441)
+!101458 = !DILocation(line: 148, column: 29, scope: !101441)
+!101459 = !DILocation(line: 148, column: 32, scope: !101441)
+!101460 = !DILocation(line: 148, column: 2, scope: !101441)
+!101461 = !DILocation(line: 150, column: 13, scope: !101441)
+!101462 = !DILocation(line: 150, column: 12, scope: !101441)
+!101463 = !DILocation(line: 150, column: 32, scope: !101441)
+!101464 = !DILocation(line: 150, column: 3, scope: !101441)
+!101465 = !DILocation(line: 150, column: 10, scope: !101441)
+!101466 = !DILocation(line: 151, column: 3, scope: !101441)
+!101467 = distinct !DISubprogram(name: "hls_top", linkageName: "_Z7hls_topiPiS_PjS0_", scope: !100005, file: !100005, line: 154, type: !101468, isLocal: false, isDefinition: true, scopeLine: 154, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101468 = !DISubroutineType(types: !101469)
+!101469 = !{null, !100030, !101419, !101419, !101281, !101281}
+!101470 = !{!101471}
+!101471 = !{!"fpga.top", !"user", !101472}
+!101472 = !DILocation(line: 154, column: 16, scope: !101467)
+!101473 = !DILocalVariable(name: "size", arg: 1, scope: !101467, file: !100005, line: 154, type: !100030)
+!101474 = !DILocation(line: 154, column: 60, scope: !101467)
+!101475 = !DILocalVariable(name: "a", arg: 2, scope: !101467, file: !100005, line: 154, type: !101419)
+!101476 = !DILocation(line: 154, column: 70, scope: !101467)
+!101477 = !DILocalVariable(name: "c", arg: 3, scope: !101467, file: !100005, line: 154, type: !101419)
+!101478 = !DILocation(line: 154, column: 83, scope: !101467)
+!101479 = !DILocalVariable(name: "flag", arg: 4, scope: !101467, file: !100005, line: 154, type: !101281)
+!101480 = !DILocation(line: 154, column: 97, scope: !101467)
+!101481 = !DILocalVariable(name: "cap", arg: 5, scope: !101467, file: !100005, line: 154, type: !101281)
+!101482 = !DILocation(line: 154, column: 107, scope: !101467)
+!101483 = !DILocation(line: 155, column: 9, scope: !101467)
+!101484 = !DILocation(line: 156, column: 9, scope: !101467)
+!101485 = !DILocation(line: 157, column: 9, scope: !101467)
+!101486 = !DILocation(line: 158, column: 9, scope: !101467)
+!101487 = !DILocation(line: 159, column: 9, scope: !101467)
+!101488 = !DILocation(line: 160, column: 9, scope: !101467)
+!101489 = !DILocation(line: 161, column: 2, scope: !101467)
+!101490 = !DILocalVariable(name: "b", scope: !101467, file: !100005, line: 161, type: !101491)
+!101491 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100030, size: 32000, elements: !101492)
+!101492 = !{!101493}
+!101493 = !DISubrange(count: 1000)
+!101494 = !DILocation(line: 161, column: 6, scope: !101467)
+!101495 = !DILocation(line: 163, column: 3, scope: !101467)
+!101496 = !DILocalVariable(name: "flag_buf", scope: !101467, file: !100005, line: 163, type: !100004)
+!101497 = !DILocation(line: 163, column: 7, scope: !101467)
+!101498 = !DILocation(line: 165, column: 3, scope: !101467)
+!101499 = !DILocalVariable(name: "caps", scope: !101467, file: !100005, line: 165, type: !101500)
+!101500 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100338, size: 288, elements: !101501)
+!101501 = !{!101502}
+!101502 = !DISubrange(count: 3)
+!101503 = !DILocation(line: 165, column: 7, scope: !101467)
+!101504 = !DILocation(line: 166, column: 3, scope: !101467)
+!101505 = !DILocalVariable(name: "buffer", scope: !101467, file: !100005, line: 166, type: !101506)
+!101506 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100004, size: 384, elements: !101507)
+!101507 = !{!101508}
+!101508 = !DISubrange(count: 12)
+!101509 = !DILocation(line: 166, column: 7, scope: !101467)
+!101510 = !DILocation(line: 167, column: 9, scope: !101467)
+!101511 = !DILocation(line: 168, column: 9, scope: !101467)
+!101512 = !DILocation(line: 170, column: 14, scope: !101467)
+!101513 = !DILocation(line: 170, column: 27, scope: !101467)
+!101514 = !DILocation(line: 170, column: 2, scope: !101467)
+!101515 = !DILocation(line: 171, column: 20, scope: !101467)
+!101516 = !DILocation(line: 171, column: 3, scope: !101467)
+!101517 = !DILocalVariable(name: "i", scope: !101518, file: !100005, line: 173, type: !100030)
+!101518 = distinct !DILexicalBlock(scope: !101467, file: !100005, line: 173, column: 21)
+!101519 = !DILocation(line: 173, column: 30, scope: !101518)
+!101520 = !DILocation(line: 173, column: 26, scope: !101518)
+!101521 = !DILocation(line: 173, column: 39, scope: !101522)
+!101522 = distinct !DILexicalBlock(scope: !101518, file: !100005, line: 173, column: 21)
+!101523 = !DILocation(line: 173, column: 21, scope: !101518)
+!101524 = !DILocation(line: 176, column: 43, scope: !101525)
+!101525 = distinct !DILexicalBlock(scope: !101522, file: !100005, line: 173, column: 52)
+!101526 = !DILocation(line: 176, column: 15, scope: !101525)
+!101527 = !DILocalVariable(name: "a_elem", scope: !101525, file: !100005, line: 176, type: !100030)
+!101528 = !DILocation(line: 176, column: 6, scope: !101525)
+!101529 = !DILocation(line: 177, column: 29, scope: !101525)
+!101530 = !DILocation(line: 177, column: 46, scope: !101525)
+!101531 = !DILocation(line: 177, column: 18, scope: !101525)
+!101532 = !DILocalVariable(name: "b_elem", scope: !101525, file: !100005, line: 177, type: !100030)
+!101533 = !DILocation(line: 177, column: 9, scope: !101525)
+!101534 = !DILocation(line: 179, column: 25, scope: !101525)
+!101535 = !DILocalVariable(name: "c_elem", scope: !101525, file: !100005, line: 179, type: !100030)
+!101536 = !DILocation(line: 179, column: 9, scope: !101525)
+!101537 = !DILocation(line: 181, column: 42, scope: !101525)
+!101538 = !DILocation(line: 181, column: 5, scope: !101525)
+!101539 = !DILocation(line: 182, column: 3, scope: !101525)
+!101540 = !DILocation(line: 173, column: 48, scope: !101522)
+!101541 = !DILocation(line: 173, column: 21, scope: !101522)
+!101542 = distinct !{!101542, !101523, !101543, !101544, !101546}
+!101543 = !DILocation(line: 182, column: 3, scope: !101518)
+!101544 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101545}
+!101545 = !DILocation(line: 174, column: 9, scope: !101518)
+!101546 = !{!"llvm.loop.name", !"VITIS_LOOP_173_1"}
+!101547 = !DILocation(line: 184, column: 11, scope: !101467)
+!101548 = !DILocation(line: 184, column: 9, scope: !101467)
+!101549 = !DILocation(line: 186, column: 1, scope: !101467)
+!101550 = !DILocation(line: 172, column: 43, scope: !101551)
+!101551 = distinct !DILexicalBlock(scope: !101548, file: !100005, line: 169, column: 52)
+!101552 = !DILocation(line: 172, column: 15, scope: !101551)
+!101553 = !DILocalVariable(name: "a_elem", scope: !101551, file: !100005, line: 172, type: !100030)
+!101554 = !DILocation(line: 172, column: 6, scope: !101551)
+!101555 = !DILocation(line: 173, column: 29, scope: !101551)
+!101556 = !DILocation(line: 173, column: 46, scope: !101551)
+!101557 = !DILocation(line: 173, column: 18, scope: !101551)
+!101558 = !DILocalVariable(name: "b_elem", scope: !101551, file: !100005, line: 173, type: !100030)
+!101559 = !DILocation(line: 173, column: 9, scope: !101551)
+!101560 = !DILocation(line: 175, column: 25, scope: !101551)
+!101561 = !DILocalVariable(name: "c_elem", scope: !101551, file: !100005, line: 175, type: !100030)
+!101562 = !DILocation(line: 175, column: 9, scope: !101551)
+!101563 = !DILocation(line: 177, column: 42, scope: !101551)
+!101564 = !DILocation(line: 177, column: 5, scope: !101551)
+!101565 = !DILocation(line: 178, column: 3, scope: !101551)
+!101566 = !DILocation(line: 169, column: 48, scope: !101548)
+!101567 = !DILocation(line: 169, column: 21, scope: !101548)
+!101568 = distinct !{!101568, !101549, !101569, !101570, !101572}
+!101569 = !DILocation(line: 178, column: 3, scope: !101544)
+!101570 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101571}
+!101571 = !DILocation(line: 170, column: 9, scope: !101544)
+!101572 = !{!"llvm.loop.name", !"VITIS_LOOP_169_1"}
+!101573 = !DILocation(line: 180, column: 11, scope: !101493)
+!101574 = !DILocation(line: 180, column: 9, scope: !101493)
+!101575 = !DILocation(line: 182, column: 1, scope: !101493)
 attributes #1 = { nounwind readnone speculatable }
 attributes #2 = { inaccessiblememonly nounwind }
 attributes #3 = { argmemonly nounwind }
@@ -6229,104 +6263,102 @@ attributes #8 = { nounwind }
 !26 = !DILocation(line: 13, column: 9, scope: !7)
 !27 = !DILocation(line: 14, column: 9, scope: !7)
 !28 = !DILocation(line: 15, column: 9, scope: !7)
-!29 = !DILocalVariable(name: "mul", scope: !7, file: !8, line: 17, type: !11)
-!30 = !DILocation(line: 17, column: 13, scope: !7)
-!31 = !DILocation(line: 19, column: 3, scope: !7)
-!32 = !DILocalVariable(name: "sol", scope: !7, file: !8, line: 19, type: !33)
-!33 = !DICompositeType(tag: DW_TAG_array_type, baseType: !11, size: 262144, elements: !34)
-!34 = !{!35}
-!35 = !DISubrange(count: 8192)
-!36 = !DILocation(line: 19, column: 7, scope: !7)
-!37 = !DILocalVariable(name: "r", scope: !7, file: !8, line: 16, type: !11)
-!38 = !DILocation(line: 16, column: 9, scope: !7)
-!39 = !DILocation(line: 22, column: 8, scope: !40)
-!40 = distinct !DILexicalBlock(scope: !7, file: !8, line: 22, column: 3)
-!41 = !DILocation(line: 22, column: 24, scope: !42)
-!42 = distinct !DILexicalBlock(scope: !40, file: !8, line: 22, column: 3)
-!43 = !DILocation(line: 22, column: 17, scope: !42)
-!44 = !DILocation(line: 22, column: 3, scope: !40)
-!45 = !DILocation(line: 22, column: 34, scope: !42)
-!46 = !DILocalVariable(name: "c", scope: !7, file: !8, line: 16, type: !11)
-!47 = !DILocation(line: 16, column: 12, scope: !7)
-!48 = !DILocation(line: 24, column: 10, scope: !49)
-!49 = distinct !DILexicalBlock(scope: !50, file: !8, line: 24, column: 5)
-!50 = distinct !DILexicalBlock(scope: !42, file: !8, line: 22, column: 34)
-!51 = !DILocation(line: 24, column: 19, scope: !52)
-!52 = distinct !DILexicalBlock(scope: !49, file: !8, line: 24, column: 5)
-!53 = !DILocation(line: 24, column: 5, scope: !49)
-!54 = !DILocalVariable(name: "temp", scope: !7, file: !8, line: 17, type: !11)
-!55 = !DILocation(line: 17, column: 7, scope: !7)
-!56 = !DILocation(line: 25, column: 7, scope: !57)
-!57 = distinct !DILexicalBlock(scope: !52, file: !8, line: 24, column: 34)
-!58 = !DILocalVariable(name: "k1", scope: !7, file: !8, line: 16, type: !11)
-!59 = !DILocation(line: 16, column: 15, scope: !7)
-!60 = !DILocation(line: 27, column: 12, scope: !61)
-!61 = distinct !DILexicalBlock(scope: !57, file: !8, line: 27, column: 7)
-!62 = !DILocation(line: 27, column: 23, scope: !63)
-!63 = distinct !DILexicalBlock(scope: !61, file: !8, line: 27, column: 7)
-!64 = !DILocation(line: 27, column: 7, scope: !61)
-!65 = !DILocation(line: 27, column: 34, scope: !63)
-!66 = !DILocalVariable(name: "k2", scope: !7, file: !8, line: 16, type: !11)
-!67 = !DILocation(line: 16, column: 19, scope: !7)
-!68 = !DILocation(line: 29, column: 14, scope: !69)
-!69 = distinct !DILexicalBlock(scope: !70, file: !8, line: 29, column: 9)
-!70 = distinct !DILexicalBlock(scope: !63, file: !8, line: 27, column: 34)
-!71 = !DILocation(line: 29, column: 25, scope: !72)
-!72 = distinct !DILexicalBlock(scope: !69, file: !8, line: 29, column: 9)
-!73 = !DILocation(line: 29, column: 9, scope: !69)
-!74 = !DILocation(line: 30, column: 30, scope: !75)
-!75 = distinct !DILexicalBlock(scope: !72, file: !8, line: 29, column: 36)
-!76 = !DILocation(line: 30, column: 34, scope: !75)
-!77 = !DILocation(line: 30, column: 19, scope: !75)
-!78 = !DILocation(line: 30, column: 51, scope: !75)
-!79 = !DILocation(line: 30, column: 57, scope: !75)
-!80 = !DILocation(line: 30, column: 62, scope: !75)
-!81 = !DILocation(line: 30, column: 66, scope: !75)
-!82 = !DILocation(line: 30, column: 42, scope: !75)
-!83 = !DILocation(line: 30, column: 40, scope: !75)
-!84 = !DILocation(line: 30, column: 16, scope: !75)
-!85 = !DILocation(line: 31, column: 9, scope: !75)
-!86 = !DILocation(line: 29, column: 32, scope: !72)
-!87 = !DILocation(line: 29, column: 9, scope: !72)
-!88 = distinct !{!88, !73, !89, !90}
-!89 = !DILocation(line: 31, column: 9, scope: !69)
-!90 = !{!"llvm.loop.name", !"stencil_label4"}
-!91 = !DILocation(line: 32, column: 7, scope: !70)
-!92 = !DILocation(line: 27, column: 30, scope: !63)
-!93 = !DILocation(line: 27, column: 7, scope: !63)
-!94 = distinct !{!94, !64, !95, !96}
-!95 = !DILocation(line: 32, column: 7, scope: !61)
-!96 = !{!"llvm.loop.name", !"stencil_label3"}
-!97 = !DILocation(line: 33, column: 14, scope: !57)
-!98 = !DILocation(line: 33, column: 20, scope: !57)
-!99 = !DILocation(line: 33, column: 7, scope: !57)
-!100 = !DILocation(line: 33, column: 25, scope: !57)
-!101 = !DILocation(line: 34, column: 5, scope: !57)
-!102 = !DILocation(line: 24, column: 30, scope: !52)
-!103 = !DILocation(line: 24, column: 5, scope: !52)
-!104 = distinct !{!104, !53, !105, !106}
-!105 = !DILocation(line: 34, column: 5, scope: !49)
-!106 = !{!"llvm.loop.name", !"stencil_label2"}
-!107 = !DILocation(line: 35, column: 3, scope: !50)
-!108 = !DILocation(line: 22, column: 30, scope: !42)
-!109 = !DILocation(line: 22, column: 3, scope: !42)
-!110 = distinct !{!110, !44, !111, !112}
-!111 = !DILocation(line: 35, column: 3, scope: !40)
-!112 = !{!"llvm.loop.name", !"stencil_label1"}
-!113 = !DILocalVariable(name: "i", scope: !7, file: !8, line: 16, type: !11)
-!114 = !DILocation(line: 16, column: 6, scope: !7)
-!115 = !DILocation(line: 37, column: 25, scope: !116)
-!116 = distinct !DILexicalBlock(scope: !7, file: !8, line: 37, column: 20)
-!117 = !DILocation(line: 37, column: 41, scope: !118)
-!118 = distinct !DILexicalBlock(scope: !116, file: !8, line: 37, column: 20)
-!119 = !DILocation(line: 37, column: 34, scope: !118)
-!120 = !DILocation(line: 37, column: 20, scope: !116)
-!121 = !DILocation(line: 38, column: 15, scope: !118)
-!122 = !DILocation(line: 38, column: 5, scope: !118)
-!123 = !DILocation(line: 38, column: 13, scope: !118)
-!124 = !DILocation(line: 37, column: 48, scope: !118)
-!125 = !DILocation(line: 37, column: 20, scope: !118)
-!126 = distinct !{!126, !120, !127, !128}
-!127 = !DILocation(line: 38, column: 20, scope: !116)
-!128 = !{!"llvm.loop.name", !"VITIS_LOOP_37_1"}
-!129 = !DILocation(line: 39, column: 1, scope: !7)
+!29 = !DILocation(line: 19, column: 3, scope: !7)
+!30 = !DILocalVariable(name: "sol", scope: !7, file: !8, line: 19, type: !31)
+!31 = !DICompositeType(tag: DW_TAG_array_type, baseType: !11, size: 262144, elements: !32)
+!32 = !{!33}
+!33 = !DISubrange(count: 8192)
+!34 = !DILocation(line: 19, column: 7, scope: !7)
+!35 = !DILocalVariable(name: "r", scope: !7, file: !8, line: 16, type: !11)
+!36 = !DILocation(line: 16, column: 9, scope: !7)
+!37 = !DILocation(line: 22, column: 8, scope: !38)
+!38 = distinct !DILexicalBlock(scope: !7, file: !8, line: 22, column: 3)
+!39 = !DILocation(line: 22, column: 24, scope: !40)
+!40 = distinct !DILexicalBlock(scope: !38, file: !8, line: 22, column: 3)
+!41 = !DILocation(line: 22, column: 17, scope: !40)
+!42 = !DILocation(line: 22, column: 3, scope: !38)
+!43 = !DILocation(line: 22, column: 34, scope: !40)
+!44 = !DILocalVariable(name: "c", scope: !7, file: !8, line: 16, type: !11)
+!45 = !DILocation(line: 16, column: 12, scope: !7)
+!46 = !DILocation(line: 24, column: 10, scope: !47)
+!47 = distinct !DILexicalBlock(scope: !48, file: !8, line: 24, column: 5)
+!48 = distinct !DILexicalBlock(scope: !40, file: !8, line: 22, column: 34)
+!49 = !DILocation(line: 24, column: 19, scope: !50)
+!50 = distinct !DILexicalBlock(scope: !47, file: !8, line: 24, column: 5)
+!51 = !DILocation(line: 24, column: 5, scope: !47)
+!52 = !DILocalVariable(name: "temp", scope: !7, file: !8, line: 17, type: !11)
+!53 = !DILocation(line: 17, column: 7, scope: !7)
+!54 = !DILocation(line: 25, column: 7, scope: !55)
+!55 = distinct !DILexicalBlock(scope: !50, file: !8, line: 24, column: 34)
+!56 = !DILocalVariable(name: "k1", scope: !7, file: !8, line: 16, type: !11)
+!57 = !DILocation(line: 16, column: 15, scope: !7)
+!58 = !DILocation(line: 27, column: 12, scope: !59)
+!59 = distinct !DILexicalBlock(scope: !55, file: !8, line: 27, column: 7)
+!60 = !DILocation(line: 27, column: 23, scope: !61)
+!61 = distinct !DILexicalBlock(scope: !59, file: !8, line: 27, column: 7)
+!62 = !DILocation(line: 27, column: 7, scope: !59)
+!63 = !DILocation(line: 27, column: 34, scope: !61)
+!64 = !DILocalVariable(name: "k2", scope: !7, file: !8, line: 16, type: !11)
+!65 = !DILocation(line: 16, column: 19, scope: !7)
+!66 = !DILocation(line: 29, column: 14, scope: !67)
+!67 = distinct !DILexicalBlock(scope: !68, file: !8, line: 29, column: 9)
+!68 = distinct !DILexicalBlock(scope: !61, file: !8, line: 27, column: 34)
+!69 = !DILocation(line: 29, column: 25, scope: !70)
+!70 = distinct !DILexicalBlock(scope: !67, file: !8, line: 29, column: 9)
+!71 = !DILocation(line: 29, column: 9, scope: !67)
+!72 = !DILocation(line: 30, column: 30, scope: !73)
+!73 = distinct !DILexicalBlock(scope: !70, file: !8, line: 29, column: 36)
+!74 = !DILocation(line: 30, column: 34, scope: !73)
+!75 = !DILocation(line: 30, column: 19, scope: !73)
+!76 = !DILocation(line: 30, column: 51, scope: !73)
+!77 = !DILocation(line: 30, column: 57, scope: !73)
+!78 = !DILocation(line: 30, column: 62, scope: !73)
+!79 = !DILocation(line: 30, column: 66, scope: !73)
+!80 = !DILocation(line: 30, column: 42, scope: !73)
+!81 = !DILocation(line: 30, column: 40, scope: !73)
+!82 = !DILocation(line: 30, column: 16, scope: !73)
+!83 = !DILocation(line: 31, column: 9, scope: !73)
+!84 = !DILocation(line: 29, column: 32, scope: !70)
+!85 = !DILocation(line: 29, column: 9, scope: !70)
+!86 = distinct !{!86, !71, !87, !88}
+!87 = !DILocation(line: 31, column: 9, scope: !67)
+!88 = !{!"llvm.loop.name", !"stencil_label4"}
+!89 = !DILocation(line: 32, column: 7, scope: !68)
+!90 = !DILocation(line: 27, column: 30, scope: !61)
+!91 = !DILocation(line: 27, column: 7, scope: !61)
+!92 = distinct !{!92, !62, !93, !94}
+!93 = !DILocation(line: 32, column: 7, scope: !59)
+!94 = !{!"llvm.loop.name", !"stencil_label3"}
+!95 = !DILocation(line: 33, column: 14, scope: !55)
+!96 = !DILocation(line: 33, column: 20, scope: !55)
+!97 = !DILocation(line: 33, column: 7, scope: !55)
+!98 = !DILocation(line: 33, column: 25, scope: !55)
+!99 = !DILocation(line: 34, column: 5, scope: !55)
+!100 = !DILocation(line: 24, column: 30, scope: !50)
+!101 = !DILocation(line: 24, column: 5, scope: !50)
+!102 = distinct !{!102, !51, !103, !104}
+!103 = !DILocation(line: 34, column: 5, scope: !47)
+!104 = !{!"llvm.loop.name", !"stencil_label2"}
+!105 = !DILocation(line: 35, column: 3, scope: !48)
+!106 = !DILocation(line: 22, column: 30, scope: !40)
+!107 = !DILocation(line: 22, column: 3, scope: !40)
+!108 = distinct !{!108, !42, !109, !110}
+!109 = !DILocation(line: 35, column: 3, scope: !38)
+!110 = !{!"llvm.loop.name", !"stencil_label1"}
+!111 = !DILocalVariable(name: "i", scope: !7, file: !8, line: 16, type: !11)
+!112 = !DILocation(line: 16, column: 6, scope: !7)
+!113 = !DILocation(line: 37, column: 25, scope: !114)
+!114 = distinct !DILexicalBlock(scope: !7, file: !8, line: 37, column: 20)
+!115 = !DILocation(line: 37, column: 41, scope: !116)
+!116 = distinct !DILexicalBlock(scope: !114, file: !8, line: 37, column: 20)
+!117 = !DILocation(line: 37, column: 34, scope: !116)
+!118 = !DILocation(line: 37, column: 20, scope: !114)
+!119 = !DILocation(line: 38, column: 15, scope: !116)
+!120 = !DILocation(line: 38, column: 5, scope: !116)
+!121 = !DILocation(line: 38, column: 13, scope: !116)
+!122 = !DILocation(line: 37, column: 48, scope: !116)
+!123 = !DILocation(line: 37, column: 20, scope: !116)
+!124 = distinct !{!124, !118, !125, !126}
+!125 = !DILocation(line: 38, column: 20, scope: !114)
+!126 = !{!"llvm.loop.name", !"VITIS_LOOP_37_1"}
+!127 = !DILocation(line: 39, column: 1, scope: !7)

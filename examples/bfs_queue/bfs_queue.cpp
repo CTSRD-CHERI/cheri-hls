@@ -127,7 +127,7 @@ int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, false);
   int b = buf[i];
-  return (*flag_buf) ? b : 0;
+  return (*flag_buf) ? b : buf[i];
 }
 
 void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
@@ -183,6 +183,18 @@ typedef struct node_t_struct {
 
 typedef int level_t;
 #define MAX_LEVEL 255
+
+void cheri_stream_write(u32 size, int *array1, int *array2, u32 *flag_buf,
+                        Cap cap) {
+  for (int i = 0; i < size; i++) {
+    checkAccess(flag_buf, cap, i, 4, true);
+  }
+  if (*flag_buf) {
+    for (int i = 0; i < size; i++) {
+      array1[i] = array2[i];
+    }
+  }
+}
 
 void hls_top(node_index_t starting_node, int levels, int node,
              int xnodes_b[N_NODES], int xnodes_e[N_NODES], int xedges[N_EDGES],
@@ -261,15 +273,38 @@ loop_queue:
     }
   }
 
-  for (int i = 0; i < node; i++) {
-    int level_elem = level[i];
-    cheri_store(xlevel, i, level_elem, &flag_buf, caps[3]);
-  }
+  cheri_stream_write(node, xlevel, level, &flag_buf, caps[3]);
+  cheri_stream_write(levels, xlevel_counts, level_counts, &flag_buf, caps[4]);
 
-  for (int i = 0; i < levels; i++) {
-    int xlevel_counts_elem = level_counts[i];
-    cheri_store(xlevel_counts, i, xlevel_counts_elem, &flag_buf, caps[4]);
-  }
+  // for (int i = 0; i < node; i++) {
+  //   int level_elem = level[i];
+  //   cheri_store(xlevel, i, level_elem, &flag_buf, caps[3]);
+  // }
+  // for (int i = 0; i < node; i++) {
+  //  checkAccess(&flag_buf, caps[3], i, 4, true);
+  //}
+  // if (flag_buf) {
+  //  for (int i = 0; i < node; i++) {
+  //    xlevel[i] = level[i];
+  //  }
+  //}
+  // for (int i = 0; i < levels; i++) {
+  //  checkAccess(&flag_buf, caps[4], i, 4, true);
+  //}
+  // if (flag_buf) {
+  //  for (int i = 0; i < levels; i++) {
+  //    xlevel_counts[i] = level_counts[i];
+  //  }
+  //}
+
+  // for loop from 0 to levels, check access for each one
+  //  if statement, if flag not triggered, then run for loop just do a simple
+  //  store
+
+  // for (int i = 0; i < levels; i++) {
+  //   int xlevel_counts_elem = level_counts[i];
+  //   cheri_store(xlevel_counts, i, xlevel_counts_elem, &flag_buf, caps[4]);
+  // }
   *flag = flag_buf;
 }
 
