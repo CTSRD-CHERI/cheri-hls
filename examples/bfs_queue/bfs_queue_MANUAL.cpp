@@ -272,7 +272,6 @@ loop_queue:
       }
     }
   }
-
   cheri_stream_write(node, xlevel, level, &flag_buf, caps[3]);
   cheri_stream_write(levels, xlevel_counts, level_counts, &flag_buf, caps[4]);
 

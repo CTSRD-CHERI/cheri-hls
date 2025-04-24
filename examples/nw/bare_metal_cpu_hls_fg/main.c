@@ -26,6 +26,7 @@ int alignedA[NUM][ALEN + BLEN] = {{0}};
 int alignedB[NUM][ALEN + BLEN] = {{0}};
 int M[NUM][(ALEN + 1) * (BLEN + 1)] = {{0}};
 int ptr[NUM][(ALEN + 1) * (BLEN + 1)] = {{0}};
+u32 cap[24];
 
 #ifdef CAPCHECKER
 u64 capchecker_base_phy_addr = 0xc0020000;
@@ -87,6 +88,15 @@ u32 hls_top_init(int test_case, u32 *phy) {
   u32 buffer_alignedB = alignedB[test_case];
   u32 buffer_M = M[test_case];
   u32 buffer_ptr = ptr[test_case];
+  u32 **capp = (u32 **)cap;
+  capp[0] = SEQA;
+  capp[1] = SEQB;
+  capp[2] = alignedA;
+  capp[3] = alignedB;
+  capp[4] = M;
+  capp[5] = ptr;
+
+  XHls_top_Set_cap(top, (capp));
 
 #ifdef CAPCHECKER
   u32 SEQA_cap_id = (test_case << 5) + 0;
@@ -98,49 +108,49 @@ u32 hls_top_init(int test_case, u32 *phy) {
 
   // Configuring data buffers
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_SEQA_DATA + 4,
+                    XHLS_TOP_CONTROL_ADDR_XSEQA_DATA + 4,
                     (u32)(SEQA_cap_id << (32 - 8)));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_SEQB_DATA + 4,
+                    XHLS_TOP_CONTROL_ADDR_XSEQB_DATA + 4,
                     (u32)(SEQB_cap_id << (32 - 8)));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_ALIGNEDA_DATA + 4,
+                    XHLS_TOP_CONTROL_ADDR_XALIGNEDA_DATA + 4,
                     (u32)(alignedA_cap_id << (32 - 8)));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_ALIGNEDB_DATA + 4,
+                    XHLS_TOP_CONTROL_ADDR_XALIGNEDB_DATA + 4,
                     (u32)(alignedB_cap_id << (32 - 8)));
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_M_DATA + 4,
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_XM_DATA + 4,
                     (u32)(M_cap_id << (32 - 8)));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_PTR_DATA + 4,
+                    XHLS_TOP_CONTROL_ADDR_XPTR_DATA + 4,
                     (u32)(ptr_cap_id << (32 - 8)));
 #else
   // Configuring data buffers
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_SEQA_DATA + 4, (u32)(0));
+                    XHLS_TOP_CONTROL_ADDR_XSEQA_DATA + 4, (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_SEQB_DATA + 4, (u32)(0));
+                    XHLS_TOP_CONTROL_ADDR_XSEQB_DATA + 4, (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_ALIGNEDA_DATA + 4, (u32)(0));
+                    XHLS_TOP_CONTROL_ADDR_XALIGNEDA_DATA + 4, (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_ALIGNEDB_DATA + 4, (u32)(0));
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_M_DATA + 4,
+                    XHLS_TOP_CONTROL_ADDR_XALIGNEDB_DATA + 4, (u32)(0));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_XM_DATA + 4,
                     (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_PTR_DATA + 4, (u32)(0));
+                    XHLS_TOP_CONTROL_ADDR_XPTR_DATA + 4, (u32)(0));
 #endif
 
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_SEQA_DATA,
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_XSEQA_DATA,
                     buffer_SEQA);
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_SEQB_DATA,
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_XSEQB_DATA,
                     buffer_SEQB);
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_ALIGNEDA_DATA, buffer_alignedA);
+                    XHLS_TOP_CONTROL_ADDR_XALIGNEDA_DATA, buffer_alignedA);
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_ALIGNEDB_DATA, buffer_alignedB);
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_M_DATA,
+                    XHLS_TOP_CONTROL_ADDR_XALIGNEDB_DATA, buffer_alignedB);
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_XM_DATA,
                     buffer_M);
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_PTR_DATA,
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_XPTR_DATA,
                     buffer_ptr);
 
 #ifdef CAPCHECKER
@@ -176,11 +186,15 @@ int main() {
     if (hls_top_init(i, physical_addr))
       return 4;
   }
+  u32 flag = 2;
 
   // Compute
   asm("fence");
   for (int i = 0; i < NUM; i++)
     XHls_top_Start(top_insts + i);
+  while (!XHls_top_Get_flag_vld(top_insts)) {
+    flag = XHls_top_Get_flag(top_insts);
+  }
   for (int i = 0; i < NUM; i++)
     while (!XHls_top_IsDone(top_insts + i))
       ;

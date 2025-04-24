@@ -92,10 +92,10 @@ u32 hls_top_init(int test_case, u32 *phy) {
   u32 buffer_d = d[test_case];
 
   u32 **capp = (u32 **)cap;
-  capp[0] = a;
-  capp[1] = b;
-  capp[2] = c;
-  capp[3] = d;
+  capp[3] = a;
+  capp[2] = b;
+  capp[1] = c;
+  capp[0] = d;
 
   XHls_top_Set_cap(top, (capp));
 
@@ -180,19 +180,24 @@ int main() {
       return 4;
   }
 
-  u32 flag = 2;
+  u32 flag = 0;
   // Compute
   asm("fence");
   for (int i = 0; i < NUM; i++)
     XHls_top_Start(top_insts + i);
-  while (!XHls_top_Get_flag_vld(top_insts)) {
-    flag = XHls_top_Get_flag(top_insts);
+  for (int i = 0; i < NUM; i++) {
+    while (!XHls_top_Get_flag_vld(top_insts + i)) {
+      flag |= XHls_top_Get_flag(top_insts + i);
+    }
   }
   for (int i = 0; i < NUM; i++)
     while (!XHls_top_IsDone(top_insts + i))
       ;
   asm("fence");
 
-  success();
+  if (flag == 1)
+    success();
+  else
+    fail();
   return 0;
 }

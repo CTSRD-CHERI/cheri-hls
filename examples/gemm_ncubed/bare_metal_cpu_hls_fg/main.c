@@ -165,14 +165,16 @@ int main() {
     if (hls_top_init(i, physical_addr))
       return 4;
   }
-  u32 flag = 2;
+  u32 flag = 0;
 
   // Compute
   asm("fence");
   for (int i = 0; i < NUM; i++)
     XHls_top_Start(top_insts + i);
-  while (!XHls_top_Get_flag_vld(top_insts)) {
-    flag = XHls_top_Get_flag(top_insts);
+  for (int i = 0; i < NUM; i++) {
+    while (!XHls_top_Get_flag_vld(top_insts + i)) {
+      flag |= XHls_top_Get_flag(top_insts + i);
+    }
   }
   for (int i = 0; i < NUM; i++)
     while (!XHls_top_IsDone(top_insts + i))

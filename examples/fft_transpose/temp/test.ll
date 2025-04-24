@@ -3224,7 +3224,7 @@ attributes #9 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="256" "xlx.so
 !llvm.module.flags = !{!6, !7, !8}
 
 !0 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1, producer: "clang version 7.0.0 ", isOptimized: true, runtimeVersion: 0, emissionKind: FullDebug, enums: !2, retainedTypes: !3)
-!1 = !DIFile(filename: "/workspace/examples/fft_transpose/fft_prj/solution/.autopilot/db/fft.pp.0.c", directory: "/workspace/examples/fft_transpose")
+!1 = !DIFile(filename: "/workspace/examples/fft_transpose/fft_transpose_prj/solution/.autopilot/db/fft.pp.0.c", directory: "/workspace/examples/fft_transpose")
 !2 = !{}
 !3 = !{!4}
 !4 = !DIBasicType(name: "int", size: 32, encoding: DW_ATE_signed)

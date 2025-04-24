@@ -120,6 +120,12 @@ loop_queue:
       }
     }
   }
+  // for (int i = 0; i < node; i++) {
+  //   xlevel[i] = level[i];
+  // }
+  // for (int i = 0; i < levels; i++) {
+  //   xlevel_counts[i] = level_counts[i];
+  // }
   stream_write(node, xlevel, level);
   stream_write(levels, xlevel_counts, level_counts);
 

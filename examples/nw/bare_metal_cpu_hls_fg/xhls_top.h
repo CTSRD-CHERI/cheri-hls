@@ -61,7 +61,6 @@ typedef u32 word_type;
 /************************** Function Prototypes *****************************/
 int XHls_top_Initialize(XHls_top *InstancePtr, const char *InstanceName);
 int XHls_top_Release(XHls_top *InstancePtr);
-
 void XHls_top_Start(XHls_top *InstancePtr);
 u32 XHls_top_IsDone(XHls_top *InstancePtr);
 u32 XHls_top_IsIdle(XHls_top *InstancePtr);
@@ -69,14 +68,26 @@ u32 XHls_top_IsReady(XHls_top *InstancePtr);
 void XHls_top_EnableAutoRestart(XHls_top *InstancePtr);
 void XHls_top_DisableAutoRestart(XHls_top *InstancePtr);
 
-void XHls_top_Set_size(XHls_top *InstancePtr, u32 Data);
-u32 XHls_top_Get_size(XHls_top *InstancePtr);
-void XHls_top_Set_a(XHls_top *InstancePtr, u64 Data);
-u64 XHls_top_Get_a(XHls_top *InstancePtr);
-void XHls_top_Set_b(XHls_top *InstancePtr, u64 Data);
-u64 XHls_top_Get_b(XHls_top *InstancePtr);
-void XHls_top_Set_c(XHls_top *InstancePtr, u64 Data);
-u64 XHls_top_Get_c(XHls_top *InstancePtr);
+void XHls_top_Set_alen(XHls_top *InstancePtr, u32 Data);
+u32 XHls_top_Get_alen(XHls_top *InstancePtr);
+void XHls_top_Set_blen(XHls_top *InstancePtr, u32 Data);
+u32 XHls_top_Get_blen(XHls_top *InstancePtr);
+void XHls_top_Set_xSEQA(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_xSEQA(XHls_top *InstancePtr);
+void XHls_top_Set_xSEQB(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_xSEQB(XHls_top *InstancePtr);
+void XHls_top_Set_xalignedA(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_xalignedA(XHls_top *InstancePtr);
+void XHls_top_Set_xalignedB(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_xalignedB(XHls_top *InstancePtr);
+void XHls_top_Set_xM(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_xM(XHls_top *InstancePtr);
+void XHls_top_Set_xptr(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_xptr(XHls_top *InstancePtr);
+u32 XHls_top_Get_flag(XHls_top *InstancePtr);
+u32 XHls_top_Get_flag_vld(XHls_top *InstancePtr);
+void XHls_top_Set_cap(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_cap(XHls_top *InstancePtr);
 
 void XHls_top_InterruptGlobalEnable(XHls_top *InstancePtr);
 void XHls_top_InterruptGlobalDisable(XHls_top *InstancePtr);
@@ -85,14 +96,6 @@ void XHls_top_InterruptDisable(XHls_top *InstancePtr, u32 Mask);
 void XHls_top_InterruptClear(XHls_top *InstancePtr, u32 Mask);
 u32 XHls_top_InterruptGetEnabled(XHls_top *InstancePtr);
 u32 XHls_top_InterruptGetStatus(XHls_top *InstancePtr);
-
-void XHls_top_Set_alen(XHls_top *InstancePtr, u32 Data);
-
-u32 XHls_top_Get_alen(XHls_top *InstancePtr);
-
-void XHls_top_Set_blen(XHls_top *InstancePtr, u32 Data);
-
-u32 XHls_top_Get_blen(XHls_top *InstancePtr);
 
 #ifdef __cplusplus
 }

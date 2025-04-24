@@ -28,12 +28,18 @@ XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
 
-int nodes_b[NUM][N_NODES] = {{1, 1}};
-int nodes_e[NUM][N_NODES] = {{1, 1}};
-int edges[NUM][N_EDGES] = {{1}};
-int starting_node[NUM] = {0};
-int level[NUM][N_NODES] = {{0}};
-int level_counts[NUM][N_LEVELS] = {{1}};
+// int nodes_b[NUM][N_NODES] = {{1, 1}};
+// int nodes_e[NUM][N_NODES] = {{1, 1}};
+// int edges[NUM][N_EDGES] = {{1}};
+// int starting_node[NUM] = {0};
+// int level[NUM][N_NODES] = {{0}};
+// int level_counts[NUM][N_LEVELS] = {{1}};
+int nodes_b[NUM][N_NODES];
+int nodes_e[NUM][N_NODES];
+int edges[NUM][N_EDGES];
+int starting_node[NUM];
+int level[NUM][N_NODES];
+int level_counts[NUM][N_LEVELS];
 u32 cap[20];
 
 #ifdef CAPCHECKER
@@ -98,11 +104,11 @@ u32 hls_top_init(int test_case, u32 *phy) {
   u32 buffer_level_counts = level_counts[test_case];
 
   u32 **capp = (u32 **)cap;
-  capp[0] = nodes_b;
-  capp[1] = nodes_e;
+  capp[4] = nodes_b;
+  capp[3] = nodes_e;
   capp[2] = edges;
-  capp[3] = level;
-  capp[4] = level_counts;
+  capp[1] = level;
+  capp[0] = level_counts;
 
   XHls_top_Set_cap(top, (capp));
 
@@ -187,20 +193,24 @@ int main() {
     if (hls_top_init(i, physical_addr))
       return 4;
   }
-  u32 flag = 2;
+  u32 flag = 0;
 
   // Compute
   asm("fence");
   for (int i = 0; i < NUM; i++)
     XHls_top_Start(top_insts + i);
-  while (!XHls_top_Get_flag_vld(top_insts)) {
-    flag = XHls_top_Get_flag(top_insts);
+  for (int i = 0; i < NUM; i++) {
+    while (!XHls_top_Get_flag_vld(top_insts + i)) {
+      flag |= XHls_top_Get_flag(top_insts + i);
+    }
   }
   for (int i = 0; i < NUM; i++)
     while (!XHls_top_IsDone(top_insts + i))
       ;
   asm("fence");
-
-  success();
+  if (flag == 1)
+    success();
+  else
+    fail();
   return 0;
 }

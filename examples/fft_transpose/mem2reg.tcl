@@ -1,4 +1,4 @@
-open_project -reset fft_prj
+open_project -reset fft_transpose_prj
 set_top hls_top 
 add_files { fft.c }
 add_files -tb { fft.c }

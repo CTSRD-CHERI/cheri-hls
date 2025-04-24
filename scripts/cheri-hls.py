@@ -27,7 +27,7 @@ BENCHMARKS = {
     "sort_radix": 8,
     "spmv_ellpack": 8,
     "viterbi": 8,
-    # "backprop": 8,
+    "backprop": 8,
     "bfs_queue": 8,
     "kmp": 8,
     "md_knn": 8,
@@ -805,8 +805,11 @@ class CheriHLS:
         # Generate HLS hardware
         test_dir = os.path.join(self.root, "examples", test)
         if "hls_fg" in mode:
-            if not os.path.exists(os.path.join(test_dir, "temp")):
-                os.mkdir(os.path.join(test_dir, "temp"))
+            if os.path.exists(os.path.join(test_dir, "temp")):
+                shutil.rmtree(os.path.join(test_dir, "temp"))
+                self.logger.info(f"Deleted temp dir {os.path.join(test_dir, 'temp')}")
+            os.mkdir(os.path.join(test_dir, "temp"))
+            self.logger.info(f"Created temp dir {os.path.join(test_dir, 'temp')}")
             cmd = [
                 "bash",
                 os.path.join(self.root, "scripts", "run-vitis-hls.sh"),

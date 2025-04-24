@@ -47,6 +47,17 @@ class LLVMTransformer:
 
         with open(f"/workspace/scripts/cheri_resources/{filename}.txt") as file:
             attributes = file.readlines()
+        attributes = (
+            [
+                f"""
+attributes #9000 = {{ inaccessiblememonly nounwind "xlx.port.bitwidth"="{128 * self.numcaps}" "xlx.source"="user" }}
+attributes #9001 = {{ inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }}
+attributes #9002 = {{ inaccessiblememonly nounwind "xlx.port.bitwidth"="{96 * self.numcaps}" "xlx.source"="user" }}
+attributes #9003 = {{ nounwind }}
+        """
+            ]
+            + attributes
+        )
         return attributes
 
     def load_config(self, config_file):
@@ -111,8 +122,8 @@ class LLVMTransformer:
         # Create new function signature
         # metadata = "!101670" if self.full_caps else "!101493"
         # metadata2 = "!101673" if self.full_caps else "!101496"
-        metadata = "!101669" if self.full_caps else "!101522"
-        metadata2 = "!101672" if self.full_caps else "!101525"
+        metadata = "!101669" if self.full_caps else "!101603"
+        metadata2 = "!101672" if self.full_caps else "!101606"
         # metadata = "!101493"
         if is_top:
             new_sig = f"define {return_type} @{func_name}({new_params}) #{attribute_num} !dbg {metadata} !fpga.function.pragma {metadata2} {{"
@@ -315,7 +326,7 @@ class LLVMTransformer:
             "  %init.0 = bitcast i32* %flag_buf to i8*, !dbg !101491",
             "  call void @llvm.lifetime.start.p0i8(i64 4, i8* %init.0) #9003, !dbg !101491",
             "  call void @llvm.dbg.declare(metadata i32* %flag_buf, metadata !101492, metadata !DIExpression()), !dbg !101493",
-            "  store i32 0, i32* %flag_buf, align 4, !dbg !101493",
+            "  store i32 1, i32* %flag_buf, align 4, !dbg !101493",
             f"  %init.1 = bitcast [{self.numcaps} x %struct.Cap]* %caps to i8*, !dbg !101494",
             f"  call void @llvm.lifetime.start.p0i8(i64 {self.numcaps * 12}, i8* %init.1) #9003, !dbg !101494",
             f"  call void @llvm.dbg.declare(metadata [{self.numcaps} x %struct.Cap]* %caps, metadata !101495, metadata !DIExpression()), !dbg !101499",
@@ -346,16 +357,6 @@ class LLVMTransformer:
             "  call void @llvm.lifetime.end.p0i8(i64 4, i8* %end.4) #9003, !dbg !101542",
         ]
         return cleanup
-
-    def add_attributes(self) -> List[str]:
-        attributes = [
-            'attributes #9000 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="384" "xlx.source"="user" }',
-            'attributes #9001 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }',
-            'attributes #9002 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "xlx.source"="user" }',
-            "attributes #9003 = { nounwind }",
-        ]
-
-        return attributes
 
     def is_rejected_line(self, line):
         rej_list = [
@@ -458,8 +459,6 @@ class LLVMTransformer:
                 and "stream_write" in lines[i + 1]
                 and "call void" in lines[i + 1]
             ):
-                print(lines[i])
-                print(lines[i + 1])
                 match = re.search(
                     r"getelementptr\s+inbounds\s+\[[^]]+\],\s+\[[^]]+\]\*\s+(%\w+)",
                     lines[i],
@@ -476,12 +475,46 @@ class LLVMTransformer:
                 cap_idx = self.cap_indices.index(arr_info_1["cap"])
                 arr_info_2 = self.array_info[arr_2]
 
-                new_line = f"""
+                if not self.local_caps:
+                    print(
+                        "STORE",
+                        current_function,
+                        current_block,
+                        arr_1,
+                    )
+                    new_line = f"""
   %decay.{self.arrayidx} = getelementptr inbounds [{arr_info_2["size"]} x i32], [{arr_info_2["size"]} x i32]* {arr_2}, i32 0, i32 0, !dbg !101539
   %cap.arrayidx{self.arrayidx} = getelementptr inbounds [{self.numcaps} x %struct.Cap], [{self.numcaps} x %struct.Cap]* %caps, i64 0, i64 {cap_idx}, !dbg !101539
   %store.{self.arrayidx} = load %struct.Cap, %struct.Cap* %cap.arrayidx{self.arrayidx}, align 4, !dbg !101539
   store %struct.Cap %store.{self.arrayidx}, %struct.Cap* %agg.tmp{cap_idx}, align 4, !dbg !101539
-  call void @_Z18cheri_stream_writejPiS_Pj3Cap(i32 {size}, i32* {arr_1}, i32* %decay.{self.arrayidx}, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp{cap_idx}), !dbg !101539
+  call void @_Z21cheri_stream_write_nljPiS_Pj3Cap(i32 {size}, i32* {arr_1}, i32* %decay.{self.arrayidx}, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp{cap_idx}), !dbg !101539
+ """
+                else:
+                    print(
+                        "LOAD ",
+                        current_function,
+                        current_block,
+                        arr_2,
+                    )
+                    print(
+                        "STORE",
+                        current_function,
+                        current_block,
+                        arr_1,
+                    )
+                    cap_idx2 = self.cap_indices.index(arr_info_2["cap"])
+                    new_line = f"""
+  %decay.{self.arrayidx} = getelementptr inbounds [{arr_info_2["size"]} x i32], [{arr_info_2["size"]} x i32]* {arr_2}, i32 0, i32 0, !dbg !101539
+
+  %cap.arrayidx{self.arrayidx} = getelementptr inbounds [{self.numcaps} x %struct.Cap], [{self.numcaps} x %struct.Cap]* %caps, i64 0, i64 {cap_idx}, !dbg !101539
+  %store.{self.arrayidx} = load %struct.Cap, %struct.Cap* %cap.arrayidx{self.arrayidx}, align 4, !dbg !101539
+  store %struct.Cap %store.{self.arrayidx}, %struct.Cap* %agg.tmp{cap_idx}, align 4, !dbg !101539
+
+  %cap.arrayidx{self.arrayidx}b = getelementptr inbounds [{self.numcaps} x %struct.Cap], [{self.numcaps} x %struct.Cap]* %caps, i64 0, i64 {cap_idx2}, !dbg !101539
+  %store.{self.arrayidx}b = load %struct.Cap, %struct.Cap* %cap.arrayidx{self.arrayidx}b, align 4, !dbg !101539
+  store %struct.Cap %store.{self.arrayidx}b, %struct.Cap* %agg.tmp{cap_idx2}, align 4, !dbg !101539
+
+  call void @_Z18cheri_stream_writejPiS_Pj3CapS1_(i32 {size}, i32* {arr_1}, i32* %decay.{self.arrayidx}, i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp{cap_idx}, %struct.Cap* byval align 4 %agg.tmp{cap_idx2}), !dbg !101539
  """
                 transformed_lines.append(new_line)
                 self.arrayidx += 1

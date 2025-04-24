@@ -428,6 +428,7 @@ $_ZN11ap_int_baseILi3ELb0EEC2Ei = comdat any
 $_ZN11ap_int_baseILi3ELb0EE18checkOverflowBaseCIiEEvT_ = comdat any
 
 @llvm.global_ctors = appending global [0 x { i32, void ()*, i8* }] zeroinitializer
+@_ZZ7hls_topiPiS_PjS0_E1b = private unnamed_addr constant [1000 x i32] [i32 0, i32 1, i32 2, i32 3, i32 4, i32 5, i32 6, i32 7, i32 8, i32 9, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0, i32 0], align 4
 
 ; Function Attrs: alwaysinline nounwind
 define void @_Z6decode7ap_uintILi32EES0_S0_S0_(%struct.Cap* noalias sret %agg.result, %"struct.ap_uint<32>"* byval align 4 %buffer_0, %"struct.ap_uint<32>"* byval align 4 %buffer_1, %"struct.ap_uint<32>"* byval align 4 %buffer_2, %"struct.ap_uint<32>"* byval align 4 %buffer_3) #100000 !dbg !100335 !fpga.function.pragma !100370 {
@@ -513,27 +514,27 @@ entry:
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<32>"* %buffer_2, metadata !100377, metadata !DIExpression()), !dbg !100378
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<32>"* %buffer_3, metadata !100379, metadata !DIExpression()), !dbg !100380
   %0 = bitcast %"struct.ap_uint<64>"* %cap to i8*, !dbg !100381
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019, !dbg !100381
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021, !dbg !100381
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<64>"* %cap, metadata !100382, metadata !DIExpression()), !dbg !100403
   %1 = bitcast %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %ref.tmp to i8*, !dbg !100404
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100019, !dbg !100404
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100021, !dbg !100404
   %2 = bitcast %"struct.ap_uint<32>"* %buffer_3 to %"struct.ap_int_base<32, false>"*, !dbg !100405
   %3 = bitcast %"struct.ap_uint<32>"* %buffer_2 to %"struct.ap_int_base<32, false>"*, !dbg !100406
   call void @_ZN11ap_int_baseILi32ELb0EEcmILi32ELb0EEE13ap_concat_refILi32ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* sret %ref.tmp, %"struct.ap_int_base<32, false>"* %2, %"struct.ap_int_base<32, false>"* dereferenceable(4) %3), !dbg !100407
   call void @_ZN7ap_uintILi64EEC2ILi32E11ap_int_baseILi32ELb0EELi32ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<64>"* %cap, %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* dereferenceable(16) %ref.tmp), !dbg !100404
   %4 = bitcast %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %ref.tmp to i8*, !dbg !100403
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %4) #100019, !dbg !100403
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %4) #100021, !dbg !100403
   %5 = bitcast %"struct.ap_uint<64>"* %addr to i8*, !dbg !100408
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %5) #100019, !dbg !100408
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %5) #100021, !dbg !100408
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<64>"* %addr, metadata !100409, metadata !DIExpression()), !dbg !100410
   %6 = bitcast %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %ref.tmp1 to i8*, !dbg !100411
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %6) #100019, !dbg !100411
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %6) #100021, !dbg !100411
   %7 = bitcast %"struct.ap_uint<32>"* %buffer_1 to %"struct.ap_int_base<32, false>"*, !dbg !100412
   %8 = bitcast %"struct.ap_uint<32>"* %buffer_0 to %"struct.ap_int_base<32, false>"*, !dbg !100413
   call void @_ZN11ap_int_baseILi32ELb0EEcmILi32ELb0EEE13ap_concat_refILi32ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* sret %ref.tmp1, %"struct.ap_int_base<32, false>"* %7, %"struct.ap_int_base<32, false>"* dereferenceable(4) %8), !dbg !100414
   call void @_ZN7ap_uintILi64EEC2ILi32E11ap_int_baseILi32ELb0EELi32ES3_EERK13ap_concat_refIXT_ET0_XT1_ET2_E(%"struct.ap_uint<64>"* %addr, %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* dereferenceable(16) %ref.tmp1), !dbg !100411
   %9 = bitcast %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %ref.tmp1 to i8*, !dbg !100410
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %9) #100019, !dbg !100410
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %9) #100021, !dbg !100410
   %10 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100415
   %call = call dereferenceable(8) %"struct.ap_int_base<64, false>"* @_ZeOILi64ELb0EER11ap_int_baseIXT_EXT0_EES2_l(%"struct.ap_int_base<64, false>"* dereferenceable(8) %10, i64 35184305078276), !dbg !100416
   %11 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100417
@@ -547,71 +548,71 @@ entry:
   %tobool5 = icmp ne i64 %call4, 0, !dbg !100421
   call void @llvm.dbg.value(metadata i1 %tobool5, metadata !100423, metadata !DIExpression()), !dbg !100424
   %13 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp6 to i8*, !dbg !100425
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %13) #100019, !dbg !100425
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %13) #100021, !dbg !100425
   %14 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100425
   call void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* sret %ref.tmp6, %"struct.ap_int_base<64, false>"* %14, i32 47, i32 47), !dbg !100426
   %call7 = call zeroext i1 @_ZneILi64ELb0EEbRK12ap_range_refIXT_EXT0_EEi(%"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref.tmp6, i32 0), !dbg !100427
   %15 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp6 to i8*, !dbg !100428
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %15) #100019, !dbg !100428
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %15) #100021, !dbg !100428
   call void @llvm.dbg.value(metadata i1 %call7, metadata !100429, metadata !DIExpression()), !dbg !100430
   %16 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp8 to i8*, !dbg !100431
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %16) #100019, !dbg !100431
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %16) #100021, !dbg !100431
   %17 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100431
   call void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* sret %ref.tmp8, %"struct.ap_int_base<64, false>"* %17, i32 26, i32 26), !dbg !100432
   %call9 = call zeroext i1 @_ZneILi64ELb0EEbRK12ap_range_refIXT_EXT0_EEi(%"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref.tmp8, i32 0), !dbg !100433
   %18 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp8 to i8*, !dbg !100434
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %18) #100019, !dbg !100434
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %18) #100021, !dbg !100434
   call void @llvm.dbg.value(metadata i1 %call9, metadata !100435, metadata !DIExpression()), !dbg !100436
   %19 = bitcast %"struct.ap_uint<9>"* %T_11_3 to i8*, !dbg !100437
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %19) #100019, !dbg !100437
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %19) #100021, !dbg !100437
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<9>"* %T_11_3, metadata !100438, metadata !DIExpression()), !dbg !100459
   %20 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp10 to i8*, !dbg !100460
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %20) #100019, !dbg !100460
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %20) #100021, !dbg !100460
   %21 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100460
   call void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* sret %ref.tmp10, %"struct.ap_int_base<64, false>"* %21, i32 25, i32 17), !dbg !100461
   call void @_ZN7ap_uintILi9EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<9>"* %T_11_3, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref.tmp10), !dbg !100460
   %22 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp10 to i8*, !dbg !100459
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %22) #100019, !dbg !100459
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %22) #100021, !dbg !100459
   %23 = bitcast %"struct.ap_uint<3>"* %T_E to i8*, !dbg !100462
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %23) #100019, !dbg !100462
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %23) #100021, !dbg !100462
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %T_E, metadata !100463, metadata !DIExpression()), !dbg !100511
   %24 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp11 to i8*, !dbg !100512
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %24) #100019, !dbg !100512
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %24) #100021, !dbg !100512
   %25 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100512
   call void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* sret %ref.tmp11, %"struct.ap_int_base<64, false>"* %25, i32 16, i32 14), !dbg !100513
   call void @_ZN7ap_uintILi3EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %T_E, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref.tmp11), !dbg !100512
   %26 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp11 to i8*, !dbg !100511
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %26) #100019, !dbg !100511
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %26) #100021, !dbg !100511
   %27 = bitcast %"struct.ap_uint<11>"* %B_13_3 to i8*, !dbg !100514
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %27) #100019, !dbg !100514
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %27) #100021, !dbg !100514
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<11>"* %B_13_3, metadata !100515, metadata !DIExpression()), !dbg !100536
   %28 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp12 to i8*, !dbg !100537
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %28) #100019, !dbg !100537
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %28) #100021, !dbg !100537
   %29 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100537
   call void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* sret %ref.tmp12, %"struct.ap_int_base<64, false>"* %29, i32 13, i32 3), !dbg !100538
   call void @_ZN7ap_uintILi11EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<11>"* %B_13_3, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref.tmp12), !dbg !100537
   %30 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp12 to i8*, !dbg !100536
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %30) #100019, !dbg !100536
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %30) #100021, !dbg !100536
   %31 = bitcast %"struct.ap_uint<3>"* %B_E to i8*, !dbg !100539
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %31) #100019, !dbg !100539
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %31) #100021, !dbg !100539
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %B_E, metadata !100540, metadata !DIExpression()), !dbg !100541
   %32 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp13 to i8*, !dbg !100542
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %32) #100019, !dbg !100542
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %32) #100021, !dbg !100542
   %33 = bitcast %"struct.ap_uint<64>"* %cap to %"struct.ap_int_base<64, false>"*, !dbg !100542
   call void @_ZN11ap_int_baseILi64ELb0EE5rangeEii(%"struct.ap_range_ref<64, false>"* sret %ref.tmp13, %"struct.ap_int_base<64, false>"* %33, i32 2, i32 0), !dbg !100543
   call void @_ZN7ap_uintILi3EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %B_E, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %ref.tmp13), !dbg !100542
   %34 = bitcast %"struct.ap_range_ref<64, false>"* %ref.tmp13 to i8*, !dbg !100541
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %34) #100019, !dbg !100541
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %34) #100021, !dbg !100541
   %35 = bitcast %"struct.ap_uint<6>"* %E to i8*, !dbg !100544
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %35) #100019, !dbg !100544
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %35) #100021, !dbg !100544
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<6>"* %E, metadata !100545, metadata !DIExpression()), !dbg !100566
   call void @_ZN7ap_uintILi6EEC2Ei(%"struct.ap_uint<6>"* %E, i32 0), !dbg !100567
   %36 = bitcast %"struct.ap_uint<14>"* %T_13_0 to i8*, !dbg !100568
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %36) #100019, !dbg !100568
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %36) #100021, !dbg !100568
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<14>"* %T_13_0, metadata !100569, metadata !DIExpression()), !dbg !100617
   call void @_ZN7ap_uintILi14EEC2Ei(%"struct.ap_uint<14>"* %T_13_0, i32 0), !dbg !100618
   %37 = bitcast %"struct.ap_uint<14>"* %B_13_0 to i8*, !dbg !100619
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %37) #100019, !dbg !100619
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %37) #100021, !dbg !100619
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<14>"* %B_13_0, metadata !100620, metadata !DIExpression()), !dbg !100621
   call void @_ZN7ap_uintILi14EEC2Ei(%"struct.ap_uint<14>"* %B_13_0, i32 0), !dbg !100622
   call void @llvm.dbg.value(metadata i1 false, metadata !100623, metadata !DIExpression()), !dbg !100624
@@ -619,16 +620,16 @@ entry:
 
 if.then:                                          ; preds = %entry
   %38 = bitcast %"struct.ap_uint<6>"* %ref.tmp14 to i8*, !dbg !100626
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %38) #100019, !dbg !100626
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %38) #100021, !dbg !100626
   call void @_ZN7ap_uintILi6EEC2Ei(%"struct.ap_uint<6>"* %ref.tmp14, i32 0), !dbg !100626
   %39 = load %"struct.ap_uint<6>", %"struct.ap_uint<6>"* %ref.tmp14, align 1, !dbg !100629
   store %"struct.ap_uint<6>" %39, %"struct.ap_uint<6>"* %E, align 1, !dbg !100629
   %40 = bitcast %"struct.ap_uint<6>"* %ref.tmp14 to i8*, !dbg !100630
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %40) #100019, !dbg !100630
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %40) #100021, !dbg !100630
   %41 = bitcast %"struct.ap_uint<14>"* %ref.tmp15 to i8*, !dbg !100631
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %41) #100019, !dbg !100631
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %41) #100021, !dbg !100631
   %42 = bitcast %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %ref.tmp16 to i8*, !dbg !100631
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %42) #100019, !dbg !100631
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %42) #100021, !dbg !100631
   %43 = bitcast %"struct.ap_uint<9>"* %T_11_3 to %"struct.ap_int_base<9, false>"*, !dbg !100632
   %44 = bitcast %"struct.ap_uint<3>"* %T_E to %"struct.ap_int_base<3, false>"*, !dbg !100633
   call void @_ZN11ap_int_baseILi9ELb0EEcmILi3ELb0EEE13ap_concat_refILi9ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* sret %ref.tmp16, %"struct.ap_int_base<9, false>"* %43, %"struct.ap_int_base<3, false>"* dereferenceable(1) %44), !dbg !100634
@@ -636,13 +637,13 @@ if.then:                                          ; preds = %entry
   %45 = load %"struct.ap_uint<14>", %"struct.ap_uint<14>"* %ref.tmp15, align 2, !dbg !100635
   store %"struct.ap_uint<14>" %45, %"struct.ap_uint<14>"* %T_13_0, align 2, !dbg !100635
   %46 = bitcast %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %ref.tmp16 to i8*, !dbg !100636
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %46) #100019, !dbg !100636
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %46) #100021, !dbg !100636
   %47 = bitcast %"struct.ap_uint<14>"* %ref.tmp15 to i8*, !dbg !100636
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %47) #100019, !dbg !100636
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %47) #100021, !dbg !100636
   %48 = bitcast %"struct.ap_uint<14>"* %ref.tmp17 to i8*, !dbg !100637
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %48) #100019, !dbg !100637
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %48) #100021, !dbg !100637
   %49 = bitcast %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %ref.tmp18 to i8*, !dbg !100637
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %49) #100019, !dbg !100637
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %49) #100021, !dbg !100637
   %50 = bitcast %"struct.ap_uint<11>"* %B_13_3 to %"struct.ap_int_base<11, false>"*, !dbg !100638
   %51 = bitcast %"struct.ap_uint<3>"* %B_E to %"struct.ap_int_base<3, false>"*, !dbg !100639
   call void @_ZN11ap_int_baseILi11ELb0EEcmILi3ELb0EEE13ap_concat_refILi11ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* sret %ref.tmp18, %"struct.ap_int_base<11, false>"* %50, %"struct.ap_int_base<3, false>"* dereferenceable(1) %51), !dbg !100640
@@ -650,44 +651,44 @@ if.then:                                          ; preds = %entry
   %52 = load %"struct.ap_uint<14>", %"struct.ap_uint<14>"* %ref.tmp17, align 2, !dbg !100641
   store %"struct.ap_uint<14>" %52, %"struct.ap_uint<14>"* %B_13_0, align 2, !dbg !100641
   %53 = bitcast %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %ref.tmp18 to i8*, !dbg !100642
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %53) #100019, !dbg !100642
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %53) #100021, !dbg !100642
   %54 = bitcast %"struct.ap_uint<14>"* %ref.tmp17 to i8*, !dbg !100642
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %54) #100019, !dbg !100642
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %54) #100021, !dbg !100642
   %55 = bitcast %"struct.ap_uint<12>"* %T_11_0 to i8*, !dbg !100643
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %55) #100019, !dbg !100643
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %55) #100021, !dbg !100643
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<12>"* %T_11_0, metadata !100644, metadata !DIExpression()), !dbg !100692
   %56 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp19 to i8*, !dbg !100693
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %56) #100019, !dbg !100693
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %56) #100021, !dbg !100693
   %57 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100693
   call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp19, %"struct.ap_int_base<14, false>"* %57, i32 11, i32 0), !dbg !100694
   call void @_ZN7ap_uintILi12EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<12>"* %T_11_0, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp19), !dbg !100693
   %58 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp19 to i8*, !dbg !100692
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %58) #100019, !dbg !100692
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %58) #100021, !dbg !100692
   %59 = bitcast %"struct.ap_uint<12>"* %B_11_0 to i8*, !dbg !100695
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %59) #100019, !dbg !100695
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %59) #100021, !dbg !100695
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<12>"* %B_11_0, metadata !100696, metadata !DIExpression()), !dbg !100697
   %60 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp20 to i8*, !dbg !100698
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %60) #100019, !dbg !100698
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %60) #100021, !dbg !100698
   %61 = bitcast %"struct.ap_uint<14>"* %B_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100698
   call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp20, %"struct.ap_int_base<14, false>"* %61, i32 11, i32 0), !dbg !100699
   call void @_ZN7ap_uintILi12EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<12>"* %B_11_0, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp20), !dbg !100698
   %62 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp20 to i8*, !dbg !100697
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %62) #100019, !dbg !100697
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %62) #100021, !dbg !100697
   %63 = bitcast %"struct.ap_uint<12>"* %T_11_0 to %"struct.ap_int_base<12, false>"*, !dbg !100700
   %64 = bitcast %"struct.ap_uint<12>"* %B_11_0 to %"struct.ap_int_base<12, false>"*, !dbg !100701
   %call21 = call zeroext i1 @_ZNK11ap_int_baseILi12ELb0EEltILi12ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<12, false>"* %63, %"struct.ap_int_base<12, false>"* dereferenceable(2) %64), !dbg !100702
   call void @llvm.dbg.value(metadata i1 %call21, metadata !100623, metadata !DIExpression()), !dbg !100624
   %65 = bitcast %"struct.ap_uint<12>"* %B_11_0 to i8*, !dbg !100703
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %65) #100019, !dbg !100703
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %65) #100021, !dbg !100703
   %66 = bitcast %"struct.ap_uint<12>"* %T_11_0 to i8*, !dbg !100703
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %66) #100019, !dbg !100703
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %66) #100021, !dbg !100703
   br label %if.end, !dbg !100704
 
 if.else:                                          ; preds = %entry
   %67 = bitcast %"struct.ap_uint<6>"* %ref.tmp22 to i8*, !dbg !100705
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %67) #100019, !dbg !100705
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %67) #100021, !dbg !100705
   %68 = bitcast %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %ref.tmp23 to i8*, !dbg !100705
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %68) #100019, !dbg !100705
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %68) #100021, !dbg !100705
   %69 = bitcast %"struct.ap_uint<3>"* %T_E to %"struct.ap_int_base<3, false>"*, !dbg !100707
   %70 = bitcast %"struct.ap_uint<3>"* %B_E to %"struct.ap_int_base<3, false>"*, !dbg !100708
   call void @_ZN11ap_int_baseILi3ELb0EEcmILi3ELb0EEE13ap_concat_refILi3ES0_XT_ES_IXT_EXT0_EEERS3_(%"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* sret %ref.tmp23, %"struct.ap_int_base<3, false>"* %69, %"struct.ap_int_base<3, false>"* dereferenceable(1) %70), !dbg !100709
@@ -695,85 +696,85 @@ if.else:                                          ; preds = %entry
   %71 = load %"struct.ap_uint<6>", %"struct.ap_uint<6>"* %ref.tmp22, align 1, !dbg !100710
   store %"struct.ap_uint<6>" %71, %"struct.ap_uint<6>"* %E, align 1, !dbg !100710
   %72 = bitcast %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %ref.tmp23 to i8*, !dbg !100711
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %72) #100019, !dbg !100711
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %72) #100021, !dbg !100711
   %73 = bitcast %"struct.ap_uint<6>"* %ref.tmp22 to i8*, !dbg !100711
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %73) #100019, !dbg !100711
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %73) #100021, !dbg !100711
   %74 = bitcast %"struct.ap_uint<14>"* %ref.tmp24 to i8*, !dbg !100712
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %74) #100019, !dbg !100712
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %74) #100021, !dbg !100712
   %75 = bitcast %"struct.ap_uint<9>"* %ref.tmp25 to i8*, !dbg !100712
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %75) #100019, !dbg !100712
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %75) #100021, !dbg !100712
   %76 = bitcast %"struct.ap_uint<9>"* %T_11_3 to %"struct.ap_int_base<9, false>"*, !dbg !100713
   call void @_ZlsILi9ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%"struct.ap_uint<9>"* sret %ref.tmp25, %"struct.ap_int_base<9, false>"* dereferenceable(2) %76, i32 3), !dbg !100714
   call void @_ZN7ap_uintILi14EEC2ILi9EEERKS_IXT_EE(%"struct.ap_uint<14>"* %ref.tmp24, %"struct.ap_uint<9>"* dereferenceable(2) %ref.tmp25), !dbg !100712
   %77 = load %"struct.ap_uint<14>", %"struct.ap_uint<14>"* %ref.tmp24, align 2, !dbg !100715
   store %"struct.ap_uint<14>" %77, %"struct.ap_uint<14>"* %T_13_0, align 2, !dbg !100715
   %78 = bitcast %"struct.ap_uint<9>"* %ref.tmp25 to i8*, !dbg !100716
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %78) #100019, !dbg !100716
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %78) #100021, !dbg !100716
   %79 = bitcast %"struct.ap_uint<14>"* %ref.tmp24 to i8*, !dbg !100716
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %79) #100019, !dbg !100716
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %79) #100021, !dbg !100716
   %80 = bitcast %"struct.ap_uint<14>"* %ref.tmp26 to i8*, !dbg !100717
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %80) #100019, !dbg !100717
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %80) #100021, !dbg !100717
   %81 = bitcast %"struct.ap_uint<11>"* %ref.tmp27 to i8*, !dbg !100717
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %81) #100019, !dbg !100717
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %81) #100021, !dbg !100717
   %82 = bitcast %"struct.ap_uint<11>"* %B_13_3 to %"struct.ap_int_base<11, false>"*, !dbg !100718
   call void @_ZlsILi11ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_EE4arg1ERKS1_i(%"struct.ap_uint<11>"* sret %ref.tmp27, %"struct.ap_int_base<11, false>"* dereferenceable(2) %82, i32 3), !dbg !100719
   call void @_ZN7ap_uintILi14EEC2ILi11EEERKS_IXT_EE(%"struct.ap_uint<14>"* %ref.tmp26, %"struct.ap_uint<11>"* dereferenceable(2) %ref.tmp27), !dbg !100717
   %83 = load %"struct.ap_uint<14>", %"struct.ap_uint<14>"* %ref.tmp26, align 2, !dbg !100720
   store %"struct.ap_uint<14>" %83, %"struct.ap_uint<14>"* %B_13_0, align 2, !dbg !100720
   %84 = bitcast %"struct.ap_uint<11>"* %ref.tmp27 to i8*, !dbg !100721
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %84) #100019, !dbg !100721
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %84) #100021, !dbg !100721
   %85 = bitcast %"struct.ap_uint<14>"* %ref.tmp26 to i8*, !dbg !100721
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %85) #100019, !dbg !100721
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %85) #100021, !dbg !100721
   %86 = bitcast %"struct.ap_uint<12>"* %T_11_3_only to i8*, !dbg !100722
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %86) #100019, !dbg !100722
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %86) #100021, !dbg !100722
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<12>"* %T_11_3_only, metadata !100723, metadata !DIExpression()), !dbg !100724
   %87 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp28 to i8*, !dbg !100725
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %87) #100019, !dbg !100725
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %87) #100021, !dbg !100725
   %88 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100725
   call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp28, %"struct.ap_int_base<14, false>"* %88, i32 11, i32 3), !dbg !100726
   call void @_ZN7ap_uintILi12EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<12>"* %T_11_3_only, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp28), !dbg !100725
   %89 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp28 to i8*, !dbg !100724
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %89) #100019, !dbg !100724
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %89) #100021, !dbg !100724
   %90 = bitcast %"struct.ap_uint<12>"* %B_11_3_only to i8*, !dbg !100727
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %90) #100019, !dbg !100727
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %90) #100021, !dbg !100727
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<12>"* %B_11_3_only, metadata !100728, metadata !DIExpression()), !dbg !100729
   %91 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp29 to i8*, !dbg !100730
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %91) #100019, !dbg !100730
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %91) #100021, !dbg !100730
   %92 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100730
   call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp29, %"struct.ap_int_base<14, false>"* %92, i32 11, i32 3), !dbg !100731
   call void @_ZN7ap_uintILi12EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<12>"* %B_11_3_only, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp29), !dbg !100730
   %93 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp29 to i8*, !dbg !100729
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %93) #100019, !dbg !100729
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %93) #100021, !dbg !100729
   %94 = bitcast %"struct.ap_uint<12>"* %T_11_3_only to %"struct.ap_int_base<12, false>"*, !dbg !100732
   %95 = bitcast %"struct.ap_uint<12>"* %B_11_3_only to %"struct.ap_int_base<12, false>"*, !dbg !100733
   %call30 = call zeroext i1 @_ZNK11ap_int_baseILi12ELb0EEltILi12ELb0EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<12, false>"* %94, %"struct.ap_int_base<12, false>"* dereferenceable(2) %95), !dbg !100734
   call void @llvm.dbg.value(metadata i1 %call30, metadata !100623, metadata !DIExpression()), !dbg !100624
   %96 = bitcast %"struct.ap_uint<12>"* %B_11_3_only to i8*, !dbg !100735
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %96) #100019, !dbg !100735
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %96) #100021, !dbg !100735
   %97 = bitcast %"struct.ap_uint<12>"* %T_11_3_only to i8*, !dbg !100735
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %97) #100019, !dbg !100735
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %97) #100021, !dbg !100735
   br label %if.end
 
 if.end:                                           ; preds = %if.else, %if.then
   %L_carry_out.0 = phi i1 [ %call30, %if.else ], [ %call21, %if.then ]
   call void @llvm.dbg.value(metadata i1 %L_carry_out.0, metadata !100623, metadata !DIExpression()), !dbg !100624
   %98 = bitcast %"struct.ap_uint<2>"* %B_13_12 to i8*, !dbg !100736
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %98) #100019, !dbg !100736
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %98) #100021, !dbg !100736
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<2>"* %B_13_12, metadata !100737, metadata !DIExpression()), !dbg !100785
   %99 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp31 to i8*, !dbg !100786
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %99) #100019, !dbg !100786
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %99) #100021, !dbg !100786
   %100 = bitcast %"struct.ap_uint<14>"* %B_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100786
   call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp31, %"struct.ap_int_base<14, false>"* %100, i32 13, i32 12), !dbg !100787
   call void @_ZN7ap_uintILi2EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<2>"* %B_13_12, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp31), !dbg !100786
   %101 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp31 to i8*, !dbg !100785
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %101) #100019, !dbg !100785
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %101) #100021, !dbg !100785
   %102 = bitcast %"struct.ap_uint<2>"* %T_13_12 to i8*, !dbg !100788
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %102) #100019, !dbg !100788
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %102) #100021, !dbg !100788
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<2>"* %T_13_12, metadata !100789, metadata !DIExpression()), !dbg !100790
   %103 = bitcast %"struct.ap_int<34>"* %ref.tmp32 to i8*, !dbg !100791
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %103) #100019, !dbg !100791
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %103) #100021, !dbg !100791
   %104 = bitcast %"struct.ap_int<33>"* %ref.tmp33 to i8*, !dbg !100791
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %104) #100019, !dbg !100791
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %104) #100021, !dbg !100791
   %105 = bitcast %"struct.ap_uint<2>"* %B_13_12 to %"struct.ap_int_base<2, false>"*, !dbg !100791
   %106 = zext i1 %L_carry_out.0 to i64, !dbg !100792
   %cond = select i1 %L_carry_out.0, i32 1, i32 0, !dbg !100792
@@ -784,16 +785,16 @@ if.end:                                           ; preds = %if.else, %if.then
   call void @"_ZplILi33ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<34>"* sret %ref.tmp32, %"struct.ap_int_base<33, true>"* dereferenceable(8) %107, i32 %cond34), !dbg !100795
   call void @_ZN7ap_uintILi2EEC2ILi34EEERK6ap_intIXT_EE(%"struct.ap_uint<2>"* %T_13_12, %"struct.ap_int<34>"* dereferenceable(8) %ref.tmp32), !dbg !100791
   %109 = bitcast %"struct.ap_int<33>"* %ref.tmp33 to i8*, !dbg !100790
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %109) #100019, !dbg !100790
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %109) #100021, !dbg !100790
   %110 = bitcast %"struct.ap_int<34>"* %ref.tmp32 to i8*, !dbg !100790
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %110) #100019, !dbg !100790
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %110) #100021, !dbg !100790
   %111 = bitcast %"struct.ap_uint<14>"* %ref.tmp35 to i8*, !dbg !100796
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %111) #100019, !dbg !100796
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %111) #100021, !dbg !100796
   %112 = bitcast %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %ref.tmp36 to i8*, !dbg !100796
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %112) #100019, !dbg !100796
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %112) #100021, !dbg !100796
   %113 = bitcast %"struct.ap_uint<2>"* %T_13_12 to %"struct.ap_int_base<2, false>"*, !dbg !100797
   %114 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp37 to i8*, !dbg !100798
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %114) #100019, !dbg !100798
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %114) #100021, !dbg !100798
   %115 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100798
   call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp37, %"struct.ap_int_base<14, false>"* %115, i32 11, i32 0), !dbg !100799
   call void @_ZNK11ap_int_baseILi2ELb0EEcmILi14ELb0EEE13ap_concat_refILi2ES0_XT_E12ap_range_refIXT_EXT0_EEERKS4_(%"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* sret %ref.tmp36, %"struct.ap_int_base<2, false>"* %113, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp37), !dbg !100800
@@ -801,21 +802,21 @@ if.end:                                           ; preds = %if.else, %if.then
   %116 = load %"struct.ap_uint<14>", %"struct.ap_uint<14>"* %ref.tmp35, align 2, !dbg !100801
   store %"struct.ap_uint<14>" %116, %"struct.ap_uint<14>"* %T_13_0, align 2, !dbg !100801
   %117 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp37 to i8*, !dbg !100802
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %117) #100019, !dbg !100802
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %117) #100021, !dbg !100802
   %118 = bitcast %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %ref.tmp36 to i8*, !dbg !100802
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %118) #100019, !dbg !100802
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %118) #100021, !dbg !100802
   %119 = bitcast %"struct.ap_uint<14>"* %ref.tmp35 to i8*, !dbg !100802
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %119) #100019, !dbg !100802
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %119) #100021, !dbg !100802
   %120 = bitcast %"struct.ap_uint<3>"* %A3 to i8*, !dbg !100803
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %120) #100019, !dbg !100803
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %120) #100021, !dbg !100803
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %A3, metadata !100804, metadata !DIExpression()), !dbg !100805
   %121 = bitcast %"struct.ap_int<65>"* %ref.tmp38 to i8*, !dbg !100806
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %121) #100019, !dbg !100806
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %121) #100021, !dbg !100806
   %122 = bitcast %"struct.ap_uint<64>"* %ref.tmp39 to i8*, !dbg !100807
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %122) #100019, !dbg !100807
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %122) #100021, !dbg !100807
   %123 = bitcast %"struct.ap_uint<64>"* %addr to %"struct.ap_int_base<64, false>"*, !dbg !100808
   %124 = bitcast %"struct.ap_int<33>"* %ref.tmp40 to i8*, !dbg !100809
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %124) #100019, !dbg !100809
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %124) #100021, !dbg !100809
   %125 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100810
   call void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp40, %"struct.ap_int_base<6, false>"* dereferenceable(1) %125, i32 11), !dbg !100811
   %126 = bitcast %"struct.ap_int<33>"* %ref.tmp40 to %"struct.ap_int_base<33, true>"*, !dbg !100809
@@ -824,47 +825,47 @@ if.end:                                           ; preds = %if.else, %if.then
   call void @"_ZanILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5logicERKS1_i"(%"struct.ap_int<65>"* sret %ref.tmp38, %"struct.ap_int_base<64, false>"* dereferenceable(8) %127, i32 7), !dbg !100813
   call void @_ZN7ap_uintILi3EEC2ILi65EEERK6ap_intIXT_EE(%"struct.ap_uint<3>"* %A3, %"struct.ap_int<65>"* dereferenceable(16) %ref.tmp38), !dbg !100806
   %128 = bitcast %"struct.ap_int<33>"* %ref.tmp40 to i8*, !dbg !100805
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %128) #100019, !dbg !100805
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %128) #100021, !dbg !100805
   %129 = bitcast %"struct.ap_uint<64>"* %ref.tmp39 to i8*, !dbg !100805
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %129) #100019, !dbg !100805
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %129) #100021, !dbg !100805
   %130 = bitcast %"struct.ap_int<65>"* %ref.tmp38 to i8*, !dbg !100805
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %130) #100019, !dbg !100805
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %130) #100021, !dbg !100805
   %131 = bitcast %"struct.ap_uint<3>"* %T3 to i8*, !dbg !100814
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %131) #100019, !dbg !100814
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %131) #100021, !dbg !100814
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %T3, metadata !100815, metadata !DIExpression()), !dbg !100816
   %132 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp41 to i8*, !dbg !100817
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %132) #100019, !dbg !100817
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %132) #100021, !dbg !100817
   %133 = bitcast %"struct.ap_uint<14>"* %T_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100817
   call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp41, %"struct.ap_int_base<14, false>"* %133, i32 13, i32 11), !dbg !100818
   call void @_ZN7ap_uintILi3EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %T3, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp41), !dbg !100817
   %134 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp41 to i8*, !dbg !100816
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %134) #100019, !dbg !100816
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %134) #100021, !dbg !100816
   %135 = bitcast %"struct.ap_uint<3>"* %B3 to i8*, !dbg !100819
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %135) #100019, !dbg !100819
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %135) #100021, !dbg !100819
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %B3, metadata !100820, metadata !DIExpression()), !dbg !100821
   %136 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp42 to i8*, !dbg !100822
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %136) #100019, !dbg !100822
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %136) #100021, !dbg !100822
   %137 = bitcast %"struct.ap_uint<14>"* %B_13_0 to %"struct.ap_int_base<14, false>"*, !dbg !100822
   call void @_ZN11ap_int_baseILi14ELb0EE5rangeEii(%"struct.ap_range_ref<14, false>"* sret %ref.tmp42, %"struct.ap_int_base<14, false>"* %137, i32 13, i32 11), !dbg !100823
   call void @_ZN7ap_uintILi3EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_uint<3>"* %B3, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %ref.tmp42), !dbg !100822
   %138 = bitcast %"struct.ap_range_ref<14, false>"* %ref.tmp42 to i8*, !dbg !100821
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %138) #100019, !dbg !100821
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %138) #100021, !dbg !100821
   %139 = bitcast %"struct.ap_uint<3>"* %R to i8*, !dbg !100824
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %139) #100019, !dbg !100824
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %139) #100021, !dbg !100824
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<3>"* %R, metadata !100825, metadata !DIExpression()), !dbg !100826
   %140 = bitcast %"struct.ap_int<33>"* %ref.tmp43 to i8*, !dbg !100827
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %140) #100019, !dbg !100827
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %140) #100021, !dbg !100827
   %141 = bitcast %"struct.ap_uint<3>"* %B3 to %"struct.ap_int_base<3, false>"*, !dbg !100827
   call void @"_ZmiILi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE5minusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp43, %"struct.ap_int_base<3, false>"* dereferenceable(1) %141, i32 1), !dbg !100828
   call void @_ZN7ap_uintILi3EEC2ILi33EEERK6ap_intIXT_EE(%"struct.ap_uint<3>"* %R, %"struct.ap_int<33>"* dereferenceable(8) %ref.tmp43), !dbg !100827
   %142 = bitcast %"struct.ap_int<33>"* %ref.tmp43 to i8*, !dbg !100826
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %142) #100019, !dbg !100826
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %142) #100021, !dbg !100826
   %143 = bitcast %"struct.ap_uint<2>"* %c_t to i8*, !dbg !100829
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %143) #100019, !dbg !100829
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %143) #100021, !dbg !100829
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<2>"* %c_t, metadata !100830, metadata !DIExpression()), !dbg !100875
   call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %c_t, i32 0), !dbg !100876
   %144 = bitcast %"struct.ap_uint<2>"* %c_b to i8*, !dbg !100877
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %144) #100019, !dbg !100877
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %144) #100021, !dbg !100877
   call void @llvm.dbg.declare(metadata %"struct.ap_uint<2>"* %c_b, metadata !100878, metadata !DIExpression()), !dbg !100879
   call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %c_b, i32 0), !dbg !100880
   %145 = bitcast %"struct.ap_uint<3>"* %A3 to %"struct.ap_int_base<3, false>"*, !dbg !100881
@@ -880,12 +881,12 @@ land.lhs.true:                                    ; preds = %if.end
 
 if.then46:                                        ; preds = %land.lhs.true
   %149 = bitcast %"struct.ap_uint<2>"* %ref.tmp47 to i8*, !dbg !100890
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %149) #100019, !dbg !100890
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %149) #100021, !dbg !100890
   call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %ref.tmp47, i32 -1), !dbg !100890
   %150 = load %"struct.ap_uint<2>", %"struct.ap_uint<2>"* %ref.tmp47, align 1, !dbg !100892
   store %"struct.ap_uint<2>" %150, %"struct.ap_uint<2>"* %c_t, align 1, !dbg !100892
   %151 = bitcast %"struct.ap_uint<2>"* %ref.tmp47 to i8*, !dbg !100893
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %151) #100019, !dbg !100893
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %151) #100021, !dbg !100893
   br label %if.end55, !dbg !100894
 
 if.else48:                                        ; preds = %land.lhs.true, %if.end
@@ -902,12 +903,12 @@ land.lhs.true50:                                  ; preds = %if.else48
 
 if.then52:                                        ; preds = %land.lhs.true50
   %156 = bitcast %"struct.ap_uint<2>"* %ref.tmp53 to i8*, !dbg !100904
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %156) #100019, !dbg !100904
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %156) #100021, !dbg !100904
   call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %ref.tmp53, i32 1), !dbg !100904
   %157 = load %"struct.ap_uint<2>", %"struct.ap_uint<2>"* %ref.tmp53, align 1, !dbg !100906
   store %"struct.ap_uint<2>" %157, %"struct.ap_uint<2>"* %c_t, align 1, !dbg !100906
   %158 = bitcast %"struct.ap_uint<2>"* %ref.tmp53 to i8*, !dbg !100907
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %158) #100019, !dbg !100907
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %158) #100021, !dbg !100907
   br label %if.end54, !dbg !100908
 
 if.end54:                                         ; preds = %if.then52, %land.lhs.true50, %if.else48
@@ -927,12 +928,12 @@ land.lhs.true57:                                  ; preds = %if.end55
 
 if.then59:                                        ; preds = %land.lhs.true57
   %163 = bitcast %"struct.ap_uint<2>"* %ref.tmp60 to i8*, !dbg !100918
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %163) #100019, !dbg !100918
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %163) #100021, !dbg !100918
   call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %ref.tmp60, i32 -1), !dbg !100918
   %164 = load %"struct.ap_uint<2>", %"struct.ap_uint<2>"* %ref.tmp60, align 1, !dbg !100920
   store %"struct.ap_uint<2>" %164, %"struct.ap_uint<2>"* %c_b, align 1, !dbg !100920
   %165 = bitcast %"struct.ap_uint<2>"* %ref.tmp60 to i8*, !dbg !100921
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %165) #100019, !dbg !100921
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %165) #100021, !dbg !100921
   br label %if.end68, !dbg !100922
 
 if.else61:                                        ; preds = %land.lhs.true57, %if.end55
@@ -949,12 +950,12 @@ land.lhs.true63:                                  ; preds = %if.else61
 
 if.then65:                                        ; preds = %land.lhs.true63
   %170 = bitcast %"struct.ap_uint<2>"* %ref.tmp66 to i8*, !dbg !100932
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %170) #100019, !dbg !100932
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %170) #100021, !dbg !100932
   call void @_ZN6ap_intILi2EEC2Ei(%"struct.ap_uint<2>"* %ref.tmp66, i32 1), !dbg !100932
   %171 = load %"struct.ap_uint<2>", %"struct.ap_uint<2>"* %ref.tmp66, align 1, !dbg !100934
   store %"struct.ap_uint<2>" %171, %"struct.ap_uint<2>"* %c_b, align 1, !dbg !100934
   %172 = bitcast %"struct.ap_uint<2>"* %ref.tmp66 to i8*, !dbg !100935
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %172) #100019, !dbg !100935
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %172) #100021, !dbg !100935
   br label %if.end67, !dbg !100936
 
 if.end67:                                         ; preds = %if.then65, %land.lhs.true63, %if.else61
@@ -963,7 +964,7 @@ if.end67:                                         ; preds = %if.then65, %land.lh
 if.end68:                                         ; preds = %if.end67, %if.then59
   %173 = bitcast %"struct.ap_uint<64>"* %addr to %"struct.ap_int_base<64, false>"*, !dbg !100937
   %174 = bitcast %"struct.ap_int<33>"* %ref.tmp69 to i8*, !dbg !100938
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %174) #100019, !dbg !100938
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %174) #100021, !dbg !100938
   %175 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100939
   call void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp69, %"struct.ap_int_base<6, false>"* dereferenceable(1) %175, i32 14), !dbg !100940
   %176 = bitcast %"struct.ap_int<33>"* %ref.tmp69 to %"struct.ap_int_base<33, true>"*, !dbg !100938
@@ -972,15 +973,15 @@ if.end68:                                         ; preds = %if.end67, %if.then5
   %call71 = call i64 @_ZNK11ap_int_baseILi64ELb0EEcvyEv(%"struct.ap_int_base<64, false>"* %177), !dbg !100937
   %conv = trunc i64 %call71 to i32, !dbg !100937
   %178 = bitcast %"struct.ap_int<33>"* %ref.tmp69 to i8*, !dbg !100937
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %178) #100019, !dbg !100937
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %178) #100021, !dbg !100937
   call void @llvm.dbg.value(metadata i32 %conv, metadata !100942, metadata !DIExpression()), !dbg !100943
   %179 = bitcast %"struct.ap_int<34>"* %ref.tmp72 to i8*, !dbg !100944
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %179) #100019, !dbg !100944
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %179) #100021, !dbg !100944
   %180 = bitcast %"struct.ap_uint<2>"* %c_t to %"struct.ap_int_base<2, false>"*, !dbg !100945
   call void @"_ZplILi2ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE4plusEjRKS1_"(%"struct.ap_int<34>"* sret %tmp73, i32 %conv, %"struct.ap_int_base<2, false>"* dereferenceable(1) %180), !dbg !100946
   %181 = bitcast %"struct.ap_int<34>"* %tmp73 to %"struct.ap_int_base<34, true>"*, !dbg !100947
   %182 = bitcast %"struct.ap_int<33>"* %ref.tmp74 to i8*, !dbg !100948
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %182) #100019, !dbg !100948
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %182) #100021, !dbg !100948
   %183 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100949
   call void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp74, %"struct.ap_int_base<6, false>"* dereferenceable(1) %183, i32 14), !dbg !100950
   %184 = bitcast %"struct.ap_int<33>"* %ref.tmp74 to %"struct.ap_int_base<33, true>"*, !dbg !100948
@@ -1000,17 +1001,17 @@ if.end68:                                         ; preds = %if.end67, %if.then5
   %call80 = call i64 @_ZNK11ap_int_baseILi34ELb1EEcvxEv(%"struct.ap_int_base<34, true>"* %189), !dbg !100944
   %conv81 = trunc i64 %call80 to i32, !dbg !100944
   %190 = bitcast %"struct.ap_int<33>"* %ref.tmp74 to i8*, !dbg !100944
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %190) #100019, !dbg !100944
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %190) #100021, !dbg !100944
   %191 = bitcast %"struct.ap_int<34>"* %ref.tmp72 to i8*, !dbg !100944
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %191) #100019, !dbg !100944
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %191) #100021, !dbg !100944
   call void @llvm.dbg.value(metadata i32 %conv81, metadata !100958, metadata !DIExpression()), !dbg !100959
   %192 = bitcast %"struct.ap_int<34>"* %ref.tmp82 to i8*, !dbg !100960
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %192) #100019, !dbg !100960
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %192) #100021, !dbg !100960
   %193 = bitcast %"struct.ap_uint<2>"* %c_b to %"struct.ap_int_base<2, false>"*, !dbg !100961
   call void @"_ZplILi2ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb0EEE4plusEjRKS1_"(%"struct.ap_int<34>"* sret %tmp83, i32 %conv, %"struct.ap_int_base<2, false>"* dereferenceable(1) %193), !dbg !100962
   %194 = bitcast %"struct.ap_int<34>"* %tmp83 to %"struct.ap_int_base<34, true>"*, !dbg !100963
   %195 = bitcast %"struct.ap_int<33>"* %ref.tmp84 to i8*, !dbg !100964
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %195) #100019, !dbg !100964
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %195) #100021, !dbg !100964
   %196 = bitcast %"struct.ap_uint<6>"* %E to %"struct.ap_int_base<6, false>"*, !dbg !100965
   call void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_032EEXLb1EEE4plusERKS1_i"(%"struct.ap_int<33>"* sret %ref.tmp84, %"struct.ap_int_base<6, false>"* dereferenceable(1) %196, i32 14), !dbg !100966
   %197 = bitcast %"struct.ap_int<33>"* %ref.tmp84 to %"struct.ap_int_base<33, true>"*, !dbg !100964
@@ -1030,9 +1031,9 @@ if.end68:                                         ; preds = %if.end67, %if.then5
   %call92 = call i64 @_ZNK11ap_int_baseILi34ELb1EEcvxEv(%"struct.ap_int_base<34, true>"* %202), !dbg !100960
   %conv93 = trunc i64 %call92 to i32, !dbg !100960
   %203 = bitcast %"struct.ap_int<33>"* %ref.tmp84 to i8*, !dbg !100960
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %203) #100019, !dbg !100960
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %203) #100021, !dbg !100960
   %204 = bitcast %"struct.ap_int<34>"* %ref.tmp82 to i8*, !dbg !100960
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %204) #100019, !dbg !100960
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %204) #100021, !dbg !100960
   call void @llvm.dbg.value(metadata i32 %conv93, metadata !100974, metadata !DIExpression()), !dbg !100975
   call void @llvm.dbg.declare(metadata %struct.Cap* %agg.result, metadata !100976, metadata !DIExpression()), !dbg !100977
   %205 = bitcast %"struct.ap_uint<64>"* %addr to %"struct.ap_int_base<64, false>"*, !dbg !100978
@@ -1054,39 +1055,39 @@ if.end68:                                         ; preds = %if.end67, %if.then5
   %write103 = getelementptr inbounds %struct.Cap, %struct.Cap* %agg.result, i32 0, i32 3, !dbg !100990
   store i1 %tobool5, i1* %write103, align 1, !dbg !100991
   %209 = bitcast %"struct.ap_uint<2>"* %c_b to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %209) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %209) #100021, !dbg !100992
   %210 = bitcast %"struct.ap_uint<2>"* %c_t to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %210) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %210) #100021, !dbg !100992
   %211 = bitcast %"struct.ap_uint<3>"* %R to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %211) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %211) #100021, !dbg !100992
   %212 = bitcast %"struct.ap_uint<3>"* %B3 to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %212) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %212) #100021, !dbg !100992
   %213 = bitcast %"struct.ap_uint<3>"* %T3 to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %213) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %213) #100021, !dbg !100992
   %214 = bitcast %"struct.ap_uint<3>"* %A3 to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %214) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %214) #100021, !dbg !100992
   %215 = bitcast %"struct.ap_uint<2>"* %T_13_12 to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %215) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %215) #100021, !dbg !100992
   %216 = bitcast %"struct.ap_uint<2>"* %B_13_12 to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %216) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %216) #100021, !dbg !100992
   %217 = bitcast %"struct.ap_uint<14>"* %B_13_0 to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %217) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %217) #100021, !dbg !100992
   %218 = bitcast %"struct.ap_uint<14>"* %T_13_0 to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %218) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %218) #100021, !dbg !100992
   %219 = bitcast %"struct.ap_uint<6>"* %E to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %219) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %219) #100021, !dbg !100992
   %220 = bitcast %"struct.ap_uint<3>"* %B_E to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %220) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %220) #100021, !dbg !100992
   %221 = bitcast %"struct.ap_uint<11>"* %B_13_3 to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %221) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %221) #100021, !dbg !100992
   %222 = bitcast %"struct.ap_uint<3>"* %T_E to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %222) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %222) #100021, !dbg !100992
   %223 = bitcast %"struct.ap_uint<9>"* %T_11_3 to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %223) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %223) #100021, !dbg !100992
   %224 = bitcast %"struct.ap_uint<64>"* %addr to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %224) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %224) #100021, !dbg !100992
   %225 = bitcast %"struct.ap_uint<64>"* %cap to i8*, !dbg !100992
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %225) #100019, !dbg !100992
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %225) #100021, !dbg !100992
   ret void, !dbg !100992
 }
 
@@ -1119,11 +1120,11 @@ define linkonce_odr dereferenceable(8) %"struct.ap_int_base<64, false>"* @_ZeOIL
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<64, false>", align 8
   %0 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   call void @_ZN11ap_int_baseILi64ELb1EEC2El(%"struct.ap_int_base<64, false>"* %ref.tmp, i64 %op2)
   %call = call dereferenceable(8) %"struct.ap_int_base<64, false>"* @_ZN11ap_int_baseILi64ELb0EEeOILi64ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<64, false>"* %op, %"struct.ap_int_base<64, false>"* dereferenceable(8) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %1) #100021
   ret %"struct.ap_int_base<64, false>"* %call
 }
 
@@ -1148,11 +1149,11 @@ entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   call void @_ZN11ap_int_baseILi64ELb0EEC2ILi64ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<64, false>"* %tmp, %"struct.ap_range_ref<64, false>"* dereferenceable(16) %op)
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100021
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %op2)
   %call = call zeroext i1 @_ZNK11ap_int_baseILi64ELb0EEneILi32ELb1EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<64, false>"* %tmp, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100021
   ret i1 %call
 }
 
@@ -1280,7 +1281,7 @@ define linkonce_odr void @_ZlsILi9ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0_
 entry:
   %r = alloca %"struct.ap_int_base<9, false>", align 2
   %0 = bitcast %"struct.ap_int_base<9, false>"* %r to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %0) #100021
   call void @_ZN11ap_int_baseILi9ELb0EEC2Ei(%"struct.ap_int_base<9, false>"* %r, i32 0)
   %cmp = icmp sge i32 %op2, 0
   br i1 %cmp, label %cond.true, label %cond.false
@@ -1310,7 +1311,7 @@ cond.end:                                         ; preds = %cond.false, %cond.t
   store i9 %conv3, i9* %V4, align 2
   call void @_ZN7ap_uintILi9EEC2ILi9ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<9>"* %agg.result, %"struct.ap_int_base<9, false>"* dereferenceable(2) %r)
   %6 = bitcast %"struct.ap_int_base<9, false>"* %r to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %6) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %6) #100021
   ret void
 }
 
@@ -1320,13 +1321,13 @@ entry:
   %ref.tmp = alloca %"struct.ap_int_base<9, false>", align 2
   %0 = bitcast %"struct.ap_uint<14>"* %this to %"struct.ap_int_base<14, false>"*
   %1 = bitcast %"struct.ap_int_base<9, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100021
   %2 = bitcast %"struct.ap_uint<9>"* %op to %"struct.ap_int_base<9, false>"*
   %3 = load %"struct.ap_int_base<9, false>", %"struct.ap_int_base<9, false>"* %2, align 2
   store %"struct.ap_int_base<9, false>" %3, %"struct.ap_int_base<9, false>"* %ref.tmp, align 2
   call void @_ZN11ap_int_baseILi14ELb0EEC2ILi9ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %0, %"struct.ap_int_base<9, false>"* dereferenceable(2) %ref.tmp)
   %4 = bitcast %"struct.ap_int_base<9, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %4) #100021
   %5 = bitcast %"struct.ap_uint<9>"* %op to %"struct.ap_int_base<9, false>"*
   %call = call zeroext i1 @_ZNK11ap_int_baseILi9ELb0EE17checkOverflowCsimEibb(%"struct.ap_int_base<9, false>"* %5, i32 14, i1 zeroext false, i1 zeroext true)
   ret void
@@ -1337,7 +1338,7 @@ define linkonce_odr void @_ZlsILi11ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT_EXT0
 entry:
   %r = alloca %"struct.ap_int_base<11, false>", align 2
   %0 = bitcast %"struct.ap_int_base<11, false>"* %r to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %0) #100021
   call void @_ZN11ap_int_baseILi11ELb0EEC2Ei(%"struct.ap_int_base<11, false>"* %r, i32 0)
   %cmp = icmp sge i32 %op2, 0
   br i1 %cmp, label %cond.true, label %cond.false
@@ -1367,7 +1368,7 @@ cond.end:                                         ; preds = %cond.false, %cond.t
   store i11 %conv3, i11* %V4, align 2
   call void @_ZN7ap_uintILi11EEC2ILi11ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<11>"* %agg.result, %"struct.ap_int_base<11, false>"* dereferenceable(2) %r)
   %6 = bitcast %"struct.ap_int_base<11, false>"* %r to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %6) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %6) #100021
   ret void
 }
 
@@ -1377,13 +1378,13 @@ entry:
   %ref.tmp = alloca %"struct.ap_int_base<11, false>", align 2
   %0 = bitcast %"struct.ap_uint<14>"* %this to %"struct.ap_int_base<14, false>"*
   %1 = bitcast %"struct.ap_int_base<11, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100021
   %2 = bitcast %"struct.ap_uint<11>"* %op to %"struct.ap_int_base<11, false>"*
   %3 = load %"struct.ap_int_base<11, false>", %"struct.ap_int_base<11, false>"* %2, align 2
   store %"struct.ap_int_base<11, false>" %3, %"struct.ap_int_base<11, false>"* %ref.tmp, align 2
   call void @_ZN11ap_int_baseILi14ELb0EEC2ILi11ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %0, %"struct.ap_int_base<11, false>"* dereferenceable(2) %ref.tmp)
   %4 = bitcast %"struct.ap_int_base<11, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %4) #100021
   %5 = bitcast %"struct.ap_uint<11>"* %op to %"struct.ap_int_base<11, false>"*
   %call = call zeroext i1 @_ZNK11ap_int_baseILi11ELb0EE17checkOverflowCsimEibb(%"struct.ap_int_base<11, false>"* %5, i32 14, i1 zeroext false, i1 zeroext true)
   ret void
@@ -1402,11 +1403,11 @@ define linkonce_odr void @"_ZplILi2ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_03
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100021
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZplILi2ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* sret %agg.result, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100021
   ret void
 }
 
@@ -1415,11 +1416,11 @@ define linkonce_odr void @"_ZplILi33ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_0
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100021
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZplILi33ELb1ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* sret %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100021
   ret void
 }
 
@@ -1429,13 +1430,13 @@ entry:
   %ref.tmp = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_uint<2>"* %this to %"struct.ap_int_base<2, false>"*
   %1 = bitcast %"struct.ap_int_base<34, true>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   %2 = bitcast %"struct.ap_int<34>"* %op to %"struct.ap_int_base<34, true>"*
   %3 = load %"struct.ap_int_base<34, true>", %"struct.ap_int_base<34, true>"* %2, align 8
   store %"struct.ap_int_base<34, true>" %3, %"struct.ap_int_base<34, true>"* %ref.tmp, align 8
   call void @_ZN11ap_int_baseILi2ELb0EEC2ILi34ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<2, false>"* %0, %"struct.ap_int_base<34, true>"* dereferenceable(8) %ref.tmp)
   %4 = bitcast %"struct.ap_int_base<34, true>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100021
   %5 = bitcast %"struct.ap_int<34>"* %op to %"struct.ap_int_base<34, true>"*
   %call = call zeroext i1 @_ZNK11ap_int_baseILi34ELb1EE17checkOverflowCsimEibb(%"struct.ap_int_base<34, true>"* %5, i32 2, i1 zeroext false, i1 zeroext true)
   ret void
@@ -1461,11 +1462,11 @@ define linkonce_odr void @"_ZplILi6ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_03
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100021
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZplILi6ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* sret %agg.result, %"struct.ap_int_base<6, false>"* dereferenceable(1) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100021
   ret void
 }
 
@@ -1480,18 +1481,18 @@ entry:
   %2 = and i33 %1, -4294967296
   %bit_select = icmp ne i33 %2, 0
   %3 = bitcast %"struct.ap_int_base<33, true>"* %sh to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %3) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %3) #100021
   call void @_ZN11ap_int_baseILi33ELb0EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %sh, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2)
   br i1 %bit_select, label %if.then, label %if.end
 
 if.then:                                          ; preds = %entry
   %4 = bitcast %"struct.ap_int<34>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %4) #100021
   call void @_ZNK11ap_int_baseILi33ELb1EEngEv(%"struct.ap_int<34>"* sret %ref.tmp, %"struct.ap_int_base<33, true>"* %op2)
   %5 = bitcast %"struct.ap_int<34>"* %ref.tmp to %"struct.ap_int_base<34, true>"*
   %call = call dereferenceable(8) %"struct.ap_int_base<33, true>"* @_ZN11ap_int_baseILi33ELb0EEaSILi34ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %sh, %"struct.ap_int_base<34, true>"* dereferenceable(8) %5)
   %6 = bitcast %"struct.ap_int<34>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %6) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %6) #100021
   call void @_ZNK11ap_int_baseILi64ELb0EElsILi33EEE7ap_uintILi64EERKS_IXT_ELb0EE(%"struct.ap_uint<64>"* sret %agg.result, %"struct.ap_int_base<64, false>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %sh)
   br label %cleanup
 
@@ -1501,7 +1502,7 @@ if.end:                                           ; preds = %entry
 
 cleanup:                                          ; preds = %if.end, %if.then
   %7 = bitcast %"struct.ap_int_base<33, true>"* %sh to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %7) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %7) #100021
   ret void
 }
 
@@ -1510,11 +1511,11 @@ define linkonce_odr void @"_ZanILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_0
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100021
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZanILi64ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5logicERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<65>"* sret %agg.result, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100021
   ret void
 }
 
@@ -1524,13 +1525,13 @@ entry:
   %ref.tmp = alloca %"struct.ap_int_base<65, true>", align 16
   %0 = bitcast %"struct.ap_uint<3>"* %this to %"struct.ap_int_base<3, false>"*
   %1 = bitcast %"struct.ap_int_base<65, true>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100021
   %2 = bitcast %"struct.ap_int<65>"* %op to %"struct.ap_int_base<65, true>"*
   %3 = load %"struct.ap_int_base<65, true>", %"struct.ap_int_base<65, true>"* %2, align 16
   store %"struct.ap_int_base<65, true>" %3, %"struct.ap_int_base<65, true>"* %ref.tmp, align 16
   call void @_ZN11ap_int_baseILi3ELb0EEC2ILi65ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %0, %"struct.ap_int_base<65, true>"* dereferenceable(16) %ref.tmp)
   %4 = bitcast %"struct.ap_int_base<65, true>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %4) #100021
   %5 = bitcast %"struct.ap_int<65>"* %op to %"struct.ap_int_base<65, true>"*
   %call = call zeroext i1 @_ZNK11ap_int_baseILi65ELb1EE17checkOverflowCsimEibb(%"struct.ap_int_base<65, true>"* %5, i32 3, i1 zeroext false, i1 zeroext true)
   ret void
@@ -1549,11 +1550,11 @@ define linkonce_odr void @"_ZmiILi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_03
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100021
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZmiILi3ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5minusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* sret %agg.result, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100021
   ret void
 }
 
@@ -1563,13 +1564,13 @@ entry:
   %ref.tmp = alloca %"struct.ap_int_base<33, true>", align 8
   %0 = bitcast %"struct.ap_uint<3>"* %this to %"struct.ap_int_base<3, false>"*
   %1 = bitcast %"struct.ap_int_base<33, true>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   %2 = bitcast %"struct.ap_int<33>"* %op to %"struct.ap_int_base<33, true>"*
   %3 = load %"struct.ap_int_base<33, true>", %"struct.ap_int_base<33, true>"* %2, align 8
   store %"struct.ap_int_base<33, true>" %3, %"struct.ap_int_base<33, true>"* %ref.tmp, align 8
   call void @_ZN11ap_int_baseILi3ELb0EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<3, false>"* %0, %"struct.ap_int_base<33, true>"* dereferenceable(8) %ref.tmp)
   %4 = bitcast %"struct.ap_int_base<33, true>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100021
   %5 = bitcast %"struct.ap_int<33>"* %op to %"struct.ap_int_base<33, true>"*
   %call = call zeroext i1 @_ZNK11ap_int_baseILi33ELb1EE17checkOverflowCsimEibb(%"struct.ap_int_base<33, true>"* %5, i32 3, i1 zeroext false, i1 zeroext true)
   ret void
@@ -1614,11 +1615,11 @@ define linkonce_odr void @"_ZplILi2ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_03
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100021
   call void @_ZN11ap_int_baseILi32ELb0EEC2Ej(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZplILi32ELb0ELi2ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* sret %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100021
   ret void
 }
 
@@ -1633,18 +1634,18 @@ entry:
   %2 = and i33 %1, -4294967296
   %bit_select = icmp ne i33 %2, 0
   %3 = bitcast %"struct.ap_int_base<33, true>"* %sh to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %3) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %3) #100021
   call void @_ZN11ap_int_baseILi33ELb0EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %sh, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2)
   br i1 %bit_select, label %if.then, label %if.else
 
 if.then:                                          ; preds = %entry
   %4 = bitcast %"struct.ap_int<34>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %4) #100021
   call void @_ZNK11ap_int_baseILi33ELb1EEngEv(%"struct.ap_int<34>"* sret %ref.tmp, %"struct.ap_int_base<33, true>"* %op2)
   %5 = bitcast %"struct.ap_int<34>"* %ref.tmp to %"struct.ap_int_base<34, true>"*
   %call = call dereferenceable(8) %"struct.ap_int_base<33, true>"* @_ZN11ap_int_baseILi33ELb0EEaSILi34ELb1EEERS0_RKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %sh, %"struct.ap_int_base<34, true>"* dereferenceable(8) %5)
   %6 = bitcast %"struct.ap_int<34>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %6) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %6) #100021
   call void @_ZNK11ap_int_baseILi34ELb1EErsILi33EEE6ap_intILi34EERKS_IXT_ELb0EE(%"struct.ap_int<34>"* sret %agg.result, %"struct.ap_int_base<34, true>"* %this, %"struct.ap_int_base<33, true>"* dereferenceable(8) %sh)
   br label %cleanup
 
@@ -1654,7 +1655,7 @@ if.else:                                          ; preds = %entry
 
 cleanup:                                          ; preds = %if.else, %if.then
   %7 = bitcast %"struct.ap_int_base<33, true>"* %sh to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %7) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %7) #100021
   ret void
 }
 
@@ -1663,11 +1664,11 @@ define linkonce_odr void @"_ZanILi14ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_0
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100021
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZanILi14ELb0ELi32ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5logicERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_uint<32>"* sret %agg.result, %"struct.ap_int_base<14, false>"* dereferenceable(2) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100021
   ret void
 }
 
@@ -1696,11 +1697,11 @@ define linkonce_odr void @"_ZorILi34ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_0
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100021
   call void @_ZN11ap_int_baseILi32ELb0EEC2Ej(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZorILi34ELb1ELi32ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5logicERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* sret %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100021
   ret void
 }
 
@@ -1719,11 +1720,11 @@ define linkonce_odr void @"_ZmiILi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_0
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100021
   call void @_ZN11ap_int_baseILi32ELb0EEC2Ej(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZmiILi32ELb0ELi64ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5minusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<65>"* sret %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100021
   ret void
 }
 
@@ -1755,13 +1756,13 @@ entry:
   %rhs = alloca %"struct.ap_int_base<65, true>", align 16
   %ret = alloca %"struct.ap_int_base<65, true>", align 16
   %0 = bitcast %"struct.ap_int_base<65, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %0) #100021
   call void @_ZN11ap_int_baseILi65ELb1EEC2ILi32ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %lhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op)
   %1 = bitcast %"struct.ap_int_base<65, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100021
   call void @_ZN11ap_int_baseILi65ELb1EEC2ILi64ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %rhs, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op2)
   %2 = bitcast %"struct.ap_int_base<65, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %2) #100021
   call void @_ZN11ap_int_baseILi65ELb1EEC2Ei(%"struct.ap_int_base<65, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<65, true>"* %lhs to %"struct.ssdm_int<65, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<65, true>", %"struct.ssdm_int<65, true>"* %3, i32 0, i32 0
@@ -1775,11 +1776,11 @@ entry:
   store i65 %sub, i65* %V2, align 16
   call void @_ZN6ap_intILi65EEC2ILi65ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<65>"* %agg.result, %"struct.ap_int_base<65, true>"* dereferenceable(16) %ret)
   %8 = bitcast %"struct.ap_int_base<65, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %8) #100021
   %9 = bitcast %"struct.ap_int_base<65, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %9) #100021
   %10 = bitcast %"struct.ap_int_base<65, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %10) #100021
   ret void
 }
 
@@ -1870,14 +1871,14 @@ entry:
   %rhs = alloca %"struct.ap_int_base<34, true>", align 8
   %ret = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   %1 = load %"struct.ap_int_base<34, true>", %"struct.ap_int_base<34, true>"* %op, align 8
   store %"struct.ap_int_base<34, true>" %1, %"struct.ap_int_base<34, true>"* %lhs, align 8
   %2 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100021
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi32ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %rhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2)
   %3 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %3) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %3) #100021
   call void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %ret, i32 0)
   %4 = bitcast %"struct.ap_int_base<34, true>"* %lhs to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %4, i32 0, i32 0
@@ -1891,11 +1892,11 @@ entry:
   store i34 %or, i34* %V2, align 8
   call void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %ret)
   %9 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100021
   %10 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100021
   %11 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %11) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %11) #100021
   ret void
 }
 
@@ -1968,14 +1969,14 @@ entry:
   %rhs = alloca %"struct.ap_int_base<32, false>", align 4
   %ret = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100021
   call void @_ZN11ap_int_baseILi32ELb1EEC2ILi14ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<32, false>"* %lhs, %"struct.ap_int_base<14, false>"* dereferenceable(2) %op)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %1) #100021
   %2 = load %"struct.ap_int_base<32, false>", %"struct.ap_int_base<32, false>"* %op2, align 4
   store %"struct.ap_int_base<32, false>" %2, %"struct.ap_int_base<32, false>"* %rhs, align 4
   %3 = bitcast %"struct.ap_int_base<32, false>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %3) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %3) #100021
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ret, i32 0)
   %4 = bitcast %"struct.ap_int_base<32, false>"* %lhs to %"struct.ssdm_int<32, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<32, false>", %"struct.ssdm_int<32, false>"* %4, i32 0, i32 0
@@ -1989,11 +1990,11 @@ entry:
   store i32 %and, i32* %V2, align 4
   call void @_ZN6ap_intILi32EEC2ILi32ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<32>"* %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ret)
   %9 = bitcast %"struct.ap_int_base<32, false>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %9) #100021
   %10 = bitcast %"struct.ap_int_base<32, false>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %10) #100021
   %11 = bitcast %"struct.ap_int_base<32, false>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %11) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %11) #100021
   ret void
 }
 
@@ -2057,11 +2058,11 @@ define linkonce_odr void @_ZNK11ap_int_baseILi33ELb1EEngEv(%"struct.ap_int<34>"*
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<1, false>", align 1
   %0 = bitcast %"struct.ap_int_base<1, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %0) #100021
   call void @_ZN11ap_int_baseILi1ELb0EEC2Ei(%"struct.ap_int_base<1, false>"* %ref.tmp, i32 0)
   call void @_ZmiILi1ELb0ELi33ELb1EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE5minusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<34>"* sret %agg.result, %"struct.ap_int_base<1, false>"* dereferenceable(1) %ref.tmp, %"struct.ap_int_base<33, true>"* dereferenceable(8) %this)
   %1 = bitcast %"struct.ap_int_base<1, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %1) #100021
   ret void
 }
 
@@ -2083,7 +2084,7 @@ define linkonce_odr void @_ZNK11ap_int_baseILi34ELb1EErsILi33EEE6ap_intILi34EERK
 entry:
   %r = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_int_base<34, true>"* %r to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   call void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %r, i32 0)
   %1 = bitcast %"struct.ap_int_base<34, true>"* %this to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %1, i32 0, i32 0
@@ -2096,7 +2097,7 @@ entry:
   store i34 %shr, i34* %V2, align 8
   call void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %r)
   %4 = bitcast %"struct.ap_int_base<34, true>"* %r to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100021
   ret void
 }
 
@@ -2105,7 +2106,7 @@ define linkonce_odr void @_ZNK11ap_int_baseILi34ELb1EElsILi33EEE6ap_intILi34EERK
 entry:
   %r = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_int_base<34, true>"* %r to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   call void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %r, i32 0)
   %1 = bitcast %"struct.ap_int_base<34, true>"* %this to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %1, i32 0, i32 0
@@ -2118,7 +2119,7 @@ entry:
   store i34 %shl, i34* %V2, align 8
   call void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %r)
   %4 = bitcast %"struct.ap_int_base<34, true>"* %r to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100021
   ret void
 }
 
@@ -2152,13 +2153,13 @@ entry:
   %rhs = alloca %"struct.ap_int_base<34, true>", align 8
   %ret = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi1ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %lhs, %"struct.ap_int_base<1, false>"* dereferenceable(1) %op)
   %1 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %rhs, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op2)
   %2 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100021
   call void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<34, true>"* %lhs to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %3, i32 0, i32 0
@@ -2172,11 +2173,11 @@ entry:
   store i34 %sub, i34* %V2, align 8
   call void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100021
   %9 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100021
   %10 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100021
   ret void
 }
 
@@ -2245,13 +2246,13 @@ entry:
   %rhs = alloca %"struct.ap_int_base<34, true>", align 8
   %ret = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi32ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %lhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op)
   %1 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi2ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %rhs, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op2)
   %2 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100021
   call void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<34, true>"* %lhs to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %3, i32 0, i32 0
@@ -2265,11 +2266,11 @@ entry:
   store i34 %add, i34* %V2, align 8
   call void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100021
   %9 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100021
   %10 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100021
   ret void
 }
 
@@ -2363,13 +2364,13 @@ entry:
   %rhs = alloca %"struct.ap_int_base<33, true>", align 8
   %ret = alloca %"struct.ap_int_base<33, true>", align 8
   %0 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi3ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %lhs, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op)
   %1 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %rhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2)
   %2 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100021
   call void @_ZN11ap_int_baseILi33ELb1EEC2Ei(%"struct.ap_int_base<33, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<33, true>"* %lhs to %"struct.ssdm_int<33, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %3, i32 0, i32 0
@@ -2383,11 +2384,11 @@ entry:
   store i33 %sub, i33* %V2, align 8
   call void @_ZN6ap_intILi33EEC2ILi33ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<33>"* %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100021
   %9 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100021
   %10 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100021
   ret void
 }
 
@@ -2468,7 +2469,7 @@ entry:
   %0 = bitcast %"struct.ap_int_base<3, false>"* %this to %"struct.ssdm_int<3, false>"*
   call void @_ZN8ssdm_intILi3ELb0EEC2Ev(%"struct.ssdm_int<3, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100021
   call void @_ZNK12ap_range_refILi14ELb0EE3getEv(%"struct.ap_int_base<14, false>"* sret %ref.tmp, %"struct.ap_range_ref<14, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to %"struct.ssdm_int<14, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %2, i32 0, i32 0
@@ -2478,7 +2479,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<3, false>", %"struct.ssdm_int<3, false>"* %4, i32 0, i32 0
   store i3 %conv, i3* %V2, align 1
   %5 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100021
   ret void
 }
 
@@ -2559,13 +2560,13 @@ entry:
   %rhs = alloca %"struct.ap_int_base<65, true>", align 16
   %ret = alloca %"struct.ap_int_base<65, true>", align 16
   %0 = bitcast %"struct.ap_int_base<65, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %0) #100021
   call void @_ZN11ap_int_baseILi65ELb1EEC2ILi64ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %lhs, %"struct.ap_int_base<64, false>"* dereferenceable(8) %op)
   %1 = bitcast %"struct.ap_int_base<65, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %1) #100021
   call void @_ZN11ap_int_baseILi65ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<65, true>"* %rhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2)
   %2 = bitcast %"struct.ap_int_base<65, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 16, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 16, i8* %2) #100021
   call void @_ZN11ap_int_baseILi65ELb1EEC2Ei(%"struct.ap_int_base<65, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<65, true>"* %lhs to %"struct.ssdm_int<65, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<65, true>", %"struct.ssdm_int<65, true>"* %3, i32 0, i32 0
@@ -2579,11 +2580,11 @@ entry:
   store i65 %and, i65* %V2, align 16
   call void @_ZN6ap_intILi65EEC2ILi65ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<65>"* %agg.result, %"struct.ap_int_base<65, true>"* dereferenceable(16) %ret)
   %8 = bitcast %"struct.ap_int_base<65, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %8) #100021
   %9 = bitcast %"struct.ap_int_base<65, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %9) #100021
   %10 = bitcast %"struct.ap_int_base<65, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 16, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 16, i8* %10) #100021
   ret void
 }
 
@@ -2611,7 +2612,7 @@ define linkonce_odr void @_ZNK11ap_int_baseILi64ELb0EElsILi33EEE7ap_uintILi64EER
 entry:
   %r = alloca %"struct.ap_int_base<64, false>", align 8
   %0 = bitcast %"struct.ap_int_base<64, false>"* %r to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   call void @_ZN11ap_int_baseILi64ELb0EEC2Ei(%"struct.ap_int_base<64, false>"* %r, i32 0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %this to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %1, i32 0, i32 0
@@ -2624,7 +2625,7 @@ entry:
   store i64 %shl, i64* %V2, align 8
   call void @_ZN7ap_uintILi64EEC2ILi64ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<64>"* %agg.result, %"struct.ap_int_base<64, false>"* dereferenceable(8) %r)
   %4 = bitcast %"struct.ap_int_base<64, false>"* %r to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100021
   ret void
 }
 
@@ -2633,7 +2634,7 @@ define linkonce_odr void @_ZNK11ap_int_baseILi64ELb0EErsILi33EEE7ap_uintILi64EER
 entry:
   %r = alloca %"struct.ap_int_base<64, false>", align 8
   %0 = bitcast %"struct.ap_int_base<64, false>"* %r to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   call void @_ZN11ap_int_baseILi64ELb0EEC2Ei(%"struct.ap_int_base<64, false>"* %r, i32 0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %this to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %1, i32 0, i32 0
@@ -2646,7 +2647,7 @@ entry:
   store i64 %shr, i64* %V2, align 8
   call void @_ZN7ap_uintILi64EEC2ILi64ELb0EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_uint<64>"* %agg.result, %"struct.ap_int_base<64, false>"* dereferenceable(8) %r)
   %4 = bitcast %"struct.ap_int_base<64, false>"* %r to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %4) #100021
   ret void
 }
 
@@ -2689,13 +2690,13 @@ entry:
   %rhs = alloca %"struct.ap_int_base<33, true>", align 8
   %ret = alloca %"struct.ap_int_base<33, true>", align 8
   %0 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi6ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %lhs, %"struct.ap_int_base<6, false>"* dereferenceable(1) %op)
   %1 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %rhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2)
   %2 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100021
   call void @_ZN11ap_int_baseILi33ELb1EEC2Ei(%"struct.ap_int_base<33, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<33, true>"* %lhs to %"struct.ssdm_int<33, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %3, i32 0, i32 0
@@ -2709,11 +2710,11 @@ entry:
   store i33 %add, i33* %V2, align 8
   call void @_ZN6ap_intILi33EEC2ILi33ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<33>"* %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100021
   %9 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100021
   %10 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100021
   ret void
 }
 
@@ -2743,7 +2744,7 @@ entry:
   %0 = bitcast %"struct.ap_int_base<14, false>"* %this to %"struct.ssdm_int<14, false>"*
   call void @_ZN8ssdm_intILi14ELb0EEC2Ev(%"struct.ssdm_int<14, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<16, false>"* %tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100021
   call void @_ZNK13ap_concat_refILi2E11ap_int_baseILi2ELb0EELi14E12ap_range_refILi14ELb0EEE3getEv(%"struct.ap_int_base<16, false>"* sret %tmp, %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %ref)
   %2 = bitcast %"struct.ap_int_base<16, false>"* %tmp to %"struct.ssdm_int<16, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<16, false>", %"struct.ssdm_int<16, false>"* %2, i32 0, i32 0
@@ -2753,7 +2754,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %4, i32 0, i32 0
   store i14 %conv, i14* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<16, false>"* %tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100021
   ret void
 }
 
@@ -2770,12 +2771,12 @@ entry:
   %1 = load %"struct.ap_range_ref<14, false>"*, %"struct.ap_range_ref<14, false>"** %mbv2, align 8
   %call2 = call i32 @_ZNK12ap_range_refILi14ELb0EE6lengthEv(%"struct.ap_range_ref<14, false>"* %1)
   %2 = bitcast %"struct.ap_int_base<14, false>"* %v2 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %2) #100021
   %mbv23 = getelementptr inbounds %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >", %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %this, i32 0, i32 1
   %3 = load %"struct.ap_range_ref<14, false>"*, %"struct.ap_range_ref<14, false>"** %mbv23, align 8
   call void @_ZN11ap_int_baseILi14ELb0EEC2ILi14ELb0EEERK12ap_range_refIXT_EXT0_EE(%"struct.ap_int_base<14, false>"* %v2, %"struct.ap_range_ref<14, false>"* dereferenceable(16) %3)
   %4 = bitcast %"struct.ap_int_base<2, false>"* %v1 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %4) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %4) #100021
   %mbv14 = getelementptr inbounds %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >", %"struct.ap_concat_ref<2, ap_int_base<2, false>, 14, ap_range_ref<14, false> >"* %this, i32 0, i32 0
   %5 = load %"struct.ap_int_base<2, false>"*, %"struct.ap_int_base<2, false>"** %mbv14, align 8
   %6 = load %"struct.ap_int_base<2, false>", %"struct.ap_int_base<2, false>"* %5, align 1
@@ -2804,9 +2805,9 @@ entry:
   %V15 = getelementptr inbounds %"struct.ssdm_int<16, false>", %"struct.ssdm_int<16, false>"* %16, i32 0, i32 0
   store i16 %part_set13, i16* %V15, align 2
   %17 = bitcast %"struct.ap_int_base<2, false>"* %v1 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %17) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %17) #100021
   %18 = bitcast %"struct.ap_int_base<14, false>"* %v2 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %18) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %18) #100021
   ret void
 }
 
@@ -2869,7 +2870,7 @@ entry:
   %0 = bitcast %"struct.ap_int_base<14, false>"* %this to %"struct.ssdm_int<14, false>"*
   call void @_ZN8ssdm_intILi14ELb0EEC2Ev(%"struct.ssdm_int<14, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100021
   call void @_ZNK12ap_range_refILi14ELb0EE3getEv(%"struct.ap_int_base<14, false>"* sret %ref.tmp, %"struct.ap_range_ref<14, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to %"struct.ssdm_int<14, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %2, i32 0, i32 0
@@ -2878,7 +2879,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %4, i32 0, i32 0
   store i14 %3, i14* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100021
   ret void
 }
 
@@ -2950,13 +2951,13 @@ entry:
   %rhs = alloca %"struct.ap_int_base<34, true>", align 8
   %ret = alloca %"struct.ap_int_base<34, true>", align 8
   %0 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi33ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %lhs, %"struct.ap_int_base<33, true>"* dereferenceable(8) %op)
   %1 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   call void @_ZN11ap_int_baseILi34ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<34, true>"* %rhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2)
   %2 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100021
   call void @_ZN11ap_int_baseILi34ELb1EEC2Ei(%"struct.ap_int_base<34, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<34, true>"* %lhs to %"struct.ssdm_int<34, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<34, true>", %"struct.ssdm_int<34, true>"* %3, i32 0, i32 0
@@ -2970,11 +2971,11 @@ entry:
   store i34 %add, i34* %V2, align 8
   call void @_ZN6ap_intILi34EEC2ILi34ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<34>"* %agg.result, %"struct.ap_int_base<34, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<34, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100021
   %9 = bitcast %"struct.ap_int_base<34, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100021
   %10 = bitcast %"struct.ap_int_base<34, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100021
   ret void
 }
 
@@ -3004,13 +3005,13 @@ entry:
   %rhs = alloca %"struct.ap_int_base<33, true>", align 8
   %ret = alloca %"struct.ap_int_base<33, true>", align 8
   %0 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi2ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %lhs, %"struct.ap_int_base<2, false>"* dereferenceable(1) %op)
   %1 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %rhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op2)
   %2 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100021
   call void @_ZN11ap_int_baseILi33ELb1EEC2Ei(%"struct.ap_int_base<33, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<33, true>"* %lhs to %"struct.ssdm_int<33, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %3, i32 0, i32 0
@@ -3024,11 +3025,11 @@ entry:
   store i33 %add, i33* %V2, align 8
   call void @_ZN6ap_intILi33EEC2ILi33ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<33>"* %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100021
   %9 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100021
   %10 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100021
   ret void
 }
 
@@ -3058,7 +3059,7 @@ entry:
   %0 = bitcast %"struct.ap_int_base<2, false>"* %this to %"struct.ssdm_int<2, false>"*
   call void @_ZN8ssdm_intILi2ELb0EEC2Ev(%"struct.ssdm_int<2, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100021
   call void @_ZNK12ap_range_refILi14ELb0EE3getEv(%"struct.ap_int_base<14, false>"* sret %ref.tmp, %"struct.ap_range_ref<14, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to %"struct.ssdm_int<14, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %2, i32 0, i32 0
@@ -3068,7 +3069,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<2, false>", %"struct.ssdm_int<2, false>"* %4, i32 0, i32 0
   store i2 %conv, i2* %V2, align 1
   %5 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100021
   ret void
 }
 
@@ -3210,7 +3211,7 @@ entry:
   %0 = bitcast %"struct.ap_int_base<6, false>"* %this to %"struct.ssdm_int<6, false>"*
   call void @_ZN8ssdm_intILi6ELb0EEC2Ev(%"struct.ssdm_int<6, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<6, false>"* %tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %1) #100021
   call void @_ZNK13ap_concat_refILi3E11ap_int_baseILi3ELb0EELi3ES1_E3getEv(%"struct.ap_int_base<6, false>"* sret %tmp, %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %ref)
   %2 = bitcast %"struct.ap_int_base<6, false>"* %tmp to %"struct.ssdm_int<6, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<6, false>", %"struct.ssdm_int<6, false>"* %2, i32 0, i32 0
@@ -3219,7 +3220,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<6, false>", %"struct.ssdm_int<6, false>"* %4, i32 0, i32 0
   store i6 %3, i6* %V2, align 1
   %5 = bitcast %"struct.ap_int_base<6, false>"* %tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %5) #100021
   ret void
 }
 
@@ -3243,13 +3244,13 @@ entry:
   %1 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv2, align 8
   %call2 = call i32 @_ZNK11ap_int_baseILi3ELb0EE6lengthEv(%"struct.ap_int_base<3, false>"* %1)
   %2 = bitcast %"struct.ap_int_base<3, false>"* %v2 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %2) #100021
   %mbv23 = getelementptr inbounds %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 1
   %3 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv23, align 8
   %4 = load %"struct.ap_int_base<3, false>", %"struct.ap_int_base<3, false>"* %3, align 1
   store %"struct.ap_int_base<3, false>" %4, %"struct.ap_int_base<3, false>"* %v2, align 1
   %5 = bitcast %"struct.ap_int_base<3, false>"* %v1 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %5) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %5) #100021
   %mbv14 = getelementptr inbounds %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<3, ap_int_base<3, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 0
   %6 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv14, align 8
   %7 = load %"struct.ap_int_base<3, false>", %"struct.ap_int_base<3, false>"* %6, align 1
@@ -3278,9 +3279,9 @@ entry:
   %V15 = getelementptr inbounds %"struct.ssdm_int<6, false>", %"struct.ssdm_int<6, false>"* %17, i32 0, i32 0
   store i6 %part_set13, i6* %V15, align 1
   %18 = bitcast %"struct.ap_int_base<3, false>"* %v1 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %18) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %18) #100021
   %19 = bitcast %"struct.ap_int_base<3, false>"* %v2 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %19) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %19) #100021
   ret void
 }
 
@@ -3333,7 +3334,7 @@ entry:
   %0 = bitcast %"struct.ap_int_base<12, false>"* %this to %"struct.ssdm_int<12, false>"*
   call void @_ZN8ssdm_intILi12ELb0EEC2Ev(%"struct.ssdm_int<12, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100021
   call void @_ZNK12ap_range_refILi14ELb0EE3getEv(%"struct.ap_int_base<14, false>"* sret %ref.tmp, %"struct.ap_range_ref<14, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to %"struct.ssdm_int<14, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %2, i32 0, i32 0
@@ -3343,7 +3344,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<12, false>", %"struct.ssdm_int<12, false>"* %4, i32 0, i32 0
   store i12 %conv, i12* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<14, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100021
   ret void
 }
 
@@ -3373,7 +3374,7 @@ entry:
   %0 = bitcast %"struct.ap_int_base<14, false>"* %this to %"struct.ssdm_int<14, false>"*
   call void @_ZN8ssdm_intILi14ELb0EEC2Ev(%"struct.ssdm_int<14, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<14, false>"* %tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100021
   call void @_ZNK13ap_concat_refILi11E11ap_int_baseILi11ELb0EELi3ES0_ILi3ELb0EEE3getEv(%"struct.ap_int_base<14, false>"* sret %tmp, %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %ref)
   %2 = bitcast %"struct.ap_int_base<14, false>"* %tmp to %"struct.ssdm_int<14, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %2, i32 0, i32 0
@@ -3382,7 +3383,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %4, i32 0, i32 0
   store i14 %3, i14* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<14, false>"* %tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100021
   ret void
 }
 
@@ -3399,13 +3400,13 @@ entry:
   %1 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv2, align 8
   %call2 = call i32 @_ZNK11ap_int_baseILi3ELb0EE6lengthEv(%"struct.ap_int_base<3, false>"* %1)
   %2 = bitcast %"struct.ap_int_base<3, false>"* %v2 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %2) #100021
   %mbv23 = getelementptr inbounds %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 1
   %3 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv23, align 8
   %4 = load %"struct.ap_int_base<3, false>", %"struct.ap_int_base<3, false>"* %3, align 1
   store %"struct.ap_int_base<3, false>" %4, %"struct.ap_int_base<3, false>"* %v2, align 1
   %5 = bitcast %"struct.ap_int_base<11, false>"* %v1 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %5) #100021
   %mbv14 = getelementptr inbounds %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<11, ap_int_base<11, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 0
   %6 = load %"struct.ap_int_base<11, false>"*, %"struct.ap_int_base<11, false>"** %mbv14, align 8
   %7 = load %"struct.ap_int_base<11, false>", %"struct.ap_int_base<11, false>"* %6, align 2
@@ -3434,9 +3435,9 @@ entry:
   %V15 = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %17, i32 0, i32 0
   store i14 %part_set13, i14* %V15, align 2
   %18 = bitcast %"struct.ap_int_base<11, false>"* %v1 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %18) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %18) #100021
   %19 = bitcast %"struct.ap_int_base<3, false>"* %v2 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %19) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %19) #100021
   ret void
 }
 
@@ -3482,7 +3483,7 @@ entry:
   %0 = bitcast %"struct.ap_int_base<14, false>"* %this to %"struct.ssdm_int<14, false>"*
   call void @_ZN8ssdm_intILi14ELb0EEC2Ev(%"struct.ssdm_int<14, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<12, false>"* %tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %1) #100021
   call void @_ZNK13ap_concat_refILi9E11ap_int_baseILi9ELb0EELi3ES0_ILi3ELb0EEE3getEv(%"struct.ap_int_base<12, false>"* sret %tmp, %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %ref)
   %2 = bitcast %"struct.ap_int_base<12, false>"* %tmp to %"struct.ssdm_int<12, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<12, false>", %"struct.ssdm_int<12, false>"* %2, i32 0, i32 0
@@ -3492,7 +3493,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<14, false>", %"struct.ssdm_int<14, false>"* %4, i32 0, i32 0
   store i14 %conv, i14* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<12, false>"* %tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %5) #100021
   ret void
 }
 
@@ -3509,13 +3510,13 @@ entry:
   %1 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv2, align 8
   %call2 = call i32 @_ZNK11ap_int_baseILi3ELb0EE6lengthEv(%"struct.ap_int_base<3, false>"* %1)
   %2 = bitcast %"struct.ap_int_base<3, false>"* %v2 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 1, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 1, i8* %2) #100021
   %mbv23 = getelementptr inbounds %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 1
   %3 = load %"struct.ap_int_base<3, false>"*, %"struct.ap_int_base<3, false>"** %mbv23, align 8
   %4 = load %"struct.ap_int_base<3, false>", %"struct.ap_int_base<3, false>"* %3, align 1
   store %"struct.ap_int_base<3, false>" %4, %"struct.ap_int_base<3, false>"* %v2, align 1
   %5 = bitcast %"struct.ap_int_base<9, false>"* %v1 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 2, i8* %5) #100019
+  call void @llvm.lifetime.start.p0i8(i64 2, i8* %5) #100021
   %mbv14 = getelementptr inbounds %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >", %"struct.ap_concat_ref<9, ap_int_base<9, false>, 3, ap_int_base<3, false> >"* %this, i32 0, i32 0
   %6 = load %"struct.ap_int_base<9, false>"*, %"struct.ap_int_base<9, false>"** %mbv14, align 8
   %7 = load %"struct.ap_int_base<9, false>", %"struct.ap_int_base<9, false>"* %6, align 2
@@ -3544,9 +3545,9 @@ entry:
   %V15 = getelementptr inbounds %"struct.ssdm_int<12, false>", %"struct.ssdm_int<12, false>"* %17, i32 0, i32 0
   store i12 %part_set13, i12* %V15, align 2
   %18 = bitcast %"struct.ap_int_base<9, false>"* %v1 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 2, i8* %18) #100019
+  call void @llvm.lifetime.end.p0i8(i64 2, i8* %18) #100021
   %19 = bitcast %"struct.ap_int_base<3, false>"* %v2 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 1, i8* %19) #100019
+  call void @llvm.lifetime.end.p0i8(i64 1, i8* %19) #100021
   ret void
 }
 
@@ -3614,7 +3615,7 @@ entry:
   %0 = bitcast %"struct.ap_int_base<11, false>"* %this to %"struct.ssdm_int<11, false>"*
   call void @_ZN8ssdm_intILi11ELb0EEC2Ev(%"struct.ssdm_int<11, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   call void @_ZNK12ap_range_refILi64ELb0EE3getEv(%"struct.ap_int_base<64, false>"* sret %ref.tmp, %"struct.ap_range_ref<64, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %2, i32 0, i32 0
@@ -3624,7 +3625,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<11, false>", %"struct.ssdm_int<11, false>"* %4, i32 0, i32 0
   store i11 %conv, i11* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100021
   ret void
 }
 
@@ -3680,7 +3681,7 @@ entry:
   %0 = bitcast %"struct.ap_int_base<3, false>"* %this to %"struct.ssdm_int<3, false>"*
   call void @_ZN8ssdm_intILi3ELb0EEC2Ev(%"struct.ssdm_int<3, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   call void @_ZNK12ap_range_refILi64ELb0EE3getEv(%"struct.ap_int_base<64, false>"* sret %ref.tmp, %"struct.ap_range_ref<64, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %2, i32 0, i32 0
@@ -3690,7 +3691,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<3, false>", %"struct.ssdm_int<3, false>"* %4, i32 0, i32 0
   store i3 %conv, i3* %V2, align 1
   %5 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100021
   ret void
 }
 
@@ -3701,7 +3702,7 @@ entry:
   %0 = bitcast %"struct.ap_int_base<9, false>"* %this to %"struct.ssdm_int<9, false>"*
   call void @_ZN8ssdm_intILi9ELb0EEC2Ev(%"struct.ssdm_int<9, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   call void @_ZNK12ap_range_refILi64ELb0EE3getEv(%"struct.ap_int_base<64, false>"* sret %ref.tmp, %"struct.ap_range_ref<64, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %2, i32 0, i32 0
@@ -3711,7 +3712,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<9, false>", %"struct.ssdm_int<9, false>"* %4, i32 0, i32 0
   store i9 %conv, i9* %V2, align 2
   %5 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100021
   ret void
 }
 
@@ -3729,7 +3730,7 @@ entry:
   %0 = bitcast %"struct.ap_int_base<64, false>"* %this to %"struct.ssdm_int<64, false>"*
   call void @_ZN8ssdm_intILi64ELb0EEC2Ev(%"struct.ssdm_int<64, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   call void @_ZNK12ap_range_refILi64ELb0EE3getEv(%"struct.ap_int_base<64, false>"* sret %ref.tmp, %"struct.ap_range_ref<64, false>"* %ref)
   %2 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %2, i32 0, i32 0
@@ -3738,7 +3739,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %4, i32 0, i32 0
   store i64 %3, i64* %V2, align 8
   %5 = bitcast %"struct.ap_int_base<64, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100021
   ret void
 }
 
@@ -3762,7 +3763,7 @@ define linkonce_odr i64 @_ZNK12ap_range_refILi64ELb0EE9to_uint64Ev(%"struct.ap_r
 entry:
   %t = alloca %"struct.ap_int_base<64, false>", align 8
   %0 = bitcast %"struct.ap_int_base<64, false>"* %t to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   call void @_ZN11ap_int_baseILi64ELb0EEC2Ev(%"struct.ap_int_base<64, false>"* %t)
   %d_bv = getelementptr inbounds %"struct.ap_range_ref<64, false>", %"struct.ap_range_ref<64, false>"* %this, i32 0, i32 0
   %1 = load %"struct.ap_int_base<64, false>"*, %"struct.ap_int_base<64, false>"** %d_bv, align 8
@@ -3781,7 +3782,7 @@ entry:
   %8 = load i32, i32* %h_index, align 4
   %part_select = call i64 @llvm.fpga.legacy.part.select.i64(i64 %6, i32 %7, i32 %8)
   %9 = bitcast %"struct.ap_int_base<64, false>"* %t to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100021
   ret i64 %part_select
 }
 
@@ -3839,7 +3840,7 @@ entry:
   %0 = bitcast %"struct.ap_int_base<64, false>"* %this to %"struct.ssdm_int<64, false>"*
   call void @_ZN8ssdm_intILi64ELb0EEC2Ev(%"struct.ssdm_int<64, false>"* %0)
   %1 = bitcast %"struct.ap_int_base<64, false>"* %tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   call void @_ZNK13ap_concat_refILi32E11ap_int_baseILi32ELb0EELi32ES1_E3getEv(%"struct.ap_int_base<64, false>"* sret %tmp, %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %ref)
   %2 = bitcast %"struct.ap_int_base<64, false>"* %tmp to %"struct.ssdm_int<64, false>"*
   %V = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %2, i32 0, i32 0
@@ -3848,7 +3849,7 @@ entry:
   %V2 = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %4, i32 0, i32 0
   store i64 %3, i64* %V2, align 8
   %5 = bitcast %"struct.ap_int_base<64, false>"* %tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %5) #100021
   ret void
 }
 
@@ -3865,13 +3866,13 @@ entry:
   %1 = load %"struct.ap_int_base<32, false>"*, %"struct.ap_int_base<32, false>"** %mbv2, align 8
   %call2 = call i32 @_ZNK11ap_int_baseILi32ELb0EE6lengthEv(%"struct.ap_int_base<32, false>"* %1)
   %2 = bitcast %"struct.ap_int_base<32, false>"* %v2 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %2) #100021
   %mbv23 = getelementptr inbounds %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %this, i32 0, i32 1
   %3 = load %"struct.ap_int_base<32, false>"*, %"struct.ap_int_base<32, false>"** %mbv23, align 8
   %4 = load %"struct.ap_int_base<32, false>", %"struct.ap_int_base<32, false>"* %3, align 4
   store %"struct.ap_int_base<32, false>" %4, %"struct.ap_int_base<32, false>"* %v2, align 4
   %5 = bitcast %"struct.ap_int_base<32, false>"* %v1 to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %5) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %5) #100021
   %mbv14 = getelementptr inbounds %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >", %"struct.ap_concat_ref<32, ap_int_base<32, false>, 32, ap_int_base<32, false> >"* %this, i32 0, i32 0
   %6 = load %"struct.ap_int_base<32, false>"*, %"struct.ap_int_base<32, false>"** %mbv14, align 8
   %7 = load %"struct.ap_int_base<32, false>", %"struct.ap_int_base<32, false>"* %6, align 4
@@ -3900,9 +3901,9 @@ entry:
   %V15 = getelementptr inbounds %"struct.ssdm_int<64, false>", %"struct.ssdm_int<64, false>"* %17, i32 0, i32 0
   store i64 %part_set13, i64* %V15, align 8
   %18 = bitcast %"struct.ap_int_base<32, false>"* %v1 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %18) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %18) #100021
   %19 = bitcast %"struct.ap_int_base<32, false>"* %v2 to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %19) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %19) #100021
   ret void
 }
 
@@ -3937,14 +3938,14 @@ entry:
   call void @llvm.dbg.value(metadata i32* %buffer, metadata !101284, metadata !DIExpression()), !dbg !101285
   call void @llvm.dbg.value(metadata i32* %cap, metadata !101286, metadata !DIExpression()), !dbg !101287
   call void @llvm.dbg.value(metadata %struct.Cap* %caps, metadata !101288, metadata !DIExpression()), !dbg !101289
-  br label %VITIS_LOOP_107_1, !dbg !101290
+  br label %VITIS_LOOP_97_1, !dbg !101290
 
-VITIS_LOOP_107_1:                                 ; preds = %entry
+VITIS_LOOP_97_1:                                  ; preds = %entry
   call void @llvm.dbg.value(metadata i32 0, metadata !101291, metadata !DIExpression()), !dbg !101293
   br label %for.cond, !dbg !101294
 
-for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_107_1
-  %i.0 = phi i32 [ 0, %VITIS_LOOP_107_1 ], [ %inc, %for.inc ]
+for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_97_1
+  %i.0 = phi i32 [ 0, %VITIS_LOOP_97_1 ], [ %inc, %for.inc ]
   call void @llvm.dbg.value(metadata i32 %i.0, metadata !101291, metadata !DIExpression()), !dbg !101293
   %mul = mul nsw i32 %num, 4, !dbg !101295
   %cmp = icmp slt i32 %i.0, %mul, !dbg !101297
@@ -3969,15 +3970,15 @@ for.inc:                                          ; preds = %for.body
 
 for.end:                                          ; preds = %for.cond.cleanup
   call void @llvm.dbg.value(metadata i32 0, metadata !101311, metadata !DIExpression()), !dbg !101312
-  br label %VITIS_LOOP_112_2, !dbg !101313
+  br label %VITIS_LOOP_102_2, !dbg !101313
 
-VITIS_LOOP_112_2:                                 ; preds = %for.end
+VITIS_LOOP_102_2:                                 ; preds = %for.end
   call void @llvm.dbg.value(metadata i32 0, metadata !101314, metadata !DIExpression()), !dbg !101316
   br label %for.cond4, !dbg !101317
 
-for.cond4:                                        ; preds = %for.inc24, %VITIS_LOOP_112_2
-  %i3.0 = phi i32 [ 0, %VITIS_LOOP_112_2 ], [ %add23, %for.inc24 ]
-  %j.0 = phi i32 [ 0, %VITIS_LOOP_112_2 ], [ %inc25, %for.inc24 ]
+for.cond4:                                        ; preds = %for.inc24, %VITIS_LOOP_102_2
+  %i3.0 = phi i32 [ 0, %VITIS_LOOP_102_2 ], [ %add23, %for.inc24 ]
+  %j.0 = phi i32 [ 0, %VITIS_LOOP_102_2 ], [ %inc25, %for.inc24 ]
   call void @llvm.dbg.value(metadata i32 %j.0, metadata !101314, metadata !DIExpression()), !dbg !101316
   call void @llvm.dbg.value(metadata i32 %i3.0, metadata !101311, metadata !DIExpression()), !dbg !101312
   %cmp5 = icmp slt i32 %j.0, %num, !dbg !101318
@@ -3988,7 +3989,7 @@ for.cond.cleanup6:                                ; preds = %for.cond4
 
 for.body7:                                        ; preds = %for.cond4
   %1 = bitcast %struct.Cap* %ref.tmp to i8*, !dbg !101321
-  call void @llvm.lifetime.start.p0i8(i64 12, i8* %1) #100019, !dbg !101321
+  call void @llvm.lifetime.start.p0i8(i64 12, i8* %1) #100021, !dbg !101321
   %idxprom8 = sext i32 %i3.0 to i64, !dbg !101323
   %arrayidx9 = getelementptr inbounds i32, i32* %buffer, i64 %idxprom8, !dbg !101323
   %2 = load i32, i32* %arrayidx9, align 4, !dbg !101323
@@ -4014,7 +4015,7 @@ for.body7:                                        ; preds = %for.cond4
   %6 = load %struct.Cap, %struct.Cap* %ref.tmp, align 4, !dbg !101331
   store %struct.Cap %6, %struct.Cap* %arrayidx22, align 4, !dbg !101331
   %7 = bitcast %struct.Cap* %ref.tmp to i8*, !dbg !101330
-  call void @llvm.lifetime.end.p0i8(i64 12, i8* %7) #100019, !dbg !101330
+  call void @llvm.lifetime.end.p0i8(i64 12, i8* %7) #100021, !dbg !101330
   %add23 = add nsw i32 %i3.0, 4, !dbg !101332
   call void @llvm.dbg.value(metadata i32 %add23, metadata !101311, metadata !DIExpression()), !dbg !101312
   br label %for.inc24, !dbg !101333
@@ -4052,7 +4053,7 @@ entry:
   call void @llvm.dbg.value(metadata %struct.Cap* %caps, metadata !101352, metadata !DIExpression()), !dbg !101353
   call void @llvm.dbg.value(metadata i8 %index, metadata !101354, metadata !DIExpression()), !dbg !101355
   %0 = bitcast %struct.Cap* %new_cap to i8*, !dbg !101356
-  call void @llvm.lifetime.start.p0i8(i64 12, i8* %0) #100019, !dbg !101356
+  call void @llvm.lifetime.start.p0i8(i64 12, i8* %0) #100021, !dbg !101356
   call void @llvm.dbg.declare(metadata %struct.Cap* %new_cap, metadata !101357, metadata !DIExpression()), !dbg !101358
   %base = getelementptr inbounds %struct.Cap, %struct.Cap* %new_cap, i32 0, i32 0, !dbg !101359
   store i32 0, i32* %base, align 4, !dbg !101360
@@ -4068,7 +4069,7 @@ entry:
   %1 = load %struct.Cap, %struct.Cap* %new_cap, align 4, !dbg !101369
   store %struct.Cap %1, %struct.Cap* %arrayidx, align 4, !dbg !101369
   %2 = bitcast %struct.Cap* %new_cap to i8*, !dbg !101370
-  call void @llvm.lifetime.end.p0i8(i64 12, i8* %2) #100019, !dbg !101370
+  call void @llvm.lifetime.end.p0i8(i64 12, i8* %2) #100021, !dbg !101370
   ret void, !dbg !101370
 }
 
@@ -4090,7 +4091,7 @@ entry:
 
 land.lhs.true:                                    ; preds = %entry
   %1 = bitcast %"struct.ap_int<33>"* %ref.tmp to i8*, !dbg !101395
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019, !dbg !101395
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021, !dbg !101395
   %conv1 = zext i16 %offset to i32, !dbg !101396
   %mul2 = mul nsw i32 4, %conv1, !dbg !101397
   %2 = bitcast %"struct.ap_uint<3>"* %nBytes to %"struct.ap_int_base<3, false>"*, !dbg !101398
@@ -4133,7 +4134,7 @@ land.end:                                         ; preds = %lor.end, %lor.lhs.f
 
 cleanup.action:                                   ; preds = %land.end
   %10 = bitcast %"struct.ap_int<33>"* %ref.tmp to i8*, !dbg !101410
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019, !dbg !101410
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100021, !dbg !101410
   br label %cleanup.done, !dbg !101410
 
 cleanup.done:                                     ; preds = %cleanup.action, %land.end
@@ -4145,11 +4146,11 @@ define linkonce_odr void @"_ZplILi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXL3$_03
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100021
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %i_op)
   call void @_ZplILi32ELb1ELi3ELb0EEN11ap_int_baseIXT_EXT0_EE5RTypeIXT1_EXT2_EE4plusERKS1_RKS0_IXT1_EXT2_EE(%"struct.ap_int<33>"* sret %agg.result, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100021
   ret void
 }
 
@@ -4158,11 +4159,11 @@ define linkonce_odr zeroext i1 @_ZleILi33ELb1EEbRK11ap_int_baseIXT_EXT0_EEi(%"st
 entry:
   %ref.tmp = alloca %"struct.ap_int_base<32, false>", align 4
   %0 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 4, i8* %0) #100021
   call void @_ZN11ap_int_baseILi32ELb1EEC2Ei(%"struct.ap_int_base<32, false>"* %ref.tmp, i32 %op2)
   %call = call zeroext i1 @_ZNK11ap_int_baseILi33ELb1EEleILi32ELb1EEEbRKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %op, %"struct.ap_int_base<32, false>"* dereferenceable(4) %ref.tmp)
   %1 = bitcast %"struct.ap_int_base<32, false>"* %ref.tmp to i8*
-  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100019
+  call void @llvm.lifetime.end.p0i8(i64 4, i8* %1) #100021
   ret i1 %call
 }
 
@@ -4187,13 +4188,13 @@ entry:
   %rhs = alloca %"struct.ap_int_base<33, true>", align 8
   %ret = alloca %"struct.ap_int_base<33, true>", align 8
   %0 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %0) #100021
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi32ELb1EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %lhs, %"struct.ap_int_base<32, false>"* dereferenceable(4) %op)
   %1 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %1) #100021
   call void @_ZN11ap_int_baseILi33ELb1EEC2ILi3ELb0EEERKS_IXT_EXT0_EE(%"struct.ap_int_base<33, true>"* %rhs, %"struct.ap_int_base<3, false>"* dereferenceable(1) %op2)
   %2 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100019
+  call void @llvm.lifetime.start.p0i8(i64 8, i8* %2) #100021
   call void @_ZN11ap_int_baseILi33ELb1EEC2Ei(%"struct.ap_int_base<33, true>"* %ret, i32 0)
   %3 = bitcast %"struct.ap_int_base<33, true>"* %lhs to %"struct.ssdm_int<33, true>"*
   %V = getelementptr inbounds %"struct.ssdm_int<33, true>", %"struct.ssdm_int<33, true>"* %3, i32 0, i32 0
@@ -4207,11 +4208,11 @@ entry:
   store i33 %add, i33* %V2, align 8
   call void @_ZN6ap_intILi33EEC2ILi33ELb1EEERK11ap_int_baseIXT_EXT0_EE(%"struct.ap_int<33>"* %agg.result, %"struct.ap_int_base<33, true>"* dereferenceable(8) %ret)
   %8 = bitcast %"struct.ap_int_base<33, true>"* %ret to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %8) #100021
   %9 = bitcast %"struct.ap_int_base<33, true>"* %rhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %9) #100021
   %10 = bitcast %"struct.ap_int_base<33, true>"* %lhs to i8*
-  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100019
+  call void @llvm.lifetime.end.p0i8(i64 8, i8* %10) #100021
   ret void
 }
 
@@ -4313,11 +4314,205 @@ cond.end:                                         ; preds = %cond.false, %cond.t
   ret void, !dbg !101462
 }
 
+; Function Attrs: alwaysinline nounwind
+define void @_Z21cheri_stream_write_nljPiS_Pj3Cap(i32 %size, i32* %array1, i32* %array2, i32* %flag_buf, %struct.Cap* byval align 4 %cap) #100017 !dbg !101463 !fpga.function.pragma !101466 {
+entry:
+  %agg.tmp = alloca %struct.Cap, align 4
+  %agg.tmp1 = alloca %"struct.ap_uint<3>", align 1
+  call void @llvm.dbg.value(metadata i32 %size, metadata !101469, metadata !DIExpression()), !dbg !101470
+  call void @llvm.dbg.value(metadata i32* %array1, metadata !101471, metadata !DIExpression()), !dbg !101472
+  call void @llvm.dbg.value(metadata i32* %array2, metadata !101473, metadata !DIExpression()), !dbg !101474
+  call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101475, metadata !DIExpression()), !dbg !101476
+  call void @llvm.dbg.declare(metadata %struct.Cap* %cap, metadata !101477, metadata !DIExpression()), !dbg !101478
+  br label %VITIS_LOOP_144_1, !dbg !101479
+
+VITIS_LOOP_144_1:                                 ; preds = %entry
+  call void @llvm.dbg.value(metadata i32 0, metadata !101480, metadata !DIExpression()), !dbg !101482
+  br label %for.cond, !dbg !101483
+
+for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_144_1
+  %i.0 = phi i32 [ 0, %VITIS_LOOP_144_1 ], [ %inc, %for.inc ]
+  call void @llvm.dbg.value(metadata i32 %i.0, metadata !101480, metadata !DIExpression()), !dbg !101482
+  %cmp = icmp ult i32 %i.0, %size, !dbg !101484
+  br i1 %cmp, label %for.body, label %for.cond.cleanup, !dbg !101486
+
+for.cond.cleanup:                                 ; preds = %for.cond
+  br label %for.end
+
+for.body:                                         ; preds = %for.cond
+  %0 = load %struct.Cap, %struct.Cap* %cap, align 4, !dbg !101487
+  store %struct.Cap %0, %struct.Cap* %agg.tmp, align 4, !dbg !101487
+  %conv = trunc i32 %i.0 to i16, !dbg !101489
+  call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp1, i32 4), !dbg !101490
+  call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp, i16 zeroext %conv, %"struct.ap_uint<3>"* byval align 1 %agg.tmp1, i1 zeroext true), !dbg !101491
+  br label %for.inc, !dbg !101492
+
+for.inc:                                          ; preds = %for.body
+  %inc = add nsw i32 %i.0, 1, !dbg !101493
+  call void @llvm.dbg.value(metadata i32 %inc, metadata !101480, metadata !DIExpression()), !dbg !101482
+  br label %for.cond, !dbg !101494, !llvm.loop !101495
+
+for.end:                                          ; preds = %for.cond.cleanup
+  %1 = load i32, i32* %flag_buf, align 4, !dbg !101498
+  %tobool = icmp ne i32 %1, 0, !dbg !101500
+  br i1 %tobool, label %if.then, label %if.end, !dbg !101501
+
+if.then:                                          ; preds = %for.end
+  br label %VITIS_LOOP_148_2, !dbg !101502
+
+VITIS_LOOP_148_2:                                 ; preds = %if.then
+  call void @llvm.dbg.value(metadata i32 0, metadata !101503, metadata !DIExpression()), !dbg !101506
+  br label %for.cond3, !dbg !101507
+
+for.cond3:                                        ; preds = %for.inc9, %VITIS_LOOP_148_2
+  %i2.0 = phi i32 [ 0, %VITIS_LOOP_148_2 ], [ %inc10, %for.inc9 ]
+  call void @llvm.dbg.value(metadata i32 %i2.0, metadata !101503, metadata !DIExpression()), !dbg !101506
+  %cmp4 = icmp ult i32 %i2.0, %size, !dbg !101508
+  br i1 %cmp4, label %for.body6, label %for.cond.cleanup5, !dbg !101510
+
+for.cond.cleanup5:                                ; preds = %for.cond3
+  br label %for.end11
+
+for.body6:                                        ; preds = %for.cond3
+  %idxprom = sext i32 %i2.0 to i64, !dbg !101511
+  %arrayidx = getelementptr inbounds i32, i32* %array2, i64 %idxprom, !dbg !101511
+  %2 = load i32, i32* %arrayidx, align 4, !dbg !101511
+  %idxprom7 = sext i32 %i2.0 to i64, !dbg !101513
+  %arrayidx8 = getelementptr inbounds i32, i32* %array1, i64 %idxprom7, !dbg !101513
+  store i32 %2, i32* %arrayidx8, align 4, !dbg !101514
+  br label %for.inc9, !dbg !101515
+
+for.inc9:                                         ; preds = %for.body6
+  %inc10 = add nsw i32 %i2.0, 1, !dbg !101516
+  call void @llvm.dbg.value(metadata i32 %inc10, metadata !101503, metadata !DIExpression()), !dbg !101506
+  br label %for.cond3, !dbg !101517, !llvm.loop !101518
+
+for.end11:                                        ; preds = %for.cond.cleanup5
+  br label %if.end, !dbg !101521
+
+if.end:                                           ; preds = %for.end11, %for.end
+  ret void, !dbg !101522
+}
+
+; Function Attrs: alwaysinline nounwind
+define void @_Z18cheri_stream_writejPiS_Pj3CapS1_(i32 %size, i32* %array1, i32* %array2, i32* %flag_buf, %struct.Cap* byval align 4 %cap1, %struct.Cap* byval align 4 %cap2) #100018 !dbg !101523 !fpga.function.pragma !101526 {
+entry:
+  %agg.tmp = alloca %struct.Cap, align 4
+  %agg.tmp1 = alloca %"struct.ap_uint<3>", align 1
+  %agg.tmp7 = alloca %struct.Cap, align 4
+  %agg.tmp9 = alloca %"struct.ap_uint<3>", align 1
+  call void @llvm.dbg.value(metadata i32 %size, metadata !101529, metadata !DIExpression()), !dbg !101530
+  call void @llvm.dbg.value(metadata i32* %array1, metadata !101531, metadata !DIExpression()), !dbg !101532
+  call void @llvm.dbg.value(metadata i32* %array2, metadata !101533, metadata !DIExpression()), !dbg !101534
+  call void @llvm.dbg.value(metadata i32* %flag_buf, metadata !101535, metadata !DIExpression()), !dbg !101536
+  call void @llvm.dbg.declare(metadata %struct.Cap* %cap1, metadata !101537, metadata !DIExpression()), !dbg !101538
+  call void @llvm.dbg.declare(metadata %struct.Cap* %cap2, metadata !101539, metadata !DIExpression()), !dbg !101540
+  br label %VITIS_LOOP_157_1, !dbg !101541
+
+VITIS_LOOP_157_1:                                 ; preds = %entry
+  call void @llvm.dbg.value(metadata i32 0, metadata !101542, metadata !DIExpression()), !dbg !101544
+  br label %for.cond, !dbg !101545
+
+for.cond:                                         ; preds = %for.inc, %VITIS_LOOP_157_1
+  %i.0 = phi i32 [ 0, %VITIS_LOOP_157_1 ], [ %inc, %for.inc ]
+  call void @llvm.dbg.value(metadata i32 %i.0, metadata !101542, metadata !DIExpression()), !dbg !101544
+  %cmp = icmp ult i32 %i.0, %size, !dbg !101546
+  br i1 %cmp, label %for.body, label %for.cond.cleanup, !dbg !101548
+
+for.cond.cleanup:                                 ; preds = %for.cond
+  br label %for.end
+
+for.body:                                         ; preds = %for.cond
+  %0 = load %struct.Cap, %struct.Cap* %cap1, align 4, !dbg !101549
+  store %struct.Cap %0, %struct.Cap* %agg.tmp, align 4, !dbg !101549
+  %conv = trunc i32 %i.0 to i16, !dbg !101551
+  call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp1, i32 4), !dbg !101552
+  call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp, i16 zeroext %conv, %"struct.ap_uint<3>"* byval align 1 %agg.tmp1, i1 zeroext true), !dbg !101553
+  br label %for.inc, !dbg !101554
+
+for.inc:                                          ; preds = %for.body
+  %inc = add nsw i32 %i.0, 1, !dbg !101555
+  call void @llvm.dbg.value(metadata i32 %inc, metadata !101542, metadata !DIExpression()), !dbg !101544
+  br label %for.cond, !dbg !101556, !llvm.loop !101557
+
+for.end:                                          ; preds = %for.cond.cleanup
+  br label %VITIS_LOOP_160_2, !dbg !101558
+
+VITIS_LOOP_160_2:                                 ; preds = %for.end
+  call void @llvm.dbg.value(metadata i32 0, metadata !101560, metadata !DIExpression()), !dbg !101562
+  br label %for.cond3, !dbg !101563
+
+for.cond3:                                        ; preds = %for.inc10, %VITIS_LOOP_160_2
+  %i2.0 = phi i32 [ 0, %VITIS_LOOP_160_2 ], [ %inc11, %for.inc10 ]
+  call void @llvm.dbg.value(metadata i32 %i2.0, metadata !101560, metadata !DIExpression()), !dbg !101562
+  %cmp4 = icmp ult i32 %i2.0, %size, !dbg !101564
+  br i1 %cmp4, label %for.body6, label %for.cond.cleanup5, !dbg !101566
+
+for.cond.cleanup5:                                ; preds = %for.cond3
+  br label %for.end12
+
+for.body6:                                        ; preds = %for.cond3
+  %1 = load %struct.Cap, %struct.Cap* %cap2, align 4, !dbg !101567
+  store %struct.Cap %1, %struct.Cap* %agg.tmp7, align 4, !dbg !101567
+  %conv8 = trunc i32 %i2.0 to i16, !dbg !101569
+  call void @_ZN7ap_uintILi3EEC2Ei(%"struct.ap_uint<3>"* %agg.tmp9, i32 4), !dbg !101570
+  call void @_Z11checkAccessPj3Capt7ap_uintILi3EEb(i32* %flag_buf, %struct.Cap* byval align 4 %agg.tmp7, i16 zeroext %conv8, %"struct.ap_uint<3>"* byval align 1 %agg.tmp9, i1 zeroext false), !dbg !101571
+  br label %for.inc10, !dbg !101572
+
+for.inc10:                                        ; preds = %for.body6
+  %inc11 = add nsw i32 %i2.0, 1, !dbg !101573
+  call void @llvm.dbg.value(metadata i32 %inc11, metadata !101560, metadata !DIExpression()), !dbg !101562
+  br label %for.cond3, !dbg !101574, !llvm.loop !101575
+
+for.end12:                                        ; preds = %for.cond.cleanup5
+  %2 = load i32, i32* %flag_buf, align 4, !dbg !101578
+  %tobool = icmp ne i32 %2, 0, !dbg !101580
+  br i1 %tobool, label %if.then, label %if.end, !dbg !101581
+
+if.then:                                          ; preds = %for.end12
+  br label %VITIS_LOOP_164_3, !dbg !101582
+
+VITIS_LOOP_164_3:                                 ; preds = %if.then
+  call void @llvm.dbg.value(metadata i32 0, metadata !101583, metadata !DIExpression()), !dbg !101586
+  br label %for.cond14, !dbg !101587
+
+for.cond14:                                       ; preds = %for.inc20, %VITIS_LOOP_164_3
+  %i13.0 = phi i32 [ 0, %VITIS_LOOP_164_3 ], [ %inc21, %for.inc20 ]
+  call void @llvm.dbg.value(metadata i32 %i13.0, metadata !101583, metadata !DIExpression()), !dbg !101586
+  %cmp15 = icmp ult i32 %i13.0, %size, !dbg !101588
+  br i1 %cmp15, label %for.body17, label %for.cond.cleanup16, !dbg !101590
+
+for.cond.cleanup16:                               ; preds = %for.cond14
+  br label %for.end22
+
+for.body17:                                       ; preds = %for.cond14
+  %idxprom = sext i32 %i13.0 to i64, !dbg !101591
+  %arrayidx = getelementptr inbounds i32, i32* %array2, i64 %idxprom, !dbg !101591
+  %3 = load i32, i32* %arrayidx, align 4, !dbg !101591
+  %idxprom18 = sext i32 %i13.0 to i64, !dbg !101593
+  %arrayidx19 = getelementptr inbounds i32, i32* %array1, i64 %idxprom18, !dbg !101593
+  store i32 %3, i32* %arrayidx19, align 4, !dbg !101594
+  br label %for.inc20, !dbg !101595
+
+for.inc20:                                        ; preds = %for.body17
+  %inc21 = add nsw i32 %i13.0, 1, !dbg !101596
+  call void @llvm.dbg.value(metadata i32 %inc21, metadata !101583, metadata !DIExpression()), !dbg !101586
+  br label %for.cond14, !dbg !101597, !llvm.loop !101598
+
+for.end22:                                        ; preds = %for.cond.cleanup16
+  br label %if.end, !dbg !101601
+
+if.end:                                           ; preds = %for.end22, %for.end12
+  ret void, !dbg !101602
+}
+
+; Function Attrs: nounwind
+
 @twiddles8.reversed8 = private unnamed_addr constant [8 x i32] [i32 0, i32 4, i32 2, i32 6, i32 1, i32 5, i32 3, i32 7], align 4
 @hls_top.reversed = private unnamed_addr constant [8 x i32] [i32 0, i32 4, i32 2, i32 6, i32 1, i32 5, i32 3, i32 7], align 4
 
 ; Function Attrs: nounwind
-define void @twiddles8(i32* "fpga.decayed.dim.hint"="8" %data_x, i32* "fpga.decayed.dim.hint"="8" %data_y, i32 %i, i32 %n, i32* %flag_buf, %struct.Cap* "fpga.decayed.dim.hint"="9" %caps) #0 !dbg !101463 {
+define void @twiddles8(i32* "fpga.decayed.dim.hint"="8" %data_x, i32* "fpga.decayed.dim.hint"="8" %data_y, i32 %i, i32 %n, i32* %flag_buf, %struct.Cap* "fpga.decayed.dim.hint"="9" %caps) #0 !dbg !101603 {
 entry:
   %agg.tmp0 = alloca %struct.Cap, align 4
   %agg.tmp1 = alloca %struct.Cap, align 4
@@ -4426,7 +4621,7 @@ for.end:                                          ; preds = %for.cond
 ; Function Attrs: argmemonly nounwind
 
 ; Function Attrs: nounwind
-define void @loady8(i32* %data_y, i32* %smem, i32 %offset, i32 %sx, i32* %flag_buf, %struct.Cap* "fpga.decayed.dim.hint"="9" %caps) #0 !dbg !101463 {
+define void @loady8(i32* %data_y, i32* %smem, i32 %offset, i32 %sx, i32* %flag_buf, %struct.Cap* "fpga.decayed.dim.hint"="9" %caps) #0 !dbg !101603 {
 entry:
   %agg.tmp0 = alloca %struct.Cap, align 4
   %agg.tmp1 = alloca %struct.Cap, align 4
@@ -4543,7 +4738,7 @@ entry:
 }
 
 ; Function Attrs: nounwind
-define void @hls_top(i32 %size, i32* "fpga.decayed.dim.hint"="512" %work_x, i32* "fpga.decayed.dim.hint"="512" %work_y, i32* %flag, i32* "fpga.decayed.dim.hint"="8" %cap) #3 !dbg !101463 !fpga.function.pragma !101466 {
+define void @hls_top(i32 %size, i32* "fpga.decayed.dim.hint"="512" %work_x, i32* "fpga.decayed.dim.hint"="512" %work_y, i32* %flag, i32* "fpga.decayed.dim.hint"="8" %cap) #3 !dbg !101603 !fpga.function.pragma !101606 {
 entry:
   %flag_buf = alloca i32, align 4
   %caps = alloca [9 x %struct.Cap], align 4
@@ -4564,7 +4759,7 @@ entry:
   %init.0 = bitcast i32* %flag_buf to i8*, !dbg !101491
   call void @llvm.lifetime.start.p0i8(i64 4, i8* %init.0) #9003, !dbg !101491
   call void @llvm.dbg.declare(metadata i32* %flag_buf, metadata !101492, metadata !DIExpression()), !dbg !101493
-  store i32 0, i32* %flag_buf, align 4, !dbg !101493
+  store i32 1, i32* %flag_buf, align 4, !dbg !101493
   %init.1 = bitcast [9 x %struct.Cap]* %caps to i8*, !dbg !101494
   call void @llvm.lifetime.start.p0i8(i64 108, i8* %init.1) #9003, !dbg !101494
   call void @llvm.dbg.declare(metadata [9 x %struct.Cap]* %caps, metadata !101495, metadata !DIExpression()), !dbg !101499
@@ -10635,6 +10830,11 @@ for.end1937:                                      ; preds = %for.cond1473
 ; Function Attrs: nounwind readnone speculatable
 
 attributes #0 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
+
+attributes #9000 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="1152" "xlx.source"="user" }
+attributes #9001 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }
+attributes #9002 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="864" "xlx.source"="user" }
+attributes #9003 = { nounwind }
 ; Function Attrs: argmemonly nounwind
 declare void @llvm.memset.p0i8.i64(i8* nocapture writeonly, i8, i64, i1) #100002
 
@@ -10646,11 +10846,6 @@ declare void @llvm.memcpy.p0i8.p0i8.i64(i8* nocapture writeonly, i8* nocapture r
 
 ; Function Attrs: nounwind readnone speculatable
 declare void @llvm.dbg.value(metadata, metadata, metadata) #100001
-
-attributes #9000 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="384" "xlx.source"="user" }
-attributes #9001 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }
-attributes #9002 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "xlx.source"="user" }
-attributes #9003 = { nounwind }
 
 attributes #100000 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="decode" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #100001 = { nounwind readnone speculatable }
@@ -10669,15 +10864,17 @@ attributes #100013 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-m
 attributes #100014 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="checkAccess" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #100015 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="cheri_load" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #100016 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="cheri_store" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #100017 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="hls_top" "fpga.top.func"="hls_top" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #100018 = { inaccessiblememonly nounwind }
-attributes #100019 = { nounwind }
-attributes #100020 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32000" "xlx.source"="user" }
-attributes #100021 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="256" "xlx.source"="user" }
-attributes #100022 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32" "xlx.source"="user" }
-attributes #100023 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }
-attributes #100024 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="384" "xlx.source"="user" }
-attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "xlx.source"="user" }
+attributes #100017 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="cheri_stream_write_nl" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #100018 = { alwaysinline nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="cheri_stream_write" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #100019 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.demangled.name"="hls_top" "fpga.top.func"="hls_top" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #100020 = { inaccessiblememonly nounwind }
+attributes #100021 = { nounwind }
+attributes #100022 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32000" "xlx.source"="user" }
+attributes #100023 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="256" "xlx.source"="user" }
+attributes #100024 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="32" "xlx.source"="user" }
+attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="0" "xlx.source"="user" }
+attributes #100026 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="384" "xlx.source"="user" }
+attributes #100027 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "xlx.source"="user" }
 
 !llvm.dbg.cu = !{!100000}
 !llvm.ident = !{!100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331, !100331}
@@ -11018,7 +11215,7 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100332 = !{i32 2, !"Dwarf Version", i32 4}
 !100333 = !{i32 2, !"Debug Info Version", i32 3}
 !100334 = !{i32 1, !"wchar_size", i32 4}
-!100335 = distinct !DISubprogram(name: "decode", linkageName: "_Z6decode7ap_uintILi32EES0_S0_S0_", scope: !100005, file: !100005, line: 25, type: !100336, isLocal: false, isDefinition: true, scopeLine: 26, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!100335 = distinct !DISubprogram(name: "decode", linkageName: "_Z6decode7ap_uintILi32EES0_S0_S0_", scope: !100005, file: !100005, line: 18, type: !100336, isLocal: false, isDefinition: true, scopeLine: 19, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !100336 = !DISubroutineType(types: !100337)
 !100337 = !{!100338, !100345, !100345, !100345, !100345}
 !100338 = !DIDerivedType(tag: DW_TAG_typedef, name: "Cap", file: !100005, line: 16, baseType: !100339)
@@ -11055,17 +11252,17 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100369 = !{!100074}
 !100370 = !{!100371}
 !100371 = !{!"fpga.inline", !"user", !100372}
-!100372 = !DILocation(line: 27, column: 9, scope: !100335)
-!100373 = !DILocalVariable(name: "buffer_0", arg: 1, scope: !100335, file: !100005, line: 25, type: !100345)
-!100374 = !DILocation(line: 25, column: 24, scope: !100335)
-!100375 = !DILocalVariable(name: "buffer_1", arg: 2, scope: !100335, file: !100005, line: 25, type: !100345)
-!100376 = !DILocation(line: 25, column: 46, scope: !100335)
-!100377 = !DILocalVariable(name: "buffer_2", arg: 3, scope: !100335, file: !100005, line: 25, type: !100345)
-!100378 = !DILocation(line: 25, column: 68, scope: !100335)
-!100379 = !DILocalVariable(name: "buffer_3", arg: 4, scope: !100335, file: !100005, line: 26, type: !100345)
-!100380 = !DILocation(line: 26, column: 24, scope: !100335)
-!100381 = !DILocation(line: 29, column: 2, scope: !100335)
-!100382 = !DILocalVariable(name: "cap", scope: !100335, file: !100005, line: 29, type: !100383)
+!100372 = !DILocation(line: 20, column: 9, scope: !100335)
+!100373 = !DILocalVariable(name: "buffer_0", arg: 1, scope: !100335, file: !100005, line: 18, type: !100345)
+!100374 = !DILocation(line: 18, column: 24, scope: !100335)
+!100375 = !DILocalVariable(name: "buffer_1", arg: 2, scope: !100335, file: !100005, line: 18, type: !100345)
+!100376 = !DILocation(line: 18, column: 46, scope: !100335)
+!100377 = !DILocalVariable(name: "buffer_2", arg: 3, scope: !100335, file: !100005, line: 18, type: !100345)
+!100378 = !DILocation(line: 18, column: 68, scope: !100335)
+!100379 = !DILocalVariable(name: "buffer_3", arg: 4, scope: !100335, file: !100005, line: 19, type: !100345)
+!100380 = !DILocation(line: 19, column: 24, scope: !100335)
+!100381 = !DILocation(line: 22, column: 2, scope: !100335)
+!100382 = !DILocalVariable(name: "cap", scope: !100335, file: !100005, line: 22, type: !100383)
 !100383 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<64>", file: !100346, line: 181, size: 64, flags: DIFlagTypePassByValue, elements: !100384, templateParams: !100402, identifier: "_ZTS7ap_uintILi64EE")
 !100384 = !{!100385, !100386, !100390, !100393, !100396}
 !100385 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100383, baseType: !100239)
@@ -11086,42 +11283,42 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100400 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100401, size: 64)
 !100401 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100383)
 !100402 = !{!100045}
-!100403 = !DILocation(line: 29, column: 14, scope: !100335)
-!100404 = !DILocation(line: 29, column: 20, scope: !100335)
-!100405 = !DILocation(line: 29, column: 21, scope: !100335)
-!100406 = !DILocation(line: 29, column: 31, scope: !100335)
-!100407 = !DILocation(line: 29, column: 29, scope: !100335)
-!100408 = !DILocation(line: 30, column: 3, scope: !100335)
-!100409 = !DILocalVariable(name: "addr", scope: !100335, file: !100005, line: 30, type: !100383)
-!100410 = !DILocation(line: 30, column: 15, scope: !100335)
-!100411 = !DILocation(line: 30, column: 22, scope: !100335)
-!100412 = !DILocation(line: 30, column: 23, scope: !100335)
-!100413 = !DILocation(line: 30, column: 33, scope: !100335)
-!100414 = !DILocation(line: 30, column: 31, scope: !100335)
-!100415 = !DILocation(line: 32, column: 3, scope: !100335)
-!100416 = !DILocation(line: 32, column: 7, scope: !100335)
-!100417 = !DILocation(line: 33, column: 15, scope: !100335)
-!100418 = !DILocation(line: 33, column: 19, scope: !100335)
-!100419 = !DILocalVariable(name: "read", scope: !100335, file: !100005, line: 33, type: !100032)
-!100420 = !DILocation(line: 33, column: 8, scope: !100335)
-!100421 = !DILocation(line: 34, column: 16, scope: !100335)
-!100422 = !DILocation(line: 34, column: 20, scope: !100335)
-!100423 = !DILocalVariable(name: "write", scope: !100335, file: !100005, line: 34, type: !100032)
-!100424 = !DILocation(line: 34, column: 8, scope: !100335)
-!100425 = !DILocation(line: 37, column: 13, scope: !100335)
-!100426 = !DILocation(line: 37, column: 17, scope: !100335)
-!100427 = !DILocation(line: 37, column: 31, scope: !100335)
-!100428 = !DILocation(line: 37, column: 12, scope: !100335)
-!100429 = !DILocalVariable(name: "f", scope: !100335, file: !100005, line: 37, type: !100032)
-!100430 = !DILocation(line: 37, column: 8, scope: !100335)
-!100431 = !DILocation(line: 40, column: 8, scope: !100335)
-!100432 = !DILocation(line: 40, column: 12, scope: !100335)
-!100433 = !DILocation(line: 40, column: 26, scope: !100335)
-!100434 = !DILocation(line: 40, column: 7, scope: !100335)
-!100435 = !DILocalVariable(name: "I_E", scope: !100335, file: !100005, line: 39, type: !100032)
-!100436 = !DILocation(line: 39, column: 8, scope: !100335)
-!100437 = !DILocation(line: 41, column: 3, scope: !100335)
-!100438 = !DILocalVariable(name: "T_11_3", scope: !100335, file: !100005, line: 41, type: !100439)
+!100403 = !DILocation(line: 22, column: 14, scope: !100335)
+!100404 = !DILocation(line: 22, column: 20, scope: !100335)
+!100405 = !DILocation(line: 22, column: 21, scope: !100335)
+!100406 = !DILocation(line: 22, column: 31, scope: !100335)
+!100407 = !DILocation(line: 22, column: 29, scope: !100335)
+!100408 = !DILocation(line: 23, column: 3, scope: !100335)
+!100409 = !DILocalVariable(name: "addr", scope: !100335, file: !100005, line: 23, type: !100383)
+!100410 = !DILocation(line: 23, column: 15, scope: !100335)
+!100411 = !DILocation(line: 23, column: 22, scope: !100335)
+!100412 = !DILocation(line: 23, column: 23, scope: !100335)
+!100413 = !DILocation(line: 23, column: 33, scope: !100335)
+!100414 = !DILocation(line: 23, column: 31, scope: !100335)
+!100415 = !DILocation(line: 25, column: 3, scope: !100335)
+!100416 = !DILocation(line: 25, column: 7, scope: !100335)
+!100417 = !DILocation(line: 26, column: 15, scope: !100335)
+!100418 = !DILocation(line: 26, column: 19, scope: !100335)
+!100419 = !DILocalVariable(name: "read", scope: !100335, file: !100005, line: 26, type: !100032)
+!100420 = !DILocation(line: 26, column: 8, scope: !100335)
+!100421 = !DILocation(line: 27, column: 16, scope: !100335)
+!100422 = !DILocation(line: 27, column: 20, scope: !100335)
+!100423 = !DILocalVariable(name: "write", scope: !100335, file: !100005, line: 27, type: !100032)
+!100424 = !DILocation(line: 27, column: 8, scope: !100335)
+!100425 = !DILocation(line: 28, column: 13, scope: !100335)
+!100426 = !DILocation(line: 28, column: 17, scope: !100335)
+!100427 = !DILocation(line: 28, column: 31, scope: !100335)
+!100428 = !DILocation(line: 28, column: 12, scope: !100335)
+!100429 = !DILocalVariable(name: "f", scope: !100335, file: !100005, line: 28, type: !100032)
+!100430 = !DILocation(line: 28, column: 8, scope: !100335)
+!100431 = !DILocation(line: 30, column: 8, scope: !100335)
+!100432 = !DILocation(line: 30, column: 12, scope: !100335)
+!100433 = !DILocation(line: 30, column: 26, scope: !100335)
+!100434 = !DILocation(line: 30, column: 7, scope: !100335)
+!100435 = !DILocalVariable(name: "I_E", scope: !100335, file: !100005, line: 29, type: !100032)
+!100436 = !DILocation(line: 29, column: 8, scope: !100335)
+!100437 = !DILocation(line: 31, column: 3, scope: !100335)
+!100438 = !DILocalVariable(name: "T_11_3", scope: !100335, file: !100005, line: 31, type: !100439)
 !100439 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<9>", file: !100346, line: 181, size: 16, flags: DIFlagTypePassByValue, elements: !100440, templateParams: !100458, identifier: "_ZTS7ap_uintILi9EE")
 !100440 = !{!100441, !100442, !100446, !100449, !100452}
 !100441 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100439, baseType: !100075)
@@ -11142,11 +11339,11 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100456 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100457, size: 64)
 !100457 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100439)
 !100458 = !{!100102}
-!100459 = !DILocation(line: 41, column: 14, scope: !100335)
-!100460 = !DILocation(line: 42, column: 7, scope: !100335)
-!100461 = !DILocation(line: 42, column: 11, scope: !100335)
-!100462 = !DILocation(line: 43, column: 3, scope: !100335)
-!100463 = !DILocalVariable(name: "T_E", scope: !100335, file: !100005, line: 43, type: !100464)
+!100459 = !DILocation(line: 31, column: 14, scope: !100335)
+!100460 = !DILocation(line: 32, column: 7, scope: !100335)
+!100461 = !DILocation(line: 32, column: 11, scope: !100335)
+!100462 = !DILocation(line: 33, column: 3, scope: !100335)
+!100463 = !DILocalVariable(name: "T_E", scope: !100335, file: !100005, line: 33, type: !100464)
 !100464 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<3>", file: !100346, line: 181, size: 8, flags: DIFlagTypePassByValue, elements: !100465, templateParams: !100510, identifier: "_ZTS7ap_uintILi3EE")
 !100465 = !{!100466, !100494, !100498, !100501, !100504}
 !100466 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100464, baseType: !100467)
@@ -11194,11 +11391,11 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100508 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100509, size: 64)
 !100509 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100464)
 !100510 = !{!100493}
-!100511 = !DILocation(line: 43, column: 14, scope: !100335)
-!100512 = !DILocation(line: 44, column: 7, scope: !100335)
-!100513 = !DILocation(line: 44, column: 11, scope: !100335)
-!100514 = !DILocation(line: 45, column: 3, scope: !100335)
-!100515 = !DILocalVariable(name: "B_13_3", scope: !100335, file: !100005, line: 45, type: !100516)
+!100511 = !DILocation(line: 33, column: 14, scope: !100335)
+!100512 = !DILocation(line: 34, column: 7, scope: !100335)
+!100513 = !DILocation(line: 34, column: 11, scope: !100335)
+!100514 = !DILocation(line: 35, column: 3, scope: !100335)
+!100515 = !DILocalVariable(name: "B_13_3", scope: !100335, file: !100005, line: 35, type: !100516)
 !100516 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<11>", file: !100346, line: 181, size: 16, flags: DIFlagTypePassByValue, elements: !100517, templateParams: !100535, identifier: "_ZTS7ap_uintILi11EE")
 !100517 = !{!100518, !100519, !100523, !100526, !100529}
 !100518 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100516, baseType: !100103)
@@ -11219,16 +11416,16 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100533 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100534, size: 64)
 !100534 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100516)
 !100535 = !{!100129}
-!100536 = !DILocation(line: 45, column: 15, scope: !100335)
-!100537 = !DILocation(line: 45, column: 24, scope: !100335)
-!100538 = !DILocation(line: 45, column: 28, scope: !100335)
-!100539 = !DILocation(line: 47, column: 3, scope: !100335)
-!100540 = !DILocalVariable(name: "B_E", scope: !100335, file: !100005, line: 47, type: !100464)
-!100541 = !DILocation(line: 47, column: 14, scope: !100335)
-!100542 = !DILocation(line: 47, column: 20, scope: !100335)
-!100543 = !DILocation(line: 47, column: 24, scope: !100335)
-!100544 = !DILocation(line: 48, column: 3, scope: !100335)
-!100545 = !DILocalVariable(name: "E", scope: !100335, file: !100005, line: 48, type: !100546)
+!100536 = !DILocation(line: 35, column: 15, scope: !100335)
+!100537 = !DILocation(line: 35, column: 24, scope: !100335)
+!100538 = !DILocation(line: 35, column: 28, scope: !100335)
+!100539 = !DILocation(line: 37, column: 3, scope: !100335)
+!100540 = !DILocalVariable(name: "B_E", scope: !100335, file: !100005, line: 37, type: !100464)
+!100541 = !DILocation(line: 37, column: 14, scope: !100335)
+!100542 = !DILocation(line: 37, column: 20, scope: !100335)
+!100543 = !DILocation(line: 37, column: 24, scope: !100335)
+!100544 = !DILocation(line: 38, column: 3, scope: !100335)
+!100545 = !DILocalVariable(name: "E", scope: !100335, file: !100005, line: 38, type: !100546)
 !100546 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<6>", file: !100346, line: 181, size: 8, flags: DIFlagTypePassByValue, elements: !100547, templateParams: !100565, identifier: "_ZTS7ap_uintILi6EE")
 !100547 = !{!100548, !100549, !100553, !100556, !100559}
 !100548 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100546, baseType: !100299)
@@ -11249,10 +11446,10 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100563 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100564, size: 64)
 !100564 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100546)
 !100565 = !{!100325}
-!100566 = !DILocation(line: 48, column: 14, scope: !100335)
-!100567 = !DILocation(line: 48, column: 18, scope: !100335)
-!100568 = !DILocation(line: 49, column: 3, scope: !100335)
-!100569 = !DILocalVariable(name: "T_13_0", scope: !100335, file: !100005, line: 49, type: !100570)
+!100566 = !DILocation(line: 38, column: 14, scope: !100335)
+!100567 = !DILocation(line: 38, column: 18, scope: !100335)
+!100568 = !DILocation(line: 39, column: 3, scope: !100335)
+!100569 = !DILocalVariable(name: "T_13_0", scope: !100335, file: !100005, line: 39, type: !100570)
 !100570 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<14>", file: !100346, line: 181, size: 16, flags: DIFlagTypePassByValue, elements: !100571, templateParams: !100616, identifier: "_ZTS7ap_uintILi14EE")
 !100571 = !{!100572, !100600, !100604, !100607, !100610}
 !100572 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100570, baseType: !100573)
@@ -11300,34 +11497,34 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100614 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100615, size: 64)
 !100615 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100570)
 !100616 = !{!100599}
-!100617 = !DILocation(line: 49, column: 15, scope: !100335)
-!100618 = !DILocation(line: 49, column: 24, scope: !100335)
-!100619 = !DILocation(line: 50, column: 3, scope: !100335)
-!100620 = !DILocalVariable(name: "B_13_0", scope: !100335, file: !100005, line: 50, type: !100570)
-!100621 = !DILocation(line: 50, column: 15, scope: !100335)
-!100622 = !DILocation(line: 50, column: 24, scope: !100335)
-!100623 = !DILocalVariable(name: "L_carry_out", scope: !100335, file: !100005, line: 51, type: !100032)
-!100624 = !DILocation(line: 51, column: 8, scope: !100335)
-!100625 = !DILocation(line: 53, column: 7, scope: !100335)
-!100626 = !DILocation(line: 54, column: 9, scope: !100627)
-!100627 = distinct !DILexicalBlock(scope: !100628, file: !100005, line: 53, column: 13)
-!100628 = distinct !DILexicalBlock(scope: !100335, file: !100005, line: 53, column: 7)
-!100629 = !DILocation(line: 54, column: 7, scope: !100627)
-!100630 = !DILocation(line: 54, column: 5, scope: !100627)
-!100631 = !DILocation(line: 55, column: 14, scope: !100627)
-!100632 = !DILocation(line: 55, column: 15, scope: !100627)
-!100633 = !DILocation(line: 55, column: 23, scope: !100627)
-!100634 = !DILocation(line: 55, column: 21, scope: !100627)
-!100635 = !DILocation(line: 55, column: 12, scope: !100627)
-!100636 = !DILocation(line: 55, column: 5, scope: !100627)
-!100637 = !DILocation(line: 56, column: 14, scope: !100627)
-!100638 = !DILocation(line: 56, column: 15, scope: !100627)
-!100639 = !DILocation(line: 56, column: 23, scope: !100627)
-!100640 = !DILocation(line: 56, column: 21, scope: !100627)
-!100641 = !DILocation(line: 56, column: 12, scope: !100627)
-!100642 = !DILocation(line: 56, column: 5, scope: !100627)
-!100643 = !DILocation(line: 57, column: 5, scope: !100627)
-!100644 = !DILocalVariable(name: "T_11_0", scope: !100627, file: !100005, line: 57, type: !100645)
+!100617 = !DILocation(line: 39, column: 15, scope: !100335)
+!100618 = !DILocation(line: 39, column: 24, scope: !100335)
+!100619 = !DILocation(line: 40, column: 3, scope: !100335)
+!100620 = !DILocalVariable(name: "B_13_0", scope: !100335, file: !100005, line: 40, type: !100570)
+!100621 = !DILocation(line: 40, column: 15, scope: !100335)
+!100622 = !DILocation(line: 40, column: 24, scope: !100335)
+!100623 = !DILocalVariable(name: "L_carry_out", scope: !100335, file: !100005, line: 41, type: !100032)
+!100624 = !DILocation(line: 41, column: 8, scope: !100335)
+!100625 = !DILocation(line: 43, column: 7, scope: !100335)
+!100626 = !DILocation(line: 44, column: 9, scope: !100627)
+!100627 = distinct !DILexicalBlock(scope: !100628, file: !100005, line: 43, column: 13)
+!100628 = distinct !DILexicalBlock(scope: !100335, file: !100005, line: 43, column: 7)
+!100629 = !DILocation(line: 44, column: 7, scope: !100627)
+!100630 = !DILocation(line: 44, column: 5, scope: !100627)
+!100631 = !DILocation(line: 45, column: 14, scope: !100627)
+!100632 = !DILocation(line: 45, column: 15, scope: !100627)
+!100633 = !DILocation(line: 45, column: 23, scope: !100627)
+!100634 = !DILocation(line: 45, column: 21, scope: !100627)
+!100635 = !DILocation(line: 45, column: 12, scope: !100627)
+!100636 = !DILocation(line: 45, column: 5, scope: !100627)
+!100637 = !DILocation(line: 46, column: 14, scope: !100627)
+!100638 = !DILocation(line: 46, column: 15, scope: !100627)
+!100639 = !DILocation(line: 46, column: 23, scope: !100627)
+!100640 = !DILocation(line: 46, column: 21, scope: !100627)
+!100641 = !DILocation(line: 46, column: 12, scope: !100627)
+!100642 = !DILocation(line: 46, column: 5, scope: !100627)
+!100643 = !DILocation(line: 47, column: 5, scope: !100627)
+!100644 = !DILocalVariable(name: "T_11_0", scope: !100627, file: !100005, line: 47, type: !100645)
 !100645 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<12>", file: !100346, line: 181, size: 16, flags: DIFlagTypePassByValue, elements: !100646, templateParams: !100691, identifier: "_ZTS7ap_uintILi12EE")
 !100646 = !{!100647, !100675, !100679, !100682, !100685}
 !100647 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100645, baseType: !100648)
@@ -11375,52 +11572,52 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100689 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100690, size: 64)
 !100690 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100645)
 !100691 = !{!100674}
-!100692 = !DILocation(line: 57, column: 17, scope: !100627)
-!100693 = !DILocation(line: 57, column: 26, scope: !100627)
-!100694 = !DILocation(line: 57, column: 33, scope: !100627)
-!100695 = !DILocation(line: 58, column: 5, scope: !100627)
-!100696 = !DILocalVariable(name: "B_11_0", scope: !100627, file: !100005, line: 58, type: !100645)
-!100697 = !DILocation(line: 58, column: 17, scope: !100627)
-!100698 = !DILocation(line: 58, column: 26, scope: !100627)
-!100699 = !DILocation(line: 58, column: 33, scope: !100627)
-!100700 = !DILocation(line: 59, column: 20, scope: !100627)
-!100701 = !DILocation(line: 59, column: 29, scope: !100627)
-!100702 = !DILocation(line: 59, column: 27, scope: !100627)
-!100703 = !DILocation(line: 60, column: 3, scope: !100628)
-!100704 = !DILocation(line: 60, column: 3, scope: !100627)
-!100705 = !DILocation(line: 61, column: 9, scope: !100706)
-!100706 = distinct !DILexicalBlock(scope: !100628, file: !100005, line: 60, column: 10)
-!100707 = !DILocation(line: 61, column: 10, scope: !100706)
-!100708 = !DILocation(line: 61, column: 15, scope: !100706)
-!100709 = !DILocation(line: 61, column: 13, scope: !100706)
-!100710 = !DILocation(line: 61, column: 7, scope: !100706)
-!100711 = !DILocation(line: 61, column: 5, scope: !100706)
-!100712 = !DILocation(line: 62, column: 14, scope: !100706)
-!100713 = !DILocation(line: 62, column: 15, scope: !100706)
-!100714 = !DILocation(line: 62, column: 22, scope: !100706)
-!100715 = !DILocation(line: 62, column: 12, scope: !100706)
-!100716 = !DILocation(line: 62, column: 5, scope: !100706)
-!100717 = !DILocation(line: 63, column: 14, scope: !100706)
-!100718 = !DILocation(line: 63, column: 15, scope: !100706)
-!100719 = !DILocation(line: 63, column: 22, scope: !100706)
-!100720 = !DILocation(line: 63, column: 12, scope: !100706)
-!100721 = !DILocation(line: 63, column: 5, scope: !100706)
-!100722 = !DILocation(line: 64, column: 5, scope: !100706)
-!100723 = !DILocalVariable(name: "T_11_3_only", scope: !100706, file: !100005, line: 64, type: !100645)
-!100724 = !DILocation(line: 64, column: 17, scope: !100706)
-!100725 = !DILocation(line: 64, column: 31, scope: !100706)
-!100726 = !DILocation(line: 64, column: 38, scope: !100706)
-!100727 = !DILocation(line: 65, column: 5, scope: !100706)
-!100728 = !DILocalVariable(name: "B_11_3_only", scope: !100706, file: !100005, line: 65, type: !100645)
-!100729 = !DILocation(line: 65, column: 17, scope: !100706)
-!100730 = !DILocation(line: 65, column: 31, scope: !100706)
-!100731 = !DILocation(line: 65, column: 38, scope: !100706)
-!100732 = !DILocation(line: 66, column: 20, scope: !100706)
-!100733 = !DILocation(line: 66, column: 34, scope: !100706)
-!100734 = !DILocation(line: 66, column: 32, scope: !100706)
-!100735 = !DILocation(line: 67, column: 3, scope: !100628)
-!100736 = !DILocation(line: 68, column: 3, scope: !100335)
-!100737 = !DILocalVariable(name: "B_13_12", scope: !100335, file: !100005, line: 68, type: !100738)
+!100692 = !DILocation(line: 47, column: 17, scope: !100627)
+!100693 = !DILocation(line: 47, column: 26, scope: !100627)
+!100694 = !DILocation(line: 47, column: 33, scope: !100627)
+!100695 = !DILocation(line: 48, column: 5, scope: !100627)
+!100696 = !DILocalVariable(name: "B_11_0", scope: !100627, file: !100005, line: 48, type: !100645)
+!100697 = !DILocation(line: 48, column: 17, scope: !100627)
+!100698 = !DILocation(line: 48, column: 26, scope: !100627)
+!100699 = !DILocation(line: 48, column: 33, scope: !100627)
+!100700 = !DILocation(line: 49, column: 20, scope: !100627)
+!100701 = !DILocation(line: 49, column: 29, scope: !100627)
+!100702 = !DILocation(line: 49, column: 27, scope: !100627)
+!100703 = !DILocation(line: 50, column: 3, scope: !100628)
+!100704 = !DILocation(line: 50, column: 3, scope: !100627)
+!100705 = !DILocation(line: 51, column: 9, scope: !100706)
+!100706 = distinct !DILexicalBlock(scope: !100628, file: !100005, line: 50, column: 10)
+!100707 = !DILocation(line: 51, column: 10, scope: !100706)
+!100708 = !DILocation(line: 51, column: 15, scope: !100706)
+!100709 = !DILocation(line: 51, column: 13, scope: !100706)
+!100710 = !DILocation(line: 51, column: 7, scope: !100706)
+!100711 = !DILocation(line: 51, column: 5, scope: !100706)
+!100712 = !DILocation(line: 52, column: 14, scope: !100706)
+!100713 = !DILocation(line: 52, column: 15, scope: !100706)
+!100714 = !DILocation(line: 52, column: 22, scope: !100706)
+!100715 = !DILocation(line: 52, column: 12, scope: !100706)
+!100716 = !DILocation(line: 52, column: 5, scope: !100706)
+!100717 = !DILocation(line: 53, column: 14, scope: !100706)
+!100718 = !DILocation(line: 53, column: 15, scope: !100706)
+!100719 = !DILocation(line: 53, column: 22, scope: !100706)
+!100720 = !DILocation(line: 53, column: 12, scope: !100706)
+!100721 = !DILocation(line: 53, column: 5, scope: !100706)
+!100722 = !DILocation(line: 54, column: 5, scope: !100706)
+!100723 = !DILocalVariable(name: "T_11_3_only", scope: !100706, file: !100005, line: 54, type: !100645)
+!100724 = !DILocation(line: 54, column: 17, scope: !100706)
+!100725 = !DILocation(line: 54, column: 31, scope: !100706)
+!100726 = !DILocation(line: 54, column: 38, scope: !100706)
+!100727 = !DILocation(line: 55, column: 5, scope: !100706)
+!100728 = !DILocalVariable(name: "B_11_3_only", scope: !100706, file: !100005, line: 55, type: !100645)
+!100729 = !DILocation(line: 55, column: 17, scope: !100706)
+!100730 = !DILocation(line: 55, column: 31, scope: !100706)
+!100731 = !DILocation(line: 55, column: 38, scope: !100706)
+!100732 = !DILocation(line: 56, column: 20, scope: !100706)
+!100733 = !DILocation(line: 56, column: 34, scope: !100706)
+!100734 = !DILocation(line: 56, column: 32, scope: !100706)
+!100735 = !DILocation(line: 57, column: 3, scope: !100628)
+!100736 = !DILocation(line: 58, column: 3, scope: !100335)
+!100737 = !DILocalVariable(name: "B_13_12", scope: !100335, file: !100005, line: 58, type: !100738)
 !100738 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_uint<2>", file: !100346, line: 181, size: 8, flags: DIFlagTypePassByValue, elements: !100739, templateParams: !100784, identifier: "_ZTS7ap_uintILi2EE")
 !100739 = !{!100740, !100768, !100772, !100775, !100778}
 !100740 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100738, baseType: !100741)
@@ -11468,52 +11665,52 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100782 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100783, size: 64)
 !100783 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100738)
 !100784 = !{!100767}
-!100785 = !DILocation(line: 68, column: 14, scope: !100335)
-!100786 = !DILocation(line: 68, column: 24, scope: !100335)
-!100787 = !DILocation(line: 68, column: 31, scope: !100335)
-!100788 = !DILocation(line: 69, column: 3, scope: !100335)
-!100789 = !DILocalVariable(name: "T_13_12", scope: !100335, file: !100005, line: 69, type: !100738)
-!100790 = !DILocation(line: 69, column: 14, scope: !100335)
-!100791 = !DILocation(line: 69, column: 24, scope: !100335)
-!100792 = !DILocation(line: 69, column: 35, scope: !100335)
-!100793 = !DILocation(line: 69, column: 32, scope: !100335)
-!100794 = !DILocation(line: 69, column: 59, scope: !100335)
-!100795 = !DILocation(line: 69, column: 56, scope: !100335)
-!100796 = !DILocation(line: 71, column: 12, scope: !100335)
-!100797 = !DILocation(line: 71, column: 13, scope: !100335)
-!100798 = !DILocation(line: 71, column: 22, scope: !100335)
-!100799 = !DILocation(line: 71, column: 29, scope: !100335)
-!100800 = !DILocation(line: 71, column: 20, scope: !100335)
-!100801 = !DILocation(line: 71, column: 10, scope: !100335)
-!100802 = !DILocation(line: 71, column: 3, scope: !100335)
-!100803 = !DILocation(line: 73, column: 3, scope: !100335)
-!100804 = !DILocalVariable(name: "A3", scope: !100335, file: !100005, line: 73, type: !100464)
-!100805 = !DILocation(line: 73, column: 14, scope: !100335)
-!100806 = !DILocation(line: 73, column: 19, scope: !100335)
-!100807 = !DILocation(line: 73, column: 20, scope: !100335)
-!100808 = !DILocation(line: 73, column: 21, scope: !100335)
-!100809 = !DILocation(line: 73, column: 29, scope: !100335)
-!100810 = !DILocation(line: 73, column: 30, scope: !100335)
-!100811 = !DILocation(line: 73, column: 32, scope: !100335)
-!100812 = !DILocation(line: 73, column: 26, scope: !100335)
-!100813 = !DILocation(line: 73, column: 39, scope: !100335)
-!100814 = !DILocation(line: 74, column: 3, scope: !100335)
-!100815 = !DILocalVariable(name: "T3", scope: !100335, file: !100005, line: 74, type: !100464)
-!100816 = !DILocation(line: 74, column: 14, scope: !100335)
-!100817 = !DILocation(line: 74, column: 19, scope: !100335)
-!100818 = !DILocation(line: 74, column: 26, scope: !100335)
-!100819 = !DILocation(line: 75, column: 3, scope: !100335)
-!100820 = !DILocalVariable(name: "B3", scope: !100335, file: !100005, line: 75, type: !100464)
-!100821 = !DILocation(line: 75, column: 14, scope: !100335)
-!100822 = !DILocation(line: 75, column: 19, scope: !100335)
-!100823 = !DILocation(line: 75, column: 26, scope: !100335)
-!100824 = !DILocation(line: 76, column: 3, scope: !100335)
-!100825 = !DILocalVariable(name: "R", scope: !100335, file: !100005, line: 76, type: !100464)
-!100826 = !DILocation(line: 76, column: 14, scope: !100335)
-!100827 = !DILocation(line: 76, column: 18, scope: !100335)
-!100828 = !DILocation(line: 76, column: 21, scope: !100335)
-!100829 = !DILocation(line: 78, column: 3, scope: !100335)
-!100830 = !DILocalVariable(name: "c_t", scope: !100335, file: !100005, line: 78, type: !100831)
+!100785 = !DILocation(line: 58, column: 14, scope: !100335)
+!100786 = !DILocation(line: 58, column: 24, scope: !100335)
+!100787 = !DILocation(line: 58, column: 31, scope: !100335)
+!100788 = !DILocation(line: 59, column: 3, scope: !100335)
+!100789 = !DILocalVariable(name: "T_13_12", scope: !100335, file: !100005, line: 59, type: !100738)
+!100790 = !DILocation(line: 59, column: 14, scope: !100335)
+!100791 = !DILocation(line: 59, column: 24, scope: !100335)
+!100792 = !DILocation(line: 59, column: 35, scope: !100335)
+!100793 = !DILocation(line: 59, column: 32, scope: !100335)
+!100794 = !DILocation(line: 59, column: 59, scope: !100335)
+!100795 = !DILocation(line: 59, column: 56, scope: !100335)
+!100796 = !DILocation(line: 61, column: 12, scope: !100335)
+!100797 = !DILocation(line: 61, column: 13, scope: !100335)
+!100798 = !DILocation(line: 61, column: 22, scope: !100335)
+!100799 = !DILocation(line: 61, column: 29, scope: !100335)
+!100800 = !DILocation(line: 61, column: 20, scope: !100335)
+!100801 = !DILocation(line: 61, column: 10, scope: !100335)
+!100802 = !DILocation(line: 61, column: 3, scope: !100335)
+!100803 = !DILocation(line: 63, column: 3, scope: !100335)
+!100804 = !DILocalVariable(name: "A3", scope: !100335, file: !100005, line: 63, type: !100464)
+!100805 = !DILocation(line: 63, column: 14, scope: !100335)
+!100806 = !DILocation(line: 63, column: 19, scope: !100335)
+!100807 = !DILocation(line: 63, column: 20, scope: !100335)
+!100808 = !DILocation(line: 63, column: 21, scope: !100335)
+!100809 = !DILocation(line: 63, column: 29, scope: !100335)
+!100810 = !DILocation(line: 63, column: 30, scope: !100335)
+!100811 = !DILocation(line: 63, column: 32, scope: !100335)
+!100812 = !DILocation(line: 63, column: 26, scope: !100335)
+!100813 = !DILocation(line: 63, column: 39, scope: !100335)
+!100814 = !DILocation(line: 64, column: 3, scope: !100335)
+!100815 = !DILocalVariable(name: "T3", scope: !100335, file: !100005, line: 64, type: !100464)
+!100816 = !DILocation(line: 64, column: 14, scope: !100335)
+!100817 = !DILocation(line: 64, column: 19, scope: !100335)
+!100818 = !DILocation(line: 64, column: 26, scope: !100335)
+!100819 = !DILocation(line: 65, column: 3, scope: !100335)
+!100820 = !DILocalVariable(name: "B3", scope: !100335, file: !100005, line: 65, type: !100464)
+!100821 = !DILocation(line: 65, column: 14, scope: !100335)
+!100822 = !DILocation(line: 65, column: 19, scope: !100335)
+!100823 = !DILocation(line: 65, column: 26, scope: !100335)
+!100824 = !DILocation(line: 66, column: 3, scope: !100335)
+!100825 = !DILocalVariable(name: "R", scope: !100335, file: !100005, line: 66, type: !100464)
+!100826 = !DILocation(line: 66, column: 14, scope: !100335)
+!100827 = !DILocation(line: 66, column: 18, scope: !100335)
+!100828 = !DILocation(line: 66, column: 21, scope: !100335)
+!100829 = !DILocation(line: 68, column: 3, scope: !100335)
+!100830 = !DILocalVariable(name: "c_t", scope: !100335, file: !100005, line: 68, type: !100831)
 !100831 = distinct !DICompositeType(tag: DW_TAG_structure_type, name: "ap_int<2>", file: !100346, line: 18, size: 8, flags: DIFlagTypePassByValue, elements: !100832, templateParams: !100784, identifier: "_ZTS6ap_intILi2EE")
 !100832 = !{!100833, !100859, !100863, !100866, !100869}
 !100833 = !DIDerivedType(tag: DW_TAG_inheritance, scope: !100831, baseType: !100834)
@@ -11558,124 +11755,124 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !100872 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100831, size: 64)
 !100873 = !DIDerivedType(tag: DW_TAG_reference_type, baseType: !100874, size: 64)
 !100874 = !DIDerivedType(tag: DW_TAG_const_type, baseType: !100831)
-!100875 = !DILocation(line: 78, column: 13, scope: !100335)
-!100876 = !DILocation(line: 78, column: 19, scope: !100335)
-!100877 = !DILocation(line: 79, column: 3, scope: !100335)
-!100878 = !DILocalVariable(name: "c_b", scope: !100335, file: !100005, line: 79, type: !100831)
-!100879 = !DILocation(line: 79, column: 13, scope: !100335)
-!100880 = !DILocation(line: 79, column: 19, scope: !100335)
-!100881 = !DILocation(line: 81, column: 8, scope: !100882)
-!100882 = distinct !DILexicalBlock(scope: !100335, file: !100005, line: 81, column: 7)
-!100883 = !DILocation(line: 81, column: 13, scope: !100882)
-!100884 = !DILocation(line: 81, column: 11, scope: !100882)
-!100885 = !DILocation(line: 81, column: 16, scope: !100882)
-!100886 = !DILocation(line: 81, column: 21, scope: !100882)
-!100887 = !DILocation(line: 81, column: 26, scope: !100882)
-!100888 = !DILocation(line: 81, column: 24, scope: !100882)
-!100889 = !DILocation(line: 81, column: 7, scope: !100335)
-!100890 = !DILocation(line: 82, column: 11, scope: !100891)
-!100891 = distinct !DILexicalBlock(scope: !100882, file: !100005, line: 81, column: 30)
-!100892 = !DILocation(line: 82, column: 9, scope: !100891)
-!100893 = !DILocation(line: 82, column: 5, scope: !100891)
-!100894 = !DILocation(line: 83, column: 3, scope: !100891)
-!100895 = !DILocation(line: 83, column: 16, scope: !100896)
-!100896 = distinct !DILexicalBlock(scope: !100882, file: !100005, line: 83, column: 14)
-!100897 = !DILocation(line: 83, column: 21, scope: !100896)
-!100898 = !DILocation(line: 83, column: 19, scope: !100896)
-!100899 = !DILocation(line: 83, column: 24, scope: !100896)
-!100900 = !DILocation(line: 83, column: 28, scope: !100896)
-!100901 = !DILocation(line: 83, column: 33, scope: !100896)
-!100902 = !DILocation(line: 83, column: 31, scope: !100896)
-!100903 = !DILocation(line: 83, column: 14, scope: !100882)
-!100904 = !DILocation(line: 84, column: 11, scope: !100905)
-!100905 = distinct !DILexicalBlock(scope: !100896, file: !100005, line: 83, column: 37)
-!100906 = !DILocation(line: 84, column: 9, scope: !100905)
-!100907 = !DILocation(line: 84, column: 5, scope: !100905)
-!100908 = !DILocation(line: 85, column: 3, scope: !100905)
-!100909 = !DILocation(line: 86, column: 8, scope: !100910)
-!100910 = distinct !DILexicalBlock(scope: !100335, file: !100005, line: 86, column: 7)
-!100911 = !DILocation(line: 86, column: 13, scope: !100910)
-!100912 = !DILocation(line: 86, column: 11, scope: !100910)
-!100913 = !DILocation(line: 86, column: 16, scope: !100910)
-!100914 = !DILocation(line: 86, column: 21, scope: !100910)
-!100915 = !DILocation(line: 86, column: 26, scope: !100910)
-!100916 = !DILocation(line: 86, column: 24, scope: !100910)
-!100917 = !DILocation(line: 86, column: 7, scope: !100335)
-!100918 = !DILocation(line: 87, column: 11, scope: !100919)
-!100919 = distinct !DILexicalBlock(scope: !100910, file: !100005, line: 86, column: 30)
-!100920 = !DILocation(line: 87, column: 9, scope: !100919)
-!100921 = !DILocation(line: 87, column: 5, scope: !100919)
-!100922 = !DILocation(line: 88, column: 3, scope: !100919)
-!100923 = !DILocation(line: 88, column: 16, scope: !100924)
-!100924 = distinct !DILexicalBlock(scope: !100910, file: !100005, line: 88, column: 14)
-!100925 = !DILocation(line: 88, column: 21, scope: !100924)
-!100926 = !DILocation(line: 88, column: 19, scope: !100924)
-!100927 = !DILocation(line: 88, column: 24, scope: !100924)
-!100928 = !DILocation(line: 88, column: 28, scope: !100924)
-!100929 = !DILocation(line: 88, column: 33, scope: !100924)
-!100930 = !DILocation(line: 88, column: 31, scope: !100924)
-!100931 = !DILocation(line: 88, column: 14, scope: !100910)
-!100932 = !DILocation(line: 89, column: 11, scope: !100933)
-!100933 = distinct !DILexicalBlock(scope: !100924, file: !100005, line: 88, column: 37)
-!100934 = !DILocation(line: 89, column: 9, scope: !100933)
-!100935 = !DILocation(line: 89, column: 5, scope: !100933)
-!100936 = !DILocation(line: 90, column: 3, scope: !100933)
-!100937 = !DILocation(line: 91, column: 15, scope: !100335)
-!100938 = !DILocation(line: 91, column: 23, scope: !100335)
-!100939 = !DILocation(line: 91, column: 24, scope: !100335)
-!100940 = !DILocation(line: 91, column: 26, scope: !100335)
-!100941 = !DILocation(line: 91, column: 20, scope: !100335)
-!100942 = !DILocalVariable(name: "a_top", scope: !100335, file: !100005, line: 91, type: !100004)
-!100943 = !DILocation(line: 91, column: 7, scope: !100335)
-!100944 = !DILocation(line: 92, column: 13, scope: !100335)
-!100945 = !DILocation(line: 92, column: 23, scope: !100335)
-!100946 = !DILocation(line: 92, column: 21, scope: !100335)
-!100947 = !DILocation(line: 92, column: 14, scope: !100335)
-!100948 = !DILocation(line: 92, column: 31, scope: !100335)
-!100949 = !DILocation(line: 92, column: 32, scope: !100335)
-!100950 = !DILocation(line: 92, column: 34, scope: !100335)
-!100951 = !DILocation(line: 92, column: 28, scope: !100335)
-!100952 = !DILocation(line: 92, column: 50, scope: !100335)
-!100953 = !DILocation(line: 92, column: 57, scope: !100335)
-!100954 = !DILocation(line: 92, column: 49, scope: !100335)
-!100955 = !DILocation(line: 92, column: 70, scope: !100335)
-!100956 = !DILocation(line: 92, column: 67, scope: !100335)
-!100957 = !DILocation(line: 92, column: 41, scope: !100335)
-!100958 = !DILocalVariable(name: "top", scope: !100335, file: !100005, line: 92, type: !100004)
-!100959 = !DILocation(line: 92, column: 7, scope: !100335)
-!100960 = !DILocation(line: 93, column: 14, scope: !100335)
-!100961 = !DILocation(line: 93, column: 24, scope: !100335)
-!100962 = !DILocation(line: 93, column: 22, scope: !100335)
-!100963 = !DILocation(line: 93, column: 15, scope: !100335)
-!100964 = !DILocation(line: 93, column: 32, scope: !100335)
-!100965 = !DILocation(line: 93, column: 33, scope: !100335)
-!100966 = !DILocation(line: 93, column: 35, scope: !100335)
-!100967 = !DILocation(line: 93, column: 29, scope: !100335)
-!100968 = !DILocation(line: 93, column: 51, scope: !100335)
-!100969 = !DILocation(line: 93, column: 58, scope: !100335)
-!100970 = !DILocation(line: 93, column: 50, scope: !100335)
-!100971 = !DILocation(line: 93, column: 71, scope: !100335)
-!100972 = !DILocation(line: 93, column: 68, scope: !100335)
-!100973 = !DILocation(line: 93, column: 42, scope: !100335)
-!100974 = !DILocalVariable(name: "base", scope: !100335, file: !100005, line: 93, type: !100004)
-!100975 = !DILocation(line: 93, column: 7, scope: !100335)
-!100976 = !DILocalVariable(name: "c", scope: !100335, file: !100005, line: 95, type: !100338)
-!100977 = !DILocation(line: 95, column: 7, scope: !100335)
-!100978 = !DILocation(line: 97, column: 19, scope: !100335)
-!100979 = !DILocation(line: 97, column: 17, scope: !100335)
-!100980 = !DILocation(line: 97, column: 12, scope: !100335)
-!100981 = !DILocation(line: 97, column: 5, scope: !100335)
-!100982 = !DILocation(line: 97, column: 10, scope: !100335)
-!100983 = !DILocation(line: 98, column: 17, scope: !100335)
-!100984 = !DILocation(line: 98, column: 15, scope: !100335)
-!100985 = !DILocation(line: 98, column: 11, scope: !100335)
-!100986 = !DILocation(line: 98, column: 5, scope: !100335)
-!100987 = !DILocation(line: 98, column: 9, scope: !100335)
-!100988 = !DILocation(line: 99, column: 5, scope: !100335)
-!100989 = !DILocation(line: 99, column: 10, scope: !100335)
-!100990 = !DILocation(line: 100, column: 5, scope: !100335)
-!100991 = !DILocation(line: 100, column: 11, scope: !100335)
-!100992 = !DILocation(line: 102, column: 1, scope: !100335)
+!100875 = !DILocation(line: 68, column: 13, scope: !100335)
+!100876 = !DILocation(line: 68, column: 19, scope: !100335)
+!100877 = !DILocation(line: 69, column: 3, scope: !100335)
+!100878 = !DILocalVariable(name: "c_b", scope: !100335, file: !100005, line: 69, type: !100831)
+!100879 = !DILocation(line: 69, column: 13, scope: !100335)
+!100880 = !DILocation(line: 69, column: 19, scope: !100335)
+!100881 = !DILocation(line: 71, column: 8, scope: !100882)
+!100882 = distinct !DILexicalBlock(scope: !100335, file: !100005, line: 71, column: 7)
+!100883 = !DILocation(line: 71, column: 13, scope: !100882)
+!100884 = !DILocation(line: 71, column: 11, scope: !100882)
+!100885 = !DILocation(line: 71, column: 16, scope: !100882)
+!100886 = !DILocation(line: 71, column: 21, scope: !100882)
+!100887 = !DILocation(line: 71, column: 26, scope: !100882)
+!100888 = !DILocation(line: 71, column: 24, scope: !100882)
+!100889 = !DILocation(line: 71, column: 7, scope: !100335)
+!100890 = !DILocation(line: 72, column: 11, scope: !100891)
+!100891 = distinct !DILexicalBlock(scope: !100882, file: !100005, line: 71, column: 30)
+!100892 = !DILocation(line: 72, column: 9, scope: !100891)
+!100893 = !DILocation(line: 72, column: 5, scope: !100891)
+!100894 = !DILocation(line: 73, column: 3, scope: !100891)
+!100895 = !DILocation(line: 73, column: 16, scope: !100896)
+!100896 = distinct !DILexicalBlock(scope: !100882, file: !100005, line: 73, column: 14)
+!100897 = !DILocation(line: 73, column: 21, scope: !100896)
+!100898 = !DILocation(line: 73, column: 19, scope: !100896)
+!100899 = !DILocation(line: 73, column: 24, scope: !100896)
+!100900 = !DILocation(line: 73, column: 28, scope: !100896)
+!100901 = !DILocation(line: 73, column: 33, scope: !100896)
+!100902 = !DILocation(line: 73, column: 31, scope: !100896)
+!100903 = !DILocation(line: 73, column: 14, scope: !100882)
+!100904 = !DILocation(line: 74, column: 11, scope: !100905)
+!100905 = distinct !DILexicalBlock(scope: !100896, file: !100005, line: 73, column: 37)
+!100906 = !DILocation(line: 74, column: 9, scope: !100905)
+!100907 = !DILocation(line: 74, column: 5, scope: !100905)
+!100908 = !DILocation(line: 75, column: 3, scope: !100905)
+!100909 = !DILocation(line: 76, column: 8, scope: !100910)
+!100910 = distinct !DILexicalBlock(scope: !100335, file: !100005, line: 76, column: 7)
+!100911 = !DILocation(line: 76, column: 13, scope: !100910)
+!100912 = !DILocation(line: 76, column: 11, scope: !100910)
+!100913 = !DILocation(line: 76, column: 16, scope: !100910)
+!100914 = !DILocation(line: 76, column: 21, scope: !100910)
+!100915 = !DILocation(line: 76, column: 26, scope: !100910)
+!100916 = !DILocation(line: 76, column: 24, scope: !100910)
+!100917 = !DILocation(line: 76, column: 7, scope: !100335)
+!100918 = !DILocation(line: 77, column: 11, scope: !100919)
+!100919 = distinct !DILexicalBlock(scope: !100910, file: !100005, line: 76, column: 30)
+!100920 = !DILocation(line: 77, column: 9, scope: !100919)
+!100921 = !DILocation(line: 77, column: 5, scope: !100919)
+!100922 = !DILocation(line: 78, column: 3, scope: !100919)
+!100923 = !DILocation(line: 78, column: 16, scope: !100924)
+!100924 = distinct !DILexicalBlock(scope: !100910, file: !100005, line: 78, column: 14)
+!100925 = !DILocation(line: 78, column: 21, scope: !100924)
+!100926 = !DILocation(line: 78, column: 19, scope: !100924)
+!100927 = !DILocation(line: 78, column: 24, scope: !100924)
+!100928 = !DILocation(line: 78, column: 28, scope: !100924)
+!100929 = !DILocation(line: 78, column: 33, scope: !100924)
+!100930 = !DILocation(line: 78, column: 31, scope: !100924)
+!100931 = !DILocation(line: 78, column: 14, scope: !100910)
+!100932 = !DILocation(line: 79, column: 11, scope: !100933)
+!100933 = distinct !DILexicalBlock(scope: !100924, file: !100005, line: 78, column: 37)
+!100934 = !DILocation(line: 79, column: 9, scope: !100933)
+!100935 = !DILocation(line: 79, column: 5, scope: !100933)
+!100936 = !DILocation(line: 80, column: 3, scope: !100933)
+!100937 = !DILocation(line: 81, column: 15, scope: !100335)
+!100938 = !DILocation(line: 81, column: 23, scope: !100335)
+!100939 = !DILocation(line: 81, column: 24, scope: !100335)
+!100940 = !DILocation(line: 81, column: 26, scope: !100335)
+!100941 = !DILocation(line: 81, column: 20, scope: !100335)
+!100942 = !DILocalVariable(name: "a_top", scope: !100335, file: !100005, line: 81, type: !100004)
+!100943 = !DILocation(line: 81, column: 7, scope: !100335)
+!100944 = !DILocation(line: 82, column: 13, scope: !100335)
+!100945 = !DILocation(line: 82, column: 23, scope: !100335)
+!100946 = !DILocation(line: 82, column: 21, scope: !100335)
+!100947 = !DILocation(line: 82, column: 14, scope: !100335)
+!100948 = !DILocation(line: 82, column: 31, scope: !100335)
+!100949 = !DILocation(line: 82, column: 32, scope: !100335)
+!100950 = !DILocation(line: 82, column: 34, scope: !100335)
+!100951 = !DILocation(line: 82, column: 28, scope: !100335)
+!100952 = !DILocation(line: 82, column: 50, scope: !100335)
+!100953 = !DILocation(line: 82, column: 57, scope: !100335)
+!100954 = !DILocation(line: 82, column: 49, scope: !100335)
+!100955 = !DILocation(line: 82, column: 70, scope: !100335)
+!100956 = !DILocation(line: 82, column: 67, scope: !100335)
+!100957 = !DILocation(line: 82, column: 41, scope: !100335)
+!100958 = !DILocalVariable(name: "top", scope: !100335, file: !100005, line: 82, type: !100004)
+!100959 = !DILocation(line: 82, column: 7, scope: !100335)
+!100960 = !DILocation(line: 83, column: 14, scope: !100335)
+!100961 = !DILocation(line: 83, column: 24, scope: !100335)
+!100962 = !DILocation(line: 83, column: 22, scope: !100335)
+!100963 = !DILocation(line: 83, column: 15, scope: !100335)
+!100964 = !DILocation(line: 83, column: 32, scope: !100335)
+!100965 = !DILocation(line: 83, column: 33, scope: !100335)
+!100966 = !DILocation(line: 83, column: 35, scope: !100335)
+!100967 = !DILocation(line: 83, column: 29, scope: !100335)
+!100968 = !DILocation(line: 83, column: 51, scope: !100335)
+!100969 = !DILocation(line: 83, column: 58, scope: !100335)
+!100970 = !DILocation(line: 83, column: 50, scope: !100335)
+!100971 = !DILocation(line: 83, column: 71, scope: !100335)
+!100972 = !DILocation(line: 83, column: 68, scope: !100335)
+!100973 = !DILocation(line: 83, column: 42, scope: !100335)
+!100974 = !DILocalVariable(name: "base", scope: !100335, file: !100005, line: 83, type: !100004)
+!100975 = !DILocation(line: 83, column: 7, scope: !100335)
+!100976 = !DILocalVariable(name: "c", scope: !100335, file: !100005, line: 85, type: !100338)
+!100977 = !DILocation(line: 85, column: 7, scope: !100335)
+!100978 = !DILocation(line: 87, column: 19, scope: !100335)
+!100979 = !DILocation(line: 87, column: 17, scope: !100335)
+!100980 = !DILocation(line: 87, column: 12, scope: !100335)
+!100981 = !DILocation(line: 87, column: 5, scope: !100335)
+!100982 = !DILocation(line: 87, column: 10, scope: !100335)
+!100983 = !DILocation(line: 88, column: 17, scope: !100335)
+!100984 = !DILocation(line: 88, column: 15, scope: !100335)
+!100985 = !DILocation(line: 88, column: 11, scope: !100335)
+!100986 = !DILocation(line: 88, column: 5, scope: !100335)
+!100987 = !DILocation(line: 88, column: 9, scope: !100335)
+!100988 = !DILocation(line: 89, column: 5, scope: !100335)
+!100989 = !DILocation(line: 89, column: 10, scope: !100335)
+!100990 = !DILocation(line: 90, column: 5, scope: !100335)
+!100991 = !DILocation(line: 90, column: 11, scope: !100335)
+!100992 = !DILocation(line: 92, column: 1, scope: !100335)
 !100993 = !{!100994}
 !100994 = !{!"fpga.inline", !"user", null}
 !100995 = distinct !DISubprogram(name: "ssdm_int", linkageName: "_ZN8ssdm_intILi65ELb1EEC2EDq65_i", scope: !100187, file: !100017, line: 515, type: !100196, isLocal: false, isDefinition: true, scopeLine: 515, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, declaration: !100195, variables: !100002)
@@ -11957,73 +12154,73 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !101271 = !DILocation(line: 515, column: 81, scope: !101263)
 !101272 = !DILocation(line: 515, column: 117, scope: !101263)
 !101273 = !DILocation(line: 515, column: 122, scope: !101263)
-!101274 = distinct !DISubprogram(name: "load_cap", linkageName: "_Z8load_capiPjS_P3Cap", scope: !100005, file: !100005, line: 104, type: !101275, isLocal: false, isDefinition: true, scopeLine: 104, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101274 = distinct !DISubprogram(name: "load_cap", linkageName: "_Z8load_capiPjS_P3Cap", scope: !100005, file: !100005, line: 94, type: !101275, isLocal: false, isDefinition: true, scopeLine: 94, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !101275 = !DISubroutineType(types: !101276)
 !101276 = !{null, !100030, !101277, !101277, !101278}
 !101277 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100004, size: 64)
 !101278 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100338, size: 64)
 !101279 = !{!101280}
 !101280 = !{!"fpga.inline", !"user", !101281}
-!101281 = !DILocation(line: 105, column: 9, scope: !101274)
-!101282 = !DILocalVariable(name: "num", arg: 1, scope: !101274, file: !100005, line: 104, type: !100030)
-!101283 = !DILocation(line: 104, column: 19, scope: !101274)
-!101284 = !DILocalVariable(name: "buffer", arg: 2, scope: !101274, file: !100005, line: 104, type: !101277)
-!101285 = !DILocation(line: 104, column: 29, scope: !101274)
-!101286 = !DILocalVariable(name: "cap", arg: 3, scope: !101274, file: !100005, line: 104, type: !101277)
-!101287 = !DILocation(line: 104, column: 42, scope: !101274)
-!101288 = !DILocalVariable(name: "caps", arg: 4, scope: !101274, file: !100005, line: 104, type: !101278)
-!101289 = !DILocation(line: 104, column: 52, scope: !101274)
-!101290 = !DILocation(line: 104, column: 58, scope: !101274)
-!101291 = !DILocalVariable(name: "i", scope: !101292, file: !100005, line: 107, type: !100030)
-!101292 = distinct !DILexicalBlock(scope: !101274, file: !100005, line: 107, column: 20)
-!101293 = !DILocation(line: 107, column: 29, scope: !101292)
-!101294 = !DILocation(line: 107, column: 25, scope: !101292)
-!101295 = !DILocation(line: 107, column: 44, scope: !101296)
-!101296 = distinct !DILexicalBlock(scope: !101292, file: !100005, line: 107, column: 20)
-!101297 = !DILocation(line: 107, column: 38, scope: !101296)
-!101298 = !DILocation(line: 107, column: 20, scope: !101292)
-!101299 = !DILocation(line: 109, column: 14, scope: !101300)
-!101300 = distinct !DILexicalBlock(scope: !101296, file: !100005, line: 108, column: 1)
-!101301 = !DILocation(line: 109, column: 2, scope: !101300)
-!101302 = !DILocation(line: 109, column: 12, scope: !101300)
-!101303 = !DILocation(line: 109, column: 19, scope: !101300)
-!101304 = !DILocation(line: 107, column: 50, scope: !101296)
-!101305 = !DILocation(line: 107, column: 20, scope: !101296)
+!101281 = !DILocation(line: 95, column: 9, scope: !101274)
+!101282 = !DILocalVariable(name: "num", arg: 1, scope: !101274, file: !100005, line: 94, type: !100030)
+!101283 = !DILocation(line: 94, column: 19, scope: !101274)
+!101284 = !DILocalVariable(name: "buffer", arg: 2, scope: !101274, file: !100005, line: 94, type: !101277)
+!101285 = !DILocation(line: 94, column: 29, scope: !101274)
+!101286 = !DILocalVariable(name: "cap", arg: 3, scope: !101274, file: !100005, line: 94, type: !101277)
+!101287 = !DILocation(line: 94, column: 42, scope: !101274)
+!101288 = !DILocalVariable(name: "caps", arg: 4, scope: !101274, file: !100005, line: 94, type: !101278)
+!101289 = !DILocation(line: 94, column: 52, scope: !101274)
+!101290 = !DILocation(line: 94, column: 58, scope: !101274)
+!101291 = !DILocalVariable(name: "i", scope: !101292, file: !100005, line: 97, type: !100030)
+!101292 = distinct !DILexicalBlock(scope: !101274, file: !100005, line: 97, column: 19)
+!101293 = !DILocation(line: 97, column: 28, scope: !101292)
+!101294 = !DILocation(line: 97, column: 24, scope: !101292)
+!101295 = !DILocation(line: 97, column: 43, scope: !101296)
+!101296 = distinct !DILexicalBlock(scope: !101292, file: !100005, line: 97, column: 19)
+!101297 = !DILocation(line: 97, column: 37, scope: !101296)
+!101298 = !DILocation(line: 97, column: 19, scope: !101292)
+!101299 = !DILocation(line: 99, column: 14, scope: !101300)
+!101300 = distinct !DILexicalBlock(scope: !101296, file: !100005, line: 98, column: 1)
+!101301 = !DILocation(line: 99, column: 2, scope: !101300)
+!101302 = !DILocation(line: 99, column: 12, scope: !101300)
+!101303 = !DILocation(line: 99, column: 19, scope: !101300)
+!101304 = !DILocation(line: 97, column: 49, scope: !101296)
+!101305 = !DILocation(line: 97, column: 19, scope: !101296)
 !101306 = distinct !{!101306, !101298, !101307, !101308, !101310}
-!101307 = !DILocation(line: 109, column: 19, scope: !101292)
+!101307 = !DILocation(line: 99, column: 19, scope: !101292)
 !101308 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101309}
-!101309 = !DILocation(line: 108, column: 9, scope: !101292)
-!101310 = !{!"llvm.loop.name", !"VITIS_LOOP_107_1"}
-!101311 = !DILocalVariable(name: "i", scope: !101274, file: !100005, line: 111, type: !100030)
-!101312 = !DILocation(line: 111, column: 7, scope: !101274)
-!101313 = !DILocation(line: 111, column: 3, scope: !101274)
-!101314 = !DILocalVariable(name: "j", scope: !101315, file: !100005, line: 112, type: !100030)
-!101315 = distinct !DILexicalBlock(scope: !101274, file: !100005, line: 112, column: 21)
-!101316 = !DILocation(line: 112, column: 30, scope: !101315)
-!101317 = !DILocation(line: 112, column: 26, scope: !101315)
-!101318 = !DILocation(line: 112, column: 39, scope: !101319)
-!101319 = distinct !DILexicalBlock(scope: !101315, file: !100005, line: 112, column: 21)
-!101320 = !DILocation(line: 112, column: 21, scope: !101315)
-!101321 = !DILocation(line: 113, column: 15, scope: !101322)
-!101322 = distinct !DILexicalBlock(scope: !101319, file: !100005, line: 112, column: 51)
-!101323 = !DILocation(line: 113, column: 22, scope: !101322)
-!101324 = !DILocation(line: 113, column: 42, scope: !101322)
-!101325 = !DILocation(line: 113, column: 33, scope: !101322)
-!101326 = !DILocation(line: 113, column: 57, scope: !101322)
-!101327 = !DILocation(line: 113, column: 48, scope: !101322)
-!101328 = !DILocation(line: 113, column: 72, scope: !101322)
-!101329 = !DILocation(line: 113, column: 63, scope: !101322)
-!101330 = !DILocation(line: 113, column: 5, scope: !101322)
-!101331 = !DILocation(line: 113, column: 13, scope: !101322)
-!101332 = !DILocation(line: 114, column: 7, scope: !101322)
-!101333 = !DILocation(line: 115, column: 3, scope: !101322)
-!101334 = !DILocation(line: 112, column: 47, scope: !101319)
-!101335 = !DILocation(line: 112, column: 21, scope: !101319)
+!101309 = !DILocation(line: 98, column: 9, scope: !101292)
+!101310 = !{!"llvm.loop.name", !"VITIS_LOOP_97_1"}
+!101311 = !DILocalVariable(name: "i", scope: !101274, file: !100005, line: 101, type: !100030)
+!101312 = !DILocation(line: 101, column: 7, scope: !101274)
+!101313 = !DILocation(line: 101, column: 3, scope: !101274)
+!101314 = !DILocalVariable(name: "j", scope: !101315, file: !100005, line: 102, type: !100030)
+!101315 = distinct !DILexicalBlock(scope: !101274, file: !100005, line: 102, column: 21)
+!101316 = !DILocation(line: 102, column: 30, scope: !101315)
+!101317 = !DILocation(line: 102, column: 26, scope: !101315)
+!101318 = !DILocation(line: 102, column: 39, scope: !101319)
+!101319 = distinct !DILexicalBlock(scope: !101315, file: !100005, line: 102, column: 21)
+!101320 = !DILocation(line: 102, column: 21, scope: !101315)
+!101321 = !DILocation(line: 103, column: 15, scope: !101322)
+!101322 = distinct !DILexicalBlock(scope: !101319, file: !100005, line: 102, column: 51)
+!101323 = !DILocation(line: 103, column: 22, scope: !101322)
+!101324 = !DILocation(line: 103, column: 42, scope: !101322)
+!101325 = !DILocation(line: 103, column: 33, scope: !101322)
+!101326 = !DILocation(line: 103, column: 57, scope: !101322)
+!101327 = !DILocation(line: 103, column: 48, scope: !101322)
+!101328 = !DILocation(line: 103, column: 72, scope: !101322)
+!101329 = !DILocation(line: 103, column: 63, scope: !101322)
+!101330 = !DILocation(line: 103, column: 5, scope: !101322)
+!101331 = !DILocation(line: 103, column: 13, scope: !101322)
+!101332 = !DILocation(line: 104, column: 7, scope: !101322)
+!101333 = !DILocation(line: 105, column: 3, scope: !101322)
+!101334 = !DILocation(line: 102, column: 47, scope: !101319)
+!101335 = !DILocation(line: 102, column: 21, scope: !101319)
 !101336 = distinct !{!101336, !101320, !101337, !101338}
-!101337 = !DILocation(line: 115, column: 3, scope: !101315)
-!101338 = !{!"llvm.loop.name", !"VITIS_LOOP_112_2"}
-!101339 = !DILocation(line: 116, column: 1, scope: !101274)
-!101340 = distinct !DISubprogram(name: "create_cap", linkageName: "_Z10create_capiP3Caph", scope: !100005, file: !100005, line: 118, type: !101341, isLocal: false, isDefinition: true, scopeLine: 118, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101337 = !DILocation(line: 105, column: 3, scope: !101315)
+!101338 = !{!"llvm.loop.name", !"VITIS_LOOP_102_2"}
+!101339 = !DILocation(line: 106, column: 1, scope: !101274)
+!101340 = distinct !DISubprogram(name: "create_cap", linkageName: "_Z10create_capiP3Caph", scope: !100005, file: !100005, line: 108, type: !101341, isLocal: false, isDefinition: true, scopeLine: 108, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !101341 = !DISubroutineType(types: !101342)
 !101342 = !{null, !100030, !101278, !101343}
 !101343 = !DIDerivedType(tag: DW_TAG_typedef, name: "u8", file: !100005, line: 6, baseType: !101344)
@@ -12032,29 +12229,29 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !101346 = !DIBasicType(name: "unsigned char", size: 8, encoding: DW_ATE_unsigned_char)
 !101347 = !{!101348}
 !101348 = !{!"fpga.inline", !"user", !101349}
-!101349 = !DILocation(line: 119, column: 9, scope: !101340)
-!101350 = !DILocalVariable(name: "size", arg: 1, scope: !101340, file: !100005, line: 118, type: !100030)
-!101351 = !DILocation(line: 118, column: 21, scope: !101340)
-!101352 = !DILocalVariable(name: "caps", arg: 2, scope: !101340, file: !100005, line: 118, type: !101278)
-!101353 = !DILocation(line: 118, column: 32, scope: !101340)
-!101354 = !DILocalVariable(name: "index", arg: 3, scope: !101340, file: !100005, line: 118, type: !101343)
-!101355 = !DILocation(line: 118, column: 41, scope: !101340)
-!101356 = !DILocation(line: 120, column: 2, scope: !101340)
-!101357 = !DILocalVariable(name: "new_cap", scope: !101340, file: !100005, line: 120, type: !100338)
-!101358 = !DILocation(line: 120, column: 6, scope: !101340)
-!101359 = !DILocation(line: 121, column: 11, scope: !101340)
-!101360 = !DILocation(line: 121, column: 16, scope: !101340)
-!101361 = !DILocation(line: 122, column: 22, scope: !101340)
-!101362 = !DILocation(line: 122, column: 11, scope: !101340)
-!101363 = !DILocation(line: 122, column: 15, scope: !101340)
-!101364 = !DILocation(line: 123, column: 11, scope: !101340)
-!101365 = !DILocation(line: 123, column: 17, scope: !101340)
-!101366 = !DILocation(line: 124, column: 11, scope: !101340)
-!101367 = !DILocation(line: 124, column: 16, scope: !101340)
-!101368 = !DILocation(line: 125, column: 3, scope: !101340)
-!101369 = !DILocation(line: 125, column: 15, scope: !101340)
-!101370 = !DILocation(line: 127, column: 1, scope: !101340)
-!101371 = distinct !DISubprogram(name: "checkAccess", linkageName: "_Z11checkAccessPj3Capt7ap_uintILi3EEb", scope: !100005, file: !100005, line: 129, type: !101372, isLocal: false, isDefinition: true, scopeLine: 130, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101349 = !DILocation(line: 109, column: 9, scope: !101340)
+!101350 = !DILocalVariable(name: "size", arg: 1, scope: !101340, file: !100005, line: 108, type: !100030)
+!101351 = !DILocation(line: 108, column: 21, scope: !101340)
+!101352 = !DILocalVariable(name: "caps", arg: 2, scope: !101340, file: !100005, line: 108, type: !101278)
+!101353 = !DILocation(line: 108, column: 32, scope: !101340)
+!101354 = !DILocalVariable(name: "index", arg: 3, scope: !101340, file: !100005, line: 108, type: !101343)
+!101355 = !DILocation(line: 108, column: 41, scope: !101340)
+!101356 = !DILocation(line: 110, column: 2, scope: !101340)
+!101357 = !DILocalVariable(name: "new_cap", scope: !101340, file: !100005, line: 110, type: !100338)
+!101358 = !DILocation(line: 110, column: 6, scope: !101340)
+!101359 = !DILocation(line: 111, column: 11, scope: !101340)
+!101360 = !DILocation(line: 111, column: 16, scope: !101340)
+!101361 = !DILocation(line: 112, column: 22, scope: !101340)
+!101362 = !DILocation(line: 112, column: 11, scope: !101340)
+!101363 = !DILocation(line: 112, column: 15, scope: !101340)
+!101364 = !DILocation(line: 113, column: 11, scope: !101340)
+!101365 = !DILocation(line: 113, column: 17, scope: !101340)
+!101366 = !DILocation(line: 114, column: 11, scope: !101340)
+!101367 = !DILocation(line: 114, column: 16, scope: !101340)
+!101368 = !DILocation(line: 115, column: 3, scope: !101340)
+!101369 = !DILocation(line: 115, column: 15, scope: !101340)
+!101370 = !DILocation(line: 117, column: 1, scope: !101340)
+!101371 = distinct !DISubprogram(name: "checkAccess", linkageName: "_Z11checkAccessPj3Capt7ap_uintILi3EEb", scope: !100005, file: !100005, line: 119, type: !101372, isLocal: false, isDefinition: true, scopeLine: 120, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !101372 = !DISubroutineType(types: !101373)
 !101373 = !{null, !101277, !100338, !101374, !100464, !100032}
 !101374 = !DIDerivedType(tag: DW_TAG_typedef, name: "u16", file: !100005, line: 7, baseType: !101375)
@@ -12062,203 +12259,320 @@ attributes #100025 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="288" "x
 !101376 = !DIDerivedType(tag: DW_TAG_typedef, name: "__uint16_t", file: !100009, line: 40, baseType: !101136)
 !101377 = !{!101378}
 !101378 = !{!"fpga.inline", !"user", !101379}
-!101379 = !DILocation(line: 131, column: 9, scope: !101371)
-!101380 = !DILocalVariable(name: "flag_buf", arg: 1, scope: !101371, file: !100005, line: 129, type: !101277)
-!101381 = !DILocation(line: 129, column: 23, scope: !101371)
-!101382 = !DILocalVariable(name: "cap", arg: 2, scope: !101371, file: !100005, line: 129, type: !100338)
-!101383 = !DILocation(line: 129, column: 37, scope: !101371)
-!101384 = !DILocalVariable(name: "offset", arg: 3, scope: !101371, file: !100005, line: 129, type: !101374)
-!101385 = !DILocation(line: 129, column: 46, scope: !101371)
-!101386 = !DILocalVariable(name: "nBytes", arg: 4, scope: !101371, file: !100005, line: 129, type: !100464)
-!101387 = !DILocation(line: 129, column: 65, scope: !101371)
-!101388 = !DILocalVariable(name: "isWrite", arg: 5, scope: !101371, file: !100005, line: 130, type: !100032)
-!101389 = !DILocation(line: 130, column: 23, scope: !101371)
-!101390 = !DILocation(line: 133, column: 14, scope: !101371)
-!101391 = !DILocation(line: 133, column: 27, scope: !101371)
-!101392 = !DILocation(line: 133, column: 25, scope: !101371)
-!101393 = !DILocation(line: 133, column: 19, scope: !101371)
-!101394 = !DILocation(line: 133, column: 36, scope: !101371)
-!101395 = !DILocation(line: 133, column: 40, scope: !101371)
-!101396 = !DILocation(line: 133, column: 45, scope: !101371)
-!101397 = !DILocation(line: 133, column: 43, scope: !101371)
-!101398 = !DILocation(line: 133, column: 54, scope: !101371)
-!101399 = !DILocation(line: 133, column: 52, scope: !101371)
-!101400 = !DILocation(line: 133, column: 69, scope: !101371)
-!101401 = !DILocation(line: 133, column: 62, scope: !101371)
-!101402 = !DILocation(line: 133, column: 74, scope: !101371)
-!101403 = !DILocation(line: 134, column: 19, scope: !101371)
-!101404 = !DILocation(line: 134, column: 27, scope: !101371)
-!101405 = !DILocation(line: 134, column: 35, scope: !101371)
-!101406 = !DILocation(line: 134, column: 47, scope: !101371)
-!101407 = !DILocation(line: 134, column: 55, scope: !101371)
-!101408 = !DILocation(line: 133, column: 7, scope: !101371)
-!101409 = !DILocation(line: 132, column: 12, scope: !101371)
-!101410 = !DILocation(line: 132, column: 2, scope: !101371)
-!101411 = !DILocation(line: 135, column: 1, scope: !101371)
-!101412 = distinct !DISubprogram(name: "cheri_load", linkageName: "_Z10cheri_loadPiiPj3Cap", scope: !100005, file: !100005, line: 137, type: !101413, isLocal: false, isDefinition: true, scopeLine: 137, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101379 = !DILocation(line: 121, column: 9, scope: !101371)
+!101380 = !DILocalVariable(name: "flag_buf", arg: 1, scope: !101371, file: !100005, line: 119, type: !101277)
+!101381 = !DILocation(line: 119, column: 23, scope: !101371)
+!101382 = !DILocalVariable(name: "cap", arg: 2, scope: !101371, file: !100005, line: 119, type: !100338)
+!101383 = !DILocation(line: 119, column: 37, scope: !101371)
+!101384 = !DILocalVariable(name: "offset", arg: 3, scope: !101371, file: !100005, line: 119, type: !101374)
+!101385 = !DILocation(line: 119, column: 46, scope: !101371)
+!101386 = !DILocalVariable(name: "nBytes", arg: 4, scope: !101371, file: !100005, line: 119, type: !100464)
+!101387 = !DILocation(line: 119, column: 65, scope: !101371)
+!101388 = !DILocalVariable(name: "isWrite", arg: 5, scope: !101371, file: !100005, line: 120, type: !100032)
+!101389 = !DILocation(line: 120, column: 23, scope: !101371)
+!101390 = !DILocation(line: 123, column: 14, scope: !101371)
+!101391 = !DILocation(line: 123, column: 27, scope: !101371)
+!101392 = !DILocation(line: 123, column: 25, scope: !101371)
+!101393 = !DILocation(line: 123, column: 19, scope: !101371)
+!101394 = !DILocation(line: 123, column: 36, scope: !101371)
+!101395 = !DILocation(line: 123, column: 40, scope: !101371)
+!101396 = !DILocation(line: 123, column: 45, scope: !101371)
+!101397 = !DILocation(line: 123, column: 43, scope: !101371)
+!101398 = !DILocation(line: 123, column: 54, scope: !101371)
+!101399 = !DILocation(line: 123, column: 52, scope: !101371)
+!101400 = !DILocation(line: 123, column: 69, scope: !101371)
+!101401 = !DILocation(line: 123, column: 62, scope: !101371)
+!101402 = !DILocation(line: 123, column: 74, scope: !101371)
+!101403 = !DILocation(line: 124, column: 19, scope: !101371)
+!101404 = !DILocation(line: 124, column: 27, scope: !101371)
+!101405 = !DILocation(line: 124, column: 35, scope: !101371)
+!101406 = !DILocation(line: 124, column: 47, scope: !101371)
+!101407 = !DILocation(line: 124, column: 55, scope: !101371)
+!101408 = !DILocation(line: 123, column: 7, scope: !101371)
+!101409 = !DILocation(line: 122, column: 12, scope: !101371)
+!101410 = !DILocation(line: 122, column: 2, scope: !101371)
+!101411 = !DILocation(line: 125, column: 1, scope: !101371)
+!101412 = distinct !DISubprogram(name: "cheri_load", linkageName: "_Z10cheri_loadPiiPj3Cap", scope: !100005, file: !100005, line: 127, type: !101413, isLocal: false, isDefinition: true, scopeLine: 127, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !101413 = !DISubroutineType(types: !101414)
 !101414 = !{!100030, !101415, !100030, !101277, !100338}
 !101415 = !DIDerivedType(tag: DW_TAG_pointer_type, baseType: !100030, size: 64)
 !101416 = !{!101417}
 !101417 = !{!"fpga.inline", !"user", !101418}
-!101418 = !DILocation(line: 138, column: 9, scope: !101412)
-!101419 = !DILocalVariable(name: "buf", arg: 1, scope: !101412, file: !100005, line: 137, type: !101415)
-!101420 = !DILocation(line: 137, column: 21, scope: !101412)
-!101421 = !DILocalVariable(name: "i", arg: 2, scope: !101412, file: !100005, line: 137, type: !100030)
-!101422 = !DILocation(line: 137, column: 30, scope: !101412)
-!101423 = !DILocalVariable(name: "flag_buf", arg: 3, scope: !101412, file: !100005, line: 137, type: !101277)
-!101424 = !DILocation(line: 137, column: 38, scope: !101412)
-!101425 = !DILocalVariable(name: "cap", arg: 4, scope: !101412, file: !100005, line: 137, type: !100338)
-!101426 = !DILocation(line: 137, column: 52, scope: !101412)
-!101427 = !DILocation(line: 139, column: 24, scope: !101412)
-!101428 = !DILocation(line: 139, column: 29, scope: !101412)
-!101429 = !DILocation(line: 139, column: 32, scope: !101412)
-!101430 = !DILocation(line: 139, column: 2, scope: !101412)
-!101431 = !DILocation(line: 140, column: 11, scope: !101412)
-!101432 = !DILocalVariable(name: "b", scope: !101412, file: !100005, line: 140, type: !100030)
-!101433 = !DILocation(line: 140, column: 7, scope: !101412)
-!101434 = !DILocation(line: 141, column: 11, scope: !101412)
-!101435 = !DILocation(line: 141, column: 10, scope: !101412)
-!101436 = !DILocation(line: 141, column: 3, scope: !101412)
-!101437 = distinct !DISubprogram(name: "cheri_store", linkageName: "_Z11cheri_storePiiiPj3Cap", scope: !100005, file: !100005, line: 144, type: !101438, isLocal: false, isDefinition: true, scopeLine: 144, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101418 = !DILocation(line: 128, column: 9, scope: !101412)
+!101419 = !DILocalVariable(name: "buf", arg: 1, scope: !101412, file: !100005, line: 127, type: !101415)
+!101420 = !DILocation(line: 127, column: 21, scope: !101412)
+!101421 = !DILocalVariable(name: "i", arg: 2, scope: !101412, file: !100005, line: 127, type: !100030)
+!101422 = !DILocation(line: 127, column: 30, scope: !101412)
+!101423 = !DILocalVariable(name: "flag_buf", arg: 3, scope: !101412, file: !100005, line: 127, type: !101277)
+!101424 = !DILocation(line: 127, column: 38, scope: !101412)
+!101425 = !DILocalVariable(name: "cap", arg: 4, scope: !101412, file: !100005, line: 127, type: !100338)
+!101426 = !DILocation(line: 127, column: 52, scope: !101412)
+!101427 = !DILocation(line: 129, column: 24, scope: !101412)
+!101428 = !DILocation(line: 129, column: 29, scope: !101412)
+!101429 = !DILocation(line: 129, column: 32, scope: !101412)
+!101430 = !DILocation(line: 129, column: 2, scope: !101412)
+!101431 = !DILocation(line: 130, column: 11, scope: !101412)
+!101432 = !DILocalVariable(name: "b", scope: !101412, file: !100005, line: 130, type: !100030)
+!101433 = !DILocation(line: 130, column: 7, scope: !101412)
+!101434 = !DILocation(line: 131, column: 11, scope: !101412)
+!101435 = !DILocation(line: 131, column: 10, scope: !101412)
+!101436 = !DILocation(line: 131, column: 3, scope: !101412)
+!101437 = distinct !DISubprogram(name: "cheri_store", linkageName: "_Z11cheri_storePiiiPj3Cap", scope: !100005, file: !100005, line: 134, type: !101438, isLocal: false, isDefinition: true, scopeLine: 134, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !101438 = !DISubroutineType(types: !101439)
 !101439 = !{null, !101415, !100030, !100030, !101277, !100338}
 !101440 = !{!101441}
 !101441 = !{!"fpga.inline", !"user", !101442}
-!101442 = !DILocation(line: 145, column: 9, scope: !101437)
-!101443 = !DILocalVariable(name: "buf", arg: 1, scope: !101437, file: !100005, line: 144, type: !101415)
-!101444 = !DILocation(line: 144, column: 23, scope: !101437)
-!101445 = !DILocalVariable(name: "i", arg: 2, scope: !101437, file: !100005, line: 144, type: !100030)
-!101446 = !DILocation(line: 144, column: 32, scope: !101437)
-!101447 = !DILocalVariable(name: "val", arg: 3, scope: !101437, file: !100005, line: 144, type: !100030)
-!101448 = !DILocation(line: 144, column: 39, scope: !101437)
-!101449 = !DILocalVariable(name: "flag_buf", arg: 4, scope: !101437, file: !100005, line: 144, type: !101277)
-!101450 = !DILocation(line: 144, column: 49, scope: !101437)
-!101451 = !DILocalVariable(name: "cap", arg: 5, scope: !101437, file: !100005, line: 144, type: !100338)
-!101452 = !DILocation(line: 144, column: 63, scope: !101437)
-!101453 = !DILocation(line: 146, column: 24, scope: !101437)
-!101454 = !DILocation(line: 146, column: 29, scope: !101437)
-!101455 = !DILocation(line: 146, column: 32, scope: !101437)
-!101456 = !DILocation(line: 146, column: 2, scope: !101437)
-!101457 = !DILocation(line: 148, column: 13, scope: !101437)
-!101458 = !DILocation(line: 148, column: 12, scope: !101437)
-!101459 = !DILocation(line: 148, column: 32, scope: !101437)
-!101460 = !DILocation(line: 148, column: 3, scope: !101437)
-!101461 = !DILocation(line: 148, column: 10, scope: !101437)
-!101462 = !DILocation(line: 149, column: 3, scope: !101437)
-!101463 = distinct !DISubprogram(name: "hls_top", linkageName: "_Z7hls_topiPiS_PjS0_", scope: !100005, file: !100005, line: 152, type: !101464, isLocal: false, isDefinition: true, scopeLine: 152, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101442 = !DILocation(line: 135, column: 9, scope: !101437)
+!101443 = !DILocalVariable(name: "buf", arg: 1, scope: !101437, file: !100005, line: 134, type: !101415)
+!101444 = !DILocation(line: 134, column: 23, scope: !101437)
+!101445 = !DILocalVariable(name: "i", arg: 2, scope: !101437, file: !100005, line: 134, type: !100030)
+!101446 = !DILocation(line: 134, column: 32, scope: !101437)
+!101447 = !DILocalVariable(name: "val", arg: 3, scope: !101437, file: !100005, line: 134, type: !100030)
+!101448 = !DILocation(line: 134, column: 39, scope: !101437)
+!101449 = !DILocalVariable(name: "flag_buf", arg: 4, scope: !101437, file: !100005, line: 134, type: !101277)
+!101450 = !DILocation(line: 134, column: 49, scope: !101437)
+!101451 = !DILocalVariable(name: "cap", arg: 5, scope: !101437, file: !100005, line: 134, type: !100338)
+!101452 = !DILocation(line: 134, column: 63, scope: !101437)
+!101453 = !DILocation(line: 136, column: 24, scope: !101437)
+!101454 = !DILocation(line: 136, column: 29, scope: !101437)
+!101455 = !DILocation(line: 136, column: 32, scope: !101437)
+!101456 = !DILocation(line: 136, column: 2, scope: !101437)
+!101457 = !DILocation(line: 137, column: 13, scope: !101437)
+!101458 = !DILocation(line: 137, column: 12, scope: !101437)
+!101459 = !DILocation(line: 137, column: 32, scope: !101437)
+!101460 = !DILocation(line: 137, column: 3, scope: !101437)
+!101461 = !DILocation(line: 137, column: 10, scope: !101437)
+!101462 = !DILocation(line: 138, column: 3, scope: !101437)
+!101463 = distinct !DISubprogram(name: "cheri_stream_write_nl", linkageName: "_Z21cheri_stream_write_nljPiS_Pj3Cap", scope: !100005, file: !100005, line: 141, type: !101464, isLocal: false, isDefinition: true, scopeLine: 142, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
 !101464 = !DISubroutineType(types: !101465)
-!101465 = !{null, !100030, !101415, !101415, !101277, !101277}
+!101465 = !{null, !100004, !101415, !101415, !101277, !100338}
 !101466 = !{!101467}
-!101467 = !{!"fpga.top", !"user", !101468}
-!101468 = !DILocation(line: 152, column: 16, scope: !101463)
-!101469 = !DILocalVariable(name: "size", arg: 1, scope: !101463, file: !100005, line: 152, type: !100030)
-!101470 = !DILocation(line: 152, column: 60, scope: !101463)
-!101471 = !DILocalVariable(name: "a", arg: 2, scope: !101463, file: !100005, line: 152, type: !101415)
-!101472 = !DILocation(line: 152, column: 70, scope: !101463)
-!101473 = !DILocalVariable(name: "c", arg: 3, scope: !101463, file: !100005, line: 152, type: !101415)
-!101474 = !DILocation(line: 152, column: 83, scope: !101463)
-!101475 = !DILocalVariable(name: "flag", arg: 4, scope: !101463, file: !100005, line: 152, type: !101277)
-!101476 = !DILocation(line: 152, column: 97, scope: !101463)
-!101477 = !DILocalVariable(name: "cap", arg: 5, scope: !101463, file: !100005, line: 152, type: !101277)
-!101478 = !DILocation(line: 152, column: 107, scope: !101463)
-!101479 = !DILocation(line: 153, column: 9, scope: !101463)
-!101480 = !DILocation(line: 154, column: 9, scope: !101463)
-!101481 = !DILocation(line: 155, column: 9, scope: !101463)
-!101482 = !DILocation(line: 156, column: 9, scope: !101463)
-!101483 = !DILocation(line: 157, column: 9, scope: !101463)
-!101484 = !DILocation(line: 158, column: 9, scope: !101463)
-!101485 = !DILocation(line: 159, column: 2, scope: !101463)
-!101486 = !DILocalVariable(name: "b", scope: !101463, file: !100005, line: 159, type: !101487)
-!101487 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100030, size: 32000, elements: !101488)
-!101488 = !{!101489}
-!101489 = !DISubrange(count: 1000)
-!101490 = !DILocation(line: 159, column: 6, scope: !101463)
-!101491 = !DILocation(line: 161, column: 3, scope: !101463)
-!101492 = !DILocalVariable(name: "flag_buf", scope: !101463, file: !100005, line: 161, type: !100004)
-!101493 = !DILocation(line: 161, column: 7, scope: !101463)
-!101494 = !DILocation(line: 163, column: 3, scope: !101463)
-!101495 = !DILocalVariable(name: "caps", scope: !101463, file: !100005, line: 163, type: !101496)
-!101496 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100338, size: 288, elements: !101497)
-!101497 = !{!101498}
-!101498 = !DISubrange(count: 3)
-!101499 = !DILocation(line: 163, column: 7, scope: !101463)
-!101500 = !DILocation(line: 164, column: 3, scope: !101463)
-!101501 = !DILocalVariable(name: "buffer", scope: !101463, file: !100005, line: 164, type: !101502)
-!101502 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100004, size: 384, elements: !101503)
-!101503 = !{!101504}
-!101504 = !DISubrange(count: 12)
-!101505 = !DILocation(line: 164, column: 7, scope: !101463)
-!101506 = !DILocation(line: 165, column: 9, scope: !101463)
-!101507 = !DILocation(line: 166, column: 9, scope: !101463)
-!101508 = !DILocation(line: 168, column: 14, scope: !101463)
-!101509 = !DILocation(line: 168, column: 27, scope: !101463)
-!101510 = !DILocation(line: 168, column: 2, scope: !101463)
-!101511 = !DILocation(line: 169, column: 20, scope: !101463)
-!101512 = !DILocation(line: 169, column: 3, scope: !101463)
-!101513 = !DILocalVariable(name: "i", scope: !101514, file: !100005, line: 171, type: !100030)
-!101514 = distinct !DILexicalBlock(scope: !101463, file: !100005, line: 171, column: 21)
-!101515 = !DILocation(line: 171, column: 30, scope: !101514)
-!101516 = !DILocation(line: 171, column: 26, scope: !101514)
-!101517 = !DILocation(line: 171, column: 39, scope: !101518)
-!101518 = distinct !DILexicalBlock(scope: !101514, file: !100005, line: 171, column: 21)
-!101519 = !DILocation(line: 171, column: 21, scope: !101514)
-!101520 = !DILocation(line: 174, column: 43, scope: !101521)
-!101521 = distinct !DILexicalBlock(scope: !101518, file: !100005, line: 171, column: 52)
-!101522 = !DILocation(line: 174, column: 15, scope: !101521)
-!101523 = !DILocalVariable(name: "a_elem", scope: !101521, file: !100005, line: 174, type: !100030)
-!101524 = !DILocation(line: 174, column: 6, scope: !101521)
-!101525 = !DILocation(line: 175, column: 29, scope: !101521)
-!101526 = !DILocation(line: 175, column: 46, scope: !101521)
-!101527 = !DILocation(line: 175, column: 18, scope: !101521)
-!101528 = !DILocalVariable(name: "b_elem", scope: !101521, file: !100005, line: 175, type: !100030)
-!101529 = !DILocation(line: 175, column: 9, scope: !101521)
-!101530 = !DILocation(line: 177, column: 25, scope: !101521)
-!101531 = !DILocalVariable(name: "c_elem", scope: !101521, file: !100005, line: 177, type: !100030)
-!101532 = !DILocation(line: 177, column: 9, scope: !101521)
-!101533 = !DILocation(line: 179, column: 42, scope: !101521)
-!101534 = !DILocation(line: 179, column: 5, scope: !101521)
-!101535 = !DILocation(line: 180, column: 3, scope: !101521)
-!101536 = !DILocation(line: 171, column: 48, scope: !101518)
-!101537 = !DILocation(line: 171, column: 21, scope: !101518)
-!101538 = distinct !{!101538, !101519, !101539, !101540, !101542}
-!101539 = !DILocation(line: 180, column: 3, scope: !101514)
-!101540 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101541}
-!101541 = !DILocation(line: 172, column: 9, scope: !101514)
-!101542 = !{!"llvm.loop.name", !"VITIS_LOOP_171_1"}
-!101543 = !DILocation(line: 182, column: 11, scope: !101463)
-!101544 = !DILocation(line: 182, column: 9, scope: !101463)
-!101545 = !DILocation(line: 184, column: 1, scope: !101463)
-!101546 = !DILocation(line: 169, column: 26, scope: !101544)
-!101547 = !DILocation(line: 169, column: 39, scope: !101548)
-!101548 = distinct !DILexicalBlock(scope: !101544, file: !100005, line: 169, column: 21)
-!101549 = !DILocation(line: 169, column: 21, scope: !101544)
-!101550 = !DILocation(line: 172, column: 43, scope: !101551)
-!101551 = distinct !DILexicalBlock(scope: !101548, file: !100005, line: 169, column: 52)
-!101552 = !DILocation(line: 172, column: 15, scope: !101551)
-!101553 = !DILocalVariable(name: "a_elem", scope: !101551, file: !100005, line: 172, type: !100030)
-!101554 = !DILocation(line: 172, column: 6, scope: !101551)
-!101555 = !DILocation(line: 173, column: 29, scope: !101551)
-!101556 = !DILocation(line: 173, column: 46, scope: !101551)
-!101557 = !DILocation(line: 173, column: 18, scope: !101551)
-!101558 = !DILocalVariable(name: "b_elem", scope: !101551, file: !100005, line: 173, type: !100030)
-!101559 = !DILocation(line: 173, column: 9, scope: !101551)
-!101560 = !DILocation(line: 175, column: 25, scope: !101551)
-!101561 = !DILocalVariable(name: "c_elem", scope: !101551, file: !100005, line: 175, type: !100030)
-!101562 = !DILocation(line: 175, column: 9, scope: !101551)
-!101563 = !DILocation(line: 177, column: 42, scope: !101551)
-!101564 = !DILocation(line: 177, column: 5, scope: !101551)
-!101565 = !DILocation(line: 178, column: 3, scope: !101551)
-!101566 = !DILocation(line: 169, column: 48, scope: !101548)
-!101567 = !DILocation(line: 169, column: 21, scope: !101548)
-!101568 = distinct !{!101568, !101549, !101569, !101570, !101572}
-!101569 = !DILocation(line: 178, column: 3, scope: !101544)
-!101570 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101571}
-!101571 = !DILocation(line: 170, column: 9, scope: !101544)
-!101572 = !{!"llvm.loop.name", !"VITIS_LOOP_169_1"}
-!101573 = !DILocation(line: 180, column: 11, scope: !101493)
-!101574 = !DILocation(line: 180, column: 9, scope: !101493)
-!101575 = !DILocation(line: 182, column: 1, scope: !101493)
+!101467 = !{!"fpga.inline", !"user", !101468}
+!101468 = !DILocation(line: 143, column: 9, scope: !101463)
+!101469 = !DILocalVariable(name: "size", arg: 1, scope: !101463, file: !100005, line: 141, type: !100004)
+!101470 = !DILocation(line: 141, column: 32, scope: !101463)
+!101471 = !DILocalVariable(name: "array1", arg: 2, scope: !101463, file: !100005, line: 141, type: !101415)
+!101472 = !DILocation(line: 141, column: 43, scope: !101463)
+!101473 = !DILocalVariable(name: "array2", arg: 3, scope: !101463, file: !100005, line: 141, type: !101415)
+!101474 = !DILocation(line: 141, column: 56, scope: !101463)
+!101475 = !DILocalVariable(name: "flag_buf", arg: 4, scope: !101463, file: !100005, line: 141, type: !101277)
+!101476 = !DILocation(line: 141, column: 69, scope: !101463)
+!101477 = !DILocalVariable(name: "cap", arg: 5, scope: !101463, file: !100005, line: 142, type: !100338)
+!101478 = !DILocation(line: 142, column: 32, scope: !101463)
+!101479 = !DILocation(line: 142, column: 37, scope: !101463)
+!101480 = !DILocalVariable(name: "i", scope: !101481, file: !100005, line: 144, type: !100030)
+!101481 = distinct !DILexicalBlock(scope: !101463, file: !100005, line: 144, column: 20)
+!101482 = !DILocation(line: 144, column: 29, scope: !101481)
+!101483 = !DILocation(line: 144, column: 25, scope: !101481)
+!101484 = !DILocation(line: 144, column: 38, scope: !101485)
+!101485 = distinct !DILexicalBlock(scope: !101481, file: !100005, line: 144, column: 20)
+!101486 = !DILocation(line: 144, column: 20, scope: !101481)
+!101487 = !DILocation(line: 145, column: 27, scope: !101488)
+!101488 = distinct !DILexicalBlock(scope: !101485, file: !100005, line: 144, column: 51)
+!101489 = !DILocation(line: 145, column: 32, scope: !101488)
+!101490 = !DILocation(line: 145, column: 35, scope: !101488)
+!101491 = !DILocation(line: 145, column: 5, scope: !101488)
+!101492 = !DILocation(line: 146, column: 3, scope: !101488)
+!101493 = !DILocation(line: 144, column: 47, scope: !101485)
+!101494 = !DILocation(line: 144, column: 20, scope: !101485)
+!101495 = distinct !{!101495, !101486, !101496, !101497}
+!101496 = !DILocation(line: 146, column: 3, scope: !101481)
+!101497 = !{!"llvm.loop.name", !"VITIS_LOOP_144_1"}
+!101498 = !DILocation(line: 147, column: 8, scope: !101499)
+!101499 = distinct !DILexicalBlock(scope: !101463, file: !100005, line: 147, column: 7)
+!101500 = !DILocation(line: 147, column: 7, scope: !101499)
+!101501 = !DILocation(line: 147, column: 7, scope: !101463)
+!101502 = !DILocation(line: 147, column: 20, scope: !101499)
+!101503 = !DILocalVariable(name: "i", scope: !101504, file: !100005, line: 148, type: !100030)
+!101504 = distinct !DILexicalBlock(scope: !101505, file: !100005, line: 148, column: 23)
+!101505 = distinct !DILexicalBlock(scope: !101499, file: !100005, line: 147, column: 20)
+!101506 = !DILocation(line: 148, column: 32, scope: !101504)
+!101507 = !DILocation(line: 148, column: 28, scope: !101504)
+!101508 = !DILocation(line: 148, column: 41, scope: !101509)
+!101509 = distinct !DILexicalBlock(scope: !101504, file: !100005, line: 148, column: 23)
+!101510 = !DILocation(line: 148, column: 23, scope: !101504)
+!101511 = !DILocation(line: 149, column: 19, scope: !101512)
+!101512 = distinct !DILexicalBlock(scope: !101509, file: !100005, line: 148, column: 54)
+!101513 = !DILocation(line: 149, column: 7, scope: !101512)
+!101514 = !DILocation(line: 149, column: 17, scope: !101512)
+!101515 = !DILocation(line: 150, column: 5, scope: !101512)
+!101516 = !DILocation(line: 148, column: 50, scope: !101509)
+!101517 = !DILocation(line: 148, column: 23, scope: !101509)
+!101518 = distinct !{!101518, !101510, !101519, !101520}
+!101519 = !DILocation(line: 150, column: 5, scope: !101504)
+!101520 = !{!"llvm.loop.name", !"VITIS_LOOP_148_2"}
+!101521 = !DILocation(line: 151, column: 3, scope: !101505)
+!101522 = !DILocation(line: 152, column: 1, scope: !101463)
+!101523 = distinct !DISubprogram(name: "cheri_stream_write", linkageName: "_Z18cheri_stream_writejPiS_Pj3CapS1_", scope: !100005, file: !100005, line: 154, type: !101524, isLocal: false, isDefinition: true, scopeLine: 155, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101524 = !DISubroutineType(types: !101525)
+!101525 = !{null, !100004, !101415, !101415, !101277, !100338, !100338}
+!101526 = !{!101527}
+!101527 = !{!"fpga.inline", !"user", !101528}
+!101528 = !DILocation(line: 156, column: 9, scope: !101523)
+!101529 = !DILocalVariable(name: "size", arg: 1, scope: !101523, file: !100005, line: 154, type: !100004)
+!101530 = !DILocation(line: 154, column: 29, scope: !101523)
+!101531 = !DILocalVariable(name: "array1", arg: 2, scope: !101523, file: !100005, line: 154, type: !101415)
+!101532 = !DILocation(line: 154, column: 40, scope: !101523)
+!101533 = !DILocalVariable(name: "array2", arg: 3, scope: !101523, file: !100005, line: 154, type: !101415)
+!101534 = !DILocation(line: 154, column: 53, scope: !101523)
+!101535 = !DILocalVariable(name: "flag_buf", arg: 4, scope: !101523, file: !100005, line: 154, type: !101277)
+!101536 = !DILocation(line: 154, column: 66, scope: !101523)
+!101537 = !DILocalVariable(name: "cap1", arg: 5, scope: !101523, file: !100005, line: 155, type: !100338)
+!101538 = !DILocation(line: 155, column: 29, scope: !101523)
+!101539 = !DILocalVariable(name: "cap2", arg: 6, scope: !101523, file: !100005, line: 155, type: !100338)
+!101540 = !DILocation(line: 155, column: 39, scope: !101523)
+!101541 = !DILocation(line: 155, column: 45, scope: !101523)
+!101542 = !DILocalVariable(name: "i", scope: !101543, file: !100005, line: 157, type: !100030)
+!101543 = distinct !DILexicalBlock(scope: !101523, file: !100005, line: 157, column: 20)
+!101544 = !DILocation(line: 157, column: 29, scope: !101543)
+!101545 = !DILocation(line: 157, column: 25, scope: !101543)
+!101546 = !DILocation(line: 157, column: 38, scope: !101547)
+!101547 = distinct !DILexicalBlock(scope: !101543, file: !100005, line: 157, column: 20)
+!101548 = !DILocation(line: 157, column: 20, scope: !101543)
+!101549 = !DILocation(line: 158, column: 27, scope: !101550)
+!101550 = distinct !DILexicalBlock(scope: !101547, file: !100005, line: 157, column: 51)
+!101551 = !DILocation(line: 158, column: 33, scope: !101550)
+!101552 = !DILocation(line: 158, column: 36, scope: !101550)
+!101553 = !DILocation(line: 158, column: 5, scope: !101550)
+!101554 = !DILocation(line: 159, column: 3, scope: !101550)
+!101555 = !DILocation(line: 157, column: 47, scope: !101547)
+!101556 = !DILocation(line: 157, column: 20, scope: !101547)
+!101557 = distinct !{!101557, !101548, !101558, !101559}
+!101558 = !DILocation(line: 159, column: 3, scope: !101543)
+!101559 = !{!"llvm.loop.name", !"VITIS_LOOP_157_1"}
+!101560 = !DILocalVariable(name: "i", scope: !101561, file: !100005, line: 160, type: !100030)
+!101561 = distinct !DILexicalBlock(scope: !101523, file: !100005, line: 160, column: 21)
+!101562 = !DILocation(line: 160, column: 30, scope: !101561)
+!101563 = !DILocation(line: 160, column: 26, scope: !101561)
+!101564 = !DILocation(line: 160, column: 39, scope: !101565)
+!101565 = distinct !DILexicalBlock(scope: !101561, file: !100005, line: 160, column: 21)
+!101566 = !DILocation(line: 160, column: 21, scope: !101561)
+!101567 = !DILocation(line: 161, column: 27, scope: !101568)
+!101568 = distinct !DILexicalBlock(scope: !101565, file: !100005, line: 160, column: 52)
+!101569 = !DILocation(line: 161, column: 33, scope: !101568)
+!101570 = !DILocation(line: 161, column: 36, scope: !101568)
+!101571 = !DILocation(line: 161, column: 5, scope: !101568)
+!101572 = !DILocation(line: 162, column: 3, scope: !101568)
+!101573 = !DILocation(line: 160, column: 48, scope: !101565)
+!101574 = !DILocation(line: 160, column: 21, scope: !101565)
+!101575 = distinct !{!101575, !101566, !101576, !101577}
+!101576 = !DILocation(line: 162, column: 3, scope: !101561)
+!101577 = !{!"llvm.loop.name", !"VITIS_LOOP_160_2"}
+!101578 = !DILocation(line: 163, column: 8, scope: !101579)
+!101579 = distinct !DILexicalBlock(scope: !101523, file: !100005, line: 163, column: 7)
+!101580 = !DILocation(line: 163, column: 7, scope: !101579)
+!101581 = !DILocation(line: 163, column: 7, scope: !101523)
+!101582 = !DILocation(line: 163, column: 20, scope: !101579)
+!101583 = !DILocalVariable(name: "i", scope: !101584, file: !100005, line: 164, type: !100030)
+!101584 = distinct !DILexicalBlock(scope: !101585, file: !100005, line: 164, column: 23)
+!101585 = distinct !DILexicalBlock(scope: !101579, file: !100005, line: 163, column: 20)
+!101586 = !DILocation(line: 164, column: 32, scope: !101584)
+!101587 = !DILocation(line: 164, column: 28, scope: !101584)
+!101588 = !DILocation(line: 164, column: 41, scope: !101589)
+!101589 = distinct !DILexicalBlock(scope: !101584, file: !100005, line: 164, column: 23)
+!101590 = !DILocation(line: 164, column: 23, scope: !101584)
+!101591 = !DILocation(line: 165, column: 19, scope: !101592)
+!101592 = distinct !DILexicalBlock(scope: !101589, file: !100005, line: 164, column: 54)
+!101593 = !DILocation(line: 165, column: 7, scope: !101592)
+!101594 = !DILocation(line: 165, column: 17, scope: !101592)
+!101595 = !DILocation(line: 166, column: 5, scope: !101592)
+!101596 = !DILocation(line: 164, column: 50, scope: !101589)
+!101597 = !DILocation(line: 164, column: 23, scope: !101589)
+!101598 = distinct !{!101598, !101590, !101599, !101600}
+!101599 = !DILocation(line: 166, column: 5, scope: !101584)
+!101600 = !{!"llvm.loop.name", !"VITIS_LOOP_164_3"}
+!101601 = !DILocation(line: 167, column: 3, scope: !101585)
+!101602 = !DILocation(line: 168, column: 1, scope: !101523)
+!101603 = distinct !DISubprogram(name: "hls_top", linkageName: "_Z7hls_topiPiS_PjS0_", scope: !100005, file: !100005, line: 170, type: !101604, isLocal: false, isDefinition: true, scopeLine: 170, flags: DIFlagPrototyped, isOptimized: false, unit: !100000, variables: !100002)
+!101604 = !DISubroutineType(types: !101605)
+!101605 = !{null, !100030, !101415, !101415, !101277, !101277}
+!101606 = !{!101607}
+!101607 = !{!"fpga.top", !"user", !101608}
+!101608 = !DILocation(line: 170, column: 16, scope: !101603)
+!101609 = !DILocalVariable(name: "size", arg: 1, scope: !101603, file: !100005, line: 170, type: !100030)
+!101610 = !DILocation(line: 170, column: 60, scope: !101603)
+!101611 = !DILocalVariable(name: "a", arg: 2, scope: !101603, file: !100005, line: 170, type: !101415)
+!101612 = !DILocation(line: 170, column: 70, scope: !101603)
+!101613 = !DILocalVariable(name: "c", arg: 3, scope: !101603, file: !100005, line: 170, type: !101415)
+!101614 = !DILocation(line: 170, column: 83, scope: !101603)
+!101615 = !DILocalVariable(name: "flag", arg: 4, scope: !101603, file: !100005, line: 170, type: !101277)
+!101616 = !DILocation(line: 170, column: 97, scope: !101603)
+!101617 = !DILocalVariable(name: "cap", arg: 5, scope: !101603, file: !100005, line: 170, type: !101277)
+!101618 = !DILocation(line: 170, column: 107, scope: !101603)
+!101619 = !DILocation(line: 171, column: 9, scope: !101603)
+!101620 = !DILocation(line: 172, column: 9, scope: !101603)
+!101621 = !DILocation(line: 173, column: 9, scope: !101603)
+!101622 = !DILocation(line: 174, column: 9, scope: !101603)
+!101623 = !DILocation(line: 175, column: 9, scope: !101603)
+!101624 = !DILocation(line: 176, column: 9, scope: !101603)
+!101625 = !DILocation(line: 177, column: 2, scope: !101603)
+!101626 = !DILocalVariable(name: "b", scope: !101603, file: !100005, line: 177, type: !101627)
+!101627 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100030, size: 32000, elements: !101628)
+!101628 = !{!101629}
+!101629 = !DISubrange(count: 1000)
+!101630 = !DILocation(line: 177, column: 6, scope: !101603)
+!101631 = !DILocation(line: 179, column: 3, scope: !101603)
+!101632 = !DILocalVariable(name: "flag_buf", scope: !101603, file: !100005, line: 179, type: !100004)
+!101633 = !DILocation(line: 179, column: 7, scope: !101603)
+!101634 = !DILocation(line: 180, column: 3, scope: !101603)
+!101635 = !DILocalVariable(name: "caps", scope: !101603, file: !100005, line: 180, type: !101636)
+!101636 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100338, size: 288, elements: !101637)
+!101637 = !{!101638}
+!101638 = !DISubrange(count: 3)
+!101639 = !DILocation(line: 180, column: 7, scope: !101603)
+!101640 = !DILocation(line: 181, column: 3, scope: !101603)
+!101641 = !DILocalVariable(name: "buffer", scope: !101603, file: !100005, line: 181, type: !101642)
+!101642 = !DICompositeType(tag: DW_TAG_array_type, baseType: !100004, size: 384, elements: !101643)
+!101643 = !{!101644}
+!101644 = !DISubrange(count: 12)
+!101645 = !DILocation(line: 181, column: 7, scope: !101603)
+!101646 = !DILocation(line: 182, column: 9, scope: !101603)
+!101647 = !DILocation(line: 183, column: 9, scope: !101603)
+!101648 = !DILocation(line: 185, column: 14, scope: !101603)
+!101649 = !DILocation(line: 185, column: 27, scope: !101603)
+!101650 = !DILocation(line: 185, column: 2, scope: !101603)
+!101651 = !DILocation(line: 186, column: 20, scope: !101603)
+!101652 = !DILocation(line: 186, column: 3, scope: !101603)
+!101653 = !DILocalVariable(name: "i", scope: !101654, file: !100005, line: 188, type: !100030)
+!101654 = distinct !DILexicalBlock(scope: !101603, file: !100005, line: 188, column: 21)
+!101655 = !DILocation(line: 188, column: 30, scope: !101654)
+!101656 = !DILocation(line: 188, column: 26, scope: !101654)
+!101657 = !DILocation(line: 188, column: 39, scope: !101658)
+!101658 = distinct !DILexicalBlock(scope: !101654, file: !100005, line: 188, column: 21)
+!101659 = !DILocation(line: 188, column: 21, scope: !101654)
+!101660 = !DILocation(line: 191, column: 43, scope: !101661)
+!101661 = distinct !DILexicalBlock(scope: !101658, file: !100005, line: 188, column: 52)
+!101662 = !DILocation(line: 191, column: 15, scope: !101661)
+!101663 = !DILocalVariable(name: "a_elem", scope: !101661, file: !100005, line: 191, type: !100030)
+!101664 = !DILocation(line: 191, column: 6, scope: !101661)
+!101665 = !DILocation(line: 192, column: 29, scope: !101661)
+!101666 = !DILocation(line: 192, column: 46, scope: !101661)
+!101667 = !DILocation(line: 192, column: 18, scope: !101661)
+!101668 = !DILocalVariable(name: "b_elem", scope: !101661, file: !100005, line: 192, type: !100030)
+!101669 = !DILocation(line: 192, column: 9, scope: !101661)
+!101670 = !DILocation(line: 194, column: 25, scope: !101661)
+!101671 = !DILocalVariable(name: "c_elem", scope: !101661, file: !100005, line: 194, type: !100030)
+!101672 = !DILocation(line: 194, column: 9, scope: !101661)
+!101673 = !DILocation(line: 196, column: 42, scope: !101661)
+!101674 = !DILocation(line: 196, column: 5, scope: !101661)
+!101675 = !DILocation(line: 197, column: 3, scope: !101661)
+!101676 = !DILocation(line: 188, column: 48, scope: !101658)
+!101677 = !DILocation(line: 188, column: 21, scope: !101658)
+!101678 = distinct !{!101678, !101659, !101679, !101680, !101682}
+!101679 = !DILocation(line: 197, column: 3, scope: !101654)
+!101680 = !{!"llvm.loop.pipeline.enable", i32 -1, i1 false, i8 -1, !"user", !101681}
+!101681 = !DILocation(line: 189, column: 9, scope: !101654)
+!101682 = !{!"llvm.loop.name", !"VITIS_LOOP_188_1"}
+!101683 = !DILocation(line: 198, column: 34, scope: !101603)
+!101684 = !DILocation(line: 198, column: 48, scope: !101603)
+!101685 = !DILocation(line: 198, column: 3, scope: !101603)
+!101686 = !DILocation(line: 199, column: 31, scope: !101603)
+!101687 = !DILocation(line: 199, column: 45, scope: !101603)
+!101688 = !DILocation(line: 199, column: 54, scope: !101603)
+!101689 = !DILocation(line: 199, column: 3, scope: !101603)
+!101690 = !DILocation(line: 201, column: 11, scope: !101603)
+!101691 = !DILocation(line: 201, column: 9, scope: !101603)
+!101692 = !DILocation(line: 203, column: 1, scope: !101603)
 attributes #1 = { nounwind readnone speculatable }
 attributes #2 = { argmemonly nounwind }
 attributes #3 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "fpga.top.func"="hls_top" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "unsafe-fp-math"="false" "use-soft-float"="false" }
@@ -12273,7 +12587,7 @@ attributes #9 = { inaccessiblememonly nounwind "xlx.port.bitwidth"="256" "xlx.so
 !llvm.ident = !{!5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5, !5}
 
 !0 = distinct !DICompileUnit(language: DW_LANG_C99, file: !1, producer: "clang version 7.0.0 ", isOptimized: true, runtimeVersion: 0, emissionKind: FullDebug, enums: !2, retainedTypes: !3)
-!1 = !DIFile(filename: "/workspace/examples/fft_transpose/fft_prj/solution/.autopilot/db/fft.pp.0.c", directory: "/workspace/examples/fft_transpose")
+!1 = !DIFile(filename: "/workspace/examples/fft_transpose/fft_transpose_prj/solution/.autopilot/db/fft.pp.0.c", directory: "/workspace/examples/fft_transpose")
 !2 = !{}
 !3 = !{!4}
 !4 = !DIBasicType(name: "int", size: 32, encoding: DW_ATE_signed)

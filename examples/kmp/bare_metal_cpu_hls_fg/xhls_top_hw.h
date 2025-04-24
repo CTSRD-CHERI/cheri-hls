@@ -3,7 +3,7 @@
 // Tool Version Limit: 2023.05
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
-//
+// 
 // ==============================================================
 // control
 // 0x00 : Control signals
@@ -28,35 +28,55 @@
 // 0x10 : Data signal of size
 //        bit 31~0 - size[31:0] (Read/Write)
 // 0x14 : reserved
-// 0x18 : Data signal of a
-//        bit 31~0 - a[31:0] (Read/Write)
-// 0x1c : Data signal of a
-//        bit 31~0 - a[63:32] (Read/Write)
+// 0x18 : Data signal of xpattern
+//        bit 31~0 - xpattern[31:0] (Read/Write)
+// 0x1c : Data signal of xpattern
+//        bit 31~0 - xpattern[63:32] (Read/Write)
 // 0x20 : reserved
-// 0x24 : Data signal of b
-//        bit 31~0 - b[31:0] (Read/Write)
-// 0x28 : Data signal of b
-//        bit 31~0 - b[63:32] (Read/Write)
+// 0x24 : Data signal of xinput
+//        bit 31~0 - xinput[31:0] (Read/Write)
+// 0x28 : Data signal of xinput
+//        bit 31~0 - xinput[63:32] (Read/Write)
 // 0x2c : reserved
-// 0x30 : Data signal of c
-//        bit 31~0 - c[31:0] (Read/Write)
-// 0x34 : Data signal of c
-//        bit 31~0 - c[63:32] (Read/Write)
+// 0x30 : Data signal of xkmpNext
+//        bit 31~0 - xkmpNext[31:0] (Read/Write)
+// 0x34 : Data signal of xkmpNext
+//        bit 31~0 - xkmpNext[63:32] (Read/Write)
 // 0x38 : reserved
-// (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on
-// Handshake)
+// 0x3c : Data signal of xn_matches
+//        bit 31~0 - xn_matches[31:0] (Read/Write)
+// 0x40 : Data signal of xn_matches
+//        bit 31~0 - xn_matches[63:32] (Read/Write)
+// 0x44 : reserved
+// 0x48 : Data signal of flag
+//        bit 31~0 - flag[31:0] (Read)
+// 0x4c : Control signal of flag
+//        bit 0  - flag_ap_vld (Read/COR)
+//        others - reserved
+// 0x58 : Data signal of cap
+//        bit 31~0 - cap[31:0] (Read/Write)
+// 0x5c : Data signal of cap
+//        bit 31~0 - cap[63:32] (Read/Write)
+// 0x60 : reserved
+// (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
-#define XHLS_TOP_CONTROL_ADDR_AP_CTRL 0x00
-#define XHLS_TOP_CONTROL_ADDR_GIE 0x04
-#define XHLS_TOP_CONTROL_ADDR_IER 0x08
-#define XHLS_TOP_CONTROL_ADDR_ISR 0x0c
-#define XHLS_TOP_CONTROL_ADDR_SIZE_DATA 0x10
-#define XHLS_TOP_CONTROL_BITS_SIZE_DATA 32
-#define XHLS_TOP_CONTROL_ADDR_A_DATA 0x18
-#define XHLS_TOP_CONTROL_BITS_A_DATA 64
-#define XHLS_TOP_CONTROL_ADDR_B_DATA 0x24
-#define XHLS_TOP_CONTROL_BITS_B_DATA 64
-#define XHLS_TOP_CONTROL_ADDR_C_DATA 0x30
-#define XHLS_TOP_CONTROL_BITS_C_DATA 64
-#define XHLS_TOP_CONTROL_ADDR_D_DATA 0x3c
-#define XHLS_TOP_CONTROL_BITS_D_DATA 64
+#define XHLS_TOP_CONTROL_ADDR_AP_CTRL         0x00
+#define XHLS_TOP_CONTROL_ADDR_GIE             0x04
+#define XHLS_TOP_CONTROL_ADDR_IER             0x08
+#define XHLS_TOP_CONTROL_ADDR_ISR             0x0c
+#define XHLS_TOP_CONTROL_ADDR_SIZE_DATA       0x10
+#define XHLS_TOP_CONTROL_BITS_SIZE_DATA       32
+#define XHLS_TOP_CONTROL_ADDR_XPATTERN_DATA   0x18
+#define XHLS_TOP_CONTROL_BITS_XPATTERN_DATA   64
+#define XHLS_TOP_CONTROL_ADDR_XINPUT_DATA     0x24
+#define XHLS_TOP_CONTROL_BITS_XINPUT_DATA     64
+#define XHLS_TOP_CONTROL_ADDR_XKMPNEXT_DATA   0x30
+#define XHLS_TOP_CONTROL_BITS_XKMPNEXT_DATA   64
+#define XHLS_TOP_CONTROL_ADDR_XN_MATCHES_DATA 0x3c
+#define XHLS_TOP_CONTROL_BITS_XN_MATCHES_DATA 64
+#define XHLS_TOP_CONTROL_ADDR_FLAG_DATA       0x48
+#define XHLS_TOP_CONTROL_BITS_FLAG_DATA       32
+#define XHLS_TOP_CONTROL_ADDR_FLAG_CTRL       0x4c
+#define XHLS_TOP_CONTROL_ADDR_CAP_DATA        0x58
+#define XHLS_TOP_CONTROL_BITS_CAP_DATA        64
+

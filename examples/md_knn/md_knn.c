@@ -5,6 +5,8 @@ Tipparaju, and J. S. Vetter. The scalable heterogeneous computing (shoc)
 benchmark suite. In Proceedings of the 3rd Workshop on General-Purpose
 Computation on Graphics Processing Units, 2010.
 */
+#include <stdint.h>
+typedef uint32_t u32;
 
 #define TYPE int
 
@@ -14,6 +16,13 @@ Computation on Graphics Processing Units, 2010.
 // LJ coefficients
 #define lj1 2
 #define lj2 3
+
+void stream_write(u32 size, int *array1, int *array2) {
+#pragma HLS INLINE
+  for (int i = 0; i < size; i++) {
+    array1[i] = array2[i];
+  }
+}
 
 void hls_top(int size, TYPE xforce_x[nAtoms], TYPE xforce_y[nAtoms],
              TYPE xforce_z[nAtoms], TYPE xposition_x[nAtoms],
@@ -87,6 +96,9 @@ loop_i:
     force_z[i] = fz;
     // printf("dF=%lf,%lf,%lf\n", fx, fy, fz);
   }
+  // stream_write(size, xforce_x, force_x);
+  // stream_write(size, xforce_y, force_y);
+  // stream_write(size, xforce_z, force_z);
 
   for (i = 0; i < size; i++) {
     xforce_x[i] = force_x[i];

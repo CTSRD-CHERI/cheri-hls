@@ -138,13 +138,29 @@ void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
   return;
 }
 
-void cheri_stream_write(u32 size, int *array1, int *array2, u32 *flag_buf,
-                        Cap cap) {
+void cheri_stream_write_nl(u32 size, int *array1, int *array2, u32 *flag_buf,
+                           Cap cap) {
 #pragma HLS INLINE
   for (int i = 0; i < size; i++) {
     checkAccess(flag_buf, cap, i, 4, true);
   }
-  if (*flag_buf) {
+  if ((*flag_buf)) {
+    for (int i = 0; i < size; i++) {
+      array1[i] = array2[i];
+    }
+  }
+}
+
+void cheri_stream_write(u32 size, int *array1, int *array2, u32 *flag_buf,
+                        Cap cap1, Cap cap2) {
+#pragma HLS INLINE
+  for (int i = 0; i < size; i++) {
+    checkAccess(flag_buf, cap1, i, 4, true);
+  }
+  for (int i = 0; i < size; i++) {
+    checkAccess(flag_buf, cap2, i, 4, false);
+  }
+  if ((*flag_buf)) {
     for (int i = 0; i < size; i++) {
       array1[i] = array2[i];
     }
@@ -160,7 +176,7 @@ void hls_top(int size, int a[N], int c[N], u32 *flag, u32 cap[8]) {
 #pragma HLS INTERFACE s_axilite port = return
   int b[N] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-  u32 flag_buf = 0;
+  u32 flag_buf = 1;
   Cap caps[3];
   u32 buffer[12];
 #pragma HLS array_partition variable = buffer type = complete
@@ -179,7 +195,8 @@ void hls_top(int size, int a[N], int c[N], u32 *flag, u32 cap[8]) {
 
     cheri_store(c, i, c_elem, &flag_buf, caps[1]);
   }
-  cheri_stream_write(size, a, b, &flag_buf, caps[0]);
+  cheri_stream_write_nl(size, a, b, &flag_buf, caps[0]);
+  cheri_stream_write(size, a, b, &flag_buf, caps[0], caps[2]);
 
   *flag = flag_buf;
   return;
