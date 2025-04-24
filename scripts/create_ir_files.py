@@ -189,11 +189,11 @@ with open("/workspace/examples/vect_mult_local/temp/mod_test.ll") as f:
         if in_attributes:
             attributes.append(line)
 
-with open("/workspace/scripts/cheri_resources/refined_cap_header.txt", "w") as f:
+with open("/workspace/scripts/cheri_resources/refined_cap_header.ll", "w") as f:
     for line in header:
         f.write(line.rstrip() + "\n")
 
-with open("/workspace/scripts/cheri_resources/refined_cheri_attributes.txt", "w") as f:
+with open("/workspace/scripts/cheri_resources/refined_cheri_attributes.ll", "w") as f:
     for line in attributes:
         f.write(line.rstrip() + "\n")
 

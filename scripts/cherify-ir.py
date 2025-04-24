@@ -35,7 +35,7 @@ class LLVMTransformer:
 
     def add_header(self):
         filename = "full_cap_header" if self.full_caps else "refined_cap_header"
-        with open(f"/workspace/scripts/cheri_resources/{filename}.txt") as file:
+        with open(f"/workspace/scripts/cheri_resources/{filename}.ll") as file:
             header = file.readlines()
         return header
 
@@ -45,7 +45,7 @@ class LLVMTransformer:
             "full_cheri_attributes" if self.full_caps else "refined_cheri_attributes"
         )
 
-        with open(f"/workspace/scripts/cheri_resources/{filename}.txt") as file:
+        with open(f"/workspace/scripts/cheri_resources/{filename}.ll") as file:
             attributes = file.readlines()
         attributes = (
             [
