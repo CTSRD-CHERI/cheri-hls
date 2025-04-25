@@ -3,7 +3,7 @@
 // Tool Version Limit: 2023.05
 // Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 // Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
-//
+// 
 // ==============================================================
 // control
 // 0x00 : Control signals
@@ -28,41 +28,76 @@
 // 0x10 : Data signal of size
 //        bit 31~0 - size[31:0] (Read/Write)
 // 0x14 : reserved
-// 0x18 : Data signal of a
-//        bit 31~0 - a[31:0] (Read/Write)
-// 0x1c : Data signal of a
-//        bit 31~0 - a[63:32] (Read/Write)
+// 0x18 : Data signal of xn_points
+//        bit 31~0 - xn_points[31:0] (Read/Write)
+// 0x1c : Data signal of xn_points
+//        bit 31~0 - xn_points[63:32] (Read/Write)
 // 0x20 : reserved
-// 0x24 : Data signal of b
-//        bit 31~0 - b[31:0] (Read/Write)
-// 0x28 : Data signal of b
-//        bit 31~0 - b[63:32] (Read/Write)
+// 0x24 : Data signal of force_x
+//        bit 31~0 - force_x[31:0] (Read/Write)
+// 0x28 : Data signal of force_x
+//        bit 31~0 - force_x[63:32] (Read/Write)
 // 0x2c : reserved
-// 0x30 : Data signal of c
-//        bit 31~0 - c[31:0] (Read/Write)
-// 0x34 : Data signal of c
-//        bit 31~0 - c[63:32] (Read/Write)
+// 0x30 : Data signal of force_y
+//        bit 31~0 - force_y[31:0] (Read/Write)
+// 0x34 : Data signal of force_y
+//        bit 31~0 - force_y[63:32] (Read/Write)
 // 0x38 : reserved
-// (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on
-// Handshake)
+// 0x3c : Data signal of force_z
+//        bit 31~0 - force_z[31:0] (Read/Write)
+// 0x40 : Data signal of force_z
+//        bit 31~0 - force_z[63:32] (Read/Write)
+// 0x44 : reserved
+// 0x48 : Data signal of position_x
+//        bit 31~0 - position_x[31:0] (Read/Write)
+// 0x4c : Data signal of position_x
+//        bit 31~0 - position_x[63:32] (Read/Write)
+// 0x50 : reserved
+// 0x54 : Data signal of position_y
+//        bit 31~0 - position_y[31:0] (Read/Write)
+// 0x58 : Data signal of position_y
+//        bit 31~0 - position_y[63:32] (Read/Write)
+// 0x5c : reserved
+// 0x60 : Data signal of position_z
+//        bit 31~0 - position_z[31:0] (Read/Write)
+// 0x64 : Data signal of position_z
+//        bit 31~0 - position_z[63:32] (Read/Write)
+// 0x68 : reserved
+// 0x6c : Data signal of flag
+//        bit 31~0 - flag[31:0] (Read)
+// 0x70 : Control signal of flag
+//        bit 0  - flag_ap_vld (Read/COR)
+//        others - reserved
+// 0x7c : Data signal of cap
+//        bit 31~0 - cap[31:0] (Read/Write)
+// 0x80 : Data signal of cap
+//        bit 31~0 - cap[63:32] (Read/Write)
+// 0x84 : reserved
+// (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)
 
-#define XHLS_TOP_CONTROL_ADDR_AP_CTRL 0x00
-#define XHLS_TOP_CONTROL_ADDR_GIE 0x04
-#define XHLS_TOP_CONTROL_ADDR_IER 0x08
-#define XHLS_TOP_CONTROL_ADDR_ISR 0x0c
-#define XHLS_TOP_CONTROL_ADDR_SIZE_DATA 0x10
-#define XHLS_TOP_CONTROL_BITS_SIZE_DATA 32
-#define XHLS_TOP_CONTROL_ADDR_A_DATA 0x18
-#define XHLS_TOP_CONTROL_BITS_A_DATA 64
-#define XHLS_TOP_CONTROL_ADDR_B_DATA 0x24
-#define XHLS_TOP_CONTROL_BITS_B_DATA 64
-#define XHLS_TOP_CONTROL_ADDR_C_DATA 0x30
-#define XHLS_TOP_CONTROL_BITS_C_DATA 64
-#define XHLS_TOP_CONTROL_ADDR_D_DATA 0x3c
-#define XHLS_TOP_CONTROL_BITS_D_DATA 64
-#define XHLS_TOP_CONTROL_ADDR_E_DATA 0x48
-#define XHLS_TOP_CONTROL_BITS_E_DATA 64
-#define XHLS_TOP_CONTROL_ADDR_F_DATA 0x54
-#define XHLS_TOP_CONTROL_BITS_F_DATA 64
-#define XHLS_TOP_CONTROL_ADDR_G_DATA 0x60
-#define XHLS_TOP_CONTROL_BITS_G_DATA 64
+#define XHLS_TOP_CONTROL_ADDR_AP_CTRL         0x00
+#define XHLS_TOP_CONTROL_ADDR_GIE             0x04
+#define XHLS_TOP_CONTROL_ADDR_IER             0x08
+#define XHLS_TOP_CONTROL_ADDR_ISR             0x0c
+#define XHLS_TOP_CONTROL_ADDR_SIZE_DATA       0x10
+#define XHLS_TOP_CONTROL_BITS_SIZE_DATA       32
+#define XHLS_TOP_CONTROL_ADDR_XN_POINTS_DATA  0x18
+#define XHLS_TOP_CONTROL_BITS_XN_POINTS_DATA  64
+#define XHLS_TOP_CONTROL_ADDR_FORCE_X_DATA    0x24
+#define XHLS_TOP_CONTROL_BITS_FORCE_X_DATA    64
+#define XHLS_TOP_CONTROL_ADDR_FORCE_Y_DATA    0x30
+#define XHLS_TOP_CONTROL_BITS_FORCE_Y_DATA    64
+#define XHLS_TOP_CONTROL_ADDR_FORCE_Z_DATA    0x3c
+#define XHLS_TOP_CONTROL_BITS_FORCE_Z_DATA    64
+#define XHLS_TOP_CONTROL_ADDR_POSITION_X_DATA 0x48
+#define XHLS_TOP_CONTROL_BITS_POSITION_X_DATA 64
+#define XHLS_TOP_CONTROL_ADDR_POSITION_Y_DATA 0x54
+#define XHLS_TOP_CONTROL_BITS_POSITION_Y_DATA 64
+#define XHLS_TOP_CONTROL_ADDR_POSITION_Z_DATA 0x60
+#define XHLS_TOP_CONTROL_BITS_POSITION_Z_DATA 64
+#define XHLS_TOP_CONTROL_ADDR_FLAG_DATA       0x6c
+#define XHLS_TOP_CONTROL_BITS_FLAG_DATA       32
+#define XHLS_TOP_CONTROL_ADDR_FLAG_CTRL       0x70
+#define XHLS_TOP_CONTROL_ADDR_CAP_DATA        0x7c
+#define XHLS_TOP_CONTROL_BITS_CAP_DATA        64
+

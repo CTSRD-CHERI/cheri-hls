@@ -1,3 +1,4 @@
+#include <stdint.h>
 // Define input sizes
 #define col_size 64
 #define row_size 128
@@ -5,6 +6,13 @@
 
 // Data Bounds
 #define TYPE int
+typedef uint32_t u32;
+void stream_write(u32 size, int *array1, int *array2) {
+#pragma HLS INLINE
+  for (int i = 0; i < size; i++) {
+    array1[i] = array2[i];
+  }
+}
 
 void hls_top(int size, TYPE xorig[row_size * col_size],
              TYPE xsol[row_size * col_size], TYPE xfilter[f_size]) {
@@ -34,8 +42,7 @@ stencil_label1:
     }
   }
 
-  for (i = 0; i < size * col_size; i++)
-    xsol[i] = sol[i];
+  stream_write(size * col_size, xsol, sol);
 }
 
 int main() {

@@ -3,6 +3,7 @@ Based on algorithm described here:
 http://www.cs.berkeley.edu/~mhoemmen/matrix-seminar/slides/UCB_sparse_tutorial_1.pdf
 */
 
+#include <stdint.h>
 // These constants valid for the IEEE 494 bus interconnect matrix
 #define NNZ 1666
 #define N 494
@@ -13,6 +14,14 @@ http://www.cs.berkeley.edu/~mhoemmen/matrix-seminar/slides/UCB_sparse_tutorial_1
 #define MAX 1000
 #define MIN 10
 #define ran 100
+typedef uint32_t u32;
+
+void stream_write(u32 size, int *array1, int *array2) {
+#pragma HLS INLINE
+  for (int i = 0; i < size; i++) {
+    array1[i] = array2[i];
+  }
+}
 
 void hls_top(int n, int l, TYPE xnzval[N * L], int xcols[N * L], TYPE xvec[N],
              TYPE xout[N]) {
@@ -48,8 +57,7 @@ ellpack_1:
     }
     out[i] = sum;
   }
-  for (i = 0; i < n; i++)
-    xout[i] = out[i];
+  stream_write(n, xout, out);
 }
 
 void fillVal(TYPE nzval[N * L], int colind[N * L], TYPE x[N]) {

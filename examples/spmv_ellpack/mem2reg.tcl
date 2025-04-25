@@ -1,7 +1,7 @@
 open_project -reset spmv_ellpack_prj
 set_top hls_top 
-add_files { spmv_ellpack_manual.cpp }
-add_files -tb { spmv_ellpack_manual.cpp }
+add_files { spmv_ellpack.c }
+add_files -tb { spmv_ellpack.c }
 open_solution -reset "solution"
 set_part {xcu250-figd2104-2L-e}
 create_clock -period 4 -name default
@@ -12,7 +12,7 @@ config_compile -pipeline_loops 1
 csim_design 
 # Comment the following two if I want to verify in software 
 # Generate  Verilog for HLS code
-set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -mem2reg $LLVM_CUSTOM_INPUT -o /workspace/examples/spmv_ellpack/temp/manual.bc}
+set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -mem2reg $LLVM_CUSTOM_INPUT -o /workspace/examples/spmv_ellpack/temp/test.bc}
  #set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -mem2reg $LLVM_CUSTOM_INPUT -o $LLVM_CUSTOM_OUTPUT}
 #set ::LLVM_CUSTOM_CMD {/local/ecad/xilinx/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/llvm-dis $LLVM_CUSTOM_INPUT}
 #a.g.ld.6.user.ll

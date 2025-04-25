@@ -2,6 +2,7 @@
 Based on algorithm described here:
 http://www.cs.berkeley.edu/~mhoemmen/matrix-seminar/slides/UCB_sparse_tutorial_1.pdf
 */
+#include <stdint.h>
 #define NNZ 1666
 #define N 494
 
@@ -10,6 +11,13 @@ http://www.cs.berkeley.edu/~mhoemmen/matrix-seminar/slides/UCB_sparse_tutorial_1
 #define MAX 1000
 #define MIN 10
 #define ran 100
+typedef uint32_t u32;
+void stream_write(u32 size, int *array1, int *array2) {
+#pragma HLS INLINE
+  for (int i = 0; i < size; i++) {
+    array1[i] = array2[i];
+  }
+}
 
 void hls_top(int size, TYPE xval[NNZ], int xcols[NNZ],
              int xrowDelimiters[N + 1], TYPE xvec[N], TYPE xout[N]) {
@@ -23,11 +31,19 @@ void hls_top(int size, TYPE xval[NNZ], int xcols[NNZ],
   int i, j;
   TYPE sum, Si;
 
-  // TYPE val[NNZ];
-  // int cols[NNZ];
-  // int rowDelimiters[N + 1];
-  // TYPE vec[N];
-  // TYPE out[N];
+  TYPE val[NNZ];
+  int cols[NNZ];
+  int rowDelimiters[N + 1];
+  TYPE vec[N];
+  TYPE out[N];
+  for (i = 0; i < N + 1; i++)
+    rowDelimiters[i] = xrowDelimiters[i];
+  for (i = 0; i < NNZ; i++)
+    val[i] = xval[i];
+  for (i = 0; i < NNZ; i++)
+    cols[i] = xcols[i];
+  for (i = 0; i < N; i++)
+    vec[i] = xvec[i];
 
   int temp = xrowDelimiters[0];
 spmv_1:
@@ -35,15 +51,16 @@ spmv_1:
     sum = 0;
     Si = 0;
     int tmp_begin = temp;
-    int tmp_end = xrowDelimiters[i + 1];
+    int tmp_end = rowDelimiters[i + 1];
     temp = tmp_end;
   spmv_2:
     for (j = tmp_begin; j < tmp_end; j++) {
-      Si = xval[j] * xvec[xcols[j]];
+      Si = val[j] * vec[cols[j]];
       sum = sum + Si;
     }
-    xout[i] = sum;
+    out[i] = sum;
   }
+  stream_write(N, xout, out);
 }
 
 void fillVal(TYPE A[NNZ]) {

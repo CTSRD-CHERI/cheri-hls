@@ -1,3 +1,4 @@
+#include <stdint.h>
 #define ALEN 128
 #define BLEN 128
 
@@ -11,6 +12,13 @@
 
 #define MAX(A, B) (((A) > (B)) ? (A) : (B))
 
+typedef uint32_t u32;
+void stream_write(u32 size, int *array1, int *array2) {
+#pragma HLS INLINE
+  for (int i = 0; i < size; i++) {
+    array1[i] = array2[i];
+  }
+}
 void hls_top(int alen, int blen, int xSEQA[ALEN], int xSEQB[BLEN],
              int xalignedA[ALEN + BLEN], int xalignedB[ALEN + BLEN],
              int xM[(ALEN + 1) * (BLEN + 1)],
@@ -122,15 +130,18 @@ pad_b:
   for (; b_str_idx < ALEN + BLEN; b_str_idx++) {
     alignedB[b_str_idx] = '_';
   }
-
-  for (int i = 0; i < ALEN + BLEN; i++)
-    xalignedA[i] = alignedA[i];
-  for (int i = 0; i < ALEN + BLEN; i++)
-    xalignedB[i] = alignedB[i];
-  for (int i = 0; i < (ALEN + 1) * (BLEN + 1); i++)
-    xM[i] = M[i];
-  for (int i = 0; i < (ALEN + 1) * (BLEN + 1); i++)
-    xptr[i] = ptr[i];
+  // for (int i = 0; i < ALEN + BLEN; i++) {
+  //   xalignedA[i] = alignedA[i];
+  //   xalignedB[i] = alignedB[i];
+  // }
+  // for (int i = 0; i < (ALEN + 1) * (BLEN + 1); i++) {
+  //   xM[i] = M[i];
+  //   xptr[i] = ptr[i];
+  // }
+  stream_write(ALEN + BLEN, xalignedA, alignedA);
+  stream_write(ALEN + BLEN, xalignedB, alignedB);
+  stream_write((ALEN + 1) * (BLEN + 1), xM, M);
+  stream_write((ALEN + 1) * (BLEN + 1), xptr, ptr);
 }
 
 int main() {

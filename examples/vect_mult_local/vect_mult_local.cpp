@@ -15,13 +15,6 @@ typedef struct {
   bool write;
 } Cap;
 
-// static inline uint64_t getField(u64 val, unsigned startBit, unsigned length)
-// { #pragma HLS INLINE
-//   u64 shifted = val >> startBit;
-//   u64 mask = (1ULL << length) - 1ULL;
-//   return shifted & mask;
-// }
-
 Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
            ap_uint<32> buffer_3) {
 #pragma HLS INLINE
@@ -29,13 +22,10 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
   ap_uint<64> cap = (buffer_3, buffer_2);
   ap_uint<64> addr = (buffer_1, buffer_0);
 
-  cap ^= 0x00001ffffc018004;      // nullptr [127:64]
-  bool read = cap.range(61, 61);  // getField(cap, 61, 1);
-  bool write = cap.range(60, 60); // getField(cap, 60, 1);
-  // ap_uint<12> perms = getField(cap, 52, 12); // bits [127:112]
-  //  ap_uint<4> uperms = getField(cap, 48, 4);  // bits [115:112]
+  cap ^= 0x00001ffffc018004;         // nullptr [127:64]
+  bool read = cap.range(61, 61);     // getField(cap, 61, 1);
+  bool write = cap.range(60, 60);    // getField(cap, 60, 1);
   bool f = (cap.range(47, 47) != 0); //(getField(cap, 47, 1) != 0); // bit 111
-  // ap_uint<18> otype = getField(cap, 27, 18); // bits [109:91]
   bool I_E =
       (cap.range(26, 26) != 0); //(getField(cap, 26, 1) != 0);    // bit 90
   ap_uint<9> T_11_3 =
@@ -67,9 +57,7 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
   }
   ap_uint<2> B_13_12 = B_13_0.range(13, 12); //(B_13_0 >> 12) & 0x3;
   ap_uint<2> T_13_12 = B_13_12 + (L_carry_out ? 1 : 0) + (I_E ? 1 : 0);
-  T_13_12 &= 0x3;
 
-  T_13_0 &= 0x0fff;
   T_13_0 = (T_13_12, T_13_0.range(11, 0));
 
   ap_uint<3> A3 = ((addr >> (E + 11)) & 0x7);
@@ -139,18 +127,44 @@ void checkAccess(u32 *flag_buf, Cap cap, u16 offset, ap_uint<3> nBytes,
 int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, false);
-  // return (*flag_buf) ? buf[i] : 0;
-  return buf[i];
+  int b = buf[i];
+  return (*flag_buf) ? b : 0;
 }
 
 void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, true);
-
-  // if ((*flag_buf)) {
-  buf[i] = val;
-  //}
+  buf[i] = (*flag_buf) ? val : buf[i];
   return;
+}
+
+void cheri_stream_write_nl(u32 size, int *array1, int *array2, u32 *flag_buf,
+                           Cap cap) {
+#pragma HLS INLINE
+  for (int i = 0; i < size; i++) {
+    checkAccess(flag_buf, cap, i, 4, true);
+  }
+  if ((*flag_buf)) {
+    for (int i = 0; i < size; i++) {
+      array1[i] = array2[i];
+    }
+  }
+}
+
+void cheri_stream_write(u32 size, int *array1, int *array2, u32 *flag_buf,
+                        Cap cap1, Cap cap2) {
+#pragma HLS INLINE
+  for (int i = 0; i < size; i++) {
+    checkAccess(flag_buf, cap1, i, 4, true);
+  }
+  for (int i = 0; i < size; i++) {
+    checkAccess(flag_buf, cap2, i, 4, false);
+  }
+  if ((*flag_buf)) {
+    for (int i = 0; i < size; i++) {
+      array1[i] = array2[i];
+    }
+  }
 }
 
 void hls_top(int size, int a[N], int c[N], u32 *flag, u32 cap[8]) {
@@ -162,8 +176,7 @@ void hls_top(int size, int a[N], int c[N], u32 *flag, u32 cap[8]) {
 #pragma HLS INTERFACE s_axilite port = return
   int b[N] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-  u32 flag_buf = 0;
-  // 3 and 12 comes from program analysis
+  u32 flag_buf = 1;
   Cap caps[3];
   u32 buffer[12];
 #pragma HLS array_partition variable = buffer type = complete
@@ -182,6 +195,8 @@ void hls_top(int size, int a[N], int c[N], u32 *flag, u32 cap[8]) {
 
     cheri_store(c, i, c_elem, &flag_buf, caps[1]);
   }
+  cheri_stream_write_nl(size, a, b, &flag_buf, caps[0]);
+  cheri_stream_write(size, a, b, &flag_buf, caps[0], caps[2]);
 
   *flag = flag_buf;
   return;

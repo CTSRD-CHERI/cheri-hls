@@ -9,6 +9,7 @@
 #include "xhls_top.h"
 
 /************************** Function Implementation *************************/
+
 void XHls_top_Start(XHls_top *InstancePtr) {
   u32 Data;
 

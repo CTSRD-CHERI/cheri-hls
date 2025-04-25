@@ -28,12 +28,19 @@ XHls_top top_insts[NUM];
 u64 base_phy_addr[NUM] = {0xC0010000, 0xC0011000, 0xC0012000, 0xC0013000,
                           0xC0014000, 0xC0015000, 0xC0016000, 0xC0017000};
 
-int nodes_b[NUM][N_NODES] = {{1, 1}};
-int nodes_e[NUM][N_NODES] = {{1, 1}};
-int edges[NUM][N_EDGES] = {{1}};
-int starting_node[NUM] = {0};
-int level[NUM][N_NODES] = {{0}};
-int level_counts[NUM][N_LEVELS] = {{1}};
+// int nodes_b[NUM][N_NODES] = {{1, 1}};
+// int nodes_e[NUM][N_NODES] = {{1, 1}};
+// int edges[NUM][N_EDGES] = {{1}};
+// int starting_node[NUM] = {0};
+// int level[NUM][N_NODES] = {{0}};
+// int level_counts[NUM][N_LEVELS] = {{1}};
+int nodes_b[NUM][N_NODES];
+int nodes_e[NUM][N_NODES];
+int edges[NUM][N_EDGES];
+int starting_node[NUM];
+int level[NUM][N_NODES];
+int level_counts[NUM][N_LEVELS];
+u32 cap[20];
 
 #ifdef CAPCHECKER
 u64 capchecker_base_phy_addr = 0xc0020000;
@@ -96,6 +103,15 @@ u32 hls_top_init(int test_case, u32 *phy) {
   u32 buffer_level = level[test_case];
   u32 buffer_level_counts = level_counts[test_case];
 
+  u32 **capp = (u32 **)cap;
+  capp[4] = nodes_b;
+  capp[3] = nodes_e;
+  capp[2] = edges;
+  capp[1] = level;
+  capp[0] = level_counts;
+
+  XHls_top_Set_cap(top, (capp));
+
 #ifdef CAPCHECKER
   u32 nodes_b_cap_id = (test_case << 5) + 0;
   u32 nodes_e_cap_id = (test_case << 5) + 1;
@@ -105,44 +121,44 @@ u32 hls_top_init(int test_case, u32 *phy) {
 
   // Configuring data buffers
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_NODES_B_DATA + 4,
+                    XHLS_TOP_CONTROL_ADDR_XNODES_B_DATA + 4,
                     (u32)(nodes_b_cap_id << (32 - 8)));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_NODES_E_DATA + 4,
+                    XHLS_TOP_CONTROL_ADDR_XNODES_E_DATA + 4,
                     (u32)(nodes_e_cap_id << (32 - 8)));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_EDGES_DATA + 4,
+                    XHLS_TOP_CONTROL_ADDR_XEDGES_DATA + 4,
                     (u32)(edges_cap_id << (32 - 8)));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_LEVEL_DATA + 4,
+                    XHLS_TOP_CONTROL_ADDR_XLEVEL_DATA + 4,
                     (u32)(level_cap_id << (32 - 8)));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_LEVEL_COUNTS_DATA + 4,
+                    XHLS_TOP_CONTROL_ADDR_XLEVEL_COUNTS_DATA + 4,
                     (u32)(level_counts_cap_id << (32 - 8)));
 #else
   // Configuring data buffers
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_NODES_B_DATA + 4, (u32)(0));
+                    XHLS_TOP_CONTROL_ADDR_XNODES_B_DATA + 4, (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_NODES_E_DATA + 4, (u32)(0));
+                    XHLS_TOP_CONTROL_ADDR_XNODES_E_DATA + 4, (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_EDGES_DATA + 4, (u32)(0));
+                    XHLS_TOP_CONTROL_ADDR_XEDGES_DATA + 4, (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_LEVEL_DATA + 4, (u32)(0));
+                    XHLS_TOP_CONTROL_ADDR_XLEVEL_DATA + 4, (u32)(0));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_LEVEL_COUNTS_DATA + 4, (u32)(0));
+                    XHLS_TOP_CONTROL_ADDR_XLEVEL_COUNTS_DATA + 4, (u32)(0));
 #endif
 
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_NODES_B_DATA, (u32)(buffer_nodes_b));
+                    XHLS_TOP_CONTROL_ADDR_XNODES_B_DATA, (u32)(buffer_nodes_b));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_NODES_E_DATA, (u32)(buffer_nodes_e));
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_EDGES_DATA,
+                    XHLS_TOP_CONTROL_ADDR_XNODES_E_DATA, (u32)(buffer_nodes_e));
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_XEDGES_DATA,
                     (u32)(buffer_edges));
-  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_LEVEL_DATA,
+  XHls_top_WriteReg(top->Control_BaseAddress, XHLS_TOP_CONTROL_ADDR_XLEVEL_DATA,
                     (u32)(buffer_level));
   XHls_top_WriteReg(top->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_LEVEL_COUNTS_DATA,
+                    XHLS_TOP_CONTROL_ADDR_XLEVEL_COUNTS_DATA,
                     (u32)(buffer_level_counts));
 
 #ifdef CAPCHECKER
@@ -177,16 +193,24 @@ int main() {
     if (hls_top_init(i, physical_addr))
       return 4;
   }
+  u32 flag = 0;
 
   // Compute
   asm("fence");
   for (int i = 0; i < NUM; i++)
     XHls_top_Start(top_insts + i);
+  for (int i = 0; i < NUM; i++) {
+    while (!XHls_top_Get_flag_vld(top_insts + i)) {
+      flag |= XHls_top_Get_flag(top_insts + i);
+    }
+  }
   for (int i = 0; i < NUM; i++)
     while (!XHls_top_IsDone(top_insts + i))
       ;
   asm("fence");
-
-  success();
+  if (flag == 1)
+    success();
+  else
+    fail();
   return 0;
 }

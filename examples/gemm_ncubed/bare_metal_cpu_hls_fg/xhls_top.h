@@ -61,7 +61,6 @@ typedef u32 word_type;
 /************************** Function Prototypes *****************************/
 int XHls_top_Initialize(XHls_top *InstancePtr, const char *InstanceName);
 int XHls_top_Release(XHls_top *InstancePtr);
-
 void XHls_top_Start(XHls_top *InstancePtr);
 u32 XHls_top_IsDone(XHls_top *InstancePtr);
 u32 XHls_top_IsIdle(XHls_top *InstancePtr);

@@ -151,19 +151,33 @@ void checkAccess(u32 *flag_buf, Cap cap, u16 offset, ap_uint<3> nBytes,
         (!isWrite || (cap.write)) && (isWrite || (cap.read)));
 }
 
+// int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {
+//#pragma HLS INLINE
+//   checkAccess(flag_buf, cap, i, 4, false);
+//   return buf[i]; // (*flag_buf) ? buf[i] : 0;
+// }
+//
+// void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
+//#pragma HLS INLINE
+//   checkAccess(flag_buf, cap, i, 4, true);
+//
+//   if ((*flag_buf)) {
+//     buf[i] = val;
+//   }
+//   return;
+// }
 int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, false);
-  return buf[i]; // (*flag_buf) ? buf[i] : 0;
+  int b = buf[i];
+  return (*flag_buf) ? b : 0;
 }
 
 void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, true);
-
-  if ((*flag_buf)) {
-    buf[i] = val;
-  }
+  buf[i] = val;
+  // buf[i] = (*flag_buf) ? val : buf[i];
   return;
 }
 // int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {

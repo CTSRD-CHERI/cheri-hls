@@ -1,3 +1,4 @@
+#include <stdint.h>
 // Define compute data type
 #define TYPE int
 
@@ -5,6 +6,12 @@
 #define row_size 64
 #define col_size 64
 #define N row_size *col_size
+typedef uint32_t u32;
+void stream_write(u32 size, int *array1, int *array2) {
+  for (int i = 0; i < size; i++) {
+    array1[i] = array2[i];
+  }
+}
 
 void hls_top(int size, TYPE xm1[N], TYPE xm2[N], TYPE xprod[N]) {
 #pragma HLS INTERFACE m_axi port = xm1
@@ -38,9 +45,7 @@ outer:
       prod[i_col + j] = sum;
     }
   }
-
-  for (i = 0; i < size * size; i++)
-    xprod[i] = prod[i];
+  stream_write(size * size, xprod, prod);
 }
 
 int main() {

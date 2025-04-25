@@ -1,4 +1,4 @@
-open_project -reset gemm_prj
+open_project -reset gemm_ncubed_prj
 set_top hls_top 
 add_files { gemm.c }
 add_files -tb { gemm.c }

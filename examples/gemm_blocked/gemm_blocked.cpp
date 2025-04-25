@@ -5,6 +5,7 @@ M. D. Lam, E. E. Rothberg, and M. E. Wolf
 ASPLOS 1991
 */
 
+#include <stdint.h>
 // Data Type
 #define TYPE int
 
@@ -15,13 +16,16 @@ ASPLOS 1991
 #define block_size 8
 #define NUMOFBLOCKS N / block_size / block_size
 
-void hls_top(int size, TYPE xm1[N], TYPE xm2[N], TYPE xprod[N], int *flag,
-             int cap[12]) {
+typedef uint32_t u32;
+void stream_write(u32 size, int *array1, int *array2) {
+  for (int i = 0; i < size; i++) {
+    array1[i] = array2[i];
+  }
+}
+void hls_top(int size, TYPE xm1[N], TYPE xm2[N], TYPE xprod[N]) {
 #pragma HLS INTERFACE m_axi port = xm1
 #pragma HLS INTERFACE m_axi port = xm2
 #pragma HLS INTERFACE m_axi port = xprod
-#pragma HLS INTERFACE m_axi port = cap
-#pragma HLS INTERFACE s_axilite port = flag
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
   int i, k, j, jj, kk;
@@ -55,17 +59,12 @@ loopjj:
       }
     }
   }
-  for (i = 0; i < size * size; i++)
-    xprod[i] = prod[i];
-  *flag = 0x11111;
-  cap[0] = 1;
+  stream_write(size * size, xprod, prod);
 }
 
 int main() {
-  int flag[1] = {0};
-  int cap[12];
   TYPE m1[N] = {0}, m2[N] = {0}, prod[N] = {0};
-  hls_top(row_size, m1, m2, prod, flag, cap);
+  hls_top(row_size, m1, m2, prod);
 
   return 0;
 }

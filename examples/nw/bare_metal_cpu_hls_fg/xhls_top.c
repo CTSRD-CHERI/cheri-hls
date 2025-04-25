@@ -10,41 +10,11 @@
 
 /************************** Function Implementation *************************/
 
-void XHls_top_Set_alen(XHls_top *InstancePtr, u32 Data) {
-  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
-  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_ALEN_DATA, Data);
-}
-
-u32 XHls_top_Get_alen(XHls_top *InstancePtr) {
-  u32 Data;
-
-  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
-  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
-                          XHLS_TOP_CONTROL_ADDR_ALEN_DATA);
-  return Data;
-}
-
-void XHls_top_Set_blen(XHls_top *InstancePtr, u32 Data) {
-  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
-  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
-                    XHLS_TOP_CONTROL_ADDR_BLEN_DATA, Data);
-}
-
-u32 XHls_top_Get_blen(XHls_top *InstancePtr) {
-  u32 Data;
-
-  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
-
-  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
-                          XHLS_TOP_CONTROL_ADDR_BLEN_DATA);
-  return Data;
-}
 void XHls_top_Start(XHls_top *InstancePtr) {
   u32 Data;
+
+  Xil_AssertVoid(InstancePtr != 0);
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
   Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
                           XHLS_TOP_CONTROL_ADDR_AP_CTRL) &
@@ -55,6 +25,9 @@ void XHls_top_Start(XHls_top *InstancePtr) {
 
 u32 XHls_top_IsDone(XHls_top *InstancePtr) {
   u32 Data;
+
+  Xil_AssertNonvoid(InstancePtr != 0);
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
 
   Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
                           XHLS_TOP_CONTROL_ADDR_AP_CTRL);
@@ -73,7 +46,7 @@ u32 XHls_top_IsIdle(XHls_top *InstancePtr) {
 }
 
 u32 XHls_top_IsReady(XHls_top *InstancePtr) {
-  u64 Data;
+  u32 Data;
 
   Xil_AssertNonvoid(InstancePtr != 0);
   Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
@@ -98,6 +71,236 @@ void XHls_top_DisableAutoRestart(XHls_top *InstancePtr) {
 
   XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
                     XHLS_TOP_CONTROL_ADDR_AP_CTRL, 0);
+}
+
+void XHls_top_Set_alen(XHls_top *InstancePtr, u32 Data) {
+  Xil_AssertVoid(InstancePtr != 0);
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_ALEN_DATA, Data);
+}
+
+u32 XHls_top_Get_alen(XHls_top *InstancePtr) {
+  u32 Data;
+
+  Xil_AssertNonvoid(InstancePtr != 0);
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_ALEN_DATA);
+  return Data;
+}
+
+void XHls_top_Set_blen(XHls_top *InstancePtr, u32 Data) {
+  Xil_AssertVoid(InstancePtr != 0);
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_BLEN_DATA, Data);
+}
+
+u32 XHls_top_Get_blen(XHls_top *InstancePtr) {
+  u32 Data;
+
+  Xil_AssertNonvoid(InstancePtr != 0);
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_BLEN_DATA);
+  return Data;
+}
+
+void XHls_top_Set_xSEQA(XHls_top *InstancePtr, u64 Data) {
+  Xil_AssertVoid(InstancePtr != 0);
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_XSEQA_DATA, (u32)(Data));
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_XSEQA_DATA + 4, (u32)(Data >> 32));
+}
+
+u64 XHls_top_Get_xSEQA(XHls_top *InstancePtr) {
+  u64 Data;
+
+  Xil_AssertNonvoid(InstancePtr != 0);
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_XSEQA_DATA);
+  Data += (u64)XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                                XHLS_TOP_CONTROL_ADDR_XSEQA_DATA + 4)
+          << 32;
+  return Data;
+}
+
+void XHls_top_Set_xSEQB(XHls_top *InstancePtr, u64 Data) {
+  Xil_AssertVoid(InstancePtr != 0);
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_XSEQB_DATA, (u32)(Data));
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_XSEQB_DATA + 4, (u32)(Data >> 32));
+}
+
+u64 XHls_top_Get_xSEQB(XHls_top *InstancePtr) {
+  u64 Data;
+
+  Xil_AssertNonvoid(InstancePtr != 0);
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_XSEQB_DATA);
+  Data += (u64)XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                                XHLS_TOP_CONTROL_ADDR_XSEQB_DATA + 4)
+          << 32;
+  return Data;
+}
+
+void XHls_top_Set_xalignedA(XHls_top *InstancePtr, u64 Data) {
+  Xil_AssertVoid(InstancePtr != 0);
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_XALIGNEDA_DATA, (u32)(Data));
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_XALIGNEDA_DATA + 4,
+                    (u32)(Data >> 32));
+}
+
+u64 XHls_top_Get_xalignedA(XHls_top *InstancePtr) {
+  u64 Data;
+
+  Xil_AssertNonvoid(InstancePtr != 0);
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_XALIGNEDA_DATA);
+  Data += (u64)XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                                XHLS_TOP_CONTROL_ADDR_XALIGNEDA_DATA + 4)
+          << 32;
+  return Data;
+}
+
+void XHls_top_Set_xalignedB(XHls_top *InstancePtr, u64 Data) {
+  Xil_AssertVoid(InstancePtr != 0);
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_XALIGNEDB_DATA, (u32)(Data));
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_XALIGNEDB_DATA + 4,
+                    (u32)(Data >> 32));
+}
+
+u64 XHls_top_Get_xalignedB(XHls_top *InstancePtr) {
+  u64 Data;
+
+  Xil_AssertNonvoid(InstancePtr != 0);
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_XALIGNEDB_DATA);
+  Data += (u64)XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                                XHLS_TOP_CONTROL_ADDR_XALIGNEDB_DATA + 4)
+          << 32;
+  return Data;
+}
+
+void XHls_top_Set_xM(XHls_top *InstancePtr, u64 Data) {
+  Xil_AssertVoid(InstancePtr != 0);
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_XM_DATA, (u32)(Data));
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_XM_DATA + 4, (u32)(Data >> 32));
+}
+
+u64 XHls_top_Get_xM(XHls_top *InstancePtr) {
+  u64 Data;
+
+  Xil_AssertNonvoid(InstancePtr != 0);
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_XM_DATA);
+  Data += (u64)XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                                XHLS_TOP_CONTROL_ADDR_XM_DATA + 4)
+          << 32;
+  return Data;
+}
+
+void XHls_top_Set_xptr(XHls_top *InstancePtr, u64 Data) {
+  Xil_AssertVoid(InstancePtr != 0);
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_XPTR_DATA, (u32)(Data));
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_XPTR_DATA + 4, (u32)(Data >> 32));
+}
+
+u64 XHls_top_Get_xptr(XHls_top *InstancePtr) {
+  u64 Data;
+
+  Xil_AssertNonvoid(InstancePtr != 0);
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_XPTR_DATA);
+  Data += (u64)XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                                XHLS_TOP_CONTROL_ADDR_XPTR_DATA + 4)
+          << 32;
+  return Data;
+}
+
+u32 XHls_top_Get_flag(XHls_top *InstancePtr) {
+  u32 Data;
+
+  Xil_AssertNonvoid(InstancePtr != 0);
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_FLAG_DATA);
+  return Data;
+}
+
+u32 XHls_top_Get_flag_vld(XHls_top *InstancePtr) {
+  u32 Data;
+
+  Xil_AssertNonvoid(InstancePtr != 0);
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_FLAG_CTRL);
+  return Data & 0x1;
+}
+
+void XHls_top_Set_cap(XHls_top *InstancePtr, u64 Data) {
+  Xil_AssertVoid(InstancePtr != 0);
+  Xil_AssertVoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_CAP_DATA, (u32)(Data));
+  XHls_top_WriteReg(InstancePtr->Control_BaseAddress,
+                    XHLS_TOP_CONTROL_ADDR_CAP_DATA + 4, (u32)(Data >> 32));
+}
+
+u64 XHls_top_Get_cap(XHls_top *InstancePtr) {
+  u64 Data;
+
+  Xil_AssertNonvoid(InstancePtr != 0);
+  Xil_AssertNonvoid(InstancePtr->IsReady == XIL_COMPONENT_IS_READY);
+
+  Data = XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                          XHLS_TOP_CONTROL_ADDR_CAP_DATA);
+  Data += (u64)XHls_top_ReadReg(InstancePtr->Control_BaseAddress,
+                                XHLS_TOP_CONTROL_ADDR_CAP_DATA + 4)
+          << 32;
+  return Data;
 }
 
 void XHls_top_InterruptGlobalEnable(XHls_top *InstancePtr) {

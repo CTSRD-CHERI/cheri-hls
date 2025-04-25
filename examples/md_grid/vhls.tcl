@@ -12,4 +12,4 @@ csim_design
 csynth_design
 cosim_design
 
-export_design -flow syn -format ip_catalog
+#export_design -flow syn -format ip_catalog

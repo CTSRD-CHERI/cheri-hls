@@ -15,10 +15,14 @@ Exploration on Multi-Core CPU and GPU." PACT, 2011.
 
 // upper limit
 #define N_LEVELS 10
+#include "ap_int.h"
+#include <stdint.h>
 
 // Larger than necessary for small graphs, but appropriate for large ones
 typedef int edge_index_t;
 typedef int node_index_t;
+typedef uint16_t u16;
+typedef uint32_t u32;
 
 // typedef struct edge_t_struct {
 //   // These fields are common in practice, but we elect not to use them.
@@ -34,10 +38,16 @@ typedef int node_index_t;
 
 typedef int level_t;
 
+void stream_write(u32 size, int *array1, int *array2) {
+#pragma HLS INLINE
+  for (int i = 0; i < size; i++) {
+    array1[i] = array2[i];
+  }
+}
+
 void hls_top(node_index_t starting_node, int levels, int node,
              int xnodes_b[N_NODES], int xnodes_e[N_NODES], int xedges[N_EDGES],
              int xlevel[N_NODES], int xlevel_counts[N_LEVELS]) {
-
 #pragma HLS INTERFACE m_axi port = xnodes_b
 #pragma HLS INTERFACE m_axi port = xnodes_e
 #pragma HLS INTERFACE m_axi port = xedges
@@ -93,11 +103,8 @@ loop_horizons:
     if ((level_counts[horizon + 1] = cnt) == 0)
       break;
   }
-  for (int i = 0; i < node; i++)
-    xlevel[i] = level[i];
-
-  for (int i = 0; i < levels; i++)
-    xlevel_counts[i] = level_counts[i];
+  stream_write(node, xlevel, level);
+  stream_write(levels, xlevel_counts, level_counts);
 }
 
 int main() {

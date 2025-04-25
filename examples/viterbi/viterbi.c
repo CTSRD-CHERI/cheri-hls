@@ -1,12 +1,21 @@
+#include <stdint.h>
 #define TYPE int
 typedef int tok_t;
 typedef int prob_t;
 typedef int state_t;
 typedef int step_t;
+typedef uint32_t u32;
 
 #define N_STATES 64
 #define N_OBS 140
 #define N_TOKENS 64
+
+void stream_write(u32 size, int *array1, int *array2) {
+#pragma HLS INLINE
+  for (int i = 0; i < size; i++) {
+    array1[i] = array2[i];
+  }
+}
 
 void hls_top(int n_tokens, int xobs[N_OBS], int xinit[N_STATES],
              int xtransition[N_STATES * N_STATES],
@@ -100,8 +109,7 @@ L_backtrack:
     path[t] = min_s;
   }
 
-  for (int i = 0; i < N_OBS; i++)
-    xpath[i] = path[i];
+  stream_write(N_OBS, xpath, path);
 }
 
 int main() {

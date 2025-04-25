@@ -61,7 +61,6 @@ typedef u32 word_type;
 /************************** Function Prototypes *****************************/
 int XHls_top_Initialize(XHls_top *InstancePtr, const char *InstanceName);
 int XHls_top_Release(XHls_top *InstancePtr);
-
 void XHls_top_Start(XHls_top *InstancePtr);
 u32 XHls_top_IsDone(XHls_top *InstancePtr);
 u32 XHls_top_IsIdle(XHls_top *InstancePtr);
@@ -71,12 +70,24 @@ void XHls_top_DisableAutoRestart(XHls_top *InstancePtr);
 
 void XHls_top_Set_size(XHls_top *InstancePtr, u32 Data);
 u32 XHls_top_Get_size(XHls_top *InstancePtr);
-void XHls_top_Set_a(XHls_top *InstancePtr, u64 Data);
-u64 XHls_top_Get_a(XHls_top *InstancePtr);
-void XHls_top_Set_b(XHls_top *InstancePtr, u64 Data);
-u64 XHls_top_Get_b(XHls_top *InstancePtr);
-void XHls_top_Set_c(XHls_top *InstancePtr, u64 Data);
-u64 XHls_top_Get_c(XHls_top *InstancePtr);
+void XHls_top_Set_xn_points(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_xn_points(XHls_top *InstancePtr);
+void XHls_top_Set_force_x(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_force_x(XHls_top *InstancePtr);
+void XHls_top_Set_force_y(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_force_y(XHls_top *InstancePtr);
+void XHls_top_Set_force_z(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_force_z(XHls_top *InstancePtr);
+void XHls_top_Set_position_x(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_position_x(XHls_top *InstancePtr);
+void XHls_top_Set_position_y(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_position_y(XHls_top *InstancePtr);
+void XHls_top_Set_position_z(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_position_z(XHls_top *InstancePtr);
+u32 XHls_top_Get_flag(XHls_top *InstancePtr);
+u32 XHls_top_Get_flag_vld(XHls_top *InstancePtr);
+void XHls_top_Set_cap(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_cap(XHls_top *InstancePtr);
 
 void XHls_top_InterruptGlobalEnable(XHls_top *InstancePtr);
 void XHls_top_InterruptGlobalDisable(XHls_top *InstancePtr);
