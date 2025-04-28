@@ -1,7 +1,7 @@
-open_project -reset fft_strided_baseline_prj
+open_project -reset fft_strided_prj
 set_top hls_top 
-add_files { fft.cpp }
-add_files -tb { fft.cpp }
+add_files { fft_BAK.cpp }
+add_files -tb { fft_BAK.cpp }
 open_solution -reset "solution"
 set_part {xcu250-figd2104-2L-e}
 create_clock -period 4 -name default

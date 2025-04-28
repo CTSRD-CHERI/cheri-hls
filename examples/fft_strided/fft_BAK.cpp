@@ -16,10 +16,10 @@ void hls_top(int size, int xreal[FFT_SIZE], int ximg[FFT_SIZE],
   int temp;
   log = 0;
 
-  int real[FFT_SIZE] = {0};
-  int img[FFT_SIZE] = {0};
-  int real_twid[FFT_SIZE / 2] = {0};
-  int img_twid[FFT_SIZE / 2] = {0};
+  int real[FFT_SIZE];
+  int img[FFT_SIZE];
+  int real_twid[FFT_SIZE / 2];
+  int img_twid[FFT_SIZE / 2];
 
   for (int i = 0; i < size; i++)
     real[i] = xreal[i];

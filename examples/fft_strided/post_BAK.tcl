@@ -1,7 +1,7 @@
 open_project -reset fft_strided_prj
 set_top hls_top 
-add_files { fft_BAK.cpp }
-add_files -tb { fft_BAK.cpp }
+add_files { fft.c }
+add_files -tb { fft.c }
 open_solution -reset "solution"
 set_part {xcu250-figd2104-2L-e}
 create_clock -period 4 -name default
@@ -12,9 +12,7 @@ config_compile -pipeline_loops 1
 csim_design 
 # Comment the following two if I want to verify in software 
 # Generate  Verilog for HLS code
- #set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -mem2reg $LLVM_CUSTOM_INPUT -o $LLVM_CUSTOM_OUTPUT}
-set ::LLVM_CUSTOM_CMD {/local/ecad/xilinx/new/Vitis_HLS/2023.1/lnx64/tools/clang-3.9-csynth/bin/llvm-dis /workspace/examples/fft_strided/temp/test.bc}
-#a.g.ld.6.user.ll
+set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -S -mem2reg /workspace/examples/fft_strided/temp/test.ll -o $LLVM_CUSTOM_OUTPUT}
 
 # set ::LLVM_CUSTOM_CMD {$LLVM_CUSTOM_OPT -mem2reg $LLVM_CUSTOM_INPUT -o /home/jhyc3/test.bc; $LLVM_CUSTOM_OPT -no-warn /home/jhyc3/test.bc -o $LLVM_CUSTOM_OUTPUT}
 

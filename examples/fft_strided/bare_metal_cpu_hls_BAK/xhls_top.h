@@ -71,22 +71,12 @@ void XHls_top_DisableAutoRestart(XHls_top *InstancePtr);
 
 void XHls_top_Set_size(XHls_top *InstancePtr, u32 Data);
 u32 XHls_top_Get_size(XHls_top *InstancePtr);
-void XHls_top_Set_xreal(XHls_top *InstancePtr, u64 Data);
-u64 XHls_top_Get_xreal(XHls_top *InstancePtr);
-void XHls_top_Set_ximg(XHls_top *InstancePtr, u64 Data);
-u64 XHls_top_Get_ximg(XHls_top *InstancePtr);
-void XHls_top_Set_xreal_twid(XHls_top *InstancePtr, u64 Data);
-u64 XHls_top_Get_xreal_twid(XHls_top *InstancePtr);
-void XHls_top_Set_ximg_twid(XHls_top *InstancePtr, u64 Data);
-u64 XHls_top_Get_ximg_twid(XHls_top *InstancePtr);
-void XHls_top_Set_yreal(XHls_top *InstancePtr, u64 Data);
-u64 XHls_top_Get_yreal(XHls_top *InstancePtr);
-void XHls_top_Set_yimg(XHls_top *InstancePtr, u64 Data);
-u64 XHls_top_Get_yimg(XHls_top *InstancePtr);
-u32 XHls_top_Get_flag(XHls_top *InstancePtr);
-u32 XHls_top_Get_flag_vld(XHls_top *InstancePtr);
-void XHls_top_Set_cap(XHls_top *InstancePtr, u64 Data);
-u64 XHls_top_Get_cap(XHls_top *InstancePtr);
+void XHls_top_Set_a(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_a(XHls_top *InstancePtr);
+void XHls_top_Set_b(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_b(XHls_top *InstancePtr);
+void XHls_top_Set_c(XHls_top *InstancePtr, u64 Data);
+u64 XHls_top_Get_c(XHls_top *InstancePtr);
 
 void XHls_top_InterruptGlobalEnable(XHls_top *InstancePtr);
 void XHls_top_InterruptGlobalDisable(XHls_top *InstancePtr);
