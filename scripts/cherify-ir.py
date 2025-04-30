@@ -122,8 +122,8 @@ attributes #9003 = {{ nounwind }}
         # Create new function signature
         # metadata = "!101670" if self.full_caps else "!101493"
         # metadata2 = "!101673" if self.full_caps else "!101496"
-        metadata = "!101669" if self.full_caps else "!101603"
-        metadata2 = "!101672" if self.full_caps else "!101606"
+        metadata = "!101731" if self.full_caps else "!101603"
+        metadata2 = "!101734" if self.full_caps else "!101606"
         # metadata = "!101493"
         if is_top:
             new_sig = f"define {return_type} @{func_name}({new_params}) #{attribute_num} !dbg {metadata} !fpga.function.pragma {metadata2} {{"

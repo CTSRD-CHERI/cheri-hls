@@ -13,7 +13,7 @@ BENCHMARKS = {
     "aes": 8,
     "gemm_blocked": 8,
     "md_grid": 8,
-    # "stencil3d": 8,
+    "stencil3d": 8,
     "fft_transpose": 8,
     "gemm_ncubed": 8,
     "sort_merge": 8,

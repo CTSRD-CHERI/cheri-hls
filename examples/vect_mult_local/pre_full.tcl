@@ -1,7 +1,7 @@
 open_project -reset vect_mult_local_prj
 set_top hls_top 
-add_files { vect_mult_local_full.cpp }
-add_files -tb { vect_mult_local_full.cpp }
+add_files { vect_mult_local.cpp }
+add_files -tb { vect_mult_local.cpp }
 open_solution -reset "solution"
 set_part {xcu250-figd2104-2L-e}
 create_clock -period 4 -name default
