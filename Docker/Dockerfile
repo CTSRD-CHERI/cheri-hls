@@ -74,6 +74,9 @@ RUN mkdir -p /srcPkgs \
 # Install board mapping dependencies 
 RUN apt-get install -y openocd
 
+# Boogie
+RUN apt-get update -y \
+    && apt install -y dotnet-sdk-8.0
 
 RUN locale-gen en_US.UTF-8
 # Append any packages you need here
@@ -90,6 +93,9 @@ RUN pip3 install --user --upgrade pip \
 RUN curl -fLo /root/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Boogie
+RUN dotnet tool install --global boogie --version 3.5.4
+
 ARG HLS_PATH
 ARG VIVADO_PATH
 
@@ -97,7 +103,7 @@ ARG VIVADO_PATH
 RUN printf "\
 \nexport LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:\$LIBRARY_PATH \
 \n# Basic PATH setup \
-\nexport PATH=/workspace/cheri/output/sdk/bin:/srcPkgs/bsc/inst/bin:/workspace/scripts:/root/.local/bin:\$PATH \
+\nexport PATH=/root/.dotnet/tools:/workspace/cheri/output/sdk/bin:/srcPkgs/bsc/inst/bin:/workspace/scripts:/root/.local/bin:\$PATH \
 \n# Vitis HLS setup \
 \nexport VHLS=${HLS_PATH} \
 \n# source ${HLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
@@ -116,25 +122,8 @@ RUN printf "\
 \nalias grep='grep --color'\n" >> /root/.bashrc
 #Add vim environment
 RUN printf "\
-\nset number\
-\nset relativenumber\
-\nsyntax on\
-\nset noswapfile\
-\nset hlsearch\
 \nset autoread \
 \nset hlsearch \
-\nset ignorecase\
-\nset incsearch\
-\ninoremap jk <ESC>\
-\nlet mapleader = \"'\"\
-\nset showcmd\
-\nset wrapmargin=3\
-\nset smartindent\
-\nset mouse=a\
-\nset wrapmargin=0\
-\nfiletype on\
-\nset tabstop=2\
-\nset shiftwidth=2\
 \nautocmd BufWritePost *.cpp silent! !clang-format -i <afile> \
 \nautocmd BufWritePost *.c   silent! !clang-format -i <afile> \
 \nautocmd BufWritePost *.h   silent! !clang-format -i <afile> \
