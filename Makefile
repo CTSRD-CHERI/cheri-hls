@@ -5,14 +5,14 @@ extra_ssd=/local/sata
 
 # Build Docker container
 build-docker: 
-	@podman build \
+	@docker build \
         --build-arg HLS_PATH=$(vhls) \
         --build-arg VIVADO_PATH=$(vivado) \
         -f Docker/Dockerfile \
         --tag chls-ubuntu2204 Docker
 
 shell: 
-	@podman run \
+	@docker run \
         -it --shm-size 256m \
         --hostname chls-ubuntu2204 \
         -w /workspace \
