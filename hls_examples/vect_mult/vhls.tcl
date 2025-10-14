@@ -10,3 +10,5 @@ config_compile -pipeline_loops 1
 csim_design
 csynth_design
 cosim_design
+
+export_design -flow syn -format ip_catalog
