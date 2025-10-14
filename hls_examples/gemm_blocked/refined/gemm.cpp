@@ -83,6 +83,10 @@ loopjj:
 
 int main() {
   TYPE m1[N] = {0}, m2[N] = {0}, prod[N] = {0};
+
+  u32 ret[4] = {0x800010c0LL, 0x00000000LL, 0x048190c4LL, 0xff7d0000};
+  u32 flag[1] = {0};
+
   hls_top(row_size, m1, m2, prod);
 
   return 0;
