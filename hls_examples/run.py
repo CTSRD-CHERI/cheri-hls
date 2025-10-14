@@ -143,9 +143,9 @@ class RunHLS:
             modes = MODES
         else:
             assert self.args.test in TESTS
-            assert self.args.mode in MODES
+            assert self.args.mode in MODES or self.args.mode == "all"
             tests = [self.args.test]
-            modes = [self.args.mode]
+            modes = MODES if self.args.mode == "all" else [self.args.mode]
 
         if not self.args.skip_run:
             for test in tests:
