@@ -15,6 +15,21 @@ typedef struct {
   ap_uint<4> uperms;
 } Cap;
 
+void create_cap(int size, Cap *caps, u8 index) {
+#pragma HLS INLINE
+  Cap new_cap;
+  new_cap.addr = 0;
+  new_cap.base = 0;
+  new_cap.top = size * 4;
+  new_cap.write = true;
+  new_cap.read = true;
+  new_cap.otype = 0x08;
+  new_cap.perms = 0x08;
+  new_cap.uperms = 0x08;
+  caps[index] = new_cap;
+  return;
+}
+
 uint64_t getField(u64 val, unsigned startBit, unsigned length);
 Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
            ap_uint<32> buffer_3);
@@ -144,4 +159,33 @@ void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
     buf[i] = val;
   }
   return;
+}
+
+void cheri_stream_write_nl(u32 size, int *array1, int *array2, u32 *flag_buf,
+                           Cap cap) {
+#pragma HLS INLINE
+  for (int i = 0; i < size; i++) {
+    checkAccess(flag_buf, cap, i, 4, true);
+  }
+  if ((*flag_buf)) {
+    for (int i = 0; i < size; i++) {
+      array1[i] = array2[i];
+    }
+  }
+}
+
+void cheri_stream_write(u32 size, int *array1, int *array2, u32 *flag_buf,
+                        Cap cap1, Cap cap2) {
+#pragma HLS INLINE
+  for (int i = 0; i < size; i++) {
+    checkAccess(flag_buf, cap1, i, 4, true);
+  }
+  for (int i = 0; i < size; i++) {
+    checkAccess(flag_buf, cap2, i, 4, false);
+  }
+  if ((*flag_buf)) {
+    for (int i = 0; i < size; i++) {
+      array1[i] = array2[i];
+    }
+  }
 }

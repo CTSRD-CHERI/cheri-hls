@@ -12,7 +12,7 @@ from argparse import ArgumentParser
 TESTS = [
     "vect_mult",
     # "aes",
-    # "gemm_blocked",
+    "gemm_blocked",
     # "md_grid",
     # "stencil3d",
     # "fft_transpose",

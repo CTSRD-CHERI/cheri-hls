@@ -5,6 +5,8 @@ M. D. Lam, E. E. Rothberg, and M. E. Wolf
 ASPLOS 1991
 */
 
+#include "../../chls.h"
+
 #include <stdint.h>
 // Data Type
 #define TYPE int
@@ -23,22 +25,36 @@ void stream_write(u32 size, int *array1, int *array2) {
   }
 }
 
-void hls_top(int size, TYPE xm1[N], TYPE xm2[N], TYPE xprod[N]) {
+void hls_top(int size, TYPE xm1[N], TYPE xm2[N], TYPE xprod[N], u32 *flag,
+             u32 cap[12]) {
 #pragma HLS INTERFACE m_axi port = xm1
 #pragma HLS INTERFACE m_axi port = xm2
 #pragma HLS INTERFACE m_axi port = xprod
+#pragma HLS INTERFACE m_axi port = cap
 #pragma HLS INTERFACE s_axilite port = size
+#pragma HLS INTERFACE s_axilite port = flag
 #pragma HLS INTERFACE s_axilite port = return
   int i, k, j, jj, kk;
   int i_row, k_row;
   TYPE temp_x, mul;
 
+  u32 flag_buf = 0;
+  // 3 and 12 comes from program analysis
+  Cap caps[3];
+  u32 buffer[12];
+#pragma HLS array_partition variable = buffer type = complete
+#pragma HLS array_partition variable = caps type = complete
+
+  load_cap(3, buffer, cap, caps);
+
   TYPE m1[N], m2[N], prod[N];
 
-  for (i = 0; i < size * size; i++)
-    m1[i] = xm1[i];
-  for (i = 0; i < size * size; i++)
-    m2[i] = xm2[i];
+  for (i = 0; i < size * size; i++) {
+    m1[i] = cheri_load(xm1, i, &flag_buf, caps[0]);
+  }
+  for (i = 0; i < size * size; i++) {
+    m2[i] = cheri_load(xm2, i, &flag_buf, caps[1]);
+  }
 
 loopjj:
   for (jj = 0; jj < size; jj += block_size) {
@@ -53,14 +69,16 @@ loopjj:
           temp_x = m1[i_row + k + kk];
         loopj:
           for (j = 0; j < block_size; ++j) {
-            mul = temp_x * m2[k_row + j + jj];
-            prod[i_row + j + jj] = prod[i_row + j + jj] + mul;
+            int temp_m2 = m2[k_row + j + jj];
+            mul = temp_x * temp_m2;
+
+            prod[i_row + j + jj] += mul;
           }
         }
       }
     }
   }
-  stream_write(size * size, xprod, prod);
+  cheri_stream_write_nl(size * size, xprod, prod, &flag_buf, caps[2]);
 }
 
 int main() {

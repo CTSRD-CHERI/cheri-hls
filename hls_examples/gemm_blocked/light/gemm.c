@@ -5,6 +5,8 @@ M. D. Lam, E. E. Rothberg, and M. E. Wolf
 ASPLOS 1991
 */
 
+#include "../../chls.h"
+
 #include <stdint.h>
 // Data Type
 #define TYPE int
@@ -23,22 +25,41 @@ void stream_write(u32 size, int *array1, int *array2) {
   }
 }
 
-void hls_top(int size, TYPE xm1[N], TYPE xm2[N], TYPE xprod[N]) {
+void hls_top(int size, TYPE xm1[N], TYPE xm2[N], TYPE xprod[N], u32 *flag,
+             u32 cap[12]) {
 #pragma HLS INTERFACE m_axi port = xm1
 #pragma HLS INTERFACE m_axi port = xm2
 #pragma HLS INTERFACE m_axi port = xprod
+#pragma HLS INTERFACE m_axi port = cap
 #pragma HLS INTERFACE s_axilite port = size
+#pragma HLS INTERFACE s_axilite port = flag
 #pragma HLS INTERFACE s_axilite port = return
   int i, k, j, jj, kk;
   int i_row, k_row;
   TYPE temp_x, mul;
 
-  TYPE m1[N], m2[N], prod[N];
+  u32 flag_buf = 0;
+  // 3 and 12 comes from program analysis
+  Cap caps[6];
+  u32 buffer[12];
+#pragma HLS array_partition variable = buffer type = complete
+#pragma HLS array_partition variable = caps type = complete
 
-  for (i = 0; i < size * size; i++)
-    m1[i] = xm1[i];
-  for (i = 0; i < size * size; i++)
-    m2[i] = xm2[i];
+  load_cap(3, buffer, cap, caps);
+
+  TYPE m1[N], m2[N], prod[N];
+  create_cap(N, caps, 3);
+  create_cap(N, caps, 4);
+  create_cap(N, caps, 5);
+
+  for (i = 0; i < size * size; i++) {
+    int temp = cheri_load(xm1, i, &flag_buf, caps[0]);
+    cheri_store(m1, i, temp, &flag_buf, caps[3]);
+  }
+  for (i = 0; i < size * size; i++) {
+    int temp = cheri_load(xm2, i, &flag_buf, caps[1]);
+    cheri_store(m2, i, temp, &flag_buf, caps[4]);
+  }
 
 loopjj:
   for (jj = 0; jj < size; jj += block_size) {
@@ -50,17 +71,21 @@ loopjj:
         for (k = 0; k < block_size; ++k) {
           i_row = i * size;
           k_row = (k + kk) * size;
-          temp_x = m1[i_row + k + kk];
+          temp_x = cheri_load(m1, i_row + k + kk, &flag_buf, caps[3]);
         loopj:
           for (j = 0; j < block_size; ++j) {
-            mul = temp_x * m2[k_row + j + jj];
-            prod[i_row + j + jj] = prod[i_row + j + jj] + mul;
+            int temp_m2 = cheri_load(m2, k_row + j + jj, &flag_buf, caps[4]);
+            mul = temp_x * temp_m2;
+
+            int temp_p =
+                cheri_load(prod, i_row + j + jj, &flag_buf, caps[5]) + mul;
+            cheri_store(prod, i_row + j + jj, temp_p, &flag_buf, caps[5]);
           }
         }
       }
     }
   }
-  stream_write(size * size, xprod, prod);
+  cheri_stream_write(size * size, xprod, prod, &flag_buf, caps[2], caps[5]);
 }
 
 int main() {
