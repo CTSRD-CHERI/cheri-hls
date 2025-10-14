@@ -90,7 +90,12 @@ loopjj:
 
 int main() {
   TYPE m1[N] = {0}, m2[N] = {0}, prod[N] = {0};
-  hls_top(row_size, m1, m2, prod);
+  u32 cap[12] = {
+      0,          0,          0xf90d8007, 0x30001fff, 0,          0,
+      0xf90d8007, 0x30001fff, 0,          0,          0xf90d8007, 0x30001fff,
+  };
+  u32 flag = 0;
+  hls_top(row_size, m1, m2, prod, &flag, cap);
 
   return 0;
 }
