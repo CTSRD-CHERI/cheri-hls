@@ -1,5 +1,5 @@
-#define N 10
-#include "chls.h"
+#define N 1000
+#include "../../chls.h"
 
 void hls_top(int size, int a[N], int c[N], u32 *flag, u32 cap[8]) {
 #pragma HLS INTERFACE m_axi port = a
