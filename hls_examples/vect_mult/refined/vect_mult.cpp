@@ -30,7 +30,6 @@ void hls_top(int size, int a[N], int c[N], u32 *flag, u32 cap[8]) {
     cheri_store(c, i, c_elem, &flag_buf, caps[1]);
   }
   cheri_stream_write_nl(size, a, b, &flag_buf, caps[0]);
-  cheri_stream_write(size, a, b, &flag_buf, caps[0], caps[2]);
 
   *flag = flag_buf;
   return;

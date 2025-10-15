@@ -1,7 +1,7 @@
 open_project kmp_prj
 
-add_files kmp.c
-add_files -tb kmp.c
+add_files kmp.cpp
+add_files -tb kmp.cpp
 
 set_top hls_top
 

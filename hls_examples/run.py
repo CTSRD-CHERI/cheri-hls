@@ -27,7 +27,7 @@ TESTS = [
     # "viterbi",
     # "backprop",
     # "bfs_queue",
-    # "kmp",
+    "kmp",
     # "md_knn",
     # "spmv_crs",
 ]

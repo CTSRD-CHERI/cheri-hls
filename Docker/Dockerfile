@@ -145,7 +145,7 @@ RUN printf "\
 \n" >> /root/.vimrc
 #Add tmux environment
 RUN printf "\
-\nbind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded." \
+\nbind-key r source-file ~/.tmux.conf \; display-message \"~/.tmux.conf reloaded.\" \
 \nset-option -g prefix C-a \
 \nbind-key C-a last-window \
 \nbind h select-pane -L \
