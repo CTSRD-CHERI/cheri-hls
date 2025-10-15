@@ -223,6 +223,8 @@ class RunHLS:
         return f"{test}, {mode}, {luts}, {ffs}, {dsps}, {brams}, {cycles}, {fmax},\n"
 
     def single_run(self, test, mode):
+        self.logger.debug(f"running {test}+{mode}...")
+
         cmd = ["bash", "/workspace/scripts/run-vitis-hls.sh", "../vhls.tcl"]
         run_dir = os.path.join(self.root, test, mode)
         return self.execute(cmd, cwd=run_dir)

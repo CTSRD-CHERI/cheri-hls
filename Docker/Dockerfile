@@ -74,7 +74,6 @@ RUN mkdir -p /srcPkgs \
 # Install board mapping dependencies 
 RUN apt-get install -y openocd
 
-
 RUN locale-gen en_US.UTF-8
 # Append any packages you need here
 RUN apt install -y gcc-11-riscv64-linux-gnu
@@ -85,6 +84,15 @@ CMD ["bash"]
 ENV PATH="${PATH}:/root/.local/bin"
 RUN pip3 install --user --upgrade pip \
     && pip3 install black colorlog toml tabulate pyserial
+
+# Install Node.js
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash \
+    && export NVM_DIR="/root/.nvm" \
+    && \. /root/.nvm/nvm.sh \
+    && nvm install 22 \
+
+# Install Claude
+RUN npm install -g @anthropic-ai/claude-code
 
 # Install vim package manager
 RUN curl -fLo /root/.vim/autoload/plug.vim --create-dirs \
@@ -102,6 +110,7 @@ RUN printf "\
 \nexport VHLS=${HLS_PATH} \
 \n# source ${HLS_PATH}/Vitis_HLS/2023.1/settings64.sh \
 \nexport VIVADO=${VIVADO_PATH} \
+\nexport NVM_DIR=/root/.nvm \
 \n# source ${VIVADO_PATH}/Vivado/2019.1/settings64.sh \
 \n# Thread setup \
 \nexport nproc=\$(grep -c ^processor /proc/cpuinfo) \

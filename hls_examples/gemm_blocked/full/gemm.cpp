@@ -5,7 +5,7 @@ M. D. Lam, E. E. Rothberg, and M. E. Wolf
 ASPLOS 1991
 */
 
-#include "../../chls_fullcap.h"
+#include "../../chls-fullcap.h"
 
 #include <stdint.h>
 // Data Type

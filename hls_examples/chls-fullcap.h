@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
+typedef uint8_t u8;
 typedef uint16_t u16;
 typedef uint32_t u32;
 typedef uint64_t u64;
@@ -21,10 +22,8 @@ void create_cap(int size, Cap *caps, u8 index) {
   new_cap.addr = 0;
   new_cap.base = 0;
   new_cap.top = size * 4;
-  new_cap.write = true;
-  new_cap.read = true;
   new_cap.otype = 0x08;
-  new_cap.perms = 0x08;
+  new_cap.perms = 0xFFF;
   new_cap.uperms = 0x08;
   caps[index] = new_cap;
   return;

@@ -1,7 +1,7 @@
 open_project gemm_ncubed_prj
 
-add_files gemm.c
-add_files -tb gemm.c
+add_files gemm.cpp
+add_files -tb gemm.cpp
 
 set_top hls_top
 
