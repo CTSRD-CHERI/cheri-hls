@@ -18,13 +18,6 @@ ASPLOS 1991
 #define block_size 8
 #define NUMOFBLOCKS N / block_size / block_size
 
-typedef uint32_t u32;
-void stream_write(u32 size, int *array1, int *array2) {
-  for (int i = 0; i < size; i++) {
-    array1[i] = array2[i];
-  }
-}
-
 void hls_top(int size, TYPE xm1[N], TYPE xm2[N], TYPE xprod[N], u32 *flag,
              u32 cap[12]) {
 #pragma HLS INTERFACE m_axi port = xm1

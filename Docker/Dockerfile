@@ -32,47 +32,47 @@ RUN mkdir -p /srcPkgs \
     && mkdir -p verible \
     && tar xzvf verible-*-x86_64.tar.gz -C verible --strip-components 1
 
-# Install Verilator
-RUN mkdir -p /srcPkgs \
-    && cd /srcPkgs \
-    && git clone https://github.com/verilator/verilator \ 
-    && unset VERILATOR_ROOT \
-    && cd verilator \
-    && git checkout v5.018 \
-    && autoconf \
-    && ./configure \
-    && make -j 4 \
-    && make install
-
-# Install Bluespec
-RUN apt-get update -y \
-    && apt-get install -y ghc \
-    && apt-get install -y libghc-regex-compat-dev libghc-syb-dev \
-                          libghc-old-time-dev libghc-split-dev \
-                          ghc-prof libghc-regex-compat-prof libghc-split-prof \
-                          libghc-syb-prof libghc-old-time-prof \
-                          tcl-dev build-essential pkg-config autoconf \
-                          gperf flex bison iverilog
-RUN mkdir -p /srcPkgs \
-    && cd /srcPkgs \
-    && git clone https://github.com/B-Lang-org/bsc.git \
-    && cd bsc \
-    && git checkout f00d205 \
-    && git submodule update --init --recursive \
-    && make install-src
-
-# Install Bluespec Contributed libraries and utilities
-ENV PATH="/srcPkgs/bsc/inst/bin:${PATH}"
-RUN mkdir -p /srcPkgs \
-    && cd /srcPkgs \
-    && git clone https://github.com/B-Lang-org/bsc-contrib.git \
-    && cd bsc-contrib \
-    && git checkout fc26b91c8add9660204c4311dcc60d223ed23ea5 \
-    && git submodule update --init --recursive \
-    && make PREFIX=/srcPkgs/bsc/inst
+# # Install Verilator
+# RUN mkdir -p /srcPkgs \
+#     && cd /srcPkgs \
+#     && git clone https://github.com/verilator/verilator \ 
+#     && unset VERILATOR_ROOT \
+#     && cd verilator \
+#     && git checkout v5.018 \
+#     && autoconf \
+#     && ./configure \
+#     && make -j 4 \
+#     && make install
+# 
+# # Install Bluespec
+# RUN apt-get update -y \
+#     && apt-get install -y ghc \
+#     && apt-get install -y libghc-regex-compat-dev libghc-syb-dev \
+#                           libghc-old-time-dev libghc-split-dev \
+#                           ghc-prof libghc-regex-compat-prof libghc-split-prof \
+#                           libghc-syb-prof libghc-old-time-prof \
+#                           tcl-dev build-essential pkg-config autoconf \
+#                           gperf flex bison iverilog
+# RUN mkdir -p /srcPkgs \
+#     && cd /srcPkgs \
+#     && git clone https://github.com/B-Lang-org/bsc.git \
+#     && cd bsc \
+#     && git checkout f00d205 \
+#     && git submodule update --init --recursive \
+#     && make install-src
+# 
+# # Install Bluespec Contributed libraries and utilities
+# ENV PATH="/srcPkgs/bsc/inst/bin:${PATH}"
+# RUN mkdir -p /srcPkgs \
+#     && cd /srcPkgs \
+#     && git clone https://github.com/B-Lang-org/bsc-contrib.git \
+#     && cd bsc-contrib \
+#     && git checkout fc26b91c8add9660204c4311dcc60d223ed23ea5 \
+#     && git submodule update --init --recursive \
+#     && make PREFIX=/srcPkgs/bsc/inst
 
 # Install board mapping dependencies 
-RUN apt-get install -y openocd
+RUN apt-get install -y openocd tmux
 
 RUN locale-gen en_US.UTF-8
 # Append any packages you need here
@@ -125,25 +125,9 @@ RUN printf "\
 \nalias grep='grep --color'\n" >> /root/.bashrc
 #Add vim environment
 RUN printf "\
-\nset number\
-\nset relativenumber\
+\nset autoread\
 \nsyntax on\
-\nset noswapfile\
-\nset hlsearch\
-\nset autoread \
 \nset hlsearch \
-\nset ignorecase\
-\nset incsearch\
-\ninoremap jk <ESC>\
-\nlet mapleader = \"'\"\
-\nset showcmd\
-\nset wrapmargin=3\
-\nset smartindent\
-\nset mouse=a\
-\nset wrapmargin=0\
-\nfiletype on\
-\nset tabstop=2\
-\nset shiftwidth=2\
 \nautocmd BufWritePost *.cpp silent! !clang-format -i <afile> \
 \nautocmd BufWritePost *.c   silent! !clang-format -i <afile> \
 \nautocmd BufWritePost *.h   silent! !clang-format -i <afile> \
@@ -159,6 +143,21 @@ RUN printf "\
 \nPlug 'mtikekar/vim-bsv' \
 \ncall plug#end() \
 \n" >> /root/.vimrc
+#Add tmux environment
+RUN printf "\
+\nbind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded." \
+\nset-option -g prefix C-a \
+\nbind-key C-a last-window \
+\nbind h select-pane -L \
+\nbind j select-pane -D \
+\nbind k select-pane -U \
+\nbind l select-pane -R \
+\nset-option -g history-limit 300000 \
+\nset-option -g renumber-windows on \
+\nset-window-option -g mode-keys vi \
+\nbind-key -T copy-mode-vi 'v' send -X begin-selection \
+\nbind-key -T copy-mode-vi 'y' send -X copy-selection \
+\n" >> /root/.tmux.conf
 
 CMD ["bash"]
 
