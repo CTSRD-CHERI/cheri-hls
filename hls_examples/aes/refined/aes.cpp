@@ -4,6 +4,7 @@
  *   Modified to avoid structs and use single dimension arrays.
  *   Converted to use int instead of uint8_t.
  */
+#include "../../chls.h"
 #include <stdint.h>
 // #include <stdio.h>
 // #include <stdlib.h>
@@ -275,12 +276,23 @@ ecb3:
 } /* aes256_encrypt */
 
 void hls_top(int size, int key_array[NUM], int enckey_array[NUM],
-             int deckey_array[NUM]) {
+             int deckey_array[NUM], u32 *flag, u32 cap[12]) {
 #pragma HLS INTERFACE m_axi port = key_array
 #pragma HLS INTERFACE m_axi port = enckey_array
 #pragma HLS INTERFACE m_axi port = deckey_array
+#pragma HLS INTERFACE m_axi port = cap
 #pragma HLS INTERFACE s_axilite port = size
+#pragma HLS INTERFACE s_axilite port = flag
 #pragma HLS INTERFACE s_axilite port = return
+
+  u32 flag_buf = 0;
+  // 3 arrays (key_array, enckey_array, deckey_array) * 4 = 12
+  Cap caps[3];
+  u32 buffer[12];
+#pragma HLS array_partition variable = buffer type = complete
+#pragma HLS array_partition variable = caps type = complete
+
+  load_cap(3, buffer, cap, caps);
 
   int key_local[32];
   int buf[16];
@@ -300,30 +312,36 @@ void hls_top(int size, int key_array[NUM], int enckey_array[NUM],
     key_local[i] = i;
   }
 
-  // Copy input arrays to local arrays
+  // Copy input arrays to local arrays using cheri_load
   for (i = 0; i < 32; i++) {
-    aes_key[i] = key_array[i];
-    enc_key[i] = enckey_array[i];
-    dec_key[i] = deckey_array[i];
+    aes_key[i] = cheri_load(key_array, i, &flag_buf, caps[0]);
+    enc_key[i] = cheri_load(enckey_array, i, &flag_buf, caps[1]);
+    dec_key[i] = cheri_load(deckey_array, i, &flag_buf, caps[2]);
   }
 
   for (i = 0; i < size; i++) {
     aes256_encrypt_ecb(aes_key, enc_key, dec_key, key_local, buf);
   }
 
-  // Copy result back to output arrays
+  // Copy result back to output arrays using cheri_store
   for (i = 0; i < 32; i++) {
-    key_array[i] = aes_key[i];
-    enckey_array[i] = enc_key[i];
-    deckey_array[i] = dec_key[i];
+    cheri_store(key_array, i, aes_key[i], &flag_buf, caps[0]);
+    cheri_store(enckey_array, i, enc_key[i], &flag_buf, caps[1]);
+    cheri_store(deckey_array, i, dec_key[i], &flag_buf, caps[2]);
   }
+
+  *flag = flag_buf;
 }
 
 int main(int argc, char *argv[]) {
   int aeskey[NUM];
   int enckey[NUM];
   int deckey[NUM];
-  hls_top(NUM, aeskey, enckey, deckey);
+
+  u32 cap[12] = {0, 0, 0xf90d8007, 0x30001fff, 0, 0, 0xf90d8007, 0x30001fff,
+                 0, 0, 0xf90d8007, 0x30001fff};
+  u32 flag = 0;
+  hls_top(NUM, aeskey, enckey, deckey, &flag, cap);
 
   return 0;
 } /* main */
