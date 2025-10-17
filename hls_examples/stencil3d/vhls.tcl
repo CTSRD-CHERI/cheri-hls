@@ -1,7 +1,7 @@
 open_project stencil3d_prj
 
-add_files stencil.c
-add_files -tb stencil.c
+add_files stencil.cpp
+add_files -tb stencil.cpp
 
 set_top hls_top 
 open_solution -reset solution

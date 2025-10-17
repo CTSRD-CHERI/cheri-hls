@@ -18,7 +18,7 @@ TESTS = [
     # "fft_transpose",
     "gemm_ncubed",
     # "sort_merge",
-    # "stencil2d",
+    "stencil2d",
     # "bfs_bulk",
     # "fft_strided",
     # "nw",
