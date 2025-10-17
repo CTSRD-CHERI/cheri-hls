@@ -2,8 +2,8 @@ open_project sort_radix_prj
 
 set_top hls_top 
 
-add_files sort.c
-add_files -tb sort.c
+add_files sort.cpp
+add_files -tb sort.cpp
 
 set clock 10
 set part "xqzu29dr-ffrf1760-1-i"
