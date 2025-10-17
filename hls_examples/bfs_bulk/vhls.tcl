@@ -1,7 +1,7 @@
 open_project bfs_bulk_prj
 
-add_files bfs_bulk.c 
-add_files -tb bfs_bulk.c 
+add_files bfs_bulk.cpp
+add_files -tb bfs_bulk.cpp 
 
 set_top hls_top 
 

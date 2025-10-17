@@ -1,7 +1,7 @@
 open_project spmv_ellpack_prj
 
-add_files spmv.c
-add_files -tb spmv.c
+add_files spmv.cpp
+add_files -tb spmv.cpp
 
 set_top hls_top 
 

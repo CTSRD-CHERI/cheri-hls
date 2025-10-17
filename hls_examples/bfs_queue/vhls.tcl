@@ -1,7 +1,7 @@
 open_project bfs_queue_prj
 
-add_files bfs.c
-add_files -tb bfs.c
+add_files bfs.cpp
+add_files -tb bfs.cpp
 
 set_top hls_top 
 

@@ -12,8 +12,8 @@ from argparse import ArgumentParser
 TESTS = [
     # "aes",
     # "backprop",
-    # "bfs_bulk",
-    # "bfs_queue",
+    "bfs_bulk",
+    "bfs_queue",
     "fft_strided",
     "fft_transpose",
     "gemm_blocked",

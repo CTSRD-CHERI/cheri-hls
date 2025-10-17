@@ -29,18 +29,7 @@ CPU and GPU." PACT, 2011.
 // Larger than necessary for small graphs, but appropriate for large ones
 typedef int edge_index_t;
 typedef int node_index_t;
-
-typedef struct edge_t_struct {
-  // These fields are common in practice, but we elect not to use them.
-  // weight_t weight;
-  // node_index_t src;
-  node_index_t dst;
-} edge_t;
-
-typedef struct node_t_struct {
-  edge_index_t edge_begin;
-  edge_index_t edge_end;
-} node_t;
+typedef int edge_t;
 
 typedef int level_t;
 #define MAX_LEVEL 255
@@ -64,18 +53,19 @@ void hls_top(node_index_t starting_node, int levels, int node,
   node_index_t n;
   edge_index_t e;
 
-  node_t nodes[N_NODES];
+  int nodes_begin[N_NODES];
+  int nodes_end[N_NODES];
   edge_t edges[N_EDGES];
   level_t level[N_NODES] = {0};
   edge_index_t level_counts[N_LEVELS] = {0};
 
   for (int i = 0; i < node; i++)
-    nodes[i].edge_begin = xnodes_b[i];
+    nodes_begin[i] = xnodes_b[i];
   for (int i = 0; i < node; i++)
-    nodes[i].edge_end = xnodes_e[i];
+    nodes_end[i] = xnodes_e[i];
 
   for (int i = 0; i < N_EDGES; i++)
-    edges[i].dst = xedges[i];
+    edges[i] = xedges[i];
 
   q_in = 1;
   q_out = 0;
@@ -89,11 +79,11 @@ loop_queue:
       break;
     n = Q_PEEK();
     Q_POP();
-    edge_index_t tmp_begin = nodes[n].edge_begin;
-    edge_index_t tmp_end = nodes[n].edge_end;
+    edge_index_t tmp_begin = nodes_begin[n];
+    edge_index_t tmp_end = nodes_end[n];
   loop_neighbors:
     for (e = tmp_begin; e < tmp_end; e++) {
-      node_index_t tmp_dst = edges[e].dst;
+      node_index_t tmp_dst = edges[e];
       level_t tmp_level = level[tmp_dst];
 
       if (tmp_level == MAX_LEVEL) { // Unmarked
