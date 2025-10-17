@@ -20,7 +20,7 @@ TESTS = [
     # "sort_merge",
     "stencil2d",
     # "bfs_bulk",
-    # "fft_strided",
+    "fft_strided",
     # "nw",
     # "sort_radix",
     # "spmv_ellpack",
