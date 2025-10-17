@@ -14,7 +14,7 @@ TESTS = [
     # "aes",
     "gemm_blocked",
     # "md_grid",
-    # "stencil3d",
+    "stencil3d",
     # "fft_transpose",
     "gemm_ncubed",
     # "sort_merge",
