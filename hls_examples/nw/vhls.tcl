@@ -1,7 +1,7 @@
 open_project nw_prj
 
-add_files nw.c
-add_files -tb nw.c
+add_files nw.cpp
+add_files -tb nw.cpp
 
 set_top hls_top 
 
