@@ -1,7 +1,7 @@
 open_project md_grid_prj
 
-add_files md.c 
-add_files -tb md.c 
+add_files md.cpp
+add_files -tb md.cpp 
 
 set_top hls_top 
 
