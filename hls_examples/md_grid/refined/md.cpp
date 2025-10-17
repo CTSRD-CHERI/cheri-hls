@@ -19,15 +19,14 @@
 #define lj1 2
 #define lj2 3
 
-void hls_top(
-    int size, int xn_points[blockSide * blockSide * blockSide],
-    int force_x[blockSide * blockSide * blockSide * densityFactor],
-    int force_y[blockSide * blockSide * blockSide * densityFactor],
-    int force_z[blockSide * blockSide * blockSide * densityFactor],
-    int position_x[blockSide * blockSide * blockSide * densityFactor],
-    int position_y[blockSide * blockSide * blockSide * densityFactor],
-    int position_z[blockSide * blockSide * blockSide * densityFactor],
-    u32 *flag, u32 cap[28]) {
+void hls_top(int size, int xn_points[blockSide * blockSide * blockSide],
+             int force_x[blockSide * blockSide * blockSide * densityFactor],
+             int force_y[blockSide * blockSide * blockSide * densityFactor],
+             int force_z[blockSide * blockSide * blockSide * densityFactor],
+             int position_x[blockSide * blockSide * blockSide * densityFactor],
+             int position_y[blockSide * blockSide * blockSide * densityFactor],
+             int position_z[blockSide * blockSide * blockSide * densityFactor],
+             u32 *flag, u32 cap[28]) {
 #pragma HLS INTERFACE m_axi port = xn_points
 #pragma HLS INTERFACE m_axi port = force_x
 #pragma HLS INTERFACE m_axi port = force_y
@@ -48,7 +47,8 @@ void hls_top(
   TYPE dx, dy, dz, r2inv, r6inv, potential, f;
 
   u32 flag_buf = 0;
-  // 7 arrays (xn_points, force_x, force_y, force_z, position_x, position_y, position_z) * 4 = 28
+  // 7 arrays (xn_points, force_x, force_y, force_z, position_x, position_y,
+  // position_z) * 4 = 28
   Cap caps[7];
   u32 buffer[28];
 #pragma HLS array_partition variable = buffer type = complete
