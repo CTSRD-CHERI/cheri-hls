@@ -1,7 +1,7 @@
 open_project aes_prj
 
-add_files aes.c 
-add_files -tb aes.c 
+add_files aes.cpp
+add_files -tb aes.cpp
 
 set_top hls_top 
 

@@ -10,8 +10,8 @@ from argparse import ArgumentParser
 # ---------------------------------------
 
 TESTS = [
-    # "aes",
-    # "backprop",
+    "aes",
+    "backprop",
     "bfs_bulk",
     "bfs_queue",
     "fft_strided",
@@ -21,14 +21,14 @@ TESTS = [
     "kmp",
     "md_grid",
     "md_knn",
-    # "nw",
+    "nw",
     "sort_merge",
     "sort_radix",
     "spmv_crs",
     "spmv_ellpack",
     "stencil2d",
     "stencil3d",
-    # "viterbi",
+    "viterbi",
     "vect_mult",
 ]
 

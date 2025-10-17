@@ -1,7 +1,7 @@
 open_project backprop_prj
 
-add_files backprop.c
-add_files -tb backprop.c
+add_files backprop.cpp
+add_files -tb backprop.cpp
 
 
 set_top hls_top 

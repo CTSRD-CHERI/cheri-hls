@@ -11,12 +11,6 @@
 
 #define NUM 32
 
-typedef struct {
-  uint8_t key[32];
-  uint8_t enckey[32];
-  uint8_t deckey[32];
-} aes256_context;
-
 ////////////////////////////////////////////////////////////////////////////////
 // Test harness interface code.
 
@@ -213,40 +207,44 @@ exp2:
 } /* aes_expandEncKey */
 
 /* -------------------------------------------------------------------------- */
-void aes256_encrypt_ecb(aes256_context *ctx, uint8_t k[32], uint8_t buf[16]) {
+void aes256_encrypt_ecb(uint8_t *ctx_key, uint8_t *ctx_enckey,
+                        uint8_t *ctx_deckey, uint8_t k[32], uint8_t buf[16]) {
   // INIT
   uint8_t rcon = 1;
   uint8_t i;
 
 ecb1:
-  for (i = 0; i < sizeof(ctx->key); i++) {
-    ctx->enckey[i] = ctx->deckey[i] = k[i];
+  for (i = 0; i < 32; i++) {
+    ctx_enckey[i] = ctx_deckey[i] = k[i];
   }
 ecb2:
   for (i = 8; --i;) {
-    aes_expandEncKey(ctx->deckey, &rcon);
+    aes_expandEncKey(ctx_deckey, &rcon);
   }
 
   // DEC
-  aes_addRoundKey_cpy(buf, ctx->enckey, ctx->key);
+  aes_addRoundKey_cpy(buf, ctx_enckey, ctx_key);
 ecb3:
   for (i = 1, rcon = 1; i < 14; ++i) {
     aes_subBytes(buf);
     aes_shiftRows(buf);
     aes_mixColumns(buf);
     if (i & 1)
-      aes_addRoundKey(buf, &ctx->key[16]);
+      aes_addRoundKey(buf, &ctx_key[16]);
     else
-      aes_expandEncKey(ctx->key, &rcon), aes_addRoundKey(buf, ctx->key);
+      aes_expandEncKey(ctx_key, &rcon), aes_addRoundKey(buf, ctx_key);
   }
   aes_subBytes(buf);
   aes_shiftRows(buf);
-  aes_expandEncKey(ctx->key, &rcon);
-  aes_addRoundKey(buf, ctx->key);
+  aes_expandEncKey(ctx_key, &rcon);
+  aes_addRoundKey(buf, ctx_key);
 } /* aes256_encrypt */
 
-void hls_top(int size, aes256_context ctx[NUM]) {
-#pragma HLS INTERFACE m_axi port = ctx
+void hls_top(int size, uint8_t ctx_key[NUM * 32], uint8_t ctx_enckey[NUM * 32],
+             uint8_t ctx_deckey[NUM * 32]) {
+#pragma HLS INTERFACE m_axi port = ctx_key
+#pragma HLS INTERFACE m_axi port = ctx_enckey
+#pragma HLS INTERFACE m_axi port = ctx_deckey
 #pragma HLS INTERFACE s_axilite port = size
 #pragma HLS INTERFACE s_axilite port = return
 
@@ -263,13 +261,16 @@ void hls_top(int size, aes256_context ctx[NUM]) {
   }
 
   for (i = 0; i < size; i++) {
-    aes256_encrypt_ecb(ctx + i, key, buf);
+    aes256_encrypt_ecb(&ctx_key[i * 32], &ctx_enckey[i * 32],
+                       &ctx_deckey[i * 32], key, buf);
   }
 }
 
 int main(int argc, char *argv[]) {
-  aes256_context ctx[NUM];
-  hls_top(NUM, ctx);
+  uint8_t ctx_key[NUM * 32];
+  uint8_t ctx_enckey[NUM * 32];
+  uint8_t ctx_deckey[NUM * 32];
+  hls_top(NUM, ctx_key, ctx_enckey, ctx_deckey);
 
   return 0;
 } /* main */
