@@ -53,10 +53,8 @@ void hls_top(int size, int xpattern[PATTERN_SIZE], int xinput[STRING_SIZE],
 k1:
   for (i = 0; i < size; i++) {
   k2:
-    j = 0;
-    while (q > 0 && pattern[q] != input[i] && j < PATTERN_SIZE) {
+    while (q > 0 && pattern[q] != input[i]) {
       q = kmpNext[q];
-      j++;
     }
     if (pattern[q] == input[i]) {
       q++;

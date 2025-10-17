@@ -83,15 +83,13 @@ void hls_top(int size, int xpattern[PATTERN_SIZE], int xinput[STRING_SIZE],
 k1:
   for (i = 0; i < size; i++) {
   k2:
-    j = 0;
     int pattern_q = cheri_load(pattern, q, &flag_buf, caps[4]);
     int input_i = cheri_load(input, i, &flag_buf, caps[5]);
     int kmpNext_q = cheri_load(kmpNext, q, &flag_buf, caps[6]);
-    while (q > 0 && pattern_q != input_i && j < PATTERN_SIZE) {
+    while (q > 0 && pattern_q != input_i) {
       q = kmpNext_q;
       pattern_q = cheri_load(pattern, q, &flag_buf, caps[4]);
       kmpNext_q = cheri_load(kmpNext, q, &flag_buf, caps[6]);
-      j++;
     }
     if (pattern_q == input_i) {
       q++;

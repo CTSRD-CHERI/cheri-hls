@@ -126,14 +126,15 @@ void checkAccess(u32 *flag_buf, Cap cap, u16 offset, ap_uint<3> nBytes,
 int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, false);
+
   int b = buf[i];
-  return (*flag_buf) ? b : 0;
+  return (*flag_buf) ? 0 : b;
 }
 
 void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
 #pragma HLS INLINE
   checkAccess(flag_buf, cap, i, 4, true);
-  buf[i] = (*flag_buf) ? val : buf[i];
+  buf[i] = (*flag_buf) ? buf[i] : val;
   return;
 }
 
