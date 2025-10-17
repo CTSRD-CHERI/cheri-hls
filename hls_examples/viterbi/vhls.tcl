@@ -1,7 +1,7 @@
 open_project viterbi_prj
 
-add_files viterbi.c
-add_files -tb viterbi.c 
+add_files viterbi.cpp
+add_files -tb viterbi.cpp
 
 set_top hls_top 
 
