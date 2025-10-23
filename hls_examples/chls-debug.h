@@ -84,7 +84,7 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
   Cap c;
   // c.addr = addr;
   c.base = base - addr;
-  c.top = top - addr;
+  c.top = 2 * (top - addr);
   c.read = read;
   c.write = write;
   return c;

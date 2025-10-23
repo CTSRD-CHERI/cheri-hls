@@ -113,7 +113,7 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
   u64 base = ((a_top + c_b) << (E + 14)) | ((u64)(B_13_0 & 0x3FFF) << E);
 
   Cap c;
-  c.top = top;
+  c.top = top * 2;
   c.base = base;
   c.addr = addr;
   c.otype = otype;
