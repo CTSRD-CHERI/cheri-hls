@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#define DF 4
+
 typedef uint8_t u8;
 typedef uint16_t u16;
 typedef uint32_t u32;
@@ -114,7 +116,7 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
   u64 base = ((a_top + c_b) << (E + 14)) | ((u64)(B_13_0 & 0x3FFF) << E);
 
   Cap c;
-  c.top = top * 2;
+  c.top = top * DF;
   c.base = base;
   c.addr = addr;
   c.otype = otype;
@@ -158,6 +160,8 @@ void checkAccess(u32 *flag_buf, Cap cap, u64 offset, u64 nBytes, bool isWrite) {
               << (cap.base <= cap.addr + (4 * offset)) << "\n"
               << "((cap.addr + 4 * offset + nBytes) <= cap.top) == "
               << ((cap.addr + 4 * offset + nBytes) <= cap.top) << "\n"
+              << cap.addr << "," << offset << "," << nBytes << "," << cap.top
+              << "\n"
               << "(!isWrite || ((cap.perms >> 8) & 0x1)) == "
               << (!isWrite || ((cap.perms >> 8) & 0x1)) << "\n"
               << "(isWrite || ((cap.perms >> 9) & 0x1)) == "

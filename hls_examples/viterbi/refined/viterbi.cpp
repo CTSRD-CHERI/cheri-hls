@@ -68,12 +68,12 @@ L_timestep:
     for (curr = 0; curr < N_STATES; curr++) {
       // Compute likelihood HMM is in current state and where it came from.
       prev = 0;
-      min_p = llike[t - 1 * N_STATES + prev] +
+      min_p = llike[(t - 1) * N_STATES + prev] +
               transition[prev * N_STATES + curr] +
               emission[curr * n_tokens + obs[t]];
     L_prev_state:
       for (prev = 1; prev < N_STATES; prev++) {
-        p = llike[t - 1 * N_STATES + prev] +
+        p = llike[(t - 1) * N_STATES + prev] +
             transition[prev * N_STATES + curr] +
             emission[curr * n_tokens + obs[t]];
         if (p < min_p) {
@@ -86,7 +86,7 @@ L_timestep:
 
   // Identify end state
   min_s = 0;
-  min_p = llike[N_OBS - 1 * N_STATES + min_s];
+  min_p = llike[(N_OBS - 1) * N_STATES + min_s];
 L_end:
   for (s = 1; s < N_STATES; s++) {
     p = llike[N_OBS - 1 * N_STATES + s];

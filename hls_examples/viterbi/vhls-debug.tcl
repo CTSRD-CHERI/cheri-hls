@@ -1,7 +1,7 @@
 open_project viterbi_prj
 
 add_files viterbi.cpp
-add_files -tb viterbi.cpp
+add_files -tb viterbi.cpp -cflags "-g"
 
 set_top hls_top 
 

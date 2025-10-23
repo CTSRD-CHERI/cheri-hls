@@ -39,12 +39,12 @@ void hls_top(int n_tokens, int xobs[N_OBS], int xinit[N_STATES],
   int emission[N_STATES * N_TOKENS];
   int path[N_OBS] = {0};
 
-  create_cap(N_OBS, caps, 5);                   // obs
-  create_cap(N_STATES, caps, 6);                // init
-  create_cap(N_STATES * N_STATES, caps, 7);     // transition
-  create_cap(N_STATES * N_TOKENS, caps, 8);     // emission
-  create_cap(N_OBS, caps, 9);                   // path
-  create_cap(N_OBS * N_STATES, caps, 10);       // llike
+  create_cap(N_OBS, caps, 5);               // obs
+  create_cap(N_STATES, caps, 6);            // init
+  create_cap(N_STATES * N_STATES, caps, 7); // transition
+  create_cap(N_STATES * N_TOKENS, caps, 8); // emission
+  create_cap(N_OBS, caps, 9);               // path
+  create_cap(N_OBS * N_STATES, caps, 10);   // llike
 
   for (int i = 0; i < N_OBS; i++) {
     int temp = cheri_load(xobs, i, &flag_buf, caps[0]);
@@ -88,9 +88,9 @@ L_timestep:
       // Compute likelihood HMM is in current state and where it came from.
       prev = 0;
       int llike_prev =
-          cheri_load(llike, t - 1 * N_STATES + prev, &flag_buf, caps[10]);
-      int trans_elem = cheri_load(transition, prev * N_STATES + curr, &flag_buf,
-                                  caps[7]);
+          cheri_load(llike, (t - 1) * N_STATES + prev, &flag_buf, caps[10]);
+      int trans_elem =
+          cheri_load(transition, prev * N_STATES + curr, &flag_buf, caps[7]);
       int obs_elem = cheri_load(obs, t, &flag_buf, caps[5]);
       int emis_elem =
           cheri_load(emission, curr * n_tokens + obs_elem, &flag_buf, caps[8]);
@@ -98,11 +98,11 @@ L_timestep:
     L_prev_state:
       for (prev = 1; prev < N_STATES; prev++) {
         llike_prev =
-            cheri_load(llike, t - 1 * N_STATES + prev, &flag_buf, caps[10]);
+            cheri_load(llike, (t - 1) * N_STATES + prev, &flag_buf, caps[10]);
         trans_elem =
             cheri_load(transition, prev * N_STATES + curr, &flag_buf, caps[7]);
-        emis_elem =
-            cheri_load(emission, curr * n_tokens + obs_elem, &flag_buf, caps[8]);
+        emis_elem = cheri_load(emission, curr * n_tokens + obs_elem, &flag_buf,
+                               caps[8]);
         p = llike_prev + trans_elem + emis_elem;
         if (p < min_p) {
           min_p = p;
@@ -114,7 +114,8 @@ L_timestep:
 
   // Identify end state
   min_s = 0;
-  min_p = cheri_load(llike, N_OBS - 1 * N_STATES + min_s, &flag_buf, caps[10]);
+  min_p =
+      cheri_load(llike, (N_OBS - 1) * N_STATES + min_s, &flag_buf, caps[10]);
 L_end:
   for (s = 1; s < N_STATES; s++) {
     p = cheri_load(llike, N_OBS - 1 * N_STATES + s, &flag_buf, caps[10]);
@@ -129,10 +130,11 @@ L_end:
 L_backtrack:
   for (t = N_OBS - 2; t >= 0; t--) {
     min_s = 0;
-    int llike_elem = cheri_load(llike, t * N_STATES + min_s, &flag_buf, caps[10]);
+    int llike_elem =
+        cheri_load(llike, t * N_STATES + min_s, &flag_buf, caps[10]);
     int path_elem = cheri_load(path, t + 1, &flag_buf, caps[9]);
-    int trans_elem =
-        cheri_load(transition, min_s * N_STATES + path_elem, &flag_buf, caps[7]);
+    int trans_elem = cheri_load(transition, min_s * N_STATES + path_elem,
+                                &flag_buf, caps[7]);
     min_p = llike_elem + trans_elem;
   L_state:
     for (s = 1; s < N_STATES; s++) {

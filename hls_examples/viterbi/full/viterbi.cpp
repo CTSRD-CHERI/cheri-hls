@@ -88,7 +88,7 @@ L_timestep:
       // Compute likelihood HMM is in current state and where it came from.
       prev = 0;
       int llike_prev =
-          cheri_load(llike, t - 1 * N_STATES + prev, &flag_buf, caps[10]);
+          cheri_load(llike, (t - 1) * N_STATES + prev, &flag_buf, caps[10]);
       int trans_elem =
           cheri_load(transition, prev * N_STATES + curr, &flag_buf, caps[7]);
       int obs_elem = cheri_load(obs, t, &flag_buf, caps[5]);
@@ -98,7 +98,7 @@ L_timestep:
     L_prev_state:
       for (prev = 1; prev < N_STATES; prev++) {
         llike_prev =
-            cheri_load(llike, t - 1 * N_STATES + prev, &flag_buf, caps[10]);
+            cheri_load(llike, (t - 1) * N_STATES + prev, &flag_buf, caps[10]);
         trans_elem =
             cheri_load(transition, prev * N_STATES + curr, &flag_buf, caps[7]);
         emis_elem = cheri_load(emission, curr * n_tokens + obs_elem, &flag_buf,
@@ -114,7 +114,8 @@ L_timestep:
 
   // Identify end state
   min_s = 0;
-  min_p = cheri_load(llike, N_OBS - 1 * N_STATES + min_s, &flag_buf, caps[10]);
+  min_p =
+      cheri_load(llike, (N_OBS - 1) * N_STATES + min_s, &flag_buf, caps[10]);
 L_end:
   for (s = 1; s < N_STATES; s++) {
     p = cheri_load(llike, N_OBS - 1 * N_STATES + s, &flag_buf, caps[10]);

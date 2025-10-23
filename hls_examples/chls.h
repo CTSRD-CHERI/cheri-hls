@@ -2,6 +2,8 @@
 #include <stdint.h>
 #include <stdio.h>
 
+#define DF 4
+
 typedef uint8_t u8;
 typedef uint16_t u16;
 typedef uint32_t u32;
@@ -84,7 +86,7 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
   Cap c;
   // c.addr = addr;
   c.base = base - addr;
-  c.top = (top - addr) * 2;
+  c.top = (top - addr) * DF;
   c.read = read;
   c.write = write;
   return c;
