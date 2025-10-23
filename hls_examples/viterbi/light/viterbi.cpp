@@ -126,22 +126,26 @@ L_end:
   }
   cheri_store(path, N_OBS - 1, min_s, &flag_buf, caps[9]);
 
-// Backtrack to recover full path
+  // Backtrack to recover full path
 L_backtrack:
   for (t = N_OBS - 2; t >= 0; t--) {
     min_s = 0;
     int llike_elem =
         cheri_load(llike, t * N_STATES + min_s, &flag_buf, caps[10]);
     int path_elem = cheri_load(path, t + 1, &flag_buf, caps[9]);
-    int trans_elem = cheri_load(transition, min_s * N_STATES + path_elem,
-                                &flag_buf, caps[7]);
+    // int trans_elem = cheri_load(transition, min_s * N_STATES + path_elem,
+    //                            &flag_buf, caps[7]);
+    int trans_elem = transition[min_s * N_STATES + path_elem];
     min_p = llike_elem + trans_elem;
   L_state:
     for (s = 1; s < N_STATES; s++) {
-      llike_elem = cheri_load(llike, t * N_STATES + s, &flag_buf, caps[10]);
-      trans_elem =
-          cheri_load(transition, s * N_STATES + path_elem, &flag_buf, caps[7]);
-      p = llike_elem + trans_elem;
+      int llike_elem_ =
+          cheri_load(llike, t * N_STATES + s, &flag_buf, caps[10]);
+      // int trans_elem_ =
+      //     cheri_load(transition, s * N_STATES + path_elem, &flag_buf,
+      //     caps[7]);
+      int trans_elem_ = transition[s * N_STATES + path_elem];
+      p = llike_elem_ + trans_elem_;
       if (p < min_p) {
         min_p = p;
         min_s = s;
