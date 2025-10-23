@@ -141,6 +141,7 @@ class RunHLS:
 
         if self.args.debug is not None:
             self.result += self.run_sw_checks()
+            self.exit()
 
         if self.args.all:
             tests = TESTS
@@ -238,7 +239,12 @@ class RunHLS:
             self.logger.debug(f"checking {test} in software...")
             cmd = ["bash", "/workspace/scripts/run-vitis-hls.sh", "../vhls-debug.tcl"]
             run_dir = os.path.join(self.root, test, "debug")
-            result += self.execute(cmd, cwd=run_dir)
+            self.execute(cmd, cwd=run_dir)
+
+            with open(os.path.join(run_dir, "vitis_hls.log")) as f:
+                if "@E Simulation failed." in f.read():
+                    self.logger.error(f"Failed test: {test}")
+                    result += 1
         return result
 
     def single_run(self, test, mode):
