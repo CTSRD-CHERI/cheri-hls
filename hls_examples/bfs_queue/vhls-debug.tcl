@@ -1,0 +1,15 @@
+open_project bfs_queue_prj
+
+add_files bfs.cpp
+add_files -tb bfs.cpp
+
+set_top hls_top 
+
+open_solution -reset solution
+set_part "xqzu29dr-ffrf1760-1-i"
+create_clock -period 10
+csim_design
+
+
+
+exit

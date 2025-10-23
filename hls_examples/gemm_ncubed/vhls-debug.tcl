@@ -1,0 +1,15 @@
+open_project gemm_ncubed_prj
+
+add_files gemm.cpp
+add_files -tb gemm.cpp
+
+set_top hls_top
+
+open_solution -reset solution
+set_part "xqzu29dr-ffrf1760-1-i"
+create_clock -period 10
+csim_design
+
+
+
+exit
