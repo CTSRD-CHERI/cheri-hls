@@ -138,6 +138,10 @@ class RunHLS:
         sys.exit(self.result)
 
     def run(self):
+
+        if self.args.debug is not None:
+            self.result += self.run_sw_checks()
+
         if self.args.all:
             tests = TESTS
             modes = MODES
@@ -222,6 +226,21 @@ class RunHLS:
         cycles = get_cycles(sim_report)
         return f"{test}, {mode}, {luts}, {ffs}, {dsps}, {brams}, {cycles}, {fmax},\n"
 
+    def run_sw_checks(self):
+        if self.args.debug == "all":
+            cases = TESTS
+        else:
+            cases = [self.args.debug]
+
+        result = 0
+        for test in cases:
+
+            self.logger.debug(f"checking {test} in software...")
+            cmd = ["bash", "/workspace/scripts/run-vitis-hls.sh", "../vhls-debug.tcl"]
+            run_dir = os.path.join(self.root, test, "debug")
+            result += self.execute(cmd, cwd=run_dir)
+        return result
+
     def single_run(self, test, mode):
         self.logger.debug(f"running {test}+{mode}...")
 
@@ -279,6 +298,13 @@ run.py -a"""
         dest="test",
         default=None,
         help="Which benchmark to run",
+    )
+    parser.add_argument(
+        "-d",
+        "--debug",
+        dest="debug",
+        default=None,
+        help="Run CHERI checks in software",
     )
     parser.add_argument(
         "-a",
