@@ -45,7 +45,10 @@ int main() {
     c[i] = 0;
     c_gold[i] = a[i] * b[i];
   }
-  u32 ret[4] = {0x800010c0LL, 0x00000000LL, 0x048190c4LL, 0xff7d0000};
+  u32 ret[12] = {
+      0,          0,          0xf90d8007, 0x30001fff, 0,          0,
+      0xf90d8007, 0x30001fff, 0,          0,          0xf90d8007, 0x30001fff,
+  };
 
   // xilinx ap_int<128> but for now int x[4]
 

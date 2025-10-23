@@ -1,4 +1,5 @@
 #include "ap_int.h"
+#include <iostream>
 #include <stdint.h>
 #include <stdio.h>
 
@@ -122,6 +123,15 @@ Cap decode(ap_uint<32> buffer_0, ap_uint<32> buffer_1, ap_uint<32> buffer_2,
   return c;
 }
 
+void print_cap(Cap c) {
+  std::cout << "c.top    =" << c.top << std::endl;
+  std::cout << "c.base   =" << c.base << std::endl;
+  std::cout << "c.addr   =" << c.addr << std::endl;
+  std::cout << "c.otype  =" << c.otype << std::endl;
+  std::cout << "c.perms  =" << c.perms << std::endl;
+  std::cout << "c.uperms =" << c.uperms << std::endl;
+}
+
 void load_cap(int num, u32 *buffer, u32 *cap, Cap *caps) {
 #pragma HLS INLINE
 
@@ -132,6 +142,7 @@ void load_cap(int num, u32 *buffer, u32 *cap, Cap *caps) {
   int i = 0;
   for (int j = 0; j < num; j++) {
     caps[j] = decode(buffer[i], buffer[i + 1], buffer[i + 2], buffer[i + 3]);
+    print_cap(caps[j]);
     i += 4;
   }
 }
@@ -142,8 +153,19 @@ void checkAccess(u32 *flag_buf, Cap cap, u64 offset, u64 nBytes, bool isWrite) {
                  ((cap.addr + 4 * offset + nBytes) <= cap.top) &&
                  (!isWrite || ((cap.perms >> 8) & 0x1)) &&
                  (isWrite || ((cap.perms >> 9) & 0x1)));
-  if (flag_buf)
+  if (*flag_buf) {
+    std::cout << "(cap.base <= cap.addr + (4 * offset)) == "
+              << (cap.base <= cap.addr + (4 * offset)) << "\n"
+              << "((cap.addr + 4 * offset + nBytes) <= cap.top) == "
+              << ((cap.addr + 4 * offset + nBytes) <= cap.top) << "\n"
+              << "(!isWrite || ((cap.perms >> 8) & 0x1)) == "
+              << (!isWrite || ((cap.perms >> 8) & 0x1)) << "\n"
+              << "(isWrite || ((cap.perms >> 9) & 0x1)) == "
+              << (isWrite || ((cap.perms >> 9) & 0x1)) << "\n"
+              << "(isWrite) == " << (isWrite) << "\n"
+              << std::endl;
     assert(0);
+  }
 }
 
 int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {

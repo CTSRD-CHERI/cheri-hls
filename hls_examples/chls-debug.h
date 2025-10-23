@@ -121,8 +121,18 @@ void checkAccess(u32 *flag_buf, Cap cap, u16 offset, ap_uint<3> nBytes,
   *flag_buf |=
       !((cap.base <= (4 * offset)) && ((4 * offset + nBytes) <= cap.top) &&
         (!isWrite || (cap.write)) && (isWrite || (cap.read)));
-  if (flag_buf)
+  if (*flag_buf) {
+    std::cout << "(cap.base <= (4 * offset)) == " << (cap.base <= (4 * offset))
+              << "\n"
+              << "((4 * offset + nBytes) <= cap.top) == "
+              << ((4 * offset + nBytes) <= cap.top) << "\n"
+              << "(!isWrite || (cap.write)) == " << (!isWrite || (cap.write))
+              << "\n"
+              << "(isWrite || (cap.read)) == " << (isWrite || (cap.read))
+              << "\n"
+              << std::endl;
     assert(0);
+  }
 }
 
 int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {
