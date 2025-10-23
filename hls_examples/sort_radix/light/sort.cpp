@@ -60,7 +60,8 @@ last_1:
       bucket_indx = radixID * SCAN_BLOCK + i;
       int bucket_val = cheri_load(bucket, bucket_indx, flag_buf, cap_bucket);
       int sum_val = cheri_load(sum, radixID, flag_buf, cap_sum);
-      cheri_store(bucket, bucket_indx, bucket_val + sum_val, flag_buf, cap_bucket);
+      cheri_store(bucket, bucket_indx, bucket_val + sum_val, flag_buf,
+                  cap_bucket);
     }
   }
 }
@@ -101,16 +102,20 @@ update_1:
   for (blockID = 0; blockID < NUMOFBLOCKS; blockID++) {
   update_2:
     for (i = 0; i < 4; i++) {
-      int a_val = cheri_load(a, blockID * ELEMENTSPERBLOCK + i, flag_buf, cap_a);
+      int a_val =
+          cheri_load(a, blockID * ELEMENTSPERBLOCK + i, flag_buf, cap_a);
       bucket_indx = ((a_val >> exp) & 0x3) * NUMOFBLOCKS + blockID;
       a_indx = blockID * ELEMENTSPERBLOCK + i;
       int bucket_val = cheri_load(bucket, bucket_indx, flag_buf, cap_bucket);
       int a_indx_val = cheri_load(a, a_indx, flag_buf, cap_a);
-      cheri_store(b, bucket_val, a_indx_val, flag_buf, cap_b);
+      // cheri_store(b, bucket_val, a_indx_val, flag_buf, cap_b);
+      b[bucket_val] = a_indx_val;
       if (bucket_indx >= BUCKETSIZE)
         bucket_indx = BUCKETSIZE - 1;
-      int new_bucket_val = cheri_load(bucket, bucket_indx, flag_buf, cap_bucket);
-      cheri_store(bucket, bucket_indx, new_bucket_val + 1, flag_buf, cap_bucket);
+      int new_bucket_val =
+          cheri_load(bucket, bucket_indx, flag_buf, cap_bucket);
+      cheri_store(bucket, bucket_indx, new_bucket_val + 1, flag_buf,
+                  cap_bucket);
     }
   }
 }
@@ -144,10 +149,10 @@ void hls_top(int xa[SIZE], int xb[SIZE], int xbucket[BUCKETSIZE],
   int bucket[BUCKETSIZE];
   int sum[SCAN_RADIX];
 
-  create_cap(SIZE, caps, 4);          // a
-  create_cap(SIZE, caps, 5);          // b
-  create_cap(BUCKETSIZE, caps, 6);    // bucket
-  create_cap(SCAN_RADIX, caps, 7);    // sum
+  create_cap(SIZE, caps, 4);       // a
+  create_cap(SIZE, caps, 5);       // b
+  create_cap(BUCKETSIZE, caps, 6); // bucket
+  create_cap(SCAN_RADIX, caps, 7); // sum
 
   for (int i = 0; i < SIZE; i++) {
     int temp = cheri_load(xa, i, &flag_buf, caps[0]);

@@ -108,7 +108,8 @@ update_1:
       a_indx = blockID * ELEMENTSPERBLOCK + i;
       int bucket_val = cheri_load(bucket, bucket_indx, flag_buf, cap_bucket);
       int a_indx_val = cheri_load(a, a_indx, flag_buf, cap_a);
-      cheri_store(b, bucket_val, a_indx_val, flag_buf, cap_b);
+      // cheri_store(b, bucket_val, a_indx_val, flag_buf, cap_b);
+      b[bucket_val] = a_indx_val;
       if (bucket_indx >= BUCKETSIZE)
         bucket_indx = BUCKETSIZE - 1;
       int new_bucket_val =

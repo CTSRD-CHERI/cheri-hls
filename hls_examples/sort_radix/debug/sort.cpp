@@ -6,6 +6,7 @@ benchmark suite. In Proceedings of the 3rd Workshop on General-Purpose
 Computation on Graphics Processing Units, 2010
 */
 
+// #include "../../chls-debug.h"
 #include "../../chls-debug-fullcap.h"
 
 #define TYPE int
