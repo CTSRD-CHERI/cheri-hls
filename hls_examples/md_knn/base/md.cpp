@@ -89,11 +89,11 @@ loop_i:
   }
 
   for (i = 0; i < size; i++)
-    force_x[i] = xforce_x[i];
+    xforce_x[i] = force_x[i];
   for (i = 0; i < size; i++)
-    force_y[i] = xforce_y[i];
+    xforce_y[i] = force_y[i];
   for (i = 0; i < size; i++)
-    force_z[i] = xforce_z[i];
+    xforce_z[i] = force_z[i];
 }
 
 int main() {
