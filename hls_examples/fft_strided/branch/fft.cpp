@@ -42,19 +42,27 @@ void hls_top(int size, int xreal[FFT_SIZE], int ximg[FFT_SIZE],
 
   for (int i = 0; i < size; i++) {
     int temp = cheri_load(xreal, i, &flag_buf, caps[0]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(real, i, temp, &flag_buf, caps[6]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (int i = 0; i < size; i++) {
     int temp = cheri_load(ximg, i, &flag_buf, caps[1]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(img, i, temp, &flag_buf, caps[7]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (int i = 0; i < size / 2; i++) {
     int temp = cheri_load(xreal_twid, i, &flag_buf, caps[2]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(real_twid, i, temp, &flag_buf, caps[8]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (int i = 0; i < size / 2; i++) {
     int temp = cheri_load(ximg_twid, i, &flag_buf, caps[3]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(img_twid, i, temp, &flag_buf, caps[9]);
+    if (flag_buf) { *flag =1; return;}
   }
 
 outer:
@@ -65,40 +73,58 @@ outer:
       even = odd ^ span;
 
       int real_even = cheri_load(real, even, &flag_buf, caps[6]);
+      if (flag_buf) { *flag =1; return;}
       int real_odd = cheri_load(real, odd, &flag_buf, caps[6]);
+      if (flag_buf) { *flag =1; return;}
       temp = real_even + real_odd;
       cheri_store(real, odd, real_even - real_odd, &flag_buf, caps[6]);
+      if (flag_buf) { *flag =1; return;}
       cheri_store(real, even, temp, &flag_buf, caps[6]);
+      if (flag_buf) { *flag =1; return;}
 
       int img_even = cheri_load(img, even, &flag_buf, caps[7]);
+      if (flag_buf) { *flag =1; return;}
       int img_odd = cheri_load(img, odd, &flag_buf, caps[7]);
+      if (flag_buf) { *flag =1; return;}
       temp = img_even + img_odd;
       cheri_store(img, odd, img_even - img_odd, &flag_buf, caps[7]);
+      if (flag_buf) { *flag =1; return;}
       cheri_store(img, even, temp, &flag_buf, caps[7]);
+      if (flag_buf) { *flag =1; return;}
 
       rootindex = (even << log) & (size - 1);
       if (rootindex) {
         int real_twid_root =
             cheri_load(real_twid, rootindex, &flag_buf, caps[8]);
+        if (flag_buf) { *flag =1; return;}
         int img_twid_root = cheri_load(img_twid, rootindex, &flag_buf, caps[9]);
+        if (flag_buf) { *flag =1; return;}
         int real_odd_val = cheri_load(real, odd, &flag_buf, caps[6]);
+        if (flag_buf) { *flag =1; return;}
         int img_odd_val = cheri_load(img, odd, &flag_buf, caps[7]);
+        if (flag_buf) { *flag =1; return;}
 
         temp = real_twid_root * real_odd_val - img_twid_root * img_odd_val;
         int new_img_odd =
             real_twid_root * img_odd_val + img_twid_root * real_odd_val;
         cheri_store(img, odd, new_img_odd, &flag_buf, caps[7]);
+        if (flag_buf) { *flag =1; return;}
         cheri_store(real, odd, temp, &flag_buf, caps[6]);
+        if (flag_buf) { *flag =1; return;}
       }
     }
   }
   for (int i = 0; i < size; i++) {
     int temp = cheri_load(real, i, &flag_buf, caps[6]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(yreal, i, temp, &flag_buf, caps[4]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (int i = 0; i < size; i++) {
     int temp = cheri_load(img, i, &flag_buf, caps[7]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(yimg, i, temp, &flag_buf, caps[5]);
+    if (flag_buf) { *flag =1; return;}
   }
 
   *flag = flag_buf;

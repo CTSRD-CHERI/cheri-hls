@@ -54,11 +54,15 @@ void hls_top(int alen, int blen, int xSEQA[ALEN], int xSEQB[BLEN],
 
   for (int i = 0; i < ALEN; i++) {
     int temp = cheri_load(xSEQA, i, &flag_buf, caps[0]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(SEQA, i, temp, &flag_buf, caps[6]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (int i = 0; i < BLEN; i++) {
     int temp = cheri_load(xSEQB, i, &flag_buf, caps[1]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(SEQB, i, temp, &flag_buf, caps[7]);
+    if (flag_buf) { *flag =1; return;}
   }
 
   int score, up_left, up, left, max;
@@ -69,10 +73,12 @@ void hls_top(int alen, int blen, int xSEQA[ALEN], int xSEQB[BLEN],
 init_row:
   for (a_idx = 0; a_idx < (ALEN + 1); a_idx++) {
     cheri_store(M, a_idx, a_idx * GAP_SCORE, &flag_buf, caps[10]);
+    if (flag_buf) { *flag =1; return;}
   }
 init_col:
   for (b_idx = 0; b_idx < (BLEN + 1); b_idx++) {
     cheri_store(M, b_idx * (ALEN + 1), b_idx * GAP_SCORE, &flag_buf, caps[10]);
+    if (flag_buf) { *flag =1; return;}
   }
 
 // Matrix filling loop
@@ -81,7 +87,9 @@ fill_out:
   fill_in:
     for (a_idx = 1; a_idx < (ALEN + 1); a_idx++) {
       int seqa_elem = cheri_load(SEQA, a_idx - 1, &flag_buf, caps[6]);
+      if (flag_buf) { *flag =1; return;}
       int seqb_elem = cheri_load(SEQB, b_idx - 1, &flag_buf, caps[7]);
+      if (flag_buf) { *flag =1; return;}
 
       if (seqa_elem == seqb_elem) {
         score = MATCH_SCORE;
@@ -93,8 +101,11 @@ fill_out:
       row = (b_idx) * (ALEN + 1);
 
       int m_up_left = cheri_load(M, row_up + (a_idx - 1), &flag_buf, caps[10]);
+      if (flag_buf) { *flag =1; return;}
       int m_up = cheri_load(M, row_up + (a_idx), &flag_buf, caps[10]);
+      if (flag_buf) { *flag =1; return;}
       int m_left = cheri_load(M, row + (a_idx - 1), &flag_buf, caps[10]);
+      if (flag_buf) { *flag =1; return;}
 
       up_left = m_up_left + score;
       up = m_up + GAP_SCORE;
@@ -103,12 +114,16 @@ fill_out:
       max = MAX(up_left, MAX(up, left));
 
       cheri_store(M, row + a_idx, max, &flag_buf, caps[10]);
+      if (flag_buf) { *flag =1; return;}
       if (max == left) {
         cheri_store(ptr, row + a_idx, SKIPB, &flag_buf, caps[11]);
+        if (flag_buf) { *flag =1; return;}
       } else if (max == up) {
         cheri_store(ptr, row + a_idx, SKIPA, &flag_buf, caps[11]);
+        if (flag_buf) { *flag =1; return;}
       } else {
         cheri_store(ptr, row + a_idx, ALIGN, &flag_buf, caps[11]);
+        if (flag_buf) { *flag =1; return;}
       }
     }
   }
@@ -123,23 +138,34 @@ trace:
   while (a_idx > 0 || b_idx > 0) {
     r = b_idx * (ALEN + 1);
     int ptr_elem = cheri_load(ptr, r + a_idx, &flag_buf, caps[11]);
+    if (flag_buf) { *flag =1; return;}
 
     if (ptr_elem == ALIGN) {
       int seqa_elem = cheri_load(SEQA, a_idx - 1, &flag_buf, caps[6]);
+      if (flag_buf) { *flag =1; return;}
       int seqb_elem = cheri_load(SEQB, b_idx - 1, &flag_buf, caps[7]);
+      if (flag_buf) { *flag =1; return;}
       cheri_store(alignedA, a_str_idx++, seqa_elem, &flag_buf, caps[8]);
+      if (flag_buf) { *flag =1; return;}
       cheri_store(alignedB, b_str_idx++, seqb_elem, &flag_buf, caps[9]);
+      if (flag_buf) { *flag =1; return;}
       a_idx--;
       b_idx--;
     } else if (ptr_elem == SKIPB) {
       int seqa_elem = cheri_load(SEQA, a_idx - 1, &flag_buf, caps[6]);
+      if (flag_buf) { *flag =1; return;}
       cheri_store(alignedA, a_str_idx++, seqa_elem, &flag_buf, caps[8]);
+      if (flag_buf) { *flag =1; return;}
       cheri_store(alignedB, b_str_idx++, (int)'-', &flag_buf, caps[9]);
+      if (flag_buf) { *flag =1; return;}
       a_idx--;
     } else { // SKIPA
       int seqb_elem = cheri_load(SEQB, b_idx - 1, &flag_buf, caps[7]);
+      if (flag_buf) { *flag =1; return;}
       cheri_store(alignedA, a_str_idx++, (int)'-', &flag_buf, caps[8]);
+      if (flag_buf) { *flag =1; return;}
       cheri_store(alignedB, b_str_idx++, seqb_elem, &flag_buf, caps[9]);
+      if (flag_buf) { *flag =1; return;}
       b_idx--;
     }
   }
@@ -148,27 +174,37 @@ trace:
 pad_a:
   for (; a_str_idx < ALEN + BLEN; a_str_idx++) {
     cheri_store(alignedA, a_str_idx, (int)'_', &flag_buf, caps[8]);
+    if (flag_buf) { *flag =1; return;}
   }
 pad_b:
   for (; b_str_idx < ALEN + BLEN; b_str_idx++) {
     cheri_store(alignedB, b_str_idx, (int)'_', &flag_buf, caps[9]);
+    if (flag_buf) { *flag =1; return;}
   }
 
   for (int i = 0; i < ALEN + BLEN; i++) {
     int temp = cheri_load(alignedA, i, &flag_buf, caps[8]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(xalignedA, i, temp, &flag_buf, caps[2]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (int i = 0; i < ALEN + BLEN; i++) {
     int temp = cheri_load(alignedB, i, &flag_buf, caps[9]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(xalignedB, i, temp, &flag_buf, caps[3]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (int i = 0; i < (ALEN + 1) * (BLEN + 1); i++) {
     int temp = cheri_load(M, i, &flag_buf, caps[10]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(xM, i, temp, &flag_buf, caps[4]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (int i = 0; i < (ALEN + 1) * (BLEN + 1); i++) {
     int temp = cheri_load(ptr, i, &flag_buf, caps[11]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(xptr, i, temp, &flag_buf, caps[5]);
+    if (flag_buf) { *flag =1; return;}
   }
 
   *flag = flag_buf;

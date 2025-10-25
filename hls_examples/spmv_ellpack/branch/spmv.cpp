@@ -51,34 +51,47 @@ void hls_top(int n, int l, TYPE xnzval[N * L], int xcols[N * L], TYPE xvec[N],
 
   for (i = 0; i < n * l; i++) {
     TYPE temp = cheri_load(xnzval, i, &flag_buf, caps[0]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(nzval, i, temp, &flag_buf, caps[4]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (i = 0; i < n * l; i++) {
     int temp = cheri_load(xcols, i, &flag_buf, caps[1]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(cols, i, temp, &flag_buf, caps[5]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (i = 0; i < n; i++) {
     TYPE temp = cheri_load(xvec, i, &flag_buf, caps[2]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(vec, i, temp, &flag_buf, caps[6]);
+    if (flag_buf) { *flag =1; return;}
   }
 
 ellpack_1:
   for (i = 0; i < n; i++) {
     TYPE sum = cheri_load(out, i, &flag_buf, caps[7]);
+    if (flag_buf) { *flag =1; return;}
   ellpack_2:
     for (j = 0; j < l; j++) {
       int idx = j + i * l;
       TYPE nzval_val = cheri_load(nzval, idx, &flag_buf, caps[4]);
+      if (flag_buf) { *flag =1; return;}
       int cols_val = cheri_load(cols, idx, &flag_buf, caps[5]);
+      if (flag_buf) { *flag =1; return;}
       TYPE vec_val = cheri_load(vec, cols_val, &flag_buf, caps[6]);
+      if (flag_buf) { *flag =1; return;}
       Si = nzval_val * vec_val;
       sum += Si;
     }
     cheri_store(out, i, sum, &flag_buf, caps[7]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (i = 0; i < n; i++) {
     TYPE temp = cheri_load(out, i, &flag_buf, caps[7]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(xout, i, temp, &flag_buf, caps[3]);
+    if (flag_buf) { *flag =1; return;}
   }
 
   *flag = flag_buf;

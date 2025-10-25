@@ -22,123 +22,148 @@
 #define div(x, y) (y) ? x / y : x
 
 void soft_max(int net_outputs[possible_outputs],
-              int activations[possible_outputs], u32 *flag_buf, Cap caps[29]) {
+              int activations[possible_outputs], u32 *flag_buf, Cap caps[29], u32 *flag) {
   int i;
   int sum;
   sum = (int)0;
 
   for (i = 0; i < possible_outputs; i++) {
     int act = cheri_load(activations, i, flag_buf, caps[18]);
+    if (*flag_buf) { *flag =1; return;}
     sum += exp(-act);
   }
   for (i = 0; i < possible_outputs; i++) {
     int act = cheri_load(activations, i, flag_buf, caps[18]);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(net_outputs, i, div(exp(-act), sum), flag_buf, caps[22]);
+    if (*flag_buf) { *flag =1; return;}
   }
 }
 
 void RELU(int *activations, int *dactivations, int size, u32 *flag_buf,
-          Cap act_cap, Cap dact_cap) {
+          Cap act_cap, Cap dact_cap, u32 *flag) {
   int i;
   for (i = 0; i < size; i++) {
     int act = cheri_load(activations, i, flag_buf, act_cap);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(dactivations, i, act * (1 - act), flag_buf, dact_cap);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(activations, i, (1 + exp(-act)), flag_buf, act_cap);
+    if (*flag_buf) { *flag =1; return;}
   }
 }
 
 void add_bias_to_activations(int biases[nodes_per_layer],
                              int activations[nodes_per_layer], int size,
-                             u32 *flag_buf, Cap bias_cap, Cap act_cap) {
+                             u32 *flag_buf, Cap bias_cap, Cap act_cap, u32 *flag) {
   int i;
   for (i = 0; i < size; i++) {
     int bias = cheri_load(biases, i, flag_buf, bias_cap);
+    if (*flag_buf) { *flag =1; return;}
     int act = cheri_load(activations, i, flag_buf, act_cap);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(activations, i, act + bias, flag_buf, act_cap);
+    if (*flag_buf) { *flag =1; return;}
   }
 }
 
 void matrix_vector_product_with_bias_input_layer(
     int biases[nodes_per_layer], int weights[input_dimension * nodes_per_layer],
     int activations[nodes_per_layer], int input_sample[input_dimension],
-    u32 *flag_buf, Cap caps[29]) {
+    u32 *flag_buf, Cap caps[29], u32 *flag) {
   int i, j;
   for (j = 0; j < nodes_per_layer; j++) {
     int sum = 0;
     for (i = 0; i < input_dimension; i++) {
       int w = cheri_load(weights, j * input_dimension + i, flag_buf, caps[8]);
+      if (*flag_buf) { *flag =1; return;}
       int inp = cheri_load(input_sample, i, flag_buf, caps[14]);
+      if (*flag_buf) { *flag =1; return;}
       sum += w * inp;
     }
     cheri_store(activations, j, sum, flag_buf, caps[15]);
+    if (*flag_buf) { *flag =1; return;}
   }
   add_bias_to_activations(biases, activations, nodes_per_layer, flag_buf,
-                          caps[11], caps[15]);
+                          caps[11], caps[15], flag);
 }
 
 void matrix_vector_product_with_bias_second_layer(
     int biases[nodes_per_layer], int weights[nodes_per_layer * nodes_per_layer],
     int activations[nodes_per_layer], int input_activations[nodes_per_layer],
-    u32 *flag_buf, Cap caps[29]) {
+    u32 *flag_buf, Cap caps[29], u32 *flag) {
   int i, j;
   for (i = 0; i < nodes_per_layer; i++) {
     int sum = 0;
     for (j = 0; j < nodes_per_layer; j++) {
       int w = cheri_load(weights, i * nodes_per_layer + j, flag_buf, caps[9]);
+      if (*flag_buf) { *flag =1; return;}
       int inp = cheri_load(input_activations, j, flag_buf, caps[15]);
+      if (*flag_buf) { *flag =1; return;}
       sum += w * inp;
     }
     cheri_store(activations, i, sum, flag_buf, caps[16]);
+    if (*flag_buf) { *flag =1; return;}
   }
   add_bias_to_activations(biases, activations, nodes_per_layer, flag_buf,
-                          caps[12], caps[16]);
+                          caps[12], caps[16], flag);
 }
 
 void matrix_vector_product_with_bias_output_layer(
     int biases[possible_outputs],
     int weights[nodes_per_layer * possible_outputs],
     int activations[possible_outputs], int input_activations[nodes_per_layer],
-    u32 *flag_buf, Cap caps[29]) {
+    u32 *flag_buf, Cap caps[29], u32 *flag) {
   int i, j;
   for (j = 0; j < possible_outputs; j++) {
     int sum = 0;
     for (i = 0; i < nodes_per_layer; i++) {
       int w = cheri_load(weights, j * nodes_per_layer + i, flag_buf, caps[10]);
+      if (*flag_buf) { *flag =1; return;}
       int inp = cheri_load(input_activations, i, flag_buf, caps[16]);
+      if (*flag_buf) { *flag =1; return;}
       sum += w * inp;
     }
     cheri_store(activations, j, sum, flag_buf, caps[17]);
+    if (*flag_buf) { *flag =1; return;}
   }
   add_bias_to_activations(biases, activations, possible_outputs, flag_buf,
-                          caps[13], caps[17]);
+                          caps[13], caps[17], flag);
 }
 
 void take_difference(int net_outputs[possible_outputs],
                      int solutions[possible_outputs],
                      int output_difference[possible_outputs],
                      int dactivations[possible_outputs], u32 *flag_buf,
-                     Cap caps[29]) {
+                     Cap caps[29], u32 *flag) {
   int i;
   for (i = 0; i < possible_outputs; i++) {
     int net_out = cheri_load(net_outputs, i, flag_buf, caps[22]);
+    if (*flag_buf) { *flag =1; return;}
     int sol = cheri_load(solutions, i, flag_buf, caps[21]);
+    if (*flag_buf) { *flag =1; return;}
     int dact = cheri_load(dactivations, i, flag_buf, caps[20]);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(output_difference, i, (((net_out)-sol) * -1) * dact, flag_buf,
                 caps[23]);
+    if (*flag_buf) { *flag =1; return;}
   }
 }
 
 void get_delta_matrix_weights3(
     int delta_weights3[nodes_per_layer * possible_outputs],
     int output_difference[possible_outputs],
-    int last_activations[nodes_per_layer], u32 *flag_buf, Cap caps[29]) {
+    int last_activations[nodes_per_layer], u32 *flag_buf, Cap caps[29], u32 *flag) {
   int i, j;
   for (i = 0; i < nodes_per_layer; i++) {
     int last_act = cheri_load(last_activations, i, flag_buf, caps[16]);
+    if (*flag_buf) { *flag =1; return;}
     for (j = 0; j < possible_outputs; j++) {
       int out_diff = cheri_load(output_difference, j, flag_buf, caps[23]);
+      if (*flag_buf) { *flag =1; return;}
       cheri_store(delta_weights3, i * possible_outputs + j, last_act * out_diff,
                   flag_buf, caps[26]);
+    if (*flag_buf) { *flag =1; return;}
     }
   }
 }
@@ -147,32 +172,39 @@ void get_oracle_activations2(int weights3[nodes_per_layer * possible_outputs],
                              int output_differences[possible_outputs],
                              int oracle_activations[nodes_per_layer],
                              int dactivations[nodes_per_layer], u32 *flag_buf,
-                             Cap caps[29]) {
+                             Cap caps[29], u32 *flag) {
   int i, j;
   for (i = 0; i < nodes_per_layer; i++) {
     int sum = 0;
     for (j = 0; j < possible_outputs; j++) {
       int out_diff = cheri_load(output_differences, j, flag_buf, caps[23]);
+      if (*flag_buf) { *flag =1; return;}
       int w =
           cheri_load(weights3, i * possible_outputs + j, flag_buf, caps[10]);
+          if (*flag_buf) { *flag =1; return;}
       sum += out_diff * w;
     }
     int dact = cheri_load(dactivations, i, flag_buf, caps[19]);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(oracle_activations, i, sum * dact, flag_buf, caps[28]);
+    if (*flag_buf) { *flag =1; return;}
   }
 }
 
 void get_delta_matrix_weights2(
     int delta_weights2[nodes_per_layer * nodes_per_layer],
     int output_difference[nodes_per_layer],
-    int last_activations[nodes_per_layer], u32 *flag_buf, Cap caps[29]) {
+    int last_activations[nodes_per_layer], u32 *flag_buf, Cap caps[29], u32 *flag) {
   int i, j;
   for (i = 0; i < nodes_per_layer; i++) {
     int last_act = cheri_load(last_activations, i, flag_buf, caps[15]);
+    if (*flag_buf) { *flag =1; return;}
     for (j = 0; j < nodes_per_layer; j++) {
       int out_diff = cheri_load(output_difference, j, flag_buf, caps[28]);
+      if (*flag_buf) { *flag =1; return;}
       cheri_store(delta_weights2, i * nodes_per_layer + j, last_act * out_diff,
                   flag_buf, caps[25]);
+    if (*flag_buf) { *flag =1; return;}
     }
   }
 }
@@ -181,31 +213,38 @@ void get_oracle_activations1(int weights2[nodes_per_layer * nodes_per_layer],
                              int output_differences[nodes_per_layer],
                              int oracle_activations[nodes_per_layer],
                              int dactivations[nodes_per_layer], u32 *flag_buf,
-                             Cap caps[29]) {
+                             Cap caps[29], u32 *flag) {
   int i, j;
   for (i = 0; i < nodes_per_layer; i++) {
     int sum = 0;
     for (j = 0; j < nodes_per_layer; j++) {
       int out_diff = cheri_load(output_differences, j, flag_buf, caps[28]);
+      if (*flag_buf) { *flag =1; return;}
       int w = cheri_load(weights2, i * nodes_per_layer + j, flag_buf, caps[9]);
+      if (*flag_buf) { *flag =1; return;}
       sum += out_diff * w;
     }
     int dact = cheri_load(dactivations, i, flag_buf, caps[18]);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(oracle_activations, i, sum * dact, flag_buf, caps[27]);
+    if (*flag_buf) { *flag =1; return;}
   }
 }
 
 void get_delta_matrix_weights1(
     int delta_weights1[input_dimension * nodes_per_layer],
     int output_difference[nodes_per_layer],
-    int last_activations[input_dimension], u32 *flag_buf, Cap caps[29]) {
+    int last_activations[input_dimension], u32 *flag_buf, Cap caps[29], u32 *flag) {
   int i, j;
   for (i = 0; i < input_dimension; i++) {
     int last_act = cheri_load(last_activations, i, flag_buf, caps[14]);
+    if (*flag_buf) { *flag =1; return;}
     for (j = 0; j < nodes_per_layer; j++) {
       int out_diff = cheri_load(output_difference, j, flag_buf, caps[27]);
+      if (*flag_buf) { *flag =1; return;}
       cheri_store(delta_weights1, i * nodes_per_layer + j, last_act * out_diff,
                   flag_buf, caps[24]);
+    if (*flag_buf) { *flag =1; return;}
     }
   }
 }
@@ -221,7 +260,7 @@ void update_weights(int weights1[input_dimension * nodes_per_layer],
                     int d_biases1[nodes_per_layer],
                     int d_biases2[nodes_per_layer],
                     int d_biases3[possible_outputs], u32 *flag_buf,
-                    Cap caps[29]) {
+                    Cap caps[29], u32 *flag) {
   int i, j;
   int norm, bias_norm;
   norm = 0;
@@ -230,18 +269,24 @@ void update_weights(int weights1[input_dimension * nodes_per_layer],
   for (i = 0; i < input_dimension; i++) {
     for (j = 0; j < nodes_per_layer; j++) {
       int w = cheri_load(weights1, i * nodes_per_layer + j, flag_buf, caps[8]);
+      if (*flag_buf) { *flag =1; return;}
       int dw =
           cheri_load(d_weights1, i * nodes_per_layer + j, flag_buf, caps[24]);
+          if (*flag_buf) { *flag =1; return;}
       w -= (dw * learning_rate);
       cheri_store(weights1, i * nodes_per_layer + j, w, flag_buf, caps[8]);
+      if (*flag_buf) { *flag =1; return;}
       norm += w * w;
     }
   }
   for (i = 0; i < nodes_per_layer; i++) {
     int b = cheri_load(biases1, i, flag_buf, caps[11]);
+    if (*flag_buf) { *flag =1; return;}
     int db = cheri_load(d_biases1, i, flag_buf, caps[27]);
+    if (*flag_buf) { *flag =1; return;}
     b -= (db * learning_rate);
     cheri_store(biases1, i, b, flag_buf, caps[11]);
+    if (*flag_buf) { *flag =1; return;}
     bias_norm += b * b;
   }
 
@@ -251,13 +296,17 @@ void update_weights(int weights1[input_dimension * nodes_per_layer],
   for (i = 0; i < input_dimension; i++) {
     for (j = 0; j < nodes_per_layer; j++) {
       int w = cheri_load(weights1, i * nodes_per_layer + j, flag_buf, caps[8]);
+      if (*flag_buf) { *flag =1; return;}
       cheri_store(weights1, i * nodes_per_layer + j, div(w, norm), flag_buf,
                   caps[8]);
+    if (*flag_buf) { *flag =1; return;}
     }
   }
   for (i = 0; i < nodes_per_layer; i++) {
     int b = cheri_load(biases1, i, flag_buf, caps[11]);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(biases1, i, div(b, bias_norm), flag_buf, caps[11]);
+    if (*flag_buf) { *flag =1; return;}
   }
 
   norm = (int)0;
@@ -266,18 +315,24 @@ void update_weights(int weights1[input_dimension * nodes_per_layer],
   for (i = 0; i < nodes_per_layer; i++) {
     for (j = 0; j < nodes_per_layer; j++) {
       int w = cheri_load(weights2, i * nodes_per_layer + j, flag_buf, caps[9]);
+      if (*flag_buf) { *flag =1; return;}
       int dw =
           cheri_load(d_weights2, i * nodes_per_layer + j, flag_buf, caps[25]);
+          if (*flag_buf) { *flag =1; return;}
       w -= (dw * learning_rate);
       cheri_store(weights2, i * nodes_per_layer + j, w, flag_buf, caps[9]);
+      if (*flag_buf) { *flag =1; return;}
       norm += w * w;
     }
   }
   for (i = 0; i < nodes_per_layer; i++) {
     int b = cheri_load(biases2, i, flag_buf, caps[12]);
+    if (*flag_buf) { *flag =1; return;}
     int db = cheri_load(d_biases2, i, flag_buf, caps[28]);
+    if (*flag_buf) { *flag =1; return;}
     b -= (db * learning_rate);
     cheri_store(biases2, i, b, flag_buf, caps[12]);
+    if (*flag_buf) { *flag =1; return;}
     bias_norm += b * b;
   }
 
@@ -287,13 +342,17 @@ void update_weights(int weights1[input_dimension * nodes_per_layer],
   for (i = 0; i < nodes_per_layer; i++) {
     for (j = 0; j < nodes_per_layer; j++) {
       int w = cheri_load(weights2, i * nodes_per_layer + j, flag_buf, caps[9]);
+      if (*flag_buf) { *flag =1; return;}
       cheri_store(weights2, i * nodes_per_layer + j, div(w, norm), flag_buf,
                   caps[9]);
+    if (*flag_buf) { *flag =1; return;}
     }
   }
   for (i = 0; i < nodes_per_layer; i++) {
     int b = cheri_load(biases2, i, flag_buf, caps[12]);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(biases2, i, div(b, bias_norm), flag_buf, caps[12]);
+    if (*flag_buf) { *flag =1; return;}
   }
 
   norm = 0;
@@ -303,18 +362,24 @@ void update_weights(int weights1[input_dimension * nodes_per_layer],
     for (j = 0; j < possible_outputs; j++) {
       int w =
           cheri_load(weights3, i * possible_outputs + j, flag_buf, caps[10]);
+          if (*flag_buf) { *flag =1; return;}
       int dw =
           cheri_load(d_weights3, i * possible_outputs + j, flag_buf, caps[26]);
+          if (*flag_buf) { *flag =1; return;}
       w -= (dw * learning_rate);
       cheri_store(weights3, i * possible_outputs + j, w, flag_buf, caps[10]);
+      if (*flag_buf) { *flag =1; return;}
       norm += w * w;
     }
   }
   for (i = 0; i < possible_outputs; i++) {
     int b = cheri_load(biases3, i, flag_buf, caps[13]);
+    if (*flag_buf) { *flag =1; return;}
     int db = cheri_load(d_biases3, i, flag_buf, caps[23]);
+    if (*flag_buf) { *flag =1; return;}
     b -= db * learning_rate;
     cheri_store(biases3, i, b, flag_buf, caps[13]);
+    if (*flag_buf) { *flag =1; return;}
     bias_norm += b * b;
   }
 
@@ -325,13 +390,17 @@ void update_weights(int weights1[input_dimension * nodes_per_layer],
     for (j = 0; j < possible_outputs; j++) {
       int w =
           cheri_load(weights3, i * possible_outputs + j, flag_buf, caps[10]);
+          if (*flag_buf) { *flag =1; return;}
       cheri_store(weights3, i * possible_outputs + j, div(w, norm), flag_buf,
                   caps[10]);
+    if (*flag_buf) { *flag =1; return;}
     }
   }
   for (i = 0; i < possible_outputs; i++) {
     int b = cheri_load(biases3, i, flag_buf, caps[13]);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(biases3, i, div(b, bias_norm), flag_buf, caps[13]);
+    if (*flag_buf) { *flag =1; return;}
   }
 }
 
@@ -401,16 +470,20 @@ void hls_top(int sets, int xweights1[input_dimension * nodes_per_layer],
     for (int j = 0; j < input_dimension; j++) {
       int temp = cheri_load(xtraining_data, i * input_dimension + j, &flag_buf,
                             caps[6]);
+    if (*flag_buf) { *flag =1; return;}
       cheri_store(training_data, i * input_dimension + j, temp, &flag_buf,
                   caps[14]);
+    if (*flag_buf) { *flag =1; return;}
     }
 
   for (int i = 0; i < training_sets; i++)
     for (int j = 0; j < possible_outputs; j++) {
       int temp = cheri_load(xtraining_targets, i * possible_outputs + j,
                             &flag_buf, caps[7]);
+    if (*flag_buf) { *flag =1; return;}
       cheri_store(training_targets, i * possible_outputs + j, temp, &flag_buf,
                   caps[21]);
+    if (*flag_buf) { *flag =1; return;}
     }
 
   int i, j;
@@ -433,69 +506,84 @@ void hls_top(int sets, int xweights1[input_dimension * nodes_per_layer],
   for (i = 0; i < sets; i++) {
     for (j = 0; j < nodes_per_layer; j++) {
       cheri_store(activations1, j, 0, &flag_buf, caps[15]);
+      if (*flag_buf) { *flag =1; return;}
       cheri_store(activations2, j, 0, &flag_buf, caps[16]);
+      if (*flag_buf) { *flag =1; return;}
       if (j < possible_outputs) {
         cheri_store(activations3, j, 0, &flag_buf, caps[17]);
+        if (*flag_buf) { *flag =1; return;}
       }
     }
     matrix_vector_product_with_bias_input_layer(
         biases1, weights1, activations1, &training_data[i * input_dimension],
-        &flag_buf, caps);
+        &flag_buf, caps, flag);
     RELU(activations1, dactivations1, nodes_per_layer, &flag_buf, caps[15],
-         caps[18]);
+         caps[18], flag);
     matrix_vector_product_with_bias_second_layer(
-        biases2, weights2, activations2, activations1, &flag_buf, caps);
+        biases2, weights2, activations2, activations1, &flag_buf, caps, flag);
     RELU(activations2, dactivations2, nodes_per_layer, &flag_buf, caps[16],
-         caps[19]);
+         caps[19], flag);
     matrix_vector_product_with_bias_output_layer(
-        biases3, weights3, activations3, activations2, &flag_buf, caps);
+        biases3, weights3, activations3, activations2, &flag_buf, caps, flag);
     RELU(activations3, dactivations3, possible_outputs, &flag_buf, caps[17],
-         caps[20]);
+         caps[20], flag);
 
-    soft_max(net_outputs, activations3, &flag_buf, caps);
+    soft_max(net_outputs, activations3, &flag_buf, caps, flag);
     take_difference(net_outputs, &training_targets[i * possible_outputs],
-                    output_difference, dactivations3, &flag_buf, caps);
+                    output_difference, dactivations3, &flag_buf, caps, flag);
     get_delta_matrix_weights3(delta_weights3, output_difference, activations2,
-                              &flag_buf, caps);
+                              &flag_buf, caps, flag);
     get_oracle_activations2(weights3, output_difference, oracle_activations2,
-                            dactivations2, &flag_buf, caps);
+                            dactivations2, &flag_buf, caps, flag);
     get_delta_matrix_weights2(delta_weights2, oracle_activations2, activations1,
-                              &flag_buf, caps);
+                              &flag_buf, caps, flag);
     get_oracle_activations1(weights2, oracle_activations2, oracle_activations1,
-                            dactivations1, &flag_buf, caps);
+                            dactivations1, &flag_buf, caps, flag);
     get_delta_matrix_weights1(delta_weights1, oracle_activations1,
                               &training_data[i * input_dimension], &flag_buf,
-                              caps);
+                              caps, flag);
     update_weights(weights1, weights2, weights3, delta_weights1, delta_weights2,
                    delta_weights3, biases1, biases2, biases3,
                    oracle_activations1, oracle_activations2, output_difference,
-                   &flag_buf, caps);
+                   &flag_buf, caps, flag);
   }
 
   for (int i = 0; i < input_dimension * nodes_per_layer; i++) {
     int temp = cheri_load(weights1, i, &flag_buf, caps[8]);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(xweights1, i, temp, &flag_buf, caps[0]);
+    if (*flag_buf) { *flag =1; return;}
   }
   for (int i = 0; i < nodes_per_layer * nodes_per_layer; i++) {
     int temp = cheri_load(weights2, i, &flag_buf, caps[9]);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(xweights2, i, temp, &flag_buf, caps[1]);
+    if (*flag_buf) { *flag =1; return;}
   }
   for (int i = 0; i < nodes_per_layer * possible_outputs; i++) {
     int temp = cheri_load(weights3, i, &flag_buf, caps[10]);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(xweights3, i, temp, &flag_buf, caps[2]);
+    if (*flag_buf) { *flag =1; return;}
   }
 
   for (int i = 0; i < nodes_per_layer; i++) {
     int temp = cheri_load(biases1, i, &flag_buf, caps[11]);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(xbiases1, i, temp, &flag_buf, caps[3]);
+    if (*flag_buf) { *flag =1; return;}
   }
   for (int i = 0; i < nodes_per_layer; i++) {
     int temp = cheri_load(biases2, i, &flag_buf, caps[12]);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(xbiases2, i, temp, &flag_buf, caps[4]);
+    if (*flag_buf) { *flag =1; return;}
   }
   for (int i = 0; i < possible_outputs; i++) {
     int temp = cheri_load(biases3, i, &flag_buf, caps[13]);
+    if (*flag_buf) { *flag =1; return;}
     cheri_store(xbiases3, i, temp, &flag_buf, caps[5]);
+    if (*flag_buf) { *flag =1; return;}
   }
 
   *flag = flag_buf;

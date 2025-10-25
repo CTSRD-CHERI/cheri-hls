@@ -45,18 +45,23 @@ stencil_label1:
         for (k2 = 0; k2 < 3; k2++) {
           TYPE filter_elem =
               cheri_load(xfilter, k1 * 3 + k2, &flag_buf, caps[2]);
+          if (flag_buf) { *flag =1; return;}
           TYPE orig_elem = cheri_load(xorig, (r + k1) * col_size + c + k2,
                                       &flag_buf, caps[0]);
+          if (flag_buf) { *flag =1; return;}
           temp += filter_elem * orig_elem;
         }
       }
       cheri_store(sol, (r * col_size) + c, temp, &flag_buf, caps[3]);
+      if (flag_buf) { *flag =1; return;}
     }
   }
 
   for (i = 0; i < size * col_size; i++) {
     TYPE temp = cheri_load(sol, i, &flag_buf, caps[3]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(xsol, i, temp, &flag_buf, caps[1]);
+    if (flag_buf) { *flag =1; return;}
   }
 
   *flag = flag_buf;

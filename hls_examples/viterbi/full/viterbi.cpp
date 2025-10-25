@@ -1,4 +1,4 @@
-#include "../../chls-fullcap.h"
+#include "../../chls-fullcap-inline.h"
 
 #define TYPE int
 typedef int tok_t;

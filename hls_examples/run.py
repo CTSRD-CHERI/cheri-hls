@@ -32,12 +32,7 @@ TESTS = [
     "vect_mult",
 ]
 
-MODES = [
-    "base",
-    "light",
-    "full",
-    "refined",
-]
+MODES = ["base", "light", "full", "refined", "branch"]
 
 # ---------------------------------------
 # Logger setup

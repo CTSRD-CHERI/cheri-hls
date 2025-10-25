@@ -49,11 +49,15 @@ void hls_top(int size, TYPE xm1[N], TYPE xm2[N], TYPE xprod[N], u32 *flag,
 
   for (i = 0; i < size * size; i++) {
     int temp = cheri_load(xm1, i, &flag_buf, caps[0]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(m1, i, temp, &flag_buf, caps[3]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (i = 0; i < size * size; i++) {
     int temp = cheri_load(xm2, i, &flag_buf, caps[1]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(m2, i, temp, &flag_buf, caps[4]);
+    if (flag_buf) { *flag =1; return;}
   }
 
 loopjj:
@@ -67,14 +71,18 @@ loopjj:
           i_row = i * size;
           k_row = (k + kk) * size;
           temp_x = cheri_load(m1, i_row + k + kk, &flag_buf, caps[3]);
+          if (flag_buf) { *flag =1; return;}
         loopj:
           for (j = 0; j < block_size; ++j) {
             int temp_m2 = cheri_load(m2, k_row + j + jj, &flag_buf, caps[4]);
+            if (flag_buf) { *flag =1; return;}
             mul = temp_x * temp_m2;
 
             int temp_p =
                 cheri_load(prod, i_row + j + jj, &flag_buf, caps[5]) + mul;
+            if (flag_buf) { *flag =1; return;}
             cheri_store(prod, i_row + j + jj, temp_p, &flag_buf, caps[5]);
+            if (flag_buf) { *flag =1; return;}
           }
         }
       }
@@ -82,7 +90,9 @@ loopjj:
   }
   for (i = 0; i < size * size; i++) {
     int temp = cheri_load(prod, i, &flag_buf, caps[5]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(xprod, i, temp, &flag_buf, caps[2]);
+    if (flag_buf) { *flag =1; return;}
   }
 }
 

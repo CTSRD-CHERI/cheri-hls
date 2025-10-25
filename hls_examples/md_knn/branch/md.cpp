@@ -65,26 +65,37 @@ void hls_top(int size, TYPE xforce_x[nAtoms], TYPE xforce_y[nAtoms],
 
   for (i = 0; i < size; i++) {
     TYPE temp = cheri_load(xposition_x, i, &flag_buf, caps[3]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(position_x, i, temp, &flag_buf, caps[10]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (i = 0; i < size; i++) {
     TYPE temp = cheri_load(xposition_y, i, &flag_buf, caps[4]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(position_y, i, temp, &flag_buf, caps[11]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (i = 0; i < size; i++) {
     TYPE temp = cheri_load(xposition_z, i, &flag_buf, caps[5]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(position_z, i, temp, &flag_buf, caps[12]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (i = 0; i < size * maxNeighbors; i++) {
     int temp = cheri_load(xNL, i, &flag_buf, caps[6]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(NL, i, temp, &flag_buf, caps[13]);
+    if (flag_buf) { *flag =1; return;}
   }
 
 loop_i:
   for (i = 0; i < size; i++) {
     i_x = cheri_load(position_x, i, &flag_buf, caps[10]);
+    if (flag_buf) { *flag =1; return;}
     i_y = cheri_load(position_y, i, &flag_buf, caps[11]);
+    if (flag_buf) { *flag =1; return;}
     i_z = cheri_load(position_z, i, &flag_buf, caps[12]);
+    if (flag_buf) { *flag =1; return;}
     fx = 0;
     fy = 0;
     fz = 0;
@@ -92,10 +103,14 @@ loop_i:
     for (j = 0; j < maxNeighbors; j++) {
       // Get neighbor
       jidx = cheri_load(NL, i * maxNeighbors + j, &flag_buf, caps[13]);
+      if (flag_buf) { *flag =1; return;}
       // Look up x,y,z positions
       j_x = cheri_load(position_x, jidx, &flag_buf, caps[10]);
+      if (flag_buf) { *flag =1; return;}
       j_y = cheri_load(position_y, jidx, &flag_buf, caps[11]);
+      if (flag_buf) { *flag =1; return;}
       j_z = cheri_load(position_z, jidx, &flag_buf, caps[12]);
+      if (flag_buf) { *flag =1; return;}
       // Calc distance
       delx = i_x - j_x;
       dely = i_y - j_y;
@@ -112,22 +127,31 @@ loop_i:
     }
     // Update forces after all neighbors accounted for.
     cheri_store(force_x, i, fx, &flag_buf, caps[7]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(force_y, i, fy, &flag_buf, caps[8]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(force_z, i, fz, &flag_buf, caps[9]);
+    if (flag_buf) { *flag =1; return;}
     // printf("dF=%lf,%lf,%lf\n", fx, fy, fz);
   }
 
   for (i = 0; i < size; i++) {
     TYPE temp = cheri_load(force_x, i, &flag_buf, caps[7]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(xforce_x, i, temp, &flag_buf, caps[0]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (i = 0; i < size; i++) {
     TYPE temp = cheri_load(force_y, i, &flag_buf, caps[8]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(xforce_y, i, temp, &flag_buf, caps[1]);
+    if (flag_buf) { *flag =1; return;}
   }
   for (i = 0; i < size; i++) {
     TYPE temp = cheri_load(force_z, i, &flag_buf, caps[9]);
+    if (flag_buf) { *flag =1; return;}
     cheri_store(xforce_z, i, temp, &flag_buf, caps[2]);
+    if (flag_buf) { *flag =1; return;}
   }
 
   *flag = flag_buf;

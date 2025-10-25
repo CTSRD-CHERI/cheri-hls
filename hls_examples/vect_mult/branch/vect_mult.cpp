@@ -23,11 +23,14 @@ void hls_top(int size, int a[N], int b[N], int c[N], u32 *flag, u32 cap[12]) {
 #pragma HLS PIPELINE
 
     int a_elem = cheri_load(a, i, &flag_buf, caps[0]);
+    if (flag_buf) { *flag =1; return;}
     int b_elem = cheri_load(b, i, &flag_buf, caps[1]);
+    if (flag_buf) { *flag =1; return;}
 
     int c_elem = a_elem * b_elem;
 
     cheri_store(c, i, c_elem, &flag_buf, caps[2]);
+    if (flag_buf) { *flag =1; return;}
   }
 
   *flag = flag_buf;
