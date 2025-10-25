@@ -71,34 +71,62 @@ void hls_top(node_index_t starting_node, int levels, int node,
 
   for (int i = 0; i < node; i++) {
     int temp = cheri_load(xnodes_b, i, &flag_buf, caps[0]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(nodes_begin, i, temp, &flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
   for (int i = 0; i < node; i++) {
     int temp = cheri_load(xnodes_e, i, &flag_buf, caps[1]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(nodes_end, i, temp, &flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   for (int i = 0; i < N_EDGES; i++) {
     edge_t temp = cheri_load(xedges, i, &flag_buf, caps[2]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(edges, i, temp, &flag_buf, caps[8]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   q_in = 1;
   q_out = 0;
   cheri_store(level, starting_node, 0, &flag_buf, caps[9]);
-  if (flag_buf) { *flag =1; return;}
+  if (flag_buf) {
+    *flag = 1;
+    return;
+  }
   cheri_store(level_counts, 0, 1, &flag_buf, caps[10]);
-  if (flag_buf) { *flag =1; return;}
+  if (flag_buf) {
+    *flag = 1;
+    return;
+  }
 
   // Q_PUSH(starting_node)
   cheri_store(queue, q_in == 0 ? N_NODES - 1 : q_in - 1, starting_node,
               &flag_buf, caps[5]);
+  if (flag_buf) {
+    *flag = 1;
+    return;
+  }
   q_in = (q_in + 1) % N_NODES;
 
 loop_queue:
@@ -109,37 +137,68 @@ loop_queue:
       break;
     // Q_PEEK()
     n = cheri_load(queue, q_out, &flag_buf, caps[5]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     // Q_POP()
     q_out = (q_out + 1) % N_NODES;
 
     edge_index_t tmp_begin = cheri_load(nodes_begin, n, &flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     edge_index_t tmp_end = cheri_load(nodes_end, n, &flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   loop_neighbors:
     for (e = tmp_begin; e < tmp_end; e++) {
       node_index_t tmp_dst = cheri_load(edges, e, &flag_buf, caps[8]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
       level_t tmp_level = cheri_load(level, tmp_dst, &flag_buf, caps[9]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
 
       if (tmp_level == MAX_LEVEL) { // Unmarked
         level_t level_n = cheri_load(level, n, &flag_buf, caps[9]);
-        if (flag_buf) { *flag =1; return;}
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         level_t new_level = level_n + 1;
         cheri_store(level, tmp_dst, new_level, &flag_buf, caps[9]);
-        if (flag_buf) { *flag =1; return;}
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
 
         edge_index_t count =
             cheri_load(level_counts, new_level, &flag_buf, caps[10]);
-            if (flag_buf) { *flag =1; return;}
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         cheri_store(level_counts, new_level, count + 1, &flag_buf, caps[10]);
-        if (flag_buf) { *flag =1; return;}
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
 
         // Q_PUSH(tmp_dst)
         cheri_store(queue, q_in == 0 ? N_NODES - 1 : q_in - 1, tmp_dst,
                     &flag_buf, caps[5]);
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         q_in = (q_in + 1) % N_NODES;
       }
     }
@@ -147,16 +206,28 @@ loop_queue:
 
   for (int i = 0; i < node; i++) {
     level_t temp = cheri_load(level, i, &flag_buf, caps[9]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(xlevel, i, temp, &flag_buf, caps[3]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   for (int i = 0; i < levels; i++) {
     edge_index_t temp = cheri_load(level_counts, i, &flag_buf, caps[10]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(xlevel_counts, i, temp, &flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   *flag = flag_buf;
