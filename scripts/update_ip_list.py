@@ -2366,11 +2366,13 @@ class Updater:
     """
     args:
         - test : Name of the top-level design
+        - mode : Mode of the top-level design
     """
 
     def __init__(self, args):
         self.args = args
         self.test = self.args.test
+        self.mode = self.args.mode
         # Root path of cheri-hls
         self.root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
         # Root path of the Vivado design
@@ -2394,8 +2396,9 @@ class Updater:
         # Root path of HLS build
         self.hls_build = os.path.join(
             self.root,
-            "examples",
+            "hls_examples",
             f"{self.test}",
+            f"{self.mode}",
         )
         self.run()
 
@@ -2403,7 +2406,7 @@ class Updater:
         # Create HLS source directory
         vproj = os.path.join(
             self.proj,
-            f"{self.test}_hls",
+            f"{self.test}_{self.mode}_hls",
         )
         if os.path.exists(vproj):
             shutil.rmtree(vproj)
@@ -2458,6 +2461,13 @@ update_ip_list.py --test vect_mult --mode
         default=None,
         dest="test",
         help="Name of the top-level design",
+    )
+    parser.add_argument(
+        "-m",
+        "--mode",
+        default=None,
+        dest="mode",
+        help="Mode of the top-level design",
     )
     args = parser.parse_args()
 

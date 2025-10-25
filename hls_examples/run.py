@@ -315,7 +315,23 @@ class RunHLS:
             shutil.rmtree(vproj)
             self.logger.info(f"Removed (old) {vproj}")
 
-        cmd = ["bash", os.path.join(self.root, "scripts", "run-vivado.sh"), f"{test}"]
+        vproj = os.path.join(
+            self.root,
+            "..",
+            "BESSPIN-GFE",
+            "vivado",
+            "soc_bluespec_p2",
+        )
+        if os.path.exists(vproj):
+            shutil.rmtree(vproj)
+            self.logger.info(f"Removed (old) {vproj}")
+
+        cmd = [
+            "bash",
+            os.path.join(self.root, "..", "scripts", "run-vivado.sh"),
+            f"{test}",
+            f"{mode}",
+        ]
         result = self.execute(cmd)
         if result:
             self.logger.error(f"Get bitstream for {test}({mode}) failed.")
