@@ -2,7 +2,7 @@
 Based on algorithm described here:
 http://www.cs.berkeley.edu/~mhoemmen/matrix-seminar/slides/UCB_sparse_tutorial_1.pdf
 */
-#include "../../chls.h"
+#include "../../chls-light.h"
 
 #define NNZ 1666
 #define N 494
@@ -43,11 +43,11 @@ void hls_top(int size, TYPE xval[NNZ], int xcols[NNZ],
   TYPE vec[N];
   TYPE out[N];
 
-  create_cap(NNZ, caps, 5);       // val
-  create_cap(NNZ, caps, 6);       // cols
-  create_cap(N + 1, caps, 7);     // rowDelimiters
-  create_cap(N, caps, 8);         // vec
-  create_cap(N, caps, 9);         // out
+  create_cap(NNZ, caps, 5);   // val
+  create_cap(NNZ, caps, 6);   // cols
+  create_cap(N + 1, caps, 7); // rowDelimiters
+  create_cap(N, caps, 8);     // vec
+  create_cap(N, caps, 9);     // out
 
   // Load val array
   for (i = 0; i < NNZ; i++) {

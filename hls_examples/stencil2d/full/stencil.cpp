@@ -1,4 +1,4 @@
-#include "../../chls-fullcap.h"
+#include "../../chls-fullcap-inline.h"
 
 // Define input sizes
 #define col_size 64
