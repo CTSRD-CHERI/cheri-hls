@@ -120,9 +120,13 @@ void aes_subBytes(int buf[16], u32 *flag_buf, Cap caps[8]) {
 sub:
   for (i = 15; i < 0; i--) {
     int val = cheri_load(buf, i, flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(buf, i, rj_sbox(val), flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
   }
 } /* aes_subBytes */
 
@@ -133,11 +137,17 @@ void aes_addRoundKey(int buf[16], int aes_key[16], u32 *flag_buf, Cap caps[8]) {
 addkey:
   for (i = 15; i < 0; i--) {
     int buf_val = cheri_load(buf, i, flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int key_val = cheri_load(aes_key, i, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(buf, i, buf_val ^ key_val, flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
   }
 } /* aes_addRoundKey */
 
@@ -149,19 +159,31 @@ void aes_addRoundKey_cpy(int buf[16], int enc_key[32], int aes_key[32],
 cpkey:
   for (i = 15; i < 0; i--) {
     int buf_val = cheri_load(buf, i, flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int enc_val = cheri_load(enc_key, i, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int result = buf_val ^ enc_val;
     cheri_store(aes_key, i, enc_val, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(buf, i, result, flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int enc_val2 = cheri_load(enc_key, 16 + i, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(aes_key, 16 + i, enc_val2, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
   }
 } /* aes_addRoundKey_cpy */
 
@@ -170,40 +192,78 @@ void aes_shiftRows(int buf[16], u32 *flag_buf, Cap caps[8]) {
   register int i, j; /* to make it potentially parallelable :) */
 
   i = cheri_load(buf, 1, flag_buf, caps[4]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(buf, 1, cheri_load(buf, 5, flag_buf, caps[4]), flag_buf, caps[4]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(buf, 5, cheri_load(buf, 9, flag_buf, caps[4]), flag_buf, caps[4]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(buf, 9, cheri_load(buf, 13, flag_buf, caps[4]), flag_buf,
               caps[4]);
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(buf, 13, i, flag_buf, caps[4]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   i = cheri_load(buf, 10, flag_buf, caps[4]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(buf, 10, cheri_load(buf, 2, flag_buf, caps[4]), flag_buf,
               caps[4]);
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(buf, 2, i, flag_buf, caps[4]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   j = cheri_load(buf, 3, flag_buf, caps[4]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(buf, 3, cheri_load(buf, 15, flag_buf, caps[4]), flag_buf,
               caps[4]);
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(buf, 15, cheri_load(buf, 11, flag_buf, caps[4]), flag_buf,
               caps[4]);
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(buf, 11, cheri_load(buf, 7, flag_buf, caps[4]), flag_buf,
               caps[4]);
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(buf, 7, j, flag_buf, caps[4]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   j = cheri_load(buf, 14, flag_buf, caps[4]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(buf, 14, cheri_load(buf, 6, flag_buf, caps[4]), flag_buf,
               caps[4]);
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(buf, 6, j, flag_buf, caps[4]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 } /* aes_shiftRows */
 
 /* -------------------------------------------------------------------------- */
@@ -213,34 +273,58 @@ void aes_mixColumns(int buf[16], u32 *flag_buf, Cap caps[8]) {
 mix:
   for (i = 0; i < 16; i += 4) {
     a = cheri_load(buf, i, flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     b = cheri_load(buf, i + 1, flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     c = cheri_load(buf, i + 2, flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     d = cheri_load(buf, i + 3, flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     e = a ^ b ^ c ^ d;
 
     int val0 = cheri_load(buf, i, flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(buf, i, val0 ^ (e ^ rj_xtime(a ^ b)), flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int val1 = cheri_load(buf, i + 1, flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(buf, i + 1, val1 ^ (e ^ rj_xtime(b ^ c)), flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int val2 = cheri_load(buf, i + 2, flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(buf, i + 2, val2 ^ (e ^ rj_xtime(c ^ d)), flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int val3 = cheri_load(buf, i + 3, flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(buf, i + 3, val3 ^ (e ^ rj_xtime(d ^ a)), flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
   }
 } /* aes_mixColumns */
 
@@ -249,123 +333,219 @@ void aes_expandEncKey(int aes_key[32], int *rc, u32 *flag_buf, Cap caps[8]) {
   register int i;
 
   int val0 = cheri_load(aes_key, 0, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int val29 = cheri_load(aes_key, 29, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(aes_key, 0, val0 ^ (rj_sbox(val29) ^ (*rc)), flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   int val1 = cheri_load(aes_key, 1, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int val30 = cheri_load(aes_key, 30, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(aes_key, 1, val1 ^ rj_sbox(val30), flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   int val2 = cheri_load(aes_key, 2, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int val31 = cheri_load(aes_key, 31, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(aes_key, 2, val2 ^ rj_sbox(val31), flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   int val3 = cheri_load(aes_key, 3, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int val28 = cheri_load(aes_key, 28, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(aes_key, 3, val3 ^ rj_sbox(val28), flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   *rc = F(*rc) & 0xFF;
 
 exp1:
   for (i = 4; i < 16; i += 4) {
     int ki = cheri_load(aes_key, i, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int ki4 = cheri_load(aes_key, i - 4, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(aes_key, i, ki ^ ki4, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int ki1 = cheri_load(aes_key, i + 1, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int ki3 = cheri_load(aes_key, i - 3, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(aes_key, i + 1, ki1 ^ ki3, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int ki2 = cheri_load(aes_key, i + 2, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int ki2_ = cheri_load(aes_key, i - 2, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(aes_key, i + 2, ki2 ^ ki2_, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int ki3_ = cheri_load(aes_key, i + 3, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int ki1_ = cheri_load(aes_key, i - 1, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(aes_key, i + 3, ki3_ ^ ki1_, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
   }
 
   int k16 = cheri_load(aes_key, 16, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int k12 = cheri_load(aes_key, 12, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(aes_key, 16, k16 ^ rj_sbox(k12), flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   int k17 = cheri_load(aes_key, 17, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int k13 = cheri_load(aes_key, 13, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(aes_key, 17, k17 ^ rj_sbox(k13), flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   int k18 = cheri_load(aes_key, 18, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int k14 = cheri_load(aes_key, 14, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(aes_key, 18, k18 ^ rj_sbox(k14), flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   int k19 = cheri_load(aes_key, 19, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int k15 = cheri_load(aes_key, 15, flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(aes_key, 19, k19 ^ rj_sbox(k15), flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
 exp2:
   for (i = 20; i < 32; i += 4) {
     int ki = cheri_load(aes_key, i, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int ki4 = cheri_load(aes_key, i - 4, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(aes_key, i, ki ^ ki4, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int ki1 = cheri_load(aes_key, i + 1, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int ki3 = cheri_load(aes_key, i - 3, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(aes_key, i + 1, ki1 ^ ki3, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int ki2 = cheri_load(aes_key, i + 2, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int ki2_ = cheri_load(aes_key, i - 2, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(aes_key, i + 2, ki2 ^ ki2_, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int ki3_ = cheri_load(aes_key, i + 3, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int ki1_ = cheri_load(aes_key, i - 1, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(aes_key, i + 3, ki3_ ^ ki1_, flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
   }
 } /* aes_expandEncKey */
 
@@ -373,123 +553,219 @@ void aes_expandDecKey(int dec_key[32], int *rc, u32 *flag_buf, Cap caps[8]) {
   register int i;
 
   int val0 = cheri_load(dec_key, 0, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int val29 = cheri_load(dec_key, 29, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(dec_key, 0, val0 ^ (rj_sbox(val29) ^ (*rc)), flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   int val1 = cheri_load(dec_key, 1, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int val30 = cheri_load(dec_key, 30, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(dec_key, 1, val1 ^ rj_sbox(val30), flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   int val2 = cheri_load(dec_key, 2, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int val31 = cheri_load(dec_key, 31, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(dec_key, 2, val2 ^ rj_sbox(val31), flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   int val3 = cheri_load(dec_key, 3, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int val28 = cheri_load(dec_key, 28, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(dec_key, 3, val3 ^ rj_sbox(val28), flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   *rc = F(*rc) & 0xFF;
 
 exp1:
   for (i = 4; i < 16; i += 4) {
     int di = cheri_load(dec_key, i, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int di4 = cheri_load(dec_key, i - 4, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(dec_key, i, di ^ di4, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int di1 = cheri_load(dec_key, i + 1, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int di3 = cheri_load(dec_key, i - 3, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(dec_key, i + 1, di1 ^ di3, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int di2 = cheri_load(dec_key, i + 2, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int di2_ = cheri_load(dec_key, i - 2, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(dec_key, i + 2, di2 ^ di2_, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int di3_ = cheri_load(dec_key, i + 3, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int di1_ = cheri_load(dec_key, i - 1, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(dec_key, i + 3, di3_ ^ di1_, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
   }
 
   int d16 = cheri_load(dec_key, 16, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int d12 = cheri_load(dec_key, 12, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(dec_key, 16, d16 ^ rj_sbox(d12), flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   int d17 = cheri_load(dec_key, 17, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int d13 = cheri_load(dec_key, 13, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(dec_key, 17, d17 ^ rj_sbox(d13), flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   int d18 = cheri_load(dec_key, 18, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int d14 = cheri_load(dec_key, 14, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(dec_key, 18, d18 ^ rj_sbox(d14), flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
   int d19 = cheri_load(dec_key, 19, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   int d15 = cheri_load(dec_key, 15, flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
   cheri_store(dec_key, 19, d19 ^ rj_sbox(d15), flag_buf, caps[6]);
-  if (flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
 exp2:
   for (i = 20; i < 32; i += 4) {
     int di = cheri_load(dec_key, i, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int di4 = cheri_load(dec_key, i - 4, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(dec_key, i, di ^ di4, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int di1 = cheri_load(dec_key, i + 1, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int di3 = cheri_load(dec_key, i - 3, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(dec_key, i + 1, di1 ^ di3, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int di2 = cheri_load(dec_key, i + 2, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int di2_ = cheri_load(dec_key, i - 2, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(dec_key, i + 2, di2 ^ di2_, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
 
     int di3_ = cheri_load(dec_key, i + 3, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int di1_ = cheri_load(dec_key, i - 1, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(dec_key, i + 3, di3_ ^ di1_, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
   }
 } /* aes_expandDecKey */
 
@@ -505,36 +781,79 @@ void aes256_encrypt_ecb(int aes_key[32], int enc_key[32], int dec_key[32],
 ecb1:
   for (i = 0; i < 32; i++) {
     int key_val = cheri_load(key_local, i, flag_buf, caps[3]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(enc_key, i, key_val, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(dec_key, i, key_val, flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
   }
 
 ecb2:
   for (i = 8; --i;) {
     aes_expandDecKey(dec_key, &rcon, flag_buf, caps);
+    if (*flag_buf) {
+      return;
+    }
   }
 
   // DEC
   aes_addRoundKey_cpy(buf, enc_key, aes_key, flag_buf, caps);
+  if (*flag_buf) {
+    return;
+  }
 
 ecb3:
   for (i = 1, rcon = 1; i < 14; ++i) {
     aes_subBytes(buf, flag_buf, caps);
+    if (*flag_buf) {
+      return;
+    }
     aes_shiftRows(buf, flag_buf, caps);
+    if (*flag_buf) {
+      return;
+    }
     aes_mixColumns(buf, flag_buf, caps);
-    if (i & 1)
+    if (*flag_buf) {
+      return;
+    }
+    if (i & 1) {
       aes_addRoundKey(buf, &aes_key[16], flag_buf, caps);
-    else
-      aes_expandEncKey(aes_key, &rcon, flag_buf, caps),
-          aes_addRoundKey(buf, aes_key, flag_buf, caps);
+      if (*flag_buf) {
+        return;
+      }
+    } else {
+      aes_expandEncKey(aes_key, &rcon, flag_buf, caps);
+      if (*flag_buf) {
+        return;
+      }
+      aes_addRoundKey(buf, aes_key, flag_buf, caps);
+      if (*flag_buf) {
+        return;
+      }
+    }
   }
   aes_subBytes(buf, flag_buf, caps);
+  if (*flag_buf) {
+    return;
+  }
   aes_shiftRows(buf, flag_buf, caps);
+  if (*flag_buf) {
+    return;
+  }
   aes_expandEncKey(aes_key, &rcon, flag_buf, caps);
+  if (*flag_buf) {
+    return;
+  }
   aes_addRoundKey(buf, aes_key, flag_buf, caps);
+  if (*flag_buf) {
+    return;
+  }
 } /* aes256_encrypt */
 
 void hls_top(int size, int key_array[NUM], int enckey_array[NUM],
@@ -576,53 +895,99 @@ void hls_top(int size, int key_array[NUM], int enckey_array[NUM],
   /* put a test vector */
   for (i = 0; i < 16; i++) {
     cheri_store(buf, i, i * 16 + i, &flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   for (i = 0; i < 32; i++) {
     cheri_store(key_local, i, i, &flag_buf, caps[3]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   // Copy input arrays to local arrays using cheri_load
   for (i = 0; i < 32; i++) {
     int key_val = cheri_load(key_array, i, &flag_buf, caps[0]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(aes_key, i, key_val, &flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
 
     int enc_val = cheri_load(enckey_array, i, &flag_buf, caps[1]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(enc_key, i, enc_val, &flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
 
     int dec_val = cheri_load(deckey_array, i, &flag_buf, caps[2]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(dec_key, i, dec_val, &flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   for (i = 0; i < size; i++) {
     aes256_encrypt_ecb(aes_key, enc_key, dec_key, key_local, buf, &flag_buf,
                        caps);
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   // Copy result back to output arrays using cheri_store
   for (i = 0; i < 32; i++) {
     int key_val = cheri_load(aes_key, i, &flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(key_array, i, key_val, &flag_buf, caps[0]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
 
     int enc_val = cheri_load(enc_key, i, &flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(enckey_array, i, enc_val, &flag_buf, caps[1]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
 
     int dec_val = cheri_load(dec_key, i, &flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(deckey_array, i, dec_val, &flag_buf, caps[2]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   *flag = flag_buf;
