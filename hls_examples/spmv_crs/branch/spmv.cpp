@@ -52,66 +52,114 @@ void hls_top(int size, TYPE xval[NNZ], int xcols[NNZ],
   // Load val array
   for (i = 0; i < NNZ; i++) {
     TYPE temp = cheri_load(xval, i, &flag_buf, caps[0]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(val, i, temp, &flag_buf, caps[5]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   // Load cols array
   for (i = 0; i < NNZ; i++) {
     int temp = cheri_load(xcols, i, &flag_buf, caps[1]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(cols, i, temp, &flag_buf, caps[6]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   // Load rowDelimiters array
   for (i = 0; i < N + 1; i++) {
     int temp = cheri_load(xrowDelimiters, i, &flag_buf, caps[2]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(rowDelimiters, i, temp, &flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   // Load vec array
   for (i = 0; i < N; i++) {
     TYPE temp = cheri_load(xvec, i, &flag_buf, caps[3]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(vec, i, temp, &flag_buf, caps[8]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   int temp = cheri_load(rowDelimiters, 0, &flag_buf, caps[7]);
-  if (flag_buf) { *flag =1; return;}
+  if (flag_buf) {
+    *flag = 1;
+    return;
+  }
 spmv_1:
   for (i = 0; i < size; i++) {
     sum = 0;
     Si = 0;
     int tmp_begin = temp;
     int tmp_end = cheri_load(rowDelimiters, i + 1, &flag_buf, caps[7]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     temp = tmp_end;
   spmv_2:
     for (j = tmp_begin; j < tmp_end; j++) {
       TYPE val_j = cheri_load(val, j, &flag_buf, caps[5]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
       int col_j = cheri_load(cols, j, &flag_buf, caps[6]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
       TYPE vec_val = cheri_load(vec, col_j, &flag_buf, caps[8]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
       Si = val_j * vec_val;
       sum = sum + Si;
     }
     cheri_store(out, i, sum, &flag_buf, caps[9]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   // Store out array back to xout
   for (i = 0; i < size; i++) {
     TYPE temp = cheri_load(out, i, &flag_buf, caps[9]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(xout, i, temp, &flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   *flag = flag_buf;

@@ -4,24 +4,32 @@
 #define TYPE int
 
 void merge(TYPE a[SIZE], int start, int m, int stop, u32 *flag_buf, Cap cap_a,
-           Cap cap_temp, u32 *flag) {
+           Cap cap_temp) {
   TYPE temp[SIZE];
   int i, j, k;
 
 merge_label1:
   for (i = start; i <= m; i++) {
     TYPE temp_val = cheri_load(a, i, flag_buf, cap_a);
-    if (*flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(temp, i, temp_val, flag_buf, cap_temp);
-    if (*flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
   }
 
 merge_label2:
   for (j = m + 1; j <= stop; j++) {
     TYPE temp_val = cheri_load(a, j, flag_buf, cap_a);
-    if (*flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     cheri_store(temp, m + 1 + stop - j, temp_val, flag_buf, cap_temp);
-    if (*flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
   }
 
   i = start;
@@ -30,16 +38,24 @@ merge_label2:
 merge_label3:
   for (k = start; k <= stop; k++) {
     TYPE tmp_j = cheri_load(temp, j, flag_buf, cap_temp);
-    if (*flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     TYPE tmp_i = cheri_load(temp, i, flag_buf, cap_temp);
-    if (*flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     if (tmp_j < tmp_i) {
       cheri_store(a, k, tmp_j, flag_buf, cap_a);
-      if (*flag_buf) { *flag =1; return;}
+      if (*flag_buf) {
+        return;
+      }
       j--;
     } else {
       cheri_store(a, k, tmp_i, flag_buf, cap_a);
-      if (*flag_buf) { *flag =1; return;}
+      if (*flag_buf) {
+        return;
+      }
       i++;
     }
   }
@@ -74,9 +90,15 @@ void hls_top(int size, TYPE xa[SIZE], TYPE xb[SIZE], u32 *flag, u32 cap[8]) {
 
   for (i = 0; i < size; i++) {
     TYPE temp = cheri_load(xa, i, &flag_buf, caps[0]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(a, i, temp, &flag_buf, caps[2]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
 mergesort_label1:
@@ -87,20 +109,32 @@ mergesort_label1:
       mid = i + m - 1;
       to = i + m + m - 1;
       if (to < stop) {
-        merge(a, from, mid, to, &flag_buf, caps[2], caps[3], flag);
-        if (flag_buf) { *flag =1; return;}
+        merge(a, from, mid, to, &flag_buf, caps[2], caps[3]);
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
       } else {
-        merge(a, from, mid, stop, &flag_buf, caps[2], caps[3], flag);
-        if (flag_buf) { *flag =1; return;}
+        merge(a, from, mid, stop, &flag_buf, caps[2], caps[3]);
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
       }
     }
   }
 
   for (i = 0; i < size; i++) {
     TYPE temp = cheri_load(a, i, &flag_buf, caps[2]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(xb, i, temp, &flag_buf, caps[1]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   *flag = flag_buf;

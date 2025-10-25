@@ -46,19 +46,37 @@ void hls_top(int size, TYPE xC[2], TYPE xorig[SIZE], TYPE xsol[SIZE], u32 *flag,
   create_cap(SIZE, caps, 5); // sol
 
   TYPE temp_c0 = cheri_load(xC, 0, &flag_buf, caps[0]);
-  if (flag_buf) { *flag =1; return;}
+  if (flag_buf) {
+    *flag = 1;
+    return;
+  }
   cheri_store(C, 0, temp_c0, &flag_buf, caps[3]);
-  if (flag_buf) { *flag =1; return;}
+  if (flag_buf) {
+    *flag = 1;
+    return;
+  }
   TYPE temp_c1 = cheri_load(xC, 1, &flag_buf, caps[0]);
-  if (flag_buf) { *flag =1; return;}
+  if (flag_buf) {
+    *flag = 1;
+    return;
+  }
   cheri_store(C, 1, temp_c1, &flag_buf, caps[3]);
-  if (flag_buf) { *flag =1; return;}
+  if (flag_buf) {
+    *flag = 1;
+    return;
+  }
 
   for (i = 0; i < row_size * size * height_size; i++) {
     TYPE temp = cheri_load(xorig, i, &flag_buf, caps[1]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(orig, i, temp, &flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
 // Handle boundary conditions by filling with original values
@@ -68,17 +86,29 @@ height_bound_col:
     for (k = 0; k < row_size; k++) {
       TYPE temp1 =
           cheri_load(orig, INDX(row_size, size, k, j, 0), &flag_buf, caps[4]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
       cheri_store(sol, INDX(row_size, size, k, j, 0), temp1, &flag_buf,
                   caps[5]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
 
       TYPE temp2 = cheri_load(orig, INDX(row_size, size, k, j, height_size - 1),
                               &flag_buf, caps[4]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
       cheri_store(sol, INDX(row_size, size, k, j, height_size - 1), temp2,
                   &flag_buf, caps[5]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
     }
   }
 col_bound_height:
@@ -87,17 +117,29 @@ col_bound_height:
     for (k = 0; k < row_size; k++) {
       TYPE temp1 =
           cheri_load(orig, INDX(row_size, size, k, 0, i), &flag_buf, caps[4]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
       cheri_store(sol, INDX(row_size, size, k, 0, i), temp1, &flag_buf,
                   caps[5]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
 
       TYPE temp2 = cheri_load(orig, INDX(row_size, size, k, size - 1, i),
                               &flag_buf, caps[4]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
       cheri_store(sol, INDX(row_size, size, k, size - 1, i), temp2, &flag_buf,
                   caps[5]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
     }
   }
 row_bound_height:
@@ -106,17 +148,29 @@ row_bound_height:
     for (j = 1; j < size - 1; j++) {
       TYPE temp1 =
           cheri_load(orig, INDX(row_size, size, 0, j, i), &flag_buf, caps[4]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
       cheri_store(sol, INDX(row_size, size, 0, j, i), temp1, &flag_buf,
                   caps[5]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
 
       TYPE temp2 = cheri_load(orig, INDX(row_size, size, row_size - 1, j, i),
                               &flag_buf, caps[4]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
       cheri_store(sol, INDX(row_size, size, row_size - 1, j, i), temp2,
                   &flag_buf, caps[5]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
     }
   }
 
@@ -129,42 +183,78 @@ loop_height:
       for (k = 1; k < row_size - 1; k++) {
         sum0 =
             cheri_load(orig, INDX(row_size, size, k, j, i), &flag_buf, caps[4]);
-        if (flag_buf) { *flag =1; return;}
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         sum1 = cheri_load(orig, INDX(row_size, size, k, j, i + 1), &flag_buf,
                           caps[4]);
-        if (flag_buf) { *flag =1; return;}
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         sum1 += cheri_load(orig, INDX(row_size, size, k, j, i - 1), &flag_buf,
-                          caps[4]);
-        if (flag_buf) { *flag =1; return;}
+                           caps[4]);
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         sum1 += cheri_load(orig, INDX(row_size, size, k, j + 1, i), &flag_buf,
-                          caps[4]);
-        if (flag_buf) { *flag =1; return;}
+                           caps[4]);
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         sum1 += cheri_load(orig, INDX(row_size, size, k, j - 1, i), &flag_buf,
-                          caps[4]);
-        if (flag_buf) { *flag =1; return;}
+                           caps[4]);
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         sum1 += cheri_load(orig, INDX(row_size, size, k + 1, j, i), &flag_buf,
-                          caps[4]);
-        if (flag_buf) { *flag =1; return;}
+                           caps[4]);
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         sum1 += cheri_load(orig, INDX(row_size, size, k - 1, j, i), &flag_buf,
-                          caps[4]);
-        if (flag_buf) { *flag =1; return;}
+                           caps[4]);
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         TYPE c0 = cheri_load(C, 0, &flag_buf, caps[3]);
-        if (flag_buf) { *flag =1; return;}
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         TYPE c1 = cheri_load(C, 1, &flag_buf, caps[3]);
-        if (flag_buf) { *flag =1; return;}
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         mul0 = sum0 * c0;
         mul1 = sum1 * c1;
         cheri_store(sol, INDX(row_size, size, k, j, i), mul0 + mul1, &flag_buf,
                     caps[5]);
-        if (flag_buf) { *flag =1; return;}
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
       }
     }
   }
   for (i = 0; i < row_size * size * height_size; i++) {
     TYPE temp = cheri_load(sol, i, &flag_buf, caps[5]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(xsol, i, temp, &flag_buf, caps[2]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   *flag = flag_buf;
