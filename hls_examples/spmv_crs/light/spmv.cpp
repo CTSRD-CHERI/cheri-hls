@@ -2,7 +2,7 @@
 Based on algorithm described here:
 http://www.cs.berkeley.edu/~mhoemmen/matrix-seminar/slides/UCB_sparse_tutorial_1.pdf
 */
-#include "../../chls.h"
+#include "../../chls-light.h"
 
 #define NNZ 1666
 #define N 494

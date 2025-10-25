@@ -1,4 +1,4 @@
-#include "../../chls.h"
+#include "../../chls-light.h"
 
 #define SIZE 2048
 #define TYPE int

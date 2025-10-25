@@ -5,7 +5,7 @@ architectures" K. Datta, M. Murphy, V. Volkov, S. Williams, J. Carter, L.
 Oliker, D. Patterson, J. Shalf, K. Yelick SC 2008
 */
 
-#include "../../chls.h"
+#include "../../chls-light.h"
 
 // Define input sizes
 #define height_size 32

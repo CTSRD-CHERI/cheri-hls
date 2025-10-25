@@ -1,4 +1,4 @@
-#include "../../chls.h"
+#include "../../chls-light.h"
 
 #define ALEN 128
 #define BLEN 128

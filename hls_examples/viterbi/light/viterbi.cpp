@@ -1,4 +1,4 @@
-#include "../../chls.h"
+#include "../../chls-light.h"
 
 #define TYPE int
 typedef int tok_t;

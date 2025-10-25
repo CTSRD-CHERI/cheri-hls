@@ -2,7 +2,7 @@
 Implementation based on http://www-igm.univ-mlv.fr/~lecroq/string/node8.html
 */
 
-#include "../../chls.h"
+#include "../../chls-light.h"
 
 #define PATTERN_SIZE 4
 #define STRING_SIZE (16206)
