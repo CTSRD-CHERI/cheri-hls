@@ -145,10 +145,6 @@ class RunHLS:
 
     def run(self):
 
-        if self.args.debug is not None:
-            self.result += self.run_sw_checks()
-            self.exit()
-
         if self.args.all:
             tests = TESTS
             modes = MODES
@@ -158,10 +154,19 @@ class RunHLS:
             tests = TESTS if self.args.test == "all" else [self.args.test]
             modes = MODES if self.args.mode == "all" else [self.args.mode]
 
-        if not self.args.skip_run:
+        if self.args.debug is not None:
+            self.result += self.run_sw_checks()
+            self.exit()
+
+        if self.args.synthesis:
             for test in tests:
                 for mode in modes:
-                    self.result += self.single_run(test, mode)
+                    self.result += self.single_run_hls(test, mode)
+
+        if self.args.evaluate:
+            for test in tests:
+                for mode in modes:
+                    self.result += self.single_run_system(test, mode)
 
         if self.args.report:
             self.data = {}
@@ -258,8 +263,68 @@ class RunHLS:
                     result += 1
         return result
 
-    def single_run(self, test, mode):
-        self.logger.debug(f"running {test}+{mode}...")
+    def single_run_system(self, test, mode):
+        self.logger.debug(f"System: running {test}+{mode}...")
+
+        flute_dir = os.path.join(
+            self.root, "..", "BESSPIN-GFE", "bluespec-processors", "P2", "Flute"
+        )
+        hdl_dir = os.path.join(
+            flute_dir,
+            "src_SSITH_P2",
+            "xilinx_ip",
+            "hdl",
+        )
+        hls_verilog = os.path.join(
+            self.root, test, mode, f"{test}_prj", "solution", "impl", "verilog", "*.v"
+        )
+        for vfile in glob.glob(hls_verilog):
+            shutil.copy(vfile, hdl_dir)
+        wrapper_verilog = os.path.join(flute_dir, "builds", "Resources", "hlsWrapper.v")
+        shutil.copy(wrapper_verilog, os.path.join(hdl_dir, "mkHLS_Sig.v"))
+
+        build_dir = os.path.join(
+            flute_dir,
+            "src_SSITH_P2",
+        )
+        flute_src = os.path.join(
+            build_dir,
+            "Verilog_RTL",
+        )
+        cmd = [
+            "make",
+            "compile",
+            f"N_HLS=8",
+        ]
+        result = self.execute(cmd, cwd=build_dir)
+        if result:
+            self.logger.error(f"Build Flute source failed.")
+            self.exit(result)
+        flute_srcs = os.path.join(flute_src, "*.v")
+        for vfile in glob.glob(flute_srcs):
+            shutil.copy(vfile, hdl_dir)
+
+        # Run Vivado project
+        vproj = os.path.join(
+            self.root,
+            "BESSPIN-GFE",
+            "vivado",
+            "soc_bluespec_p2",
+        )
+        if os.path.exists(vproj):
+            shutil.rmtree(vproj)
+            self.logger.info(f"Removed (old) {vproj}")
+
+        cmd = ["bash", os.path.join(self.root, "scripts", "run-vivado.sh"), f"{test}"]
+        result = self.execute(cmd)
+        if result:
+            self.logger.error(f"Get bitstream for {test}({mode}) failed.")
+            self.exit(result)
+
+        return 0
+
+    def single_run_hls(self, test, mode):
+        self.logger.debug(f"HLS: running {test}+{mode}...")
 
         cmd = ["bash", "/workspace/scripts/run-vitis-hls.sh", "../vhls.tcl"]
         run_dir = os.path.join(self.root, test, mode)
@@ -340,12 +405,20 @@ run.py -a"""
         help="Report results",
     )
     parser.add_argument(
-        "-0",
-        "--skip-run",
-        dest="skip_run",
+        "-s",
+        "--synth",
+        dest="synthesis",
         action="store_true",
         default=False,
-        help="Report results",
+        help="Report HLS results",
+    )
+    parser.add_argument(
+        "-e",
+        "--evaluate",
+        dest="evaluate",
+        action="store_true",
+        default=False,
+        help="Report PPA results",
     )
     args = parser.parse_args()
 
