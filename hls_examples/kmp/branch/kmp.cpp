@@ -8,33 +8,47 @@ Implementation based on http://www-igm.univ-mlv.fr/~lecroq/string/node8.html
 #define STRING_SIZE (16206)
 
 void CPF(int pattern[PATTERN_SIZE], int kmpNext[PATTERN_SIZE], u32 *flag_buf,
-         Cap caps[8], u32 *flag) {
+         Cap caps[8]) {
   int k, q;
   k = 0;
   cheri_store(kmpNext, 0, 0, flag_buf, caps[6]);
-  if (*flag_buf) { *flag =1; return;}
+  if (*flag_buf) {
+    return;
+  }
 
 c1:
   for (q = 1; q < PATTERN_SIZE; q++) {
   c2:
     int pattern_k = cheri_load(pattern, k, flag_buf, caps[4]);
-    if (*flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int pattern_q = cheri_load(pattern, q, flag_buf, caps[4]);
-    if (*flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     int kmpNext_q = cheri_load(kmpNext, q, flag_buf, caps[6]);
-    if (*flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
     while (k > 0 && pattern_k != pattern_q) {
       k = kmpNext_q;
       pattern_k = cheri_load(pattern, k, flag_buf, caps[4]);
-      if (*flag_buf) { *flag =1; return;}
+      if (*flag_buf) {
+        return;
+      }
       kmpNext_q = cheri_load(kmpNext, q, flag_buf, caps[6]);
-      if (*flag_buf) { *flag =1; return;}
+      if (*flag_buf) {
+        return;
+      }
     }
     if (pattern_k == pattern_q) {
       k++;
     }
     cheri_store(kmpNext, q, k, flag_buf, caps[6]);
-    if (*flag_buf) { *flag =1; return;}
+    if (*flag_buf) {
+      return;
+    }
   }
 }
 
@@ -71,64 +85,118 @@ void hls_top(int size, int xpattern[PATTERN_SIZE], int xinput[STRING_SIZE],
 
   for (i = 0; i < PATTERN_SIZE; i++) {
     int temp = cheri_load(xpattern, i, &flag_buf, caps[0]);
-    if (*flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(pattern, i, temp, &flag_buf, caps[4]);
-    if (*flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
   for (i = 0; i < PATTERN_SIZE; i++) {
     int temp = cheri_load(xkmpNext, i, &flag_buf, caps[2]);
-    if (*flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(kmpNext, i, temp, &flag_buf, caps[6]);
-    if (*flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
   for (i = 0; i < size; i++) {
     int temp = cheri_load(xinput, i, &flag_buf, caps[1]);
-    if (*flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(input, i, temp, &flag_buf, caps[5]);
-    if (*flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
   cheri_store(n_matches, 0, 0, &flag_buf, caps[7]);
-  if (*flag_buf) { *flag =1; return;}
+  if (flag_buf) {
+    *flag = 1;
+    return;
+  }
 
-  CPF(pattern, kmpNext, &flag_buf, caps, flag);
-  if (flag_buf) { *flag =1; return;}
+  CPF(pattern, kmpNext, &flag_buf, caps);
+  if (flag_buf) {
+    *flag = 1;
+    return;
+  }
 
   q = 0;
 k1:
   for (i = 0; i < size; i++) {
   k2:
     int pattern_q = cheri_load(pattern, q, &flag_buf, caps[4]);
-    if (*flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     int input_i = cheri_load(input, i, &flag_buf, caps[5]);
-    if (*flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     int kmpNext_q = cheri_load(kmpNext, q, &flag_buf, caps[6]);
-    if (*flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     while (q > 0 && pattern_q != input_i) {
       q = kmpNext_q;
       pattern_q = cheri_load(pattern, q, &flag_buf, caps[4]);
-      if (*flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
       kmpNext_q = cheri_load(kmpNext, q, &flag_buf, caps[6]);
-      if (*flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
     }
     if (pattern_q == input_i) {
       q++;
     }
     if (q >= PATTERN_SIZE) {
       int temp_n_matches = cheri_load(n_matches, 0, &flag_buf, caps[7]);
-      if (*flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
       temp_n_matches++;
       cheri_store(n_matches, 0, temp_n_matches, &flag_buf, caps[7]);
-      if (*flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
       q = cheri_load(kmpNext, q - 1, &flag_buf, caps[6]);
-      if (*flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
     }
   }
 
   int temp_n_matches = cheri_load(n_matches, 0, &flag_buf, caps[7]);
-  if (*flag_buf) { *flag =1; return;}
+  if (flag_buf) {
+    *flag = 1;
+    return;
+  }
   cheri_store(xn_matches, 0, temp_n_matches, &flag_buf, caps[3]);
-  if (*flag_buf) { *flag =1; return;}
+  if (flag_buf) {
+    *flag = 1;
+    return;
+  }
 
   *flag = flag_buf;
 }
@@ -203,8 +271,8 @@ int main() {
       'c', 'o', 'n', 'c', 'e', 'r', 'n', 'o', 'v', 'e', 'r', 'm', 'y', 'o', 'w',
       'n', 'd', 'e', 'a', 't', 'h', 'a', 'n', 'd', 'n', 'o', 'w', 'I', 'c', 'a',
       'n', 'n', 'o', 't', 's', 'p', 'e', 'a', 'k', 't', 'o', 'y', 'o', 'u', 'i',
-      'n', 's', 'i', 'n', 'c', 'e', 'r', 'e', 'l', 'y', 'w', 'i', 't', 'h', '√ë',
-      '¬ñ', '√ê', '¬Ω', ' ', 'f', 'i', 'v', 'e', 'm', 'i', 'n', 'u', 't', 'e', 's',
+      'n', 's', 'i', 'n', 'c', 'e', 'r', 'e', 'l', 'y', 'w', 'i', 't', 'h', '—',
+      'ñ', '–', 'Ω', ' ', 'f', 'i', 'v', 'e', 'm', 'i', 'n', 'u', 't', 'e', 's',
       'o', 'f', 'b', 'e', 'i', 'n', 'g', 's', 'h', 'o', 't', 'I', 'a', 'm', 't',
       'e', 'l', 'l', 'i', 'n', 'g', 'y', 'o', 'u', 't', 'h', 'e', 'l', 'i', 't',
       'e', 'r', 'a', 'l', 't', 'r', 'u', 't', 'h', 'w', 'h', 'e', 'n', 'I', 's',
@@ -1404,7 +1472,7 @@ int main() {
       'o', 'r', 'w', 'h', 'a', 't', 'h', 'e', 'r', 'e', 'p', 'r', 'e', 's', 'e',
       'n', 't', 'e', 'd', 'H', 'e', 'w', 'a', 's', 'a', 'c', 'o', 'w', 'a', 'r',
       'd', 'H', 'e', 's', 't', 'o', 'o', 'd', 'i', 'n', 't', 'h', 'e', 'd', 'a',
-      'r', 'k', 'n', 'e', 's', 's', ' ', '√ê', '¬∑', ' ', 'i', 'n', 't', 'h', 'e',
+      'r', 'k', 'n', 'e', 's', 's', ' ', '–', '∑', ' ', 'i', 'n', 't', 'h', 'e',
       'c', 'r', 'o', 'w', 'd', 'a', 'r', 'o', 'u', 'n', 'd', 't', 'h', 'e', 'a',
       'u', 't', 'o', 'm', 'o', 'b', 'i', 'l', 'e', 'a', 'n', 'd', 'w', 'h', 'e',
       'n', 't', 'h', 'e', 'y', 'c', 'h', 'e', 'e', 'r', 'e', 'd', 'm', 'e', 'a',
@@ -1458,7 +1526,7 @@ int main() {
       'l', 'y', 'w', 'h', 'e', 'n', 't', 'h', 'e', 'b', 'r', 'u', 't', 'a', 'l',
       'i', 't', 'y', 'i', 's', 'a', 'c', 'c', 'o', 'm', 'p', 'a', 'n', 'i', 'e',
       'd', 'b', 'y', 'a', 'n', 'o', 't', 'v', 'e', 'r', 'y', 's', 't', 'r', 'o',
-      'n', 'g', ' ', '√ê', '¬∑', ' ', 'm', 'i', 'n', 'd', 't', 'h', 'e', 'y', 'c',
+      'n', 'g', ' ', '–', '∑', ' ', 'm', 'i', 'n', 'd', 't', 'h', 'e', 'y', 'c',
       'a', 'n', 'n', 'o', 't', 'e', 'x', 'p', 'e', 'c', 't', 't', 'h', 'a', 't',
       's', 'u', 'c', 'h', 'n', 'a', 't', 'u', 'r', 'e', 's', 'w', 'i', 'l', 'l',
       'b', 'e', 'u', 'n', 'a', 'f', 'f', 'e', 'c', 't', 'e', 'd', 'b', 'y', 'i',

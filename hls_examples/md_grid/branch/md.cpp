@@ -82,9 +82,15 @@ void hls_top(int size, int xn_points[blockSide * blockSide * blockSide],
       for (int k = 0; k < size; k++) {
         int idx = i * blockSide * blockSide + j * blockSide + k;
         int temp = cheri_load(xn_points, idx, &flag_buf, caps[0]);
-        if (flag_buf) { *flag =1; return;}
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         cheri_store(n_points, idx, temp, &flag_buf, caps[7]);
-        if (flag_buf) { *flag =1; return;}
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
       }
 
   for (int i = 0; i < size; i++)
@@ -94,9 +100,15 @@ void hls_top(int size, int xn_points[blockSide * blockSide * blockSide],
           int idx = i * blockSide * blockSide * densityFactor +
                     j * blockSide * densityFactor + k * densityFactor + h;
           int temp = cheri_load(force_x, idx, &flag_buf, caps[1]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
           cheri_store(force_ox, idx, temp, &flag_buf, caps[8]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
         }
   for (int i = 0; i < size; i++)
     for (int j = 0; j < size; j++)
@@ -105,9 +117,15 @@ void hls_top(int size, int xn_points[blockSide * blockSide * blockSide],
           int idx = i * blockSide * blockSide * densityFactor +
                     j * blockSide * densityFactor + k * densityFactor + h;
           int temp = cheri_load(force_y, idx, &flag_buf, caps[2]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
           cheri_store(force_oy, idx, temp, &flag_buf, caps[9]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
         }
   for (int i = 0; i < size; i++)
     for (int j = 0; j < size; j++)
@@ -116,9 +134,15 @@ void hls_top(int size, int xn_points[blockSide * blockSide * blockSide],
           int idx = i * blockSide * blockSide * densityFactor +
                     j * blockSide * densityFactor + k * densityFactor + h;
           int temp = cheri_load(force_z, idx, &flag_buf, caps[3]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
           cheri_store(force_oz, idx, temp, &flag_buf, caps[10]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
         }
   for (int i = 0; i < size; i++)
     for (int j = 0; j < size; j++)
@@ -127,9 +151,15 @@ void hls_top(int size, int xn_points[blockSide * blockSide * blockSide],
           int idx = i * blockSide * blockSide * densityFactor +
                     j * blockSide * densityFactor + k * densityFactor + h;
           int temp = cheri_load(position_x, idx, &flag_buf, caps[4]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
           cheri_store(position_ox, idx, temp, &flag_buf, caps[11]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
         }
   for (int i = 0; i < size; i++)
     for (int j = 0; j < size; j++)
@@ -138,9 +168,15 @@ void hls_top(int size, int xn_points[blockSide * blockSide * blockSide],
           int idx = i * blockSide * blockSide * densityFactor +
                     j * blockSide * densityFactor + k * densityFactor + h;
           int temp = cheri_load(position_y, idx, &flag_buf, caps[5]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
           cheri_store(position_oy, idx, temp, &flag_buf, caps[12]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
         }
   for (int i = 0; i < size; i++)
     for (int j = 0; j < size; j++)
@@ -149,9 +185,15 @@ void hls_top(int size, int xn_points[blockSide * blockSide * blockSide],
           int idx = i * blockSide * blockSide * densityFactor +
                     j * blockSide * densityFactor + k * densityFactor + h;
           int temp = cheri_load(position_z, idx, &flag_buf, caps[6]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
           cheri_store(position_oz, idx, temp, &flag_buf, caps[13]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
         }
 
 // Iterate over the grid, block by block
@@ -177,41 +219,74 @@ loop_grid0_x:
                   b1_x * blockSide * blockSide + b1_y * blockSide + b1_z;
               int q_idx_range =
                   cheri_load(n_points, b1_n_idx, &flag_buf, caps[7]);
-              if (flag_buf) { *flag =1; return;}
+              if (flag_buf) {
+                *flag = 1;
+                return;
+              }
 
               int b0_n_idx =
                   b0_x * blockSide * blockSide + b0_y * blockSide + b0_z;
               int p_idx_range =
                   cheri_load(n_points, b0_n_idx, &flag_buf, caps[7]);
-              if (flag_buf) { *flag =1; return;}
+              if (flag_buf) {
+                *flag = 1;
+                return;
+              }
             loop_p:
               for (p_idx = 0; p_idx < p_idx_range; p_idx++) {
                 int b0_p_idx = b0_x * blockSide * blockSide * densityFactor +
                                b0_y * blockSide * densityFactor +
                                b0_z * densityFactor + p_idx;
                 p_x = cheri_load(position_ox, b0_p_idx, &flag_buf, caps[11]);
-                if (flag_buf) { *flag =1; return;}
+                if (flag_buf) {
+                  *flag = 1;
+                  return;
+                }
                 p_y = cheri_load(position_oy, b0_p_idx, &flag_buf, caps[12]);
-                if (flag_buf) { *flag =1; return;}
+                if (flag_buf) {
+                  *flag = 1;
+                  return;
+                }
                 p_z = cheri_load(position_oz, b0_p_idx, &flag_buf, caps[13]);
-                if (flag_buf) { *flag =1; return;}
+                if (flag_buf) {
+                  *flag = 1;
+                  return;
+                }
                 TYPE sum_x = cheri_load(force_ox, b0_p_idx, &flag_buf, caps[8]);
-                if (flag_buf) { *flag =1; return;}
+                if (flag_buf) {
+                  *flag = 1;
+                  return;
+                }
                 TYPE sum_y = cheri_load(force_oy, b0_p_idx, &flag_buf, caps[9]);
-                if (flag_buf) { *flag =1; return;}
+                if (flag_buf) {
+                  *flag = 1;
+                  return;
+                }
                 TYPE sum_z =
                     cheri_load(force_oz, b0_p_idx, &flag_buf, caps[10]);
-                if (flag_buf) { *flag =1; return;}
+                if (flag_buf) {
+                  *flag = 1;
+                  return;
+                }
               // For all points in b1
               loop_q:
                 for (q_idx = 0; q_idx < q_idx_range; q_idx++) {
                   int q_offset = b1_base_idx + q_idx;
                   q_x = cheri_load(position_ox, q_offset, &flag_buf, caps[11]);
-                  if (flag_buf) { *flag =1; return;}
+                  if (flag_buf) {
+                    *flag = 1;
+                    return;
+                  }
                   q_y = cheri_load(position_oy, q_offset, &flag_buf, caps[12]);
-                  if (flag_buf) { *flag =1; return;}
+                  if (flag_buf) {
+                    *flag = 1;
+                    return;
+                  }
                   q_z = cheri_load(position_oz, q_offset, &flag_buf, caps[13]);
-                  if (flag_buf) { *flag =1; return;}
+                  if (flag_buf) {
+                    *flag = 1;
+                    return;
+                  }
 
                   // Don't compute our own
                   if (q_x != p_x || q_y != p_y || q_z != p_z) {
@@ -230,11 +305,20 @@ loop_grid0_x:
                   }
                 } // loop_q
                 cheri_store(force_ox, b0_p_idx, sum_x, &flag_buf, caps[8]);
-                if (flag_buf) { *flag =1; return;}
+                if (flag_buf) {
+                  *flag = 1;
+                  return;
+                }
                 cheri_store(force_oy, b0_p_idx, sum_y, &flag_buf, caps[9]);
-                if (flag_buf) { *flag =1; return;}
+                if (flag_buf) {
+                  *flag = 1;
+                  return;
+                }
                 cheri_store(force_oz, b0_p_idx, sum_z, &flag_buf, caps[10]);
-                if (flag_buf) { *flag =1; return;}
+                if (flag_buf) {
+                  *flag = 1;
+                  return;
+                }
               } // loop_p
             }
           }
@@ -250,9 +334,15 @@ loop_grid0_x:
           int idx = i * blockSide * blockSide * densityFactor +
                     j * blockSide * densityFactor + k * densityFactor + h;
           int temp = cheri_load(force_ox, idx, &flag_buf, caps[8]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
           cheri_store(force_x, idx, temp, &flag_buf, caps[1]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
         }
   for (int i = 0; i < size; i++)
     for (int j = 0; j < size; j++)
@@ -261,9 +351,15 @@ loop_grid0_x:
           int idx = i * blockSide * blockSide * densityFactor +
                     j * blockSide * densityFactor + k * densityFactor + h;
           int temp = cheri_load(force_oy, idx, &flag_buf, caps[9]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
           cheri_store(force_y, idx, temp, &flag_buf, caps[2]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
         }
   for (int i = 0; i < size; i++)
     for (int j = 0; j < size; j++)
@@ -272,9 +368,15 @@ loop_grid0_x:
           int idx = i * blockSide * blockSide * densityFactor +
                     j * blockSide * densityFactor + k * densityFactor + h;
           int temp = cheri_load(force_oz, idx, &flag_buf, caps[10]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
           cheri_store(force_z, idx, temp, &flag_buf, caps[3]);
-          if (flag_buf) { *flag =1; return;}
+          if (flag_buf) {
+            *flag = 1;
+            return;
+          }
         }
 
   *flag = flag_buf;
