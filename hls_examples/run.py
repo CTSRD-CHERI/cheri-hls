@@ -116,6 +116,17 @@ def getLogger(name: str, log_file: str = "", console: bool = True) -> logging.Lo
 # ---------------------------------------
 
 
+class Instance:
+    def __init__(self, luts, ffs, dsps, brams, fmax, cycles):
+        self.luts = luts
+        self.ffs = ffs
+        self.dsps = dsps
+        self.brams = brams
+        self.fmax = fmax
+        self.cycles = cycles
+        self.latency = cycles / fmax
+
+
 # ---------------------------------------
 # RUN HLS
 # ---------------------------------------
@@ -158,12 +169,15 @@ class RunHLS:
                     self.result += self.single_run(test, mode)
 
         if self.args.report:
+            self.data = {}
             buff = "Test, Mode, LUTs, FFs, DSPs, BRAMs, Cycles, Fmax,\n"
             for test in tests:
+                self.data[test] = {}
                 for mode in modes:
                     line = self.single_report(test, mode)
                     buff += line
-            self.logger.info("result:\n" + buff)
+            self.logger.info("Full result:\n" + buff)
+
         self.exit()
 
     def single_report(self, test, mode):
@@ -225,6 +239,8 @@ class RunHLS:
 
         luts, ffs, dsps, brams, fmax = get_area(synthesis_report)
         cycles = get_cycles(sim_report)
+
+        self.data[test][mode] = Instance(luts, ffs, dsps, brams, fmax, cycles)
         return f"{test}, {mode}, {luts}, {ffs}, {dsps}, {brams}, {cycles}, {fmax},\n"
 
     def run_sw_checks(self):

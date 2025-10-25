@@ -19,11 +19,6 @@ ASPLOS 1991
 #define NUMOFBLOCKS N / block_size / block_size
 
 typedef uint32_t u32;
-void stream_write(u32 size, int *array1, int *array2) {
-  for (int i = 0; i < size; i++) {
-    array1[i] = array2[i];
-  }
-}
 
 void hls_top(int size, TYPE xm1[N], TYPE xm2[N], TYPE xprod[N], u32 *flag,
              u32 cap[12]) {
@@ -85,7 +80,10 @@ loopjj:
       }
     }
   }
-  cheri_stream_write(size * size, xprod, prod, &flag_buf, caps[2], caps[5]);
+  for (i = 0; i < size * size; i++) {
+    int temp = cheri_load(prod, i, &flag_buf, caps[5]);
+    cheri_store(xprod, i, temp, &flag_buf, caps[2]);
+  }
 }
 
 int main() {

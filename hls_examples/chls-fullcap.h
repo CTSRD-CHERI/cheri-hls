@@ -147,13 +147,13 @@ void checkAccess(u32 *flag_buf, Cap cap, u64 offset, u64 nBytes, bool isWrite) {
 }
 
 int cheri_load(int *buf, int i, u32 *flag_buf, Cap cap) {
-#pragma HLS INLINE
+#pragma HLS INLINE off
   checkAccess(flag_buf, cap, i, 4, false);
   return (*flag_buf) ? 0 : buf[i];
 }
 
 void cheri_store(int *buf, int i, int val, u32 *flag_buf, Cap cap) {
-#pragma HLS INLINE
+#pragma HLS INLINE off
   checkAccess(flag_buf, cap, i, 4, true);
 
   if (!(*flag_buf)) {

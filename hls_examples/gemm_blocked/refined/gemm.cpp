@@ -71,7 +71,9 @@ loopjj:
       }
     }
   }
-  cheri_stream_write_nl(size * size, xprod, prod, &flag_buf, caps[2]);
+
+  for (i = 0; i < size * size; i++)
+    cheri_store(xprod, i, prod[i], &flag_buf, caps[2]);
 }
 
 int main() {
