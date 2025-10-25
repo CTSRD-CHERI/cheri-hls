@@ -1,4 +1,4 @@
-#include "../../chls-light.h"
+#include "../../chls.h"
 
 #define MIN(x, y) ((x) < (y) ? (x) : (y))
 #define MAX(x, y) ((x) > (y) ? (x) : (y))

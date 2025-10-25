@@ -6,7 +6,7 @@ benchmark suite. In Proceedings of the 3rd Workshop on General-Purpose
 Computation on Graphics Processing Units, 2010
 */
 
-#include "../../chls-light.h"
+#include "../../chls.h"
 
 #define TYPE int
 

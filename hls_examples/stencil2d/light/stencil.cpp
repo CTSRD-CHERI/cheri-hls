@@ -1,4 +1,4 @@
-#include "../../chls-light.h"
+#include "../../chls.h"
 
 // Define input sizes
 #define col_size 64

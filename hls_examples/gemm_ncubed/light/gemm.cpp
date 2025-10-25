@@ -1,4 +1,4 @@
-#include "../../chls-light.h"
+#include "../../chls.h"
 
 // Define compute data type
 #define TYPE int

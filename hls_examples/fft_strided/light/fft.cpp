@@ -1,4 +1,4 @@
-#include "../../chls-light.h"
+#include "../../chls.h"
 
 #define FFT_SIZE 1024
 // #define twoPI 6.28318530717959

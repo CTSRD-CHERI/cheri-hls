@@ -1,4 +1,4 @@
-#include "../../chls-light.h"
+#include "../../chls.h"
 
 // Fixed parameters
 #define input_dimension 16

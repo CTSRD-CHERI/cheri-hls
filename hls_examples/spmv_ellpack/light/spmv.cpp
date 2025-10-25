@@ -3,7 +3,7 @@ Based on algorithm described here:
 http://www.cs.berkeley.edu/~mhoemmen/matrix-seminar/slides/UCB_sparse_tutorial_1.pdf
 */
 
-#include "../../chls-light.h"
+#include "../../chls.h"
 
 // These constants valid for the IEEE 494 bus interconnect matrix
 #define NNZ 1666

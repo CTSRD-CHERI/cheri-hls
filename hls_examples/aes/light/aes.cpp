@@ -4,7 +4,7 @@
  *   Modified to avoid structs and use single dimension arrays.
  *   Converted to use int instead of uint8_t.
  */
-#include "../../chls-light.h"
+#include "../../chls.h"
 #include <stdint.h>
 // #include <stdio.h>
 // #include <stdlib.h>

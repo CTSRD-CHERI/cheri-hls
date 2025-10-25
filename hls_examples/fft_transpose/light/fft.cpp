@@ -3,7 +3,7 @@ Implementations based on:
 V. Volkov and B. Kazian. Fitting fft onto the g80 architecture. 2008.
 */
 
-#include "../../chls-light.h"
+#include "../../chls.h"
 
 #define TYPE int
 
