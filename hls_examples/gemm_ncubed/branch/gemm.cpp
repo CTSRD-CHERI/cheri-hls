@@ -38,15 +38,27 @@ void hls_top(int size, TYPE xm1[N], TYPE xm2[N], TYPE xprod[N], u32 *flag,
 
   for (i = 0; i < size * size; i++) {
     int temp = cheri_load(xm1, i, &flag_buf, caps[0]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(m1, i, temp, &flag_buf, caps[3]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
   for (i = 0; i < size * size; i++) {
     int temp = cheri_load(xm2, i, &flag_buf, caps[1]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(m2, i, temp, &flag_buf, caps[4]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 
 outer:
@@ -59,22 +71,37 @@ outer:
       for (k = 0; k < size; k++) {
         k_col = k * size;
         int temp_m1 = cheri_load(m1, i_col + k, &flag_buf, caps[3]);
-        if (flag_buf) { *flag =1; return;}
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         int temp_m2 = cheri_load(m2, k_col + j, &flag_buf, caps[4]);
-        if (flag_buf) { *flag =1; return;}
+        if (flag_buf) {
+          *flag = 1;
+          return;
+        }
         mult = temp_m1 * temp_m2;
         sum += mult;
       }
       cheri_store(prod, i_col + j, sum, &flag_buf, caps[5]);
-      if (flag_buf) { *flag =1; return;}
+      if (flag_buf) {
+        *flag = 1;
+        return;
+      }
     }
   }
 
   for (i = 0; i < size * size; i++) {
     int temp = cheri_load(prod, i, &flag_buf, caps[5]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
     cheri_store(xprod, i, temp, &flag_buf, caps[2]);
-    if (flag_buf) { *flag =1; return;}
+    if (flag_buf) {
+      *flag = 1;
+      return;
+    }
   }
 }
 
