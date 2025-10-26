@@ -48,13 +48,14 @@ merge_label3:
     if (tmp_j < tmp_i) {
       cheri_store(a, k, tmp_j, flag_buf, cap_a);
       if (*flag_buf) {
-        return;
+        break;
+        // return;
       }
       j--;
     } else {
       cheri_store(a, k, tmp_i, flag_buf, cap_a);
       if (*flag_buf) {
-        return;
+        break; // return;
       }
       i++;
     }
