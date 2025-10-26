@@ -2433,7 +2433,7 @@ class Updater:
         for f in glob.glob(os.path.join(vproj, "*.v")):
             fname = os.path.basename(f)
             buff += f"""      <spirit:file>
-        <spirit:name>../{self.test}_hls/{fname}</spirit:name>
+        <spirit:name>../{self.test}_{self.mode}_hls/{fname}</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
       </spirit:file>
 """

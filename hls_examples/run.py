@@ -335,9 +335,8 @@ class RunHLS:
         result = self.execute(cmd)
         if result:
             self.logger.error(f"Get bitstream for {test}({mode}) failed.")
-            self.exit(result)
 
-        return 0
+        return result
 
     def single_run_hls(self, test, mode):
         self.logger.debug(f"HLS: running {test}+{mode}...")
