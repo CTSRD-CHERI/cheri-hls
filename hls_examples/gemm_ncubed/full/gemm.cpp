@@ -67,6 +67,7 @@ outer:
     int temp = cheri_load(prod, i, &flag_buf, caps[5]);
     cheri_store(xprod, i, temp, &flag_buf, caps[2]);
   }
+  *flag = flag_buf;
 }
 
 int main() {

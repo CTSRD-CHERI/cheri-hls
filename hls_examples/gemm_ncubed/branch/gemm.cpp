@@ -103,6 +103,7 @@ outer:
       return;
     }
   }
+  *flag = flag_buf;
 }
 
 int main() {
