@@ -74,6 +74,7 @@ loopjj:
 
   for (i = 0; i < size * size; i++)
     cheri_store(xprod, i, prod[i], &flag_buf, caps[2]);
+  *flag = flag_buf;
 }
 
 int main() {
