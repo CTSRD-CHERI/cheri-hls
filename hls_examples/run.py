@@ -29,10 +29,11 @@ TESTS = [
     "stencil2d",
     "stencil3d",
     "viterbi",
-    "vect_mult",
+    # "vect_mult",
 ]
 
-MODES = ["base", "light", "full", "refined", "branch"]
+MODES = ["base", "light", "full", "refined"]
+# MODES = ["base", "light", "full", "refined", "branch"]
 
 # ---------------------------------------
 # Logger setup
@@ -145,6 +146,10 @@ class RunHLS:
 
     def run(self):
 
+        if self.args.debug is not None:
+            self.result += self.run_sw_checks()
+            self.exit()
+
         if self.args.all:
             tests = TESTS
             modes = MODES
@@ -153,10 +158,6 @@ class RunHLS:
             assert self.args.mode in MODES or self.args.mode == "all"
             tests = TESTS if self.args.test == "all" else [self.args.test]
             modes = MODES if self.args.mode == "all" else [self.args.mode]
-
-        if self.args.debug is not None:
-            self.result += self.run_sw_checks()
-            self.exit()
 
         if self.args.synthesis:
             for test in tests:
@@ -167,6 +168,11 @@ class RunHLS:
             for test in tests:
                 for mode in modes:
                     self.result += self.single_run_system(test, mode)
+
+        if self.args.power:
+            for test in tests:
+                for mode in modes:
+                    self.result += self.single_run_power(test, mode)
 
         if self.args.report:
             self.data = {}
@@ -263,6 +269,41 @@ class RunHLS:
                     result += 1
         return result
 
+    def single_run_power(self, test, mode):
+        self.logger.debug(f"System: running {test}+{mode}...")
+
+        prj_dir = os.path.join(self.root, test, mode)
+        tcl_buf = f"""
+create_project -force syn_project {prj_dir}/syn_project -part xqzu29dr-ffrf1760-1-i
+"""
+
+        src_dir = os.path.join(prj_dir, f"{test}_prj", "solution", "impl", "verilog")
+        for file in glob.glob(src_dir + "/*.v"):
+            tcl_buf += "add_files -norecurse {" + file + "}\n"
+        tcl_buf += f"""
+add_files -fileset constrs_1 -norecurse {src_dir}/hls_top.xdc
+set_property top hls_top [current_fileset]
+update_compile_order -fileset sources_1
+launch_runs synth_1 -jobs 8 
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+report_utilization -hierarchical -file {prj_dir}/syn_project/util.rpt
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1 -file {prj_dir}/syn_project/timing.rpt
+report_power -file {prj_dir}/syn_project/power.rpt -name {{power_1}}
+"""
+        tcl = open(os.path.join(prj_dir, "syn.tcl"), "w")
+        tcl.write(tcl_buf)
+        tcl.close()
+
+        cmd = [
+            "bash",
+            os.path.join(self.root, "..", "scripts", "get-hls-power.sh"),
+        ]
+        result = self.execute(cmd, cwd=prj_dir)
+        if result:
+            self.logger.error(f"Get power for {test}({mode}) failed.")
+        return result
+
     def single_run_system(self, test, mode):
         self.logger.debug(f"System: running {test}+{mode}...")
 
@@ -296,10 +337,10 @@ class RunHLS:
             "compile",
             f"N_HLS=8",
         ]
-        result = self.execute(cmd, cwd=build_dir)
-        if result:
+        self.result += self.execute(cmd, cwd=build_dir)
+        if self.result:
             self.logger.error(f"Build Flute source failed.")
-            self.exit(result)
+            self.exit()
         flute_srcs = os.path.join(flute_src, "*.v")
         for vfile in glob.glob(flute_srcs):
             shutil.copy(vfile, hdl_dir)
@@ -426,6 +467,14 @@ run.py -a"""
         action="store_true",
         default=False,
         help="Report HLS results",
+    )
+    parser.add_argument(
+        "-p",
+        "--power",
+        dest="power",
+        action="store_true",
+        default=False,
+        help="Report Power results",
     )
     parser.add_argument(
         "-e",
